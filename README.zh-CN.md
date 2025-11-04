@@ -2,6 +2,8 @@
 
 > 精选的 Astron 工作流示例和用户案例集合，用于 AI 驱动的应用程序
 
+[![English](https://img.shields.io/badge/README-English-blue)](README.md) [![中文](https://img.shields.io/badge/README-%E4%B8%AD%E6%96%87-red)](README.zh-CN.md)
+
 ## 目录
 
 - [概述](#概述)
