@@ -13,6 +13,7 @@
   - [3. Multi-Platform Content Writing](#3-multi-platform-content-writing)
   - [4. AI Podcast Generator](#4-ai-podcast-generator)
   - [5. AI Course Generator](#5-ai-course-generator)
+  - [6. AI Paper Recommender](#6-ai-paper-recommender)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -96,6 +97,35 @@ Each case includes:
 - Interactive content creation
 - Assessment and quiz generation
 - Progress tracking and analytics
+
+## Contributing
+
+We welcome contributions to this repository! If you have an Astron workflow or user case to share:
+
+1. Fork this repository
+2. Create a new branch for your contribution
+3. Add your workflow and user case information
+4. Submit a pull request with a detailed description
+
+Please make sure your contribution includes:
+- A clear description of the use case
+- A link to the user case document (if available)
+- A complete workflow YAML file
+- A summary of key features
+
+### 6. AI Paper Recommender
+
+**Description:** An AI-powered academic paper recommendation system that works like TikTok for research papers—users swipe through daily recommendations, like or save papers, and the agent learns preferences to improve suggestions.
+
+- **User Case:** [WeChat article](https://mp.weixin.qq.com/s/vt3rN-P70IOJd5emdG2Gyw)
+- **Workflow:** [`spark_workflow_config.yml`](https://github.com/qwwzdyj/Xfind/blob/main/workflow/spark_workflow_config.yml)
+
+**Key Features:**
+- Personalized recommendations based on user profile and interaction history
+- Daily batch of curated papers fetched via ArXiv API
+- Preference learning with feedback loop (like / save / skip)
+- Summaries and recommendation rationale via LLM
+- Frontend swipe UI and backend service integrating Astron Agent
 
 ## Contributing
 
