@@ -14,6 +14,7 @@
   - [4. AI Podcast Generator](#4-ai-podcast-generator)
   - [5. AI Course Generator](#5-ai-course-generator)
   - [6. AI Paper Recommender](#6-ai-paper-recommender)
+  - [7. AI English Essay Assistant](#7-ai-english-essay-assistant)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -126,6 +127,20 @@ Please make sure your contribution includes:
 - Preference learning with feedback loop (like / save / skip)
 - Summaries and recommendation rationale via LLM
 - Frontend swipe UI and backend service integrating Astron Agent
+
+### 7. AI English Essay Assistant
+
+**Description:** An AI-powered English essay grading and feedback assistant. Users submit their essay content, and the agent provides structured evaluation, points out grammar and expression issues, suggests improvements, offers example sentences/paragraphs, and estimates the essay level using IELTS or CEFR standards.
+
+- **User Case:** [WeChat article](https://mp.weixin.qq.com/s/crbtWlKrWG9g3A7qxg8rFg)
+- **Workflow:** [`AI-English-Essay-Assistant.yml`](https://github.com/TangXinyue00/AI-English-Essay-Assistant/blob/main/docker/astronAgent/AI-English-Essay-Assistant.yml)
+
+**Key Features:**
+- Structured evaluation covering organization, grammar, vocabulary, and logic
+- Grammar error detection with specific correction suggestions
+- Improved example sentences or revised paragraphs
+- Proficiency estimation under IELTS or CEFR standards
+- Clear, organized output format tailored for student feedback
 
 ## Contributing
 
