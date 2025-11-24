@@ -15,6 +15,7 @@
   - [5. AI Course Generator](#5-ai-course-generator)
   - [6. AI Paper Recommender](#6-ai-paper-recommender)
   - [7. AI English Essay Assistant](#7-ai-english-essay-assistant)
+  - [8. Novel Image-Text Generator](#8-novel-image-text-generator)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -141,6 +142,20 @@ Please make sure your contribution includes:
 - Improved example sentences or revised paragraphs
 - Proficiency estimation under IELTS or CEFR standards
 - Clear, organized output format tailored for student feedback
+
+### 8. Novel Image-Text Generator
+
+**Description:** Enter a novel title and automatically generate a complete article with accompanying images. Built with Astron’s block-style workflow composition, you can create an agent in one click, enable web access, image generation, and code capabilities in advanced settings, and publish to the Agent Plaza for reuse.
+
+- **User Case:** [WeChat article](https://mp.weixin.qq.com/s/F4Uz30jw5Uo2WQSe-tO3xg)
+- **Workflow:** [小说图文生成.yml](https://github.com/XiongFeng1997/AI-Novel-Generation/blob/main/docker/astronAgent/%E5%B0%8F%E8%AF%B4%E5%9B%BE%E6%96%87%E7%94%9F%E6%88%90.yml)
+
+**Key Features:**
+- One-input novel title → full image-rich article
+- Prompt-based agent creation with auto-completion
+- Advanced config: web access / image gen / code tools
+- Visual block-based workflow authoring
+- Publishable to Agent Plaza for convenient reuse
 
 ## Contributing
 

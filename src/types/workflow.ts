@@ -90,4 +90,21 @@ export const workflows: Workflow[] = [
     icon: 'graduation-cap',
     category: 'education'
   }
+  ,
+  {
+    id: 'novel-image-generator',
+    title: 'Novel Image-Text Generator',
+    description: 'Enter a novel title and auto-generate a full article with images via Astron workflow.',
+    userCaseUrl: 'https://mp.weixin.qq.com/s/F4Uz30jw5Uo2WQSe-tO3xg',
+    workflowUrl: 'https://github.com/XiongFeng1997/AI-Novel-Generation/blob/main/docker/astronAgent/%E5%B0%8F%E8%AF%B4%E5%9B%BE%E6%96%87%E7%94%9F%E6%88%90.yml',
+    features: [
+      'One-input novel title → image-rich article',
+      'Prompt-based agent creation',
+      'Advanced config: web/image/code tools',
+      'Visual block-based workflow authoring',
+      'Publish to Agent Plaza for reuse'
+    ],
+    icon: 'pen-tool',
+    category: 'content'
+  }
 ];
