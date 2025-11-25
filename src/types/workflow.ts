@@ -107,4 +107,21 @@ export const workflows: Workflow[] = [
     icon: 'pen-tool',
     category: 'content'
   }
+  ,
+  {
+    id: 'knowledge-cards',
+    title: 'Knowledge Note Cards Organizer',
+    description: 'Turn scattered notes into structured knowledge cards with AI.',
+    userCaseUrl: 'https://mp.weixin.qq.com/s/b0jgNvVPI3zz3A8jWRH0LA',
+    workflowUrl: 'https://github.com/fanan-uyun/Knowledge-Note-Cards/blob/main/docker/astronAgent/knowledge-cards.yml',
+    features: [
+      'Auto-parse raw note text',
+      'AI restructuring and key extraction',
+      'Generate structured knowledge cards',
+      'Customizable card templates',
+      'Export in multiple formats'
+    ],
+    icon: 'file-text',
+    category: 'productivity'
+  }
 ];

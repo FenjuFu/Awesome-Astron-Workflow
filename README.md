@@ -16,6 +16,7 @@
   - [6. AI Paper Recommender](#6-ai-paper-recommender)
   - [7. AI English Essay Assistant](#7-ai-english-essay-assistant)
   - [8. Novel Image-Text Generator](#8-novel-image-text-generator)
+  - [9. Knowledge Note Cards Organizer](#9-knowledge-note-cards-organizer)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -156,6 +157,20 @@ Please make sure your contribution includes:
 - Advanced config: web access / image gen / code tools
 - Visual block-based workflow authoring
 - Publishable to Agent Plaza for convenient reuse
+
+### 9. Knowledge Note Cards Organizer
+
+**Description:** An agent that turns scattered learning notes or work records into structured knowledge cards. Users simply input raw notes, and the agent automatically parses, refines key points, and generates readable knowledge cards for easy review and recall.
+
+- **User Case:** [WeChat article](https://mp.weixin.qq.com/s/b0jgNvVPI3zz3A8jWRH0LA)
+- **Workflow:** [`knowledge-cards.yml`](https://github.com/fanan-uyun/Knowledge-Note-Cards/blob/main/docker/astronAgent/knowledge-cards.yml)
+
+**Key Features:**
+- Auto-parse raw note text
+- AI restructuring and key-point extraction
+- Generate structured knowledge cards
+- Customizable card templates
+- Export in multiple formats
 
 ## Contributing
 
