@@ -124,4 +124,21 @@ export const workflows: Workflow[] = [
     icon: 'file-text',
     category: 'productivity'
   }
+  ,
+  {
+    id: 'english-writing-practice',
+    title: 'AI English Writing Practice Assistant',
+    description: '"Practice-feedback" closed-loop system for students to improve English writing.',
+    userCaseUrl: 'https://mp.weixin.qq.com/s/pGZ9rU4AoTztirzCCa0t9Q',
+    workflowUrl: 'https://github.com/onlyliuxin97/english_writting_helper/blob/main/workflow/english_writting_helper.yml',
+    features: [
+      'Grade-based random prompts from essay knowledge base',
+      'AI auto-scoring: grammar, vocabulary, structure, logic',
+      'Instant feedback with error location & revision tips',
+      'History log of all practices and comments',
+      'One-click deploy: Flask web app + local Astron workflow'
+    ],
+    icon: 'pen-tool',
+    category: 'education'
+  }
 ];

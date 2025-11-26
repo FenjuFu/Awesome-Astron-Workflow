@@ -17,6 +17,7 @@
   - [7. AI English Essay Assistant](#7-ai-english-essay-assistant)
   - [8. Novel Image-Text Generator](#8-novel-image-text-generator)
   - [9. Knowledge Note Cards Organizer](#9-knowledge-note-cards-organizer)
+  - [10. AI English Writing Practice Assistant](#10-ai-english-writing-practice-assistant)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -171,6 +172,20 @@ Please make sure your contribution includes:
 - Generate structured knowledge cards
 - Customizable card templates
 - Export in multiple formats
+
+### 10. AI English Writing Practice Assistant
+
+**Description:** An "practice-feedback" closed-loop system for middle-school students to improve English writing. Parents/teachers generate prompts in one click; students write online; AI instantly scores and gives improvement tips, while auto-saving history to help kids progress steadily.
+
+- **User Case:** [WeChat article](https://mp.weixin.qq.com/s/pGZ9rU4AoTztirzCCa0t9Q)
+- **Workflow:** [`english_writting_helper.yml`](https://github.com/onlyliuxin97/english_writting_helper/blob/main/workflow/english_writting_helper.yml)
+
+**Key Features:**
+- Grade-based random prompts from model essay knowledge base
+- AI auto-scoring: grammar, vocabulary, structure, logic
+- Instant feedback: error location + revision advice + high-score examples
+- History log: all practices & comments saved for review
+- One-click deploy: Flask web app + local Astron workflow
 
 ## Contributing
 
