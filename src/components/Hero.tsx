@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Zap } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { workflows } from '../types/workflow';
 
 const Hero: React.FC = () => {
   const { t } = useLanguage();
@@ -58,7 +59,7 @@ const Hero: React.FC = () => {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl font-bold text-indigo-600 mb-2">5</div>
+              <div className="text-3xl font-bold text-indigo-600 mb-2">{workflows.length}</div>
               <div className="text-gray-600">AI Workflows</div>
             </div>
             <div className="text-center">

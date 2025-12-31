@@ -89,54 +89,83 @@ export const workflows: Workflow[] = [
     ],
     icon: 'graduation-cap',
     category: 'education'
-  }
-  ,
+  },
+  {
+    id: 'paper-recommender',
+    title: 'workflow.paper.title',
+    description: 'workflow.paper.description',
+    userCaseUrl: 'https://mp.weixin.qq.com/s/vt3rN-P70IOJd5emdG2Gyw',
+    workflowUrl: 'https://github.com/qwwzdyj/Xfind/blob/main/workflow/spark_workflow_config.yml',
+    features: [
+      'features.paper.1',
+      'features.paper.2',
+      'features.paper.3',
+      'features.paper.4',
+      'features.paper.5'
+    ],
+    icon: 'book-open',
+    category: 'education'
+  },
+  {
+    id: 'essay-assistant',
+    title: 'workflow.essay.title',
+    description: 'workflow.essay.description',
+    userCaseUrl: 'https://mp.weixin.qq.com/s/crbtWlKrWG9g3A7qxg8rFg',
+    workflowUrl: 'https://github.com/TangXinyue00/AI-English-Essay-Assistant/blob/main/docker/astronAgent/AI-English-Essay-Assistant.yml',
+    features: [
+      'features.essay.1',
+      'features.essay.2',
+      'features.essay.3',
+      'features.essay.4',
+      'features.essay.5'
+    ],
+    icon: 'edit-3',
+    category: 'education'
+  },
   {
     id: 'novel-image-generator',
-    title: 'Novel Image-Text Generator',
-    description: 'Enter a novel title and auto-generate a full article with images via Astron workflow.',
+    title: 'workflow.novel.title',
+    description: 'workflow.novel.description',
     userCaseUrl: 'https://mp.weixin.qq.com/s/F4Uz30jw5Uo2WQSe-tO3xg',
     workflowUrl: 'https://github.com/XiongFeng1997/AI-Novel-Generation/blob/main/docker/astronAgent/%E5%B0%8F%E8%AF%B4%E5%9B%BE%E6%96%87%E7%94%9F%E6%88%90.yml',
     features: [
-      'One-input novel title → image-rich article',
-      'Prompt-based agent creation',
-      'Advanced config: web/image/code tools',
-      'Visual block-based workflow authoring',
-      'Publish to Agent Plaza for reuse'
+      'features.novel.1',
+      'features.novel.2',
+      'features.novel.3',
+      'features.novel.4',
+      'features.novel.5'
     ],
-    icon: 'pen-tool',
+    icon: 'image',
     category: 'content'
-  }
-  ,
+  },
   {
     id: 'knowledge-cards',
-    title: 'Knowledge Note Cards Organizer',
-    description: 'Turn scattered notes into structured knowledge cards with AI.',
+    title: 'workflow.cards.title',
+    description: 'workflow.cards.description',
     userCaseUrl: 'https://mp.weixin.qq.com/s/b0jgNvVPI3zz3A8jWRH0LA',
     workflowUrl: 'https://github.com/fanan-uyun/Knowledge-Note-Cards/blob/main/docker/astronAgent/knowledge-cards.yml',
     features: [
-      'Auto-parse raw note text',
-      'AI restructuring and key extraction',
-      'Generate structured knowledge cards',
-      'Customizable card templates',
-      'Export in multiple formats'
+      'features.cards.1',
+      'features.cards.2',
+      'features.cards.3',
+      'features.cards.4',
+      'features.cards.5'
     ],
-    icon: 'file-text',
+    icon: 'layers',
     category: 'productivity'
-  }
-  ,
+  },
   {
     id: 'english-writing-practice',
-    title: 'AI English Writing Practice Assistant',
-    description: '"Practice-feedback" closed-loop system for students to improve English writing.',
+    title: 'workflow.writing.title',
+    description: 'workflow.writing.description',
     userCaseUrl: 'https://mp.weixin.qq.com/s/pGZ9rU4AoTztirzCCa0t9Q',
     workflowUrl: 'https://github.com/onlyliuxin97/english_writting_helper/blob/main/workflow/english_writting_helper.yml',
     features: [
-      'Grade-based random prompts from essay knowledge base',
-      'AI auto-scoring: grammar, vocabulary, structure, logic',
-      'Instant feedback with error location & revision tips',
-      'History log of all practices and comments',
-      'One-click deploy: Flask web app + local Astron workflow'
+      'features.writing.1',
+      'features.writing.2',
+      'features.writing.3',
+      'features.writing.4',
+      'features.writing.5'
     ],
     icon: 'pen-tool',
     category: 'education'
