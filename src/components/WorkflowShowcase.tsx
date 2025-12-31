@@ -73,10 +73,10 @@ const WorkflowShowcase: React.FC = () => {
 
                   {/* Title and Description */}
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors duration-200">
-                    {workflow.title}
+                    {t(workflow.title)}
                   </h3>
                   <p className="text-gray-600 mb-6 line-clamp-3">
-                    {workflow.description}
+                    {t(workflow.description)}
                   </p>
 
                   {/* Features */}
@@ -89,7 +89,7 @@ const WorkflowShowcase: React.FC = () => {
                         <li key={index} className="flex items-start space-x-2">
                           <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-2 flex-shrink-0"></div>
                           <span className="text-sm text-gray-600">
-                            {feature}
+                            {t(feature)}
                           </span>
                         </li>
                       ))}

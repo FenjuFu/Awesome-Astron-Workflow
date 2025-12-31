@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
             </a>
             
             <a
-              href="https://github.com/your-username/Awesome-Astron-Workflow"
+              href="https://github.com/FenjuFu/Awesome-Astron-Workflow"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:border-indigo-600 hover:text-indigo-600 transition-all duration-200"
