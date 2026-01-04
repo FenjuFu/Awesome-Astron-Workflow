@@ -79,7 +79,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 **描述：** 自动化播客创作工具，通过自然语音合成和音频编辑将文本内容转换为引人入胜的音频体验。
 
 - **用户案例：** [微信公众号文章](https://mp.weixin.qq.com/s/QKp2nTKGl0m8JTytc-0ibA)
-- **工作流：** [AI 播客.yml](https://github.com/itwanger/AI-Podcast-Workshop/blob/main/docker/astronAgent/AI%20%E6%92%AD%E5%AE%A2.yml)
+- **工作流：** [AI 播客.yml](https://github.com/itwanger/PaiAgent/commit/7a4cf59d3e5302ffecdb95717c937afb2befa51a#diff-0c1529cd9f3a6d94ca74f4a60d460410f92c9c28278a980dbb4ad513cfefc913)
 
 **主要功能：**
 - 文本到语音转换
