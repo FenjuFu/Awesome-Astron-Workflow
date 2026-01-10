@@ -169,5 +169,50 @@ export const workflows: Workflow[] = [
     ],
     icon: 'pen-tool',
     category: 'education'
+  },
+  {
+    id: 'travel-companion',
+    title: 'workflow.travel.title',
+    description: 'workflow.travel.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/niaonao/astron_resource/blob/main/resources/papers/%E6%97%85%E8%A1%8C%E6%90%AD%E5%AD%90.yml',
+    features: [
+      'features.travel.1',
+      'features.travel.2',
+      'features.travel.3',
+      'features.travel.4'
+    ],
+    icon: 'map',
+    category: 'ai'
+  },
+  {
+    id: 'wechat-summary',
+    title: 'workflow.wechat.title',
+    description: 'workflow.wechat.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/user-attachments/files/24495795/default.yml',
+    features: [
+      'features.wechat.1',
+      'features.wechat.2',
+      'features.wechat.3',
+      'features.wechat.4'
+    ],
+    icon: 'file-text',
+    category: 'content'
+  },
+  {
+    id: 'resume-optimizer',
+    title: 'workflow.resume_opt.title',
+    description: 'workflow.resume_opt.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/user-attachments/files/24494434/default.yml',
+    features: [
+      'features.resume_opt.1',
+      'features.resume_opt.2',
+      'features.resume_opt.3',
+      'features.resume_opt.4'
+    ],
+    icon: 'briefcase',
+    category: 'productivity'
   }
 ];

@@ -172,6 +172,45 @@ Each case includes:
 - History log: all practices & comments saved for review
 - One-click deploy: Flask web app + local Astron workflow
 
+### 11. Travel Companion
+
+**Description:** An intelligent travel planning assistant that helps users design personalized travel routes, book accommodations, and provides real-time travel advice based on user preferences and budget.
+
+- **User Case:**
+- **Workflow:** [Travel Companion.yml](https://github.com/niaonao/astron_resource/blob/main/resources/papers/%E6%97%85%E8%A1%8C%E6%90%AD%E5%AD%90.yml)
+
+**Key Features:**
+- Personalized travel route planning
+- Accommodation and transportation booking assistance
+- Real-time travel advice and emergency support
+- Integration with maps and weather services
+
+### 12. WeChat Article Summary
+
+**Description:** A content summarization tool that extracts and condenses articles from WeChat Official Accounts into concise summaries using the DeepSeek model.
+
+- **User Case:**
+- **Workflow:** [default.yml](https://github.com/user-attachments/files/24495795/default.yml)
+
+**Key Features:**
+- Extract content from URLs
+- AI-powered summarization (DeepSeek-V3.2)
+- Concise output (~350 words)
+- Markdown format support
+
+### 13. Smart Resume Optimizer
+
+**Description:** An advanced resume analysis and job search assistance system supporting PDF resume OCR parsing, intelligent assessment, and job recommendations.
+
+- **User Case:**
+- **Workflow:** [default.yml](https://github.com/user-attachments/files/24494434/default.yml)
+
+**Key Features:**
+- PDF resume OCR parsing
+- Multi-turn interaction for information completion
+- Intelligent resume assessment and job recommendations
+- Orchestration of multiple large models
+
 ## Contributing
 
 We welcome contributions to this repository! If you have an Astron workflow or user case to share:

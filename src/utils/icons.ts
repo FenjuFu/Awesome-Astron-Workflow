@@ -1,6 +1,33 @@
-import { Bot, FileText, Languages, PenTool, Mic, GraduationCap, Zap } from 'lucide-react';
+import { 
+  Bot, 
+  FileText, 
+  Languages, 
+  PenTool, 
+  Mic, 
+  GraduationCap, 
+  Zap,
+  Map,
+  Briefcase,
+  BookOpen,
+  Image,
+  Layers,
+  Edit3
+} from 'lucide-react';
 
-export type IconName = 'bot' | 'file-text' | 'languages' | 'pen-tool' | 'mic' | 'graduation-cap' | 'zap';
+export type IconName = 
+  | 'bot' 
+  | 'file-text' 
+  | 'languages' 
+  | 'pen-tool' 
+  | 'mic' 
+  | 'graduation-cap' 
+  | 'zap'
+  | 'map'
+  | 'briefcase'
+  | 'book-open'
+  | 'image'
+  | 'layers'
+  | 'edit-3';
 
 export const getIcon = (name: string) => {
   const icons = {
@@ -10,7 +37,13 @@ export const getIcon = (name: string) => {
     'pen-tool': PenTool,
     'mic': Mic,
     'graduation-cap': GraduationCap,
-    'zap': Zap
+    'zap': Zap,
+    'map': Map,
+    'briefcase': Briefcase,
+    'book-open': BookOpen,
+    'image': Image,
+    'layers': Layers,
+    'edit-3': Edit3
   };
   
   return icons[name as IconName];

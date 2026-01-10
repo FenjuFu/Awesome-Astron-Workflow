@@ -288,6 +288,31 @@ const translations = {
     'features.writing.3': '即时反馈，包含错误定位和建议',
     'features.writing.4': '所有练习和评语的历史记录',
     'features.writing.5': '一键部署：Flask Web 应用',
+
+    // Workflows - Travel Companion
+    'workflow.travel.title': '旅行搭子',
+    'workflow.travel.description': '一个智能旅行规划助手，根据用户的偏好和预算，帮助设计个性化的旅行路线、预订住宿，并提供实时的旅行建议。',
+    'features.travel.1': '个性化旅行路线规划',
+    'features.travel.2': '住宿和交通预订协助',
+    'features.travel.3': '实时旅行建议和应急支持',
+    'features.travel.4': '集成地图和天气服务',
+
+    // Workflows - WeChat Summary
+    'workflow.wechat.title': '公众号文章总结凝练',
+    'workflow.wechat.description': '一个内容总结工具，能够提取并凝练微信公众号（及其他平台）的文章，使用 DeepSeek 模型生成简洁的摘要。',
+    'features.wechat.1': '从 URL 提取内容（支持微信公众号等）',
+    'features.wechat.2': 'AI 驱动的智能总结 (DeepSeek-V3.2)',
+    'features.wechat.3': '生成约 350 字的精简摘要',
+    'features.wechat.4': '支持 Markdown 格式输出',
+
+    // Workflows - Smart Resume Optimizer
+    'workflow.resume_opt.title': '简历智优通',
+    'workflow.resume_opt.description': '一个基于多模型 Agent Flow 的智能简历分析与求职辅助系统，支持 PDF 简历 OCR 解析、智能评估与岗位推荐。',
+    'features.resume_opt.1': 'PDF 简历 OCR 解析',
+    'features.resume_opt.2': '多轮交互补全信息',
+    'features.resume_opt.3': '智能简历评估与岗位推荐',
+    'features.resume_opt.4': '多大模型与工具编排',
+
     'about.title': '关于 Astron 工作流',
     'about.subtitle': '了解 Astron 工作流的强大功能和灵活性，以及它们如何改变您的自动化任务。',
     'about.whatIs.title': '什么是 Astron？',
