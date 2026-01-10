@@ -123,6 +123,31 @@ const translations = {
     'features.writing.3': 'Instant feedback: error location + revision advice + high-score examples',
     'features.writing.4': 'History log: all practices & comments saved for review',
     'features.writing.5': 'One-click deploy: Flask web app + local Astron workflow',
+
+    // Workflows - Travel Companion
+    'workflow.travel.title': 'Travel Companion',
+    'workflow.travel.description': 'An intelligent travel planning assistant that helps users design personalized travel routes, book accommodations, and provides real-time travel advice based on user preferences and budget.',
+    'features.travel.1': 'Personalized travel route planning',
+    'features.travel.2': 'Accommodation and transportation booking assistance',
+    'features.travel.3': 'Real-time travel advice and emergency support',
+    'features.travel.4': 'Integration with maps and weather services',
+
+    // Workflows - WeChat Summary
+    'workflow.wechat.title': 'WeChat Article Summary',
+    'workflow.wechat.description': 'A content summarization tool that extracts and condenses articles from WeChat Official Accounts into concise summaries using the DeepSeek model.',
+    'features.wechat.1': 'Extract content from URLs',
+    'features.wechat.2': 'AI-powered summarization (DeepSeek-V3.2)',
+    'features.wechat.3': 'Concise output (~350 words)',
+    'features.wechat.4': 'Markdown format support',
+
+    // Workflows - Smart Resume Optimizer
+    'workflow.resume_opt.title': 'Smart Resume Optimizer',
+    'workflow.resume_opt.description': 'An advanced resume analysis and job search assistance system supporting PDF resume OCR parsing, intelligent assessment, and job recommendations.',
+    'features.resume_opt.1': 'PDF resume OCR parsing',
+    'features.resume_opt.2': 'Multi-turn interaction for information completion',
+    'features.resume_opt.3': 'Intelligent resume assessment and job recommendations',
+    'features.resume_opt.4': 'Orchestration of multiple large models',
+
     'about.title': 'About Astron Workflows',
     'about.subtitle': 'Learn about the power and flexibility of Astron workflows and how they can transform your automation tasks.',
     'about.whatIs.title': 'What is Astron?',
