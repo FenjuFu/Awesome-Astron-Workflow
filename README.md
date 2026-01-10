@@ -18,6 +18,9 @@
   - [8. Novel Image-Text Generator](#8-novel-image-text-generator)
   - [9. Knowledge Note Cards Organizer](#9-knowledge-note-cards-organizer)
   - [10. AI English Writing Practice Assistant](#10-ai-english-writing-practice-assistant)
+  - [11. Travel Companion](#11-travel-companion)
+  - [12. WeChat Article Summary](#12-wechat-article-summary)
+  - [13. Smart Resume Optimizer](#13-smart-resume-optimizer)
 - [Contributing](#contributing)
 - [License](#license)
 
