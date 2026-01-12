@@ -33,8 +33,8 @@ const translations = {
     'categories.ai': 'AI Tools',
     'categories.productivity': 'Productivity',
     'categories.content': 'Content Creation',
-    
-    // Workflows - Resume
+
+    // Workflows - AI Resume Assistant
     'workflow.resume.title': 'AI Resume Assistant',
     'workflow.resume.description': 'A smart resume optimization tool that helps job seekers create professional resumes with AI-driven suggestions and formatting.',
     'features.resume.1': 'Resume content analysis and optimization',
@@ -43,7 +43,7 @@ const translations = {
     'features.resume.4': 'Industry-specific keyword recommendations',
     'features.resume.5': 'Multi-format export support',
 
-    // Workflows - Translator
+    // Workflows - AI Translator
     'workflow.translator.title': 'AI Translator',
     'workflow.translator.description': 'An advanced translation tool that provides accurate, context-aware translations, supporting multiple languages and domains.',
     'features.translator.1': 'Multi-language translation support',
@@ -52,7 +52,7 @@ const translations = {
     'features.translator.4': 'Batch translation capability',
     'features.translator.5': 'Translation quality evaluation',
 
-    // Workflows - Content
+    // Workflows - Multi-Platform Content Writing
     'workflow.content.title': 'Multi-Platform Content Writing',
     'workflow.content.description': 'A comprehensive content creation tool that generates platform-specific content optimized for different social media and publishing channels.',
     'features.content.1': 'Platform-specific content generation',
@@ -61,7 +61,7 @@ const translations = {
     'features.content.4': 'Scheduling and publishing',
     'features.content.5': 'Analytics and performance tracking',
 
-    // Workflows - Podcast
+    // Workflows - AI Podcast Generator
     'workflow.podcast.title': 'AI Podcast Generator',
     'workflow.podcast.description': 'An automated podcast creation tool that converts text into engaging audio experiences with natural speech synthesis and audio editing.',
     'features.podcast.1': 'Text-to-speech conversion',
@@ -70,7 +70,7 @@ const translations = {
     'features.podcast.4': 'Multi-speaker support',
     'features.podcast.5': 'Podcast distribution integrations',
 
-    // Workflows - Course
+    // Workflows - AI Course Generator
     'workflow.course.title': 'AI Course Generator',
     'workflow.course.description': 'An intelligent course creation platform that generates educational content, lesson plans, and learning materials based on specified topics and learning objectives.',
     'features.course.1': 'Automated course content generation',
@@ -79,7 +79,7 @@ const translations = {
     'features.course.4': 'Assessment and quiz generation',
     'features.course.5': 'Progress tracking and analytics',
 
-    // Workflows - Paper Recommender
+    // Workflows - AI Paper Recommender
     'workflow.paper.title': 'AI Paper Recommender',
     'workflow.paper.description': 'An AI-powered academic paper recommendation system that works like TikTok for research papers—users swipe through daily recommendations, like or save papers, and the agent learns preferences to improve suggestions.',
     'features.paper.1': 'Personalized recommendations based on user profile and interaction history',
@@ -88,7 +88,7 @@ const translations = {
     'features.paper.4': 'Summaries and recommendation rationale via LLM',
     'features.paper.5': 'Frontend swipe UI and backend service integrating Astron Agent',
 
-    // Workflows - Essay Assistant
+    // Workflows - AI English Essay Assistant
     'workflow.essay.title': 'AI English Essay Assistant',
     'workflow.essay.description': 'An AI-powered English essay grading and feedback assistant. Users submit their essay content, and the agent provides structured evaluation, points out grammar and expression issues, suggests improvements, offers example sentences/paragraphs, and estimates the essay level using IELTS or CEFR standards.',
     'features.essay.1': 'Structured evaluation covering organization, grammar, vocabulary, and logic',
@@ -97,7 +97,7 @@ const translations = {
     'features.essay.4': 'Proficiency estimation under IELTS or CEFR standards',
     'features.essay.5': 'Clear, organized output format tailored for student feedback',
 
-    // Workflows - Novel Image-Text
+    // Workflows - Novel Image-Text Generator
     'workflow.novel.title': 'Novel Image-Text Generator',
     'workflow.novel.description': 'Enter a novel title and automatically generate a complete article with accompanying images. Built with Astron’s block-style workflow composition, you can create an agent in one click, enable web access, image generation, and code capabilities in advanced settings, and publish to the Agent Plaza for reuse.',
     'features.novel.1': 'One-input novel title → full image-rich article',
@@ -106,7 +106,7 @@ const translations = {
     'features.novel.4': 'Visual block-based workflow authoring',
     'features.novel.5': 'Publishable to Agent Plaza for convenient reuse',
 
-    // Workflows - Knowledge Cards
+    // Workflows - Knowledge Note Cards Organizer
     'workflow.cards.title': 'Knowledge Note Cards Organizer',
     'workflow.cards.description': 'An agent that turns scattered learning notes or work records into structured knowledge cards. Users simply input raw notes, and the agent automatically parses, refines key points, and generates readable knowledge cards for easy review and recall.',
     'features.cards.1': 'Auto-parse raw note text',
@@ -115,7 +115,7 @@ const translations = {
     'features.cards.4': 'Customizable card templates',
     'features.cards.5': 'Export in multiple formats',
 
-    // Workflows - Writing Practice
+    // Workflows - AI English Writing Practice Assistant
     'workflow.writing.title': 'AI English Writing Practice Assistant',
     'workflow.writing.description': 'An "practice-feedback" closed-loop system for middle-school students to improve English writing. Parents/teachers generate prompts in one click; students write online; AI instantly scores and gives improvement tips, while auto-saving history to help kids progress steadily.',
     'features.writing.1': 'Grade-based random prompts from model essay knowledge base',
@@ -132,7 +132,7 @@ const translations = {
     'features.travel.3': 'Real-time travel advice and emergency support',
     'features.travel.4': 'Integration with maps and weather services',
 
-    // Workflows - WeChat Summary
+    // Workflows - WeChat Article Summary
     'workflow.wechat.title': 'WeChat Article Summary',
     'workflow.wechat.description': 'A content summarization tool that extracts and condenses articles from WeChat Official Accounts into concise summaries using the DeepSeek model.',
     'features.wechat.1': 'Extract content from URLs',
@@ -232,97 +232,97 @@ const translations = {
     'categories.productivity': '生产力',
     'categories.content': '内容创作',
 
-    // Workflows - Resume
+    // Workflows - AI 简历助手
     'workflow.resume.title': 'AI 简历助手',
-    'workflow.resume.description': '一款智能简历优化工具，通过 AI 驱动的建议和格式化帮助求职者创建专业简历。',
-    'features.resume.1': '简历内容分析与优化',
+    'workflow.resume.description': '智能简历优化工具，帮助求职者通过 AI 驱动的建议和格式化创建专业简历。',
+    'features.resume.1': '简历内容分析和优化',
     'features.resume.2': 'AI 驱动的写作建议',
     'features.resume.3': '专业格式模板',
     'features.resume.4': '行业特定关键词推荐',
     'features.resume.5': '多格式导出支持',
 
-    // Workflows - Translator
-    'workflow.translator.title': 'AI 翻译官',
-    'workflow.translator.description': '一款先进的翻译工具，提供准确、上下文感知的翻译，支持多种语言和领域。',
+    // Workflows - AI 翻译器
+    'workflow.translator.title': 'AI 翻译器',
+    'workflow.translator.description': '高级翻译工具，提供准确的、上下文感知的翻译，支持多种语言和专业领域。',
     'features.translator.1': '多语言翻译支持',
     'features.translator.2': '上下文感知翻译引擎',
     'features.translator.3': '领域特定翻译模式',
-    'features.translator.4': '批量翻译能力',
+    'features.translator.4': '批量翻译功能',
     'features.translator.5': '翻译质量评估',
 
-    // Workflows - Content
-    'workflow.content.title': '多平台内容创作',
-    'workflow.content.description': '一款综合内容创作工具，生成针对不同社交媒体和发布渠道优化的平台特定内容。',
+    // Workflows - 多平台内容写作
+    'workflow.content.title': '多平台内容写作',
+    'workflow.content.description': '综合内容创作工具，生成针对不同社交媒体和发布平台优化的平台特定内容。',
     'features.content.1': '平台特定内容生成',
     'features.content.2': '多格式内容支持',
     'features.content.3': 'SEO 优化',
-    'features.content.4': '调度与发布',
-    'features.content.5': '分析与效果追踪',
+    'features.content.4': '内容调度和发布',
+    'features.content.5': '分析和性能跟踪',
 
-    // Workflows - Podcast
+    // Workflows - AI 播客生成器
     'workflow.podcast.title': 'AI 播客生成器',
-    'workflow.podcast.description': '一款自动播客创建工具，通过自然语音合成和音频编辑将文本转换为引人入胜的音频体验。',
-    'features.podcast.1': '文本转语音转换',
+    'workflow.podcast.description': '自动化播客创作工具，通过自然语音合成和音频编辑将文本内容转换为引人入胜的音频体验。',
+    'features.podcast.1': '文本到语音转换',
     'features.podcast.2': '自然语音合成',
-    'features.podcast.3': '音频编辑与增强',
+    'features.podcast.3': '音频编辑和增强',
     'features.podcast.4': '多说话人支持',
     'features.podcast.5': '播客分发集成',
 
-    // Workflows - Course
+    // Workflows - AI 课程生成器
     'workflow.course.title': 'AI 课程生成器',
-    'workflow.course.description': '一个智能课程创建平台，根据指定的主题和学习目标生成教育内容、教案和学习材料。',
+    'workflow.course.description': '智能课程创建平台，根据指定主题和学习目标生成教育内容、课程计划和学习材料。',
     'features.course.1': '自动化课程内容生成',
-    'features.course.2': '与学习目标对齐',
-    'features.course.3': '互动内容创建',
-    'features.course.4': '评估与测验生成',
-    'features.course.5': '进度追踪与分析',
+    'features.course.2': '学习目标对齐',
+    'features.course.3': '交互式内容创建',
+    'features.course.4': '评估和测验生成',
+    'features.course.5': '进度跟踪和分析',
 
-    // Workflows - Paper Recommender
-    'workflow.paper.title': 'AI 论文推荐官',
-    'workflow.paper.description': '一个 AI 驱动的学术论文推荐系统，就像科研论文界的抖音——用户刷每日推荐，点赞或收藏。',
-    'features.paper.1': '基于用户画像的个性化推荐',
-    'features.paper.2': '每日通过 ArXiv API 获取精选论文',
-    'features.paper.3': '带反馈循环的偏好学习',
-    'features.paper.4': '通过 LLM 提供摘要和推荐理由',
-    'features.paper.5': '前端滑动 UI 和后端服务',
+    // Workflows - 论文推荐系统
+    'workflow.paper.title': '论文推荐系统',
+    'workflow.paper.description': '一个像刷短视频一样刷论文的 AI 学术论文推荐系统。用户每天收到推荐论文卡片，通过点赞、收藏或跳过的交互，Agent 学习偏好并持续优化推荐效果。',
+    'features.paper.1': '基于用户画像与历史交互的个性化推荐',
+    'features.paper.2': '通过 ArXiv API 拉取最新论文，按天批量推送',
+    'features.paper.3': '点赞 / 收藏 / 跳过反馈闭环，持续学习偏好',
+    'features.paper.4': 'LLM 生成摘要与推荐理由，提升可读性',
+    'features.paper.5': '前端滑动式交互、后端服务与 Astron Agent 集成',
 
-    // Workflows - Essay Assistant
-    'workflow.essay.title': 'AI 英语作文助手',
-    'workflow.essay.description': '一个 AI 驱动的英语作文评分和反馈助手，提供结构化评估、语法错误检测和改进建议。',
-    'features.essay.1': '涵盖组织和语法的结构化评估',
-    'features.essay.2': '带修正建议的语法错误检测',
-    'features.essay.3': '改进的例句或修订段落',
-    'features.essay.4': '能力预估 (雅思/CEFR)',
-    'features.essay.5': '清晰、有条理的输出格式',
+    // Workflows - 英语作文批改助手
+    'workflow.essay.title': '英语作文批改助手',
+    'workflow.essay.description': '一个 AI 驱动的英语作文批改与反馈助手。用户提交作文内容后，Agent 将提供结构化评价，指出语法与表达问题，给出修改建议与示例句/段，并按雅思或 CEFR 标准估计作文等级。',
+    'features.essay.1': '覆盖组织结构、语法、词汇、逻辑的综合评价',
+    'features.essay.2': '精准定位语法错误并给出具体修改建议',
+    'features.essay.3': '提供更优的例句或修订段落示例',
+    'features.essay.4': '按雅思或 CEFR 标准进行水平估计',
+    'features.essay.5': '输出格式清晰、适合学生阅读与改进',
 
-    // Workflows - Novel Image-Text
-    'workflow.novel.title': '小说图文生成',
-    'workflow.novel.description': '输入小说标题，自动生成带有配图的完整文章。',
-    'features.novel.1': '单标题输入生成图文并茂文章',
-    'features.novel.2': '基于 Prompt 的智能体创建',
-    'features.novel.3': '高级配置：联网/绘图/代码工具',
-    'features.novel.4': '可视化积木式工作流编排',
-    'features.novel.5': '可发布到智能体广场复用',
+    // Workflows - 小说图文生成器
+    'workflow.novel.title': '小说图文生成器',
+    'workflow.novel.description': '输入小说名称即可自动生成一篇完整的带配图小说文章。基于 Astron 工作流的「搭积木」式编排，一键创建智能体并可在高阶配置中开启联网、生图、代码等能力，完成后可发布到智能体广场。',
+    'features.novel.1': '输入小说名自动生成图文文章',
+    'features.novel.2': '提示词创建智能体并自动完善配置',
+    'features.novel.3': '高阶配置支持联网/生图/代码能力',
+    'features.novel.4': '工作流「搭积木」式可视化编排',
+    'features.novel.5': '可发布至智能体广场便于复用',
 
-    // Workflows - Knowledge Cards
+    // Workflows - 知识卡片整理助手
     'workflow.cards.title': '知识卡片整理助手',
-    'workflow.cards.description': '将零散的学习笔记或工作记录转化为结构化知识卡片的智能体。',
+    'workflow.cards.description': '将零散的学习笔记或工作记录通过 AI 重构为结构化知识卡片的智能体。用户只需输入原始笔记，Agent 自动解析、提炼要点并生成易读的知识卡片，方便后续查阅与复习。',
     'features.cards.1': '自动解析原始笔记文本',
-    'features.cards.2': 'AI 重组和要点提取',
+    'features.cards.2': 'AI 重构内容并提取关键信息',
     'features.cards.3': '生成结构化知识卡片',
-    'features.cards.4': '可自定义卡片模板',
-    'features.cards.5': '支持多种格式导出',
+    'features.cards.4': '支持自定义卡片模板',
+    'features.cards.5': '可导出多格式文件',
 
-    // Workflows - Writing Practice
-    'workflow.writing.title': 'AI 英语写作练习助手',
-    'workflow.writing.description': '针对学生的“练习-反馈”闭环系统，提供即时 AI 评分和改进建议。',
-    'features.writing.1': '基于年级的范文库随机出题',
-    'features.writing.2': 'AI 自动评分：语法、词汇、逻辑',
-    'features.writing.3': '即时反馈，包含错误定位和建议',
-    'features.writing.4': '所有练习和评语的历史记录',
-    'features.writing.5': '一键部署：Flask Web 应用',
+    // Workflows - AI 英语作文练习助手
+    'workflow.writing.title': 'AI 英语作文练习助手',
+    'workflow.writing.description': '面向中学生的 AI 英语作文“练习-反馈”闭环系统。家长/老师一键出题，学生在线写作，AI 即时给出评分与改进建议，并自动保存历史记录，帮助孩子持续、高效地提升英语写作水平。',
+    'features.writing.1': '按年级随机生成作文题目（基于范文知识库）',
+    'features.writing.2': 'AI 自动评分：语法、词汇、结构、逻辑四维评价',
+    'features.writing.3': '即时反馈：错误定位 + 修改建议 + 高分表达示范',
+    'features.writing.4': '历史记录：自动保存所有练习与评语，便于回顾',
+    'features.writing.5': '一键部署：Flask Web 系统 + 本地 Astron 工作流',
 
-    // Workflows - Travel Companion
+    // Workflows - 旅行搭子
     'workflow.travel.title': '旅行搭子',
     'workflow.travel.description': '一个智能旅行规划助手，根据用户的偏好和预算，帮助设计个性化的旅行路线、预订住宿，并提供实时的旅行建议。',
     'features.travel.1': '个性化旅行路线规划',
@@ -330,7 +330,7 @@ const translations = {
     'features.travel.3': '实时旅行建议和应急支持',
     'features.travel.4': '集成地图和天气服务',
 
-    // Workflows - WeChat Summary
+    // Workflows - 公众号文章总结凝练
     'workflow.wechat.title': '公众号文章总结凝练',
     'workflow.wechat.description': '一个内容总结工具，能够提取并凝练微信公众号（及其他平台）的文章，使用 DeepSeek 模型生成简洁的摘要。',
     'features.wechat.1': '从 URL 提取内容（支持微信公众号等）',
@@ -338,7 +338,7 @@ const translations = {
     'features.wechat.3': '生成约 350 字的精简摘要',
     'features.wechat.4': '支持 Markdown 格式输出',
 
-    // Workflows - Smart Resume Optimizer
+    // Workflows - 简历智优通
     'workflow.resume_opt.title': '简历智优通',
     'workflow.resume_opt.description': '一个基于多模型 Agent Flow 的智能简历分析与求职辅助系统，支持 PDF 简历 OCR 解析、智能评估与岗位推荐。',
     'features.resume_opt.1': 'PDF 简历 OCR 解析',
@@ -346,7 +346,7 @@ const translations = {
     'features.resume_opt.3': '智能简历评估与岗位推荐',
     'features.resume_opt.4': '多大模型与工具编排',
 
-    // Workflows - Poetic Image Generator
+    // Workflows - 词汇生图
     'workflow.poetic.title': '词汇生图',
     'workflow.poetic.description': '只需输入一个词或一句诗，即可解析其中的文学意境，并生成专为 AI 绘画模型优化的视觉描述，让文字被“看见”。',
     'features.poetic.1': '文学意境深度解析',
