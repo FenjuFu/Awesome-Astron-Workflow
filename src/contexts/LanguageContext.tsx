@@ -148,6 +148,14 @@ const translations = {
     'features.resume_opt.3': 'Intelligent resume assessment and job recommendations',
     'features.resume_opt.4': 'Orchestration of multiple large models',
 
+    // Workflows - Poetic Image Generator
+    'workflow.poetic.title': 'Poetic Image Generator',
+    'workflow.poetic.description': 'Transforms poetic verses or keywords into visual art by analyzing literary imagery and generating optimized prompts for AI image generation models.',
+    'features.poetic.1': 'Deep analysis of literary artistic conception',
+    'features.poetic.2': 'Generation of optimized visual descriptions',
+    'features.poetic.3': 'Integration with Keling AI painting model',
+    'features.poetic.4': 'From text to visual art realization',
+
     'about.title': 'About Astron Workflows',
     'about.subtitle': 'Learn about the power and flexibility of Astron workflows and how they can transform your automation tasks.',
     'about.whatIs.title': 'What is Astron?',
