@@ -214,5 +214,20 @@ export const workflows: Workflow[] = [
     ],
     icon: 'briefcase',
     category: 'productivity'
+  },
+  {
+    id: 'poetic-image-generator',
+    title: 'workflow.poetic.title',
+    description: 'workflow.poetic.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/user-attachments/files/24551622/default.yml',
+    features: [
+      'features.poetic.1',
+      'features.poetic.2',
+      'features.poetic.3',
+      'features.poetic.4'
+    ],
+    icon: 'palette',
+    category: 'content'
   }
 ];

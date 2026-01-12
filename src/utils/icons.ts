@@ -11,7 +11,8 @@ import {
   BookOpen,
   Image,
   Layers,
-  Edit3
+  Edit3,
+  Palette
 } from 'lucide-react';
 
 export type IconName = 

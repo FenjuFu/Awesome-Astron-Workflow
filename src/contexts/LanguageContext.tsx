@@ -338,6 +338,14 @@ const translations = {
     'features.resume_opt.3': '智能简历评估与岗位推荐',
     'features.resume_opt.4': '多大模型与工具编排',
 
+    // Workflows - Poetic Image Generator
+    'workflow.poetic.title': '词汇生图',
+    'workflow.poetic.description': '只需输入一个词或一句诗，即可解析其中的文学意境，并生成专为 AI 绘画模型优化的视觉描述，让文字被“看见”。',
+    'features.poetic.1': '文学意境深度解析',
+    'features.poetic.2': '视觉描述优化生成',
+    'features.poetic.3': '集成可灵 AI 绘画模型',
+    'features.poetic.4': '从文字到视觉艺术的转化',
+
     'about.title': '关于 Astron 工作流',
     'about.subtitle': '了解 Astron 工作流的强大功能和灵活性，以及它们如何改变您的自动化任务。',
     'about.whatIs.title': '什么是 Astron？',

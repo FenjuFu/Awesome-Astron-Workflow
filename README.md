@@ -214,6 +214,19 @@ Each case includes:
 - Intelligent resume assessment and job recommendations
 - Orchestration of multiple large models
 
+### 14. Poetic Image Generator
+
+**Description:** Transforms poetic verses or keywords into visual art by analyzing literary imagery and generating optimized prompts for AI image generation models.
+
+- **User Case:**
+- **Workflow:** [default.yml](https://github.com/user-attachments/files/24551622/default.yml)
+
+**Key Features:**
+- Deep analysis of literary artistic conception
+- Generation of optimized visual descriptions
+- Integration with Keling AI painting model
+- From text to visual art realization
+
 ## Contributing
 
 We welcome contributions to this repository! If you have an Astron workflow or user case to share:
