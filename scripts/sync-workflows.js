@@ -185,6 +185,7 @@ for (const enWf of enWorkflows) {
   const features = enWf.features.map((_, idx) => `features.${featurePrefix}.${idx + 1}`);
 
   finalWorkflows.push({
+    index: enWf.index,
     id,
     title: titleKey,
     description: descKey,

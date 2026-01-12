@@ -229,5 +229,35 @@ export const workflows: Workflow[] = [
     ],
     icon: 'palette',
     category: 'content'
+  },
+  {
+    id: 'history-qa',
+    title: 'workflow.history.title',
+    description: 'workflow.history.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/user-attachments/files/24560902/2.yml',
+    features: [
+      'features.history.1',
+      'features.history.2',
+      'features.history.3',
+      'features.history.4'
+    ],
+    icon: 'book-open',
+    category: 'education'
+  },
+  {
+    id: 'ai-radio-podcast',
+    title: 'workflow.radio.title',
+    description: 'workflow.radio.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/user-attachments/files/24562655/AI.yml',
+    features: [
+      'features.radio.1',
+      'features.radio.2',
+      'features.radio.3',
+      'features.radio.4'
+    ],
+    icon: 'mic',
+    category: 'content'
   }
 ];

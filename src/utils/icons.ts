@@ -28,7 +28,8 @@ export type IconName =
   | 'book-open'
   | 'image'
   | 'layers'
-  | 'edit-3';
+  | 'edit-3'
+  | 'palette';
 
 export const getIcon = (name: string) => {
   const icons = {
@@ -44,7 +45,8 @@ export const getIcon = (name: string) => {
     'book-open': BookOpen,
     'image': Image,
     'layers': Layers,
-    'edit-3': Edit3
+    'edit-3': Edit3,
+    'palette': Palette
   };
   
   return icons[name as IconName];

@@ -354,6 +354,22 @@ const translations = {
     'features.poetic.3': '集成可灵 AI 绘画模型',
     'features.poetic.4': '从文字到视觉艺术的转化',
 
+    // Workflows - 历史知识问答小助理
+    'workflow.history.title': '历史知识问答小助理',
+    'workflow.history.description': '“历史知识问答”智能体是您的私人历史顾问，专业涵盖全球历史事件、文化演变和重要人物。无论您对古代文明的奥秘还是现代历史的转折点感兴趣，它都能提供准确信息，解答您的每一个疑问。',
+    'features.history.1': '联网搜索实时信息',
+    'features.history.2': '文本合规检测确保安全',
+    'features.history.3': '专业历史角色扮演',
+    'features.history.4': '精准历史知识问答',
+
+    // Workflows - AI电台播客生成
+    'workflow.radio.title': 'AI电台播客生成',
+    'workflow.radio.description': '一个能够将文字或公众号文章链接转化为生动有趣的电台播客内容的智能助手，支持语音合成和封面生成。',
+    'features.radio.1': '解析 URL 内容（支持公众号等）',
+    'features.radio.2': '生成播客风格脚本',
+    'features.radio.3': '超拟人语音合成',
+    'features.radio.4': 'AI 文生图制作封面',
+
     'about.title': '关于 Astron 工作流',
     'about.subtitle': '了解 Astron 工作流的强大功能和灵活性，以及它们如何改变您的自动化任务。',
     'about.whatIs.title': '什么是 Astron？',
