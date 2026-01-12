@@ -21,6 +21,7 @@
   - [11. Travel Companion](#11-travel-companion)
   - [12. WeChat Article Summary](#12-wechat-article-summary)
   - [13. Smart Resume Optimizer](#13-smart-resume-optimizer)
+  - [14. Poetic Image Generator](#14-poetic-image-generator)
 - [Contributing](#contributing)
 - [License](#license)
 
