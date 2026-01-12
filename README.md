@@ -206,7 +206,7 @@ Each case includes:
 
 **Description:** An advanced resume analysis and job search assistance system supporting PDF resume OCR parsing, intelligent assessment, and job recommendations.
 
-- **User Case:**
+- **User Case:** [Resume Intelligence add](https://github.com/iflytek/astron-agent/discussions/824)
 - **Workflow:** [default.yml](https://github.com/user-attachments/files/24494434/default.yml)
 
 **Key Features:**

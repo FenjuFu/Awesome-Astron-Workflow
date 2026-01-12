@@ -206,7 +206,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 **描述：** 一个基于多模型 Agent Flow 的智能简历分析与求职辅助系统，支持 PDF 简历 OCR 解析、智能评估与岗位推荐。
 
-- **用户案例：**
+- **用户案例：** [Resume Intelligence add](https://github.com/iflytek/astron-agent/discussions/824)
 - **工作流：** [default.yml](https://github.com/user-attachments/files/24494434/default.yml)
 
 **主要功能：**

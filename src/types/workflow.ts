@@ -204,7 +204,7 @@ export const workflows: Workflow[] = [
     id: 'resume-optimizer',
     title: 'workflow.resume_opt.title',
     description: 'workflow.resume_opt.description',
-    userCaseUrl: '',
+    userCaseUrl: 'https://github.com/iflytek/astron-agent/discussions/824',
     workflowUrl: 'https://github.com/user-attachments/files/24494434/default.yml',
     features: [
       'features.resume_opt.1',
