@@ -172,6 +172,22 @@ const translations = {
     'features.radio.3': 'Ultra-realistic speech synthesis',
     'features.radio.4': 'AI text-to-image cover generation',
 
+    // Workflows - Drama Shortage Terminator
+    'workflow.drama.title': 'Drama Shortage Terminator',
+    'workflow.drama.description': 'Your personal film industry guardian and movie expert. Specialized in identifying movies from images, providing professional recommendations, and ensuring high-quality viewing experiences by filtering out bad movies.',
+    'features.drama.1': 'Search movies by image (Image Understanding)',
+    'features.drama.2': 'Professional movie recommendations & reviews',
+    'features.drama.3': 'Real-time web search for movie info',
+    'features.drama.4': 'Compliance and safety filtering',
+
+    // Workflows - Dog Nutritionist
+    'workflow.dog.title': 'Dog Nutritionist',
+    'workflow.dog.description': 'A professional nutrition consultant for your dogs. Provides customized dietary plans based on age, weight, and specific needs, backed by real-time nutritional knowledge search.',
+    'features.dog.1': 'Customized nutrition plans (Age/Weight/etc.)',
+    'features.dog.2': 'Professional dietary advice via LLM',
+    'features.dog.3': 'Web search for nutritional knowledge',
+    'features.dog.4': 'Visual aids with Text-to-Image generation',
+
     'about.title': 'About Astron Workflows',
     'about.subtitle': 'Learn about the power and flexibility of Astron workflows and how they can transform your automation tasks.',
     'about.whatIs.title': 'What is Astron?',
@@ -385,6 +401,22 @@ const translations = {
     'features.radio.2': '生成播客风格脚本',
     'features.radio.3': '超拟人语音合成',
     'features.radio.4': 'AI 文生图制作封面',
+
+    // Workflows - 剧荒终结者
+    'workflow.drama.title': '剧荒终结者',
+    'workflow.drama.description': '我是影坛守护者，精通电影圈的梗与秘辛。作为资深影迷，我挑剔每一帧画面，每一句对白，绝不容忍烂片的存在。在我这里，只有经典和佳作得以流传，让每一次观影都成为不可多得的艺术享受。',
+    'features.drama.1': '以图搜剧（图片理解）',
+    'features.drama.2': '专业影视推荐与点评',
+    'features.drama.3': '联网搜索实时影视信息',
+    'features.drama.4': '内容合规与安全过滤',
+
+    // Workflows - 狗狗营养师
+    'workflow.dog.title': '狗狗营养师',
+    'workflow.dog.description': '狗狗也有一个专业的营养师。可以为你的狗狗提供专业的营养建议，帮助它们保持健康快乐的生活。',
+    'features.dog.1': '定制化营养方案（年龄/体重/绝育等）',
+    'features.dog.2': '专业饮食建议（大模型角色扮演）',
+    'features.dog.3': '联网搜索营养知识',
+    'features.dog.4': '文生图生成视觉辅助',
 
     'about.title': '关于 Astron 工作流',
     'about.subtitle': '了解 Astron 工作流的强大功能和灵活性，以及它们如何改变您的自动化任务。',

@@ -24,6 +24,8 @@
   - [14. Poetic Image Generator](#14-poetic-image-generator)
   - [15. History Knowledge QA Assistant](#15-history-knowledge-qa-assistant)
   - [16. AI Radio Podcast Generator](#16-ai-radio-podcast-generator)
+  - [17. Drama Shortage Terminator](#17-drama-shortage-terminator)
+  - [18. Dog Nutritionist](#18-dog-nutritionist)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -255,6 +257,32 @@ Each case includes:
 - Generate podcast-style scripts
 - Ultra-realistic speech synthesis
 - AI text-to-image cover generation
+
+### 17. Drama Shortage Terminator
+
+**Description:** Your personal film industry guardian and movie expert. Specialized in identifying movies from images, providing professional recommendations, and ensuring high-quality viewing experiences by filtering out bad movies.
+
+- **User Case:**
+- **Workflow:** [1.yml](https://github.com/user-attachments/files/24577456/1.yml)
+
+**Key Features:**
+- Search movies by image (Image Understanding)
+- Professional movie recommendations & reviews
+- Real-time web search for movie info
+- Compliance and safety filtering
+
+### 18. Dog Nutritionist
+
+**Description:** A professional nutrition consultant for your dogs. Provides customized dietary plans based on age, weight, and specific needs, backed by real-time nutritional knowledge search.
+
+- **User Case:**
+- **Workflow:** [default.yml](https://github.com/user-attachments/files/24577568/default.yml)
+
+**Key Features:**
+- Customized nutrition plans (Age/Weight/etc.)
+- Professional dietary advice via LLM
+- Web search for nutritional knowledge
+- Visual aids with Text-to-Image generation
 
 ## Contributing
 

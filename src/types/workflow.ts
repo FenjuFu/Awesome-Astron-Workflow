@@ -259,5 +259,35 @@ export const workflows: Workflow[] = [
     ],
     icon: 'mic',
     category: 'content'
+  },
+  {
+    id: 'drama-terminator',
+    title: 'workflow.drama.title',
+    description: 'workflow.drama.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/user-attachments/files/24577456/1.yml',
+    features: [
+      'features.drama.1',
+      'features.drama.2',
+      'features.drama.3',
+      'features.drama.4'
+    ],
+    icon: 'film',
+    category: 'entertainment'
+  },
+  {
+    id: 'dog-nutritionist',
+    title: 'workflow.dog.title',
+    description: 'workflow.dog.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/user-attachments/files/24577568/default.yml',
+    features: [
+      'features.dog.1',
+      'features.dog.2',
+      'features.dog.3',
+      'features.dog.4'
+    ],
+    icon: 'heart',
+    category: 'lifestyle'
   }
 ];

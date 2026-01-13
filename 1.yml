@@ -1,0 +1,858 @@
+flowMeta:
+  name: 剧荒终结者
+  description: 我是影坛守护者，精通电影圈的梗与秘辛。作为资深影迷，我挑剔每一帧画面，每一句对白，绝不容忍烂片的存在。在我这里，只有经典和佳作得以流传，让每一次观影都成为不可多得的艺术享受。
+  avatarIcon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/sport/emojiiteam_01_14@2x.png
+  avatarColor: '#FFEAD5'
+  advancedConfig: '{"textToSpeech":{"vcn_en":"x4_EnUs_Luna","enable":true,"vcnEmotion":"","vcn_cn":"x4_lingxiaoqi_em_v2"},"needGuide":false,"prologue":{"prologueText":"你好，我是剧荒终结者，影坛的守护者。我精通电影圈的梗与秘辛，挑剔每一帧画面、每一句对白，绝不容忍烂片。你可以输入任何的影视问题，我会为你解答。说不出剧名也想不起是谁？我们支持以图搜剧，解决“那个谁演的来着”的尴尬。","enabled":true,"inputExample":["给我几个好看的儿童动画片","我想看跟成龙有关的电影","图中的影片是什么?"]}}'
+  category: 15
+  dslVersion: v1
+flowData:
+  nodes:
+  - id: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+    dragging: false
+    selected: false
+    width: 320
+    height: 74
+    position:
+      x: -467.4287702985252
+      y: 509.8254048231162
+    positionAbsolute:
+      x: -467.4287702985252
+      y: 509.8254048231162
+    type: 开始节点
+    data:
+      allowInputReference: false
+      allowOutputReference: true
+      label: 开始
+      status: ''
+      nodeMeta:
+        aliasName: 开始节点
+        nodeType: 基础节点
+      inputs: [
+        ]
+      outputs:
+      - id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+        name: AGENT_USER_INPUT
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 用户本轮对话输入内容
+        required: true
+        deleteDisabled: true
+      - id: 57b814c6-8d79-4264-951a-0d2cb0f6c0a8
+        name: user_input_img
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 输入图像
+        allowedFileType:
+        - image
+        fileType: file
+        required: false
+        customParameterType: xfyun-file
+      nodeParam: {
+        }
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/start-node-icon.png
+      description: 工作流的开启节点，用于定义流程调用所需的业务变量信息。
+      updatable: false
+  - id: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    dragging: false
+    selected: false
+    width: 256
+    height: 74
+    position:
+      x: 1686.5784132055376
+      y: 495.7018248449539
+    positionAbsolute:
+      x: 1686.5784132055376
+      y: 495.7018248449539
+    type: 结束节点
+    data:
+      allowInputReference: true
+      allowOutputReference: false
+      label: 结束
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 结束节点
+        nodeType: 基础节点
+      inputs:
+      - id: 82de2b42-a059-4c98-bffb-b6b4800fcac9
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: output
+              id: 50f5f5f3-8880-4ab2-a848-139f1afdbd9f
+              nodeId: spark-llm::f8fe96da-afe7-4298-88ef-b80eceff8d69
+            contentErrMsg: ''
+        fileType: ''
+      - id: 48630437-1f97-4dcc-a9b8-acf56c06f3b5
+        name: myimg
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: output
+              id: 6b06478c-82d4-4053-a0b8-fcfa730d0636
+              nodeId: spark-llm::a8554a8c-b262-4722-babd-3a24fb890005
+            contentErrMsg: ''
+        fileType: ''
+      outputs: [
+        ]
+      nodeParam:
+        template: '{{output}}{{myimg}}'
+        streamOutput: true
+        templateErrMsg: ''
+        outputMode: 1
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/end-node-icon.png
+      description: 工作流的结束节点，用于输出工作流运行后的最终结果。
+      updatable: false
+  - id: if-else::14e8d5f1-1199-4a5b-8980-83887e6f6eaa
+    dragging: false
+    selected: false
+    width: 302
+    height: 125
+    position:
+      x: 349.33875430683446
+      y: 495.20901334335645
+    positionAbsolute:
+      x: 349.33875430683446
+      y: 495.20901334335645
+    type: 分支器
+    data:
+      allowInputReference: true
+      allowOutputReference: false
+      label: 判断是否有图片
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 分支器
+        nodeType: 分支器
+      inputs:
+      - id: da855ea5-3483-4aba-8e30-525d3530d574
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: user_input_img
+              id: 57b814c6-8d79-4264-951a-0d2cb0f6c0a8
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+            contentErrMsg: ''
+        fileType: image
+      - id: ef81a17d-a95a-405d-bff1-005a26b46649
+        name: input1
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: literal
+            content: ''
+            contentErrMsg: ''
+      outputs: [
+        ]
+      nodeParam:
+        uid: '18828012125'
+        cases:
+        - level: 1
+          logicalOperator: and
+          id: branch_one_of::94a2d9c2-8f2b-4657-9f31-3b075245d547
+          conditions:
+          - leftVarIndex: da855ea5-3483-4aba-8e30-525d3530d574
+            rightVarIndex: ef81a17d-a95a-405d-bff1-005a26b46649
+            compareOperatorErrMsg: ''
+            id: ''
+            compareOperator: empty
+        - level: 999
+          logicalOperator: and
+          id: branch_one_of::52be9c76-4a60-4eeb-a407-8ab83c2bbbbd
+          conditions: [
+            ]
+        appId: 12a0a7e2
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/if-else-node-icon.png
+      description: 根据设立的条件，判断选择分支走向
+      updatable: false
+  - id: spark-llm::f8fe96da-afe7-4298-88ef-b80eceff8d69
+    dragging: false
+    selected: false
+    width: 288
+    height: 124
+    position:
+      x: 1105.0159108563555
+      y: 396.54815072354825
+    positionAbsolute:
+      x: 1105.0159108563555
+      y: 396.54815072354825
+    type: 大模型
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 文本处理
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 大模型
+        nodeType: 基础节点
+      inputs:
+      - id: e123b9cd-4191-4244-a46d-089f0a9c39a0
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: array-object
+          value:
+            type: ref
+            content:
+              name: result
+              id: 905ab6a2-2e16-40a7-88dc-fa1998ab42ed
+              nodeId: plugin::1eb5b2dc-d015-4965-b547-470a6e7e4dd1
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 30105eac-d486-4193-b0fe-bdc4a71ff7c9
+        name: REASONING_CONTENT
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 模型思考过程
+        customParameterType: deepseekr1
+      - id: 50f5f5f3-8880-4ab2-a848-139f1afdbd9f
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        topK: 4
+        template: '{{input}}'
+        modelId: 219
+        enableChatHistoryV2:
+          isEnabled: false
+          rounds: 1
+        auditing: default
+        llmId: 219
+        url: wss://spark-api.xf-yun.com/v1/x1
+        multiMode: false
+        uid: '18828012125'
+        modelName: Spark X1
+        patchId: '0'
+        isThink: true
+        templateErrMsg: ''
+        domain: x1
+        appId: 12a0a7e2
+        maxTokens: 2048
+        temperature: 0.5
+        systemTemplate: |-
+          核心定位
+          你是具备专业影视鉴赏能力的智能推荐助手，需基于用户需求、偏好及场景，提供精准、有深度、差异化的影视推荐，兼具大众口碑与小众佳作，同时附专业解析辅助用户决策。
+          核心功能要求
+          需求挖掘：主动追问关键信息（若用户未明确），包括但不限于：
+          基础偏好：影视类型（剧情 / 悬疑 / 科幻 / 文艺 / 喜剧等）、地区（华语 / 欧美 / 日韩 / 东南亚等）、年代（经典老片 / 近 3 年新作）、时长偏好（短剧集 / 长电影 / 迷你剧）
+          场景需求：放松解压 / 深度思考 / 情侣约会 / 家庭观影 / 学习参考（如行业相关影视）
+          特殊要求：豆瓣 / IMDb 评分门槛、是否接受冷门佳作、有无避雷元素（如暴力 / 惊悚 / 俗套剧情）、是否需要字幕支持 / 资源可及性建议
+          参考依据：可接受用户提供 “喜欢的影视名称 / 导演 / 演员”，基于风格、叙事、主题进行同类型延伸推荐
+          推荐标准：
+          专业性：优先选择口碑过硬（权威评分≥7.0）、获奖作品（奥斯卡 / 戛纳 / 金马奖等）、导演代表作或行业标杆之作
+          多样性：避免同质化推荐，同一需求下覆盖不同风格、地区、年代的作品（如推荐悬疑片时，兼顾经典悬疑、社会派悬疑、心理悬疑）
+          适配性：严格匹配用户场景与偏好，如 “放松解压” 优先轻喜剧、治愈系，“深度思考” 侧重剧情向、现实题材
+          时效性：包含近 1-2 年新作，同时保留经典必看作品，平衡新鲜感与经典性
+          输出结构（清晰易读）：
+          推荐标题：明确标注 “【XX 场景 / 偏好】TOP3-5 影视推荐”
+          单部推荐格式：
+          基本信息：片名（原名 + 中文译名）+ 地区 + 年份 + 类型 + 权威评分（豆瓣 / IMDb）
+          一句话安利： 使用一句话将影片的最大特点进行概括（剧情张力、镜头语言、演员表现、主题深度、独特风格等）
+          观影指南：观看渠道参考（主流平台 / 小众网站）、观影注意事项（如 “前 3 集铺垫较慢，建议耐心观看”）
+          结尾延伸：询问用户 “是否需要调整推荐方向（如增加冷门作品 / 更换类型）” 或 “是否需要更多同风格推荐”
+          专业禁忌
+          不推荐评分低于 6.0 且无特殊价值的作品（除非用户明确要求 “无脑爽片” 等特殊场景）
+          不夸大其词，客观描述作品优缺点（如 “剧情紧凑但结局略显仓促”）
+          避免剧透关键情节（尤其是悬疑、推理类影视）
+          不推荐含有违法、违背公序良俗内容的作品
+          语言专业但不晦涩，避免过度使用行业术语，确保普通用户能理解
+          交互逻辑
+          若用户需求模糊（如 “推荐好看的电影”）：先通过 3 个以内问题精准定位（如 “偏好什么类型？是想放松还是深度观看？”）
+          若用户提供参考作品（如 “喜欢《寄生虫》”）：先解析参考作品的核心优势（如阶级叙事、黑色幽默、反转设计），再基于该优势延伸推荐
+          若用户对推荐结果不满意：主动询问 “不满意的点是什么（如类型不符 / 风格不喜欢）”，快速调整推荐方向
+        model: spark
+        modelEnabled: true
+        serviceId: x1
+        respFormat: 0
+        llmIdErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/largeModelIcon.png
+      description: 根据输入的提示词，调用选定的大模型，对提示词作出回答
+      updatable: false
+  - id: plugin::1eb5b2dc-d015-4965-b547-470a6e7e4dd1
+    dragging: false
+    selected: false
+    width: 362
+    height: 100
+    position:
+      x: 681.7239619745662
+      y: 385.7062976884042
+    positionAbsolute:
+      x: 681.7239619745662
+      y: 385.7062976884042
+    type: 工具
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 联网搜索_1
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 工具
+        nodeType: 工具
+      inputs:
+      - id: 05b73ba6-a8cd-4654-9e84-4eb0bfe53f24
+        name: name
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: AGENT_USER_INPUT
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+            contentErrMsg: ''
+        description: 需要搜索的问题
+        required: true
+        disabled: false
+      outputs:
+      - id: 0147de46-b5aa-48e6-ba38-5631f5c0652b
+        name: msg
+        schema:
+          type: string
+      - id: 905ab6a2-2e16-40a7-88dc-fa1998ab42ed
+        name: result
+        schema:
+          type: array-object
+          properties:
+          - id: 6889bad9-3055-4f73-b6a9-7002b55e5c01
+            name: summary
+            type: string
+          - id: 9035b42e-d825-4263-a3f6-8528a1fa28c9
+            name: img
+            type: string
+          - id: e53d48df-d96e-4297-8437-26fdf6216a86
+            name: domain
+            type: string
+          - id: b10e3026-a6c8-4c66-9d7b-5b45f8746e1a
+            name: name
+            type: string
+          - id: 91a0b750-a76e-4ea3-9a67-073f4e04182b
+            name: is_high_summary
+            type: boolean
+          - id: abe71f0e-67cc-488d-a114-6612ef3ddb61
+            name: siteName
+            type: string
+          - id: 7f9f764e-97f0-4b8e-98bc-4a4a12c315fd
+            name: source
+            type: string
+          - id: 761a52fe-70da-4ccf-b3b3-e75855621c7b
+            name: type
+            type: string
+          - id: 9ba4e0bf-1e78-4eef-821d-35bfc24c186c
+            name: url
+            type: string
+      - id: 0bfde39e-f751-4d9f-b546-830f08421c3d
+        name: rc
+        schema:
+          type: string
+      - id: e1856a9d-23f2-44c4-bafd-375770197436
+        name: semantic
+        schema:
+          type: array-string
+          properties: [
+            ]
+      - id: b54deaba-1f64-43be-8903-11d0e91408e1
+        name: total
+        schema:
+          type: string
+      - id: ba085c09-7be0-4ca2-8e42-7f3105429444
+        name: offset
+        schema:
+          type: string
+      - id: 9ef5e14d-d964-488e-9c93-3d9f759b2810
+        name: limit
+        schema:
+          type: string
+      - id: c2a77b74-42d5-4280-9771-c795000ec135
+        name: sid
+        schema:
+          type: string
+      nodeParam:
+        uid: '18828012125'
+        code: ''
+        toolDescription: 使用网络搜索公开信息
+        pluginId: tool@665b86a9b821000
+        appId: 12a0a7e2
+        operationId: 聚合搜索-hL0CqmNi
+        version: V1.0
+        businessInput: [
+          ]
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/tool-icon.png
+      updatable: false
+      isLatest: true
+  - id: agent::3ccf1347-d035-4aa9-96dc-f90e2c7b2dd1
+    dragging: false
+    selected: false
+    width: 319
+    height: 148
+    position:
+      x: -41.860465116279045
+      y: 492.88362888722463
+    positionAbsolute:
+      x: -41.860465116279045
+      y: 492.88362888722463
+    type: 智能体节点
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 合规判断
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 智能体节点
+        nodeType: Agent节点
+      inputs:
+      - id: 88f8871c-0fc6-4043-80b0-3201ba07bfbf
+        name: input_text
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: AGENT_USER_INPUT
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+            contentErrMsg: ''
+        fileType: ''
+      - id: 75fab687-e85a-463a-a794-a8dd74ad1325
+        name: myimg
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: user_input_img
+              id: 57b814c6-8d79-4264-951a-0d2cb0f6c0a8
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+            contentErrMsg: ''
+        fileType: image
+      outputs:
+      - id: 0b2ee706-4890-46de-aa2c-110b2c1a7d5c
+        name: REASONING_CONTENT
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 模型思考过程
+        customParameterType: deepseekr1
+      - id: 73dfeaa3-9c73-4f12-a460-dbb5deecc3f5
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        uid: '18828012125'
+        modelConfig:
+          domain: xdeepseekv3
+          api: wss://maas-api.cn-huabei-1.xf-yun.com/v1.1/chat
+          agentStrategy: 1
+        plugin:
+          workflowIds: [
+            ]
+          toolsList:
+          - toolId: mcp@api92760f0da421000
+            isLatest: true
+            name: 文本合规
+            icon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/user/sparkBot_1766715364207_文本合规.jpg
+            type: mcp
+          - toolId: mcp@api9275f3582021000
+            isLatest: true
+            name: 图片合规
+            icon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/user/sparkBot_1766715334337_图片合规.jpg
+            type: mcp
+          mcpServerUrls: [
+            ]
+          mcpServerIds:
+          - mcp@api92760f0da421000
+          - mcp@api9275f3582021000
+          tools: [
+            ]
+        maxLoopCount: 5
+        instruction:
+          queryErrMsg: ''
+          answer: ''
+          reasoning: ''
+          query: '{{input_text}}{{myimg}}'
+        appId: 12a0a7e2
+        enableChatHistoryV2:
+          isEnabled: false
+          rounds: 1
+        serviceId: xdeepseekv3
+        llmId: 141
+        llmIdErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/agent.png
+      description: 依据任务需求，通过选择合适的工具列表，实现大模型的智能调度
+      updatable: false
+  - id: agent::36497b0c-8106-4403-93ae-ec7d95c332e7
+    dragging: false
+    selected: false
+    width: 319
+    height: 148
+    position:
+      x: 720.3284132055376
+      y: 591.9518248449539
+    positionAbsolute:
+      x: 720.3284132055376
+      y: 591.9518248449539
+    type: 智能体节点
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: Agent智能决策_1
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 智能体节点
+        nodeType: Agent节点
+      inputs:
+      - id: 8424e9ee-c7d5-44be-817c-f593146b0eeb
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: user_input_img
+              id: 57b814c6-8d79-4264-951a-0d2cb0f6c0a8
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+            contentErrMsg: ''
+        fileType: image
+      outputs:
+      - id: 65fec18c-b68c-4eec-a3f1-40d053337b19
+        name: REASONING_CONTENT
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 模型思考过程
+        customParameterType: deepseekr1
+      - id: b8931f0b-5763-401f-8022-9f4daf7c95e5
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        modelConfig:
+          domain: xdeepseekv3
+          api: wss://maas-api.cn-huabei-1.xf-yun.com/v1.1/chat
+          agentStrategy: 1
+        maxLoopCount: 5
+        modelId: 141
+        enableChatHistoryV2:
+          isEnabled: false
+          rounds: 1
+        llmId: 141
+        url: wss://maas-api.cn-huabei-1.xf-yun.com/v1.1/chat
+        uid: '18828012125'
+        modelName: DeepSeek-V3
+        patchId: '0'
+        llmSource: 1
+        plugin:
+          workflowIds: [
+            ]
+          toolsList:
+          - toolId: tool@665b86a9b821000
+            isLatest: true
+            name: 联网搜索
+            icon: icon/user/sparkBot_1748317648055_image.png
+            type: tool
+          - toolId: tool@7b783cae9c21000
+            isLatest: true
+            name: 聚合搜索
+            icon: icon/user/sparkBot_1745830595502_image_7.png
+            type: tool
+          - toolId: tool@72b0f21f6421000
+            isLatest: true
+            name: 图片理解
+            icon: icon/user/sparkBot_1745890302944_image_10.png
+            type: tool
+          mcpServerUrls: [
+            ]
+          mcpServerIds: [
+            ]
+          tools:
+          - tool_id: tool@665b86a9b821000
+            version: V1.0
+          - tool_id: tool@7b783cae9c21000
+            version: V1.0
+          - tool_id: tool@72b0f21f6421000
+            version: V1.0
+        instruction:
+          queryErrMsg: ''
+          answer: |-
+            核心定位
+            你是一个具备插件调用权限 + 智能决策能力的专业影视图片搜索助手。核心目标是：通过图片理解插件提取画面关键视觉 / 文字信息，通过联网搜索插件补充权威影视数据库信息，再由 Agent 完成多轮决策（判断线索是否足够→决定是否补充调用插件→交叉核验结果→精准定位影视），最终向用户输出完整、可验证的影视信息与延伸建议，解决 “有图无片名” 的精准搜索需求。
+          reasoning: |
+            可用插件（星辰平台内置，按平台别名调用）：​图片理解插件、联网搜索插件、聚合搜索插件
+            插件调用规则
+            决策核心阈值（与脚本一致）：线索充分度≥80% 或 结果可信度≥90% 才输出最终结论​
+            【核心执行流程（严格对应已有图片脚本）】​
+            步骤 1 触发图片理解插件，提取核心信息（星辰语法调用）​
+            Agent 动作：执行图片理解调用 ，明确提取 3 类信息：​
+            文字层：片名、演员名、字幕、Logo、出品方​
+            视觉层：画面类型（海报 / 截图 / 特写）、服化道、场景、色调、画质、演员面部特征​
+            标签层：生成 3-5 个核心标签（如 “2023 日本 动漫 治愈 截图”）​
+            分支处理（星辰平台对话逻辑）：​
+            提取到明确可搜索文字：标记「文字优先匹配」，直接进入步骤 2​
+            仅提取到视觉特征：标记「视觉反向匹配」，进入步骤 2​
+            提取失败（图片模糊）：回复 “当前图片清晰度不足，无法提取有效信息，是否可提供高清图片？”；用户补充后重新调用插件，无补充则终止流程​
+
+            步骤 2 触发联网搜索插件，分级匹配（星辰语法调用）​
+            Agent 动作：按优先级执行调用，遵循星辰搜索语法：​
+            文字线索优先：获取基础信息（地区 / 年份 / 类型 / 评分）​
+            视觉线索兜底：获取 Top5 候选列表​
+            分支处理（与脚本一致，适配星辰反馈机制）：​
+            唯一匹配（匹配度≥90%，有豆瓣 / IMDb 数据）：标记「结果可信」，进入步骤 3​
+            多个候选：补充调用插件核验（对比海报 / 截图 / 服化道），筛选 Top2-3，标记「待用户确认」，进入步骤 3​
+            无匹配结果：回复 “当前图片线索不足，是否记得台词 / 播出年代 / 演员特征？”；用户补充后重新搜索，无补充则终止流程​
+            步骤 3 合规校验与结果整理（适配星辰输出规范）​
+            合规校验：剔除评分无特殊价值的作品、违法 / 违背公序良俗的作品，避免剧透，仅保留正规观看渠道​
+            结果整理：​
+            唯一结果：按星辰平台卡片式输出模板，整理「匹配标识 + 基础信息 + 匹配依据 + 观看建议 + 延伸选项」​
+            多候选结果：按「TOP3 候选 + 核心匹配点」精简输出，提示用户补充线索​
+            步骤 4 输出结果与反馈闭环（星辰对话结尾规范）​
+            唯一结果输出格式（星辰卡片模板）：​
+            ​
+            【匹配度XX%】（已通过星辰平台 图片理解+联网搜索 插件核验）​
+            1.  基础信息：片名（原名+译名）| 地区 | 年份 | 类型 | 豆瓣/IMDb评分 | 导演/主演​
+            2.  匹配依据：文字匹配点/视觉特征匹配点（例：Logo与官方标识一致，场景为剧中经典片段）​
+            3.  观看建议：正规平台（如腾讯视频/Netflix）+ 观影提示​
+            4.  延伸：是否需要同类型推荐/更多观看渠道？​
+            ​
+            多候选结果输出格式：​
+            ​
+            【高匹配度候选TOP3】（已通过星辰平台 联网搜索 插件核验）​
+            1.  片名+年份+地区：匹配依据​
+            2.  片名+年份+地区：匹配依据​
+            3.  片名+年份+地区：匹配依据​
+            提示：补充角色配饰/台词等线索，可进一步锁定唯一结果​
+            ​
+            用户反馈处理：​
+            确认结果：流程结束，记录偏好（可选）​
+            否认结果：询问不匹配原因，重新执行步骤 2​
+            选择延伸：触发后续服务（如同类型推荐）
+          query: '{{input}}'
+        appId: 12a0a7e2
+        domain: xdeepseekv3
+        modelEnabled: true
+        serviceId: xdeepseekv3
+        llmIdErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/agent.png
+      description: 依据任务需求，通过选择合适的工具列表，实现大模型的智能调度
+      updatable: false
+  - id: spark-llm::a8554a8c-b262-4722-babd-3a24fb890005
+    dragging: false
+    selected: false
+    width: 288
+    height: 124
+    position:
+      x: 1138.0272675289984
+      y: 609.1504358958566
+    positionAbsolute:
+      x: 1138.0272675289984
+      y: 609.1504358958566
+    type: 大模型
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 图片处理
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 大模型
+        nodeType: 基础节点
+      inputs:
+      - id: 42b7f05c-f20f-4a00-8f95-369b18747102
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: output
+              id: b8931f0b-5763-401f-8022-9f4daf7c95e5
+              nodeId: agent::36497b0c-8106-4403-93ae-ec7d95c332e7
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: eaf73de5-a2ff-4335-a631-c1e399dc496d
+        name: REASONING_CONTENT
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 模型思考过程
+        customParameterType: deepseekr1
+      - id: 6b06478c-82d4-4053-a0b8-fcfa730d0636
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        topK: 4
+        template: '{{input}}'
+        modelId: 219
+        enableChatHistoryV2:
+          isEnabled: false
+          rounds: 1
+        auditing: default
+        llmId: 219
+        url: wss://spark-api.xf-yun.com/v1/x1
+        multiMode: false
+        uid: '18828012125'
+        modelName: Spark X1
+        patchId: '0'
+        isThink: true
+        templateErrMsg: ''
+        domain: x1
+        appId: 12a0a7e2
+        maxTokens: 2048
+        temperature: 0.5
+        systemTemplate: |-
+          你是具备图片信息解析与影视数据库匹配能力的专业搜索助手，需基于用户提供的图片（海报 / 截图 / 片段截图等）及关联描述，精准定位对应影视剧，同时提供多维度验证信息与延伸参考，解决 “只记画面忘片名”“有图片无信息” 的搜索需求。
+          解析与匹配标准：​
+          优先匹配：图片含明确文字（片名 / 官方 Logo）→ 直接定位对应影视，验证信息准确性​
+          模糊匹配：无明确文字时，基于画面元素（服化道 + 场景 + 色调 + 角色特征）+ 辅助线索，推导可能影视，按 “匹配度从高到低” 排序（Top3-5）​
+          专业性：匹配结果需附权威验证（如豆瓣 / IMDb 词条链接提示、官方海报对比点），避免同名影视混淆（标注地区 / 年份区分）​
+          适配性：若图片信息不足，提供 “补充线索方向”（如 “可尝试提供角色发型 / 服装细节，或是否有方言 / 特定道具”）​
+          输出结构（清晰验证）：​
+          搜索结果标题：明确标注 “【图片关联】影视剧匹配结果（匹配度：XX%）”​
+          单部匹配格式：​
+          基本信息：片名（原名 + 中文译名）+ 地区 + 年份 + 类型 + 权威评分（豆瓣 / IMDb）​
+          匹配依据：对应图片元素的契合点（如 “海报色调与你描述的‘暗黑系 + 哥特式建筑’一致；角色服化道与剧中主角造型高度匹配”）​
+          验证线索：提供 2-3 个可交叉验证的特征（如 “剧中经典场景：XX 片段；演员特征：主演 XX 的发型 / 五官细节；台词参考：‘XXX’”）​
+          获取渠道：官方观看平台 / 权威词条链接（便于用户确认）​
+          结尾延伸：​
+          若匹配成功：“是否需要查看该剧详细信息（剧情简介 / 同类型推荐）？”​
+          若匹配失败 / 信息不足：“当前图片线索不足以精准定位，可补充以下任一信息：①图片高清版本 ②画面中是否有道具 / 文字 ③记得的演员 / 台词细节，将为你进一步缩小范围”​
+          专业禁忌​：
+          不随意猜测匹配（无明确线索时，如实告知 “信息不足”，不强行推荐）​
+          不混淆同名影视（必须标注地区、年份、导演等区分信息）​
+          避免错误验证（匹配依据需客观，不编造 “伪特征” 误导用户）​
+          不推荐违法违规影视资源，仅提供官方 / 正规观看渠道参考​
+          语言通俗，避免技术术语，引导用户清晰描述图片细节
+          交互逻辑：
+          若用户提供图片 + 部分描述：先解析描述中的有效信息（如 “古装 + 雨天场景”），结合图片类型缩小匹配范围​
+          若匹配结果用户否认：询问 “不匹配的原因（如角色不符 / 场景不对 / 年代错误）”，基于反馈补充追问线索（如 “你记忆中的角色是否有特定配饰？”）​
+          若存在多个高匹配度结果：按 “信息契合度” 排序，逐一提供验证线索，让用户筛选确认
+        model: spark
+        modelEnabled: true
+        serviceId: x1
+        respFormat: 0
+        llmIdErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/largeModelIcon.png
+      description: 根据输入的提示词，调用选定的大模型，对提示词作出回答
+      updatable: false
+  edges:
+  - source: spark-llm::f8fe96da-afe7-4298-88ef-b80eceff8d69
+    target: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    type: customEdge
+    id: reactflow__edge-spark-llm::f8fe96da-afe7-4298-88ef-b80eceff8d69-node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: if-else::14e8d5f1-1199-4a5b-8980-83887e6f6eaa
+    sourceHandle: branch_one_of::94a2d9c2-8f2b-4657-9f31-3b075245d547
+    target: plugin::1eb5b2dc-d015-4965-b547-470a6e7e4dd1
+    type: customEdge
+    id: reactflow__edge-if-else::14e8d5f1-1199-4a5b-8980-83887e6f6eaabranch_one_of::94a2d9c2-8f2b-4657-9f31-3b075245d547-plugin::1eb5b2dc-d015-4965-b547-470a6e7e4dd1
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: plugin::1eb5b2dc-d015-4965-b547-470a6e7e4dd1
+    target: spark-llm::f8fe96da-afe7-4298-88ef-b80eceff8d69
+    type: customEdge
+    id: reactflow__edge-plugin::1eb5b2dc-d015-4965-b547-470a6e7e4dd1-spark-llm::f8fe96da-afe7-4298-88ef-b80eceff8d69
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+    target: agent::3ccf1347-d035-4aa9-96dc-f90e2c7b2dd1
+    type: customEdge
+    id: reactflow__edge-node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783-agent::3ccf1347-d035-4aa9-96dc-f90e2c7b2dd1
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: agent::3ccf1347-d035-4aa9-96dc-f90e2c7b2dd1
+    target: if-else::14e8d5f1-1199-4a5b-8980-83887e6f6eaa
+    type: customEdge
+    id: reactflow__edge-agent::3ccf1347-d035-4aa9-96dc-f90e2c7b2dd1-if-else::14e8d5f1-1199-4a5b-8980-83887e6f6eaa
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: if-else::14e8d5f1-1199-4a5b-8980-83887e6f6eaa
+    sourceHandle: branch_one_of::52be9c76-4a60-4eeb-a407-8ab83c2bbbbd
+    target: agent::36497b0c-8106-4403-93ae-ec7d95c332e7
+    type: customEdge
+    id: reactflow__edge-if-else::14e8d5f1-1199-4a5b-8980-83887e6f6eaabranch_one_of::52be9c76-4a60-4eeb-a407-8ab83c2bbbbd-agent::36497b0c-8106-4403-93ae-ec7d95c332e7
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: agent::36497b0c-8106-4403-93ae-ec7d95c332e7
+    target: spark-llm::a8554a8c-b262-4722-babd-3a24fb890005
+    type: customEdge
+    id: reactflow__edge-agent::36497b0c-8106-4403-93ae-ec7d95c332e7-spark-llm::a8554a8c-b262-4722-babd-3a24fb890005
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: spark-llm::a8554a8c-b262-4722-babd-3a24fb890005
+    target: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    type: customEdge
+    id: reactflow__edge-spark-llm::a8554a8c-b262-4722-babd-3a24fb890005-node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
