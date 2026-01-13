@@ -156,6 +156,22 @@ const translations = {
     'features.poetic.3': 'Integration with Keling AI painting model',
     'features.poetic.4': 'From text to visual art realization',
 
+    // Workflows - History Knowledge QA Assistant
+    'workflow.history.title': 'History Knowledge QA Assistant',
+    'workflow.history.description': 'The "History Knowledge QA" agent is your private history consultant, specializing in global historical events, cultural evolution, and important figures. Whether you are interested in the mysteries of ancient civilizations or turning points in modern history, it can provide accurate information and answer every question you have.',
+    'features.history.1': 'Real-time online search for information',
+    'features.history.2': 'Text compliance detection to ensure safety',
+    'features.history.3': 'Professional historical role-playing',
+    'features.history.4': 'Precise history knowledge Q&A',
+
+    // Workflows - AI Radio Podcast Generator
+    'workflow.radio.title': 'AI Radio Podcast Generator',
+    'workflow.radio.description': 'An intelligent assistant that converts text or WeChat Official Account article links into lively and interesting radio podcast content, supporting speech synthesis and cover generation.',
+    'features.radio.1': 'Parse URL content (supports WeChat Official Accounts, etc.)',
+    'features.radio.2': 'Generate podcast-style scripts',
+    'features.radio.3': 'Ultra-realistic speech synthesis',
+    'features.radio.4': 'AI text-to-image cover generation',
+
     'about.title': 'About Astron Workflows',
     'about.subtitle': 'Learn about the power and flexibility of Astron workflows and how they can transform your automation tasks.',
     'about.whatIs.title': 'What is Astron?',

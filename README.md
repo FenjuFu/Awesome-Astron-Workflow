@@ -22,7 +22,7 @@
   - [12. WeChat Article Summary](#12-wechat-article-summary)
   - [13. Smart Resume Optimizer](#13-smart-resume-optimizer)
   - [14. Poetic Image Generator](#14-poetic-image-generator)
-  - [15. History Knowledge Q&A Assistant](#15-history-knowledge-qa-assistant)
+  - [15. History Knowledge QA Assistant](#15-history-knowledge-qa-assistant)
   - [16. AI Radio Podcast Generator](#16-ai-radio-podcast-generator)
 - [Contributing](#contributing)
 - [License](#license)
@@ -229,6 +229,32 @@ Each case includes:
 - Generation of optimized visual descriptions
 - Integration with Keling AI painting model
 - From text to visual art realization
+
+### 15. History Knowledge QA Assistant
+
+**Description:** The "History Knowledge QA" agent is your private history consultant, specializing in global historical events, cultural evolution, and important figures. Whether you are interested in the mysteries of ancient civilizations or turning points in modern history, it can provide accurate information and answer every question you have.
+
+- **User Case:**
+- **Workflow:** [2.yml](https://github.com/user-attachments/files/24560902/2.yml)
+
+**Key Features:**
+- Real-time online search for information
+- Text compliance detection to ensure safety
+- Professional historical role-playing
+- Precise history knowledge Q&A
+
+### 16. AI Radio Podcast Generator
+
+**Description:** An intelligent assistant that converts text or WeChat Official Account article links into lively and interesting radio podcast content, supporting speech synthesis and cover generation.
+
+- **User Case:**
+- **Workflow:** [AI.yml](https://github.com/user-attachments/files/24562655/AI.yml)
+
+**Key Features:**
+- Parse URL content (supports WeChat Official Accounts, etc.)
+- Generate podcast-style scripts
+- Ultra-realistic speech synthesis
+- AI text-to-image cover generation
 
 ## Contributing
 
