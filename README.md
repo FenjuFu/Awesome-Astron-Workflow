@@ -184,7 +184,7 @@ Each case includes:
 
 **Description:** An intelligent travel planning assistant that helps users design personalized travel routes, book accommodations, and provides real-time travel advice based on user preferences and budget.
 
-- **User Case:**
+- **User Case:** [CSDN Blog](https://blog.csdn.net/niaonao/article/details/156937747)
 - **Workflow:** [Travel Companion.yml](https://github.com/niaonao/astron_resource/blob/main/resources/papers/%E6%97%85%E8%A1%8C%E6%90%AD%E5%AD%90.yml)
 
 **Key Features:**

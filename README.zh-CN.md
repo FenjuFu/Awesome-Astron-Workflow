@@ -184,7 +184,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 **描述：** 一个智能旅行规划助手，根据用户的偏好和预算，帮助设计个性化的旅行路线、预订住宿，并提供实时的旅行建议。
 
-- **用户案例：**
+- **用户案例：** [CSDN 博客](https://blog.csdn.net/niaonao/article/details/156937747)
 - **工作流：** [旅行搭子.yml](https://github.com/niaonao/astron_resource/blob/main/resources/papers/%E6%97%85%E8%A1%8C%E6%90%AD%E5%AD%90.yml)
 
 **主要功能：**

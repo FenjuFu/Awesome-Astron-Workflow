@@ -174,7 +174,7 @@ export const workflows: Workflow[] = [
     id: 'travel-companion',
     title: 'workflow.travel.title',
     description: 'workflow.travel.description',
-    userCaseUrl: '',
+    userCaseUrl: 'https://blog.csdn.net/niaonao/article/details/156937747',
     workflowUrl: 'https://github.com/niaonao/astron_resource/blob/main/resources/papers/%E6%97%85%E8%A1%8C%E6%90%AD%E5%AD%90.yml',
     features: [
       'features.travel.1',
