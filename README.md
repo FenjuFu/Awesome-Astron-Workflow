@@ -296,7 +296,7 @@ Each case includes:
 **Description:** Your personal film industry guardian and movie expert. Specialized in identifying movies from images, providing professional recommendations, and ensuring high-quality viewing experiences by filtering out bad movies.
 
 - **User Case:**
-- **Workflow:** [1.yml](https://github.com/user-attachments/files/24577456/1.yml)
+- **Workflow:** [Pro.yml](https://github.com/user-attachments/files/24631399/Pro.yml)
 
 **Key Features:**
 - Search movies by image (Image Understanding)

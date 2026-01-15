@@ -287,7 +287,7 @@ export const workflows: Workflow[] = [
     title: 'workflow.drama.title',
     description: 'workflow.drama.description',
     userCaseUrl: '',
-    workflowUrl: 'https://github.com/user-attachments/files/24577456/1.yml',
+    workflowUrl: 'https://github.com/user-attachments/files/24631399/Pro.yml',
     features: [
       'features.drama.1',
       'features.drama.2',
