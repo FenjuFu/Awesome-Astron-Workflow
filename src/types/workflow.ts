@@ -289,5 +289,35 @@ export const workflows: Workflow[] = [
     ],
     icon: 'heart',
     category: 'lifestyle'
+  },
+  {
+    id: 'novel-finder',
+    title: 'workflow.novel.title',
+    description: 'workflow.novel.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/user-attachments/files/24615934/default.yml',
+    features: [
+      'features.novel.1',
+      'features.novel.2',
+      'features.novel.3',
+      'features.novel.4'
+    ],
+    icon: 'book',
+    category: 'entertainment'
+  },
+  {
+    id: 'ket-essay-assistant',
+    title: 'workflow.ket.title',
+    description: 'workflow.ket.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/user-attachments/files/24612874/20260107220916.yml',
+    features: [
+      'features.ket.1',
+      'features.ket.2',
+      'features.ket.3',
+      'features.ket.4'
+    ],
+    icon: 'edit',
+    category: 'education'
   }
 ];

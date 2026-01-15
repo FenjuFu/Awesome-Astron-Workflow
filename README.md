@@ -26,6 +26,8 @@
   - [16. AI Radio Podcast Generator](#16-ai-radio-podcast-generator)
   - [17. Drama Shortage Terminator](#17-drama-shortage-terminator)
   - [18. Dog Nutritionist](#18-dog-nutritionist)
+  - [19. Network Novel Finder](#19-network-novel-finder)
+  - [20. KET Essay Assistant](#20-ket-essay-assistant)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -283,6 +285,32 @@ Each case includes:
 - Professional dietary advice via LLM
 - Web search for nutritional knowledge
 - Visual aids with Text-to-Image generation
+
+### 19. Network Novel Finder
+
+**Description:** Find the latest online novels by entering the type of novel you want to find, and provide a brief introduction.
+
+- **User Case:**
+- **Workflow:** [default.yml](https://github.com/user-attachments/files/24615934/default.yml)
+
+**Key Features:**
+- Extract novel type from user input
+- Aggregate search for latest novels
+- LLM-based recommendation and intro
+- Personalized reading suggestions
+
+### 20. KET Essay Assistant
+
+**Description:** A specialized assistant for KET exam essay writing. It analyzes requirements, generates outlines, writes drafts, polishes language, and checks word count compliance.
+
+- **User Case:**
+- **Workflow:** [20260107220916.yml](https://github.com/user-attachments/files/24612874/20260107220916.yml)
+
+**Key Features:**
+- Essay requirement analysis
+- Structured outline generation
+- Draft writing & language polishing
+- Word count compliance check
 
 ## Contributing
 

@@ -188,6 +188,22 @@ const translations = {
     'features.dog.3': 'Web search for nutritional knowledge',
     'features.dog.4': 'Visual aids with Text-to-Image generation',
 
+    // Workflows - Network Novel Finder
+    'workflow.novel.title': 'Network Novel Finder',
+    'workflow.novel.description': 'Find the latest online novels by entering the type of novel you want to find, and provide a brief introduction.',
+    'features.novel.1': 'Extract novel type from user input',
+    'features.novel.2': 'Aggregate search for latest novels',
+    'features.novel.3': 'LLM-based recommendation and intro',
+    'features.novel.4': 'Personalized reading suggestions',
+
+    // Workflows - KET Essay Assistant
+    'workflow.ket.title': 'KET Essay Assistant',
+    'workflow.ket.description': 'A specialized assistant for KET exam essay writing. It analyzes requirements, generates outlines, writes drafts, polishes language, and checks word count compliance.',
+    'features.ket.1': 'Essay requirement analysis',
+    'features.ket.2': 'Structured outline generation',
+    'features.ket.3': 'Draft writing & language polishing',
+    'features.ket.4': 'Word count compliance check',
+
     'about.title': 'About Astron Workflows',
     'about.subtitle': 'Learn about the power and flexibility of Astron workflows and how they can transform your automation tasks.',
     'about.whatIs.title': 'What is Astron?',
@@ -417,6 +433,22 @@ const translations = {
     'features.dog.2': '专业饮食建议（大模型角色扮演）',
     'features.dog.3': '联网搜索营养知识',
     'features.dog.4': '文生图生成视觉辅助',
+
+    // Workflows - 网络小说查找器
+    'workflow.novel.title': '网络小说查找器',
+    'workflow.novel.description': '通过输入想查找的小说类型，查找最新的网络小说，并提供简介。',
+    'features.novel.1': '小说类型提取',
+    'features.novel.2': '聚合搜索最新小说',
+    'features.novel.3': '大模型推荐与简介生成',
+    'features.novel.4': '个性化阅读建议',
+
+    // Workflows - KET作文助手
+    'workflow.ket.title': 'KET作文助手',
+    'workflow.ket.description': '专为KET考试写作设计的智能助手。自动分析题目要求，生成提纲，撰写初稿并进行润色，最后检查字数是否达标。',
+    'features.ket.1': '作文要求智能分析',
+    'features.ket.2': '结构化提纲生成',
+    'features.ket.3': '初稿撰写与语言润色',
+    'features.ket.4': '字数合规检查',
 
     'about.title': '关于 Astron 工作流',
     'about.subtitle': '了解 Astron 工作流的强大功能和灵活性，以及它们如何改变您的自动化任务。',
