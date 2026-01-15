@@ -30,9 +30,12 @@ const translations = {
     'workflows.ctaTitle': 'Ready to Contribute?',
     'workflows.ctaDescription': 'Have an amazing Astron workflow? Share it with the community and help others automate their tasks.',
     'workflows.contribute': 'Start Contributing',
-    'categories.ai': 'AI Tools',
-    'categories.productivity': 'Productivity',
-    'categories.content': 'Content Creation',
+    'categories.productivity': 'Office Productivity',
+    'categories.creative': 'Creative Writing',
+    'categories.learning': 'Learning Assistant',
+    'categories.coding': 'Coding & Programming',
+    'categories.entertainment': 'Leisure & Entertainment',
+    'categories.health': 'Health Partner',
 
     // Workflows - AI Resume Assistant
     'workflow.resume.title': 'AI Resume Assistant',
@@ -276,9 +279,12 @@ const translations = {
     'workflows.ctaTitle': '准备好贡献了吗？',
     'workflows.ctaDescription': '有令人惊叹的 Astron 工作流？与社区分享，帮助他人自动化他们的任务。',
     'workflows.contribute': '开始贡献',
-    'categories.ai': 'AI 工具',
-    'categories.productivity': '生产力',
-    'categories.content': '内容创作',
+    'categories.productivity': '办公提效',
+    'categories.creative': '创意写作',
+    'categories.learning': '学习助手',
+    'categories.coding': '代码编程',
+    'categories.entertainment': '休闲娱乐',
+    'categories.health': '健康搭档',
 
     // Workflows - AI 简历助手
     'workflow.resume.title': 'AI 简历助手',

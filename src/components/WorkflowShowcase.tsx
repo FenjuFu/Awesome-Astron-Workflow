@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Github, ArrowRight, Sparkles, Users, Zap } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Sparkles, Users, Zap, PenTool, GraduationCap, Code, Film, Heart } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { workflows } from '../types/workflow';
 import { getIcon } from '../utils/icons';
@@ -11,10 +11,16 @@ const WorkflowShowcase: React.FC = () => {
     switch (category) {
       case 'productivity':
         return <Zap className="h-5 w-5 text-green-600" />;
-      case 'ai':
-        return <Sparkles className="h-5 w-5 text-purple-600" />;
-      case 'content':
-        return <Users className="h-5 w-5 text-blue-600" />;
+      case 'creative':
+        return <PenTool className="h-5 w-5 text-purple-600" />;
+      case 'learning':
+        return <GraduationCap className="h-5 w-5 text-blue-600" />;
+      case 'coding':
+        return <Code className="h-5 w-5 text-slate-600" />;
+      case 'entertainment':
+        return <Film className="h-5 w-5 text-orange-600" />;
+      case 'health':
+        return <Heart className="h-5 w-5 text-red-600" />;
       default:
         return <Sparkles className="h-5 w-5 text-gray-600" />;
     }
@@ -24,10 +30,16 @@ const WorkflowShowcase: React.FC = () => {
     switch (category) {
       case 'productivity':
         return 'bg-green-100 text-green-800';
-      case 'ai':
+      case 'creative':
         return 'bg-purple-100 text-purple-800';
-      case 'content':
+      case 'learning':
         return 'bg-blue-100 text-blue-800';
+      case 'coding':
+        return 'bg-slate-100 text-slate-800';
+      case 'entertainment':
+        return 'bg-orange-100 text-orange-800';
+      case 'health':
+        return 'bg-red-100 text-red-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }

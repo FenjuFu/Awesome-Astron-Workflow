@@ -10,6 +10,7 @@ export interface Workflow {
 }
 
 export const workflows: Workflow[] = [
+  // Office Productivity (办公提效)
   {
     id: 'resume-assistant',
     title: 'workflow.resume.title',
@@ -40,103 +41,7 @@ export const workflows: Workflow[] = [
       'features.translator.5'
     ],
     icon: 'languages',
-    category: 'communication'
-  },
-  {
-    id: 'content-writing',
-    title: 'workflow.content.title',
-    description: 'workflow.content.description',
-    userCaseUrl: 'https://mp.weixin.qq.com/s/fVZJYtXTiPKMku_1ycOBpg',
-    workflowUrl: 'https://github.com/binggandata/ai_resource/blob/main/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E5%86%85%E5%AE%B9%E5%86%99%E4%BD%9C.yml',
-    features: [
-      'features.content.1',
-      'features.content.2',
-      'features.content.3',
-      'features.content.4',
-      'features.content.5'
-    ],
-    icon: 'pen-tool',
-    category: 'content'
-  },
-  {
-    id: 'podcast-generator',
-    title: 'workflow.podcast.title',
-    description: 'workflow.podcast.description',
-    userCaseUrl: 'https://mp.weixin.qq.com/s/QKp2nTKGl0m8JTytc-0ibA',
-    workflowUrl: 'https://github.com/itwanger/PaiAgent/commit/7a4cf59d3e5302ffecdb95717c937afb2befa51a#diff-0c1529cd9f3a6d94ca74f4a60d460410f92c9c28278a980dbb4ad513cfefc913',
-    features: [
-      'features.podcast.1',
-      'features.podcast.2',
-      'features.podcast.3',
-      'features.podcast.4',
-      'features.podcast.5'
-    ],
-    icon: 'mic',
-    category: 'audio'
-  },
-  {
-    id: 'course-generator',
-    title: 'workflow.course.title',
-    description: 'workflow.course.description',
-    userCaseUrl: 'https://mp.weixin.qq.com/s/QHcwsQB29m_dDzkchIUvdQ',
-    workflowUrl: 'https://github.com/GitHubDaily/AI-Course-Generator/tree/main/workflow',
-    features: [
-      'features.course.1',
-      'features.course.2',
-      'features.course.3',
-      'features.course.4',
-      'features.course.5'
-    ],
-    icon: 'graduation-cap',
-    category: 'education'
-  },
-  {
-    id: 'paper-recommender',
-    title: 'workflow.paper.title',
-    description: 'workflow.paper.description',
-    userCaseUrl: 'https://mp.weixin.qq.com/s/vt3rN-P70IOJd5emdG2Gyw',
-    workflowUrl: 'https://github.com/qwwzdyj/Xfind/blob/main/workflow/spark_workflow_config.yml',
-    features: [
-      'features.paper.1',
-      'features.paper.2',
-      'features.paper.3',
-      'features.paper.4',
-      'features.paper.5'
-    ],
-    icon: 'book-open',
-    category: 'education'
-  },
-  {
-    id: 'essay-assistant',
-    title: 'workflow.essay.title',
-    description: 'workflow.essay.description',
-    userCaseUrl: 'https://mp.weixin.qq.com/s/crbtWlKrWG9g3A7qxg8rFg',
-    workflowUrl: 'https://github.com/TangXinyue00/AI-English-Essay-Assistant/blob/main/docker/astronAgent/AI-English-Essay-Assistant.yml',
-    features: [
-      'features.essay.1',
-      'features.essay.2',
-      'features.essay.3',
-      'features.essay.4',
-      'features.essay.5'
-    ],
-    icon: 'edit-3',
-    category: 'education'
-  },
-  {
-    id: 'novel-image-generator',
-    title: 'workflow.novel.title',
-    description: 'workflow.novel.description',
-    userCaseUrl: 'https://mp.weixin.qq.com/s/F4Uz30jw5Uo2WQSe-tO3xg',
-    workflowUrl: 'https://github.com/XiongFeng1997/AI-Novel-Generation/blob/main/docker/astronAgent/%E5%B0%8F%E8%AF%B4%E5%9B%BE%E6%96%87%E7%94%9F%E6%88%90.yml',
-    features: [
-      'features.novel.1',
-      'features.novel.2',
-      'features.novel.3',
-      'features.novel.4',
-      'features.novel.5'
-    ],
-    icon: 'image',
-    category: 'content'
+    category: 'productivity'
   },
   {
     id: 'knowledge-cards',
@@ -155,37 +60,6 @@ export const workflows: Workflow[] = [
     category: 'productivity'
   },
   {
-    id: 'english-writing-practice',
-    title: 'workflow.writing.title',
-    description: 'workflow.writing.description',
-    userCaseUrl: 'https://mp.weixin.qq.com/s/pGZ9rU4AoTztirzCCa0t9Q',
-    workflowUrl: 'https://github.com/onlyliuxin97/english_writting_helper/blob/main/workflow/english_writting_helper.yml',
-    features: [
-      'features.writing.1',
-      'features.writing.2',
-      'features.writing.3',
-      'features.writing.4',
-      'features.writing.5'
-    ],
-    icon: 'pen-tool',
-    category: 'education'
-  },
-  {
-    id: 'travel-companion',
-    title: 'workflow.travel.title',
-    description: 'workflow.travel.description',
-    userCaseUrl: 'https://blog.csdn.net/niaonao/article/details/156937747',
-    workflowUrl: 'https://github.com/niaonao/astron_resource/blob/main/resources/papers/%E6%97%85%E8%A1%8C%E6%90%AD%E5%AD%90.yml',
-    features: [
-      'features.travel.1',
-      'features.travel.2',
-      'features.travel.3',
-      'features.travel.4'
-    ],
-    icon: 'map',
-    category: 'ai'
-  },
-  {
     id: 'wechat-summary',
     title: 'workflow.wechat.title',
     description: 'workflow.wechat.description',
@@ -198,7 +72,7 @@ export const workflows: Workflow[] = [
       'features.wechat.4'
     ],
     icon: 'file-text',
-    category: 'content'
+    category: 'productivity'
   },
   {
     id: 'resume-optimizer',
@@ -215,6 +89,56 @@ export const workflows: Workflow[] = [
     icon: 'briefcase',
     category: 'productivity'
   },
+
+  // Creative Writing (创意写作)
+  {
+    id: 'content-writing',
+    title: 'workflow.content.title',
+    description: 'workflow.content.description',
+    userCaseUrl: 'https://mp.weixin.qq.com/s/fVZJYtXTiPKMku_1ycOBpg',
+    workflowUrl: 'https://github.com/binggandata/ai_resource/blob/main/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E5%86%85%E5%AE%B9%E5%86%99%E4%BD%9C.yml',
+    features: [
+      'features.content.1',
+      'features.content.2',
+      'features.content.3',
+      'features.content.4',
+      'features.content.5'
+    ],
+    icon: 'pen-tool',
+    category: 'creative'
+  },
+  {
+    id: 'podcast-generator',
+    title: 'workflow.podcast.title',
+    description: 'workflow.podcast.description',
+    userCaseUrl: 'https://mp.weixin.qq.com/s/QKp2nTKGl0m8JTytc-0ibA',
+    workflowUrl: 'https://github.com/itwanger/PaiAgent/commit/7a4cf59d3e5302ffecdb95717c937afb2befa51a#diff-0c1529cd9f3a6d94ca74f4a60d460410f92c9c28278a980dbb4ad513cfefc913',
+    features: [
+      'features.podcast.1',
+      'features.podcast.2',
+      'features.podcast.3',
+      'features.podcast.4',
+      'features.podcast.5'
+    ],
+    icon: 'mic',
+    category: 'creative'
+  },
+  {
+    id: 'novel-image-generator',
+    title: 'workflow.novel_gen.title',
+    description: 'workflow.novel_gen.description',
+    userCaseUrl: 'https://mp.weixin.qq.com/s/F4Uz30jw5Uo2WQSe-tO3xg',
+    workflowUrl: 'https://github.com/XiongFeng1997/AI-Novel-Generation/blob/main/docker/astronAgent/%E5%B0%8F%E8%AF%B4%E5%9B%BE%E6%96%87%E7%94%9F%E6%88%90.yml',
+    features: [
+      'features.novel_gen.1',
+      'features.novel_gen.2',
+      'features.novel_gen.3',
+      'features.novel_gen.4',
+      'features.novel_gen.5'
+    ],
+    icon: 'image',
+    category: 'creative'
+  },
   {
     id: 'poetic-image-generator',
     title: 'workflow.poetic.title',
@@ -228,22 +152,7 @@ export const workflows: Workflow[] = [
       'features.poetic.4'
     ],
     icon: 'palette',
-    category: 'content'
-  },
-  {
-    id: 'history-qa',
-    title: 'workflow.history.title',
-    description: 'workflow.history.description',
-    userCaseUrl: '',
-    workflowUrl: 'https://github.com/user-attachments/files/24560902/2.yml',
-    features: [
-      'features.history.1',
-      'features.history.2',
-      'features.history.3',
-      'features.history.4'
-    ],
-    icon: 'book-open',
-    category: 'education'
+    category: 'creative'
   },
   {
     id: 'ai-radio-podcast',
@@ -258,7 +167,120 @@ export const workflows: Workflow[] = [
       'features.radio.4'
     ],
     icon: 'mic',
-    category: 'content'
+    category: 'creative'
+  },
+
+  // Learning Assistant (学习助手)
+  {
+    id: 'course-generator',
+    title: 'workflow.course.title',
+    description: 'workflow.course.description',
+    userCaseUrl: 'https://mp.weixin.qq.com/s/QHcwsQB29m_dDzkchIUvdQ',
+    workflowUrl: 'https://github.com/GitHubDaily/AI-Course-Generator/tree/main/workflow',
+    features: [
+      'features.course.1',
+      'features.course.2',
+      'features.course.3',
+      'features.course.4',
+      'features.course.5'
+    ],
+    icon: 'graduation-cap',
+    category: 'learning'
+  },
+  {
+    id: 'paper-recommender',
+    title: 'workflow.paper.title',
+    description: 'workflow.paper.description',
+    userCaseUrl: 'https://mp.weixin.qq.com/s/vt3rN-P70IOJd5emdG2Gyw',
+    workflowUrl: 'https://github.com/qwwzdyj/Xfind/blob/main/workflow/spark_workflow_config.yml',
+    features: [
+      'features.paper.1',
+      'features.paper.2',
+      'features.paper.3',
+      'features.paper.4',
+      'features.paper.5'
+    ],
+    icon: 'book-open',
+    category: 'learning'
+  },
+  {
+    id: 'essay-assistant',
+    title: 'workflow.essay.title',
+    description: 'workflow.essay.description',
+    userCaseUrl: 'https://mp.weixin.qq.com/s/crbtWlKrWG9g3A7qxg8rFg',
+    workflowUrl: 'https://github.com/TangXinyue00/AI-English-Essay-Assistant/blob/main/docker/astronAgent/AI-English-Essay-Assistant.yml',
+    features: [
+      'features.essay.1',
+      'features.essay.2',
+      'features.essay.3',
+      'features.essay.4',
+      'features.essay.5'
+    ],
+    icon: 'edit-3',
+    category: 'learning'
+  },
+  {
+    id: 'english-writing-practice',
+    title: 'workflow.writing.title',
+    description: 'workflow.writing.description',
+    userCaseUrl: 'https://mp.weixin.qq.com/s/pGZ9rU4AoTztirzCCa0t9Q',
+    workflowUrl: 'https://github.com/onlyliuxin97/english_writting_helper/blob/main/workflow/english_writting_helper.yml',
+    features: [
+      'features.writing.1',
+      'features.writing.2',
+      'features.writing.3',
+      'features.writing.4',
+      'features.writing.5'
+    ],
+    icon: 'pen-tool',
+    category: 'learning'
+  },
+  {
+    id: 'history-qa',
+    title: 'workflow.history.title',
+    description: 'workflow.history.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/user-attachments/files/24560902/2.yml',
+    features: [
+      'features.history.1',
+      'features.history.2',
+      'features.history.3',
+      'features.history.4'
+    ],
+    icon: 'book-open',
+    category: 'learning'
+  },
+  {
+    id: 'ket-essay-assistant',
+    title: 'workflow.ket.title',
+    description: 'workflow.ket.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/user-attachments/files/24612874/20260107220916.yml',
+    features: [
+      'features.ket.1',
+      'features.ket.2',
+      'features.ket.3',
+      'features.ket.4'
+    ],
+    icon: 'edit',
+    category: 'learning'
+  },
+
+  // Leisure & Entertainment (休闲娱乐)
+  {
+    id: 'travel-companion',
+    title: 'workflow.travel.title',
+    description: 'workflow.travel.description',
+    userCaseUrl: 'https://blog.csdn.net/niaonao/article/details/156937747',
+    workflowUrl: 'https://github.com/niaonao/astron_resource/blob/main/resources/papers/%E6%97%85%E8%A1%8C%E6%90%AD%E5%AD%90.yml',
+    features: [
+      'features.travel.1',
+      'features.travel.2',
+      'features.travel.3',
+      'features.travel.4'
+    ],
+    icon: 'map',
+    category: 'entertainment'
   },
   {
     id: 'drama-terminator',
@@ -276,6 +298,23 @@ export const workflows: Workflow[] = [
     category: 'entertainment'
   },
   {
+    id: 'novel-finder',
+    title: 'workflow.novel.title',
+    description: 'workflow.novel.description',
+    userCaseUrl: '',
+    workflowUrl: 'https://github.com/user-attachments/files/24615934/default.yml',
+    features: [
+      'features.novel.1',
+      'features.novel.2',
+      'features.novel.3',
+      'features.novel.4'
+    ],
+    icon: 'book',
+    category: 'entertainment'
+  },
+
+  // Health Partner (健康搭档)
+  {
     id: 'dog-nutritionist',
     title: 'workflow.dog.title',
     description: 'workflow.dog.description',
@@ -288,36 +327,6 @@ export const workflows: Workflow[] = [
       'features.dog.4'
     ],
     icon: 'heart',
-    category: 'lifestyle'
-  },
-  {
-    id: 'novel-finder',
-    title: 'workflow.novel_gen.title',
-    description: 'workflow.novel_gen.description',
-    userCaseUrl: '',
-    workflowUrl: 'https://github.com/user-attachments/files/24615934/default.yml',
-    features: [
-      'features.novel_gen.1',
-      'features.novel_gen.2',
-      'features.novel_gen.3',
-      'features.novel_gen.4'
-    ],
-    icon: 'book',
-    category: 'entertainment'
-  },
-  {
-    id: 'ket-essay-assistant',
-    title: 'workflow.ket.title',
-    description: 'workflow.ket.description',
-    userCaseUrl: '',
-    workflowUrl: 'https://github.com/user-attachments/files/24612874/20260107220916.yml',
-    features: [
-      'features.ket.1',
-      'features.ket.2',
-      'features.ket.3',
-      'features.ket.4'
-    ],
-    icon: 'edit',
-    category: 'education'
+    category: 'health'
   }
 ];
