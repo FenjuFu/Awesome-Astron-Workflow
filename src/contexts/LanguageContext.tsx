@@ -98,13 +98,13 @@ const translations = {
     'features.essay.5': 'Clear, organized output format tailored for student feedback',
 
     // Workflows - Novel Image-Text Generator
-    'workflow.novel.title': 'Novel Image-Text Generator',
-    'workflow.novel.description': 'Enter a novel title and automatically generate a complete article with accompanying images. Built with Astron’s block-style workflow composition, you can create an agent in one click, enable web access, image generation, and code capabilities in advanced settings, and publish to the Agent Plaza for reuse.',
-    'features.novel.1': 'One-input novel title → full image-rich article',
-    'features.novel.2': 'Prompt-based agent creation with auto-completion',
-    'features.novel.3': 'Advanced config: web access / image gen / code tools',
-    'features.novel.4': 'Visual block-based workflow authoring',
-    'features.novel.5': 'Publishable to Agent Plaza for convenient reuse',
+    'workflow.novel_gen.title': 'Novel Image-Text Generator',
+    'workflow.novel_gen.description': 'Enter a novel title and automatically generate a complete article with accompanying images. Built with Astron’s block-style workflow composition, you can create an agent in one click, enable web access, image generation, and code capabilities in advanced settings, and publish to the Agent Plaza for reuse.',
+    'features.novel_gen.1': 'One-input novel title → full image-rich article',
+    'features.novel_gen.2': 'Prompt-based agent creation with auto-completion',
+    'features.novel_gen.3': 'Advanced config: web access / image gen / code tools',
+    'features.novel_gen.4': 'Visual block-based workflow authoring',
+    'features.novel_gen.5': 'Publishable to Agent Plaza for convenient reuse',
 
     // Workflows - Knowledge Note Cards Organizer
     'workflow.cards.title': 'Knowledge Note Cards Organizer',
@@ -344,13 +344,13 @@ const translations = {
     'features.essay.5': '输出格式清晰、适合学生阅读与改进',
 
     // Workflows - 小说图文生成器
-    'workflow.novel.title': '小说图文生成器',
-    'workflow.novel.description': '输入小说名称即可自动生成一篇完整的带配图小说文章。基于 Astron 工作流的「搭积木」式编排，一键创建智能体并可在高阶配置中开启联网、生图、代码等能力，完成后可发布到智能体广场。',
-    'features.novel.1': '输入小说名自动生成图文文章',
-    'features.novel.2': '提示词创建智能体并自动完善配置',
-    'features.novel.3': '高阶配置支持联网/生图/代码能力',
-    'features.novel.4': '工作流「搭积木」式可视化编排',
-    'features.novel.5': '可发布至智能体广场便于复用',
+    'workflow.novel_gen.title': '小说图文生成器',
+    'workflow.novel_gen.description': '输入小说名称即可自动生成一篇完整的带配图小说文章。基于 Astron 工作流的「搭积木」式编排，一键创建智能体并可在高阶配置中开启联网、生图、代码等能力，完成后可发布到智能体广场。',
+    'features.novel_gen.1': '输入小说名自动生成图文文章',
+    'features.novel_gen.2': '提示词创建智能体并自动完善配置',
+    'features.novel_gen.3': '高阶配置支持联网/生图/代码能力',
+    'features.novel_gen.4': '工作流「搭积木」式可视化编排',
+    'features.novel_gen.5': '可发布至智能体广场便于复用',
 
     // Workflows - 知识卡片整理助手
     'workflow.cards.title': '知识卡片整理助手',

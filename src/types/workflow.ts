@@ -292,15 +292,15 @@ export const workflows: Workflow[] = [
   },
   {
     id: 'novel-finder',
-    title: 'workflow.novel.title',
-    description: 'workflow.novel.description',
+    title: 'workflow.novel_gen.title',
+    description: 'workflow.novel_gen.description',
     userCaseUrl: '',
     workflowUrl: 'https://github.com/user-attachments/files/24615934/default.yml',
     features: [
-      'features.novel.1',
-      'features.novel.2',
-      'features.novel.3',
-      'features.novel.4'
+      'features.novel_gen.1',
+      'features.novel_gen.2',
+      'features.novel_gen.3',
+      'features.novel_gen.4'
     ],
     icon: 'book',
     category: 'entertainment'
