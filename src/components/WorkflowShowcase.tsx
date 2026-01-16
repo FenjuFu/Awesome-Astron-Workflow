@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, ArrowRight, Sparkles, Zap, PenTool, GraduationCap, Code, Film, Heart, Layers } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Zap, PenTool, GraduationCap, Code, Film, Heart, Layers } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { workflows } from '../types/workflow';
 import { getIcon } from '../utils/icons';
@@ -21,11 +21,6 @@ const WorkflowShowcase: React.FC = () => {
   const filteredWorkflows = activeCategory === 'all' 
     ? workflows 
     : workflows.filter(w => w.category === activeCategory);
-
-  const getCategoryColor = (category: string) => {
-    const cat = categories.find(c => c.id === category);
-    return cat ? `${cat.bg} ${cat.color}` : 'bg-gray-100 text-gray-800';
-  };
 
   return (
     <section id="workflows" className="py-20 bg-gray-50 min-h-screen">

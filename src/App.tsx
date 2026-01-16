@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import WorkflowShowcase from './components/WorkflowShowcase';
 import About from './components/About';
+import CommunityVibeVault from './components/CommunityVibeVault';
 import Contribute from './components/Contribute';
 import Footer from './components/Footer';
 import { LanguageProvider } from './contexts/LanguageContext';
@@ -16,6 +17,7 @@ function App() {
           <Hero />
           <WorkflowShowcase />
           <About />
+          <CommunityVibeVault />
           <Contribute />
         </main>
         <Footer />
