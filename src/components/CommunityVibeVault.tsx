@@ -1,10 +1,27 @@
 import React from 'react';
-import { Music, Image as ImageIcon, Play, Pause, Download, Gift } from 'lucide-react';
+import { Music, Image as ImageIcon, Play, Pause, Download, Gift, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const CommunityVibeVault: React.FC = () => {
   const { t } = useLanguage();
   const [playing, setPlaying] = React.useState<string | null>(null);
+  const [currentSwagIndex, setCurrentSwagIndex] = React.useState(0);
+
+  // Auto-play for Swag Carousel
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSwagIndex((prev) => (prev + 1) % 5);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentSwagIndex((prev) => (prev + 1) % 5);
+  };
+
+  const prevSlide = () => {
+    setCurrentSwagIndex((prev) => (prev - 1 + 5) % 5);
+  };
 
   const memes = [
     {
@@ -124,27 +141,108 @@ const CommunityVibeVault: React.FC = () => {
             </div>
             <div className="mb-6">
                <h4 className="text-lg font-medium text-gray-900 mb-4">{t('swag.redPackets')}</h4>
-               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {redPackets.map((packet) => (
-                  <div key={packet.id} className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <img 
-                      src={packet.src} 
-                      alt={packet.alt}
-                      className="w-full aspect-[3/4] object-cover transform transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                      <a 
-                        href={packet.src} 
-                        download 
-                        className="p-3 bg-white rounded-full text-indigo-600 hover:text-indigo-700 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300"
-                        title={t('swag.download')}
-                      >
-                        <Download className="h-6 w-6" />
-                      </a>
-                    </div>
-                  </div>
-                ))}
-              </div>
+               
+               <div className="relative w-full h-[600px] overflow-hidden flex items-center justify-center">
+                 {redPackets.map((packet, index) => {
+                   // Calculate relative position (0 to 4)
+                   // 0: Center
+                   // 1: Right 1
+                   // 2: Right 2
+                   // 3: Left 2
+                   // 4: Left 1
+                   const position = (index - currentSwagIndex + 5) % 5;
+                   
+                   let styles = "";
+                   let zIndex = 0;
+                   let isCenter = false;
+
+                   switch(position) {
+                     case 0: // Center
+                       styles = "left-1/2 -translate-x-1/2 scale-100 opacity-100 z-30 shadow-2xl";
+                       zIndex = 30;
+                       isCenter = true;
+                       break;
+                     case 1: // Right 1
+                       styles = "left-[calc(50%+160px)] md:left-[calc(50%+200px)] -translate-x-1/2 scale-75 opacity-70 z-20 cursor-pointer shadow-xl";
+                       zIndex = 20;
+                       break;
+                     case 2: // Right 2
+                       styles = "left-[calc(50%+280px)] md:left-[calc(50%+350px)] -translate-x-1/2 scale-50 opacity-40 z-10 cursor-pointer shadow-lg";
+                       zIndex = 10;
+                       break;
+                     case 3: // Left 2
+                       styles = "left-[calc(50%-280px)] md:left-[calc(50%-350px)] -translate-x-1/2 scale-50 opacity-40 z-10 cursor-pointer shadow-lg";
+                       zIndex = 10;
+                       break;
+                     case 4: // Left 1
+                       styles = "left-[calc(50%-160px)] md:left-[calc(50%-200px)] -translate-x-1/2 scale-75 opacity-70 z-20 cursor-pointer shadow-xl";
+                       zIndex = 20;
+                       break;
+                   }
+
+                   return (
+                     <div 
+                       key={packet.id}
+                       className={`absolute top-1/2 -translate-y-1/2 transition-all duration-500 ease-in-out w-64 md:w-80 bg-transparent rounded-lg overflow-hidden flex items-center justify-center ${styles}`}
+                       onClick={() => {
+                         if (!isCenter) {
+                           setCurrentSwagIndex(index);
+                         }
+                       }}
+                     >
+                       <img 
+                         src={packet.src} 
+                         alt={packet.alt}
+                         className="w-full h-auto object-cover rounded-lg"
+                       />
+                       
+                       {/* Download Button - Only for Center */}
+                       {isCenter && (
+                         <a 
+                           href={packet.src} 
+                           download 
+                           className="absolute bottom-4 right-4 p-3 bg-white/90 hover:bg-white rounded-full text-indigo-600 hover:text-indigo-700 shadow-lg transition-all duration-300 z-10"
+                           title={t('swag.download')}
+                           onClick={(e) => e.stopPropagation()}
+                         >
+                           <Download className="h-6 w-6" />
+                         </a>
+                       )}
+                     </div>
+                   );
+                 })}
+
+                 {/* Navigation Controls */}
+                 <button 
+                   onClick={prevSlide}
+                   className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/80 hover:bg-white text-indigo-600 shadow-lg transition-all z-40"
+                   aria-label="Previous slide"
+                 >
+                   <ChevronLeft className="h-6 w-6" />
+                 </button>
+                 
+                 <button 
+                   onClick={nextSlide}
+                   className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/80 hover:bg-white text-indigo-600 shadow-lg transition-all z-40"
+                   aria-label="Next slide"
+                 >
+                   <ChevronRight className="h-6 w-6" />
+                 </button>
+
+                 {/* Indicators */}
+                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-40">
+                   {redPackets.map((_, idx) => (
+                     <button
+                       key={idx}
+                       onClick={() => setCurrentSwagIndex(idx)}
+                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                         idx === currentSwagIndex ? 'bg-indigo-600 w-6' : 'bg-gray-300 hover:bg-gray-400'
+                       }`}
+                       aria-label={`Go to slide ${idx + 1}`}
+                     />
+                   ))}
+                 </div>
+               </div>
             </div>
           </div>
         </div>
