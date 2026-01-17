@@ -1,5 +1,5 @@
 import React from 'react';
-import { Music, Image as ImageIcon, Play, Pause } from 'lucide-react';
+import { Music, Image as ImageIcon, Play, Pause, Download, Gift } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const CommunityVibeVault: React.FC = () => {
@@ -35,6 +35,14 @@ const CommunityVibeVault: React.FC = () => {
     { id: '3', title: 'Automate Everything', duration: '2:45', artist: 'Robo Rhythms' },
   ];
 
+  const redPackets = [
+    { id: 1, src: '/red_packets/天马行空事事顺.jpeg', alt: '天马行空事事顺' },
+    { id: 2, src: '/red_packets/好事将至.jpeg', alt: '好事将至' },
+    { id: 3, src: '/red_packets/码到成功.jpeg', alt: '码到成功' },
+    { id: 4, src: '/red_packets/禄马扶持.jpeg', alt: '禄马扶持' },
+    { id: 5, src: '/red_packets/马上轻松发财.jpeg', alt: '马上轻松发财' },
+  ];
+
   return (
     <section id="community" className="py-20 bg-gradient-to-b from-purple-50 to-indigo-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,6 +75,7 @@ const CommunityVibeVault: React.FC = () => {
               ))}
             </div>
           </div>
+
 
           {/* Music Section */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
@@ -104,6 +113,38 @@ const CommunityVibeVault: React.FC = () => {
               <p className="text-sm text-indigo-700 text-center">
                 🎵 Music player visualization placeholder - Click play to toggle state
               </p>
+            </div>
+          </div>
+
+          {/* Swag Section */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 lg:col-span-2">
+            <div className="flex items-center mb-6">
+              <Gift className="h-8 w-8 text-indigo-600 mr-3" />
+              <h3 className="text-2xl font-bold text-gray-900">{t('community.swag')}</h3>
+            </div>
+            <div className="mb-6">
+               <h4 className="text-lg font-medium text-gray-900 mb-4">{t('swag.redPackets')}</h4>
+               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {redPackets.map((packet) => (
+                  <div key={packet.id} className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <img 
+                      src={packet.src} 
+                      alt={packet.alt}
+                      className="w-full aspect-[3/4] object-cover transform transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <a 
+                        href={packet.src} 
+                        download 
+                        className="p-3 bg-white rounded-full text-indigo-600 hover:text-indigo-700 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300"
+                        title={t('swag.download')}
+                      >
+                        <Download className="h-6 w-6" />
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
