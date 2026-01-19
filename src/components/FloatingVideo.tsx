@@ -9,22 +9,42 @@ const FloatingVideo: React.FC = () => {
 
   return (
     <div className="fixed bottom-8 right-8 z-50 animate-fade-in-up">
-      <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white/50 w-64 md:w-80 aspect-[9/16] bg-black">
+      <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white/50 w-72 md:w-96 aspect-video bg-black">
         {/* Controls Overlay */}
-        <div className="absolute top-2 right-2 z-10 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-2 right-2 z-20 flex gap-2">
           <button 
-            onClick={() => setIsMuted(!isMuted)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsMuted(!isMuted);
+            }}
             className="p-1.5 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
+            title={isMuted ? "Unmute" : "Mute"}
           >
             {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
           </button>
           <button 
-            onClick={() => setIsVisible(false)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsVisible(false);
+            }}
             className="p-1.5 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
+            title="Close"
           >
             <X size={16} />
           </button>
         </div>
+
+        {/* Click to unmute overlay */}
+        {isMuted && (
+          <div 
+            className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer bg-black/10 hover:bg-black/20 transition-colors"
+            onClick={() => setIsMuted(false)}
+          >
+            <div className="bg-black/50 p-3 rounded-full backdrop-blur-sm transform transition-transform hover:scale-110">
+               <VolumeX className="text-white h-6 w-6" />
+            </div>
+          </div>
+        )}
 
         {/* Video Player */}
         <video
@@ -34,6 +54,7 @@ const FloatingVideo: React.FC = () => {
           muted={isMuted}
           playsInline
           className="w-full h-full object-cover"
+          onClick={() => setIsMuted(!isMuted)}
         />
 
         {/* Caption/Label */}
