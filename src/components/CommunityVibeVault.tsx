@@ -24,26 +24,26 @@ const CommunityVibeVault: React.FC = () => {
   };
 
   const memes = [
-    {
-      id: 1,
-      src: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=A%20funny%20robot%20trying%20to%20automate%20coffee%20making%20and%20spilling%20it%2C%20cartoon%20style&image_size=square",
-      alt: "Automation fail"
-    },
-    {
-      id: 2,
-      src: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=A%20futuristic%20cat%20coding%20on%20a%20holographic%20keyboard%2C%20cyberpunk%20style&image_size=square",
-      alt: "Coding Cat"
-    },
-    {
-      id: 3,
-      src: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=A%20group%20of%20robots%20having%20a%20party%20with%20disco%20lights%2C%20digital%20art&image_size=square",
-      alt: "Robot Party"
-    },
-    {
-      id: 4,
-      src: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=An%20astronaut%20floating%20in%20space%20using%20a%20laptop%20with%20workflow%20diagrams%2C%20realistic&image_size=square",
-      alt: "Space Workflow"
-    }
+    { id: 1, src: "/memes/CHILL.png", alt: "CHILL" },
+    { id: 2, src: "/memes/OMG.png", alt: "OMG" },
+    { id: 3, src: "/memes/STRONG.png", alt: "STRONG" },
+    { id: 4, src: "/memes/不.png", alt: "No" },
+    { id: 5, src: "/memes/不知道.png", alt: "Don't know" },
+    { id: 6, src: "/memes/伤心.png", alt: "Sad" },
+    { id: 7, src: "/memes/出发.png", alt: "Let's go" },
+    { id: 8, src: "/memes/咖啡时间到.png", alt: "Coffee Time" },
+    { id: 9, src: "/memes/哈哈哈.png", alt: "Hahaha" },
+    { id: 10, src: "/memes/嗨~.png", alt: "Hi" },
+    { id: 11, src: "/memes/嗨起来！.png", alt: "Party" },
+    { id: 12, src: "/memes/怒.png", alt: "Angry" },
+    { id: 13, src: "/memes/我OK.png", alt: "I'm OK" },
+    { id: 14, src: "/memes/我！.png", alt: "Me!" },
+    { id: 15, src: "/memes/晚安.png", alt: "Good Night" },
+    { id: 16, src: "/memes/比心.png", alt: "Love" },
+    { id: 17, src: "/memes/累.png", alt: "Tired" },
+    { id: 18, src: "/memes/美味.png", alt: "Delicious" },
+    { id: 19, src: "/memes/赞.png", alt: "Like" },
+    { id: 20, src: "/memes/酷.png", alt: "Cool" },
   ];
 
   const tracks = [
@@ -75,19 +75,34 @@ const CommunityVibeVault: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Memes Section */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
-            <div className="flex items-center mb-6">
-              <ImageIcon className="h-8 w-8 text-indigo-600 mr-3" />
-              <h3 className="text-2xl font-bold text-gray-900">{t('community.memes')}</h3>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center">
+                <ImageIcon className="h-8 w-8 text-indigo-600 mr-3" />
+                <h3 className="text-2xl font-bold text-gray-900">{t('community.memes')}</h3>
+              </div>
+              <a 
+                href="https://github.com/FenjuFu/Awesome-Astron-Workflow/tree/master/Colorful%20Astron%20Life" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-sm text-indigo-600 hover:text-indigo-800 font-medium flex items-center"
+              >
+                <Download className="h-4 w-4 mr-1" />
+                Download All
+              </a>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
               {memes.map((meme) => (
-                <div key={meme.id} className="relative group overflow-hidden rounded-lg">
+                <div key={meme.id} className="relative group overflow-hidden rounded-lg aspect-square">
                   <img 
                     src={meme.src} 
                     alt={meme.alt}
-                    className="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-110"
+                    className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <a href={meme.src} download className="p-2 bg-white/90 rounded-full text-indigo-600 hover:text-indigo-800">
+                          <Download className="h-4 w-4" />
+                      </a>
+                  </div>
                 </div>
               ))}
             </div>
