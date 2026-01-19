@@ -8,8 +8,8 @@ const FloatingVideo: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-8 right-8 z-50 animate-fade-in-up">
-      <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white/50 w-72 md:w-96 aspect-video bg-black">
+    <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 animate-fade-in-up">
+      <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white/50 w-60 md:w-80 aspect-video bg-black transition-all duration-300">
         {/* Controls Overlay */}
         <div className="absolute top-2 right-2 z-20 flex gap-2">
           <button 
