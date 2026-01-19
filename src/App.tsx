@@ -6,6 +6,7 @@ import About from './components/About';
 import CommunityVibeVault from './components/CommunityVibeVault';
 import Contribute from './components/Contribute';
 import Footer from './components/Footer';
+import FloatingVideo from './components/FloatingVideo';
 import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Contribute />
         </main>
         <Footer />
+        <FloatingVideo />
       </div>
     </LanguageProvider>
   );
