@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { X, Volume2, VolumeX } from 'lucide-react';
 
 const FloatingVideo: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      // Try to play with sound first
+      videoRef.current.play().catch(error => {
+        console.log("Autoplay with sound blocked, falling back to muted", error);
+        // If blocked, mute and try again
+        setIsMuted(true);
+        if (videoRef.current) {
+          videoRef.current.muted = true;
+          videoRef.current.play().catch(e => console.error("Muted autoplay also failed", e));
+        }
+      });
+    }
+  }, []);
 
   if (!isVisible) return null;
 
@@ -48,8 +64,8 @@ const FloatingVideo: React.FC = () => {
 
         {/* Video Player */}
         <video
+          ref={videoRef}
           src="/videos/Astron Party.mp4"
-          autoPlay
           loop
           muted={isMuted}
           playsInline
