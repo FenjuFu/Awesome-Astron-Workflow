@@ -159,22 +159,17 @@ const WorkflowShowcase: React.FC = () => {
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors duration-200">
                     {t(workflow.title)}
                   </h3>
-                  <p className="text-gray-600 mb-6 line-clamp-3 text-sm leading-relaxed">
+                  <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                     {t(workflow.description)}
                   </p>
 
                   {/* Features (Mini Tags) */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {workflow.features.slice(0, 3).map((feature, index) => (
+                    {workflow.features.map((feature, index) => (
                       <span key={index} className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded-md border border-gray-100">
-                        {t(feature).length > 20 ? t(feature).substring(0, 20) + '...' : t(feature)}
+                        {t(feature)}
                       </span>
                     ))}
-                    {workflow.features.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-50 text-gray-400 text-xs rounded-md border border-gray-100">
-                        +{workflow.features.length - 3}
-                      </span>
-                    )}
                   </div>
 
                   {/* Action Buttons */}
