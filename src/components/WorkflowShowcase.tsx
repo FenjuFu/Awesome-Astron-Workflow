@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, ArrowRight, Zap, PenTool, GraduationCap, Code, Film, Heart, Layers, Calendar } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Zap, PenTool, GraduationCap, Code, Film, Heart, Layers, Calendar, Trophy, Medal } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { workflows } from '../types/workflow';
 import { getIcon } from '../utils/icons';
@@ -124,10 +124,23 @@ const WorkflowShowcase: React.FC = () => {
             const Icon = getIcon(workflow.icon);
             const cat = categories.find(c => c.id === workflow.category);
             
+            // Determine award styling
+            let awardColor = '';
+            let AwardIcon = Trophy;
+            if (workflow.award === '1st Place') {
+              awardColor = 'text-yellow-500 bg-yellow-50 border-yellow-200';
+            } else if (workflow.award === '2nd Place') {
+              awardColor = 'text-gray-400 bg-gray-50 border-gray-200';
+              AwardIcon = Medal;
+            } else if (workflow.award === '3rd Place') {
+              awardColor = 'text-amber-700 bg-amber-50 border-amber-200';
+              AwardIcon = Medal;
+            }
+
             return (
               <div
                 key={workflow.id}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group border border-transparent hover:border-indigo-100 relative"
+                className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group border ${workflow.award ? 'border-indigo-200 ring-2 ring-indigo-50 ring-offset-2' : 'border-transparent hover:border-indigo-100'} relative`}
               >
                 {/* Decorative background element */}
                 <div className={`absolute top-0 right-0 -mt-8 -mr-8 w-24 h-24 rounded-full opacity-10 ${cat?.bg || 'bg-gray-100'}`}></div>
@@ -146,13 +159,23 @@ const WorkflowShowcase: React.FC = () => {
                         <span className="text-xs text-gray-400">ID: {workflow.id}</span>
                       </div>
                     </div>
-                    {/* Event Badge */}
-                    {workflow.event && (
-                        <div className="flex items-center bg-indigo-50 px-2 py-1 rounded-md text-[10px] font-medium text-indigo-600 border border-indigo-100 max-w-[120px]" title={workflow.event}>
-                           <Calendar className="w-3 h-3 mr-1 flex-shrink-0" />
-                           <span className="truncate">{workflow.event}</span>
-                        </div>
-                    )}
+                    
+                    <div className="flex flex-col items-end gap-2">
+                        {/* Award Badge */}
+                        {workflow.award && (
+                            <div className={`flex items-center px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wide border ${awardColor}`} title={workflow.award}>
+                               <AwardIcon className="w-3 h-3 mr-1 flex-shrink-0" />
+                               <span className="truncate">{workflow.award}</span>
+                            </div>
+                        )}
+                        {/* Event Badge */}
+                        {workflow.event && (
+                            <div className="flex items-center bg-indigo-50 px-2 py-1 rounded-md text-[10px] font-medium text-indigo-600 border border-indigo-100 max-w-[120px]" title={workflow.event}>
+                               <Calendar className="w-3 h-3 mr-1 flex-shrink-0" />
+                               <span className="truncate">{workflow.event}</span>
+                            </div>
+                        )}
+                    </div>
                   </div>
 
                   {/* Title and Description */}

@@ -8,6 +8,7 @@ export interface Workflow {
   icon: string;
   category: string;
   event?: string;
+  award?: string;
 }
 
 export const workflows: Workflow[] = [
@@ -172,7 +173,8 @@ export const workflows: Workflow[] = [
     ],
     icon: 'mic',
     category: 'creative',
-    event: 'Astron Training Camp · Cohort #1'
+    event: 'Astron Training Camp · Cohort #1',
+    award: '3rd Place'
   },
 
   // Learning Assistant (学习助手)
@@ -304,7 +306,8 @@ export const workflows: Workflow[] = [
     ],
     icon: 'film',
     category: 'entertainment',
-    event: 'Astron Training Camp · Cohort #1'
+    event: 'Astron Training Camp · Cohort #1',
+    award: '2nd Place'
   },
   {
     id: 'novel-finder',
@@ -338,6 +341,7 @@ export const workflows: Workflow[] = [
     ],
     icon: 'heart',
     category: 'health',
-    event: 'Astron Training Camp · Cohort #1'
+    event: 'Astron Training Camp · Cohort #1',
+    award: '1st Place'
   }
 ];
