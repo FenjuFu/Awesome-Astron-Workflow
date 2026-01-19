@@ -98,6 +98,7 @@ Each case includes:
 
 - **User Case:**
 - **Workflow:** [default.yml](https://github.com/user-attachments/files/24495795/default.yml)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
 
 **Key Features:**
 - Extract content from URLs
@@ -111,6 +112,7 @@ Each case includes:
 
 - **User Case:** [Resume Intelligence add](https://github.com/iflytek/astron-agent/discussions/824)
 - **Workflow:** [default.yml](https://github.com/user-attachments/files/24494434/default.yml)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
 
 **Key Features:**
 - PDF resume OCR parsing
@@ -168,6 +170,7 @@ Each case includes:
 
 - **User Case:**
 - **Workflow:** [default.yml](https://github.com/user-attachments/files/24551622/default.yml)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
 
 **Key Features:**
 - Deep analysis of literary artistic conception
@@ -181,6 +184,7 @@ Each case includes:
 
 - **User Case:**
 - **Workflow:** [AI.yml](https://github.com/user-attachments/files/24562655/AI.yml)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
 
 **Key Features:**
 - Parse URL content (supports WeChat Official Accounts, etc.)
@@ -252,6 +256,7 @@ Each case includes:
 
 - **User Case:**
 - **Workflow:** [2.yml](https://github.com/user-attachments/files/24560902/2.yml)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
 
 **Key Features:**
 - Real-time online search for information
@@ -265,6 +270,7 @@ Each case includes:
 
 - **User Case:**
 - **Workflow:** [20260107220916.yml](https://github.com/user-attachments/files/24612874/20260107220916.yml)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
 
 **Key Features:**
 - Essay requirement analysis
@@ -284,6 +290,7 @@ Each case includes:
 
 - **User Case:** [CSDN Blog](https://blog.csdn.net/niaonao/article/details/156937747)
 - **Workflow:** [Travel Companion.yml](https://github.com/niaonao/astron_resource/blob/main/resources/papers/%E6%97%85%E8%A1%8C%E6%90%AD%E5%AD%90.yml)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
 
 **Key Features:**
 - Personalized travel route planning
@@ -297,6 +304,7 @@ Each case includes:
 
 - **User Case:**
 - **Workflow:** [Pro.yml](https://github.com/user-attachments/files/24631399/Pro.yml)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
 
 **Key Features:**
 - Search movies by image (Image Understanding)
@@ -310,6 +318,7 @@ Each case includes:
 
 - **User Case:**
 - **Workflow:** [default.yml](https://github.com/user-attachments/files/24615934/default.yml)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
 
 **Key Features:**
 - Extract novel type from user input
@@ -325,6 +334,7 @@ Each case includes:
 
 - **User Case:**
 - **Workflow:** [default.yml](https://github.com/user-attachments/files/24577568/default.yml)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
 
 **Key Features:**
 - Customized nutrition plans (Age/Weight/etc.)

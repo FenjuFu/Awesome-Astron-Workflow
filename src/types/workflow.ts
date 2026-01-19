@@ -7,6 +7,7 @@ export interface Workflow {
   features: string[];
   icon: string;
   category: string;
+  event?: string;
 }
 
 export const workflows: Workflow[] = [
@@ -72,7 +73,8 @@ export const workflows: Workflow[] = [
       'features.wechat.4'
     ],
     icon: 'file-text',
-    category: 'productivity'
+    category: 'productivity',
+    event: 'Astron Training Camp · Cohort #1'
   },
   {
     id: 'resume-optimizer',
@@ -87,7 +89,8 @@ export const workflows: Workflow[] = [
       'features.resume_opt.4'
     ],
     icon: 'briefcase',
-    category: 'productivity'
+    category: 'productivity',
+    event: 'Astron Training Camp · Cohort #1'
   },
 
   // Creative Writing (创意写作)
@@ -152,7 +155,8 @@ export const workflows: Workflow[] = [
       'features.poetic.4'
     ],
     icon: 'palette',
-    category: 'creative'
+    category: 'creative',
+    event: 'Astron Training Camp · Cohort #1'
   },
   {
     id: 'ai-radio-podcast',
@@ -167,7 +171,8 @@ export const workflows: Workflow[] = [
       'features.radio.4'
     ],
     icon: 'mic',
-    category: 'creative'
+    category: 'creative',
+    event: 'Astron Training Camp · Cohort #1'
   },
 
   // Learning Assistant (学习助手)
@@ -248,7 +253,8 @@ export const workflows: Workflow[] = [
       'features.history.4'
     ],
     icon: 'book-open',
-    category: 'learning'
+    category: 'learning',
+    event: 'Astron Training Camp · Cohort #1'
   },
   {
     id: 'ket-essay-assistant',
@@ -263,7 +269,8 @@ export const workflows: Workflow[] = [
       'features.ket.4'
     ],
     icon: 'edit',
-    category: 'learning'
+    category: 'learning',
+    event: 'Astron Training Camp · Cohort #1'
   },
 
   // Leisure & Entertainment (休闲娱乐)
@@ -280,7 +287,8 @@ export const workflows: Workflow[] = [
       'features.travel.4'
     ],
     icon: 'map',
-    category: 'entertainment'
+    category: 'entertainment',
+    event: 'Astron Training Camp · Cohort #1'
   },
   {
     id: 'drama-terminator',
@@ -295,7 +303,8 @@ export const workflows: Workflow[] = [
       'features.drama.4'
     ],
     icon: 'film',
-    category: 'entertainment'
+    category: 'entertainment',
+    event: 'Astron Training Camp · Cohort #1'
   },
   {
     id: 'novel-finder',
@@ -310,7 +319,8 @@ export const workflows: Workflow[] = [
       'features.novel.4'
     ],
     icon: 'book',
-    category: 'entertainment'
+    category: 'entertainment',
+    event: 'Astron Training Camp · Cohort #1'
   },
 
   // Health Partner (健康搭档)
@@ -327,6 +337,7 @@ export const workflows: Workflow[] = [
       'features.dog.4'
     ],
     icon: 'heart',
-    category: 'health'
+    category: 'health',
+    event: 'Astron Training Camp · Cohort #1'
   }
 ];

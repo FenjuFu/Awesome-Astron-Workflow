@@ -98,6 +98,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 - **用户案例：**
 - **工作流：** [default.yml](https://github.com/user-attachments/files/24495795/default.yml)
+- **活动标签：** Astron Training Camp · Cohort #1
 
 **主要功能：**
 - 从 URL 提取内容（支持微信公众号等）
@@ -111,6 +112,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 - **用户案例：** [Resume Intelligence add](https://github.com/iflytek/astron-agent/discussions/824)
 - **工作流：** [default.yml](https://github.com/user-attachments/files/24494434/default.yml)
+- **活动标签：** Astron Training Camp · Cohort #1
 
 **主要功能：**
 - PDF 简历 OCR 解析
@@ -168,6 +170,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 - **用户案例：**
 - **工作流：** [default.yml](https://github.com/user-attachments/files/24551622/default.yml)
+- **活动标签：** Astron Training Camp · Cohort #1
 
 **主要功能：**
 - 文学意境深度解析
@@ -181,6 +184,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 - **用户案例：**
 - **工作流：** [AI.yml](https://github.com/user-attachments/files/24562655/AI.yml)
+- **活动标签：** Astron Training Camp · Cohort #1
 
 **主要功能：**
 - 解析 URL 内容（支持公众号等）
@@ -252,6 +256,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 - **用户案例：**
 - **工作流：** [2.yml](https://github.com/user-attachments/files/24560902/2.yml)
+- **活动标签：** Astron Training Camp · Cohort #1
 
 **主要功能：**
 - 联网搜索实时信息
@@ -265,6 +270,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 - **用户案例：**
 - **工作流：** [20260107220916.yml](https://github.com/user-attachments/files/24612874/20260107220916.yml)
+- **活动标签：** Astron Training Camp · Cohort #1
 
 **主要功能：**
 - 作文要求智能分析
@@ -284,6 +290,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 - **用户案例：** [CSDN 博客](https://blog.csdn.net/niaonao/article/details/156937747)
 - **工作流：** [旅行搭子.yml](https://github.com/niaonao/astron_resource/blob/main/resources/papers/%E6%97%85%E8%A1%8C%E6%90%AD%E5%AD%90.yml)
+- **活动标签：** Astron Training Camp · Cohort #1
 
 **主要功能：**
 - 个性化旅行路线规划
@@ -297,6 +304,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 - **用户案例：**
 - **工作流：** [Pro.yml](https://github.com/user-attachments/files/24631399/Pro.yml)
+- **活动标签：** Astron Training Camp · Cohort #1
 
 **主要功能：**
 - 以图搜剧（图片理解）
@@ -310,6 +318,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 - **用户案例：**
 - **工作流：** [default.yml](https://github.com/user-attachments/files/24615934/default.yml)
+- **活动标签：** Astron Training Camp · Cohort #1
 
 **主要功能：**
 - 小说类型提取
@@ -325,6 +334,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 - **用户案例：**
 - **工作流：** [default.yml](https://github.com/user-attachments/files/24577568/default.yml)
+- **活动标签：** Astron Training Camp · Cohort #1
 
 **主要功能：**
 - 定制化营养方案（年龄/体重/绝育等）

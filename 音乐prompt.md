@@ -156,102 +156,254 @@ BBC新闻风格，突发新闻片头，脉冲式电子节拍，管弦乐顿奏�
 
 ---
 
-# 🎤 Astron Agent 推荐歌词 (Suno Lyrics)
+## 方案十六：暗影执行者 (Shadow Executor)
+**核心理念**：致敬 **Nick Cave & The Bad Seeds** 的经典名曲 **《Red Right Hand》** (Peaky Blinders 插曲)，以 **哥特摇滚** 与 **后朋克** 的阴郁气质，塑造 Astron Agent 神秘、强大且不可阻挡的幕后执行者形象。
+**适用场景**：系统警报、高风险操作确认、深度调试模式、充满悬疑感的故障排查、幕后黑手般的掌控感。
 
-以下是专为 **Astron Agent** 创作的歌词，适配不同的曲风方案，旨在通过音乐传达“智能、连接、高效”的品牌价值。
+> **Suno Prompt:**
+> `Instrumental, Gothic Rock, Post-Punk, Nick Cave style, Red Right Hand vibe, deep walking bass line, ominous church bell, eerie Hammond organ, sudden orchestral hits, dark atmosphere, brooding, cinematic, mystery, suspense, swagger rhythm, 115bpm`
 
-## 歌词方案一：星辰指引 (Astron Rising)
-**适配曲风**：赛博巴赫、星际大教堂、武侠史诗
-**主题**：宏大叙事，强调“连接”与“智能未来”，适合企业宣传片。
-
-> [Verse 1]
-> 在数据的海洋 (In the ocean of data)
-> 寻找失落的光 (Searching for the lost light)
-> 混沌中的秩序 (Order in chaos)
-> 由我为你奏响 (Played for you by me)
->
-> [Chorus]
-> Astron Agent, connecting the stars
-> 编织智慧的网 (Weaving the web of wisdom)
-> 无形的双手 (Invisible hands)
-> 托起明天的梦想 (Holding up tomorrow's dreams)
-> 穿越星际 (Across the interstellar)
-> We build the future, right where we are
->
-> [Verse 2]
-> 每一个节点 (Every node)
-> 都是一次脉动 (Is a pulse)
-> 让思维流动 (Let thoughts flow)
-> 像银河般无穷 (Infinite like the galaxy)
->
-> [Outro]
-> Astron... the light in the dark.
-
-## 歌词方案二：极速流转 (The Flow)
-**适配曲风**：数字赋格、K-Pop潮流、公寓派对
-**主题**：高效、自动化、充满活力，适合功能演示或团建。
-
-> [Intro]
-> Yeah, Astron in the house!
-> Let's get it done.
->
-> [Verse 1]
-> 繁琐的任务 (Tedious tasks)
-> 一键全部消除 (Delete them all with one click)
-> 只有Astron懂你 (Only Astron understands you)
-> 让效率不再孤独 (Efficiency is no longer lonely)
->
-> [Pre-Chorus]
-> RPA的手 (Hands of RPA)
-> AI的大脑 (Brain of AI)
-> 完美的配合 (Perfect match)
-> 谁都以此为傲 (Everyone is proud of this)
->
-> [Chorus]
-> Work it, flow it, make it run
-> Astron Agent, we are number one!
-> 无论是白天还是黑夜 (Day or night)
-> 智能流转 (Smart flow)
-> Never stop, shining bright!
-> (Hey! Hey! Astron!)
->
-> [Bridge]
-> 释放你的双手 (Free your hands)
-> 创造更多可能 (Create more possibilities)
->
-> [Outro]
-> Astron Agent. Done.
-
-## 歌词方案三：静默伙伴 (Silent Partner)
-**适配曲风**：吉他诗篇、大提琴独白、复古名伶
-**主题**：陪伴、可靠、幕后支持，适合用户访谈或感性叙事。
-
-> [Verse 1]
-> 屏幕微光闪烁 (Screen glimmers)
-> 你在深夜还在琢磨 (You're still pondering late at night)
-> 别担心 并不是一个人 (Don't worry, you're not alone)
-> 我在这里 听你诉说 (I'm here, listening to you)
->
-> [Chorus]
-> 我是你最忠诚的伙伴 (I am your most loyal partner)
-> 藏在代码行间的温暖 (Warmth hidden between lines of code)
-> Astron Agent, by your side
-> 解决难题 (Solving problems)
-> 哪怕路途再艰难 (No matter how hard the road is)
->
-> [Verse 2]
-> 理解你的意图 (Understanding your intent)
-> 拆解复杂的迷雾 (Unraveling the complex fog)
-> 一步一步 (Step by step)
-> 走向成功的路 (Walking towards success)
->
-> [Outro]
-> Always here. Astron.
+**中文描述**：
+器乐，哥特摇滚，后朋克，Nick Cave风格，Red Right Hand氛围，深沉的行走低音线条，不祥的教堂钟声，怪诞的哈蒙德风琴，突如其来的管弦乐重击，黑暗氛围，阴郁，电影感，悬疑，招摇的节奏，115bpm。
 
 ---
 
-## 💡 提示词微调建议 (Tips)
+## 方案十七：荒原圣歌 (Wasteland Hymn)
+**核心理念**：致敬 **Hozier** 的成名作 **《Take Me To Church》**，融合 **独立摇滚 (Indie Rock)**、**灵魂乐 (Soul)** 与 **福音 (Gospel)** 元素，用沉重的节奏与戏剧性的张力表达对真理的执着追求。
+**适用场景**：核心架构发布、开源精神宣言、深度学习模型的觉醒时刻、充满仪式感的用户协议签署。
 
-*   **增加科技感**：在 Prompt 中加入 keywords 如 `Glitch`, `Synthesizer`, `Cyberpunk`, `Futuristic`。
-*   **增加庄重感**：强调 `Church Organ`, `Cathedral`, `Reverb`, `Holy`, `Divine`。
-*   **调整结构**：如果需要更明确的结构，可以在歌词栏（Lyrics）填入 `[Intro]`, `[Theme A]`, `[Theme B]`, `[Climax]`, `[Outro]` 来引导 AI 进行段落编排（即使是纯音乐）。
+> **Suno Prompt:**
+> `Instrumental, Indie Rock, Soul, Blues Rock, Hozier style, Take Me To Church vibe, dramatic piano chords, heavy stomp-clap rhythm, gospel choir humming textures, distorted bass, raw emotion, dark, spiritual, powerful build-up, 128bpm`
+
+**中文描述**：
+器乐，独立摇滚，灵魂乐，蓝调摇滚，Hozier风格，Take Me To Church氛围，戏剧性的钢琴和弦，沉重的跺脚拍手节奏，福音合唱团哼唱纹理，失真贝斯，原始情感，黑暗，精神性，强烈的推进感，128bpm。
+
+---
+
+## 方案十八：复古星尘 (Retro Stardust)
+**核心理念**：致敬 **Lady Gaga** 的 **《Brown Eyes》**，捕捉 **华丽摇滚 (Glam Rock)** 与 **70年代抒情摇滚** 的精髓（类似 David Bowie / Queen），用戏剧性的钢琴与吉他独奏营造怀旧而深情的氛围。
+**适用场景**：年度回顾视频、团队情感故事、产品里程碑纪念、充满温情的感谢信背景音。
+
+> **Suno Prompt:**
+> `Instrumental, Glam Rock Ballad, 70s Rock style, Lady Gaga Brown Eyes vibe, David Bowie influence, Queen style, theatrical piano, electric guitar solo, retro drum kit, emotional, nostalgic, soaring, melodic, warm, 110bpm`
+
+**中文描述**：
+器乐，华丽摇滚抒情曲，70年代摇滚风格，Lady Gaga Brown Eyes氛围，David Bowie影响，Queen风格，戏剧性的钢琴，电吉他独奏，复古鼓组，情感丰富，怀旧，高扬，旋律优美，温暖，110bpm。
+
+---
+
+## 方案十九：扑克迷局 (Poker Game)
+**核心理念**：致敬 **Lady Gaga** 的成名金曲 **《Poker Face》**，融合 **Electropop (电子流行)** 与 **Synth-pop (合成器流行)**，以标志性的 **机械感合成器** 与 **重型舞曲节拍**，展现 Astron Agent 冷静、高效且充满未来科技感的一面。
+**适用场景**：高能产品发布、快节奏功能演示、AI博弈逻辑展示、充满科技感的派对暖场。
+
+> **Suno Prompt:**
+> `Instrumental, Electropop, Synth-pop, Lady Gaga Poker Face style, robotic synthesizer hooks, heavy dance beat, stuttering electronic effects, high energy, futuristic, club banger, catchy, dark pop, 119bpm`
+
+**中文描述**：
+器乐，电子流行，合成器流行，Lady Gaga Poker Face风格，机械感合成器钩子，重型舞曲节拍，结巴电子音效，高能量，未来感，夜店金曲，抓耳，暗黑流行，119bpm。
+
+---
+
+## 方案二十：狂热罗曼史 (Bad Romance)
+**核心理念**：致敬 **Lady Gaga** 的巅峰之作 **《Bad Romance》**，融合 **Techno (高科技舞曲)**、**House** 与 **Industrial (工业风格)**，以宏大的 **管风琴开场** 与 **洗脑的合成器Riff**，营造一种狂热、戏剧性且极具张力的史诗感。
+**适用场景**：年度旗舰发布会、极具煽动性的品牌宣言、病毒视频高潮、展现绝对统治力的时刻。
+
+> **Suno Prompt:**
+> `Instrumental, Techno-Pop, Dark House, Lady Gaga Bad Romance style, dramatic organ intro, heavy industrial beats, rhythmic synth texture mimicking vocal chants, anthemic, high energy, fashion runway, grandiose, intense, 119bpm`
+
+**中文描述**：
+器乐，高科技流行，暗黑浩室，Lady Gaga Bad Romance风格，戏剧性的管风琴开场，重型工业节拍，模仿人声吟唱的节奏合成器纹理，赞歌感，高能量，T台走秀，宏大，紧张，119bpm。
+
+---
+
+## 方案二十一：深蓝浅滩 (Deep Blue Shallow)
+**核心理念**：致敬 **Lady Gaga & Bradley Cooper** 的奥斯卡金曲 **《Shallow》**，融合 **民谣摇滚 (Folk Rock)** 与 **乡村抒情 (Country Ballad)**，从细腻的 **原声吉他** 渐进至 **宏大的摇滚高潮**，象征着从微小的灵感到改变世界的飞跃。
+**适用场景**：团队协作纪录片、开源社区故事、突破技术瓶颈的感人瞬间、寻找深层价值的品牌叙事。
+
+> **Suno Prompt:**
+> `Instrumental, Folk Rock Ballad, Country Rock, Lady Gaga Shallow style, acoustic guitar intro, gradual build-up, emotional piano, powerful drum entry, slide guitar, soaring string section, raw, intimate, epic climax, 96bpm`
+
+**中文描述**：
+器乐，民谣摇滚抒情曲，乡村摇滚，Lady Gaga Shallow风格，原声吉他前奏，逐渐推进，情感丰富的钢琴，强有力的鼓点进入，滑棒吉他，高扬的弦乐组，原始，亲密，史诗般的高潮，96bpm。
+
+---
+
+## 方案二十二：聚光猎手 (Spotlight Hunter)
+**核心理念**：致敬 **Lady Gaga** 的热单 **《Paparazzi》**，融合 **Techno-Pop (高科技流行)** 与 **Synth-Pop**，利用独特的 **打击乐（类似相机快门声）** 与 **抓耳的合成器旋律**，营造一种既迷人又带有某种执着（如追踪Bug或数据）的氛围。
+**适用场景**：用户行为追踪展示、日志监控界面、病毒式传播分析、备受瞩目的新功能揭秘。
+
+> **Suno Prompt:**
+> `Instrumental, Techno-Pop, Synth-Pop, Lady Gaga Paparazzi style, catchy synth hook, percussive camera shutter sounds, rhythmic bassline, polished production, obsessive, dramatic, mid-tempo dance beat, fashion vibe, 115bpm`
+
+**中文描述**：
+器乐，高科技流行，合成器流行，Lady Gaga Paparazzi风格，抓耳的合成器钩子，打击乐般的相机快门声，节奏感强的低音线条，精良制作，执着，戏剧性，中速舞曲节拍，时尚氛围，115bpm。
+
+---
+
+## 方案二十三：霸气宣言 (Money Moves)
+**核心理念**：致敬 **Cardi B** 的冠军单曲 **《Bodak Yellow》**，融合 **Trap** 与 **Hardcore Hip Hop**，以 **极简而凶猛的 808 Bass** 与 **不祥的合成器 Loop**，展现 Astron Agent 不可一世的自信与强大的执行力。
+**适用场景**：市场份额战报、竞品对比、高并发压力测试成功、展示绝对优势的商业路演。
+
+> **Suno Prompt:**
+> `Instrumental, Trap, Hardcore Hip Hop, Cardi B Bodak Yellow style, heavy 808 bass, rattling hi-hats, minimal ominous synth loop, hard-hitting kick, aggressive, confident, boss vibe, street attitude, 125bpm`
+
+**中文描述**：
+器乐，Trap，硬核嘻哈，Cardi B Bodak Yellow风格，重型808低音，急促的踩镲，极简的不祥合成器循环，重击底鼓，侵略性，自信，老板气场，街头态度，125bpm。
+
+---
+
+## 方案二十四：拉丁狂欢 (Latin Fiesta)
+**核心理念**：致敬 **Cardi B, Bad Bunny & J Balvin** 的全球热单 **《I Like It》**，融合 **Latin Trap (拉丁陷阱)** 与 **Salsa (萨尔萨)**，采样经典的 **Boogaloo** 钢琴 Riff，营造出一种色彩斑斓、热烈且充满国际范儿的欢庆氛围。
+**适用场景**：全球化市场拓展、节日庆典、跨文化交流活动、用户增长里程碑庆祝。
+
+> **Suno Prompt:**
+> `Instrumental, Latin Trap, Salsa, Boogaloo, Cardi B I Like It style, sampled piano montuno, heavy 808 bass, trap beats mixed with latin percussion (congas, timbales), brass section stabs, festive, colorful, high energy, summer vibe, 133bpm`
+
+**中文描述**：
+器乐，拉丁陷阱，萨尔萨，布加卢，Cardi B I Like It风格，采样的钢琴蒙图诺，重型808低音，Trap节拍混合拉丁打击乐（康加鼓，蒂姆巴尔鼓），铜管组顿奏，节日气氛，色彩斑斓，高能量，夏日氛围，133bpm。
+
+---
+
+## 方案二十五：高能吞吐 (High Throughput)
+**核心理念**：致敬 **Cardi B & Megan Thee Stallion** 的现象级单曲 **《WAP》**，融合 **Baltimore Club (巴尔的摩俱乐部)** 与 **Minimalist Trap**，以 **极具侵略性的重复采样** 与 **令人窒息的重低音**，象征着数据流的极限吞吐与算力的狂野释放。
+**适用场景**：压力测试极限挑战、双十一级流量洪峰、黑客松冲刺、展示“暴力美学”的性能跑分。
+
+> **Suno Prompt:**
+> `Instrumental, Baltimore Club, Ghetto House, Dirty Rap Beat, Cardi B WAP style, heavy 808 kick, repetitive vocal chop loop, minimalist, nasty, high energy, raw, provocative, hypnotic rhythm, 133bpm`
+
+**中文描述**：
+器乐，巴尔的摩俱乐部，贫民窟浩室，脏说唱节拍，Cardi B WAP风格，重型808底鼓，重复的人声切片循环，极简，凶猛，高能量，原始，挑衅，催眠节奏，133bpm。
+
+---
+
+## 方案二十六：持续攀升 (Level Up)
+**核心理念**：致敬 **Cardi B** 的热单 **《Up》**，融合 **Drill** 与 **Trap** 元素，以 **紧凑的军鼓滚奏** 与 **不断攀升的合成器音效**，象征着 Astron Agent 版本迭代的持续进化与性能的无止境提升。
+**适用场景**：版本升级公告、业绩增长展示、系统扩容成功、激励人心的动员大会。
+
+> **Suno Prompt:**
+> `Instrumental, Drill, Trap, Cardi B Up style, sliding 808 bass, rapid hi-hat rolls, ominous piano loop, hard hitting snare, aggressive, energetic, unstoppable, confident, hype music, 160bpm`
+
+**中文描述**：
+器乐，钻头音乐 (Drill)，陷阱音乐 (Trap)，Cardi B Up风格，滑音808低音，快速的踩镲滚奏，不祥的钢琴循环，重击军鼓，侵略性，精力充沛，不可阻挡，自信，炒作音乐，160bpm。
+
+---
+
+## 方案二十七：财富密码 (Money Flow)
+**核心理念**：致敬 **Cardi B** 的经典曲目 **《Money》**，融合 **Trap** 与 **Jazz Piano** 元素，以 **华丽的钢琴 Riff** 与 **沉稳的低音**，展现 Astron Agent 在金融科技、高价值交易处理中的精准与从容。
+**适用场景**：金融级安全演示、ROI 投资回报分析、高端客户签约仪式、展示产品核心商业价值。
+
+> **Suno Prompt:**
+> `Instrumental, Trap, Hip Hop, Cardi B Money style, grand piano riff, heavy bass line, cash register sound effects, luxurious atmosphere, confident, slow tempo groove, elegant yet hard, 130bpm`
+
+**中文描述**：
+器乐，陷阱音乐，嘻哈，Cardi B Money风格，宏大的钢琴Riff，重型低音线条，收银机音效，奢华氛围，自信，慢速律动，优雅而硬朗，130bpm。
+
+---
+
+## 方案二十八：粉色律动 (Pink Groove)
+**核心理念**：致敬 **Doja Cat** 的大热单曲 **《Say So》**，融合 **Disco (迪斯科)**、**Funk (放克)** 与 **Pop**，以 **标志性的 Chic 风格吉他切音** 与 **梦幻的合成器**，营造轻松、愉悦且充满复古时尚感的用户体验。
+**适用场景**：用户引导流程 (Onboarding)、UI/UX 设计展示、轻松上手的教程视频、社区互动活动。
+
+> **Suno Prompt:**
+> `Instrumental, Disco Pop, Funk, Retro 70s style, Doja Cat Say So vibe, chic guitar scratching, groovy bassline, dreamy synthesizer pads, smooth, catchy, upbeat, glitzy, 111bpm`
+
+**中文描述**：
+器乐，迪斯科流行，放克，复古70年代风格，Doja Cat Say So氛围，别致的吉他切音，律动感强的贝斯线，梦幻的合成器铺底，顺滑，抓耳，积极向上，闪耀，111bpm。
+
+---
+
+## 方案二十九：绯红领地 (Red Territory)
+**核心理念**：致敬 **Doja Cat** 的冠军单曲 **《Paint The Town Red》**，融合 **Jazz Rap (爵士说唱)** 与 **Pop Rap**，利用 **复古的铜管乐采样**（致敬 Dionne Warwick）与 **现代的响指节拍**，营造一种既优雅又叛逆、无视规则的自信气场。
+**适用场景**：颠覆性创新发布、品牌重塑、打破常规的功能展示、展现特立独行态度的宣传片。
+
+> **Suno Prompt:**
+> `Instrumental, Jazz Rap, Pop Rap, Doja Cat Paint The Town Red style, vintage brass sample, smooth walking bass, snap beat, quirky vocal chops, confident, rebellious, cool, swagger, 100bpm`
+
+**中文描述**：
+器乐，爵士说唱，流行说唱，Doja Cat Paint The Town Red风格，复古铜管采样，顺滑的行走贝斯，响指节拍，古怪的人声切片，自信，叛逆，酷，大摇大摆，100bpm。
+
+---
+
+## 方案三十：甜蜜信号 (Sweet Signal)
+**核心理念**：致敬 **Doja Cat ft. SZA** 的热门单曲 **《Kiss Me More》**，融合 **Disco (迪斯科)** 与 **R&B**，以 **标志性的吉他 Hook** 与 **梦幻的合成器氛围**，营造一种夏日般清凉、甜蜜且充满未来感的愉悦听感。
+**适用场景**：用户满意度庆祝、轻松的社区互动、夏日特别活动、展现产品友好亲和力的一面。
+
+> **Suno Prompt:**
+> `Instrumental, Disco, R&B, Doja Cat Kiss Me More style, catchy guitar riff, funky bassline, lush synthesizer pads, breezy atmosphere, playful, sweet, summer vibe, groovy, 111bpm`
+
+**中文描述**：
+器乐，迪斯科，R&B，Doja Cat Kiss Me More风格，抓耳的吉他Riff，放克贝斯线，丰满的合成器铺底，清风拂面的氛围，俏皮，甜蜜，夏日氛围，律动感，111bpm。
+
+---
+
+## 方案三十一：奢华指环 (Luxury Rings)
+**核心理念**：致敬 **Ariana Grande** 的冠军单曲 **《7 rings》**，融合 **Trap-Pop** 与 **R&B**，巧妙借鉴 **《音乐之声》** 中 "My Favorite Things" 的经典旋律，配以 **重型 808 Bass**，展现 Astron Agent 坐拥丰富资源、能够轻松解决一切问题的“女王”气场。
+**适用场景**：高价值资产展示、全功能解锁演示、成功案例分享、展现“想要什么就有什么”的强大能力。
+
+> **Suno Prompt:**
+> `Instrumental, Trap-Pop, R&B, Ariana Grande 7 rings style, My Favorite Things melody interpolation, plucked strings intro, heavy 808 bass, snapping fingers, luxurious, confident, icy, rich texture, 140bpm`
+
+**中文描述**：
+器乐，陷阱流行，R&B，Ariana Grande 7 rings风格，My Favorite Things旋律插值，拨弦乐前奏，重型808低音，响指声，奢华，自信，冷艳，丰富质感，140bpm。
+
+---
+
+## 方案三十二：兜转迷宫 (Labyrinth of Love)
+**核心理念**：致敬 **刘恋** 的 **《兜兜转转》**（电视剧《深情眼》插曲），融合 **Bossa Nova (波萨诺瓦)** 与 **Chamber Pop (室内流行)**，用 **轻盈的长笛** 与 **慵懒的吉他**，营造一种在复杂逻辑与情感迷宫中优雅漫步的氛围。
+**适用场景**：情感类AI助手展示、处理复杂关系网络的算法演示、轻松的午后休闲时光、带有文艺气息的Vlog背景。
+
+> **Suno Prompt:**
+> `Instrumental, Bossa Nova, Chamber Pop, Mr. Miss style, Liu Lian vibe, nylon guitar, playful flute melody, light percussion, upright bass, elegant string quartet, jazzy chords, relaxed, whimsical, romantic, 100bpm`
+
+**中文描述**：
+器乐，波萨诺瓦，室内流行，Mr. Miss风格，刘恋氛围，尼龙弦吉他，俏皮的长笛旋律，轻打击乐，低音提琴，优雅的弦乐四重奏，爵士和弦，放松，异想天开，浪漫，100bpm。
+
+---
+
+## 方案三十三：玫瑰私语 (Rose Whispers)
+**核心理念**：致敬 **刘恋** 为电视剧《玫瑰的故事》演唱的插曲 **《Rose Whispers》**，融合 **Smooth Jazz (平滑爵士)** 与 **Vintage Pop**，以 **感性的萨克斯** 与 **温暖的钢琴**，诉说着关于成长、爱与秘密的故事。
+**适用场景**：用户隐私保护声明、深夜情感陪伴模式、讲述品牌背后的温情故事、高端定制服务介绍。
+
+> **Suno Prompt:**
+> `Instrumental, Smooth Jazz, Vintage Pop, Liu Lian Rose Whispers style, sultry saxophone solo, warm piano chords, brushed drums, double bass, intimate atmosphere, melancholic yet elegant, romantic, night city vibe, 78bpm`
+
+**中文描述**：
+器乐，平滑爵士，复古流行，刘恋 Rose Whispers风格，撩人的萨克斯独奏，温暖的钢琴和弦，鼓刷，低音提琴，亲密氛围，忧郁而优雅，浪漫，夜间城市氛围，78bpm。
+
+---
+
+## 方案三十四：冬日恋曲 (Last Holiday)
+**核心理念**：致敬 **Wham!** 的不朽金曲 **《Last Christmas》**，融合 **80s Synth-pop (80年代合成器流行)** 与 **Holiday Pop**，以 **标志性的合成器铃声** 与 **温暖的电子鼓机**，营造出一种既欢快又略带怀旧的冬日节日氛围。
+**适用场景**：圣诞/新年特别版发布、年度回顾视频、社区节日祝福、温馨的冬日主题界面展示。
+
+> **Suno Prompt:**
+> `Instrumental, 80s Synth-pop, Christmas Pop, Wham! Last Christmas style, festive synthesizer bells, catchy melody, drum machine, warm pads, nostalgic, upbeat, romantic, winter holiday vibe, 108bpm`
+
+**中文描述**：
+器乐，80年代合成器流行，圣诞流行，Wham! Last Christmas风格，节日的合成器铃声，抓耳的旋律，鼓机，温暖的铺底音色，怀旧，积极向上，浪漫，冬日节日氛围，108bpm。
+
+---
+
+## 方案三十五：午夜低语 (Midnight Whisper)
+**核心理念**：致敬 **Mr. Miss (刘恋 & 杜凯)** 的经典作品 **《低语》**，融合 **Vocal Jazz (人声爵士)** 的器乐版与 **Swing (摇摆乐)**，以 **轻快的吉他切分** 与 **灵动的单簧管**，营造一种如同在老上海舞厅或巴黎左岸咖啡馆般的私密、暧昧且充满戏剧感的氛围。
+**适用场景**：用户引导的小贴士、隐藏彩蛋的发现时刻、轻松幽默的错误提示、展现产品灵动智慧的一面。
+
+> **Suno Prompt:**
+> `Instrumental, Swing Jazz, Gypsy Jazz, Mr. Miss vibe, acoustic guitar rhythm, playful clarinet solo, walking bass, brushed snare, theatrical, witty, retro, intimate, lighthearted, 120bpm`
+
+**中文描述**：
+器乐，摇摆爵士，吉普赛爵士，Mr. Miss氛围，原声吉他节奏，俏皮的单簧管独奏，行走贝斯，鼓刷军鼓，戏剧性，诙谐，复古，亲密，轻松愉快，120bpm。
+
+---
+
+## 方案三十六：香槟派对 (Champagne Only)
+**核心理念**：致敬 **Mr. Miss (刘恋)** 的 **《只喝香槟》**，融合 **Broadway Jazz (百老汇爵士)** 与 **Cabaret (歌舞厅风格)**，用 **华丽的铜管组** 与 **微醺的钢琴**，营造一种纸醉金迷、欢庆胜利的派对氛围。
+**适用场景**：年度颁奖典礼、庆祝重大里程碑、高端沙龙背景音、展示产品最耀眼时刻。
+
+> **Suno Prompt:**
+> `Instrumental, Broadway Jazz, Big Band, Cabaret, Mr. Miss Only Drink Champagne style, brass fanfares, lively piano, walking bass, energetic drums, tipsy, celebratory, luxurious, theatrical, Great Gatsby vibe, 130bpm`
+
+**中文描述**：
+器乐，百老汇爵士，大乐团，歌舞厅风格，Mr. Miss 只喝香槟风格，铜管号角，活泼的钢琴，行走贝斯，充满活力的鼓点，微醺，庆祝，奢华，戏剧性，了不起的盖茨比氛围，130bpm。
+
+---

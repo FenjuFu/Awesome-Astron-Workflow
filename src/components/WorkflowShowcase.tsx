@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, ArrowRight, Zap, PenTool, GraduationCap, Code, Film, Heart, Layers } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Zap, PenTool, GraduationCap, Code, Film, Heart, Layers, Calendar } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { workflows } from '../types/workflow';
 import { getIcon } from '../utils/icons';
@@ -7,6 +7,7 @@ import { getIcon } from '../utils/icons';
 const WorkflowShowcase: React.FC = () => {
   const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [activeEvent, setActiveEvent] = useState<string>('all');
 
   const categories = [
     { id: 'all', icon: Layers, label: 'All' }, // Fallback label, will use translation
@@ -18,9 +19,14 @@ const WorkflowShowcase: React.FC = () => {
     { id: 'health', icon: Heart, color: 'text-red-600', bg: 'bg-red-100', border: 'border-red-200' },
   ];
 
-  const filteredWorkflows = activeCategory === 'all' 
-    ? workflows 
-    : workflows.filter(w => w.category === activeCategory);
+  // Extract unique events
+  const events = ['all', ...Array.from(new Set(workflows.map(w => w.event).filter(Boolean)))];
+
+  const filteredWorkflows = workflows.filter(w => {
+    const matchesCategory = activeCategory === 'all' || w.category === activeCategory;
+    const matchesEvent = activeEvent === 'all' || w.event === activeEvent;
+    return matchesCategory && matchesEvent;
+  });
 
   return (
     <section id="workflows" className="py-20 bg-gray-50 min-h-screen">
@@ -36,7 +42,7 @@ const WorkflowShowcase: React.FC = () => {
         </div>
 
         {/* Category Tabs (Gamified) */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
           {categories.map((category) => {
             const Icon = category.icon;
             const isActive = activeCategory === category.id;
@@ -60,13 +66,57 @@ const WorkflowShowcase: React.FC = () => {
                 <span>{label}</span>
                 {isActive && (
                   <span className="ml-2 bg-indigo-100 text-indigo-600 py-0.5 px-2 rounded-full text-xs">
-                    {category.id === 'all' ? workflows.length : workflows.filter(w => w.category === category.id).length}
+                    {activeCategory === 'all' ? workflows.length : workflows.filter(w => w.category === activeCategory).length}
                   </span>
                 )}
               </button>
             );
           })}
         </div>
+
+        {/* Event Filter */}
+        {events.length > 1 && (
+          <div className="flex flex-wrap justify-center items-center gap-3 mb-12 animate-fade-in">
+             <div className="flex items-center space-x-2 mr-2 bg-white/50 px-3 py-1.5 rounded-lg backdrop-blur-sm">
+                <Calendar className="h-4 w-4 text-gray-500" />
+                <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Events</span>
+             </div>
+             {events.map((event) => {
+                const isActive = activeEvent === (event as string);
+                const label = event === 'all' ? 'All Events' : event;
+                
+                // Calculate count for this event based on active category
+                const relevantWorkflows = activeCategory === 'all'
+                   ? workflows
+                   : workflows.filter(w => w.category === activeCategory);
+                
+                const count = event === 'all'
+                   ? relevantWorkflows.length
+                   : relevantWorkflows.filter(w => w.event === event).length;
+                
+                return (
+                  <button
+                    key={event as string}
+                    onClick={() => setActiveEvent(event as string)}
+                    className={`
+                      px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 border flex items-center
+                      ${isActive 
+                        ? 'bg-indigo-600 text-white border-indigo-600 shadow-md' 
+                        : 'bg-white text-gray-600 hover:bg-indigo-50 border-gray-200 hover:border-indigo-200'
+                      }
+                    `}
+                  >
+                    <span>{label}</span>
+                    {isActive && (
+                      <span className={`ml-2 py-0.5 px-2 rounded-full text-xs ${isActive ? 'bg-indigo-500 text-white' : 'bg-gray-100 text-gray-600'}`}>
+                        {count}
+                      </span>
+                    )}
+                  </button>
+                );
+             })}
+          </div>
+        )}
 
         {/* Workflow Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -96,6 +146,13 @@ const WorkflowShowcase: React.FC = () => {
                         <span className="text-xs text-gray-400">ID: {workflow.id}</span>
                       </div>
                     </div>
+                    {/* Event Badge */}
+                    {workflow.event && (
+                        <div className="flex items-center bg-indigo-50 px-2 py-1 rounded-md text-[10px] font-medium text-indigo-600 border border-indigo-100 max-w-[120px]" title={workflow.event}>
+                           <Calendar className="w-3 h-3 mr-1 flex-shrink-0" />
+                           <span className="truncate">{workflow.event}</span>
+                        </div>
+                    )}
                   </div>
 
                   {/* Title and Description */}
