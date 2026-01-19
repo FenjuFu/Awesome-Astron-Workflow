@@ -53,12 +53,15 @@ const FloatingVideo: React.FC = () => {
         {/* Click to unmute overlay */}
         {isMuted && (
           <div 
-            className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer bg-black/10 hover:bg-black/20 transition-colors"
+            className="absolute inset-0 z-10 flex flex-col items-center justify-center cursor-pointer bg-black/30 hover:bg-black/40 transition-colors group/overlay"
             onClick={() => setIsMuted(false)}
           >
-            <div className="bg-black/50 p-3 rounded-full backdrop-blur-sm transform transition-transform hover:scale-110">
+            <div className="bg-black/60 p-3 rounded-full backdrop-blur-sm transform transition-all duration-300 group-hover/overlay:scale-110 mb-2">
                <VolumeX className="text-white h-6 w-6" />
             </div>
+            <span className="text-white text-xs font-medium bg-black/60 px-2 py-1 rounded-md backdrop-blur-sm opacity-0 group-hover/overlay:opacity-100 transition-opacity duration-300">
+              Click to Unmute
+            </span>
           </div>
         )}
 
@@ -69,7 +72,7 @@ const FloatingVideo: React.FC = () => {
           loop
           muted={isMuted}
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain bg-black"
           onClick={() => setIsMuted(!isMuted)}
         />
 
