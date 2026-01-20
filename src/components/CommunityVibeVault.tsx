@@ -47,10 +47,32 @@ const CommunityVibeVault: React.FC = () => {
   ];
 
   const tracks = [
-    { id: '1', title: 'Astron Flow', duration: '2:30', artist: 'AI Beats' },
-    { id: '2', title: 'Neural Networks', duration: '3:15', artist: 'Cyber Synth' },
-    { id: '3', title: 'Automate Everything', duration: '2:45', artist: 'Robo Rhythms' },
+    { id: '1', title: 'Gilded Midnight Stomp', duration: '2:30', artist: 'Astron AI', src: '/music/Gilded Midnight Stomp.mp3' },
+    { id: '2', title: 'Midnight Teacup Tumble', duration: '3:15', artist: 'Astron AI', src: '/music/Midnight Teacup Tumble.mp3' },
+    { id: '3', title: 'Playful Teacups in Afternoon Sun', duration: '2:45', artist: 'Astron AI', src: '/music/Playful Teacups in Afternoon Sun.mp3' },
   ];
+
+  const audioRef = React.useRef<HTMLAudioElement | null>(null);
+
+  React.useEffect(() => {
+    if (audioRef.current) {
+      if (playing) {
+        const track = tracks.find(t => t.id === playing);
+        if (track) {
+          // Only change source if it's different to prevent reloading
+          const currentSrc = audioRef.current.getAttribute('src');
+          if (currentSrc !== track.src) {
+            audioRef.current.src = track.src;
+            audioRef.current.play().catch(e => console.error("Playback failed", e));
+          } else {
+             audioRef.current.play().catch(e => console.error("Playback failed", e));
+          }
+        }
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [playing]);
 
   const redPackets = [
     { id: 1, src: '/red_packets/天马行空事事顺.jpeg', alt: '天马行空事事顺' },
@@ -146,6 +168,7 @@ const CommunityVibeVault: React.FC = () => {
                 🎵 Music player visualization placeholder - Click play to toggle state
               </p>
             </div>
+            <audio ref={audioRef} onEnded={() => setPlaying(null)} />
           </div>
 
           {/* Swag Section */}
