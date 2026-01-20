@@ -1,0 +1,11 @@
+[33mcommit 4b7c95fc76396e0629723286ebddbe8a66c24603[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: FenjuFu <fufenju@pku.edu.cn>
+Date:   Tue Jan 20 01:33:25 2026 +0800
+
+    fix: improve video visibility and mute overlay UI
+
+[33mcommit 9c6ba3140065a33225eb06386eb0fe146e3a5bef[m
+Author: FenjuFu <fufenju@pku.edu.cn>
+Date:   Tue Jan 20 01:26:54 2026 +0800
+
+    fix: optimize video autoplay with sound fallback to muted
