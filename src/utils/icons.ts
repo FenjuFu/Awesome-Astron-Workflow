@@ -12,7 +12,12 @@ import {
   Image,
   Layers,
   Edit3,
-  Palette
+  Palette,
+  Film,
+  Book,
+  Heart,
+  Edit,
+  Users
 } from 'lucide-react';
 
 export type IconName = 
@@ -29,7 +34,12 @@ export type IconName =
   | 'image'
   | 'layers'
   | 'edit-3'
-  | 'palette';
+  | 'palette'
+  | 'film'
+  | 'book'
+  | 'heart'
+  | 'edit'
+  | 'users';
 
 export const getIcon = (name: string) => {
   const icons = {
@@ -46,7 +56,12 @@ export const getIcon = (name: string) => {
     'image': Image,
     'layers': Layers,
     'edit-3': Edit3,
-    'palette': Palette
+    'palette': Palette,
+    'film': Film,
+    'book': Book,
+    'heart': Heart,
+    'edit': Edit,
+    'users': Users
   };
   
   return icons[name as IconName];

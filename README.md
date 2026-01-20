@@ -50,6 +50,19 @@ Each case includes:
 
 ### Office Productivity
 
+#### 21. bks-AI
+
+**Description:** An "AI for Everyone" comprehensive assistant workflow. It integrates a multi-intent recognition system to intelligently distinguish user needs (such as consultation, order queries, or casual chat), combines online search for systematic knowledge organization, and uses a specialized knowledge base to provide precise business Q&A services.
+
+- **User Case:** [Video Showcase](https://www.youtube.com/watch?v=weO_qGSQFI4&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=7&t=1s&pp=gAQBiAQBsAgC)
+- **Workflow:** [bks-AI.yml](https://github.com/CoderWanFeng/AwesomeAstronAgent/blob/main/bks-AI.yml)
+
+**Key Features:**
+- **Smart Intent Routing**: Accurately identifies consultation, order queries, and casual chat scenarios
+- **Deep Online Search**: Real-time retrieval of network information with structured summarization
+- **Exclusive Knowledge Base**: Provides professional business answers related to Bks-AI
+- **Multi-source Recall Fusion**: Combines search results, knowledge base, and LLM generation for responses
+
 #### 1. AI Resume Assistant
 
 **Description:** A smart resume optimization tool that helps job seekers create professional resumes with AI-driven suggestions and formatting.

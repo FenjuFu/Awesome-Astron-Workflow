@@ -14,6 +14,21 @@ export interface Workflow {
 export const workflows: Workflow[] = [
   // Office Productivity (办公提效)
   {
+    id: 'bks-ai',
+    title: 'workflow.bks_ai.title',
+    description: 'workflow.bks_ai.description',
+    userCaseUrl: 'https://www.youtube.com/watch?v=weO_qGSQFI4&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=7&t=1s&pp=gAQBiAQBsAgC',
+    workflowUrl: 'https://github.com/CoderWanFeng/AwesomeAstronAgent/blob/main/bks-AI.yml',
+    features: [
+      'features.bks_ai.1',
+      'features.bks_ai.2',
+      'features.bks_ai.3',
+      'features.bks_ai.4'
+    ],
+    icon: 'bot',
+    category: 'productivity'
+  },
+  {
     id: 'resume-assistant',
     title: 'workflow.resume.title',
     description: 'workflow.resume.description',

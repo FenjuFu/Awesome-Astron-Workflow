@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, ArrowRight, Zap, PenTool, GraduationCap, Code, Film, Heart, Layers, Calendar, Trophy, Medal } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Zap, PenTool, GraduationCap, Code, Film, Heart, Layers, Calendar, Trophy, Medal, Users } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { workflows } from '../types/workflow';
 import { getIcon } from '../utils/icons';

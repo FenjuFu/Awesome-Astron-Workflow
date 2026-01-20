@@ -39,6 +39,14 @@ const translations = {
     'categories.entertainment': 'Leisure & Entertainment',
     'categories.health': 'Health Partner',
 
+    // Workflows - bks-AI
+    'workflow.bks_ai.title': 'bks-AI',
+    'workflow.bks_ai.description': 'An "AI for Everyone" comprehensive assistant workflow. It integrates a multi-intent recognition system to intelligently distinguish user needs, combines online search for systematic knowledge organization, and uses a specialized knowledge base for precise Q&A.',
+    'features.bks_ai.1': 'Smart Intent Routing: Accurately identifies consultation, order queries, and casual chat',
+    'features.bks_ai.2': 'Deep Online Search: Real-time retrieval with structured summarization',
+    'features.bks_ai.3': 'Exclusive Knowledge Base: Professional business answers',
+    'features.bks_ai.4': 'Multi-source Recall Fusion: Combines search, KB, and LLM',
+
     // Workflows - AI Resume Assistant
     'workflow.resume.title': 'AI Resume Assistant',
     'workflow.resume.description': 'A smart resume optimization tool that helps job seekers create professional resumes with AI-driven suggestions and formatting.',
@@ -296,6 +304,14 @@ const translations = {
     'categories.coding': '代码编程',
     'categories.entertainment': '休闲娱乐',
     'categories.health': '健康搭档',
+
+    // Workflows - bks-AI
+    'workflow.bks_ai.title': 'bks-AI',
+    'workflow.bks_ai.description': '一个“人人可用”的综合型 AI 助手工作流。它集成了多意图识别系统，能够智能区分用户需求，结合联网搜索进行系统化的知识规整，并利用专属知识库提供精准的业务问答服务。',
+    'features.bks_ai.1': '智能意图分流：精准识别咨询、订单查询与通用闲聊场景',
+    'features.bks_ai.2': '联网深度搜索：实时检索网络信息并进行结构化总结',
+    'features.bks_ai.3': '专属知识库：提供 Bks-AI 相关的专业业务解答',
+    'features.bks_ai.4': '多路召回融合：综合搜索结果、知识库与大模型生成回复',
 
     // Workflows - AI 简历助手
     'workflow.resume.title': 'AI 简历助手',
