@@ -18,8 +18,8 @@ function App() {
         <main>
           <Hero />
           <WorkflowShowcase />
-          <CommunityVibeVault />
           <WayToSuperAgent />
+          <CommunityVibeVault />
           <About />
           <Contribute />
         </main>

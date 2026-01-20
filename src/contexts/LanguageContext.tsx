@@ -15,8 +15,8 @@ const translations = {
     // Navigation
     'nav.home': 'Home',
     'nav.workflows': 'Workflows',
-    'nav.community': 'Community Vibe Vault',
     'nav.wayToSuperAgent': 'WayToSuperAgent',
+    'nav.community': 'Community Vibe Vault',
     'nav.about': 'About',
     'nav.contribute': 'Contribute',
     'language.toggle': '中文',
@@ -294,8 +294,8 @@ const translations = {
     // Navigation
     'nav.home': '首页',
     'nav.workflows': '工作流',
-    'nav.community': '社区氛围宝库',
     'nav.wayToSuperAgent': 'WayToSuperAgent',
+    'nav.community': '社区氛围宝库',
     'nav.about': '关于',
     'nav.contribute': '贡献',
     'language.toggle': 'English',
