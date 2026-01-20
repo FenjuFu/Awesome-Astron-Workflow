@@ -281,6 +281,9 @@ const translations = {
     'way.showcase.youtube': 'Astron Agent YouTube Playlist',
     'way.showcase.vimeo': 'Astron Agent Video Showcase (Vimeo)',
     'way.showcase.x': 'Astron Agent X(Twitter) Video List',
+    'way.slides.title': 'Slides',
+    'way.slides.description': 'Presentation slides from conferences and meetups',
+    'way.slides.huqi': 'Astron Quick Build and Apply Agent by HuQi',
 
     'footer.description': 'A curated collection of powerful AI-driven workflows for Astron automation platform.',
     'footer.quickLinks': 'Quick Links',
@@ -560,6 +563,9 @@ const translations = {
     'way.showcase.youtube': 'Astron Agent YouTube 播放列表',
     'way.showcase.vimeo': 'Astron Agent 视频演示合集 (Vimeo)',
     'way.showcase.x': 'Astron Agent X(Twitter) 视频列表',
+    'way.slides.title': 'Slides',
+    'way.slides.description': '来自会议和聚会的演示幻灯片',
+    'way.slides.huqi': 'Astron 助力智能体快速构建与应用 by 胡琦',
 
     'footer.description': '专为 Astron 自动化平台设计的强大 AI 驱动工作流精选集合。',
     'footer.quickLinks': '快速链接',

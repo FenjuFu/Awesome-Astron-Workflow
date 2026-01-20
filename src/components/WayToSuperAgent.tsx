@@ -1,5 +1,5 @@
 import React from 'react';
-import { Video, Mic, PlayCircle, ExternalLink, Youtube, Twitter, GraduationCap } from 'lucide-react';
+import { Video, Mic, PlayCircle, ExternalLink, Youtube, Twitter, GraduationCap, Presentation, FileText } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const WayToSuperAgent: React.FC = () => {
@@ -20,7 +20,7 @@ const WayToSuperAgent: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Talk Section */}
           <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-8 shadow-lg border border-indigo-100 transition-transform duration-300 hover:scale-[1.02]">
             <div className="flex items-center mb-6">
@@ -114,6 +114,38 @@ const WayToSuperAgent: React.FC = () => {
                     </span>
                   </div>
                   <ExternalLink className="h-4 w-4 text-gray-400 group-hover:text-slate-500" />
+                </div>
+              </a>
+            </div>
+          </div>
+
+          {/* Slides Section */}
+          <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 shadow-lg border border-orange-100 transition-transform duration-300 hover:scale-[1.02]">
+            <div className="flex items-center mb-6">
+              <div className="p-3 bg-white rounded-xl shadow-sm mr-4">
+                <Presentation className="h-8 w-8 text-orange-600" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">{t('way.slides.title')}</h3>
+                <p className="text-sm text-gray-500 mt-1">{t('way.slides.description')}</p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <a 
+                href="/slides/Astron_Quick_Build_and_Apply_Agent_by_HuQi.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group block bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:border-orange-200"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <FileText className="h-6 w-6 text-orange-500 mr-3 group-hover:scale-110 transition-transform" />
+                    <span className="font-medium text-gray-900 group-hover:text-orange-600 transition-colors line-clamp-2">
+                      {t('way.slides.huqi')}
+                    </span>
+                  </div>
+                  <ExternalLink className="h-4 w-4 text-gray-400 group-hover:text-orange-500 flex-shrink-0" />
                 </div>
               </a>
             </div>
