@@ -24,29 +24,29 @@ const FloatingVideo: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 animate-fade-in bg-black">
-      <div className="relative w-full h-full">
+    <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 animate-fade-in-up">
+      <div className="relative group rounded-2xl overflow-hidden shadow-2xl border-4 border-white/50 w-80 md:w-96 aspect-video bg-black transition-all duration-300">
         {/* Controls Overlay */}
-        <div className="absolute top-4 right-4 md:top-8 md:right-8 z-20 flex gap-2">
+        <div className="absolute top-2 right-2 z-20 flex gap-2">
           <button 
             onClick={(e) => {
               e.stopPropagation();
               setIsMuted(!isMuted);
             }}
-            className="p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
+            className="p-1.5 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
             title={isMuted ? "Unmute" : "Mute"}
           >
-            {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+            {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
           </button>
           <button 
             onClick={(e) => {
               e.stopPropagation();
               setIsVisible(false);
             }}
-            className="p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
+            className="p-1.5 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
             title="Close"
           >
-            <X size={24} />
+            <X size={16} />
           </button>
         </div>
 
@@ -56,10 +56,10 @@ const FloatingVideo: React.FC = () => {
             className="absolute inset-0 z-10 flex flex-col items-center justify-center cursor-pointer bg-black/30 hover:bg-black/40 transition-colors group/overlay"
             onClick={() => setIsMuted(false)}
           >
-            <div className="bg-black/60 p-4 rounded-full backdrop-blur-sm transform transition-all duration-300 group-hover/overlay:scale-110 mb-4">
-               <VolumeX className="text-white h-12 w-12" />
+            <div className="bg-black/60 p-3 rounded-full backdrop-blur-sm transform transition-all duration-300 group-hover/overlay:scale-110 mb-2">
+               <VolumeX className="text-white h-6 w-6" />
             </div>
-            <span className="text-white text-lg font-medium bg-black/60 px-4 py-2 rounded-md backdrop-blur-sm opacity-0 group-hover/overlay:opacity-100 transition-opacity duration-300">
+            <span className="text-white text-xs font-medium bg-black/60 px-2 py-1 rounded-md backdrop-blur-sm opacity-0 group-hover/overlay:opacity-100 transition-opacity duration-300">
               Click to Unmute
             </span>
           </div>
@@ -72,13 +72,13 @@ const FloatingVideo: React.FC = () => {
           loop
           muted={isMuted}
           playsInline
-          className="w-full h-full object-contain bg-black"
+          className="w-full h-full object-cover bg-black"
           onClick={() => setIsMuted(!isMuted)}
         />
 
         {/* Caption/Label */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-          <p className="text-white text-xl font-bold text-center">
+        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+          <p className="text-white text-sm font-bold text-center">
             🎉 Astron Party
           </p>
         </div>
