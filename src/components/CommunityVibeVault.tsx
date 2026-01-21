@@ -48,21 +48,21 @@ const CommunityVibeVault: React.FC = () => {
   ];
 
   const tracks = [
-    { id: '1', title: 'Gilded Midnight Stomp', duration: '2:30', artist: 'jazz, broadway, cabaret, big band', src: '/music/Gilded Midnight Stomp.mp3' },
-    { id: '2', title: 'Midnight Teacup Tumble', duration: '3:15', artist: 'jazz, broadway, cabaret, big band', src: '/music/Midnight Teacup Tumble.mp3' },
-    { id: '3', title: 'Playful Teacups in Afternoon Sun', duration: '2:45', artist: 'jazz, broadway, cabaret, big band', src: '/music/Playful Teacups in Afternoon Sun.mp3' },
-    { id: '4', title: 'Breaking Bulletin', duration: '3:00', artist: 'jazz, broadway, cabaret, big band', src: '/music/Breaking Bulletin.mp3' },
-    { id: '5', title: 'Cathedrals of Tomorrow', duration: '3:00', artist: 'jazz, broadway, cabaret, big band', src: '/music/Cathedrals of Tomorrow.mp3' },
-    { id: '6', title: 'Celeste Over Kowloon', duration: '3:00', artist: 'jazz, broadway, cabaret, big band', src: '/music/Celeste Over Kowloon.mp3' },
-    { id: '7', title: 'Girasol', duration: '3:00', artist: 'jazz, broadway, cabaret, big band', src: '/music/Girasol.mp3' },
-    { id: '8', title: 'GLITTER BULLET', duration: '3:00', artist: 'jazz, broadway, cabaret, big band', src: '/music/GLITTER BULLET.mp3' },
-    { id: '9', title: 'Glitter on the Floor', duration: '3:00', artist: 'jazz, broadway, cabaret, big band', src: '/music/Glitter on the Floor.mp3' },
-    { id: '10', title: 'Midnight On Maple Street', duration: '3:00', artist: 'jazz, broadway, cabaret, big band', src: '/music/Midnight On Maple Street.mp3' },
-    { id: '11', title: 'Midnight Tea For Two', duration: '3:00', artist: 'jazz, broadway, cabaret, big band', src: '/music/Midnight Tea For Two.mp3' },
-    { id: '12', title: 'Red Walk Beneath The Tower', duration: '3:00', artist: 'jazz, broadway, cabaret, big band', src: '/music/Red Walk Beneath The Tower.mp3' },
-    { id: '13', title: 'Retro Holiday Glow', duration: '3:00', artist: 'jazz, broadway, cabaret, big band', src: '/music/Retro Holiday Glow.mp3' },
-    { id: '14', title: 'Verano Sobre Asfalto', duration: '3:00', artist: 'jazz, broadway, cabaret, big band', src: '/music/Verano Sobre Asfalto.mp3' },
-    { id: '15', title: 'Walnut Room Prelude', duration: '3:00', artist: 'jazz, broadway, cabaret, big band', src: '/music/Walnut Room Prelude.mp3' },
+    { id: '1', title: 'Gilded Midnight Stomp', duration: '2:30', artist: 'folk, jazz, swing', src: '/music/Gilded Midnight Stomp.mp3' },
+    { id: '2', title: 'Midnight Teacup Tumble', duration: '3:15', artist: 'pop, chamber pop, bossa nova', src: '/music/Midnight Teacup Tumble.mp3' },
+    { id: '3', title: 'Playful Teacups in Afternoon Sun', duration: '2:45', artist: 'electronic, orchestral', src: '/music/Playful Teacups in Afternoon Sun.mp3' },
+    { id: '4', title: 'Breaking Bulletin', duration: '3:00', artist: 'baroque', src: '/music/Breaking Bulletin.mp3' },
+    { id: '5', title: 'Cathedrals of Tomorrow', duration: '3:00', artist: 'lo-fi, nostalgic, soundtrack', src: '/music/Cathedrals of Tomorrow.mp3' },
+    { id: '6', title: 'Celeste Over Kowloon', duration: '3:00', artist: 'lo-fi, nostalgic, soundtrack', src: '/music/Celeste Over Kowloon.mp3' },
+    { id: '7', title: 'Girasol', duration: '3:00', artist: 'folk, indie-folk', src: '/music/Girasol.mp3' },
+    { id: '8', title: 'GLITTER BULLET', duration: '3:00', artist: 'rap, edm, k-pop, moombahton', src: '/music/GLITTER BULLET.mp3' },
+    { id: '9', title: 'Glitter on the Floor', duration: '3:00', artist: 'funk, disco, pop', src: '/music/Glitter on the Floor.mp3' },
+    { id: '10', title: 'Midnight On Maple Street', duration: '3:00', artist: 'jazz, motown, soul', src: '/music/Midnight On Maple Street.mp3' },
+    { id: '11', title: 'Midnight Tea For Two', duration: '3:00', artist: 'rock, Gothic rock, post-punk', src: '/music/Midnight Tea For Two.mp3' },
+    { id: '12', title: 'Red Walk Beneath The Tower', duration: '3:00', artist: 'pop', src: '/music/Red Walk Beneath The Tower.mp3' },
+    { id: '13', title: 'Retro Holiday Glow', duration: '3:00', artist: 'pop', src: '/music/Retro Holiday Glow.mp3' },
+    { id: '14', title: 'Verano Sobre Asfalto', duration: '3:00', artist: 'rap, Latin trap-salsa fusion', src: '/music/Verano Sobre Asfalto.mp3' },
+    { id: '15', title: 'Walnut Room Prelude', duration: '3:00', artist: 'classical, baroque, acoustic', src: '/music/Walnut Room Prelude.mp3' },
   ];
 
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
@@ -272,14 +272,13 @@ const CommunityVibeVault: React.FC = () => {
             </div>
             <div className="mt-6 p-4 bg-indigo-50 rounded-lg border-2 border-indigo-200 shadow-sm">
               <div className="flex flex-col items-center space-y-4">
-                <h4 className="text-sm font-bold text-indigo-900 uppercase tracking-wider">Astron 开发活动与视频创作的精选背景音乐素材</h4>
+                <h4 className="text-sm font-bold text-indigo-900 uppercase tracking-wider">
+                  Astron 开发活动与视频创作的精选背景音乐素材 / Curated BGM for Astron Development & Video Creation
+                </h4>
                 {/* Now Playing Info */}
                 <div className="text-center">
                    <p className="text-sm font-medium text-gray-900">
                      {playing ? tracks.find(t => t.id === playing)?.title : "Select a track"}
-                   </p>
-                   <p className="text-xs text-gray-500">
-                     {playing ? tracks.find(t => t.id === playing)?.artist : "jazz, broadway, cabaret, big band"}
                    </p>
                 </div>
 
