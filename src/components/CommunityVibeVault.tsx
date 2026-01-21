@@ -1,10 +1,11 @@
 import React from 'react';
-import { Music, Image as ImageIcon, Play, Pause, Download, Gift, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Music, Image as ImageIcon, Play, Pause, Download, Gift, ChevronLeft, ChevronRight, Repeat, Repeat1, Shuffle, SkipBack, SkipForward } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const CommunityVibeVault: React.FC = () => {
   const { t } = useLanguage();
   const [playing, setPlaying] = React.useState<string | null>(null);
+  const [playMode, setPlayMode] = React.useState<'repeat' | 'loop' | 'shuffle'>('repeat');
   const [currentSwagIndex, setCurrentSwagIndex] = React.useState(0);
 
   // Auto-play for Swag Carousel
