@@ -137,7 +137,7 @@ const CommunityVibeVault: React.FC = () => {
               <Music className="h-8 w-8 text-indigo-600 mr-3" />
               <h3 className="text-2xl font-bold text-gray-900">{t('community.music')}</h3>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
               {tracks.map((track) => (
                 <div 
                   key={track.id}
