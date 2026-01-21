@@ -175,12 +175,66 @@ const CommunityVibeVault: React.FC = () => {
                 </div>
               ))}
             </div>
-            <div className="mt-8 p-4 bg-indigo-50 rounded-lg border border-indigo-100">
-              <p className="text-sm text-indigo-700 text-center">
-                🎵 Music player visualization placeholder - Click play to toggle state
-              </p>
+            <div className="mt-6 p-4 bg-indigo-50 rounded-lg border border-indigo-100">
+              <div className="flex flex-col items-center space-y-4">
+                {/* Now Playing Info */}
+                <div className="text-center">
+                   <p className="text-sm font-medium text-gray-900">
+                     {playing ? tracks.find(t => t.id === playing)?.title : "Select a track"}
+                   </p>
+                   <p className="text-xs text-gray-500">
+                     {playing ? tracks.find(t => t.id === playing)?.artist : "Astron AI"}
+                   </p>
+                </div>
+
+                {/* Controls */}
+                <div className="flex items-center space-x-6">
+                  <button 
+                    onClick={togglePlayMode}
+                    className="p-2 text-gray-500 hover:text-indigo-600 transition-colors"
+                    title={`Mode: ${playMode}`}
+                  >
+                    {playMode === 'repeat' && <Repeat className="h-5 w-5" />}
+                    {playMode === 'loop' && <Repeat1 className="h-5 w-5" />}
+                    {playMode === 'shuffle' && <Shuffle className="h-5 w-5" />}
+                  </button>
+
+                  <button 
+                    onClick={playPrev}
+                    className="p-2 text-gray-700 hover:text-indigo-600 transition-colors"
+                  >
+                    <SkipBack className="h-6 w-6" />
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      if (playing) {
+                        setPlaying(null);
+                      } else if (tracks.length > 0) {
+                        setPlaying(tracks[0].id);
+                      }
+                    }}
+                    className="p-4 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 shadow-lg transition-transform transform active:scale-95"
+                  >
+                    {playing ? (
+                      <Pause className="h-6 w-6" />
+                    ) : (
+                      <Play className="h-6 w-6 ml-1" />
+                    )}
+                  </button>
+
+                  <button 
+                    onClick={playNext}
+                    className="p-2 text-gray-700 hover:text-indigo-600 transition-colors"
+                  >
+                    <SkipForward className="h-6 w-6" />
+                  </button>
+
+                  <div className="w-9 h-9" /> {/* Spacer for balance */}
+                </div>
+              </div>
             </div>
-            <audio ref={audioRef} onEnded={() => setPlaying(null)} />
+            <audio ref={audioRef} onEnded={handleTrackEnd} />
           </div>
 
           {/* Swag Section */}
