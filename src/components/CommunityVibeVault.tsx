@@ -66,6 +66,78 @@ const CommunityVibeVault: React.FC = () => {
 
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
 
+  const handleTrackEnd = () => {
+    if (!playing) return;
+
+    const currentIndex = tracks.findIndex(t => t.id === playing);
+    if (currentIndex === -1) return;
+
+    if (playMode === 'loop') {
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().catch(console.error);
+      }
+    } else if (playMode === 'shuffle') {
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * tracks.length);
+      } while (nextIndex === currentIndex && tracks.length > 1);
+      setPlaying(tracks[nextIndex].id);
+    } else {
+      // repeat (list loop)
+      const nextIndex = (currentIndex + 1) % tracks.length;
+      setPlaying(tracks[nextIndex].id);
+    }
+  };
+
+  const playNext = () => {
+    if (!playing && tracks.length > 0) {
+      setPlaying(tracks[0].id);
+      return;
+    }
+    const currentIndex = tracks.findIndex(t => t.id === playing);
+    if (currentIndex === -1) return;
+
+    if (playMode === 'shuffle') {
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * tracks.length);
+      } while (nextIndex === currentIndex && tracks.length > 1);
+      setPlaying(tracks[nextIndex].id);
+    } else {
+      const nextIndex = (currentIndex + 1) % tracks.length;
+      setPlaying(tracks[nextIndex].id);
+    }
+  };
+
+  const playPrev = () => {
+    if (!playing && tracks.length > 0) {
+      setPlaying(tracks[0].id);
+      return;
+    }
+    const currentIndex = tracks.findIndex(t => t.id === playing);
+    if (currentIndex === -1) return;
+
+    if (playMode === 'shuffle') {
+      let prevIndex;
+      do {
+        prevIndex = Math.floor(Math.random() * tracks.length);
+      } while (prevIndex === currentIndex && tracks.length > 1);
+      setPlaying(tracks[prevIndex].id);
+    } else {
+      const prevIndex = (currentIndex - 1 + tracks.length) % tracks.length;
+      setPlaying(tracks[prevIndex].id);
+    }
+  };
+
+  const togglePlayMode = () => {
+    setPlayMode(current => {
+      if (current === 'repeat') return 'loop';
+      if (current === 'loop') return 'shuffle';
+      return 'repeat';
+    });
+  };
+
   React.useEffect(() => {
     if (audioRef.current) {
       if (playing) {
