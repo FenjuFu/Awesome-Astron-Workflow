@@ -175,8 +175,9 @@ const CommunityVibeVault: React.FC = () => {
                 </div>
               ))}
             </div>
-            <div className="mt-6 p-4 bg-indigo-50 rounded-lg border border-indigo-100">
+            <div className="mt-6 p-4 bg-indigo-50 rounded-lg border-2 border-indigo-200 shadow-sm">
               <div className="flex flex-col items-center space-y-4">
+                <h4 className="text-sm font-bold text-indigo-900 uppercase tracking-wider">Music Player</h4>
                 {/* Now Playing Info */}
                 <div className="text-center">
                    <p className="text-sm font-medium text-gray-900">
