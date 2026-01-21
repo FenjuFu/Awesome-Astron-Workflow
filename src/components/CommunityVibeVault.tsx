@@ -218,9 +218,20 @@ const CommunityVibeVault: React.FC = () => {
 
           {/* Music Section */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
-            <div className="flex items-center mb-6">
-              <Music className="h-8 w-8 text-indigo-600 mr-3" />
-              <h3 className="text-2xl font-bold text-gray-900">{t('community.music')}</h3>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center">
+                <Music className="h-8 w-8 text-indigo-600 mr-3" />
+                <h3 className="text-2xl font-bold text-gray-900">{t('community.music')}</h3>
+              </div>
+              <a 
+                href="https://github.com/FenjuFu/Awesome-Astron-Workflow/tree/master/Colorful%20Astron%20Life" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-sm text-indigo-600 hover:text-indigo-800 font-medium flex items-center"
+              >
+                <Download className="h-4 w-4 mr-1" />
+                Download All
+              </a>
             </div>
             <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
               {tracks.map((track) => (
@@ -244,7 +255,18 @@ const CommunityVibeVault: React.FC = () => {
                       <p className="text-sm text-gray-500">{track.artist}</p>
                     </div>
                   </div>
-                  <span className="text-sm font-medium text-gray-500">{track.duration}</span>
+                  <div className="flex items-center space-x-3">
+                    <span className="text-sm font-medium text-gray-500">{track.duration}</span>
+                    <a
+                      href={track.src}
+                      download
+                      className="p-2 text-gray-400 hover:text-indigo-600 transition-colors rounded-full hover:bg-indigo-100"
+                      title="Download"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Download className="h-5 w-5" />
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
