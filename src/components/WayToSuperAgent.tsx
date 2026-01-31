@@ -50,23 +50,6 @@ const WayToSuperAgent: React.FC = () => {
                   <ExternalLink className="h-4 w-4 text-gray-400 group-hover:text-indigo-500" />
                 </div>
               </a>
-
-              <a 
-                href="/slides/Practical Integration of Astron Agent and RPA.pptx" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group block bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:border-orange-200"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <FileText className="h-6 w-6 text-orange-500 mr-3 group-hover:scale-110 transition-transform" />
-                    <span className="font-medium text-gray-900 group-hover:text-orange-600 transition-colors line-clamp-2">
-                      {t('way.slides.rpa')}
-                    </span>
-                  </div>
-                  <ExternalLink className="h-4 w-4 text-gray-400 group-hover:text-orange-500 flex-shrink-0" />
-                </div>
-              </a>
             </div>
           </div>
 
@@ -160,6 +143,23 @@ const WayToSuperAgent: React.FC = () => {
                     <FileText className="h-6 w-6 text-orange-500 mr-3 group-hover:scale-110 transition-transform" />
                     <span className="font-medium text-gray-900 group-hover:text-orange-600 transition-colors line-clamp-2">
                       {t('way.slides.huqi')}
+                    </span>
+                  </div>
+                  <ExternalLink className="h-4 w-4 text-gray-400 group-hover:text-orange-500 flex-shrink-0" />
+                </div>
+              </a>
+
+              <a 
+                href="/slides/Practical Integration of Astron Agent and RPA.pptx" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group block bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:border-orange-200"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <FileText className="h-6 w-6 text-orange-500 mr-3 group-hover:scale-110 transition-transform" />
+                    <span className="font-medium text-gray-900 group-hover:text-orange-600 transition-colors line-clamp-2">
+                      {t('way.slides.rpa')}
                     </span>
                   </div>
                   <ExternalLink className="h-4 w-4 text-gray-400 group-hover:text-orange-500 flex-shrink-0" />
