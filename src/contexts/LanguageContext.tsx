@@ -266,6 +266,8 @@ const translations = {
     'community.title': 'Astron Community Vibe Vault',
     'community.subtitle': 'Explore the fun side of our community with memes and music!',
     'community.memes': 'Community Memes',
+    'community.memes.horse': 'Astron Celebrates the Year of the Horse',
+    'community.memes.life': 'Colorful Astron Life',
     'community.music': 'Vibe Music',
     'community.musicDescription': 'Curated BGM for Astron Development & Video Creation',
     'community.swag': 'Astron Swag',
@@ -285,6 +287,7 @@ const translations = {
     'way.slides.title': 'Slides',
     'way.slides.description': 'Presentation slides from conferences and meetups',
     'way.slides.huqi': 'Astron Quick Build and Apply Agent by HuQi',
+    'way.slides.rpa': 'Practical Integration of Astron Agent and RPA',
 
     'footer.description': 'A curated collection of powerful AI-driven workflows for Astron automation platform.',
     'footer.quickLinks': 'Quick Links',
@@ -549,6 +552,8 @@ const translations = {
     'community.title': 'Astron 社区氛围宝库',
     'community.subtitle': '探索社区有趣的一面，尽享表情包与音乐！',
     'community.memes': '社区表情包',
+    'community.memes.horse': 'Astron 庆马年',
+    'community.memes.life': '多彩 Astron 生活',
     'community.music': '氛围音乐',
     'community.musicDescription': 'Astron 开发活动与视频创作的精选背景音乐素材',
     'community.swag': 'Astron 周边',
@@ -568,6 +573,7 @@ const translations = {
     'way.slides.title': 'Slides',
     'way.slides.description': '来自会议和聚会的演示幻灯片',
     'way.slides.huqi': 'Astron 助力智能体快速构建与应用 by 胡琦',
+    'way.slides.rpa': 'Astron Agent 与 RPA 的实战融合',
 
     'footer.description': '专为 Astron 自动化平台设计的强大 AI 驱动工作流精选集合。',
     'footer.quickLinks': '快速链接',

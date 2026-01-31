@@ -24,7 +24,7 @@ const CommunityVibeVault: React.FC = () => {
     setCurrentSwagIndex((prev) => (prev - 1 + 5) % 5);
   };
 
-  const memes = [
+  const lifeMemes = [
     { id: 1, src: "/memes/CHILL.png", alt: "CHILL" },
     { id: 2, src: "/memes/OMG.png", alt: "OMG" },
     { id: 3, src: "/memes/STRONG.png", alt: "STRONG" },
@@ -47,19 +47,47 @@ const CommunityVibeVault: React.FC = () => {
     { id: 20, src: "/memes/酷.png", alt: "Cool" },
   ];
 
+  const horseMemes = [
+    { id: 1, src: "/memes/horse_year/10信马由缰.png", alt: "信马由缰" },
+    { id: 2, src: "/memes/horse_year/11走马观花.png", alt: "走马观花" },
+    { id: 3, src: "/memes/horse_year/12骑驴找马.png", alt: "骑驴找马" },
+    { id: 4, src: "/memes/horse_year/13马首是瞻.png", alt: "马首是瞻" },
+    { id: 5, src: "/memes/horse_year/14鞍前马后.png", alt: "鞍前马后" },
+    { id: 6, src: "/memes/horse_year/15马杀鸡.png", alt: "马杀鸡" },
+    { id: 7, src: "/memes/horse_year/16溜须拍马.png", alt: "溜须拍马" },
+    { id: 8, src: "/memes/horse_year/17马上就要.png", alt: "马上就要" },
+    { id: 9, src: "/memes/horse_year/18马不停蹄.png", alt: "马不停蹄" },
+    { id: 10, src: "/memes/horse_year/19人仰马翻.png", alt: "人仰马翻" },
+    { id: 11, src: "/memes/horse_year/1马年大吉.png", alt: "马年大吉" },
+    { id: 12, src: "/memes/horse_year/20下马赔罪.png", alt: "下马赔罪" },
+    { id: 13, src: "/memes/horse_year/21这说不通.png", alt: "这说不通" },
+    { id: 14, src: "/memes/horse_year/22马马虎虎.png", alt: "马马虎虎" },
+    { id: 15, src: "/memes/horse_year/23心猿意马.png", alt: "心猿意马" },
+    { id: 16, src: "/memes/horse_year/24人困马乏.png", alt: "人困马乏" },
+    { id: 17, src: "/memes/horse_year/25star.png", alt: "star" },
+    { id: 18, src: "/memes/horse_year/2立马发财.png", alt: "立马发财" },
+    { id: 19, src: "/memes/horse_year/3求红包.png", alt: "求红包" },
+    { id: 20, src: "/memes/horse_year/4谢谢.png", alt: "谢谢" },
+    { id: 21, src: "/memes/horse_year/5马到成功.png", alt: "马到成功" },
+    { id: 22, src: "/memes/horse_year/6鸿运当头.png", alt: "鸿运当头" },
+    { id: 23, src: "/memes/horse_year/7一马当先.png", alt: "一马当先" },
+    { id: 24, src: "/memes/horse_year/8兵强马壮.png", alt: "兵强马壮" },
+    { id: 25, src: "/memes/horse_year/9老马识途.png", alt: "老马识途" },
+  ];
+
   const tracks = [
     { id: '1', title: 'Gilded Midnight Stomp', duration: '2:30', artist: 'folk, jazz, swing', src: '/music/Gilded Midnight Stomp.mp3' },
     { id: '2', title: 'Midnight Teacup Tumble', duration: '3:15', artist: 'pop, chamber pop, bossa nova', src: '/music/Midnight Teacup Tumble.mp3' },
-    { id: '3', title: 'Playful Teacups in Afternoon Sun', duration: '2:45', artist: 'electronic, orchestral', src: '/music/Playful Teacups in Afternoon Sun.mp3' },
-    { id: '4', title: 'Breaking Bulletin', duration: '3:00', artist: 'baroque', src: '/music/Breaking Bulletin.mp3' },
-    { id: '5', title: 'Cathedrals of Tomorrow', duration: '3:00', artist: 'lo-fi, nostalgic, soundtrack', src: '/music/Cathedrals of Tomorrow.mp3' },
+    { id: '3', title: 'Playful Teacups in Afternoon Sun', duration: '2:45', artist: 'pop, chamber pop, bossa nova', src: '/music/Playful Teacups in Afternoon Sun.mp3' },
+    { id: '4', title: 'Breaking Bulletin', duration: '3:00', artist: 'electronic, orchestral', src: '/music/Breaking Bulletin.mp3' },
+    { id: '5', title: 'Cathedrals of Tomorrow', duration: '3:00', artist: 'baroque', src: '/music/Cathedrals of Tomorrow.mp3' },
     { id: '6', title: 'Celeste Over Kowloon', duration: '3:00', artist: 'lo-fi, nostalgic, soundtrack', src: '/music/Celeste Over Kowloon.mp3' },
     { id: '7', title: 'Girasol', duration: '3:00', artist: 'folk, indie-folk', src: '/music/Girasol.mp3' },
     { id: '8', title: 'GLITTER BULLET', duration: '3:00', artist: 'rap, edm, k-pop, moombahton', src: '/music/GLITTER BULLET.mp3' },
     { id: '9', title: 'Glitter on the Floor', duration: '3:00', artist: 'funk, disco, pop', src: '/music/Glitter on the Floor.mp3' },
     { id: '10', title: 'Midnight On Maple Street', duration: '3:00', artist: 'jazz, motown, soul', src: '/music/Midnight On Maple Street.mp3' },
-    { id: '11', title: 'Midnight Tea For Two', duration: '3:00', artist: 'rock, Gothic rock, post-punk', src: '/music/Midnight Tea For Two.mp3' },
-    { id: '12', title: 'Red Walk Beneath The Tower', duration: '3:00', artist: 'pop', src: '/music/Red Walk Beneath The Tower.mp3' },
+    { id: '11', title: 'Midnight Tea For Two', duration: '3:00', artist: 'lo-fi, nostalgic, soundtrack', src: '/music/Midnight Tea For Two.mp3' },
+    { id: '12', title: 'Red Walk Beneath The Tower', duration: '3:00', artist: 'rock, Gothic rock, post-punk', src: '/music/Red Walk Beneath The Tower.mp3' },
     { id: '13', title: 'Retro Holiday Glow', duration: '3:00', artist: 'pop', src: '/music/Retro Holiday Glow.mp3' },
     { id: '14', title: 'Verano Sobre Asfalto', duration: '3:00', artist: 'rap, Latin trap-salsa fusion', src: '/music/Verano Sobre Asfalto.mp3' },
     { id: '15', title: 'Walnut Room Prelude', duration: '3:00', artist: 'classical, baroque, acoustic', src: '/music/Walnut Room Prelude.mp3' },
@@ -187,31 +215,74 @@ const CommunityVibeVault: React.FC = () => {
                 <ImageIcon className="h-8 w-8 text-indigo-600 mr-3" />
                 <h3 className="text-2xl font-bold text-gray-900">{t('community.memes')}</h3>
               </div>
-              <a 
-                href="https://github.com/FenjuFu/Awesome-Astron-Workflow/tree/master/Colorful%20Astron%20Life" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-sm text-indigo-600 hover:text-indigo-800 font-medium flex items-center"
-              >
-                <Download className="h-4 w-4 mr-1" />
-                Download All
-              </a>
             </div>
-            <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
-              {memes.map((meme) => (
-                <div key={meme.id} className="relative group overflow-hidden rounded-lg aspect-square">
-                  <img 
-                    src={meme.src} 
-                    alt={meme.alt}
-                    className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                      <a href={meme.src} download className="p-2 bg-white/90 rounded-full text-indigo-600 hover:text-indigo-800">
-                          <Download className="h-4 w-4" />
-                      </a>
+            
+            {/* Horse Year Memes */}
+            <div className="mb-8">
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="text-lg font-bold text-gray-800 border-l-4 border-indigo-600 pl-3">
+                  {t('community.memes.horse')}
+                </h4>
+                <a 
+                  href="https://github.com/FenjuFu/Awesome-Astron-Workflow/tree/master/Astron%20Celebrates%20the%20Year%20of%20the%20Horse" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-sm text-indigo-600 hover:text-indigo-800 font-medium flex items-center"
+                >
+                  <Download className="h-4 w-4 mr-1" />
+                  Download All
+                </a>
+              </div>
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                {horseMemes.map((meme) => (
+                  <div key={`horse-${meme.id}`} className="relative group overflow-hidden rounded-lg aspect-square">
+                    <img 
+                      src={meme.src} 
+                      alt={meme.alt}
+                      className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <a href={meme.src} download className="p-2 bg-white/90 rounded-full text-indigo-600 hover:text-indigo-800">
+                            <Download className="h-4 w-4" />
+                        </a>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Life Memes */}
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="text-lg font-bold text-gray-800 border-l-4 border-indigo-600 pl-3">
+                  {t('community.memes.life')}
+                </h4>
+                <a 
+                  href="https://github.com/FenjuFu/Awesome-Astron-Workflow/tree/master/Colorful%20Astron%20Life" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-sm text-indigo-600 hover:text-indigo-800 font-medium flex items-center"
+                >
+                  <Download className="h-4 w-4 mr-1" />
+                  Download All
+                </a>
+              </div>
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                {lifeMemes.map((meme) => (
+                  <div key={`life-${meme.id}`} className="relative group overflow-hidden rounded-lg aspect-square">
+                    <img 
+                      src={meme.src} 
+                      alt={meme.alt}
+                      className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <a href={meme.src} download className="p-2 bg-white/90 rounded-full text-indigo-600 hover:text-indigo-800">
+                            <Download className="h-4 w-4" />
+                        </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
