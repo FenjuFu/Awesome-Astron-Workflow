@@ -195,6 +195,15 @@ const CommunityVibeVault: React.FC = () => {
     { id: 5, src: '/red_packets/马上轻松发财.jpeg', alt: '马上轻松发财' },
   ];
 
+  const eventSwag = [
+    { id: 1, src: '/swag/event/4Y4A6315.JPG', alt: 'Event Swag 1' },
+    { id: 2, src: '/swag/event/4Y4A6316.JPG', alt: 'Event Swag 2' },
+    { id: 3, src: '/swag/event/4Y4A6317.JPG', alt: 'Event Swag 3' },
+    { id: 4, src: '/swag/event/4Y4A6319.JPG', alt: 'Event Swag 4' },
+    { id: 5, src: '/swag/event/4Y4A6323.JPG', alt: 'Event Swag 5' },
+    { id: 6, src: '/swag/event/4Y4A6324.JPG', alt: 'Event Swag 6' },
+  ];
+
   return (
     <section id="community" className="py-20 bg-gradient-to-b from-purple-50 to-indigo-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -513,6 +522,33 @@ const CommunityVibeVault: React.FC = () => {
                    ))}
                  </div>
                </div>
+            </div>
+
+            {/* Event Swag Section */}
+            <div className="mt-12 pt-8 border-t border-gray-100">
+              <h4 className="text-lg font-medium text-gray-900 mb-6">{t('swag.event')}</h4>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                {eventSwag.map((item) => (
+                  <div key={item.id} className="relative group overflow-hidden rounded-xl shadow-md aspect-[4/3] bg-gray-100">
+                    <img 
+                      src={item.src} 
+                      alt={item.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                    />
+                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <a 
+                          href={item.src} 
+                          download 
+                          className="p-3 bg-white/90 rounded-full text-indigo-600 hover:text-indigo-800 hover:scale-110 transition-all duration-200 shadow-lg"
+                          title={t('swag.download')}
+                        >
+                            <Download className="h-5 w-5" />
+                        </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

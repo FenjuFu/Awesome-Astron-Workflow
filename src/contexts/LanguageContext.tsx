@@ -272,6 +272,7 @@ const translations = {
     'community.musicDescription': 'Curated BGM for Astron Development & Video Creation',
     'community.swag': 'Astron Swag',
     'swag.redPackets': 'Astron Horse Year Red Envelope / Hóngbāo',
+    'swag.event': 'Astron Event Swag',
     'swag.download': 'Download',
 
     'way.title': 'WayToSuperAgent',
@@ -558,6 +559,7 @@ const translations = {
     'community.musicDescription': 'Astron 开发活动与视频创作的精选背景音乐素材',
     'community.swag': 'Astron 周边',
     'swag.redPackets': 'Astron 星辰马年红包 / Hóngbāo',
+    'swag.event': 'Astron 活动周边',
     'swag.download': '下载',
 
     'way.title': 'WayToSuperAgent',
