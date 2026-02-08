@@ -14,6 +14,7 @@
     - [9. Knowledge Note Cards Organizer](#9-knowledge-note-cards-organizer)
     - [12. WeChat Article Summary](#12-wechat-article-summary)
     - [13. Smart Resume Optimizer](#13-smart-resume-optimizer)
+    - [22. Docs Workflow](#22-docs-workflow)
   - [Creative Writing](#creative-writing)
     - [3. Multi-Platform Content Writing](#3-multi-platform-content-writing)
     - [4. AI Podcast Generator](#4-ai-podcast-generator)
@@ -132,6 +133,20 @@ Each case includes:
 - Multi-turn interaction for information completion
 - Intelligent resume assessment and job recommendations
 - Orchestration of multiple large models
+
+#### 22. Docs Workflow
+
+**Description:** An intelligent Q&A assistant designed to answer questions based on a specific documentation knowledge base. It acts as a dedicated assistant (e.g., for HR inquiries) providing accurate responses solely from the provided documents.
+
+- **User Case:** [Video Showcase](https://www.youtube.com/watch?v=n0gzapUwI3o)
+- **Workflow:** [Docs Workfow.yml](https://github.com/beaucarnes/astronagent/blob/main/Docs%20Workfow.yml)
+
+**Key Features:**
+- **Knowledge Base Integration:** Retrieves information from a specific document repository
+- **Role-Based Q&A:** Configured as a dedicated assistant (e.g., HR support)
+- **Strict Context Adherence:** Answers based solely on provided documentation to ensure accuracy
+- **Concise & Friendly:** Delivers clear, brief, and professional responses
+
 
 ### Creative Writing
 

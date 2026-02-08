@@ -108,6 +108,21 @@ export const workflows: Workflow[] = [
     category: 'productivity',
     event: 'Astron Training Camp · Cohort #1'
   },
+  {
+    id: 'docs-workflow',
+    title: 'workflow.docs_workflow.title',
+    description: 'workflow.docs_workflow.description',
+    userCaseUrl: 'https://www.youtube.com/watch?v=n0gzapUwI3o',
+    workflowUrl: 'https://github.com/beaucarnes/astronagent/blob/main/Docs%20Workfow.yml',
+    features: [
+      'features.docs_workflow.1',
+      'features.docs_workflow.2',
+      'features.docs_workflow.3',
+      'features.docs_workflow.4'
+    ],
+    icon: 'file-text',
+    category: 'productivity'
+  },
 
   // Creative Writing (创意写作)
   {

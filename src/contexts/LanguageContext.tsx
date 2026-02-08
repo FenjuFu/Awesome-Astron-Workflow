@@ -162,6 +162,14 @@ const translations = {
     'features.resume_opt.3': 'Intelligent resume assessment and job recommendations',
     'features.resume_opt.4': 'Orchestration of multiple large models',
 
+    // Workflows - Docs Workflow
+    'workflow.docs_workflow.title': 'Docs Workflow',
+    'workflow.docs_workflow.description': 'An intelligent Q&A assistant designed to answer questions based on a specific documentation knowledge base. It acts as a dedicated assistant (e.g., for HR inquiries) providing accurate responses solely from the provided documents.',
+    'features.docs_workflow.1': 'Knowledge Base Integration: Retrieves information from a specific document repository',
+    'features.docs_workflow.2': 'Role-Based Q&A: Configured as a dedicated assistant (e.g., HR support)',
+    'features.docs_workflow.3': 'Strict Context Adherence: Answers based solely on provided documentation',
+    'features.docs_workflow.4': 'Concise & Friendly: Delivers clear, brief, and professional responses',
+
     // Workflows - Poetic Image Generator
     'workflow.poetic.title': 'Poetic Image Generator',
     'workflow.poetic.description': 'Transforms poetic verses or keywords into visual art by analyzing literary imagery and generating optimized prompts for AI image generation models.',
@@ -448,6 +456,14 @@ const translations = {
     'features.resume_opt.2': '多轮交互补全信息',
     'features.resume_opt.3': '智能简历评估与岗位推荐',
     'features.resume_opt.4': '多大模型与工具编排',
+
+    // Workflows - 文档问答助手
+    'workflow.docs_workflow.title': '文档问答助手 (Docs Workflow)',
+    'workflow.docs_workflow.description': '一个智能问答助手，旨在根据特定的文档知识库回答问题。它充当专属助手（例如 HR 咨询），仅根据提供的文档提供准确的回复。',
+    'features.docs_workflow.1': '知识库集成：从特定文档库中检索信息',
+    'features.docs_workflow.2': '角色化问答：配置为专属助手（如 HR 支持）',
+    'features.docs_workflow.3': '严格上下文遵循：仅依据提供的文档回答，确保准确性',
+    'features.docs_workflow.4': '简洁友好：提供清晰、简短且专业的回复',
 
     // Workflows - 词汇生图
     'workflow.poetic.title': '词汇生图',
