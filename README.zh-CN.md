@@ -15,6 +15,7 @@
     - [公众号文章总结凝练](#12-公众号文章总结凝练)
     - [简历智优通](#13-简历智优通)
     - [文档问答助手 (Docs Workflow)](#22-文档问答助手-docs-workflow)
+    - [AI 研究助手](#26-ai-研究助手)
   - [创意写作](#创意写作)
     - [多平台内容写作](#3-多平台内容写作)
     - [AI 播客生成器](#4-ai-播客生成器)
@@ -29,6 +30,7 @@
     - [历史知识问答小助理](#15-历史知识问答小助理)
     - [KET作文助手](#20-ket作文助手)
   - [代码编程](#代码编程)
+  - [金融理财](#金融理财)
   - [休闲娱乐](#休闲娱乐)
     - [旅行搭子](#11-旅行搭子)
     - [剧荒终结者](#17-剧荒终结者)
@@ -147,6 +149,18 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 - **严格上下文遵循**：仅依据提供的文档回答，确保准确性
 - **简洁友好**：提供清晰、简短且专业的回复
 
+#### 26. AI 研究助手
+
+**描述：** 一个自动化的研究助手，能够执行深度的在线研究。它可以拆解主题，搜索网络，抓取内容，并编制带有引用的结构化研究报告。
+
+- **用户案例：** [视频演示](https://www.youtube.com/watch?v=UUMhR0MkCOc&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=26&t=944s&pp=iAQBsAgC)
+- **工作流：** [ai-research-assistant](https://github.com/moladata/ai-research-assistant)
+
+**主要功能：**
+- 自动化研究规划与执行
+- 深度网络搜索与内容抓取
+- 生成带引用的结构化报告
+- 多源信息综合
 
 ### 创意写作
 
@@ -309,6 +323,21 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 ### 代码编程
 
 （待添加）
+
+### 金融理财
+
+#### 24. Astron Stock Analyzer
+
+**描述：** 一个智能股票分析代理，聚合市场数据，进行技术和基本面分析，并提供投资见解。
+
+- **用户案例：** [视频演示](https://www.youtube.com/watch?v=F4BY49pp2Rs&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=25&pp=iAQBsAgC)
+- **工作流：** [Astron-AI-Agent-StockAnalyzer](https://github.com/DungLai/Astron-AI-Agent-StockAnalyzer)
+
+**主要功能：**
+- 实时股票数据获取
+- 技术指标分析
+- 基本面数据评估
+- 投资报告生成
 
 ### 休闲娱乐
 

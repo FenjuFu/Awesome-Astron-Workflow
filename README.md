@@ -15,6 +15,7 @@
     - [12. WeChat Article Summary](#12-wechat-article-summary)
     - [13. Smart Resume Optimizer](#13-smart-resume-optimizer)
     - [22. Docs Workflow](#22-docs-workflow)
+    - [26. AI Research Assistant](#26-ai-research-assistant)
   - [Creative Writing](#creative-writing)
     - [3. Multi-Platform Content Writing](#3-multi-platform-content-writing)
     - [4. AI Podcast Generator](#4-ai-podcast-generator)
@@ -146,6 +147,19 @@ Each case includes:
 - **Role-Based Q&A:** Configured as a dedicated assistant (e.g., HR support)
 - **Strict Context Adherence:** Answers based solely on provided documentation to ensure accuracy
 - **Concise & Friendly:** Delivers clear, brief, and professional responses
+
+#### 26. AI Research Assistant
+
+**Description:** An open-source AI Research Assistant workflow for Astron Agent. It automates deep online research by breaking down topics, searching the web, scraping content, and compiling structured research reports with citations.
+
+- **User Case:** [Video Showcase](https://www.youtube.com/watch?v=UUMhR0MkCOc&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=26&t=944s&pp=iAQBsAgC)
+- **Workflow:** [ai-research-assistant](https://github.com/moladata/ai-research-assistant)
+
+**Key Features:**
+- Automated research planning and execution
+- Deep web search and content scraping
+- Structured report generation with citations
+- Multi-source information synthesis
 
 
 ### Creative Writing
@@ -309,6 +323,21 @@ Each case includes:
 ### Coding & Programming
 
 (To be added)
+
+### Finance & Investment
+
+#### 24. Astron Stock Analyzer
+
+**Description:** An intelligent stock analysis agent that aggregates market data, performs technical and fundamental analysis, and provides investment insights.
+
+- **User Case:** [Video Showcase](https://www.youtube.com/watch?v=F4BY49pp2Rs&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=25&pp=iAQBsAgC)
+- **Workflow:** [Astron-AI-Agent-StockAnalyzer](https://github.com/DungLai/Astron-AI-Agent-StockAnalyzer)
+
+**Key Features:**
+- Real-time stock data fetching
+- Technical indicator analysis
+- Fundamental data assessment
+- Investment report generation
 
 ### Leisure & Entertainment
 
