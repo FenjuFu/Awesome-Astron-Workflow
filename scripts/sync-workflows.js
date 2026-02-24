@@ -28,7 +28,7 @@ function extractWorkflowsFromReadme(content) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     
-    const headerMatch = line.match(/^### (\d+)\.\s+(.*)$/);
+    const headerMatch = line.match(/^#+ (\d+)\.\s+(.*)$/);
 
     if (headerMatch) {
       if (currentWorkflow) {
