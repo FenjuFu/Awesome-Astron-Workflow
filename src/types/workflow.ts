@@ -26,7 +26,7 @@ export const workflows: Workflow[] = [
       'features.ai_resume_assistant.5'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'productivity'
   },
   {
     id: 'ai-translator',
@@ -42,7 +42,7 @@ export const workflows: Workflow[] = [
       'features.ai_translator.5'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'productivity'
   },
   {
     id: 'multi-platform-content-writing',
@@ -58,7 +58,7 @@ export const workflows: Workflow[] = [
       'features.multi_platform_content_writing.5'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'creative'
   },
   {
     id: 'ai-podcast-generator',
@@ -74,7 +74,7 @@ export const workflows: Workflow[] = [
       'features.ai_podcast_generator.5'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'creative'
   },
   {
     id: 'ai-course-generator',
@@ -90,7 +90,7 @@ export const workflows: Workflow[] = [
       'features.ai_course_generator.5'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'learning'
   },
   {
     id: 'ai-paper-recommender',
@@ -106,7 +106,7 @@ export const workflows: Workflow[] = [
       'features.ai_paper_recommender.5'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'learning'
   },
   {
     id: 'ai-english-essay-assistant',
@@ -122,7 +122,7 @@ export const workflows: Workflow[] = [
       'features.ai_english_essay_assistant.5'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'learning'
   },
   {
     id: 'novel-image-text-generator',
@@ -138,7 +138,7 @@ export const workflows: Workflow[] = [
       'features.novel_image_text_generator.5'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'creative'
   },
   {
     id: 'knowledge-note-cards-organizer',
@@ -154,7 +154,7 @@ export const workflows: Workflow[] = [
       'features.knowledge_note_cards_organizer.5'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'productivity'
   },
   {
     id: 'ai-english-writing-practice-assistant',
@@ -170,7 +170,7 @@ export const workflows: Workflow[] = [
       'features.ai_english_writing_practice_assistant.5'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'learning'
   },
   {
     id: 'travel-companion',
@@ -185,7 +185,7 @@ export const workflows: Workflow[] = [
       'features.travel_companion.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'entertainment'
   },
   {
     id: 'wechat-article-summary',
@@ -200,7 +200,7 @@ export const workflows: Workflow[] = [
       'features.wechat_article_summary.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'productivity'
   },
   {
     id: 'smart-resume-optimizer',
@@ -215,7 +215,7 @@ export const workflows: Workflow[] = [
       'features.smart_resume_optimizer.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'productivity'
   },
   {
     id: 'poetic-image-generator',
@@ -230,7 +230,7 @@ export const workflows: Workflow[] = [
       'features.poetic_image_generator.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'creative'
   },
   {
     id: 'history-knowledge-qa-assistant',
@@ -245,7 +245,7 @@ export const workflows: Workflow[] = [
       'features.history_knowledge_qa_assistant.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'learning'
   },
   {
     id: 'ai-radio-podcast-generator',
@@ -260,7 +260,7 @@ export const workflows: Workflow[] = [
       'features.ai_radio_podcast_generator.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'creative'
   },
   {
     id: 'drama-shortage-terminator',
@@ -275,7 +275,7 @@ export const workflows: Workflow[] = [
       'features.drama_shortage_terminator.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'entertainment'
   },
   {
     id: 'dog-nutritionist',
@@ -290,7 +290,7 @@ export const workflows: Workflow[] = [
       'features.dog_nutritionist.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'health'
   },
   {
     id: 'network-novel-finder',
@@ -305,7 +305,7 @@ export const workflows: Workflow[] = [
       'features.network_novel_finder.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'entertainment'
   },
   {
     id: 'ket-essay-assistant',
@@ -320,7 +320,7 @@ export const workflows: Workflow[] = [
       'features.ket_essay_assistant.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'learning'
   },
   {
     id: 'bks-ai',
@@ -335,7 +335,7 @@ export const workflows: Workflow[] = [
       'features.bks_ai.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'productivity'
   },
   {
     id: 'docs-workflow',
@@ -350,7 +350,7 @@ export const workflows: Workflow[] = [
       'features.docs_workflow.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'productivity'
   },
   {
     id: 'astron-stock-analyzer',
@@ -365,7 +365,7 @@ export const workflows: Workflow[] = [
       'features.astron_stock_analyzer.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'finance'
   },
   {
     id: 'ai-research-assistant',
@@ -380,6 +380,6 @@ export const workflows: Workflow[] = [
       'features.ai_research_assistant.4'
     ],
     icon: 'box',
-    category: 'other'
+    category: 'productivity'
   }
 ];

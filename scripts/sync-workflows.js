@@ -24,11 +24,23 @@ function extractWorkflowsFromReadme(content) {
   const lines = content.split('\n');
   let currentWorkflow = null;
   let mode = null;
+  let currentCategory = 'other';
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     
     const headerMatch = line.match(/^#+ (\d+)\.\s+(.*)$/);
+
+    if (line.match(/^#+ /) && !headerMatch) {
+       const headerText = line.replace(/^#+ /, '').trim();
+       if (headerText === 'Office Productivity' || headerText === '办公提效') currentCategory = 'productivity';
+       else if (headerText === 'Creative Writing' || headerText === '创意写作') currentCategory = 'creative';
+       else if (headerText === 'Learning Assistant' || headerText === '学习助手') currentCategory = 'learning';
+       else if (headerText === 'Coding & Programming' || headerText === '代码编程') currentCategory = 'coding';
+       else if (headerText === 'Leisure & Entertainment' || headerText === '休闲娱乐') currentCategory = 'entertainment';
+       else if (headerText === 'Health Partner' || headerText === '健康搭档') currentCategory = 'health';
+       else if (headerText === 'Finance & Investment' || headerText === '金融理财') currentCategory = 'finance';
+    }
 
     if (headerMatch) {
       if (currentWorkflow) {
@@ -40,7 +52,8 @@ function extractWorkflowsFromReadme(content) {
         description: '',
         userCaseUrl: '',
         workflowUrl: '',
-        features: []
+        features: [],
+        category: currentCategory
       };
       mode = null;
       continue;
@@ -156,31 +169,19 @@ for (const enWf of enWorkflows) {
     console.warn(`Warning: Workflow ${enWf.index} (${enWf.title}) not found in Chinese README.`);
   }
   
-  const existingConfig = existingWorkflows[enWf.index - 1];
+  let id = enWf.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const existingConfig = existingWorkflows.find(w => w.id === id);
   
-  let id, icon, category, titleKey, descKey, featurePrefix;
+  let icon = 'box';
+  let category = enWf.category || 'other';
+  let featurePrefix = id.replace(/-/g, '_');
 
   if (existingConfig) {
-    id = existingConfig.id;
     icon = existingConfig.icon;
-    category = existingConfig.category;
-    titleKey = existingConfig.title;
-    
-    const parts = titleKey.split('.');
-    if (parts.length === 3 && parts[0] === 'workflow' && parts[2] === 'title') {
-      featurePrefix = parts[1];
-    } else {
-      featurePrefix = id.replace(/-/g, '_');
-    }
-  } else {
-    id = enWf.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    icon = 'box';
-    category = 'other';
-    featurePrefix = id.replace(/-/g, '_');
   }
 
-  titleKey = `workflow.${featurePrefix}.title`;
-  descKey = `workflow.${featurePrefix}.description`;
+  const titleKey = `workflow.${featurePrefix}.title`;
+  const descKey = `workflow.${featurePrefix}.description`;
   
   const features = enWf.features.map((_, idx) => `features.${featurePrefix}.${idx + 1}`);
 
@@ -258,11 +259,11 @@ function generateTranslations(workflows, lang) {
 
 let newLangCtx = langCtxContent;
 const enTransBlock = generateTranslations(finalWorkflows, 'en');
-const enRegex = /('categories\.content': 'Content Creation',)([\s\S]*?)('about\.title':)/;
+const enRegex = /('categories\.other': 'Other',)([\s\S]*?)('about\.title':)/;
 newLangCtx = newLangCtx.replace(enRegex, `$1\n\n${enTransBlock}\n    $3`);
 
 const cnTransBlock = generateTranslations(finalWorkflows, 'cn');
-const cnRegex = /('categories\.content': '内容创作',)([\s\S]*?)('about\.title':)/;
+const cnRegex = /('categories\.other': '其他',)([\s\S]*?)('about\.title':)/;
 newLangCtx = newLangCtx.replace(cnRegex, `$1\n\n${cnTransBlock}\n    $3`);
 
 writeFile(LANG_CTX_PATH, newLangCtx);
