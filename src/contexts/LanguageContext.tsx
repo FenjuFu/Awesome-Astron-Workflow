@@ -540,12 +540,12 @@ const translations = {
     'features.docs_workflow.4': '**简洁友好**：提供清晰、简短且专业的回复',
 
     // Workflows - Astron Stock Analyzer
-    'workflow.ai_research_assistant.title': 'Astron Stock Analyzer',
-    'workflow.ai_research_assistant.description': '一个智能股票分析代理，聚合市场数据，进行技术和基本面分析，并提供投资见解。',
-    'features.ai_research_assistant.1': '实时股票数据获取',
-    'features.ai_research_assistant.2': '技术指标分析',
-    'features.ai_research_assistant.3': '基本面数据评估',
-    'features.ai_research_assistant.4': '投资报告生成',
+    'workflow.astron_stock_analyzer.title': 'Astron Stock Analyzer',
+    'workflow.astron_stock_analyzer.description': '一个智能股票分析代理，聚合市场数据，进行技术和基本面分析，并提供投资见解。',
+    'features.astron_stock_analyzer.1': '实时股票数据获取',
+    'features.astron_stock_analyzer.2': '技术指标分析',
+    'features.astron_stock_analyzer.3': '基本面数据评估',
+    'features.astron_stock_analyzer.4': '投资报告生成',
 
     // Workflows - AI 研究助手
     'workflow.ai_research_assistant.title': 'AI 研究助手',
