@@ -229,12 +229,12 @@ const translations = {
     'features.docs_workflow.4': '**Concise & Friendly:** Delivers clear, brief, and professional responses',
 
     // Workflows - Astron Stock Analyzer
-    'workflow.ai_research_assistant.title': 'Astron Stock Analyzer',
-    'workflow.ai_research_assistant.description': 'An intelligent stock analysis agent that aggregates market data, performs technical and fundamental analysis, and provides investment insights.',
-    'features.ai_research_assistant.1': 'Real-time stock data fetching',
-    'features.ai_research_assistant.2': 'Technical indicator analysis',
-    'features.ai_research_assistant.3': 'Fundamental data assessment',
-    'features.ai_research_assistant.4': 'Investment report generation',
+    'workflow.astron_stock_analyzer.title': 'Astron Stock Analyzer',
+    'workflow.astron_stock_analyzer.description': 'An intelligent stock analysis agent that aggregates market data, performs technical and fundamental analysis, and provides investment insights.',
+    'features.astron_stock_analyzer.1': 'Real-time stock data fetching',
+    'features.astron_stock_analyzer.2': 'Technical indicator analysis',
+    'features.astron_stock_analyzer.3': 'Fundamental data assessment',
+    'features.astron_stock_analyzer.4': 'Investment report generation',
 
     // Workflows - AI Research Assistant
     'workflow.ai_research_assistant.title': 'AI Research Assistant',
