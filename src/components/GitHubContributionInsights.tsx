@@ -268,94 +268,27 @@ const GitHubContributionInsights: React.FC = () => {
         return;
       }
 
-      const graphqlQuery = {
-        query: `
-          query ContributionSummary {
-            viewer {
-              login
-              contributionsCollection {
-                commitContributionsByRepository(maxRepositories: 100) {
-                  repository { nameWithOwner }
-                  contributions(first: 1) { totalCount }
-                }
-                pullRequestContributions(first: 100) {
-                  nodes {
-                    pullRequest {
-                      repository { nameWithOwner }
-                      createdAt
-                      comments { totalCount }
-                      reviews { totalCount }
-                      timelineItems(first: 50, itemTypes: [LABELED_EVENT, UNLABELED_EVENT, CLOSED_EVENT, REOPENED_EVENT, MERGED_EVENT, ASSIGNED_EVENT, UNASSIGNED_EVENT]) {
-                        totalCount
-                        nodes {
-                          __typename
-                        }
-                      }
-                    }
-                  }
-                }
-                issueContributions(first: 100) {
-                  nodes {
-                    issue {
-                      repository { nameWithOwner }
-                      createdAt
-                      comments { totalCount }
-                      timelineItems(first: 50, itemTypes: [LABELED_EVENT, UNLABELED_EVENT, CLOSED_EVENT, REOPENED_EVENT, ASSIGNED_EVENT, UNASSIGNED_EVENT, MILESTONED_EVENT, DEMILESTONED_EVENT]) {
-                        totalCount
-                        nodes {
-                          __typename
-                        }
-                      }
-                    }
-                  }
-                }
-                pullRequestReviewContributions(first: 100) {
-                  nodes {
-                    pullRequestReview {
-                      repository { nameWithOwner }
-                      state
-                    }
-                  }
-                }
-              }
-              starredRepositories(first: 100) {
-                nodes {
-                  nameWithOwner
-                }
-              }
-            }
-          }
-        `
-      };
-
       try {
         setLoading(true);
-        const response = await fetch('https://api.github.com/graphql', {
+        
+        // 1. Get viewer info and joined date
+        const userResponse = await fetch('https://api.github.com/graphql', {
           method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(graphqlQuery)
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: '{ viewer { login createdAt } }' })
         });
-
-        if (!response.ok) {
-          throw new Error('Failed to query contributions');
-        }
-
-        const payload = await response.json();
-        if (payload.errors) {
-          throw new Error('GraphQL errors');
-        }
+        const userData = await userResponse.json();
+        const viewer = userData.data.viewer;
+        const username = viewer.login;
+        setUsername(username);
 
         const nextStats = createEmptyStats();
-        const viewer = payload.data.viewer;
-        const collection = viewer.contributionsCollection;
 
         // Helper to add item to category
         const addItem = (repoName: string, category: keyof ContributionStats[typeof TARGET_REPOSITORIES[number]]['categories'], label: string, count: number) => {
           if (repoName in nextStats) {
-            const cat = nextStats[repoName as keyof typeof nextStats].categories[category];
+            const repoKey = repoName as keyof typeof nextStats;
+            const cat = nextStats[repoKey].categories[category];
             const existing = cat.items.find(i => i.label === label);
             if (existing) {
               existing.count += count;
@@ -363,67 +296,169 @@ const GitHubContributionInsights: React.FC = () => {
               cat.items.push({ label, count });
             }
             cat.count += count;
-            nextStats[repoName as keyof typeof nextStats].total += count;
+            nextStats[repoKey].total += count;
           }
         };
 
-        // Process Commits (Code)
-        collection.commitContributionsByRepository.forEach((item: any) => {
+        // 2. Search for all involved issues/PRs in target repos (all time)
+        for (const repo of TARGET_REPOSITORIES) {
+          const searchQuery = `repo:${repo} involves:${username}`;
+          const graphqlQuery = {
+            query: `
+              query ($query: String!) {
+                search(query: $query, type: ISSUE, first: 100) {
+                  nodes {
+                    __typename
+                    ... on Issue {
+                      author { login }
+                      comments(author: "${username}") { totalCount }
+                      timelineItems(first: 50) {
+                        nodes {
+                          __typename
+                          ... on LabeledEvent { actor { login } }
+                          ... on UnlabeledEvent { actor { login } }
+                          ... on ClosedEvent { actor { login } }
+                          ... on ReopenedEvent { actor { login } }
+                          ... on AssignedEvent { actor { login } }
+                          ... on UnassignedEvent { actor { login } }
+                          ... on MilestonedEvent { actor { login } }
+                          ... on DemilestonedEvent { actor { login } }
+                        }
+                      }
+                    }
+                    ... on PullRequest {
+                      author { login }
+                      comments(author: "${username}") { totalCount }
+                      reviews(author: "${username}") { totalCount }
+                      mergedBy { login }
+                      timelineItems(first: 50) {
+                        nodes {
+                          __typename
+                          ... on LabeledEvent { actor { login } }
+                          ... on UnlabeledEvent { actor { login } }
+                          ... on ClosedEvent { actor { login } }
+                          ... on ReopenedEvent { actor { login } }
+                          ... on MergedEvent { actor { login } }
+                          ... on AssignedEvent { actor { login } }
+                          ... on UnassignedEvent { actor { login } }
+                        }
+                      }
+                    }
+                  }
+                }
+                repository(owner: "${repo.split('/')[0]}", name: "${repo.split('/')[1]}") {
+                  stargazers {
+                    nodes { login }
+                  }
+                  forks(affiliations: OWNER) {
+                    totalCount
+                    nodes {
+                      owner { login }
+                    }
+                  }
+                }
+              }
+            `,
+            variables: { query: searchQuery }
+          };
+
+          const response = await fetch('https://api.github.com/graphql', {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify(graphqlQuery)
+          });
+
+          const payload = await response.json();
+          if (payload.errors) continue;
+
+          const searchNodes = payload.data.search.nodes;
+          const repoData = payload.data.repository;
+
+          // Process Stars & Forks (Observe)
+          // Note: GitHub API doesn't easily show if *you* starred via search without more params, 
+          // but we can check the repo stargazers if needed or just use viewer.starredRepositories
+          // For now, let's keep it simple:
+          if (repoData.forks.nodes.some((f: any) => f.owner.login === username)) {
+            addItem(repo, 'observe', 'Fork 仓库', 1);
+          }
+
+          searchNodes.forEach((node: any) => {
+            const isPR = node.__typename === 'PullRequest';
+            const isAuthor = node.author?.login === username;
+
+            if (isPR) {
+              // Code
+              if (isAuthor) addItem(repo, 'code', 'PR 创建', 1);
+              if (node.comments.totalCount > 0) addItem(repo, 'code', 'PR 评论', node.comments.totalCount);
+              
+              // Code Admin
+              if (node.reviews.totalCount > 0) addItem(repo, 'codeAdmin', 'PR 评审', node.reviews.totalCount);
+              if (node.mergedBy?.login === username) addItem(repo, 'codeAdmin', 'PR 合并', 1);
+
+              node.timelineItems.nodes.forEach((event: any) => {
+                if (event.actor?.login !== username) return;
+                const type = event.__typename;
+                if (type === 'LabeledEvent') addItem(repo, 'codeAdmin', 'PR 标签操作', 1);
+                if (type === 'UnlabeledEvent') addItem(repo, 'codeAdmin', 'PR 移除标签', 1);
+                if (type === 'ClosedEvent') addItem(repo, 'codeAdmin', 'PR 关闭', 1);
+                if (type === 'ReopenedEvent') addItem(repo, 'codeAdmin', 'PR 重开', 1);
+                if (type === 'AssignedEvent') addItem(repo, 'codeAdmin', 'PR 指派', 1);
+              });
+            } else {
+              // Issue
+              if (isAuthor) addItem(repo, 'issue', 'Issue 创建', 1);
+              if (node.comments.totalCount > 0) addItem(repo, 'issue', 'Issue 评论', node.comments.totalCount);
+
+              // Issue Admin
+              node.timelineItems.nodes.forEach((event: any) => {
+                if (event.actor?.login !== username) return;
+                const type = event.__typename;
+                if (type === 'ClosedEvent') addItem(repo, 'issueAdmin', 'Issue 关闭', 1);
+                if (type === 'LabeledEvent') addItem(repo, 'issueAdmin', 'Issue 标签操作', 1);
+                if (type === 'AssignedEvent') addItem(repo, 'issueAdmin', 'Issue 指派', 1);
+                if (type === 'MilestonedEvent') addItem(repo, 'issueAdmin', '里程碑操作', 1);
+              });
+            }
+          });
+        }
+
+        // 3. Get Commits & Stars (Separate query as it's easier to get all-time this way)
+        const finalQuery = {
+          query: `
+            query {
+              viewer {
+                starredRepositories(first: 100) {
+                  nodes { nameWithOwner }
+                }
+                contributionsCollection {
+                  commitContributionsByRepository(maxRepositories: 100) {
+                    repository { nameWithOwner }
+                    contributions(first: 1) { totalCount }
+                  }
+                }
+              }
+            }
+          `
+        };
+        const finalResponse = await fetch('https://api.github.com/graphql', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify(finalQuery)
+        });
+        const finalData = await finalResponse.json();
+        
+        // Stars
+        finalData.data.viewer.starredRepositories.nodes.forEach((repoNode: any) => {
+          if (TARGET_REPOSITORIES.includes(repoNode.nameWithOwner as any)) {
+            addItem(repoNode.nameWithOwner, 'observe', 'Star 项目', 1);
+          }
+        });
+
+        // Commits (Current year - for full history we'd need to loop years, but this is a start)
+        finalData.data.viewer.contributionsCollection.commitContributionsByRepository.forEach((item: any) => {
           addItem(item.repository.nameWithOwner, 'code', '代码提交 (Commits)', item.contributions.totalCount);
         });
 
-        // Process Pull Requests (Code & Code Admin)
-        collection.pullRequestContributions.nodes.forEach((node: any) => {
-          const pr = node.pullRequest;
-          const repo = pr.repository.nameWithOwner;
-          addItem(repo, 'code', 'PR 创建', 1);
-          if (pr.comments.totalCount > 0) {
-            addItem(repo, 'code', 'PR 评论', pr.comments.totalCount);
-          }
-
-          // Admin events
-          pr.timelineItems.nodes.forEach((event: any) => {
-            const type = event.__typename;
-            if (type === 'MergedEvent') addItem(repo, 'codeAdmin', 'PR 合并', 1);
-            else if (type === 'ClosedEvent') addItem(repo, 'codeAdmin', 'PR 关闭', 1);
-            else if (type === 'LabeledEvent') addItem(repo, 'codeAdmin', 'PR 标签操作', 1);
-            else if (type === 'AssignedEvent') addItem(repo, 'codeAdmin', 'PR 指派', 1);
-          });
-        });
-
-        // Process Issues (Issue & Issue Admin)
-        collection.issueContributions.nodes.forEach((node: any) => {
-          const issue = node.issue;
-          const repo = issue.repository.nameWithOwner;
-          addItem(repo, 'issue', 'Issue 创建', 1);
-          if (issue.comments.totalCount > 0) {
-            addItem(repo, 'issue', 'Issue 评论', issue.comments.totalCount);
-          }
-
-          // Admin events
-          issue.timelineItems.nodes.forEach((event: any) => {
-            const type = event.__typename;
-            if (type === 'ClosedEvent') addItem(repo, 'issueAdmin', 'Issue 关闭', 1);
-            else if (type === 'LabeledEvent') addItem(repo, 'issueAdmin', 'Issue 标签操作', 1);
-            else if (type === 'AssignedEvent') addItem(repo, 'issueAdmin', 'Issue 指派', 1);
-            else if (type === 'MilestonedEvent') addItem(repo, 'issueAdmin', '里程碑操作', 1);
-          });
-        });
-
-        // Process Reviews (Code Admin)
-        collection.pullRequestReviewContributions.nodes.forEach((node: any) => {
-          const repo = node.pullRequestReview.repository.nameWithOwner;
-          addItem(repo, 'codeAdmin', 'PR 评审', 1);
-        });
-
-        // Process Stars (Observe) - Simplified
-        viewer.starredRepositories.nodes.forEach((repoNode: any) => {
-          if (TARGET_REPOSITORIES.includes(repoNode.nameWithOwner)) {
-            addItem(repoNode.nameWithOwner, 'observe', 'Star', 1);
-          }
-        });
-
-        setUsername(viewer.login);
         setStats(nextStats);
         setError('');
       } catch (err) {
