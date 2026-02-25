@@ -57,7 +57,22 @@ const GitHubContributionInsights: React.FC = () => {
         return;
       }
 
+      // Always clear the URL parameters immediately to prevent issues with re-runs/refreshes
+      const cleanParams = new URLSearchParams(window.location.search);
+      cleanParams.delete('code');
+      cleanParams.delete('state');
+      const cleanQuery = cleanParams.toString();
+      const cleanUrl = `${window.location.pathname}${cleanQuery ? `?${cleanQuery}` : ''}`;
+      window.history.replaceState({}, '', cleanUrl);
+
+      // If we already have a token, don't attempt exchange again even if code is present in URL
+      if (localStorage.getItem(ACCESS_TOKEN_KEY)) {
+        return;
+      }
+
       if (!state || !expectedState || expectedState !== state) {
+        // If state is missing but code is present, it might be a refresh after success/error.
+        // We only show the error if we don't have a token.
         setError(t('contribute.github.errors.state'));
         sessionStorage.removeItem(OAUTH_STATE_KEY);
         return;
@@ -84,12 +99,6 @@ const GitHubContributionInsights: React.FC = () => {
         setToken(data.access_token);
         setError('');
         sessionStorage.removeItem(OAUTH_STATE_KEY);
-
-        params.delete('code');
-        params.delete('state');
-        const cleanQuery = params.toString();
-        const cleanUrl = `${window.location.pathname}${cleanQuery ? `?${cleanQuery}` : ''}`;
-        window.history.replaceState({}, '', cleanUrl);
       } catch {
         setError(t('contribute.github.errors.exchange'));
       } finally {
