@@ -76,55 +76,62 @@ const ContributionDetailsPopup: React.FC<{
   repo: string; 
   categories: ContributionCategory[];
   onClose: () => void;
-}> = ({ username, repo, categories, onClose }) => {
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}> = ({ username, repo, categories, onClose, onMouseEnter, onMouseLeave }) => {
   const [activeTab, setActiveTab] = useState(categories.find(c => c.count > 0)?.id || categories[0].id);
   const activeCategory = categories.find(c => c.id === activeTab);
 
   return (
-    <div className="absolute z-50 mt-2 w-96 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden animate-in fade-in zoom-in duration-200">
+    <div 
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className="absolute z-50 -top-2 left-0 w-[420px] bg-white rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 overflow-hidden animate-in fade-in zoom-in duration-200"
+    >
       <div className="p-4 border-b border-gray-50 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 font-bold">
-            {username[0]?.toUpperCase()}
+          <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center overflow-hidden">
+            <img 
+              src={`https://github.com/${username}.png`} 
+              alt={username}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${username}&background=dbeafe&color=2563eb`;
+              }}
+            />
           </div>
-          <div>
-            <h4 className="font-bold text-gray-900">{username} 领域画像详情</h4>
-            <p className="text-xs text-gray-500">{repo}</p>
-          </div>
+          <h4 className="font-bold text-gray-900 text-sm">{username} 领域画像详情</h4>
         </div>
-        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
-          <ShieldCheck className="h-5 w-5" />
-        </button>
       </div>
       
-      <div className="flex h-64">
+      <div className="flex h-72">
         {/* Sidebar Tabs */}
-        <div className="w-1/3 bg-gray-50 border-r border-gray-100">
+        <div className="w-[140px] bg-gray-50/50 border-r border-gray-100">
           {categories.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setActiveTab(cat.id)}
-              className={`w-full p-3 text-left flex items-center justify-between transition-colors ${
-                activeTab === cat.id ? 'bg-white text-indigo-600 border-r-2 border-indigo-600' : 'text-gray-600 hover:bg-gray-100'
+              onMouseEnter={() => setActiveTab(cat.id)}
+              className={`w-full p-3 text-left flex items-center justify-between transition-colors border-b border-gray-100/50 last:border-0 ${
+                activeTab === cat.id ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-600 hover:bg-gray-100/50'
               }`}
             >
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-sm" style={{ backgroundColor: cat.color }} />
-                <span className="text-xs font-medium">{cat.label}</span>
+                <span className="text-[11px] font-bold uppercase tracking-tight">{cat.label}</span>
               </div>
-              <span className="text-xs text-gray-400">{cat.count}</span>
+              <span className="text-[11px] text-gray-400 font-medium">{cat.count}</span>
             </button>
           ))}
         </div>
         
         {/* Content Area */}
-        <div className="w-2/3 p-4 overflow-y-auto">
+        <div className="flex-1 p-5 overflow-y-auto bg-white">
           {activeCategory?.items.length ? (
-            <div className="space-y-3">
+            <div className="space-y-4">
               {activeCategory.items.map((item, idx) => (
-                <div key={idx} className="flex items-center justify-between text-sm">
-                  <span className="text-gray-600">{item.label}</span>
-                  <span className="font-medium text-gray-900">{item.count}</span>
+                <div key={idx} className="flex items-center justify-between text-[13px]">
+                  <span className="text-gray-700">{item.label}</span>
+                  <span className="font-semibold text-gray-400">{item.count}</span>
                 </div>
               ))}
             </div>
@@ -147,6 +154,29 @@ const GitHubContributionInsights: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [activePopup, setActivePopup] = useState<string | null>(null);
+  const closeTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = (repo: string) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActivePopup(repo);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setActivePopup(null);
+    }, 300);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const clientId = import.meta.env.VITE_GITHUB_CLIENT_ID as string | undefined;
 
@@ -471,7 +501,11 @@ const GitHubContributionInsights: React.FC = () => {
                   
                   return (
                     <tr key={repo} className="group hover:bg-gray-50/50 transition-colors">
-                      <td className="py-6 px-2 relative">
+                      <td 
+                        className="py-6 px-2 relative"
+                        onMouseEnter={() => handleMouseEnter(repo)}
+                        onMouseLeave={handleMouseLeave}
+                      >
                         <div className="flex flex-col gap-2">
                           <StackedBar categories={categories} total={repoStats.total} />
                         </div>
@@ -482,18 +516,17 @@ const GitHubContributionInsights: React.FC = () => {
                             repo={repo}
                             categories={categories}
                             onClose={() => setActivePopup(null)}
+                            onMouseEnter={() => handleMouseEnter(repo)}
+                            onMouseLeave={handleMouseLeave}
                           />
                         )}
                       </td>
                       <td className="py-6 px-2">
                         <div className="flex items-center gap-2">
                           <span className="text-sm text-gray-600">{repo.split('/')[1]}</span>
-                          <button 
-                            onClick={() => setActivePopup(activePopup === repo ? null : repo)}
-                            className="p-1 text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
-                          >
+                          <div className="p-1 text-indigo-600 opacity-40">
                             <ShieldCheck className="h-4 w-4" />
-                          </button>
+                          </div>
                         </div>
                       </td>
                       <td className="py-6 px-2 text-right">
