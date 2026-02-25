@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github, Plus, Edit3, Star } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import GitHubContributionInsights from './GitHubContributionInsights';
 
 const Contribute: React.FC = () => {
   const { t } = useLanguage();
@@ -159,6 +160,11 @@ const Contribute: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* GitHub Contribution Insights */}
+        <div className="mb-16">
+          <GitHubContributionInsights />
         </div>
 
         {/* CTA */}
