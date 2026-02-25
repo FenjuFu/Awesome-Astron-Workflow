@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Github, LogOut, Loader2, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -28,10 +28,8 @@ const GitHubContributionInsights: React.FC = () => {
 
   const clientId = import.meta.env.VITE_GITHUB_CLIENT_ID as string | undefined;
 
-  const authorizeUrl = useMemo(() => {
-    if (!clientId) {
-      return '';
-    }
+  const handleLogin = () => {
+    if (!clientId) return;
 
     const state = crypto.randomUUID();
     sessionStorage.setItem(OAUTH_STATE_KEY, state);
@@ -45,8 +43,8 @@ const GitHubContributionInsights: React.FC = () => {
       state
     });
 
-    return `https://github.com/login/oauth/authorize?${params.toString()}`;
-  }, [clientId]);
+    window.location.href = `https://github.com/login/oauth/authorize?${params.toString()}`;
+  };
 
   useEffect(() => {
     const exchangeOAuthCode = async () => {
@@ -61,6 +59,7 @@ const GitHubContributionInsights: React.FC = () => {
 
       if (!state || !expectedState || expectedState !== state) {
         setError(t('contribute.github.errors.state'));
+        sessionStorage.removeItem(OAUTH_STATE_KEY);
         return;
       }
 
@@ -84,6 +83,7 @@ const GitHubContributionInsights: React.FC = () => {
         localStorage.setItem(ACCESS_TOKEN_KEY, data.access_token);
         setToken(data.access_token);
         setError('');
+        sessionStorage.removeItem(OAUTH_STATE_KEY);
 
         params.delete('code');
         params.delete('state');
@@ -232,13 +232,14 @@ const GitHubContributionInsights: React.FC = () => {
       )}
 
       {!token ? (
-        <a
-          href={authorizeUrl || '#'}
+        <button
+          onClick={handleLogin}
+          disabled={!clientId}
           className="inline-flex items-center px-5 py-3 bg-gray-900 text-white rounded-lg hover:bg-black transition-colors duration-200 disabled:pointer-events-none disabled:opacity-60"
         >
           <Github className="h-5 w-5 mr-2" />
           {t('contribute.github.login')}
-        </a>
+        </button>
       ) : (
         <div className="space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
