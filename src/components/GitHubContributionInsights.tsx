@@ -86,11 +86,12 @@ const GitHubContributionInsights: React.FC = () => {
           body: JSON.stringify({ code })
         });
 
+        const data = await response.json();
+
         if (!response.ok) {
-          throw new Error('Failed to exchange code');
+          throw new Error(data.error || 'Failed to exchange code');
         }
 
-        const data = await response.json();
         if (!data.access_token) {
           throw new Error('Missing access token');
         }
@@ -99,8 +100,8 @@ const GitHubContributionInsights: React.FC = () => {
         setToken(data.access_token);
         setError('');
         sessionStorage.removeItem(OAUTH_STATE_KEY);
-      } catch {
-        setError(t('contribute.github.errors.exchange'));
+      } catch (err) {
+        setError(err instanceof Error ? err.message : t('contribute.github.errors.exchange'));
       } finally {
         setLoading(false);
       }

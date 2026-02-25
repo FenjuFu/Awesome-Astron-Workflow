@@ -4,12 +4,15 @@ export default async function handler(request, response) {
     return;
   }
 
-  const clientId = process.env.GITHUB_CLIENT_ID;
+  const clientId = process.env.GITHUB_CLIENT_ID || process.env.VITE_GITHUB_CLIENT_ID;
   const clientSecret = process.env.GITHUB_CLIENT_SECRET;
   const code = request.body?.code;
 
   if (!clientId || !clientSecret) {
-    response.status(500).json({ error: 'Missing GitHub OAuth configuration' });
+    const missing = [];
+    if (!clientId) missing.push('GITHUB_CLIENT_ID');
+    if (!clientSecret) missing.push('GITHUB_CLIENT_SECRET');
+    response.status(500).json({ error: `Missing GitHub OAuth configuration: ${missing.join(', ')}` });
     return;
   }
 
