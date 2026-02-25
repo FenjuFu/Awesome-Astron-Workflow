@@ -36,9 +36,11 @@ const GitHubContributionInsights: React.FC = () => {
     const state = crypto.randomUUID();
     sessionStorage.setItem(OAUTH_STATE_KEY, state);
 
+    const redirectUri = import.meta.env.VITE_GITHUB_REDIRECT_URI || `${window.location.origin}${window.location.pathname}`;
+
     const params = new URLSearchParams({
       client_id: clientId,
-      redirect_uri: `${window.location.origin}${window.location.pathname}`,
+      redirect_uri: redirectUri,
       scope: 'read:user',
       state
     });
