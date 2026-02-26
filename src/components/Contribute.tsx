@@ -167,46 +167,6 @@ const Contribute: React.FC = () => {
           <GitHubContributionInsights />
         </div>
 
-        {/* Community Projects Integration */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-            <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-              <span className="w-2 h-2 bg-indigo-500 rounded-full" />
-              OSS Compass
-            </h4>
-            <p className="text-sm text-gray-600 mb-4">
-              {t('contribute.github.subtitle')}
-            </p>
-            <a href="https://oss-compass.org" target="_blank" rel="noopener noreferrer" className="text-sm text-indigo-600 font-medium hover:underline">
-              {t('contribute.cta.github')}
-            </a>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-            <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-              <span className="w-2 h-2 bg-indigo-500 rounded-full" />
-              OpenDigger
-            </h4>
-            <p className="text-sm text-gray-600 mb-4">
-              Explore deep community activity and influence metrics for the Astron ecosystem.
-            </p>
-            <a href="https://github.com/X-lab2017/open-digger" target="_blank" rel="noopener noreferrer" className="text-sm text-indigo-600 font-medium hover:underline">
-              View Metrics
-            </a>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-            <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-              <span className="w-2 h-2 bg-indigo-500 rounded-full" />
-              GitHub Skyline
-            </h4>
-            <p className="text-sm text-gray-600 mb-4">
-              Visualize your contribution journey in 3D through GitHub's official skyline tool.
-            </p>
-            <a href="https://skyline.github.com" target="_blank" rel="noopener noreferrer" className="text-sm text-indigo-600 font-medium hover:underline">
-              View 3D Skyline
-            </a>
-          </div>
-        </div>
-
         {/* CTA */}
         <div className="text-center">
           <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-lg p-8 text-white">

@@ -17,7 +17,6 @@ interface ContributionCategory {
 type ContributionStats = Record<(typeof TARGET_REPOSITORIES)[number], {
   total: number;
   categories: {
-    observe: ContributionCategory;
     issue: ContributionCategory;
     commit: ContributionCategory;
     code: ContributionCategory;
@@ -40,7 +39,6 @@ const createEmptyStats = (): ContributionStats => {
     stats[repo] = {
       total: 0,
       categories: {
-        observe: createEmptyCategory('observe', 'Observe', '#9ca3af'), // gray-400
         issue: createEmptyCategory('issue', 'Issue', '#eab308'), // yellow-500
         commit: createEmptyCategory('commit', 'Commit', '#10b981'), // green-500
         code: createEmptyCategory('code', 'Code', '#3b82f6'), // blue-500
@@ -272,156 +270,119 @@ const GitHubContributionInsights: React.FC = () => {
           }
         };
 
-        const OSS_COMPASS_IDS: Record<string, string> = {
-          'iflytek/astron-agent': 'sip39yat'
-          // 'iflytek/astron-rpa': 'sip39yat' // ID unknown, fallback to GitHub API
-        };
-
         for (const repo of TARGET_REPOSITORIES) {
           const [owner, name] = repo.split('/');
-          let repoStatsAdded = false;
-          const compassId = OSS_COMPASS_IDS[repo];
-
-          // 1. Try OSS Compass
-          if (compassId) {
-            try {
-              const compassResponse = await fetch(`/api/oss-compass/insight?id=${compassId}`);
-              if (compassResponse.ok) {
-                const data = await compassResponse.json();
-                const categories = ['observe', 'issue', 'commit', 'code', 'issue_admin', 'code_admin'] as const;
-                let hasData = false;
-                categories.forEach(catKey => {
-                  const catData = data[catKey];
-                  if (catData) {
-                    Object.entries(catData).forEach(([field, dates]: [string, any]) => {
-                      if (Array.isArray(dates) && dates.length > 0) {
-                        const label = field.replace(/_date_list$/, '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                        addItem(repo, catKey, label, dates.length);
-                        hasData = true;
-                      }
-                    });
-                  }
-                });
-                if (hasData) repoStatsAdded = true;
-              }
-            } catch (e) {
-              console.error(`OSS Compass fetch failed for ${repo}`, e);
-            }
-          }
-
-          // 2. Fallback to GitHub API if OSS Compass failed or no ID
-          if (!repoStatsAdded) {
-            const searchQuery = `repo:${repo} involves:${uname}`;
-            const graphqlQuery = {
-              query: `
-                query ($query: String!, $owner: String!, $name: String!, $uid: ID!) {
-                  search(query: $query, type: ISSUE, first: 100) {
-                    nodes {
-                      __typename
-                      ... on Issue {
-                        author { login }
-                        comments(author: "${uname}") { totalCount }
-                        timelineItems(first: 50) {
-                          nodes {
-                            __typename
-                            ... on LabeledEvent { actor { login } }
-                            ... on UnlabeledEvent { actor { login } }
-                            ... on ClosedEvent { actor { login } }
-                            ... on ReopenedEvent { actor { login } }
-                            ... on AssignedEvent { actor { login } }
-                            ... on UnassignedEvent { actor { login } }
-                            ... on MilestonedEvent { actor { login } }
-                            ... on DemilestonedEvent { actor { login } }
-                          }
-                        }
-                      }
-                      ... on PullRequest {
-                        author { login }
-                        comments(author: "${uname}") { totalCount }
-                        reviews(author: "${uname}") { totalCount }
-                        mergedBy { login }
-                        timelineItems(first: 50) {
-                          nodes {
-                            __typename
-                            ... on LabeledEvent { actor { login } }
-                            ... on UnlabeledEvent { actor { login } }
-                            ... on ClosedEvent { actor { login } }
-                            ... on ReopenedEvent { actor { login } }
-                            ... on MergedEvent { actor { login } }
-                            ... on AssignedEvent { actor { login } }
-                            ... on UnassignedEvent { actor { login } }
-                          }
+          
+          const searchQuery = `repo:${repo} involves:${uname}`;
+          const graphqlQuery = {
+            query: `
+              query ($query: String!, $owner: String!, $name: String!, $uid: ID!) {
+                search(query: $query, type: ISSUE, first: 100) {
+                  nodes {
+                    __typename
+                    ... on Issue {
+                      author { login }
+                      comments(author: "${uname}") { totalCount }
+                      timelineItems(first: 50) {
+                        nodes {
+                          __typename
+                          ... on LabeledEvent { actor { login } }
+                          ... on UnlabeledEvent { actor { login } }
+                          ... on ClosedEvent { actor { login } }
+                          ... on ReopenedEvent { actor { login } }
+                          ... on AssignedEvent { actor { login } }
+                          ... on UnassignedEvent { actor { login } }
+                          ... on MilestonedEvent { actor { login } }
+                          ... on DemilestonedEvent { actor { login } }
                         }
                       }
                     }
-                  }
-                  repository(owner: $owner, name: $name) {
-                    defaultBranchRef {
-                      target {
-                        ... on Commit {
-                          history(author: { id: $uid }) {
-                            totalCount
-                          }
+                    ... on PullRequest {
+                      author { login }
+                      comments(author: "${uname}") { totalCount }
+                      reviews(author: "${uname}") { totalCount }
+                      mergedBy { login }
+                      timelineItems(first: 50) {
+                        nodes {
+                          __typename
+                          ... on LabeledEvent { actor { login } }
+                          ... on UnlabeledEvent { actor { login } }
+                          ... on ClosedEvent { actor { login } }
+                          ... on ReopenedEvent { actor { login } }
+                          ... on MergedEvent { actor { login } }
+                          ... on AssignedEvent { actor { login } }
+                          ... on UnassignedEvent { actor { login } }
                         }
                       }
                     }
                   }
                 }
-              `,
-              variables: { query: searchQuery, owner, name, uid }
-            };
+                repository(owner: $owner, name: $name) {
+                  defaultBranchRef {
+                    target {
+                      ... on Commit {
+                        history(author: { id: $uid }) {
+                          totalCount
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            variables: { query: searchQuery, owner, name, uid }
+          };
+          
+          try {
+            const response = await fetch('https://api.github.com/graphql', {
+              method: 'POST',
+              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify(graphqlQuery)
+            });
+            const payload = await response.json();
+            if (payload.errors) {
+              console.error(`GitHub API errors for ${repo}:`, payload.errors);
+              continue;
+            }
             
-            try {
-              const response = await fetch('https://api.github.com/graphql', {
-                method: 'POST',
-                headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-                body: JSON.stringify(graphqlQuery)
-              });
-              const payload = await response.json();
-              if (payload.errors) {
-                console.error(`GitHub API errors for ${repo}:`, payload.errors);
-                continue;
-              }
-              
-              // Count commits
-              const commitCount = payload.data.repository?.defaultBranchRef?.target?.history?.totalCount || 0;
-              if (commitCount > 0) {
-                addItem(repo, 'commit', '提交（Commits）', commitCount);
-              }
-
-              payload.data.search.nodes.forEach((node: any) => {
-                const isPR = node.__typename === 'PullRequest';
-                const isAuthor = node.author?.login === uname;
-                if (isPR) {
-                  if (isAuthor) addItem(repo, 'code', 'PR 创建', 1);
-                  if (node.comments.totalCount > 0) addItem(repo, 'code', 'PR 评论', node.comments.totalCount);
-                  if (node.reviews.totalCount > 0) addItem(repo, 'code_admin', 'PR 评审', node.reviews.totalCount);
-                  if (node.mergedBy?.login === uname) addItem(repo, 'code_admin', 'PR 合并', 1);
-                  node.timelineItems.nodes.forEach((event: any) => {
-                    if (event.actor?.login !== uname) return;
-                    const type = event.__typename;
-                    if (type === 'LabeledEvent') addItem(repo, 'code_admin', 'PR 标签操作', 1);
-                    if (type === 'UnlabeledEvent') addItem(repo, 'code_admin', 'PR 移除标签', 1);
-                    if (type === 'ClosedEvent') addItem(repo, 'code_admin', 'PR 关闭', 1);
-                    if (type === 'ReopenedEvent') addItem(repo, 'code_admin', 'PR 重开', 1);
-                    if (type === 'AssignedEvent') addItem(repo, 'code_admin', 'PR 指派', 1);
-                  });
-                } else {
-                  if (isAuthor) addItem(repo, 'issue', 'Issue 创建', 1);
-                  if (node.comments.totalCount > 0) addItem(repo, 'issue', 'Issue 评论', node.comments.totalCount);
-                  node.timelineItems.nodes.forEach((event: any) => {
-                    if (event.actor?.login !== uname) return;
-                    const type = event.__typename;
-                    if (type === 'ClosedEvent') addItem(repo, 'issue_admin', 'Issue 关闭', 1);
-                    if (type === 'LabeledEvent') addItem(repo, 'issue_admin', 'Issue 标签操作', 1);
-                    if (type === 'AssignedEvent') addItem(repo, 'issue_admin', 'Issue 指派', 1);
-                    if (type === 'MilestonedEvent') addItem(repo, 'issue_admin', '里程碑操作', 1);
-                  });
-                }
-              });
-            } catch (err) {
-              console.error(`GitHub API fetch failed for ${repo}`, err);
+            // Count commits
+            const commitCount = payload.data.repository?.defaultBranchRef?.target?.history?.totalCount || 0;
+            if (commitCount > 0) {
+              addItem(repo, 'commit', '提交（Commits）', commitCount);
             }
+
+            payload.data.search.nodes.forEach((node: any) => {
+              const isPR = node.__typename === 'PullRequest';
+              const isAuthor = node.author?.login === uname;
+              if (isPR) {
+                if (isAuthor) addItem(repo, 'code', 'PR 创建', 1);
+                if (node.comments.totalCount > 0) addItem(repo, 'code', 'PR 评论', node.comments.totalCount);
+                if (node.reviews.totalCount > 0) addItem(repo, 'code_admin', 'PR 评审', node.reviews.totalCount);
+                if (node.mergedBy?.login === uname) addItem(repo, 'code_admin', 'PR 合并', 1);
+                node.timelineItems.nodes.forEach((event: any) => {
+                  if (event.actor?.login !== uname) return;
+                  const type = event.__typename;
+                  if (type === 'LabeledEvent') addItem(repo, 'code_admin', 'PR 标签操作', 1);
+                  if (type === 'UnlabeledEvent') addItem(repo, 'code_admin', 'PR 移除标签', 1);
+                  if (type === 'ClosedEvent') addItem(repo, 'code_admin', 'PR 关闭', 1);
+                  if (type === 'ReopenedEvent') addItem(repo, 'code_admin', 'PR 重开', 1);
+                  if (type === 'AssignedEvent') addItem(repo, 'code_admin', 'PR 指派', 1);
+                });
+              } else {
+                if (isAuthor) addItem(repo, 'issue', 'Issue 创建', 1);
+                if (node.comments.totalCount > 0) addItem(repo, 'issue', 'Issue 评论', node.comments.totalCount);
+                node.timelineItems.nodes.forEach((event: any) => {
+                  if (event.actor?.login !== uname) return;
+                  const type = event.__typename;
+                  if (type === 'ClosedEvent') addItem(repo, 'issue_admin', 'Issue 关闭', 1);
+                  if (type === 'LabeledEvent') addItem(repo, 'issue_admin', 'Issue 标签操作', 1);
+                  if (type === 'AssignedEvent') addItem(repo, 'issue_admin', 'Issue 指派', 1);
+                  if (type === 'MilestonedEvent') addItem(repo, 'issue_admin', '里程碑操作', 1);
+                });
+              }
+            });
+          } catch (err) {
+            console.error(`GitHub API fetch failed for ${repo}`, err);
           }
         }
 
@@ -461,27 +422,14 @@ const GitHubContributionInsights: React.FC = () => {
       )}
 
       {!token ? (
-        <div className="space-y-6">
-          <button
-            onClick={handleLogin}
-            disabled={!clientId}
-            className="inline-flex items-center px-5 py-3 bg-gray-900 text-white rounded-lg hover:bg-black transition-colors duration-200 disabled:pointer-events-none disabled:opacity-60"
-          >
-            <Github className="h-5 w-5 mr-2" />
-            {t('contribute.github.login')}
-          </button>
-          
-          <div className="flex items-center gap-6 pt-4 border-t border-gray-100">
-            <span className="text-xs text-gray-400 font-medium uppercase tracking-wider">Powered by:</span>
-            <div className="flex items-center gap-4">
-              <a href="https://oss-compass.org" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-indigo-600 transition-colors">OSS Compass</a>
-              <span className="w-1 h-1 bg-gray-300 rounded-full" />
-              <a href="https://github.com/X-lab2017/open-digger" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-indigo-600 transition-colors">OpenDigger</a>
-              <span className="w-1 h-1 bg-gray-300 rounded-full" />
-              <span className="text-xs text-gray-500">GitHub API v4</span>
-            </div>
-          </div>
-        </div>
+        <button
+          onClick={handleLogin}
+          disabled={!clientId}
+          className="inline-flex items-center px-5 py-3 bg-gray-900 text-white rounded-lg hover:bg-black transition-colors duration-200 disabled:pointer-events-none disabled:opacity-60"
+        >
+          <Github className="h-5 w-5 mr-2" />
+          {t('contribute.github.login')}
+        </button>
       ) : (
         <div className="space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
