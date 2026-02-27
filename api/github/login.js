@@ -2,7 +2,12 @@ import crypto from 'crypto';
 
 export default function handler(request, response) {
   const clientId = process.env.VITE_GITHUB_CLIENT_ID;
-  const redirectUri = process.env.VITE_GITHUB_REDIRECT_URI || `https://${request.headers.host}/api/github/callback`;
+  
+  // Determine protocol (trust x-forwarded-proto in Vercel/production, default to http for localhost)
+  const protocol = request.headers['x-forwarded-proto'] || 'http';
+  const host = request.headers.host;
+  
+  const redirectUri = process.env.VITE_GITHUB_REDIRECT_URI || `${protocol}://${host}/api/github/callback`;
   
   if (!clientId) {
     return response.status(500).json({ error: 'Missing VITE_GITHUB_CLIENT_ID' });
@@ -29,7 +34,7 @@ export default function handler(request, response) {
   const params = new URLSearchParams({
     client_id: clientId,
     redirect_uri: redirectUri,
-    scope: 'read:user', // Minimal scope
+    scope: 'read:user', // Minimal scope for public info. If you need private repos, use 'repo'
     state
   });
 
