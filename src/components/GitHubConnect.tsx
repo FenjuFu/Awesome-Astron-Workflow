@@ -42,8 +42,75 @@ interface ContributionsData {
     to: string;
   };
   repos: Record<string, RepoStats>;
+  contribution_fields?: Record<string, string[]>;
+  contribution_dates?: Record<string, Record<string, string[]>>;
   astron?: AstronStats;
 }
+
+const BEHAVIOR_LABELS: Record<string, string> = {
+  fork_date_list: 'Fork 仓库',
+  star_date_list: 'Star 仓库',
+  issue_creation_date_list: '创建 Issue',
+  issue_comments_date_list: '评论 Issue',
+  pr_creation_date_list: '创建 PR',
+  pr_comments_date_list: '评论 PR',
+  code_author_date_list: '提交代码（作者）',
+  code_committer_date_list: '提交代码（合并人）',
+  issue_labeled_date_list: 'Issue 添加标签',
+  issue_unlabeled_date_list: 'Issue 移除标签',
+  issue_closed_date_list: 'Issue 关闭',
+  issue_reopened_date_list: 'Issue 重开',
+  issue_assigned_date_list: 'Issue 指派负责人',
+  issue_unassigned_date_list: 'Issue 取消指派',
+  issue_milestoned_date_list: 'Issue 添加里程碑',
+  issue_demilestoned_date_list: 'Issue 移除里程碑',
+  issue_marked_as_duplicate_date_list: 'Issue 标记重复',
+  issue_transferred_date_list: 'Issue 转移',
+  issue_renamed_title_date_list: 'Issue 修改标题',
+  issue_change_description_date_list: 'Issue 修改描述',
+  issue_setting_priority_date_list: 'Issue 设置优先级',
+  issue_change_priority_date_list: 'Issue 修改优先级',
+  issue_link_pull_request_date_list: 'Issue 关联 PR',
+  issue_unlink_pull_request_date_list: 'Issue 取消关联 PR',
+  issue_assign_collaborator_date_list: 'Issue 分配协作者',
+  issue_unassign_collaborator_date_list: 'Issue 取消分配协作者',
+  issue_change_issue_state_date_list: 'Issue 修改状态',
+  issue_change_issue_type_date_list: 'Issue 修改类型',
+  issue_setting_branch_date_list: 'Issue 设置分支',
+  issue_change_branch_date_list: 'Issue 修改分支',
+  pr_labeled_date_list: 'PR 添加标签',
+  pr_unlabeled_date_list: 'PR 移除标签',
+  pr_closed_date_list: 'PR 关闭',
+  pr_assigned_date_list: 'PR 指派',
+  pr_unassigned_date_list: 'PR 取消指派',
+  pr_reopened_date_list: 'PR 重开',
+  pr_milestoned_date_list: 'PR 添加里程碑',
+  pr_demilestoned_date_list: 'PR 移除里程碑',
+  pr_marked_as_duplicate_date_list: 'PR 标记重复',
+  pr_transferred_date_list: 'PR 转移',
+  pr_renamed_title_date_list: 'PR 修改标题',
+  pr_change_description_date_list: 'PR 修改描述',
+  pr_setting_priority_date_list: 'PR 设置优先级',
+  pr_change_priority_date_list: 'PR 修改优先级',
+  pr_merged_date_list: 'PR 合并',
+  pr_review_date_list: 'PR Review',
+  pr_set_tester_date_list: 'PR 设置测试人',
+  pr_unset_tester_date_list: 'PR 取消测试人',
+  pr_check_pass_date_list: 'PR CI 检查通过',
+  pr_test_pass_date_list: 'PR 测试通过',
+  pr_reset_assign_result_date_list: 'PR 重置指派结果',
+  pr_reset_test_result_date_list: 'PR 重置测试结果',
+  pr_link_issue_date_list: 'PR 关联 Issue',
+  pr_unlink_issue_date_list: 'PR 取消关联 Issue'
+};
+
+const CATEGORY_LABELS: Record<string, string> = {
+  observe: 'Observe（关注行为）',
+  issue: 'Issue（问题协作）',
+  code: 'Code（代码贡献）',
+  issue_admin: 'Issue Admin（维护型）',
+  code_admin: 'Code Admin（PR 管理）'
+};
 
 const GitHubConnect: React.FC = () => {
   const { t } = useLanguage();
@@ -226,6 +293,42 @@ const GitHubConnect: React.FC = () => {
                 colorClass="text-amber-600 bg-amber-50"
               />
             </div>
+
+            {data.contribution_fields && data.contribution_dates?.[repoName] && (
+              <div className="px-6 pb-6">
+                <div className="text-sm font-semibold text-gray-900 mb-3">详细贡献行为统计</div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  {Object.entries(data.contribution_fields).map(([category, fields]) => {
+                    const repoDates = data.contribution_dates?.[repoName] || {};
+                    const behaviorRows = fields.map((fieldKey) => ({
+                      key: fieldKey,
+                      label: BEHAVIOR_LABELS[fieldKey] || fieldKey,
+                      count: repoDates[fieldKey]?.length || 0
+                    }));
+                    const total = behaviorRows.reduce((sum, row) => sum + row.count, 0);
+
+                    return (
+                      <div key={`${repoName}-${category}`} className="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="text-sm font-semibold text-gray-900">{CATEGORY_LABELS[category] || category}</h4>
+                          <span className="text-xs font-bold text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded-full">{total}</span>
+                        </div>
+                        <div className="max-h-52 overflow-y-auto pr-1">
+                          <ul className="space-y-1.5">
+                            {behaviorRows.map((row) => (
+                              <li key={row.key} className="flex items-center justify-between text-xs text-gray-700">
+                                <span className="pr-2">{row.label}</span>
+                                <span className="font-semibold text-gray-900">{row.count}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
