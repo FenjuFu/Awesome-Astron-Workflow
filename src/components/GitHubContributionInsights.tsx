@@ -412,9 +412,12 @@ const GitHubContributionInsights: React.FC = () => {
     localStorage.removeItem(ACCESS_TOKEN_KEY);
     setToken('');
     setUsername('');
-    setStats(createEmptyStats());
-    setError('');
+    window.dispatchEvent(new Event('storage'));
   };
+
+  if (token) {
+    return null; // Contribute.tsx handles showing the viewer
+  }
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-8 border border-indigo-100">
@@ -432,90 +435,18 @@ const GitHubContributionInsights: React.FC = () => {
         </p>
       )}
 
-      {!token ? (
-        <button
-          onClick={handleLogin}
-          disabled={!clientId}
-          className="inline-flex items-center px-5 py-3 bg-gray-900 text-white rounded-lg hover:bg-black transition-colors duration-200 disabled:pointer-events-none disabled:opacity-60"
-        >
+      <button
+        onClick={handleLogin}
+        disabled={!clientId || loading}
+        className="inline-flex items-center px-5 py-3 bg-gray-900 text-white rounded-lg hover:bg-black transition-colors duration-200 disabled:pointer-events-none disabled:opacity-60"
+      >
+        {loading ? (
+          <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+        ) : (
           <Github className="h-5 w-5 mr-2" />
-          {t('contribute.github.login')}
-        </button>
-      ) : (
-        <div className="space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="text-sm text-gray-600">
-              {t('contribute.github.loggedInAs')} <span className="font-semibold text-gray-900">{username}</span>
-            </p>
-            <button
-              type="button"
-              onClick={handleLogout}
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
-            >
-              <LogOut className="h-4 w-4 mr-2" />
-              {t('contribute.github.logout')}
-            </button>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b border-gray-100">
-                  <th className="py-4 px-2 text-sm font-semibold text-gray-900 w-1/2">{t('contribute.github.table.profile')}</th>
-                  <th className="py-4 px-2 text-sm font-semibold text-gray-900">{t('contribute.github.table.org')}</th>
-                  <th className="py-4 px-2 text-sm font-semibold text-gray-900 text-right">{t('contribute.github.table.count')}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-50">
-                {TARGET_REPOSITORIES.map((repo) => {
-                  const repoStats = stats[repo];
-                  const categories = Object.values(repoStats.categories);
-                  return (
-                    <tr key={repo} className="group hover:bg-gray-50/50 transition-colors">
-                      <td 
-                        className="py-6 px-2 relative"
-                        onMouseEnter={() => handleMouseEnter(repo)}
-                        onMouseLeave={handleMouseLeave}
-                      >
-                        <div className="flex flex-col gap-2">
-                          <StackedBar categories={categories} total={repoStats.total} />
-                        </div>
-                        {activePopup === repo && (
-                          <ContributionDetailsPopup 
-                            username={username}
-                            repo={repo}
-                            categories={categories}
-                            onMouseEnter={() => handleMouseEnter(repo)}
-                            onMouseLeave={handleMouseLeave}
-                          />
-                        )}
-                      </td>
-                      <td className="py-6 px-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm text-gray-600">{repo.split('/')[1]}</span>
-                          <div className="p-1 text-indigo-600 opacity-40">
-                            <ShieldCheck className="h-4 w-4" />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="py-6 px-2 text-right">
-                        <span className="text-sm font-semibold text-gray-900">{repoStats.total}</span>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
-
-      {loading && (
-        <div className="flex items-center mt-4 text-indigo-600 text-sm">
-          <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-          {t('contribute.github.loading')}
-        </div>
-      )}
+        )}
+        {loading ? t('contribute.github.loading') : t('contribute.github.login')}
+      </button>
 
       {error && (
         <p className="mt-4 text-sm text-red-600">{error}</p>
