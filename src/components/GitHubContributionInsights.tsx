@@ -5,6 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 const TARGET_REPOSITORIES = ['iflytek/astron-agent', 'iflytek/astron-rpa'] as const;
 const OAUTH_STATE_KEY = 'github_oauth_state';
 const ACCESS_TOKEN_KEY = 'github_access_token';
+const OAUTH_SCOPES = ['read:user', 'repo'];
 
 interface ContributionCategory {
   id: string;
@@ -185,7 +186,7 @@ const GitHubContributionInsights: React.FC = () => {
     const params = new URLSearchParams({
       client_id: clientId,
       redirect_uri: redirectUri,
-      scope: 'read:user',
+      scope: OAUTH_SCOPES.join(' '),
       state
     });
     window.location.href = `https://github.com/login/oauth/authorize?${params.toString()}`;
@@ -248,7 +249,17 @@ const GitHubContributionInsights: React.FC = () => {
           headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
           body: JSON.stringify({ query: '{ viewer { login id } }' })
         });
+        if (!userResponse.ok) {
+          throw new Error(`GitHub API request failed (${userResponse.status})`);
+        }
         const userData = await userResponse.json();
+        if (userData.errors?.length) {
+          const message = userData.errors[0]?.message || t('contribute.github.errors.load');
+          throw new Error(message);
+        }
+        if (!userData.data?.viewer?.login || !userData.data?.viewer?.id) {
+          throw new Error(t('contribute.github.errors.load'));
+        }
         const uname = userData.data.viewer.login;
         const uid = userData.data.viewer.id;
         setUsername(uname);
