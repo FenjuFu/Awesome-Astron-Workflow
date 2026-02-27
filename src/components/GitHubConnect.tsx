@@ -52,6 +52,15 @@ const GitHubConnect: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const state = params.get('state');
+
+    if (code && state) {
+      window.location.replace(`/api/github/callback?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`);
+      return;
+    }
+
     fetchData();
   }, []);
 

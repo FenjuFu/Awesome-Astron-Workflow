@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 
 export default function handler(request, response) {
-  const clientId = process.env.VITE_GITHUB_CLIENT_ID;
+  const clientId = process.env.GITHUB_CLIENT_ID || process.env.VITE_GITHUB_CLIENT_ID;
   
   // Determine protocol (trust x-forwarded-proto in Vercel/production, default to http for localhost)
   const protocol = request.headers['x-forwarded-proto'] || 'http';
@@ -10,7 +10,7 @@ export default function handler(request, response) {
   const redirectUri = process.env.VITE_GITHUB_REDIRECT_URI || `${protocol}://${host}/api/github/callback`;
   
   if (!clientId) {
-    return response.status(500).json({ error: 'Missing VITE_GITHUB_CLIENT_ID' });
+    return response.status(500).json({ error: 'Missing GITHUB_CLIENT_ID (or VITE_GITHUB_CLIENT_ID)' });
   }
 
   // Generate random state for CSRF protection
