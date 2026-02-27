@@ -59,6 +59,8 @@ const hasNextPage = (linkHeader) => {
     .some((part) => part.includes('rel="next"'));
 };
 
+const normalizeRepoFullName = (repoFullName) => repoFullName?.toLowerCase();
+
 const fetchAllPages = async (fetchPage) => {
   const results = [];
   let page = 1;
@@ -127,6 +129,11 @@ export default async function handler(request, response) {
 
     // 3. REST Search API Queries
     const targetRepos = ['iflytek/astron-agent', 'iflytek/astron-rpa'];
+    const targetReposMap = targetRepos.reduce((acc, repo) => {
+      acc[normalizeRepoFullName(repo)] = repo;
+      return acc;
+    }, {});
+    const targetReposSet = new Set(Object.keys(targetReposMap));
     const repoStats = {};
 
     // Initialize structure
@@ -237,9 +244,11 @@ export default async function handler(request, response) {
 
         starredRepos.forEach((starred) => {
           const repoName = starred.repo?.full_name;
-          if (!targetRepos.includes(repoName)) return;
+          const normalizedRepoName = normalizeRepoFullName(repoName);
+          if (!targetReposSet.has(normalizedRepoName)) return;
+          const targetRepoName = targetReposMap[normalizedRepoName];
           if (!isDateInRange(starred.starred_at, fromDate, toDate)) return;
-          pushDate(contributionDatesByRepo[repoName], 'star_date_list', starred.starred_at);
+          pushDate(contributionDatesByRepo[targetRepoName], 'star_date_list', starred.starred_at);
         });
       })().catch(err => console.error('Failed to fetch starred repositories:', err))
     );
@@ -265,10 +274,17 @@ export default async function handler(request, response) {
         });
 
         userRepos
-          .filter((repo) => repo.fork && targetRepos.includes(repo.parent?.full_name))
+          .filter((repo) => {
+            if (!repo.fork) return false;
+            const upstreamRepoName = normalizeRepoFullName(repo.source?.full_name || repo.parent?.full_name);
+            return targetReposSet.has(upstreamRepoName);
+          })
           .forEach((repo) => {
+            const upstreamRepoName = normalizeRepoFullName(repo.source?.full_name || repo.parent?.full_name);
+            const targetRepoName = upstreamRepoName ? targetReposMap[upstreamRepoName] : null;
+            if (!targetRepoName) return;
             if (!isDateInRange(repo.created_at, fromDate, toDate)) return;
-            pushDate(contributionDatesByRepo[repo.parent.full_name], 'fork_date_list', repo.created_at);
+            pushDate(contributionDatesByRepo[targetRepoName], 'fork_date_list', repo.created_at);
           });
       })().catch(err => console.error('Failed to fetch user fork repositories:', err))
     );
