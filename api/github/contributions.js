@@ -52,6 +52,34 @@ const finalizeDateLists = (datesByRepo) => {
   });
 };
 
+const hasNextPage = (linkHeader) => {
+  if (!linkHeader) return false;
+  return linkHeader
+    .split(',')
+    .some((part) => part.includes('rel="next"'));
+};
+
+const fetchAllPages = async (fetchPage) => {
+  const results = [];
+  let page = 1;
+
+  while (true) {
+    const { items, hasNext } = await fetchPage(page);
+    if (!Array.isArray(items) || items.length === 0) {
+      break;
+    }
+
+    results.push(...items);
+
+    if (!hasNext) {
+      break;
+    }
+    page += 1;
+  }
+
+  return results;
+};
+
 export default async function handler(request, response) {
   const cookies = cookie.parse(request.headers.cookie || '');
   const token = cookies.gh_token;
@@ -189,36 +217,60 @@ export default async function handler(request, response) {
 
     promises.push(
       (async () => {
-        let page = 1;
-        let shouldContinue = true;
+        const starredRepos = await fetchAllPages(async (page) => {
+          const starredRes = await fetch(`https://api.github.com/user/starred?sort=created&direction=desc&per_page=100&page=${page}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              Accept: 'application/vnd.github.v3.star+json',
+            }
+          });
 
-        while (shouldContinue) {
-          const eventsRes = await fetch(`https://api.github.com/users/${login}/events?per_page=100&page=${page}`, {
+          if (!starredRes.ok) {
+            throw new Error(`GitHub Starred API failed: ${starredRes.status} ${starredRes.statusText}`);
+          }
+
+          return {
+            items: await starredRes.json(),
+            hasNext: hasNextPage(starredRes.headers.get('link'))
+          };
+        });
+
+        starredRepos.forEach((starred) => {
+          const repoName = starred.repo?.full_name;
+          if (!targetRepos.includes(repoName)) return;
+          if (!isDateInRange(starred.starred_at, fromDate, toDate)) return;
+          pushDate(contributionDatesByRepo[repoName], 'star_date_list', starred.starred_at);
+        });
+      })().catch(err => console.error('Failed to fetch starred repositories:', err))
+    );
+
+    promises.push(
+      (async () => {
+        const userRepos = await fetchAllPages(async (page) => {
+          const reposRes = await fetch(`https://api.github.com/user/repos?affiliation=owner&sort=created&direction=desc&per_page=100&page=${page}`, {
             headers: {
               Authorization: `Bearer ${token}`,
               Accept: 'application/vnd.github.v3+json',
             }
           });
 
-          if (!eventsRes.ok) {
-            throw new Error(`GitHub Events API failed: ${eventsRes.status} ${eventsRes.statusText}`);
+          if (!reposRes.ok) {
+            throw new Error(`GitHub User Repos API failed: ${reposRes.status} ${reposRes.statusText}`);
           }
 
-          const events = await eventsRes.json();
-          if (!events.length) break;
+          return {
+            items: await reposRes.json(),
+            hasNext: hasNextPage(reposRes.headers.get('link'))
+          };
+        });
 
-          events.forEach((event) => {
-            if (!targetRepos.includes(event.repo?.name)) return;
-            if (!isDateInRange(event.created_at, fromDate, toDate)) return;
-            if (event.type === 'WatchEvent') pushDate(contributionDatesByRepo[event.repo.name], 'star_date_list', event.created_at);
-            if (event.type === 'ForkEvent') pushDate(contributionDatesByRepo[event.repo.name], 'fork_date_list', event.created_at);
+        userRepos
+          .filter((repo) => repo.fork && targetRepos.includes(repo.parent?.full_name))
+          .forEach((repo) => {
+            if (!isDateInRange(repo.created_at, fromDate, toDate)) return;
+            pushDate(contributionDatesByRepo[repo.parent.full_name], 'fork_date_list', repo.created_at);
           });
-
-          const oldestEventDate = new Date(events[events.length - 1].created_at);
-          shouldContinue = oldestEventDate >= fromDate;
-          page += 1;
-        }
-      })().catch(err => console.error('Failed to fetch user events:', err))
+      })().catch(err => console.error('Failed to fetch user fork repositories:', err))
     );
 
     promises.push(

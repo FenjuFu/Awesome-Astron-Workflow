@@ -185,7 +185,7 @@ const CommunityVibeVault: React.FC = () => {
         audioRef.current.pause();
       }
     }
-  }, [playing]);
+  }, [playing, tracks]);
 
   const redPackets = [
     { id: 1, src: '/red_packets/天马行空事事顺.jpeg', alt: '天马行空事事顺' },
@@ -432,30 +432,24 @@ const CommunityVibeVault: React.FC = () => {
                    const position = (index - currentSwagIndex + 5) % 5;
                    
                    let styles = "";
-                   let zIndex = 0;
                    let isCenter = false;
 
                    switch(position) {
                      case 0: // Center
                        styles = "left-1/2 -translate-x-1/2 scale-100 opacity-100 z-30 shadow-2xl";
-                       zIndex = 30;
                        isCenter = true;
                        break;
                      case 1: // Right 1
                        styles = "left-[calc(50%+160px)] md:left-[calc(50%+200px)] -translate-x-1/2 scale-75 opacity-70 z-20 cursor-pointer shadow-xl";
-                       zIndex = 20;
                        break;
                      case 2: // Right 2
                        styles = "left-[calc(50%+280px)] md:left-[calc(50%+350px)] -translate-x-1/2 scale-50 opacity-40 z-10 cursor-pointer shadow-lg";
-                       zIndex = 10;
                        break;
                      case 3: // Left 2
                        styles = "left-[calc(50%-280px)] md:left-[calc(50%-350px)] -translate-x-1/2 scale-50 opacity-40 z-10 cursor-pointer shadow-lg";
-                       zIndex = 10;
                        break;
                      case 4: // Left 1
                        styles = "left-[calc(50%-160px)] md:left-[calc(50%-200px)] -translate-x-1/2 scale-75 opacity-70 z-20 cursor-pointer shadow-xl";
-                       zIndex = 20;
                        break;
                    }
 

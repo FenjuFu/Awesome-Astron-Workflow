@@ -34,8 +34,31 @@ const createEmptyCategory = (id: string, label: string, color: string): Contribu
   items: []
 });
 
+interface TimelineEventNode {
+  __typename: string;
+  actor?: { login?: string };
+}
+
+interface IssueSearchNode {
+  __typename: 'Issue';
+  author?: { login?: string };
+  comments: { totalCount: number };
+  timelineItems: { nodes: TimelineEventNode[] };
+}
+
+interface PullRequestSearchNode {
+  __typename: 'PullRequest';
+  author?: { login?: string };
+  comments: { totalCount: number };
+  reviews: { totalCount: number };
+  mergedBy?: { login?: string };
+  timelineItems: { nodes: TimelineEventNode[] };
+}
+
+type SearchNode = IssueSearchNode | PullRequestSearchNode;
+
 const createEmptyStats = (): ContributionStats => {
-  const stats: any = {};
+  const stats = {} as ContributionStats;
   TARGET_REPOSITORIES.forEach(repo => {
     stats[repo] = {
       total: 0,
@@ -74,11 +97,10 @@ const StackedBar: React.FC<{ categories: ContributionCategory[]; total: number }
 
 const ContributionDetailsPopup: React.FC<{ 
   username: string; 
-  repo: string; 
   categories: ContributionCategory[];
   onMouseEnter: () => void;
   onMouseLeave: () => void;
-}> = ({ username, repo, categories, onMouseEnter, onMouseLeave }) => {
+}> = ({ username, categories, onMouseEnter, onMouseLeave }) => {
   const [activeTab, setActiveTab] = useState(categories.find(c => c.count > 0)?.id || categories[0].id);
   const activeCategory = categories.find(c => c.id === activeTab);
 
@@ -363,7 +385,7 @@ const GitHubContributionInsights: React.FC = () => {
               addItem(repo, 'commit', '提交（Commits）', commitCount);
             }
 
-            payload.data.search.nodes.forEach((node: any) => {
+            (payload.data.search.nodes as SearchNode[]).forEach((node) => {
               const isPR = node.__typename === 'PullRequest';
               const isAuthor = node.author?.login === uname;
               if (isPR) {
@@ -371,7 +393,7 @@ const GitHubContributionInsights: React.FC = () => {
                 if (node.comments.totalCount > 0) addItem(repo, 'code', 'PR 评论', node.comments.totalCount);
                 if (node.reviews.totalCount > 0) addItem(repo, 'code_admin', 'PR 评审', node.reviews.totalCount);
                 if (node.mergedBy?.login === uname) addItem(repo, 'code_admin', 'PR 合并', 1);
-                node.timelineItems.nodes.forEach((event: any) => {
+                node.timelineItems.nodes.forEach((event) => {
                   if (event.actor?.login !== uname) return;
                   const type = event.__typename;
                   if (type === 'LabeledEvent') addItem(repo, 'code_admin', 'PR 标签操作', 1);
@@ -383,7 +405,7 @@ const GitHubContributionInsights: React.FC = () => {
               } else {
                 if (isAuthor) addItem(repo, 'issue', 'Issue 创建', 1);
                 if (node.comments.totalCount > 0) addItem(repo, 'issue', 'Issue 评论', node.comments.totalCount);
-                node.timelineItems.nodes.forEach((event: any) => {
+                node.timelineItems.nodes.forEach((event) => {
                   if (event.actor?.login !== uname) return;
                   const type = event.__typename;
                   if (type === 'ClosedEvent') addItem(repo, 'issue_admin', 'Issue 关闭', 1);
@@ -489,7 +511,6 @@ const GitHubContributionInsights: React.FC = () => {
                         {activePopup === repo && (
                           <ContributionDetailsPopup 
                             username={username}
-                            repo={repo}
                             categories={categories}
                             onMouseEnter={() => handleMouseEnter(repo)}
                             onMouseLeave={handleMouseLeave}
