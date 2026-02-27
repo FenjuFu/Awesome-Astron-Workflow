@@ -1,5 +1,5 @@
 import cookie from 'cookie';
-import clientPromise from '../lib/mongodb.js';
+import clientPromise from '../../src/lib/mongodb.js';
 
 export default async function handler(request, response) {
   const cookies = cookie.parse(request.headers.cookie || '');
