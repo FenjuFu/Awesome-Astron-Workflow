@@ -2,19 +2,9 @@ import React from 'react';
 import { Github, Plus, Edit3, Star } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import GitHubContributionInsights from './GitHubContributionInsights';
-import ContributionViewer from './ContributionViewer';
 
 const Contribute: React.FC = () => {
   const { t } = useLanguage();
-  const [token, setToken] = React.useState<string | null>(() => localStorage.getItem('github_access_token'));
-
-  React.useEffect(() => {
-    const handleStorageChange = () => {
-      setToken(localStorage.getItem('github_access_token'));
-    };
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
-  }, []);
 
   const contributionSteps = [
     {
@@ -174,11 +164,7 @@ const Contribute: React.FC = () => {
 
         {/* GitHub Contribution Insights */}
         <div className="mb-16">
-          {token ? (
-            <ContributionViewer token={token} />
-          ) : (
-            <GitHubContributionInsights />
-          )}
+          <GitHubContributionInsights />
         </div>
 
         {/* CTA */}
