@@ -57,6 +57,7 @@ const GitHubConnect: React.FC = () => {
   };
 
   const handleLogin = () => {
+    // Force a hard navigation to the API endpoint
     window.location.href = '/api/github/login';
   };
 
