@@ -18,6 +18,10 @@ export default async function handler(request, response) {
       },
     });
 
+    if (userResponse.status === 401) {
+      return response.status(401).json({ error: 'GitHub token invalid' });
+    }
+
     if (!userResponse.ok) {
       throw new Error('Failed to fetch user info');
     }
@@ -80,6 +84,7 @@ export default async function handler(request, response) {
           .then(data => {
             repoStats[repo].pr_created = { total_count: data.total_count, items: data.items };
           })
+          .catch(err => console.error(`Failed to fetch PRs created for ${repo}:`, err))
       );
 
       // 3.2 Check Merged PRs
@@ -89,6 +94,7 @@ export default async function handler(request, response) {
           .then(data => {
             repoStats[repo].pr_merged = { total_count: data.total_count, items: data.items };
           })
+          .catch(err => console.error(`Failed to fetch PRs merged for ${repo}:`, err))
       );
 
       // 3.3 Check Issues (Created)
@@ -98,6 +104,7 @@ export default async function handler(request, response) {
           .then(data => {
             repoStats[repo].issues_created = { total_count: data.total_count, items: data.items };
           })
+          .catch(err => console.error(`Failed to fetch issues created for ${repo}:`, err))
       );
     });
 

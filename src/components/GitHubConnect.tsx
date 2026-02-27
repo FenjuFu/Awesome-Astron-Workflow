@@ -99,6 +99,35 @@ const GitHubConnect: React.FC = () => {
     );
   }
 
+  if (error) {
+    return (
+      <div className="bg-white rounded-xl shadow-lg p-8 border border-red-100 text-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="p-3 bg-red-50 rounded-full">
+            <AlertCircle className="h-8 w-8 text-red-600" />
+          </div>
+          <h3 className="text-xl font-bold text-gray-900">Connection Error</h3>
+          <p className="text-gray-600 max-w-md">{error}</p>
+          <div className="flex gap-3">
+            <button
+              onClick={() => window.location.reload()}
+              className="inline-flex items-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
+            >
+              Refresh Page
+            </button>
+            <button
+              onClick={handleLogin}
+              className="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-black transition-colors shadow-sm"
+            >
+              <Github className="h-4 w-4 mr-2" />
+              Reconnect
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (!data) {
     return (
       <div className="bg-white rounded-xl shadow-lg p-8 border border-indigo-100 text-center">
