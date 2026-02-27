@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Github, Loader2, ShieldCheck, LogOut, Bot, Zap, GitPullRequest, GitMerge, AlertCircle } from 'lucide-react';
+import { Github, Loader2, ShieldCheck, LogOut, GitPullRequest, GitMerge, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface GitHubItem {
@@ -186,40 +186,6 @@ const GitHubConnect: React.FC = () => {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {data.astron && (
-          <>
-            {/* Astron Agent Card */}
-            <div className="bg-white rounded-xl shadow-lg border border-indigo-50 overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-gradient-to-r from-blue-50 to-white p-4 border-b border-blue-50 flex justify-between items-center">
-                <div className="flex items-center gap-2">
-                  <Bot className="h-5 w-5 text-blue-600" />
-                  <span className="font-semibold text-gray-900">Astron Agent</span>
-                </div>
-                <span className="text-xs font-medium text-blue-600">Platform Activity</span>
-              </div>
-              <div className="grid grid-cols-2 gap-4 p-6">
-                <StatItem label="Workflows" value={data.astron.agent.workflows} color="bg-blue-50 text-blue-700" />
-                <StatItem label="Total Runs" value={data.astron.agent.runs} color="bg-indigo-50 text-indigo-700" />
-              </div>
-            </div>
-
-            {/* Astron RPA Card */}
-            <div className="bg-white rounded-xl shadow-lg border border-indigo-50 overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-gradient-to-r from-green-50 to-white p-4 border-b border-green-50 flex justify-between items-center">
-                <div className="flex items-center gap-2">
-                  <Zap className="h-5 w-5 text-green-600" />
-                  <span className="font-semibold text-gray-900">Astron RPA</span>
-                </div>
-                <span className="text-xs font-medium text-green-600">Automation Stats</span>
-              </div>
-              <div className="grid grid-cols-2 gap-4 p-6">
-                <StatItem label="Tasks Done" value={data.astron.rpa.tasks} color="bg-green-50 text-green-700" />
-                <StatItem label="Hours Saved" value={data.astron.rpa.hoursSaved} color="bg-emerald-50 text-emerald-700" />
-              </div>
-            </div>
-          </>
-        )}
-
         {Object.entries(data.repos).map(([repoName, stats]) => (
           <div key={repoName} className="bg-white rounded-xl shadow-lg border border-indigo-50 overflow-hidden hover:shadow-xl transition-shadow duration-300 col-span-1 md:col-span-2">
             <div className="bg-gradient-to-r from-indigo-50 to-white p-4 border-b border-indigo-50 flex justify-between items-center">
@@ -266,13 +232,6 @@ const GitHubConnect: React.FC = () => {
     </div>
   );
 };
-
-const StatItem = ({ label, value, color }: { label: string, value: number, color: string }) => (
-  <div className={`rounded-lg p-3 ${color} flex flex-col items-center justify-center text-center`}>
-    <span className="text-2xl font-bold mb-1">{value}</span>
-    <span className="text-xs font-medium opacity-80 uppercase tracking-wide">{label}</span>
-  </div>
-);
 
 const ContributionColumn = ({ title, count, items, icon, colorClass }: { title: string, count: number, items: GitHubItem[], icon: React.ReactNode, colorClass: string }) => {
   const [showAll, setShowAll] = useState(false);
