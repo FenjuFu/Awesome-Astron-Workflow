@@ -25,85 +25,85 @@ export default async function handler(request, response) {
     const userData = await userResponse.json();
     const login = userData.login;
 
-    // 2. Calculate time range (last 1 year)
+    // 2. Calculate time range (default to last 1 year or use query params)
     const now = new Date();
     const oneYearAgo = new Date();
     oneYearAgo.setFullYear(now.getFullYear() - 1);
 
-    // 3. GraphQL Query
-    const query = `
-      query($login: String!, $from: DateTime!, $to: DateTime!) {
-        user(login: $login) {
-          contributionsCollection(from: $from, to: $to) {
-            commitContributionsByRepository(maxRepositories: 100) {
-              repository { nameWithOwner }
-              contributions { totalCount }
-            }
-            pullRequestContributionsByRepository(maxRepositories: 100) {
-              repository { nameWithOwner }
-              contributions { totalCount }
-            }
-            issueContributionsByRepository(maxRepositories: 100) {
-              repository { nameWithOwner }
-              contributions { totalCount }
-            }
-            pullRequestReviewContributionsByRepository(maxRepositories: 100) {
-              repository { nameWithOwner }
-              contributions { totalCount }
-            }
-          }
-        }
-      }
-    `;
+    const fromDate = request.query.from ? new Date(request.query.from) : oneYearAgo;
+    const toDate = request.query.to ? new Date(request.query.to) : now;
 
-    const graphqlResponse = await fetch('https://api.github.com/graphql', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query,
-        variables: {
-          login,
-          from: oneYearAgo.toISOString(),
-          to: now.toISOString(),
-        },
-      }),
-    });
+    // Format dates for GitHub Search API (YYYY-MM-DD)
+    const formatDate = (date) => date.toISOString().split('T')[0];
+    const fromStr = formatDate(fromDate);
+    const toStr = formatDate(toDate);
 
-    const graphqlData = await graphqlResponse.json();
-    
-    if (graphqlData.errors) {
-      throw new Error(graphqlData.errors[0].message);
-    }
-
-    const contributions = graphqlData.data.user.contributionsCollection;
-    
-    // 4. Aggregate data for specific repos
+    // 3. REST Search API Queries
     const targetRepos = ['iflytek/astron-agent', 'iflytek/astron-rpa'];
     const repoStats = {};
 
+    // Initialize structure
     targetRepos.forEach(repo => {
-      repoStats[repo] = { commits: 0, prs: 0, issues: 0, reviews: 0 };
+      repoStats[repo] = {
+        pr_created: { total_count: 0, items: [] },
+        pr_merged: { total_count: 0, items: [] },
+        issues_created: { total_count: 0, items: [] }
+      };
     });
 
-    // Helper to aggregate
-    const aggregate = (list, key) => {
-      list.forEach(item => {
-        const name = item.repository.nameWithOwner;
-        if (targetRepos.includes(name)) {
-          repoStats[name][key] = item.contributions.totalCount;
+    const search = async (query) => {
+      const url = `https://api.github.com/search/issues?q=${encodeURIComponent(query)}&per_page=100`;
+      const res = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/vnd.github.v3+json',
         }
       });
+      
+      if (!res.ok) {
+        // Log error but try not to fail completely if one query fails? 
+        // For now, let's throw to be safe and debuggable as per user request
+        const errText = await res.text();
+        console.error(`Search failed: ${url}`, errText);
+        throw new Error(`GitHub Search API failed: ${res.status} ${res.statusText}`);
+      }
+      return res.json();
     };
 
-    aggregate(contributions.commitContributionsByRepository, 'commits');
-    aggregate(contributions.pullRequestContributionsByRepository, 'prs');
-    aggregate(contributions.issueContributionsByRepository, 'issues');
-    aggregate(contributions.pullRequestReviewContributionsByRepository, 'reviews');
+    const promises = [];
 
-    // 5. Fetch Astron Agent / RPA stats from MongoDB
+    targetRepos.forEach(repo => {
+      // 3.1 Check PRs (Created)
+      // GET https://api.github.com/search/issues?q=repo:iflytek/astron-agent+type:pr+author:{login}+created:{from}..{to}
+      promises.push(
+        search(`repo:${repo} type:pr author:${login} created:${fromStr}..${toStr}`)
+          .then(data => {
+            repoStats[repo].pr_created = { total_count: data.total_count, items: data.items };
+          })
+      );
+
+      // 3.2 Check Merged PRs
+      // GET https://api.github.com/search/issues?q=repo:iflytek/astron-agent+type:pr+author:{login}+is:merged+merged:{from}..{to}
+      promises.push(
+        search(`repo:${repo} type:pr author:${login} is:merged merged:${fromStr}..${toStr}`)
+          .then(data => {
+            repoStats[repo].pr_merged = { total_count: data.total_count, items: data.items };
+          })
+      );
+
+      // 3.3 Check Issues (Created)
+      // GET https://api.github.com/search/issues?q=repo:iflytek/astron-agent+type:issue+author:{login}+created:{from}..{to}
+      promises.push(
+        search(`repo:${repo} type:issue author:${login} created:${fromStr}..${toStr}`)
+          .then(data => {
+            repoStats[repo].issues_created = { total_count: data.total_count, items: data.items };
+          })
+      );
+    });
+
+    await Promise.all(promises);
+
+    // 4. Fetch Astron Agent / RPA stats from MongoDB
     let astronStats = {
       agent: { workflows: 0, runs: 0 },
       rpa: { tasks: 0, hoursSaved: 0 }
@@ -139,7 +139,7 @@ export default async function handler(request, response) {
         avatar_url: userData.avatar_url,
         html_url: userData.html_url,
       },
-      range: { from: oneYearAgo, to: now },
+      range: { from: fromDate, to: toDate },
       repos: repoStats,
       astron: astronStats
     });
