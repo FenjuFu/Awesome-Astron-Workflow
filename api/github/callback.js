@@ -9,7 +9,7 @@ export default async function handler(request, response) {
     return response.status(400).json({ error: 'Invalid state or code' });
   }
 
-  const clientId = process.env.VITE_GITHUB_CLIENT_ID;
+  const clientId = process.env.GITHUB_CLIENT_ID || process.env.VITE_GITHUB_CLIENT_ID;
   const clientSecret = process.env.GITHUB_CLIENT_SECRET;
 
   if (!clientId || !clientSecret) {
