@@ -1,6 +1,42 @@
 import cookie from 'cookie';
 import clientPromise from '../../src/lib/mongodb.js';
 
+const CONTRIBUTION_FIELDS = {
+  observe: ['fork_date_list', 'star_date_list'],
+  issue: ['issue_creation_date_list', 'issue_comments_date_list'],
+  code: ['pr_creation_date_list', 'pr_comments_date_list', 'code_author_date_list', 'code_committer_date_list'],
+  issue_admin: [
+    'issue_labeled_date_list', 'issue_unlabeled_date_list', 'issue_closed_date_list', 'issue_reopened_date_list',
+    'issue_assigned_date_list', 'issue_unassigned_date_list', 'issue_milestoned_date_list', 'issue_demilestoned_date_list',
+    'issue_marked_as_duplicate_date_list', 'issue_transferred_date_list',
+    'issue_renamed_title_date_list', 'issue_change_description_date_list', 'issue_setting_priority_date_list',
+    'issue_change_priority_date_list', 'issue_link_pull_request_date_list', 'issue_unlink_pull_request_date_list',
+    'issue_assign_collaborator_date_list', 'issue_unassign_collaborator_date_list', 'issue_change_issue_state_date_list',
+    'issue_change_issue_type_date_list', 'issue_setting_branch_date_list', 'issue_change_branch_date_list'
+  ],
+  code_admin: [
+    'pr_labeled_date_list', 'pr_unlabeled_date_list', 'pr_closed_date_list', 'pr_assigned_date_list',
+    'pr_unassigned_date_list', 'pr_reopened_date_list', 'pr_milestoned_date_list', 'pr_demilestoned_date_list',
+    'pr_marked_as_duplicate_date_list', 'pr_transferred_date_list', 'pr_renamed_title_date_list',
+    'pr_change_description_date_list', 'pr_setting_priority_date_list', 'pr_change_priority_date_list',
+    'pr_merged_date_list', 'pr_review_date_list', 'pr_set_tester_date_list', 'pr_unset_tester_date_list',
+    'pr_check_pass_date_list', 'pr_test_pass_date_list', 'pr_reset_assign_result_date_list',
+    'pr_reset_test_result_date_list', 'pr_link_issue_date_list', 'pr_unlink_issue_date_list'
+  ]
+};
+
+const DATE_FIELD_KEYS = Object.values(CONTRIBUTION_FIELDS).flat();
+
+const createEmptyContributionDates = () => DATE_FIELD_KEYS.reduce((acc, key) => {
+  acc[key] = [];
+  return acc;
+}, {});
+
+const pushDate = (target, key, value) => {
+  if (!value || !target[key]) return;
+  target[key].push(value);
+};
+
 export default async function handler(request, response) {
   const cookies = cookie.parse(request.headers.cookie || '');
   const token = cookies.gh_token;
@@ -74,6 +110,11 @@ export default async function handler(request, response) {
       return res.json();
     };
 
+    const contributionDatesByRepo = {};
+    targetRepos.forEach((repo) => {
+      contributionDatesByRepo[repo] = createEmptyContributionDates();
+    });
+
     const promises = [];
 
     targetRepos.forEach(repo => {
@@ -83,6 +124,7 @@ export default async function handler(request, response) {
         search(`repo:${repo} type:pr author:${login} created:${fromStr}..${toStr}`)
           .then(data => {
             repoStats[repo].pr_created = { total_count: data.total_count, items: data.items };
+            data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_creation_date_list', item.created_at));
           })
           .catch(err => console.error(`Failed to fetch PRs created for ${repo}:`, err))
       );
@@ -93,6 +135,7 @@ export default async function handler(request, response) {
         search(`repo:${repo} type:pr author:${login} is:merged merged:${fromStr}..${toStr}`)
           .then(data => {
             repoStats[repo].pr_merged = { total_count: data.total_count, items: data.items };
+            data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_merged_date_list', item.closed_at));
           })
           .catch(err => console.error(`Failed to fetch PRs merged for ${repo}:`, err))
       );
@@ -103,10 +146,71 @@ export default async function handler(request, response) {
         search(`repo:${repo} type:issue author:${login} created:${fromStr}..${toStr}`)
           .then(data => {
             repoStats[repo].issues_created = { total_count: data.total_count, items: data.items };
+            data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_creation_date_list', item.created_at));
           })
           .catch(err => console.error(`Failed to fetch issues created for ${repo}:`, err))
       );
+
+      promises.push(
+        search(`repo:${repo} type:issue commenter:${login} updated:${fromStr}..${toStr}`)
+          .then(data => {
+            data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_comments_date_list', item.updated_at));
+          })
+          .catch(err => console.error(`Failed to fetch issue comments for ${repo}:`, err))
+      );
+
+      promises.push(
+        search(`repo:${repo} type:pr commenter:${login} updated:${fromStr}..${toStr}`)
+          .then(data => {
+            data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_comments_date_list', item.updated_at));
+          })
+          .catch(err => console.error(`Failed to fetch PR comments for ${repo}:`, err))
+      );
     });
+
+    promises.push(
+      (async () => {
+        const eventsRes = await fetch(`https://api.github.com/users/${login}/events?per_page=100`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/vnd.github.v3+json',
+          }
+        });
+
+        if (!eventsRes.ok) {
+          throw new Error(`GitHub Events API failed: ${eventsRes.status} ${eventsRes.statusText}`);
+        }
+
+        const events = await eventsRes.json();
+        events.forEach((event) => {
+          if (!targetRepos.includes(event.repo?.name)) return;
+          if (event.type === 'WatchEvent') pushDate(contributionDatesByRepo[event.repo.name], 'star_date_list', event.created_at);
+          if (event.type === 'ForkEvent') pushDate(contributionDatesByRepo[event.repo.name], 'fork_date_list', event.created_at);
+        });
+      })().catch(err => console.error('Failed to fetch user events:', err))
+    );
+
+    promises.push(
+      ...targetRepos.map((repo) => (async () => {
+        const [owner, name] = repo.split('/');
+        const commitsRes = await fetch(`https://api.github.com/repos/${owner}/${name}/commits?author=${login}&since=${fromDate.toISOString()}&until=${toDate.toISOString()}&per_page=100`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/vnd.github.v3+json',
+          }
+        });
+
+        if (!commitsRes.ok) {
+          throw new Error(`GitHub Commits API failed: ${commitsRes.status} ${commitsRes.statusText}`);
+        }
+
+        const commits = await commitsRes.json();
+        commits.forEach((commit) => {
+          pushDate(contributionDatesByRepo[repo], 'code_author_date_list', commit.commit?.author?.date);
+          pushDate(contributionDatesByRepo[repo], 'code_committer_date_list', commit.commit?.committer?.date);
+        });
+      })().catch(err => console.error(`Failed to fetch commits for ${repo}:`, err)))
+    );
 
     await Promise.all(promises);
 
@@ -148,6 +252,8 @@ export default async function handler(request, response) {
       },
       range: { from: fromDate, to: toDate },
       repos: repoStats,
+      contribution_fields: CONTRIBUTION_FIELDS,
+      contribution_dates: contributionDatesByRepo,
       astron: astronStats
     });
 
