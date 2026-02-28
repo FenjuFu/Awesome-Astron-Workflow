@@ -643,6 +643,8 @@ const translations = {
     'community.memes.life': '多彩 Astron 生活',
     'community.music': '氛围音乐',
     'community.musicDescription': 'Astron 开发活动与视频创作的精选背景音乐素材',
+    'community.video': '社区视频',
+    'community.video.astronParty': 'Astron 派对',
     'community.swag': 'Astron 周边',
     'swag.redPackets': 'Astron 星辰马年红包 / Hóngbāo',
     'swag.event': 'Astron 活动周边',

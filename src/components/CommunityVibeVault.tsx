@@ -7,6 +7,8 @@ const CommunityVibeVault: React.FC = () => {
   const [playing, setPlaying] = React.useState<string | null>(null);
   const [playMode, setPlayMode] = React.useState<'repeat' | 'loop' | 'shuffle'>('repeat');
   const [currentSwagIndex, setCurrentSwagIndex] = React.useState(0);
+  const [isVideoMuted, setIsVideoMuted] = React.useState(true);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
 
   // Auto-play for Swag Carousel
   React.useEffect(() => {
@@ -410,6 +412,56 @@ const CommunityVibeVault: React.FC = () => {
               </div>
             </div>
             <audio ref={audioRef} onEnded={handleTrackEnd} />
+          </div>
+
+          {/* Video Section */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 lg:col-span-2">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center">
+                <Video className="h-8 w-8 text-indigo-600 mr-3" />
+                <h3 className="text-2xl font-bold text-gray-900">{t('community.video')}</h3>
+              </div>
+              <a 
+                href="/videos/Astron Party.mp4" 
+                download
+                className="text-sm text-indigo-600 hover:text-indigo-800 font-medium flex items-center"
+              >
+                <Download className="h-4 w-4 mr-1" />
+                Download
+              </a>
+            </div>
+            
+            <div className="relative group rounded-2xl overflow-hidden shadow-lg border-2 border-gray-100 bg-black aspect-video max-w-4xl mx-auto">
+               <div className="absolute top-4 right-4 z-20">
+                  <button 
+                    onClick={() => {
+                      const newMutedState = !isVideoMuted;
+                      setIsVideoMuted(newMutedState);
+                      if (videoRef.current) {
+                        videoRef.current.muted = newMutedState;
+                      }
+                    }}
+                    className="p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors backdrop-blur-sm"
+                    title={isVideoMuted ? "Unmute" : "Mute"}
+                  >
+                    {isVideoMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                  </button>
+                </div>
+
+                <video
+                  ref={videoRef}
+                  src="/videos/Astron Party.mp4"
+                  loop
+                  muted={isVideoMuted}
+                  playsInline
+                  autoPlay
+                  controls
+                  className="w-full h-full object-cover"
+                />
+            </div>
+             <div className="mt-4 text-center">
+                <p className="text-lg font-medium text-gray-900">{t('community.video.astronParty')}</p>
+             </div>
           </div>
 
           {/* Swag Section */}

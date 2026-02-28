@@ -24,7 +24,6 @@ function App() {
           <Route path="/success" element={<RegistrationSuccess />} />
           <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
-        <FloatingVideo />
       </BrowserRouter>
     </LanguageProvider>
   );
