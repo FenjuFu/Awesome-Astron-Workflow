@@ -1,5 +1,5 @@
 import React from 'react';
-import { Music, Image as ImageIcon, Play, Pause, Download, Gift, ChevronLeft, ChevronRight, Repeat, Repeat1, Shuffle, SkipBack, SkipForward } from 'lucide-react';
+import { Music, Image as ImageIcon, Play, Pause, Download, Gift, ChevronLeft, ChevronRight, Repeat, Repeat1, Shuffle, SkipBack, SkipForward, Video, VolumeX, Volume2 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const CommunityVibeVault: React.FC = () => {
