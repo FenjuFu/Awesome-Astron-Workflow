@@ -145,6 +145,12 @@ const GitHubConnect: React.FC = () => {
         throw new Error('Failed to fetch data');
       }
 
+      const contentType = res.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        setData(null);
+        return;
+      }
+
       const json = await res.json();
       setData(json);
     } catch (err) {

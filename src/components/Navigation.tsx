@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Navigation: React.FC = () => {
@@ -33,13 +34,23 @@ const Navigation: React.FC = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
-              >
-                {item.label}
-              </a>
+              item.href.startsWith('/#') ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
             
             {/* Language Toggle */}
@@ -77,14 +88,25 @@ const Navigation: React.FC = () => {
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </a>
+              item.href.startsWith('/#') ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
           </div>
         </div>
