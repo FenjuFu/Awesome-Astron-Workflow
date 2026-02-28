@@ -129,8 +129,14 @@ export default async function handler(request, response) {
 
     // 3. REST Search API Queries
     const targetRepos = ['iflytek/astron-agent', 'iflytek/astron-rpa'];
-    const targetReposMap = targetRepos.reduce((acc, repo) => {
-      acc[normalizeRepoFullName(repo)] = repo;
+    const targetRepoAliases = {
+      'iflytek/astron-agent': ['iflytek/astron-agent', 'FenjuFu/astron-agent'],
+      'iflytek/astron-rpa': ['iflytek/astron-rpa', 'FenjuFu/astron-rpa']
+    };
+    const targetReposMap = Object.entries(targetRepoAliases).reduce((acc, [canonicalRepo, aliases]) => {
+      aliases.forEach((alias) => {
+        acc[normalizeRepoFullName(alias)] = canonicalRepo;
+      });
       return acc;
     }, {});
     const targetReposSet = new Set(Object.keys(targetReposMap));
@@ -172,54 +178,64 @@ export default async function handler(request, response) {
     const promises = [];
 
     targetRepos.forEach(repo => {
+      const aliases = targetRepoAliases[repo] || [repo];
       // 3.1 Check PRs (Created)
       // GET https://api.github.com/search/issues?q=repo:iflytek/astron-agent+type:pr+author:{login}+created:{from}..{to}
-      promises.push(
-        search(`repo:${repo} type:pr author:${login} created:${fromStr}..${toStr}`)
-          .then(data => {
-            repoStats[repo].pr_created = { total_count: data.total_count, items: data.items };
-            data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_creation_date_list', item.created_at));
-          })
-          .catch(err => console.error(`Failed to fetch PRs created for ${repo}:`, err))
-      );
+      aliases.forEach((alias) => {
+        promises.push(
+          search(`repo:${alias} type:pr author:${login} created:${fromStr}..${toStr}`)
+            .then(data => {
+              repoStats[repo].pr_created.total_count += data.total_count;
+              repoStats[repo].pr_created.items.push(...data.items);
+              data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_creation_date_list', item.created_at));
+            })
+            .catch(err => console.error(`Failed to fetch PRs created for ${alias}:`, err))
+        );
+      });
 
       // 3.2 Check Merged PRs
       // GET https://api.github.com/search/issues?q=repo:iflytek/astron-agent+type:pr+author:{login}+is:merged+merged:{from}..{to}
-      promises.push(
-        search(`repo:${repo} type:pr author:${login} is:merged merged:${fromStr}..${toStr}`)
-          .then(data => {
-            repoStats[repo].pr_merged = { total_count: data.total_count, items: data.items };
-            data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_merged_date_list', item.closed_at));
-          })
-          .catch(err => console.error(`Failed to fetch PRs merged for ${repo}:`, err))
-      );
+      aliases.forEach((alias) => {
+        promises.push(
+          search(`repo:${alias} type:pr author:${login} is:merged merged:${fromStr}..${toStr}`)
+            .then(data => {
+              repoStats[repo].pr_merged.total_count += data.total_count;
+              repoStats[repo].pr_merged.items.push(...data.items);
+              data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_merged_date_list', item.closed_at));
+            })
+            .catch(err => console.error(`Failed to fetch PRs merged for ${alias}:`, err))
+        );
+      });
 
       // 3.3 Check Issues (Created)
       // GET https://api.github.com/search/issues?q=repo:iflytek/astron-agent+type:issue+author:{login}+created:{from}..{to}
-      promises.push(
-        search(`repo:${repo} type:issue author:${login} created:${fromStr}..${toStr}`)
-          .then(data => {
-            repoStats[repo].issues_created = { total_count: data.total_count, items: data.items };
-            data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_creation_date_list', item.created_at));
-          })
-          .catch(err => console.error(`Failed to fetch issues created for ${repo}:`, err))
-      );
+      aliases.forEach((alias) => {
+        promises.push(
+          search(`repo:${alias} type:issue author:${login} created:${fromStr}..${toStr}`)
+            .then(data => {
+              repoStats[repo].issues_created.total_count += data.total_count;
+              repoStats[repo].issues_created.items.push(...data.items);
+              data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_creation_date_list', item.created_at));
+            })
+            .catch(err => console.error(`Failed to fetch issues created for ${alias}:`, err))
+        );
 
-      promises.push(
-        search(`repo:${repo} type:issue commenter:${login} updated:${fromStr}..${toStr}`)
-          .then(data => {
-            data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_comments_date_list', item.updated_at));
-          })
-          .catch(err => console.error(`Failed to fetch issue comments for ${repo}:`, err))
-      );
+        promises.push(
+          search(`repo:${alias} type:issue commenter:${login} updated:${fromStr}..${toStr}`)
+            .then(data => {
+              data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_comments_date_list', item.updated_at));
+            })
+            .catch(err => console.error(`Failed to fetch issue comments for ${alias}:`, err))
+        );
 
-      promises.push(
-        search(`repo:${repo} type:pr commenter:${login} updated:${fromStr}..${toStr}`)
-          .then(data => {
-            data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_comments_date_list', item.updated_at));
-          })
-          .catch(err => console.error(`Failed to fetch PR comments for ${repo}:`, err))
-      );
+        promises.push(
+          search(`repo:${alias} type:pr commenter:${login} updated:${fromStr}..${toStr}`)
+            .then(data => {
+              data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_comments_date_list', item.updated_at));
+            })
+            .catch(err => console.error(`Failed to fetch PR comments for ${alias}:`, err))
+        );
+      });
     });
 
     promises.push(
@@ -291,23 +307,27 @@ export default async function handler(request, response) {
 
     promises.push(
       ...targetRepos.map((repo) => (async () => {
-        const [owner, name] = repo.split('/');
-        const commitsRes = await fetch(`https://api.github.com/repos/${owner}/${name}/commits?author=${login}&since=${fromDate.toISOString()}&until=${toDate.toISOString()}&per_page=100`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            Accept: 'application/vnd.github.v3+json',
+        const aliases = targetRepoAliases[repo] || [repo];
+
+        await Promise.all(aliases.map(async (alias) => {
+          const [owner, name] = alias.split('/');
+          const commitsRes = await fetch(`https://api.github.com/repos/${owner}/${name}/commits?author=${login}&since=${fromDate.toISOString()}&until=${toDate.toISOString()}&per_page=100`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              Accept: 'application/vnd.github.v3+json',
+            }
+          });
+
+          if (!commitsRes.ok) {
+            throw new Error(`GitHub Commits API failed: ${commitsRes.status} ${commitsRes.statusText}`);
           }
-        });
 
-        if (!commitsRes.ok) {
-          throw new Error(`GitHub Commits API failed: ${commitsRes.status} ${commitsRes.statusText}`);
-        }
-
-        const commits = await commitsRes.json();
-        commits.forEach((commit) => {
-          pushDate(contributionDatesByRepo[repo], 'code_author_date_list', commit.commit?.author?.date);
-          pushDate(contributionDatesByRepo[repo], 'code_committer_date_list', commit.commit?.committer?.date);
-        });
+          const commits = await commitsRes.json();
+          commits.forEach((commit) => {
+            pushDate(contributionDatesByRepo[repo], 'code_author_date_list', commit.commit?.author?.date);
+            pushDate(contributionDatesByRepo[repo], 'code_committer_date_list', commit.commit?.committer?.date);
+          });
+        }));
       })().catch(err => console.error(`Failed to fetch commits for ${repo}:`, err)))
     );
 
