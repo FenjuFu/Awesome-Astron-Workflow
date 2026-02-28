@@ -411,62 +411,61 @@ const CommunityVibeVault: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            <div className="mt-8 border-t border-gray-100 pt-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <Video className="h-6 w-6 text-indigo-600 mr-2" />
+                  <h4 className="text-xl font-bold text-gray-900">{t('community.video')}</h4>
+                </div>
+                <a 
+                  href="/videos/Astron Party.mp4" 
+                  download
+                  className="text-sm text-indigo-600 hover:text-indigo-800 font-medium flex items-center"
+                >
+                  <Download className="h-4 w-4 mr-1" />
+                  Download
+                </a>
+              </div>
+
+              <div className="mx-auto max-w-3xl rounded-xl border border-gray-100 bg-gray-50 p-4">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black shadow-md sm:w-56">
+                    <div className="absolute right-2 top-2 z-20">
+                      <button 
+                        onClick={() => {
+                          const newMutedState = !isVideoMuted;
+                          setIsVideoMuted(newMutedState);
+                          if (videoRef.current) {
+                            videoRef.current.muted = newMutedState;
+                          }
+                        }}
+                        className="p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors backdrop-blur-sm"
+                        title={isVideoMuted ? "Unmute" : "Mute"}
+                      >
+                        {isVideoMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                      </button>
+                    </div>
+
+                    <video
+                      ref={videoRef}
+                      src="/videos/Astron Party.mp4"
+                      loop
+                      muted={isVideoMuted}
+                      playsInline
+                      autoPlay
+                      controls
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <div className="text-center sm:text-left">
+                    <p className="text-lg font-medium text-gray-900">{t('community.video.astronParty')}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <audio ref={audioRef} onEnded={handleTrackEnd} />
-          </div>
-
-          {/* Video Section */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 lg:col-span-2">
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center">
-                <Video className="h-8 w-8 text-indigo-600 mr-3" />
-                <h3 className="text-2xl font-bold text-gray-900">{t('community.video')}</h3>
-              </div>
-              <a 
-                href="/videos/Astron Party.mp4" 
-                download
-                className="text-sm text-indigo-600 hover:text-indigo-800 font-medium flex items-center"
-              >
-                <Download className="h-4 w-4 mr-1" />
-                Download
-              </a>
-            </div>
-            
-            <div className="mx-auto max-w-3xl rounded-xl border border-gray-100 bg-gray-50 p-4">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black shadow-md sm:w-56">
-                  <div className="absolute right-2 top-2 z-20">
-                  <button 
-                    onClick={() => {
-                      const newMutedState = !isVideoMuted;
-                      setIsVideoMuted(newMutedState);
-                      if (videoRef.current) {
-                        videoRef.current.muted = newMutedState;
-                      }
-                    }}
-                    className="p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors backdrop-blur-sm"
-                    title={isVideoMuted ? "Unmute" : "Mute"}
-                  >
-                    {isVideoMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-                  </button>
-                </div>
-
-                <video
-                  ref={videoRef}
-                  src="/videos/Astron Party.mp4"
-                  loop
-                  muted={isVideoMuted}
-                  playsInline
-                  autoPlay
-                  controls
-                  className="w-full h-full object-cover"
-                />
-                </div>
-
-                <div className="text-center sm:text-left">
-                  <p className="text-lg font-medium text-gray-900">{t('community.video.astronParty')}</p>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Swag Section */}
