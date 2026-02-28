@@ -85,6 +85,16 @@ const ActivityManage: React.FC = () => {
     }
   };
 
+  const handleShare = (id: string) => {
+    const url = `${window.location.origin}/activities/${id}`;
+    navigator.clipboard.writeText(url).then(() => {
+      alert('活动链接已复制到剪贴板！\n' + url);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+      alert('复制失败，请手动复制');
+    });
+  };
+
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
