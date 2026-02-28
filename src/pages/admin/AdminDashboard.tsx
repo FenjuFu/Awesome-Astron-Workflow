@@ -1,13 +1,83 @@
-import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ActivityManage from './ActivityManage';
 import RegistrationManage from './RegistrationManage';
-import { Calendar, Users, LogOut, LayoutDashboard } from 'lucide-react';
+import { Calendar, Users, LogOut, LayoutDashboard, Lock } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 
 const AdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'activities' | 'registrations'>('activities');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = sessionStorage.getItem('admin_auth');
+    if (auth === 'true') {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
+    
+    if (password === adminPassword) {
+      setIsAuthenticated(true);
+      sessionStorage.setItem('admin_auth', 'true');
+      setError('');
+    } else {
+      setError('密码错误');
+    }
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+          <div className="flex justify-center mb-6">
+            <div className="bg-blue-100 p-3 rounded-full">
+              <Lock className="w-8 h-8 text-blue-600" />
+            </div>
+          </div>
+          <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">管理员登录</h2>
+          <form onSubmit={handleLogin}>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+                访问密码
+              </label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="请输入管理员密码"
+                autoFocus
+              />
+            </div>
+            {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+            <div className="flex items-center justify-between">
+              <button
+                type="button"
+                onClick={() => navigate('/')}
+                className="text-gray-600 hover:text-gray-800 text-sm"
+              >
+                返回首页
+              </button>
+              <button
+                type="submit"
+                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              >
+                进入后台
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-100">

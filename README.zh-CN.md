@@ -400,6 +400,15 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 - 文生图生成视觉辅助
 
 
+## 开发配置
+
+本项目包含一个简单的管理后台 `/activities/admin`，用于管理活动和报名信息。
+默认访问密码配置在 `.env` 文件中：
+
+```env
+VITE_ADMIN_PASSWORD=astron-workflow-admin
+```
+
 ## 贡献指南
 
 我们欢迎对本仓库的贡献！如果您有想要分享的 Astron 工作流或用户案例，请：
