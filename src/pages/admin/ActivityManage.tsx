@@ -137,6 +137,9 @@ const ActivityManage: React.FC = () => {
                     {format(new Date(activity.created_at), 'yyyy-MM-dd')}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button onClick={() => handleShare(activity.id)} className="text-green-600 hover:text-green-900 mr-3" title="分享活动链接">
+                      <Share2 className="w-4 h-4" />
+                    </button>
                     <button onClick={() => { setEditingActivity(activity); setShowModal(true); }} className="text-blue-600 hover:text-blue-900 mr-3">
                       <Edit className="w-4 h-4" />
                     </button>
