@@ -16,9 +16,10 @@ export default function handler(request, response) {
   // Generate random state for CSRF protection
   const state = crypto.randomUUID();
   
-  // Set state in cookie (short-lived)
-  const cookieOptions = [
-    `github_auth_state=${state}`,
+  const from = request.query.from || request.headers.referer || '/';
+
+  // Common cookie attributes
+  const cookieAttributes = [
     'Path=/',
     'HttpOnly',
     'SameSite=Lax',
@@ -26,10 +27,14 @@ export default function handler(request, response) {
   ];
   
   if (process.env.NODE_ENV === 'production') {
-    cookieOptions.push('Secure');
+    cookieAttributes.push('Secure');
   }
 
-  response.setHeader('Set-Cookie', cookieOptions.join('; '));
+  // Set cookies
+  const stateCookie = `github_auth_state=${state}; ${cookieAttributes.join('; ')}`;
+  const returnCookie = `github_auth_return_to=${from}; ${cookieAttributes.join('; ')}`;
+
+  response.setHeader('Set-Cookie', [stateCookie, returnCookie]);
 
   const params = new URLSearchParams({
     client_id: clientId,

@@ -157,7 +157,8 @@ const GitHubConnect: React.FC = () => {
 
   const handleLogin = () => {
     // Force a hard navigation to the API endpoint
-    window.location.href = '/api/github/login';
+    const currentPath = window.location.pathname + window.location.search;
+    window.location.href = `/api/github/login?from=${encodeURIComponent(currentPath)}`;
   };
 
   const handleLogout = () => {
