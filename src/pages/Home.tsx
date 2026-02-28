@@ -1,16 +1,28 @@
 import React from 'react';
+import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import WorkflowShowcase from '../components/WorkflowShowcase';
-import GitHubContributionInsights from '../components/GitHubContributionInsights';
+import About from '../components/About';
+import CommunityVibeVault from '../components/CommunityVibeVault';
+import WayToSuperAgent from '../components/WayToSuperAgent';
+import Contribute from '../components/Contribute';
+import Footer from '../components/Footer';
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
-    <main>
-      <Hero />
-      <div className="container mx-auto px-4 py-8">
-        <GitHubContributionInsights />
-      </div>
-      <WorkflowShowcase />
-    </main>
+    <div className="min-h-screen bg-white">
+      <Navigation />
+      <main>
+        <Hero />
+        <WorkflowShowcase />
+        <WayToSuperAgent />
+        <CommunityVibeVault />
+        <About />
+        <Contribute />
+      </main>
+      <Footer />
+    </div>
   );
-}
+};
+
+export default Home;

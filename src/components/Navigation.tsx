@@ -11,12 +11,12 @@ const Navigation: React.FC = () => {
   };
 
   const navItems = [
-    { href: '#home', label: t('nav.home') },
-    { href: '#workflows', label: t('nav.workflows') },
-    { href: '#way-to-super-agent', label: t('nav.wayToSuperAgent') },
-    { href: '#community', label: t('nav.community') },
-    { href: '#about', label: t('nav.about') },
-    { href: '#contribute', label: t('nav.contribute') }
+    { href: '/#home', label: t('nav.home') },
+    { href: '/#workflows', label: t('nav.workflows') },
+    { href: '/#way-to-super-agent', label: t('nav.wayToSuperAgent') },
+    { href: '/#community', label: t('nav.community') },
+    { href: '/#about', label: t('nav.about') },
+    { href: '/#contribute', label: t('nav.contribute') }
   ];
 
   return (
