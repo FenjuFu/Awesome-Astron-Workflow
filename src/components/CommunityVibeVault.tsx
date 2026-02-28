@@ -431,8 +431,10 @@ const CommunityVibeVault: React.FC = () => {
               </a>
             </div>
             
-            <div className="relative group rounded-2xl overflow-hidden shadow-lg border-2 border-gray-100 bg-black aspect-video max-w-4xl mx-auto">
-               <div className="absolute top-4 right-4 z-20">
+            <div className="mx-auto max-w-3xl rounded-xl border border-gray-100 bg-gray-50 p-4">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black shadow-md sm:w-56">
+                  <div className="absolute right-2 top-2 z-20">
                   <button 
                     onClick={() => {
                       const newMutedState = !isVideoMuted;
@@ -458,10 +460,13 @@ const CommunityVibeVault: React.FC = () => {
                   controls
                   className="w-full h-full object-cover"
                 />
+                </div>
+
+                <div className="text-center sm:text-left">
+                  <p className="text-lg font-medium text-gray-900">{t('community.video.astronParty')}</p>
+                </div>
+              </div>
             </div>
-             <div className="mt-4 text-center">
-                <p className="text-lg font-medium text-gray-900">{t('community.video.astronParty')}</p>
-             </div>
           </div>
 
           {/* Swag Section */}
