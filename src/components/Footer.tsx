@@ -37,22 +37,22 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-4">{t('footer.quickLinks')}</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#home" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <a href="/#home" className="text-gray-400 hover:text-white transition-colors duration-200">
                   {t('nav.home')}
                 </a>
               </li>
               <li>
-                <a href="#workflows" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <a href="/#workflows" className="text-gray-400 hover:text-white transition-colors duration-200">
                   {t('nav.workflows')}
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <a href="/stats" className="text-gray-400 hover:text-white transition-colors duration-200">
                   {t('nav.about')}
                 </a>
               </li>
               <li>
-                <a href="#contribute" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <a href="/#contribute" className="text-gray-400 hover:text-white transition-colors duration-200">
                   {t('nav.contribute')}
                 </a>
               </li>

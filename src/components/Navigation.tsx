@@ -15,7 +15,7 @@ const Navigation: React.FC = () => {
     { href: '/#workflows', label: t('nav.workflows') },
     { href: '/#way-to-super-agent', label: t('nav.wayToSuperAgent') },
     { href: '/#community', label: t('nav.community') },
-    { href: '/#about', label: t('nav.about') },
+    { href: '/stats', label: t('nav.about') },
     { href: '/#contribute', label: t('nav.contribute') }
   ];
 
