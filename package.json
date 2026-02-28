@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "check": "tsc -b --noEmit",
+    "check-registrations": "node --env-file=.env scripts/check-registrations.js",
     "sync-workflows": "node scripts/sync-workflows.js"
   },
   "dependencies": {

@@ -132,8 +132,15 @@ const RegistrationManage: React.FC = () => {
             />
           </div>
           <button
+            onClick={fetchRegistrations}
+            className="flex items-center bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700"
+          >
+            <Search className="w-4 h-4 mr-2" />
+            刷新列表
+          </button>
+          <button
             onClick={exportToCSV}
-            className="flex items-center bg-green-600 text-white px-4 py-2 rounded-md text-sm"
+            className="flex items-center bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700"
           >
             <Download className="w-4 h-4 mr-2" />
             导出 CSV
