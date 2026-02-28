@@ -289,7 +289,31 @@ export default async function handler(request, response) {
           };
         });
 
-        userRepos
+        const forks = userRepos.filter((repo) => repo.fork);
+        const forkDetails = await Promise.all(
+          forks.map(async (repo) => {
+            // If parent info is already present, use it
+            if (repo.parent || repo.source) return repo;
+            
+            // Otherwise fetch full repo details to get parent info
+            try {
+              const res = await fetch(repo.url, {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                  Accept: 'application/vnd.github.v3+json',
+                },
+              });
+              if (res.ok) {
+                return await res.json();
+              }
+            } catch (err) {
+              console.error(`Failed to fetch fork details for ${repo.full_name}:`, err);
+            }
+            return repo;
+          })
+        );
+
+        forkDetails
           .filter((repo) => {
             if (!repo.fork) return false;
             const upstreamRepoName = normalizeRepoFullName(repo.source?.full_name || repo.parent?.full_name);
