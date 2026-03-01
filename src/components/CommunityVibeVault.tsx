@@ -429,8 +429,8 @@ const CommunityVibeVault: React.FC = () => {
               </div>
 
               <div className="mx-auto max-w-3xl rounded-xl border border-gray-100 bg-gray-50 p-4">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black shadow-md sm:w-56">
+                <div className="grid gap-4 sm:grid-cols-[14rem_minmax(0,1fr)] sm:items-stretch">
+                  <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black shadow-md">
                     <div className="absolute right-2 top-2 z-20">
                       <button 
                         onClick={() => {
@@ -459,8 +459,8 @@ const CommunityVibeVault: React.FC = () => {
                     />
                   </div>
 
-                  <div className="text-center sm:text-left">
-                    <p className="text-lg font-medium text-gray-900">{t('community.video.astronParty')}</p>
+                  <div className="flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-3 text-center sm:justify-start sm:text-left">
+                    <p className="text-lg font-semibold text-gray-900">{t('community.video.astronParty')}</p>
                   </div>
                 </div>
               </div>
