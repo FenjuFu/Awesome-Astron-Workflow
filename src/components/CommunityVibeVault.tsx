@@ -315,11 +315,11 @@ const CommunityVibeVault: React.FC = () => {
                 Download All
               </a>
             </div>
-            <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+            <div className="space-y-4 max-h-[calc(3*5.75rem+2*1rem)] overflow-y-auto pr-2 custom-scrollbar">
               {tracks.map((track) => (
                 <div 
                   key={track.id}
-                  className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-indigo-50 transition-colors duration-200"
+                  className="flex items-center justify-between min-h-[5.75rem] p-4 bg-gray-50 rounded-lg hover:bg-indigo-50 transition-colors duration-200"
                 >
                   <div className="flex items-center">
                     <button
