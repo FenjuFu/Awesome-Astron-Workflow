@@ -1,6 +1,10 @@
 export const isUuid = (value: string): boolean =>
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
 
+export const isMissingLinkSlugColumnError = (error: { code?: string; message?: string } | null): boolean =>
+  Boolean(error) &&
+  (error?.code === 'PGRST204' || error?.message?.includes("Could not find the 'link_slug' column of 'activities' in the schema cache"));
+
 export const normalizeSlug = (value: string): string =>
   value
     .trim()
@@ -15,3 +19,14 @@ export const getActivityPath = (id: string, linkSlug?: string | null): string =>
 
 export const getRegistrationPath = (id: string, linkSlug?: string | null): string =>
   `/register/${linkSlug || id}`;
+
+type ActivityWithSlug = {
+  id: string;
+  link_slug?: string | null;
+  additional_fields?: {
+    link_slug?: string | null;
+  };
+};
+
+export const getActivitySlug = (activity: ActivityWithSlug): string | null =>
+  activity.link_slug || activity.additional_fields?.link_slug || null;

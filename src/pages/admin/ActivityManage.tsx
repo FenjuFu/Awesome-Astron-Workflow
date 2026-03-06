@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import { format } from 'date-fns';
 import { Plus, Edit, Trash2, Eye, Share2 } from 'lucide-react';
-import { getActivityPath, normalizeSlug } from '../../utils/activityRoute';
+import { getActivityPath, getActivitySlug, isMissingLinkSlugColumnError, normalizeSlug } from '../../utils/activityRoute';
 
 interface RegistrationFormField {
   id: string;
@@ -31,12 +31,9 @@ interface Activity {
   link_slug?: string | null;
   additional_fields?: {
     registration_form_fields?: RegistrationFormField[];
+    link_slug?: string | null;
   };
 }
-
-const isMissingLinkSlugColumnError = (error: { code?: string; message?: string } | null) =>
-  Boolean(error) &&
-  (error?.code === 'PGRST204' || error?.message?.includes("Could not find the 'link_slug' column of 'activities' in the schema cache"));
 
 const createEmptyField = (): RegistrationFormField => ({
   id: `field_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
@@ -164,6 +161,7 @@ const ActivityManage: React.FC = () => {
       link_slug: slug || null,
       additional_fields: {
         registration_form_fields: sanitizedRegistrationFields,
+        link_slug: slug || null,
       },
     };
 
@@ -270,10 +268,10 @@ const ActivityManage: React.FC = () => {
                     {format(new Date(activity.created_at), 'yyyy-MM-dd')}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <Link to={getActivityPath(activity.id, activity.link_slug)} className="text-indigo-600 hover:text-indigo-900 mr-3">
+                    <Link to={getActivityPath(activity.id, getActivitySlug(activity))} className="text-indigo-600 hover:text-indigo-900 mr-3">
                       <Eye className="w-4 h-4 inline" />
                     </Link>
-                    <button onClick={() => handleShare(activity.id, activity.link_slug)} className="text-gray-600 hover:text-gray-900 mr-3">
+                    <button onClick={() => handleShare(activity.id, getActivitySlug(activity))} className="text-gray-600 hover:text-gray-900 mr-3">
                       <Share2 className="w-4 h-4" />
                     </button>
                     <button onClick={() => openEditModal(activity)} className="text-blue-600 hover:text-blue-900 mr-3">
@@ -375,7 +373,7 @@ const ActivityManage: React.FC = () => {
                   <label className="block text-sm font-medium text-gray-700">链接名称（可选）</label>
                   <input
                     name="link_slug"
-                    defaultValue={editingActivity?.link_slug || ''}
+                    defaultValue={editingActivity ? (getActivitySlug(editingActivity) || '') : ''}
                     placeholder="例如 spring-meetup-2026"
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                   />

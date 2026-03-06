@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { Calendar, MapPin, Users, DollarSign } from 'lucide-react';
-import { getRegistrationPath, isUuid } from '../../utils/activityRoute';
+import { getActivitySlug, getRegistrationPath, isMissingLinkSlugColumnError, isUuid } from '../../utils/activityRoute';
 
 interface Activity {
   id: string;
@@ -22,6 +22,9 @@ interface Activity {
   cover_image: string;
   category: string;
   link_slug?: string | null;
+  additional_fields?: {
+    link_slug?: string | null;
+  };
 }
 
 const ActivityDetail: React.FC = () => {
@@ -38,12 +41,30 @@ const ActivityDetail: React.FC = () => {
   const fetchActivity = async (key: string) => {
     try {
       const query = supabase.from('activities').select('*');
-      const { data, error } = isUuid(key)
-        ? await query.eq('id', key).maybeSingle()
-        : await query.eq('link_slug', key).maybeSingle();
 
-      if (error) throw error;
-      setActivity(data);
+      if (isUuid(key)) {
+        const { data, error } = await query.eq('id', key).maybeSingle();
+        if (error) throw error;
+        setActivity(data);
+        return;
+      }
+
+      const { data, error } = await query.eq('link_slug', key).maybeSingle();
+
+      if (!error && data) {
+        setActivity(data);
+        return;
+      }
+
+      if (error && !isMissingLinkSlugColumnError(error)) {
+        throw error;
+      }
+
+      const fallbackQuery = supabase.from('activities').select('*').contains('additional_fields', { link_slug: key });
+      const { data: fallbackData, error: fallbackError } = await fallbackQuery.maybeSingle();
+
+      if (fallbackError) throw fallbackError;
+      setActivity(fallbackData);
     } catch (error) {
       console.error('Error fetching activity:', error);
     } finally {
@@ -129,7 +150,7 @@ const ActivityDetail: React.FC = () => {
             </div>
             {isRegistrationOpen && !isFull ? (
               <Link
-                to={getRegistrationPath(activity.id, activity.link_slug)}
+                to={getRegistrationPath(activity.id, getActivitySlug(activity))}
                 className="w-full sm:w-auto inline-flex justify-center items-center px-8 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
               >
                 立即报名

@@ -4,7 +4,7 @@ import { supabase } from '../../lib/supabase';
 import { format } from 'date-fns';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
-import { getActivityPath } from '../../utils/activityRoute';
+import { getActivityPath, getActivitySlug } from '../../utils/activityRoute';
 
 interface Activity {
   id: string;
@@ -16,6 +16,9 @@ interface Activity {
   status: string;
   category: string;
   link_slug?: string | null;
+  additional_fields?: {
+    link_slug?: string | null;
+  };
 }
 
 const ActivityList: React.FC = () => {
@@ -76,7 +79,7 @@ const ActivityList: React.FC = () => {
                     <p className="text-sm font-medium text-blue-600">
                       {activity.category}
                     </p>
-                    <Link to={getActivityPath(activity.id, activity.link_slug)} className="block mt-2">
+                    <Link to={getActivityPath(activity.id, getActivitySlug(activity))} className="block mt-2">
                       <p className="text-xl font-semibold text-gray-900">{activity.title}</p>
                       <p className="mt-3 text-base text-gray-500 line-clamp-3">
                         {activity.description}
@@ -89,7 +92,7 @@ const ActivityList: React.FC = () => {
                       <p>{activity.location}</p>
                     </div>
                     <Link
-                      to={getActivityPath(activity.id, activity.link_slug)}
+                      to={getActivityPath(activity.id, getActivitySlug(activity))}
                       className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
                     >
                       查看详情
