@@ -9,6 +9,7 @@ interface RegistrationFormField {
   id: string;
   label: string;
   placeholder?: string;
+  description?: string;
   required: boolean;
 }
 
@@ -39,6 +40,7 @@ const createEmptyField = (): RegistrationFormField => ({
   id: `field_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
   label: '',
   placeholder: '',
+  description: '',
   required: false,
 });
 
@@ -52,6 +54,7 @@ const parseRegistrationFormFields = (activity?: Activity | null): RegistrationFo
     id: field.id || `field_${index}`,
     label: field.label || '',
     placeholder: field.placeholder || '',
+    description: field.description || '',
     required: Boolean(field.required),
   }));
 };
@@ -134,6 +137,7 @@ const ActivityManage: React.FC = () => {
         ...field,
         label: field.label.trim(),
         placeholder: (field.placeholder || '').trim(),
+        description: (field.description || '').trim(),
       }))
       .filter((field) => field.label);
 
@@ -300,7 +304,8 @@ const ActivityManage: React.FC = () => {
                 </div>
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-700">描述</label>
-                  <textarea name="description" defaultValue={editingActivity?.description} rows={3} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
+                  <textarea name="description" defaultValue={editingActivity?.description} rows={4} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
+                  <p className="mt-1 text-xs text-gray-500">支持 Markdown 图片语法，例如：![](https://example.com/poster.png)</p>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">地点</label>
@@ -414,6 +419,16 @@ const ActivityManage: React.FC = () => {
                               value={field.placeholder || ''}
                               onChange={(e) => updateRegistrationField(field.id, 'placeholder', e.target.value)}
                               placeholder="例如：请输入微信号"
+                              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 text-sm"
+                            />
+                          </div>
+                          <div className="md:col-span-2">
+                            <label className="block text-xs font-medium text-gray-600">字段说明（支持图片）</label>
+                            <textarea
+                              value={field.description || ''}
+                              onChange={(e) => updateRegistrationField(field.id, 'description', e.target.value)}
+                              placeholder={'可填写文字或 Markdown 图片，例如：![](https://example.com/demo.png)'}
+                              rows={2}
                               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 text-sm"
                             />
                           </div>

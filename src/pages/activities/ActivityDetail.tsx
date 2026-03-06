@@ -4,6 +4,7 @@ import { supabase } from '../../lib/supabase';
 import { format } from 'date-fns';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
+import MarkdownContent from '../../components/MarkdownContent';
 import { Calendar, MapPin, Users, DollarSign } from 'lucide-react';
 import { getActivitySlug, getRegistrationPath, isMissingLinkSlugColumnError, isUuid, normalizeSlug } from '../../utils/activityRoute';
 
@@ -191,9 +192,10 @@ const ActivityDetail: React.FC = () => {
 
           <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
             <h2 className="text-lg font-medium text-gray-900 mb-4">活动详情</h2>
-            <div className="prose max-w-none text-gray-700 whitespace-pre-wrap">
-              {activity.description}
-            </div>
+            <MarkdownContent
+              content={activity.description}
+              className="prose max-w-none text-gray-700"
+            />
           </div>
 
           <div className="bg-gray-50 px-4 py-6 sm:px-6 flex flex-col sm:flex-row items-center justify-between">
