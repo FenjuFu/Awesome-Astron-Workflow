@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { Calendar, MapPin, Users, DollarSign } from 'lucide-react';
-import { getActivitySlug, getRegistrationPath, isMissingLinkSlugColumnError, isUuid } from '../../utils/activityRoute';
+import { getActivitySlug, getRegistrationPath, isMissingLinkSlugColumnError, isUuid, normalizeSlug } from '../../utils/activityRoute';
 
 interface Activity {
   id: string;
@@ -40,16 +40,16 @@ const ActivityDetail: React.FC = () => {
 
   const fetchActivity = async (key: string) => {
     try {
-      const query = supabase.from('activities').select('*');
+      const normalizedKey = normalizeSlug(key);
 
       if (isUuid(key)) {
-        const { data, error } = await query.eq('id', key).maybeSingle();
+        const { data, error } = await supabase.from('activities').select('*').eq('id', key).maybeSingle();
         if (error) throw error;
         setActivity(data);
         return;
       }
 
-      const { data, error } = await query.eq('link_slug', key).maybeSingle();
+      const { data, error } = await supabase.from('activities').select('*').eq('link_slug', key).maybeSingle();
 
       if (!error && data) {
         setActivity(data);
@@ -60,11 +60,65 @@ const ActivityDetail: React.FC = () => {
         throw error;
       }
 
+      if (normalizedKey && normalizedKey !== key) {
+        const { data: normalizedData, error: normalizedError } = await supabase.from('activities').select('*').eq('link_slug', normalizedKey).maybeSingle();
+
+        if (normalizedError && !isMissingLinkSlugColumnError(normalizedError)) {
+          throw normalizedError;
+        }
+
+        if (normalizedData) {
+          setActivity(normalizedData);
+          return;
+        }
+      }
+
+      const { data: ilikeData, error: ilikeError } = await supabase.from('activities').select('*').ilike('link_slug', key).maybeSingle();
+
+      if (ilikeError && !isMissingLinkSlugColumnError(ilikeError)) {
+        throw ilikeError;
+      }
+
+      if (ilikeData) {
+        setActivity(ilikeData);
+        return;
+      }
+
       const fallbackQuery = supabase.from('activities').select('*').contains('additional_fields', { link_slug: key });
       const { data: fallbackData, error: fallbackError } = await fallbackQuery.maybeSingle();
 
+      if (!fallbackError && fallbackData) {
+        setActivity(fallbackData);
+        return;
+      }
+
       if (fallbackError) throw fallbackError;
-      setActivity(fallbackData);
+
+      if (normalizedKey && normalizedKey !== key) {
+        const { data: normalizedFallbackData, error: normalizedFallbackError } = await supabase
+          .from('activities')
+          .select('*')
+          .contains('additional_fields', { link_slug: normalizedKey })
+          .maybeSingle();
+
+        if (normalizedFallbackError) throw normalizedFallbackError;
+
+        if (normalizedFallbackData) {
+          setActivity(normalizedFallbackData);
+          return;
+        }
+      }
+
+      const { data: allActivities, error: allActivitiesError } = await supabase.from('activities').select('*');
+
+      if (allActivitiesError) throw allActivitiesError;
+
+      const fuzzyMatchedActivity = allActivities?.find((candidate) => {
+        const candidateSlug = normalizeSlug(getActivitySlug(candidate) || candidate.title || '');
+        return candidateSlug === normalizedKey;
+      });
+
+      setActivity(fuzzyMatchedActivity || null);
     } catch (error) {
       console.error('Error fetching activity:', error);
     } finally {
