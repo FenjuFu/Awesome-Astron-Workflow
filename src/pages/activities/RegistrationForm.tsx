@@ -5,11 +5,13 @@ import { supabase } from '../../lib/supabase';
 import Navigation from '../../components/Navigation';
 import { isMissingLinkSlugColumnError, isUuid } from '../../utils/activityRoute';
 import Footer from '../../components/Footer';
+import MarkdownContent from '../../components/MarkdownContent';
 
 interface RegistrationFormField {
   id: string;
   label: string;
   placeholder?: string;
+  description?: string;
   required: boolean;
 }
 
@@ -45,6 +47,7 @@ const parseRegistrationFields = (activity: Activity | null): RegistrationFormFie
       id: field.id || `field_${index}`,
       label: (field.label || '').trim(),
       placeholder: field.placeholder || '',
+      description: field.description || '',
       required: Boolean(field.required),
     }))
     .filter((field) => field.label);
@@ -301,6 +304,12 @@ const RegistrationForm: React.FC = () => {
                         {field.label}
                         {field.required && <span className="text-red-500 ml-1">*</span>}
                       </label>
+                      {field.description && (
+                        <MarkdownContent
+                          content={field.description}
+                          className="mt-1 text-sm text-gray-500"
+                        />
+                      )}
                       <input
                         type="text"
                         {...register(`custom_fields.${field.label}` as const, {
