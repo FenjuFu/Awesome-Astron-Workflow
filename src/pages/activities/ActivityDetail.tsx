@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { Calendar, MapPin, Users, DollarSign } from 'lucide-react';
+import { getRegistrationPath, isUuid } from '../../utils/activityRoute';
 
 interface Activity {
   id: string;
@@ -20,26 +21,26 @@ interface Activity {
   registration_end: string;
   cover_image: string;
   category: string;
+  link_slug?: string | null;
 }
 
 const ActivityDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { activityKey } = useParams<{ activityKey: string }>();
   const [activity, setActivity] = useState<Activity | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (id) {
-      fetchActivity(id);
+    if (activityKey) {
+      fetchActivity(activityKey);
     }
-  }, [id]);
+  }, [activityKey]);
 
-  const fetchActivity = async (activityId: string) => {
+  const fetchActivity = async (key: string) => {
     try {
-      const { data, error } = await supabase
-        .from('activities')
-        .select('*')
-        .eq('id', activityId)
-        .single();
+      const query = supabase.from('activities').select('*');
+      const { data, error } = isUuid(key)
+        ? await query.eq('id', key).maybeSingle()
+        : await query.eq('link_slug', key).maybeSingle();
 
       if (error) throw error;
       setActivity(data);
@@ -128,7 +129,7 @@ const ActivityDetail: React.FC = () => {
             </div>
             {isRegistrationOpen && !isFull ? (
               <Link
-                to={`/register/${activity.id}`}
+                to={getRegistrationPath(activity.id, activity.link_slug)}
                 className="w-full sm:w-auto inline-flex justify-center items-center px-8 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
               >
                 立即报名

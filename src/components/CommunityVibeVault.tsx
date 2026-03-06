@@ -77,7 +77,7 @@ const CommunityVibeVault: React.FC = () => {
     { id: 25, src: "/memes/horse_year/9老马识途.png", alt: "老马识途" },
   ];
 
-  const tracks = [
+  const tracks = React.useMemo(() => [
     { id: '1', title: 'Gilded Midnight Stomp', duration: '2:30', artist: 'folk, jazz, swing', src: '/music/Gilded Midnight Stomp.mp3' },
     { id: '2', title: 'Midnight Teacup Tumble', duration: '3:15', artist: 'pop, chamber pop, bossa nova', src: '/music/Midnight Teacup Tumble.mp3' },
     { id: '3', title: 'Playful Teacups in Afternoon Sun', duration: '2:45', artist: 'pop, chamber pop, bossa nova', src: '/music/Playful Teacups in Afternoon Sun.mp3' },
@@ -93,7 +93,7 @@ const CommunityVibeVault: React.FC = () => {
     { id: '13', title: 'Retro Holiday Glow', duration: '3:00', artist: 'pop', src: '/music/Retro Holiday Glow.mp3' },
     { id: '14', title: 'Verano Sobre Asfalto', duration: '3:00', artist: 'rap, Latin trap-salsa fusion', src: '/music/Verano Sobre Asfalto.mp3' },
     { id: '15', title: 'Walnut Room Prelude', duration: '3:00', artist: 'classical, baroque, acoustic', src: '/music/Walnut Room Prelude.mp3' },
-  ];
+  ], []);
 
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
 

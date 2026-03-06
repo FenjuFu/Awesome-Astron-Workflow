@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import { format } from 'date-fns';
 import { Plus, Edit, Trash2, Eye, Share2 } from 'lucide-react';
+import { getActivityPath, normalizeSlug } from '../../utils/activityRoute';
 
 interface RegistrationFormField {
   id: string;
@@ -27,6 +28,7 @@ interface Activity {
   registration_end?: string;
   fee?: number;
   cover_image?: string;
+  link_slug?: string | null;
   additional_fields?: {
     registration_form_fields?: RegistrationFormField[];
   };
@@ -134,6 +136,14 @@ const ActivityManage: React.FC = () => {
       }))
       .filter((field) => field.label);
 
+    const linkSlugInput = (formData.get('link_slug') as string) || '';
+    const slug = normalizeSlug(linkSlugInput);
+
+    if (linkSlugInput && !slug) {
+      alert('链接名称仅支持英文字母、数字和连字符（-）');
+      return;
+    }
+
     const activityData = {
       title: formData.get('title') as string,
       description: formData.get('description') as string,
@@ -147,6 +157,7 @@ const ActivityManage: React.FC = () => {
       fee: parseFloat(formData.get('fee') as string) || 0,
       status: formData.get('status') as string,
       cover_image: formData.get('cover_image') as string,
+      link_slug: slug || null,
       additional_fields: {
         registration_form_fields: sanitizedRegistrationFields,
       },
@@ -172,8 +183,8 @@ const ActivityManage: React.FC = () => {
     }
   };
 
-  const handleShare = (id: string) => {
-    const url = `${window.location.origin}/activities/${id}`;
+  const handleShare = (id: string, linkSlug?: string | null) => {
+    const url = `${window.location.origin}${getActivityPath(id, linkSlug)}`;
     navigator.clipboard
       .writeText(url)
       .then(() => {
@@ -241,10 +252,10 @@ const ActivityManage: React.FC = () => {
                     {format(new Date(activity.created_at), 'yyyy-MM-dd')}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <Link to={`/activities/${activity.id}`} className="text-indigo-600 hover:text-indigo-900 mr-3">
+                    <Link to={getActivityPath(activity.id, activity.link_slug)} className="text-indigo-600 hover:text-indigo-900 mr-3">
                       <Eye className="w-4 h-4 inline" />
                     </Link>
-                    <button onClick={() => handleShare(activity.id)} className="text-gray-600 hover:text-gray-900 mr-3">
+                    <button onClick={() => handleShare(activity.id, activity.link_slug)} className="text-gray-600 hover:text-gray-900 mr-3">
                       <Share2 className="w-4 h-4" />
                     </button>
                     <button onClick={() => openEditModal(activity)} className="text-blue-600 hover:text-blue-900 mr-3">
@@ -341,6 +352,16 @@ const ActivityManage: React.FC = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700">封面图 URL</label>
                   <input name="cover_image" defaultValue={editingActivity?.cover_image} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">链接名称（可选）</label>
+                  <input
+                    name="link_slug"
+                    defaultValue={editingActivity?.link_slug || ''}
+                    placeholder="例如 spring-meetup-2026"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                  />
+                  <p className="mt-1 text-xs text-gray-500">仅支持小写字母、数字和连字符（-）。留空则使用系统ID。</p>
                 </div>
               </div>
 
