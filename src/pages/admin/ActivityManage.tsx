@@ -34,6 +34,10 @@ interface Activity {
   };
 }
 
+const isMissingLinkSlugColumnError = (error: { code?: string; message?: string } | null) =>
+  Boolean(error) &&
+  (error?.code === 'PGRST204' || error?.message?.includes("Could not find the 'link_slug' column of 'activities' in the schema cache"));
+
 const createEmptyField = (): RegistrationFormField => ({
   id: `field_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
   label: '',
@@ -163,12 +167,26 @@ const ActivityManage: React.FC = () => {
       },
     };
 
-    if (editingActivity) {
-      const { error } = await supabase.from('activities').update(activityData).eq('id', editingActivity.id);
-      if (error) alert(error.message);
-    } else {
-      const { error } = await supabase.from('activities').insert([activityData]);
-      if (error) alert(error.message);
+    type ActivityMutationData = Omit<typeof activityData, 'link_slug'> & { link_slug?: string | null };
+
+    const executeMutation = async (data: ActivityMutationData) => {
+      if (editingActivity) {
+        return supabase.from('activities').update(data).eq('id', editingActivity.id);
+      }
+      return supabase.from('activities').insert([data]);
+    };
+
+    let { error } = await executeMutation(activityData);
+
+    if (isMissingLinkSlugColumnError(error)) {
+      const activityDataWithoutSlug: ActivityMutationData = { ...activityData };
+      delete activityDataWithoutSlug.link_slug;
+      ({ error } = await executeMutation(activityDataWithoutSlug));
+    }
+
+    if (error) {
+      alert(error.message);
+      return;
     }
 
     closeModal();
