@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../../lib/supabase';
 import Navigation from '../../components/Navigation';
+import { isUuid } from '../../utils/activityRoute';
 import Footer from '../../components/Footer';
 
 interface RegistrationFormField {
@@ -49,7 +50,7 @@ const parseRegistrationFields = (activity: Activity | null): RegistrationFormFie
 };
 
 const RegistrationForm: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { activityKey } = useParams<{ activityKey: string }>();
   const navigate = useNavigate();
   const [activity, setActivity] = useState<Activity | null>(null);
   const [loading, setLoading] = useState(true);
@@ -68,18 +69,20 @@ const RegistrationForm: React.FC = () => {
   const extraFields = parseRegistrationFields(activity);
 
   useEffect(() => {
-    if (id) {
-      fetchActivity(id);
+    if (activityKey) {
+      fetchActivity(activityKey);
     }
-  }, [id]);
+  }, [activityKey]);
 
-  const fetchActivity = async (activityId: string) => {
+  const fetchActivity = async (key: string) => {
     try {
-      const { data, error } = await supabase
+      const query = supabase
         .from('activities')
-        .select('id, title, max_participants, registered_count, additional_fields')
-        .eq('id', activityId)
-        .single();
+        .select('id, title, max_participants, registered_count, additional_fields');
+
+      const { data, error } = isUuid(key)
+        ? await query.eq('id', key).maybeSingle()
+        : await query.eq('link_slug', key).maybeSingle();
 
       if (error) throw error;
       setActivity(data as Activity);
@@ -91,13 +94,13 @@ const RegistrationForm: React.FC = () => {
   };
 
   const onSubmit = async (data: RegistrationInput) => {
-    if (!id || !activity) return;
+    if (!activityKey || !activity) return;
 
     setSubmitting(true);
     try {
       const { error: registrationError } = await supabase.from('registrations').insert([
         {
-          activity_id: id,
+          activity_id: activity.id,
           name: data.name,
           phone: data.phone,
           email: data.email,
@@ -116,7 +119,7 @@ const RegistrationForm: React.FC = () => {
       const { error: updateError } = await supabase
         .from('activities')
         .update({ registered_count: activity.registered_count + 1 })
-        .eq('id', id);
+        .eq('id', activity.id);
 
       if (updateError) throw updateError;
 
