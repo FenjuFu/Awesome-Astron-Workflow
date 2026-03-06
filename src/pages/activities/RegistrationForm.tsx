@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../../lib/supabase';
 import Navigation from '../../components/Navigation';
-import { isUuid } from '../../utils/activityRoute';
+import { isMissingLinkSlugColumnError, isUuid } from '../../utils/activityRoute';
 import Footer from '../../components/Footer';
 
 interface RegistrationFormField {
@@ -30,6 +30,7 @@ interface Activity {
   registered_count: number;
   additional_fields?: {
     registration_form_fields?: RegistrationFormField[];
+    link_slug?: string | null;
   };
 }
 
@@ -80,12 +81,33 @@ const RegistrationForm: React.FC = () => {
         .from('activities')
         .select('id, title, max_participants, registered_count, additional_fields');
 
-      const { data, error } = isUuid(key)
-        ? await query.eq('id', key).maybeSingle()
-        : await query.eq('link_slug', key).maybeSingle();
+      if (isUuid(key)) {
+        const { data, error } = await query.eq('id', key).maybeSingle();
+        if (error) throw error;
+        setActivity(data as Activity);
+        return;
+      }
 
-      if (error) throw error;
-      setActivity(data as Activity);
+      const { data, error } = await query.eq('link_slug', key).maybeSingle();
+
+      if (!error && data) {
+        setActivity(data as Activity);
+        return;
+      }
+
+      if (error && !isMissingLinkSlugColumnError(error)) {
+        throw error;
+      }
+
+      const fallbackQuery = supabase
+        .from('activities')
+        .select('id, title, max_participants, registered_count, additional_fields')
+        .contains('additional_fields', { link_slug: key });
+
+      const { data: fallbackData, error: fallbackError } = await fallbackQuery.maybeSingle();
+
+      if (fallbackError) throw fallbackError;
+      setActivity(fallbackData as Activity);
     } catch (error) {
       console.error('Error fetching activity:', error);
     } finally {
