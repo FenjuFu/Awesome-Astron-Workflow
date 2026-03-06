@@ -16,8 +16,9 @@ interface RegistrationInput {
   name: string;
   phone: string;
   email: string;
-  company?: string;
-  position?: string;
+  wechat: string;
+  company: string;
+  position: string;
   custom_fields: Record<string, string>;
 }
 
@@ -100,9 +101,12 @@ const RegistrationForm: React.FC = () => {
           name: data.name,
           phone: data.phone,
           email: data.email,
-          company: data.company || null,
-          position: data.position || null,
-          custom_fields: data.custom_fields || {},
+          company: data.company,
+          position: data.position,
+          custom_fields: {
+            ...(data.custom_fields || {}),
+            wechat: data.wechat,
+          },
           status: 'submitted',
         },
       ]);
@@ -215,29 +219,51 @@ const RegistrationForm: React.FC = () => {
             </div>
 
             <div>
+              <label htmlFor="wechat" className="block text-sm font-medium text-gray-700">
+                微信号 <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="wechat"
+                {...register('wechat', { required: '请输入微信号' })}
+                className={`mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm ${
+                  errors.wechat ? 'border-red-300' : ''
+                }`}
+                placeholder="请输入微信号"
+              />
+              {errors.wechat && <p className="mt-1 text-sm text-red-600">{errors.wechat.message}</p>}
+            </div>
+
+            <div>
               <label htmlFor="company" className="block text-sm font-medium text-gray-700">
-                公司/学校
+                公司/学校 <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 id="company"
-                {...register('company')}
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                {...register('company', { required: '请输入公司或学校名称' })}
+                className={`mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm ${
+                  errors.company ? 'border-red-300' : ''
+                }`}
                 placeholder="请输入公司或学校名称"
               />
+              {errors.company && <p className="mt-1 text-sm text-red-600">{errors.company.message}</p>}
             </div>
 
             <div>
               <label htmlFor="position" className="block text-sm font-medium text-gray-700">
-                职位/专业
+                职位/专业 <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 id="position"
-                {...register('position')}
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                {...register('position', { required: '请输入当前职位或所学专业' })}
+                className={`mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm ${
+                  errors.position ? 'border-red-300' : ''
+                }`}
                 placeholder="请输入当前职位或所学专业"
               />
+              {errors.position && <p className="mt-1 text-sm text-red-600">{errors.position.message}</p>}
             </div>
 
             {extraFields.length > 0 && (
