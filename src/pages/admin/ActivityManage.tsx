@@ -45,6 +45,21 @@ const createEmptyField = (): RegistrationFormField => ({
   required: false,
 });
 
+
+const parseDateTimeField = (value: FormDataEntryValue | null, label: string) => {
+  const raw = typeof value === 'string' ? value.trim() : '';
+  if (!raw) {
+    throw new Error(`请填写${label}`);
+  }
+
+  const parsed = new Date(raw);
+  if (Number.isNaN(parsed.getTime())) {
+    throw new Error(`${label}格式不正确`);
+  }
+
+  return parsed.toISOString();
+};
+
 const parseRegistrationFormFields = (activity?: Activity | null): RegistrationFormField[] => {
   const rawFields = activity?.additional_fields?.registration_form_fields;
   if (!Array.isArray(rawFields)) {
@@ -248,25 +263,32 @@ const ActivityManage: React.FC = () => {
       return;
     }
 
-    const activityData = {
-      title: formData.get('title') as string,
-      description: activityDescription,
-      location: formData.get('location') as string,
-      category: formData.get('category') as string,
-      start_time: new Date(formData.get('start_time') as string).toISOString(),
-      end_time: new Date(formData.get('end_time') as string).toISOString(),
-      registration_start: new Date(formData.get('registration_start') as string).toISOString(),
-      registration_end: new Date(formData.get('registration_end') as string).toISOString(),
-      max_participants: parseInt(formData.get('max_participants') as string, 10) || 0,
-      fee: parseFloat(formData.get('fee') as string) || 0,
-      status: formData.get('status') as string,
-      cover_image: formData.get('cover_image') as string,
-      link_slug: slug || null,
-      additional_fields: {
-        registration_form_fields: sanitizedRegistrationFields,
+    let activityData;
+
+    try {
+      activityData = {
+        title: formData.get('title') as string,
+        description: activityDescription,
+        location: formData.get('location') as string,
+        category: formData.get('category') as string,
+        start_time: parseDateTimeField(formData.get('start_time'), '活动开始时间'),
+        end_time: parseDateTimeField(formData.get('end_time'), '活动结束时间'),
+        registration_start: parseDateTimeField(formData.get('registration_start'), '报名开始时间'),
+        registration_end: parseDateTimeField(formData.get('registration_end'), '报名截止时间'),
+        max_participants: parseInt(formData.get('max_participants') as string, 10) || 0,
+        fee: parseFloat(formData.get('fee') as string) || 0,
+        status: formData.get('status') as string,
+        cover_image: formData.get('cover_image') as string,
         link_slug: slug || null,
-      },
-    };
+        additional_fields: {
+          registration_form_fields: sanitizedRegistrationFields,
+          link_slug: slug || null,
+        },
+      };
+    } catch (error) {
+      alert(error instanceof Error ? error.message : '时间格式错误，请检查后重试');
+      return;
+    }
 
     type ActivityMutationData = Omit<typeof activityData, 'link_slug'> & { link_slug?: string | null };
 
