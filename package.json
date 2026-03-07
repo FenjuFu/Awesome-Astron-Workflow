@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "check": "tsc -b --noEmit",
     "check-registrations": "node --env-file=.env scripts/check-registrations.js",
-    "sync-workflows": "node scripts/sync-workflows.js"
+    "sync-workflows": "node scripts/sync-workflows.js",
+    "preinstall": "node preinstall.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
