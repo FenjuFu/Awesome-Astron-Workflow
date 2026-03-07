@@ -4,6 +4,7 @@ import { supabase } from '../../lib/supabase';
 import { format } from 'date-fns';
 import { Plus, Edit, Trash2, Eye, Share2 } from 'lucide-react';
 import { getActivityPath, getActivitySlug, isMissingLinkSlugColumnError, normalizeSlug } from '../../utils/activityRoute';
+import MarkdownContent from '../../components/MarkdownContent';
 
 interface RegistrationFormField {
   id: string;
@@ -577,6 +578,12 @@ const ActivityManage: React.FC = () => {
                                 />
                               </label>
                             </div>
+                            {field.description && (
+                              <div className="mt-2 rounded-md border border-dashed border-gray-300 bg-gray-50 p-2">
+                                <p className="text-xs text-gray-500">预览：</p>
+                                <MarkdownContent content={field.description} className="text-sm text-gray-600 break-words" />
+                              </div>
+                            )}
                           </div>
                         </div>
                         <div className="mt-3 flex items-center justify-between">

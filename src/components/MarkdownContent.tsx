@@ -5,11 +5,12 @@ interface MarkdownContentProps {
   className?: string;
 }
 
-const IMAGE_MARKDOWN_REGEX = /!\[([^\]]*)\]\(([^)]+)\)/g;
+const IMAGE_MARKDOWN_REGEX = /!\[([^\]]*)\]\s*\(([^)]+)\)/g;
+const DATA_IMAGE_URL_REGEX = /^data:image\/[a-zA-Z0-9.+-]+;base64,[a-zA-Z0-9+/=]+$/;
 
 const isSafeImageUrl = (rawUrl: string) => {
   const url = rawUrl.trim();
-  return url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/');
+  return url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/') || DATA_IMAGE_URL_REGEX.test(url);
 };
 
 const renderMarkdownLine = (line: string, lineIndex: number) => {
@@ -67,7 +68,8 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className })
     return null;
   }
 
-  const lines = content.split('\n');
+  const normalizedContent = content.replace(/\]\s*\n\s*\(/g, '](');
+  const lines = normalizedContent.split('\n');
 
   return <div className={className}>{lines.map((line, lineIndex) => renderMarkdownLine(line, lineIndex))}</div>;
 };
