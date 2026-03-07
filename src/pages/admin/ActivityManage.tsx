@@ -82,6 +82,7 @@ const ActivityManage: React.FC = () => {
   const [editingActivity, setEditingActivity] = useState<Activity | null>(null);
   const [registrationFields, setRegistrationFields] = useState<RegistrationFormField[]>([]);
   const [activityDescription, setActivityDescription] = useState('');
+  const [coverImage, setCoverImage] = useState('');
   const [descriptionMode, setDescriptionMode] = useState<'edit' | 'preview'>('edit');
   const activityDescriptionRef = useRef<HTMLTextAreaElement | null>(null);
   const registrationFieldRefs = useRef<Record<string, HTMLTextAreaElement | null>>({});
@@ -109,6 +110,7 @@ const ActivityManage: React.FC = () => {
     setEditingActivity(null);
     setRegistrationFields([]);
     setActivityDescription('');
+    setCoverImage('');
     setDescriptionMode('edit');
     setShowModal(true);
   };
@@ -117,6 +119,7 @@ const ActivityManage: React.FC = () => {
     setEditingActivity(activity);
     setRegistrationFields(parseRegistrationFormFields(activity));
     setActivityDescription(activity.description || '');
+    setCoverImage(activity.cover_image || '');
     setDescriptionMode('edit');
     setShowModal(true);
   };
@@ -126,6 +129,7 @@ const ActivityManage: React.FC = () => {
     setEditingActivity(null);
     setRegistrationFields([]);
     setActivityDescription('');
+    setCoverImage('');
     setDescriptionMode('edit');
   };
 
@@ -216,6 +220,21 @@ const ActivityManage: React.FC = () => {
     await handleImageUploadToRegistrationField(fieldId, imageFile, e.currentTarget);
   };
 
+  const handleCoverImageUpload = async (file: File) => {
+    if (!file.type.startsWith('image/')) {
+      alert('请上传图片文件');
+      return;
+    }
+
+    try {
+      const imageUrl = await readImageAsDataUrl(file);
+      setCoverImage(imageUrl);
+    } catch (error) {
+      console.error(error);
+      alert('图片处理失败，请稍后重试');
+    }
+  };
+
   const addRegistrationField = () => {
     setRegistrationFields((prev) => [...prev, createEmptyField()]);
   };
@@ -278,7 +297,7 @@ const ActivityManage: React.FC = () => {
         max_participants: parseInt(formData.get('max_participants') as string, 10) || 0,
         fee: parseFloat(formData.get('fee') as string) || 0,
         status: formData.get('status') as string,
-        cover_image: formData.get('cover_image') as string,
+        cover_image: coverImage.trim(),
         link_slug: slug || null,
         additional_fields: {
           registration_form_fields: sanitizedRegistrationFields,
@@ -557,7 +576,43 @@ const ActivityManage: React.FC = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">封面图 URL</label>
-                  <input name="cover_image" defaultValue={editingActivity?.cover_image} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
+                  <input
+                    name="cover_image"
+                    value={coverImage}
+                    onChange={(e) => setCoverImage(e.target.value)}
+                    onPaste={async (e) => {
+                      const imageFile = Array.from(e.clipboardData.files).find((file) => file.type.startsWith('image/'));
+                      if (!imageFile) return;
+
+                      e.preventDefault();
+                      await handleCoverImageUpload(imageFile);
+                    }}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                  />
+                  <div className="mt-2 flex items-center gap-2">
+                    <label className="inline-flex items-center px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer">
+                      上传封面图
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+
+                          await handleCoverImageUpload(file);
+                          e.currentTarget.value = '';
+                        }}
+                      />
+                    </label>
+                    <p className="text-xs text-gray-500">支持粘贴截图或上传图片，自动填充为可直接保存的图片地址。</p>
+                  </div>
+                  {coverImage.trim() && (
+                    <div className="mt-2 rounded-md border border-dashed border-gray-300 bg-gray-50 p-2">
+                      <p className="text-xs text-gray-500 mb-2">封面预览：</p>
+                      <img src={coverImage} alt="封面预览" className="max-h-40 w-full object-cover rounded" />
+                    </div>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">链接名称（可选）</label>
