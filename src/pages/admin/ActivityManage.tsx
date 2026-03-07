@@ -393,7 +393,7 @@ const ActivityManage: React.FC = () => {
 
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 overflow-y-auto">
-          <div className="bg-white rounded-lg max-w-2xl w-full p-6 my-8">
+          <div className="bg-white rounded-lg w-full md:w-[80vw] md:max-w-[80vw] max-h-[90vh] overflow-y-auto p-6 my-8">
             <h2 className="text-xl font-bold mb-4">{editingActivity ? '编辑活动' : '创建活动'}</h2>
             <form onSubmit={handleCreateOrUpdate} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -430,9 +430,9 @@ const ActivityManage: React.FC = () => {
                         value={activityDescription}
                         onChange={(e) => setActivityDescription(e.target.value)}
                         onPaste={handleImagePasteToDescription}
-                        rows={6}
+                        rows={12}
                         placeholder="支持 Markdown 语法，例如标题、列表、链接和图片"
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 font-mono text-sm"
+                        className="mt-1 block w-full min-h-[300px] border border-gray-300 rounded-md shadow-sm p-2 font-mono text-sm"
                       />
                       <div className="mt-2 flex items-center gap-2">
                         <label className="inline-flex items-center px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer">
@@ -457,7 +457,7 @@ const ActivityManage: React.FC = () => {
                       </div>
                     </>
                   ) : (
-                    <div className="mt-1 min-h-[160px] rounded-md border border-gray-300 bg-gray-50 p-3">
+                    <div className="mt-1 min-h-[300px] rounded-md border border-gray-300 bg-gray-50 p-3">
                       {activityDescription.trim() ? (
                         <MarkdownContent content={activityDescription} className="text-sm text-gray-700 break-words" />
                       ) : (
