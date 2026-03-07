@@ -33,15 +33,15 @@ const ActivityDetail: React.FC = () => {
   const [activity, setActivity] = useState<Activity | null>(null);
   const [loading, setLoading] = useState(true);
 
-  if (activityKey?.toLowerCase() === 'admin') {
-    return <Navigate to="/admin" replace />;
-  }
+  const shouldRedirectToAdmin = activityKey?.toLowerCase() === 'admin';
 
   useEffect(() => {
-    if (activityKey) {
-      fetchActivity(activityKey);
+    if (!activityKey || shouldRedirectToAdmin) {
+      return;
     }
-  }, [activityKey]);
+
+    fetchActivity(activityKey);
+  }, [activityKey, shouldRedirectToAdmin]);
 
   const fetchActivity = async (key: string) => {
     try {
@@ -130,6 +130,10 @@ const ActivityDetail: React.FC = () => {
       setLoading(false);
     }
   };
+
+  if (shouldRedirectToAdmin) {
+    return <Navigate to="/admin" replace />;
+  }
 
   if (loading) {
     return (

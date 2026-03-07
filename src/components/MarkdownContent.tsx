@@ -12,6 +12,23 @@ const isSafeImageUrl = (rawUrl: string) => {
   return url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/') || DATA_IMAGE_URL_REGEX.test(url);
 };
 
+const splitTableCells = (line: string) => {
+  const normalized = line.trim().replace(/^\|/, '').replace(/\|$/, '');
+  return normalized.split('|').map((cell) => cell.trim());
+};
+
+const isMarkdownTableSeparator = (line: string) => {
+  const cells = splitTableCells(line);
+  if (!cells.length) return false;
+  return cells.every((cell) => /^:?-{3,}:?$/.test(cell));
+};
+
+const isPotentialTableRow = (line: string) => {
+  const trimmed = line.trim();
+  if (!trimmed || !trimmed.includes('|')) return false;
+  return splitTableCells(trimmed).length > 1;
+};
+
 const renderInlineMarkdown = (text: string, keyPrefix: string): React.ReactNode[] => {
   const nodes: React.ReactNode[] = [];
 
@@ -117,21 +134,21 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className })
     listItems = [];
   };
 
-  lines.forEach((rawLine, lineIndex) => {
-    const line = rawLine.trimEnd();
+  for (let lineIndex = 0; lineIndex < lines.length; lineIndex += 1) {
+    const line = lines[lineIndex].trimEnd();
     const trimmed = line.trim();
 
     const listMatch = /^[-*+]\s+(.+)$/.exec(trimmed);
     if (listMatch) {
       listItems.push(listMatch[1]);
-      return;
+      continue;
     }
 
     flushList(lineIndex);
 
     if (!trimmed) {
       blocks.push(<div key={`spacer-${lineIndex}`} className="h-2" />);
-      return;
+      continue;
     }
 
     const headingMatch = /^(#{1,6})\s+(.+)$/.exec(trimmed);
@@ -145,12 +162,54 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className })
           {renderInlineMarkdown(text, `h-${lineIndex}`)}
         </Tag>,
       );
-      return;
+      continue;
     }
 
     if (/^---+$/.test(trimmed)) {
       blocks.push(<hr key={`hr-${lineIndex}`} className="my-3 border-gray-200" />);
-      return;
+      continue;
+    }
+
+    if (isPotentialTableRow(trimmed) && lineIndex + 1 < lines.length && isMarkdownTableSeparator(lines[lineIndex + 1].trim())) {
+      const headerCells = splitTableCells(trimmed);
+      const bodyRows: string[][] = [];
+
+      lineIndex += 2;
+
+      while (lineIndex < lines.length && isPotentialTableRow(lines[lineIndex])) {
+        bodyRows.push(splitTableCells(lines[lineIndex]));
+        lineIndex += 1;
+      }
+
+      lineIndex -= 1;
+
+      blocks.push(
+        <div key={`table-wrap-${lineIndex}`} className="my-3 overflow-x-auto">
+          <table className="min-w-full border-collapse border border-gray-200 text-sm">
+            <thead className="bg-gray-50">
+              <tr>
+                {headerCells.map((cell, cellIndex) => (
+                  <th key={`th-${lineIndex}-${cellIndex}`} className="border border-gray-200 px-3 py-2 text-left font-semibold text-gray-700">
+                    {renderInlineMarkdown(cell, `th-${lineIndex}-${cellIndex}`)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {bodyRows.map((row, rowIndex) => (
+                <tr key={`tr-${lineIndex}-${rowIndex}`} className="odd:bg-white even:bg-gray-50/40">
+                  {headerCells.map((_, cellIndex) => (
+                    <td key={`td-${lineIndex}-${rowIndex}-${cellIndex}`} className="border border-gray-200 px-3 py-2 align-top text-gray-700">
+                      {renderInlineMarkdown(row[cellIndex] || '', `td-${lineIndex}-${rowIndex}-${cellIndex}`)}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>,
+      );
+      continue;
     }
 
     if (trimmed.startsWith('>')) {
@@ -160,7 +219,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className })
           {renderInlineMarkdown(quoteText, `q-${lineIndex}`)}
         </blockquote>,
       );
-      return;
+      continue;
     }
 
     blocks.push(
@@ -168,7 +227,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className })
         {renderInlineMarkdown(line, `p-${lineIndex}`)}
       </p>,
     );
-  });
+  }
 
   flushList(lines.length);
 
