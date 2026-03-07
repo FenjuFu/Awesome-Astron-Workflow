@@ -67,6 +67,7 @@ const ActivityManage: React.FC = () => {
   const [editingActivity, setEditingActivity] = useState<Activity | null>(null);
   const [registrationFields, setRegistrationFields] = useState<RegistrationFormField[]>([]);
   const [activityDescription, setActivityDescription] = useState('');
+  const [descriptionMode, setDescriptionMode] = useState<'edit' | 'preview'>('edit');
   const activityDescriptionRef = useRef<HTMLTextAreaElement | null>(null);
   const registrationFieldRefs = useRef<Record<string, HTMLTextAreaElement | null>>({});
 
@@ -93,6 +94,7 @@ const ActivityManage: React.FC = () => {
     setEditingActivity(null);
     setRegistrationFields([]);
     setActivityDescription('');
+    setDescriptionMode('edit');
     setShowModal(true);
   };
 
@@ -100,6 +102,7 @@ const ActivityManage: React.FC = () => {
     setEditingActivity(activity);
     setRegistrationFields(parseRegistrationFormFields(activity));
     setActivityDescription(activity.description || '');
+    setDescriptionMode('edit');
     setShowModal(true);
   };
 
@@ -108,6 +111,7 @@ const ActivityManage: React.FC = () => {
     setEditingActivity(null);
     setRegistrationFields([]);
     setActivityDescription('');
+    setDescriptionMode('edit');
   };
 
   const readImageAsDataUrl = (file: File): Promise<string> =>
@@ -398,37 +402,73 @@ const ActivityManage: React.FC = () => {
                   <input name="title" defaultValue={editingActivity?.title} required className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700">描述</label>
-                  <textarea
-                    name="description"
-                    ref={activityDescriptionRef}
-                    value={activityDescription}
-                    onChange={(e) => setActivityDescription(e.target.value)}
-                    onPaste={handleImagePasteToDescription}
-                    rows={4}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                  />
-                  <div className="mt-2 flex items-center gap-2">
-                    <label className="inline-flex items-center px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer">
-                      上传图片
-                      <input
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={async (e) => {
-                          const file = e.target.files?.[0];
-                          if (!file) return;
-
-                          const textarea = activityDescriptionRef.current;
-                          if (!textarea) return;
-
-                          await handleImageUploadToDescription(file, textarea);
-                          e.currentTarget.value = '';
-                        }}
-                      />
-                    </label>
-                    <p className="text-xs text-gray-500">支持粘贴截图或上传图片，自动插入 Markdown 图片语法</p>
+                  <div className="flex items-center justify-between">
+                    <label className="block text-sm font-medium text-gray-700">描述</label>
+                    <div className="inline-flex rounded-md border border-gray-300 overflow-hidden text-sm">
+                      <button
+                        type="button"
+                        onClick={() => setDescriptionMode('edit')}
+                        className={`px-3 py-1 ${descriptionMode === 'edit' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+                      >
+                        编辑
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setDescriptionMode('preview')}
+                        className={`px-3 py-1 ${descriptionMode === 'preview' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+                      >
+                        预览
+                      </button>
+                    </div>
                   </div>
+
+                  {descriptionMode === 'edit' ? (
+                    <>
+                      <textarea
+                        name="description"
+                        ref={activityDescriptionRef}
+                        value={activityDescription}
+                        onChange={(e) => setActivityDescription(e.target.value)}
+                        onPaste={handleImagePasteToDescription}
+                        rows={6}
+                        placeholder="支持 Markdown 语法，例如标题、列表、链接和图片"
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 font-mono text-sm"
+                      />
+                      <div className="mt-2 flex items-center gap-2">
+                        <label className="inline-flex items-center px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer">
+                          上传图片
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (!file) return;
+
+                              const textarea = activityDescriptionRef.current;
+                              if (!textarea) return;
+
+                              await handleImageUploadToDescription(file, textarea);
+                              e.currentTarget.value = '';
+                            }}
+                          />
+                        </label>
+                        <p className="text-xs text-gray-500">支持粘贴截图或上传图片，自动插入 Markdown 图片语法</p>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="mt-1 min-h-[160px] rounded-md border border-gray-300 bg-gray-50 p-3">
+                      {activityDescription.trim() ? (
+                        <MarkdownContent content={activityDescription} className="text-sm text-gray-700 break-words" />
+                      ) : (
+                        <p className="text-sm text-gray-400">暂无内容，切换到“编辑”后输入 Markdown。</p>
+                      )}
+                    </div>
+                  )}
+
+                  <p className="mt-2 text-xs text-gray-500">
+                    描述字段使用 Markdown 保存，活动详情页会按 Markdown 渲染。
+                  </p>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">地点</label>
