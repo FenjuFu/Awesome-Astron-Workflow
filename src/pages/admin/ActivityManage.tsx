@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import { format } from 'date-fns';
@@ -65,6 +65,9 @@ const ActivityManage: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [editingActivity, setEditingActivity] = useState<Activity | null>(null);
   const [registrationFields, setRegistrationFields] = useState<RegistrationFormField[]>([]);
+  const [activityDescription, setActivityDescription] = useState('');
+  const activityDescriptionRef = useRef<HTMLTextAreaElement | null>(null);
+  const registrationFieldRefs = useRef<Record<string, HTMLTextAreaElement | null>>({});
 
   useEffect(() => {
     fetchActivities();
@@ -88,12 +91,14 @@ const ActivityManage: React.FC = () => {
   const openCreateModal = () => {
     setEditingActivity(null);
     setRegistrationFields([]);
+    setActivityDescription('');
     setShowModal(true);
   };
 
   const openEditModal = (activity: Activity) => {
     setEditingActivity(activity);
     setRegistrationFields(parseRegistrationFormFields(activity));
+    setActivityDescription(activity.description || '');
     setShowModal(true);
   };
 
@@ -101,6 +106,94 @@ const ActivityManage: React.FC = () => {
     setShowModal(false);
     setEditingActivity(null);
     setRegistrationFields([]);
+    setActivityDescription('');
+  };
+
+  const readImageAsDataUrl = (file: File): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = () => reject(new Error('图片读取失败，请重试'));
+      reader.readAsDataURL(file);
+    });
+
+  const insertMarkdownImage = (
+    textarea: HTMLTextAreaElement,
+    imageUrl: string,
+    setValue: React.Dispatch<React.SetStateAction<string>>,
+  ) => {
+    const start = textarea.selectionStart ?? textarea.value.length;
+    const end = textarea.selectionEnd ?? textarea.value.length;
+    const markdown = `![](${imageUrl})`;
+    const newValue = `${textarea.value.slice(0, start)}${markdown}${textarea.value.slice(end)}`;
+    const cursor = start + markdown.length;
+
+    setValue(newValue);
+
+    requestAnimationFrame(() => {
+      textarea.focus();
+      textarea.setSelectionRange(cursor, cursor);
+    });
+  };
+
+  const handleImageUploadToDescription = async (file: File, textarea: HTMLTextAreaElement) => {
+    if (!file.type.startsWith('image/')) {
+      alert('请上传图片文件');
+      return;
+    }
+
+    try {
+      const imageUrl = await readImageAsDataUrl(file);
+      insertMarkdownImage(textarea, imageUrl, setActivityDescription);
+    } catch (error) {
+      console.error(error);
+      alert('图片处理失败，请稍后重试');
+    }
+  };
+
+  const handleImagePasteToDescription = async (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    const imageFile = Array.from(e.clipboardData.files).find((file) => file.type.startsWith('image/'));
+    if (!imageFile) return;
+
+    e.preventDefault();
+    await handleImageUploadToDescription(imageFile, e.currentTarget);
+  };
+
+  const handleImageUploadToRegistrationField = async (fieldId: string, file: File, textarea: HTMLTextAreaElement) => {
+    if (!file.type.startsWith('image/')) {
+      alert('请上传图片文件');
+      return;
+    }
+
+    try {
+      const imageUrl = await readImageAsDataUrl(file);
+      const start = textarea.selectionStart ?? textarea.value.length;
+      const end = textarea.selectionEnd ?? textarea.value.length;
+      const markdown = `![](${imageUrl})`;
+      const nextDescription = `${textarea.value.slice(0, start)}${markdown}${textarea.value.slice(end)}`;
+      const cursor = start + markdown.length;
+
+      updateRegistrationField(fieldId, 'description', nextDescription);
+
+      requestAnimationFrame(() => {
+        textarea.focus();
+        textarea.setSelectionRange(cursor, cursor);
+      });
+    } catch (error) {
+      console.error(error);
+      alert('图片处理失败，请稍后重试');
+    }
+  };
+
+  const handleImagePasteToRegistrationField = async (
+    fieldId: string,
+    e: React.ClipboardEvent<HTMLTextAreaElement>,
+  ) => {
+    const imageFile = Array.from(e.clipboardData.files).find((file) => file.type.startsWith('image/'));
+    if (!imageFile) return;
+
+    e.preventDefault();
+    await handleImageUploadToRegistrationField(fieldId, imageFile, e.currentTarget);
   };
 
   const addRegistrationField = () => {
@@ -108,6 +201,7 @@ const ActivityManage: React.FC = () => {
   };
 
   const removeRegistrationField = (fieldId: string) => {
+    delete registrationFieldRefs.current[fieldId];
     setRegistrationFields((prev) => prev.filter((field) => field.id !== fieldId));
   };
 
@@ -151,7 +245,7 @@ const ActivityManage: React.FC = () => {
 
     const activityData = {
       title: formData.get('title') as string,
-      description: formData.get('description') as string,
+      description: activityDescription,
       location: formData.get('location') as string,
       category: formData.get('category') as string,
       start_time: new Date(formData.get('start_time') as string).toISOString(),
@@ -304,8 +398,36 @@ const ActivityManage: React.FC = () => {
                 </div>
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-700">描述</label>
-                  <textarea name="description" defaultValue={editingActivity?.description} rows={4} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
-                  <p className="mt-1 text-xs text-gray-500">支持 Markdown 图片语法，例如：![](https://example.com/poster.png)</p>
+                  <textarea
+                    name="description"
+                    ref={activityDescriptionRef}
+                    value={activityDescription}
+                    onChange={(e) => setActivityDescription(e.target.value)}
+                    onPaste={handleImagePasteToDescription}
+                    rows={4}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                  />
+                  <div className="mt-2 flex items-center gap-2">
+                    <label className="inline-flex items-center px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer">
+                      上传图片
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+
+                          const textarea = activityDescriptionRef.current;
+                          if (!textarea) return;
+
+                          await handleImageUploadToDescription(file, textarea);
+                          e.currentTarget.value = '';
+                        }}
+                      />
+                    </label>
+                    <p className="text-xs text-gray-500">支持粘贴截图或上传图片，自动插入 Markdown 图片语法</p>
+                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">地点</label>
@@ -425,12 +547,36 @@ const ActivityManage: React.FC = () => {
                           <div className="md:col-span-2">
                             <label className="block text-xs font-medium text-gray-600">字段说明（支持图片）</label>
                             <textarea
+                              ref={(el) => {
+                                registrationFieldRefs.current[field.id] = el;
+                              }}
                               value={field.description || ''}
                               onChange={(e) => updateRegistrationField(field.id, 'description', e.target.value)}
+                              onPaste={(e) => handleImagePasteToRegistrationField(field.id, e)}
                               placeholder={'可填写文字或 Markdown 图片，例如：![](https://example.com/demo.png)'}
                               rows={2}
                               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 text-sm"
                             />
+                            <div className="mt-2">
+                              <label className="inline-flex items-center px-2.5 py-1 text-xs bg-white border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer">
+                                上传图片
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  className="hidden"
+                                  onChange={async (e) => {
+                                    const file = e.target.files?.[0];
+                                    if (!file) return;
+
+                                    const textarea = registrationFieldRefs.current[field.id];
+                                    if (!textarea) return;
+
+                                    await handleImageUploadToRegistrationField(field.id, file, textarea);
+                                    e.currentTarget.value = '';
+                                  }}
+                                />
+                              </label>
+                            </div>
                           </div>
                         </div>
                         <div className="mt-3 flex items-center justify-between">
