@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import { format } from 'date-fns';
 import Navigation from '../../components/Navigation';
@@ -32,6 +32,10 @@ const ActivityDetail: React.FC = () => {
   const { activityKey } = useParams<{ activityKey: string }>();
   const [activity, setActivity] = useState<Activity | null>(null);
   const [loading, setLoading] = useState(true);
+
+  if (activityKey?.toLowerCase() === 'admin') {
+    return <Navigate to="/admin" replace />;
+  }
 
   useEffect(() => {
     if (activityKey) {
