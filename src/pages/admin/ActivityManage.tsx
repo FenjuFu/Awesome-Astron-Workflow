@@ -212,7 +212,8 @@ const ActivityManage: React.FC = () => {
       insertMarkdownImage(textarea, imageUrl, setActivityDescription);
     } catch (error) {
       console.error(error);
-      alert('图片上传失败，请稍后重试或检查 Supabase Storage 设置');
+      const errorMessage = error instanceof Error ? error.message : '图片上传失败，请稍后重试或检查 Supabase Storage 设置';
+      alert(errorMessage);
     }
   };
 
@@ -246,7 +247,8 @@ const ActivityManage: React.FC = () => {
       });
     } catch (error) {
       console.error(error);
-      alert('图片上传失败，请稍后重试或检查 Supabase Storage 设置');
+      const errorMessage = error instanceof Error ? error.message : '图片上传失败，请稍后重试或检查 Supabase Storage 设置';
+      alert(errorMessage);
     }
   };
 
@@ -272,7 +274,8 @@ const ActivityManage: React.FC = () => {
       setCoverImage(imageUrl);
     } catch (error) {
       console.error(error);
-      alert('图片上传失败，请稍后重试或检查 Supabase Storage 设置');
+      const errorMessage = error instanceof Error ? error.message : '图片上传失败，请稍后重试或检查 Supabase Storage 设置';
+      alert(errorMessage);
     }
   };
 

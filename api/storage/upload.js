@@ -42,6 +42,11 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: '缺少文件名' });
     }
 
+    if (!process.env.VITE_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      console.error('Missing Supabase environment variables');
+      return res.status(500).json({ error: '服务器配置错误：缺少 Supabase 环境变量' });
+    }
+
     await ensureBucketExists(bucket);
 
     const fileBuffer = parseBase64(base64Data);
@@ -54,7 +59,8 @@ export default async function handler(req, res) {
     });
 
     if (uploadError) {
-      throw uploadError;
+      console.error('Supabase upload error details:', uploadError);
+      throw new Error(`Supabase 上传失败: ${uploadError.message}`);
     }
 
     const { data } = supabaseAdmin.storage.from(bucket).getPublicUrl(filePath);
