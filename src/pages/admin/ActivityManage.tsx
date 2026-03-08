@@ -134,28 +134,52 @@ const ActivityManage: React.FC = () => {
     setDescriptionMode('edit');
   };
 
+  const fileToBase64 = (file: File) =>
+    new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = typeof reader.result === 'string' ? reader.result : '';
+        const base64 = result.includes(',') ? result.split(',')[1] : '';
+        if (!base64) {
+          reject(new Error('图片读取失败'));
+          return;
+        }
+        resolve(base64);
+      };
+      reader.onerror = () => reject(new Error('图片读取失败'));
+      reader.readAsDataURL(file);
+    });
+
   const uploadImageAndGetUrl = async (file: File) => {
     const extension = file.name.includes('.') ? file.name.split('.').pop() : 'png';
     const safeExtension = (extension || 'png').replace(/[^a-zA-Z0-9]/g, '').toLowerCase() || 'png';
     const filename = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}.${safeExtension}`;
-    const filePath = `editor-images/${filename}`;
+    const base64Data = await fileToBase64(file);
 
-    const { error: uploadError } = await supabase.storage.from(imageBucket).upload(filePath, file, {
-      cacheControl: '3600',
-      upsert: false,
+    const response = await fetch('/api/storage/upload', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        bucket: imageBucket,
+        fileName: filename,
+        contentType: file.type || 'image/png',
+        base64Data,
+      }),
     });
 
-    if (uploadError) {
-      throw new Error(uploadError.message || '图片上传失败，请检查存储桶配置');
+    const payload = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      throw new Error(payload?.error || '图片上传失败，请检查存储桶配置');
     }
 
-    const { data } = supabase.storage.from(imageBucket).getPublicUrl(filePath, {
-      transform: {
-        quality: 75,
-      },
-    });
+    if (!payload?.publicUrl) {
+      throw new Error('图片上传成功但未返回链接');
+    }
 
-    return data.publicUrl;
+    return payload.publicUrl as string;
   };
 
   const insertMarkdownImage = (
