@@ -44,9 +44,9 @@ const renderInlineMarkdown = (text: string, keyPrefix: string): React.ReactNode[
       nodes.push(<React.Fragment key={`${keyPrefix}-text-${lastIndex}`}>{text.slice(lastIndex, start)}</React.Fragment>);
     }
 
-    if (match[10] !== undefined && match[11] !== undefined) {
-      const alt = match[10] || 'image';
-      const imageUrl = match[11].trim();
+    if (match[10] !== undefined && match[12] !== undefined) {
+      const alt = match[11] || 'image';
+      const imageUrl = match[12].trim();
 
       nodes.push(
         isSafeImageUrl(imageUrl) ? (
