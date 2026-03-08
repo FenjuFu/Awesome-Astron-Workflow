@@ -86,6 +86,7 @@ const ActivityManage: React.FC = () => {
   const [descriptionMode, setDescriptionMode] = useState<'edit' | 'preview'>('edit');
   const activityDescriptionRef = useRef<HTMLTextAreaElement | null>(null);
   const registrationFieldRefs = useRef<Record<string, HTMLTextAreaElement | null>>({});
+  const imageBucket = (import.meta.env.VITE_SUPABASE_IMAGE_BUCKET as string | undefined) || 'activity-images';
 
   useEffect(() => {
     fetchActivities();
@@ -133,13 +134,29 @@ const ActivityManage: React.FC = () => {
     setDescriptionMode('edit');
   };
 
-  const readImageAsDataUrl = (file: File): Promise<string> =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = () => reject(new Error('图片读取失败，请重试'));
-      reader.readAsDataURL(file);
+  const uploadImageAndGetUrl = async (file: File) => {
+    const extension = file.name.includes('.') ? file.name.split('.').pop() : 'png';
+    const safeExtension = (extension || 'png').replace(/[^a-zA-Z0-9]/g, '').toLowerCase() || 'png';
+    const filename = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}.${safeExtension}`;
+    const filePath = `editor-images/${filename}`;
+
+    const { error: uploadError } = await supabase.storage.from(imageBucket).upload(filePath, file, {
+      cacheControl: '3600',
+      upsert: false,
     });
+
+    if (uploadError) {
+      throw new Error(uploadError.message || '图片上传失败，请检查存储桶配置');
+    }
+
+    const { data } = supabase.storage.from(imageBucket).getPublicUrl(filePath, {
+      transform: {
+        quality: 75,
+      },
+    });
+
+    return data.publicUrl;
+  };
 
   const insertMarkdownImage = (
     textarea: HTMLTextAreaElement,
@@ -167,11 +184,11 @@ const ActivityManage: React.FC = () => {
     }
 
     try {
-      const imageUrl = await readImageAsDataUrl(file);
+      const imageUrl = await uploadImageAndGetUrl(file);
       insertMarkdownImage(textarea, imageUrl, setActivityDescription);
     } catch (error) {
       console.error(error);
-      alert('图片处理失败，请稍后重试');
+      alert('图片上传失败，请稍后重试或检查 Supabase Storage 设置');
     }
   };
 
@@ -190,7 +207,7 @@ const ActivityManage: React.FC = () => {
     }
 
     try {
-      const imageUrl = await readImageAsDataUrl(file);
+      const imageUrl = await uploadImageAndGetUrl(file);
       const start = textarea.selectionStart ?? textarea.value.length;
       const end = textarea.selectionEnd ?? textarea.value.length;
       const markdown = `![](${imageUrl})`;
@@ -205,7 +222,7 @@ const ActivityManage: React.FC = () => {
       });
     } catch (error) {
       console.error(error);
-      alert('图片处理失败，请稍后重试');
+      alert('图片上传失败，请稍后重试或检查 Supabase Storage 设置');
     }
   };
 
@@ -227,11 +244,11 @@ const ActivityManage: React.FC = () => {
     }
 
     try {
-      const imageUrl = await readImageAsDataUrl(file);
+      const imageUrl = await uploadImageAndGetUrl(file);
       setCoverImage(imageUrl);
     } catch (error) {
       console.error(error);
-      alert('图片处理失败，请稍后重试');
+      alert('图片上传失败，请稍后重试或检查 Supabase Storage 设置');
     }
   };
 
