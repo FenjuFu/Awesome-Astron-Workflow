@@ -163,9 +163,9 @@ const ActivityDetail: React.FC = () => {
       <Navigation />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-          <div className="relative h-64 sm:h-96">
+          <div className="relative w-full">
             <img
-              className="w-full h-full object-cover"
+              className="w-full h-auto"
               src={activity.cover_image || 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'}
               alt={activity.title}
             />
