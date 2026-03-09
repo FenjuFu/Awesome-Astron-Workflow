@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface MarkdownContentProps {
   content?: string;
@@ -29,7 +29,7 @@ const isPotentialTableRow = (line: string) => {
   return splitTableCells(trimmed).length > 1;
 };
 
-const renderInlineMarkdown = (text: string, keyPrefix: string): React.ReactNode[] => {
+const renderInlineMarkdown = (text: string, keyPrefix: string, onImageClick?: (url: string) => void): React.ReactNode[] => {
   const nodes: React.ReactNode[] = [];
 
   const tokenRegex = /(\*\*([^*]+)\*\*)|(\*([^*]+)\*)|(`([^`]+)`)|(\[([^\]]+)\]\(([^)]+)\))|(!\[([^\]]*)\]\(([^)]+)\))/g;
@@ -45,8 +45,34 @@ const renderInlineMarkdown = (text: string, keyPrefix: string): React.ReactNode[
     }
 
     if (match[10] !== undefined && match[12] !== undefined) {
-      const alt = match[11] || 'image';
+      const altRaw = match[11] || 'image';
       const imageUrl = match[12].trim();
+
+      let alt = altRaw;
+      let width: string | undefined;
+      let height: string | undefined;
+
+      if (altRaw.includes('|')) {
+        const parts = altRaw.split('|');
+        const lastPart = parts[parts.length - 1].trim();
+        // Check for size pattern: 100, 100px, 50%, 100x200
+        const sizeRegex = /^(\d+(?:px|%)?)(?:x(\d+(?:px|%)?))?$/;
+        const sizeMatch = lastPart.match(sizeRegex);
+
+        if (sizeMatch) {
+          width = sizeMatch[1];
+          if (sizeMatch[2]) {
+            height = sizeMatch[2];
+          }
+          // Check if width is just a number, append px
+          if (width && /^\d+$/.test(width)) width += 'px';
+          if (height && /^\d+$/.test(height)) height += 'px';
+
+          alt = parts.slice(0, parts.length - 1).join('|').trim();
+        }
+      }
+
+      if (!alt) alt = 'image';
 
       nodes.push(
         isSafeImageUrl(imageUrl) ? (
@@ -54,8 +80,10 @@ const renderInlineMarkdown = (text: string, keyPrefix: string): React.ReactNode[
             key={`${keyPrefix}-img-${start}`}
             src={imageUrl}
             alt={alt}
-            className="my-3 max-w-full rounded-md border border-gray-200"
+            className={`my-3 max-w-full rounded-md border border-gray-200 ${onImageClick ? 'cursor-zoom-in' : ''}`}
+            style={{ width, height }}
             loading="lazy"
+            onClick={() => onImageClick?.(imageUrl)}
           />
         ) : (
           <React.Fragment key={`${keyPrefix}-raw-${start}`}>{raw}</React.Fragment>
@@ -114,9 +142,15 @@ const renderInlineMarkdown = (text: string, keyPrefix: string): React.ReactNode[
 };
 
 const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className }) => {
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+
   if (!content) {
     return null;
   }
+
+  const handleImageClick = (url: string) => {
+    setPreviewImage(url);
+  };
 
   const lines = content.replace(/\]\s*\n\s*\(/g, '](').split('\n');
   const blocks: React.ReactNode[] = [];
@@ -127,7 +161,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className })
     blocks.push(
       <ul key={`list-${index}`} className="list-disc pl-5 space-y-1 my-2">
         {listItems.map((item, i) => (
-          <li key={`list-item-${index}-${i}`}>{renderInlineMarkdown(item, `list-${index}-${i}`)}</li>
+          <li key={`list-item-${index}-${i}`}>{renderInlineMarkdown(item, `list-${index}-${i}`, handleImageClick)}</li>
         ))}
       </ul>,
     );
@@ -159,7 +193,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className })
       const Tag = `h${level}` as keyof JSX.IntrinsicElements;
       blocks.push(
         <Tag key={`h-${lineIndex}`} className={`${headingClassNames[level - 1]} mt-3 mb-2`}>
-          {renderInlineMarkdown(text, `h-${lineIndex}`)}
+          {renderInlineMarkdown(text, `h-${lineIndex}`, handleImageClick)}
         </Tag>,
       );
       continue;
@@ -190,7 +224,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className })
               <tr>
                 {headerCells.map((cell, cellIndex) => (
                   <th key={`th-${lineIndex}-${cellIndex}`} className="border border-gray-200 px-3 py-2 text-left font-semibold text-gray-700">
-                    {renderInlineMarkdown(cell, `th-${lineIndex}-${cellIndex}`)}
+                    {renderInlineMarkdown(cell, `th-${lineIndex}-${cellIndex}`, handleImageClick)}
                   </th>
                 ))}
               </tr>
@@ -200,7 +234,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className })
                 <tr key={`tr-${lineIndex}-${rowIndex}`} className="odd:bg-white even:bg-gray-50/40">
                   {headerCells.map((_, cellIndex) => (
                     <td key={`td-${lineIndex}-${rowIndex}-${cellIndex}`} className="border border-gray-200 px-3 py-2 align-top text-gray-700">
-                      {renderInlineMarkdown(row[cellIndex] || '', `td-${lineIndex}-${rowIndex}-${cellIndex}`)}
+                      {renderInlineMarkdown(row[cellIndex] || '', `td-${lineIndex}-${rowIndex}-${cellIndex}`, handleImageClick)}
                     </td>
                   ))}
                 </tr>
@@ -216,7 +250,7 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className })
       const quoteText = trimmed.replace(/^>\s?/, '');
       blocks.push(
         <blockquote key={`q-${lineIndex}`} className="border-l-4 border-gray-300 pl-3 text-gray-600 my-2">
-          {renderInlineMarkdown(quoteText, `q-${lineIndex}`)}
+          {renderInlineMarkdown(quoteText, `q-${lineIndex}`, handleImageClick)}
         </blockquote>,
       );
       continue;
@@ -224,14 +258,40 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className })
 
     blocks.push(
       <p key={`p-${lineIndex}`} className="my-1 leading-7">
-        {renderInlineMarkdown(line, `p-${lineIndex}`)}
+        {renderInlineMarkdown(line, `p-${lineIndex}`, handleImageClick)}
       </p>,
     );
   }
 
   flushList(lines.length);
 
-  return <div className={className}>{blocks}</div>;
+  return (
+    <>
+      <div className={className}>{blocks}</div>
+      {previewImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4"
+          onClick={() => setPreviewImage(null)}
+        >
+          <div className="relative max-h-full max-w-full">
+            <img 
+              src={previewImage} 
+              className="max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
+              alt="Preview" 
+            />
+            <button
+              className="absolute -top-10 right-0 text-white hover:text-gray-300 focus:outline-none"
+              onClick={() => setPreviewImage(null)}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default MarkdownContent;
