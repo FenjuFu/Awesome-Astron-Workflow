@@ -169,7 +169,7 @@ const ActivityDetail: React.FC = () => {
               src={activity.cover_image || 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'}
               alt={activity.title}
             />
-            <div className="absolute top-4 left-4">
+            <div className="absolute bottom-4 left-4">
               <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
                 {activity.category}
               </span>
