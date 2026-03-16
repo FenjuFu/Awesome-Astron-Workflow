@@ -163,11 +163,13 @@ const ActivityDetail: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <Helmet>
         <title>{activity.title} - Astron</title>
-        <meta name="description" content={activity.description.substring(0, 100)} />
+        <meta name="description" content={activity.description.substring(0, 200)} />
         <meta property="og:title" content={activity.title} />
-        <meta property="og:description" content={activity.description.substring(0, 100)} />
-        <meta property="og:image" content={activity.cover_image} />
+        <meta property="og:description" content={activity.description.substring(0, 200)} />
+        <meta property="og:image" content={activity.cover_image || 'https://awesome-astron-workflow.dev/swag/event/4Y4A6315.JPG'} />
+        <meta property="og:url" content={`https://awesome-astron-workflow.dev/activities/${activityKey}`} />
         <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Awesome Astron Workflow" />
       </Helmet>
       <Navigation />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">

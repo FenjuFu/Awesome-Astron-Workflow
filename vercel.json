@@ -1,5 +1,14 @@
 {
+  "functions": {
+    "api/og/activity.js": {
+      "includeFiles": "dist/index.html"
+    }
+  },
   "rewrites": [
+    {
+      "source": "/activities/:slug",
+      "destination": "/api/og/activity?slug=:slug"
+    },
     {
       "source": "/((?!api/.*).*)",
       "destination": "/index.html"
