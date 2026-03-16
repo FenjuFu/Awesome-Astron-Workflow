@@ -135,16 +135,25 @@ export default async function handler(req, res) {
     `<meta property="og:title" content="${escapeHtml(ogTitle)}" />`,
     `<meta property="og:description" content="${escapeHtml(description)}" />`,
     `<meta property="og:image" content="${escapeHtml(imageUrl)}" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:type" content="image/jpeg" />`,
     `<meta property="og:url" content="${escapeHtml(pageUrl)}" />`,
     `<meta property="og:type" content="${activity ? 'article' : 'website'}" />`,
     `<meta property="og:site_name" content="Awesome Astron Workflow" />`,
+    `<meta property="og:locale" content="zh_CN" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:title" content="${escapeHtml(ogTitle)}" />`,
+    `<meta name="twitter:description" content="${escapeHtml(description)}" />`,
+    `<meta name="twitter:image" content="${escapeHtml(imageUrl)}" />`,
   ].join('\n  ');
 
-  // Remove any pre-existing title, description and og: tags then prepend ours
+  // Remove any pre-existing title, description, og: and twitter: tags then prepend ours
   html = html
     .replace(/<title>[^<]*<\/title>\s*/gi, '')
     .replace(/<meta\s+name="description"[^>]*\/?>\s*/gi, '')
     .replace(/<meta\s+property="og:[^"]*"[^>]*\/?>\s*/gi, '')
+    .replace(/<meta\s+name="twitter:[^"]*"[^>]*\/?>\s*/gi, '')
     .replace('<head>', `<head>\n  ${injectedTags}`);
 
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
