@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { supabase } from '../../lib/supabase';
 import { format } from 'date-fns';
 import Navigation from '../../components/Navigation';
@@ -160,6 +161,14 @@ const ActivityDetail: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Helmet>
+        <title>{activity.title} - Astron</title>
+        <meta name="description" content={activity.description.substring(0, 100)} />
+        <meta property="og:title" content={activity.title} />
+        <meta property="og:description" content={activity.description.substring(0, 100)} />
+        <meta property="og:image" content={activity.cover_image} />
+        <meta property="og:type" content="article" />
+      </Helmet>
       <Navigation />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         <div className="bg-white shadow overflow-hidden sm:rounded-lg">
