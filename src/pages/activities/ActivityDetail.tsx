@@ -6,7 +6,7 @@ import { format } from 'date-fns';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import MarkdownContent from '../../components/MarkdownContent';
-import { Calendar, MapPin, Users, DollarSign } from 'lucide-react';
+import { Calendar, MapPin, Clock, DollarSign } from 'lucide-react';
 import { getActivitySlug, getRegistrationPath, isMissingLinkSlugColumnError, isUuid, normalizeSlug } from '../../utils/activityRoute';
 
 interface Activity {
@@ -207,8 +207,8 @@ const ActivityDetail: React.FC = () => {
                 <span>{activity.location}</span>
               </div>
               <div className="flex items-center">
-                <Users className="mr-2 h-5 w-5 text-gray-400" />
-                <span>名额: {activity.max_participants > 0 ? `${activity.registered_count}/${activity.max_participants}` : '无限制'}</span>
+                <Clock className="mr-2 h-5 w-5 text-gray-400" />
+                <span>报名截止时间: {format(new Date(activity.registration_end), 'yyyy-MM-dd HH:mm')}</span>
               </div>
               <div className="flex items-center">
                 <DollarSign className="mr-2 h-5 w-5 text-gray-400" />
