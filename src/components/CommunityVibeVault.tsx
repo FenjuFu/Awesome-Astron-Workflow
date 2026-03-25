@@ -474,7 +474,8 @@ const CommunityVibeVault: React.FC = () => {
               <Gift className="h-8 w-8 text-indigo-600 mr-3" />
               <h3 className="text-2xl font-bold text-gray-900">{t('community.swag')}</h3>
             </div>
-            <div className="mb-6">
+            {/* Hidden Astron Horse Year Red Envelope section as requested */}
+            <div className="mb-6 hidden">
                <h4 className="text-lg font-medium text-gray-900 mb-4">{t('swag.redPackets')}</h4>
                
                <div className="relative w-full h-[600px] overflow-hidden flex items-center justify-center">
