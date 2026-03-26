@@ -626,6 +626,7 @@ const translations = {
     'contribute.github.login': '授权 GitHub 并查看贡献',
     'contribute.github.logout': '退出登录',
     'contribute.github.loggedInAs': '当前登录用户',
+    'contribute.github.totalContributions': '总贡献数',
     'contribute.github.loading': '正在加载贡献数据...',
     'contribute.github.stats.commits': '提交（Commits）',
     'contribute.github.stats.pullRequests': '拉取请求（PR）',

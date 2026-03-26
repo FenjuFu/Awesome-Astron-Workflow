@@ -472,9 +472,26 @@ const GitHubContributionInsights: React.FC = () => {
       ) : (
         <div className="space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="text-sm text-gray-600">
-              {t('contribute.github.loggedInAs')} <span className="font-semibold text-gray-900">{username}</span>
-            </p>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center overflow-hidden border border-gray-200">
+                <img 
+                  src={`https://github.com/${username}.png`} 
+                  alt={username}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${username}&background=dbeafe&color=2563eb`;
+                  }}
+                />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600">
+                  {t('contribute.github.loggedInAs')} <span className="font-semibold text-gray-900">{username}</span>
+                </p>
+                <p className="text-xs font-medium text-indigo-600 mt-0.5">
+                  {t('contribute.github.totalContributions')}: {TARGET_REPOSITORIES.reduce((acc, repo) => acc + stats[repo].total, 0)}
+                </p>
+              </div>
+            </div>
             <button
               type="button"
               onClick={handleLogout}
