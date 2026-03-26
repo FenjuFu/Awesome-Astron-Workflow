@@ -291,7 +291,7 @@ const translations = {
     'contribute.cta.github': 'View on GitHub',
     'contribute.cta.issues': 'Open Issues',
     'contribute.github.title': 'GitHub Contribution Insights',
-    'contribute.github.subtitle': 'After authorizing GitHub, you can view your contribution activity in iflytek/astron-agent and iflytek/astron-rpa.',
+    'contribute.github.subtitle': 'After authorizing GitHub, you can view your contribution activity in iflytek/astron-agent, iflytek/astron-rpa and iflytek/skillhub.',
     'contribute.github.login': 'Authorize GitHub and View Contributions',
     'contribute.github.logout': 'Log out',
     'contribute.github.loggedInAs': 'Logged in as',
