@@ -34,7 +34,7 @@ export function useGitHubContributions(token: string | null) {
 
       try {
         const response = await fetch(
-          '/api/github/contributions?repos=iflytek/astron-agent,iflytek/astron-rpa',
+          '/api/github/contributions?repos=iflytek/astron-agent,iflytek/astron-rpa,iflytek/skillhub',
           {
             headers: {
               'Authorization': `Bearer ${token}`

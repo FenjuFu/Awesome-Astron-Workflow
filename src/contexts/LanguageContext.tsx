@@ -622,7 +622,7 @@ const translations = {
     'contribute.cta.github': '在 GitHub 上查看',
     'contribute.cta.issues': '打开问题',
     'contribute.github.title': 'GitHub 贡献洞察',
-    'contribute.github.subtitle': '完成 GitHub 授权后，可查看您在 iflytek/astron-agent 与 iflytek/astron-rpa 的贡献行为。',
+    'contribute.github.subtitle': '完成 GitHub 授权后，可查看您在 iflytek/astron-agent、iflytek/astron-rpa 与 iflytek/skillhub 的贡献行为。',
     'contribute.github.login': '授权 GitHub 并查看贡献',
     'contribute.github.logout': '退出登录',
     'contribute.github.loggedInAs': '当前登录用户',

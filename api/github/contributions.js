@@ -128,10 +128,11 @@ export default async function handler(request, response) {
     const toStr = formatDate(toDate);
 
     // 3. REST Search API Queries
-    const targetRepos = ['iflytek/astron-agent', 'iflytek/astron-rpa'];
+    const targetRepos = ['iflytek/astron-agent', 'iflytek/astron-rpa', 'iflytek/skillhub'];
     const targetRepoAliases = {
       'iflytek/astron-agent': ['iflytek/astron-agent', 'FenjuFu/astron-agent'],
-      'iflytek/astron-rpa': ['iflytek/astron-rpa', 'FenjuFu/astron-rpa']
+      'iflytek/astron-rpa': ['iflytek/astron-rpa', 'FenjuFu/astron-rpa'],
+      'iflytek/skillhub': ['iflytek/skillhub']
     };
     const targetReposMap = Object.entries(targetRepoAliases).reduce((acc, [canonicalRepo, aliases]) => {
       aliases.forEach((alias) => {

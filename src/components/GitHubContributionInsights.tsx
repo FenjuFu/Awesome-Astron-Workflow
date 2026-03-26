@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Github, LogOut, Loader2, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
-const TARGET_REPOSITORIES = ['iflytek/astron-agent', 'iflytek/astron-rpa'] as const;
+const TARGET_REPOSITORIES = ['iflytek/astron-agent', 'iflytek/astron-rpa', 'iflytek/skillhub'] as const;
 const OAUTH_STATE_KEY = 'github_oauth_state';
 const ACCESS_TOKEN_KEY = 'github_access_token';
 const OAUTH_SCOPES = ['read:user', 'repo'];
