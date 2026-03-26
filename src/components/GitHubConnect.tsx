@@ -248,6 +248,15 @@ const GitHubConnect: React.FC = () => {
             <div className="text-xs text-gray-500">
               Stats from {new Date(data.range.from).toLocaleDateString()} to {new Date(data.range.to).toLocaleDateString()}
             </div>
+            {data.contribution_fields && data.contribution_dates && (
+              <div className="text-xs font-medium text-indigo-600 mt-0.5">
+                {t('contribute.github.totalContributions')}: {
+                  Object.values(data.contribution_dates).reduce((total, repoDates) => {
+                    return total + Object.values(repoDates).reduce((repoTotal, dates) => repoTotal + dates.length, 0);
+                  }, 0)
+                }
+              </div>
+            )}
           </div>
         </div>
         <button 
