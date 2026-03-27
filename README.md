@@ -413,4 +413,10 @@ This repository is licensed under the MIT License. For details, see the [LICENSE
 
 ---
 
+## Repobeats Analytics
+
+<img src="https://repobeats.axiom.co/api/embed/2cf902d50b61877a61163b7d5b20a90dbad6b2ab.svg" alt="Repobeats analytics image">
+
+---
+
 **Note:** This repository is a community-driven collection of Astron workflow examples. All user case links and workflow files are the property of their respective owners; references are provided for educational and informational purposes only.
