@@ -415,7 +415,7 @@ This repository is licensed under the MIT License. For details, see the [LICENSE
 
 ## Repobeats Analytics
 
-<img src="https://repobeats.axiom.co/api/embed/2cf902d50b61877a61163b7d5b20a90dbad6b2ab.svg">
+<img src="https://repobeats.axiom.co/api/embed/2cf902d50b61877a61163b7d5b20a90dbad6b2ab.svg" alt="Repobeats analytics image">
 
 ---
 
