@@ -381,5 +381,53 @@ export const workflows: Workflow[] = [
     ],
     icon: 'box',
     category: 'productivity'
+  },
+  {
+    id: 'hotel-management-digital-employee',
+    title: 'workflow.hotel_management.title',
+    description: 'workflow.hotel_management.description',
+    userCaseUrl: 'https://www.youtube.com/watch?v=SbfZpXj9AXg&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=31&pp=iAQBsAgC',
+    workflowUrl: 'https://github.com/tomatoes1208/hotelmanage',
+    features: [
+      'features.hotel_management.1',
+      'features.hotel_management.2',
+      'features.hotel_management.3',
+      'features.hotel_management.4'
+    ],
+    icon: 'box',
+    category: 'productivity',
+    event: 'Astron Training Camp · Cohort #1'
+  },
+  {
+    id: 'used-car-export-customer-service',
+    title: 'workflow.used_car_export.title',
+    description: 'workflow.used_car_export.description',
+    userCaseUrl: 'https://www.youtube.com/watch?v=RRCwnfI-A8Y&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=32&pp=iAQBsAgC',
+    workflowUrl: 'https://github.com/hack-feng/astron_used_car_workflow',
+    features: [
+      'features.used_car_export.1',
+      'features.used_car_export.2',
+      'features.used_car_export.3',
+      'features.used_car_export.4'
+    ],
+    icon: 'box',
+    category: 'productivity',
+    event: 'Astron Training Camp · Cohort #1'
+  },
+  {
+    id: 'teaching-plan-review',
+    title: 'workflow.teaching_plan_review.title',
+    description: 'workflow.teaching_plan_review.description',
+    userCaseUrl: 'https://www.youtube.com/watch?v=cxpO-M2fxtY&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=33&pp=iAQB0gcJCdkKAYcqIYzvsAgC',
+    workflowUrl: 'https://github.com/BarryYin/Digital_Employee_for_Teaching_Plan_Review.git',
+    features: [
+      'features.teaching_plan_review.1',
+      'features.teaching_plan_review.2',
+      'features.teaching_plan_review.3',
+      'features.teaching_plan_review.4'
+    ],
+    icon: 'box',
+    category: 'productivity',
+    event: 'Astron Training Camp · Cohort #1'
   }
 ];

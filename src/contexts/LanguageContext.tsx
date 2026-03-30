@@ -245,6 +245,30 @@ const translations = {
     'features.ai_research_assistant.3': 'Structured report generation with citations',
     'features.ai_research_assistant.4': 'Multi-source information synthesis',
 
+    // Workflows - Hotel Management Digital Employee
+    'workflow.hotel_management.title': 'Hotel Management Digital Employee',
+    'workflow.hotel_management.description': 'A digital employee for hotel management that provides intelligent room booking, inquiry, and customer service support to improve hotel operational efficiency.',
+    'features.hotel_management.1': 'Intelligent hotel room inquiry and booking',
+    'features.hotel_management.2': 'Automated handling of common customer questions and service requests',
+    'features.hotel_management.3': 'Enhances hotel front desk and customer service operations',
+    'features.hotel_management.4': '24/7 digital employee service support',
+
+    // Workflows - Used Car Export Smart Customer Service
+    'workflow.used_car_export.title': 'Used Car Export Smart Customer Service',
+    'workflow.used_car_export.description': 'A smart customer service workflow designed for the used car export business. It answers inquiries regarding car models, quotes, and export processes, providing professional business support.',
+    'features.used_car_export.1': 'Intelligent inquiry for used car models and quotes',
+    'features.used_car_export.2': 'Automated consultation on vehicle export processes and policies',
+    'features.used_car_export.3': 'Multi-language interaction to support international customers',
+    'features.used_car_export.4': 'Improves customer response efficiency for used car export business',
+
+    // Workflows - Teaching Plan Review Digital Employee
+    'workflow.teaching_plan_review.title': 'Teaching Plan Review Digital Employee',
+    'workflow.teaching_plan_review.description': 'A teaching plan review tool for instructional design scenarios. It supports submitting teaching plan titles, applicable grades, and content, and returns intelligent review results, improvement suggestions, and historical records.',
+    'features.teaching_plan_review.1': 'Intelligently parses teaching plan content and auto-generates review results',
+    'features.teaching_plan_review.2': 'Provides targeted improvement suggestions for instructional design',
+    'features.teaching_plan_review.3': 'Automatically records teaching plan review history for traceability',
+    'features.teaching_plan_review.4': 'Multi-dimensional evaluation combining applicable grades and subjects',
+
     'about.title': 'About Astron Workflows',
     'about.subtitle': 'Learn about the power and flexibility of Astron workflows and how they can transform your automation tasks.',
     'about.whatIs.title': 'What is Astron?',
@@ -575,6 +599,30 @@ const translations = {
     'features.ai_research_assistant.2': '深度网络搜索与内容抓取',
     'features.ai_research_assistant.3': '生成带引用的结构化报告',
     'features.ai_research_assistant.4': '多源信息综合',
+
+    // Workflows - 酒店管理数字员工
+    'workflow.hotel_management.title': '酒店管理数字员工',
+    'workflow.hotel_management.description': '酒店管理数字员工，提供智能化的客房预订、查询和客户服务支持，提升酒店运营效率。',
+    'features.hotel_management.1': '智能化的酒店客房查询与预订',
+    'features.hotel_management.2': '自动化处理客户常见问题与服务请求',
+    'features.hotel_management.3': '提升酒店前台及客户服务运营效率',
+    'features.hotel_management.4': '提供全天候数字员工服务支持',
+
+    // Workflows - 二手车出口智能客服
+    'workflow.used_car_export.title': '二手车出口智能客服',
+    'workflow.used_car_export.description': '专为二手车出口业务设计的智能客服工作流，解答关于车型、报价及出口流程的咨询，提供专业的出海业务支持。',
+    'features.used_car_export.1': '二手车车型与报价智能查询解答',
+    'features.used_car_export.2': '自动化提供车辆出口流程与政策咨询',
+    'features.used_car_export.3': '多语言交互以支持国际客户服务',
+    'features.used_car_export.4': '提升二手车出海业务客户响应效率',
+
+    // Workflows - 教案评审智能体
+    'workflow.teaching_plan_review.title': '教案评审智能体',
+    'workflow.teaching_plan_review.description': '面向教学设计场景的教案评审工具。支持提交教案标题、适用年级和教案内容，返回智能评审结果、改进建议与历史记录。',
+    'features.teaching_plan_review.1': '智能解析教案内容并自动生成评审结果',
+    'features.teaching_plan_review.2': '提供针对性的教学设计改进建议',
+    'features.teaching_plan_review.3': '自动记录教案评审历史以便追溯',
+    'features.teaching_plan_review.4': '结合适用年级与学科进行多维度评估',
 
     'about.title': '关于 Astron 工作流',
     'about.subtitle': '了解 Astron 工作流的强大功能和灵活性，以及它们如何改变您的自动化任务。',
