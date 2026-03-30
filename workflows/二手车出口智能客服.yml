@@ -1,0 +1,2242 @@
+flowMeta:
+  name: 二手车出口智能客服
+  description: 二手车出口智能客服
+  avatarIcon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/emojiitem_00_10@2x.png
+  avatarColor: '#FFEAD5'
+  advancedConfig: '{"prologue":{"enabled":true,"inputExample":["📞 获取一对一报价","🚗 宝马X3推荐","📋
+    进出口政策解读"],"prologueText":"您好！我是中国二手车出口智能助手——笑小枫。🚗\n\n我可以帮您：\n• 查询各国进口政策\n• 推荐您需要的车型\n•
+    解答出口流程问题\n\n请告诉我您最关心的问题，我会为您精准解答👇"},"textToSpeech":{"enabled":true,"vcn_cn":"x5_lingxiaotang_flow","vcn_en":""},"suggestedQuestionsAfterAnswer":{"enabled":false}}'
+  category: 10
+  dslVersion: v1
+flowData:
+  nodes:
+  - id: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+    dragging: false
+    selected: false
+    width: 361
+    height: 121
+    position:
+      x: -408.50957618996125
+      y: 515.1588419646027
+    positionAbsolute:
+      x: -408.50957618996125
+      y: 515.1588419646027
+    type: custom
+    data:
+      allowInputReference: false
+      allowOutputReference: true
+      label: 开始
+      status: success
+      nodeMeta:
+        aliasName: 开始节点
+        nodeType: 基础节点
+      inputs: [
+        ]
+      outputs:
+      - id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+        name: AGENT_USER_INPUT
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 用户本轮对话输入内容
+        required: true
+        deleteDisabled: true
+      nodeParam: {
+        }
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/start-node-icon.png
+      description: 工作流的开启节点，用于定义流程调用所需的业务变量信息。
+      updatable: false
+  - id: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    dragging: false
+    selected: false
+    width: 361
+    height: 81
+    position:
+      x: 3618.8391471335326
+      y: 191.23719036265015
+    positionAbsolute:
+      x: 3618.8391471335326
+      y: 191.23719036265015
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: false
+      label: 结束
+      references: [
+        ]
+      status: success
+      nodeMeta:
+        aliasName: 结束节点
+        nodeType: 基础节点
+      inputs:
+      - id: 82de2b42-a059-4c98-bffb-b6b4800fcac9
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 5267c30c-f4b2-425e-b23b-71fde768e272
+              nodeId: spark-llm::8011a8dc-07a6-438d-a621-f3179a9180c1
+              name: output
+            contentErrMsg: ''
+        fileType: ''
+      - id: 6d499fe7-067a-4650-bdfd-e41a21572ea1
+        name: output2
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 11a8f415-51d8-4ce1-85de-fae82e66d8c0
+              nodeId: spark-llm::831548e4-830b-4eeb-bf4b-ec756aff71cf
+              name: output
+            contentErrMsg: ''
+        fileType: ''
+      - id: 63fc61f4-2d71-45b3-af29-db2e0cdee669
+        name: output3
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 75d3f203-0c61-4caa-9efa-e96b2b7a5af6
+              nodeId: spark-llm::0a094cb1-bf10-486b-9b1d-63e4fa19197a
+              name: output
+            contentErrMsg: ''
+        fileType: ''
+      - id: fb95f8f5-7321-45a6-98f8-190bbab667b0
+        name: output4
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 579b5c5f-aad5-491d-ae19-977778b8177c
+              nodeId: spark-llm::fb966ce4-70e2-410a-927a-5b187bed9447
+              name: output
+            contentErrMsg: ''
+        fileType: ''
+      - id: ddbb49f5-4b01-460c-a320-85b35dc98a13
+        name: output5
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: d9869438-076d-42ec-b937-9f5869530839
+              nodeId: spark-llm::0223721e-182e-4114-a787-2afaa320ec4b
+              name: output
+            contentErrMsg: ''
+        fileType: ''
+      outputs: [
+        ]
+      nodeParam:
+        template: '{{output}}{{output2}}{{output3}}{{output4}}{{output5}}'
+        streamOutput: true
+        outputMode: 1
+        templateErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/end-node-icon.png
+      description: 工作流的结束节点，用于输出工作流运行后的最终结果。
+      updatable: false
+  - id: ifly-code::38e75d80-084a-4394-86ef-b118befafc4c
+    dragging: false
+    selected: false
+    width: 361
+    height: 107
+    position:
+      x: 85.66274478637717
+      y: 515.9469057225581
+    positionAbsolute:
+      x: 85.66274478637717
+      y: 515.9469057225581
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 语言分析
+      labelEdit: false
+      references: [
+        ]
+      status: success
+      nodeMeta:
+        nodeType: 工具
+        aliasName: 代码
+      inputs:
+      - id: 5e0bec78-47b5-43b5-93ee-a9820ce980fa
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+              name: AGENT_USER_INPUT
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: c583d963-9aec-49c6-9dea-545a13fac2ec
+        name: lang
+        nameErrMsg: ''
+        schema:
+          type: string
+          properties: [
+            ]
+          default: 用户语言
+      nodeParam:
+        code: "import re\n\n# 检验语言\ndef main(input):\n    if not input or len(input.strip())\
+          \ == 0:\n        return '英语'\n    \n    chinese_chars = re.findall(r'[\\\
+          u4e00-\\u9fa5]', input)\n    russian_chars = re.findall(r'[\\u0400-\\u04FF]',\
+          \ input)\n    \n    chinese_count = len(chinese_chars)\n    russian_count\
+          \ = len(russian_chars)\n    \n    # 移除空格后的总长度\n    total_length = len(re.sub(r'\\\
+          s+', '', input))\n    \n    if total_length < 3:\n        if russian_count\
+          \ > 0:\n            return '俄语'\n        if chinese_count > 0:\n       \
+          \     return '中文'\n        return '英语'\n    \n    if total_length > 0:\n\
+          \        if russian_count / total_length > 0.2:\n            return '俄语\
+          '\n        if chinese_count / total_length > 0.2:\n            return '中\
+          文'\n    \n    return '英语'"
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        codeErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/codeIcon.png
+      description: 面向开发者提供代码开发能力，目前仅支持python语言，允许使用该节点已定义的变量作为参数传入，返回语句用于输出函数的结果
+      updatable: false
+  - id: spark-llm::74627209-0452-4b67-98cf-7a261d9e4029
+    dragging: false
+    selected: false
+    width: 361
+    height: 131
+    position:
+      x: 599.2932448819265
+      y: 456.4404029150054
+    positionAbsolute:
+      x: 599.2932448819265
+      y: 456.4404029150054
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 意图分析
+      labelEdit: false
+      references: [
+        ]
+      status: success
+      nodeMeta:
+        nodeType: 基础节点
+        aliasName: 大模型
+      inputs:
+      - id: 173038b0-0baa-4ab7-b59f-3fa9f124aac1
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+              name: AGENT_USER_INPUT
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: de707943-9ae5-4398-9665-b233ab809ed6
+        name: intent
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 意图英文标签
+        required: false
+      - id: c8627322-d7ad-4ce3-855c-c3eb0c4210fc
+        name: rag_keywords
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: RAG检索关键词
+        required: false
+      nodeParam:
+        maxTokens: 2048
+        topK: 4
+        auditing: default
+        template: 用户输入：{{input}}
+        respFormat: 2
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        enableChatHistoryV2:
+          isEnabled: true
+          rounds: 10
+        templateErrMsg: ''
+        llmId: 254769832
+        domain: astron-code-latest
+        serviceId: astron-code-latest
+        url: https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions
+        modelId: 5
+        isThink: false
+        multiMode: false
+        modelName: astron-code-latest
+        modelEnabled: true
+        llmIdErrMsg: ''
+        source: openai
+        extraParams:
+          temperature: 1
+        systemTemplate: |+
+          分析用户咨询二手车出口的消息，结合对话历史，判断意图，提取检索关键词，输出JSON。
+
+          ## 上下文处理规则：
+
+          信息继承：如果当前消息未提及车型、国家等关键信息，则从对话历史中继承最近的有效信息
+
+          信息更新：如果当前消息明确提及新的车型、国家等信息，则替换历史中的对应信息
+
+          信息累积：如果当前消息是补充说明（如“x1”），则与历史信息合并，形成完整实体（如“宝马x1”）
+
+          ## 意图分析规则：
+
+          inquiry：车源咨询（找车、库存查询、车源推荐）
+          clue：生成线索（经过多轮对话，用户有购车意向，且购车需求明确）
+          business：业务咨询（物流运输、交易流程、政策法规、售后服务）
+          greeting：简单问候（打招呼、无业务咨询、意图模糊）
+
+          ## 返回结果规则：
+          请以下面JSON格式返回结果：
+          "intent": "意图英文标签",
+          "rag_keywords": "RAG检索关键词（核心名词组合，空格分隔）"
+
+
+        setAnswerContentErrMsg: ''
+      retryConfig:
+        customOutput: |-
+          {
+            "intent": "",
+            "rag_keywords": ""
+          }
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/largeModelIcon.png
+      description: 根据输入的提示词，调用选定的大模型，对提示词作出回答
+      updatable: false
+  - id: if-else::48952a89-11c4-4b80-8a52-cbe3fdf980ef
+    dragging: false
+    selected: false
+    width: 361
+    height: 251
+    position:
+      x: 1117.7621393524892
+      y: 364.8868769828438
+    positionAbsolute:
+      x: 1117.7621393524892
+      y: 364.8868769828438
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: false
+      label: 分支器_1
+      labelEdit: false
+      references: [
+        ]
+      status: success
+      nodeMeta:
+        nodeType: 分支器
+        aliasName: 分支器
+      inputs:
+      - id: bb4587e3-ccef-4bd0-b328-872187fc9773
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: de707943-9ae5-4398-9665-b233ab809ed6
+              nodeId: spark-llm::74627209-0452-4b67-98cf-7a261d9e4029
+              name: intent
+            contentErrMsg: ''
+        fileType: ''
+      - id: 27a038cb-956f-45b7-a302-9b2939910dbb
+        name: input1
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: literal
+            content: inquiry
+            contentErrMsg: ''
+      - id: f5acd31f-030e-48ad-9462-7a12a5d0532d
+        name: input0d7b2c7af5f8455d926ca8125813b6df
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: de707943-9ae5-4398-9665-b233ab809ed6
+              nodeId: spark-llm::74627209-0452-4b67-98cf-7a261d9e4029
+              name: intent
+            contentErrMsg: ''
+      - id: 0527ef8f-7979-46e2-8cdc-10d9cd42080c
+        name: input73c25fac0213412197ef63cd50b6fe05
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: literal
+            content: business
+            contentErrMsg: ''
+      - id: ac9e2245-1246-4afa-a835-ae2a3e1b1b8b
+        name: inputc1f1e1853a9442339b125a61f9a60756
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: de707943-9ae5-4398-9665-b233ab809ed6
+              nodeId: spark-llm::74627209-0452-4b67-98cf-7a261d9e4029
+              name: intent
+            contentErrMsg: ''
+      - id: 63cc3c51-ca14-49ed-a36b-e00414a11c55
+        name: input3aea1826e4d84e68b46b0d0c92ec1526
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: literal
+            content: clue
+            contentErrMsg: ''
+      outputs: [
+        ]
+      nodeParam:
+        cases:
+        - id: branch_one_of::ce4fe6c2-f219-400f-b833-df4b04b25e29
+          level: 1
+          logicalOperator: and
+          conditions:
+          - id: ''
+            leftVarIndex: bb4587e3-ccef-4bd0-b328-872187fc9773
+            rightVarIndex: 27a038cb-956f-45b7-a302-9b2939910dbb
+            compareOperator: is
+            compareOperatorErrMsg: ''
+        - id: branch_one_of::2977f829-fd31-4bb0-b22e-06cc35a9d348
+          level: 2
+          logicalOperator: and
+          conditions:
+          - id: e5e7813f-2697-4b9d-9969-b2a5b9ce52b1
+            leftVarIndex: f5acd31f-030e-48ad-9462-7a12a5d0532d
+            rightVarIndex: 0527ef8f-7979-46e2-8cdc-10d9cd42080c
+            compareOperator: is
+            compareOperatorErrMsg: ''
+        - id: branch_one_of::0e600e5c-50d9-4e56-9d53-d2aa0f48f30d
+          level: 3
+          logicalOperator: and
+          conditions:
+          - id: bb4245da-f20d-4a6e-a280-64d2971fa2db
+            leftVarIndex: ac9e2245-1246-4afa-a835-ae2a3e1b1b8b
+            rightVarIndex: 63cc3c51-ca14-49ed-a36b-e00414a11c55
+            compareOperator: is
+            compareOperatorErrMsg: ''
+        - id: branch_one_of::e92ea657-d1b6-45c1-9d67-cd52e7e531ac
+          level: 999
+          logicalOperator: and
+          conditions: [
+            ]
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/if-else-node-icon.png
+      description: 根据设立的条件，判断选择分支走向
+      updatable: false
+  - id: spark-llm::0223721e-182e-4114-a787-2afaa320ec4b
+    dragging: false
+    selected: false
+    width: 361
+    height: 131
+    position:
+      x: 2476.2785800795855
+      y: 1338.997708953775
+    positionAbsolute:
+      x: 2476.2785800795855
+      y: 1338.997708953775
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 闲聊大模型
+      labelEdit: false
+      references: [
+        ]
+      status: success
+      nodeMeta:
+        nodeType: 基础节点
+        aliasName: 大模型
+      inputs:
+      - id: 608147f4-a58c-460e-b758-82e5db6788e3
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+              name: AGENT_USER_INPUT
+            contentErrMsg: ''
+        fileType: ''
+      - id: edc63efb-6f88-49be-8ddb-4b5c466fa354
+        name: lang
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: c583d963-9aec-49c6-9dea-545a13fac2ec
+              nodeId: ifly-code::38e75d80-084a-4394-86ef-b118befafc4c
+              name: lang
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: d9869438-076d-42ec-b937-9f5869530839
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        maxTokens: 2048
+        topK: 4
+        auditing: default
+        template: |+
+          用户输入：{user_input}
+
+        respFormat: 0
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        enableChatHistoryV2:
+          isEnabled: true
+          rounds: 5
+        templateErrMsg: ''
+        llmIdErrMsg: ''
+        systemTemplate: |-
+          你是一个二手车出口客服助手，你的任务是与用户进行友好、自然的日常对话，建立良好的客户关系。
+
+          用户使用{{lang}}进行询问，请结合用户问题使用的语言和判断的语言{{lang}}综合评估，选择适合的语言进行回复
+
+
+          ## 角色定位
+          专业但亲切的二手车出口客服助手
+          回答轻松、简短、友好
+          不涉及具体业务咨询（如价格、政策、物流等）
+
+
+          ## 闲聊场景
+          问候：你好、在吗、早上好等
+          感谢：谢谢、辛苦了等
+          告别：再见、拜拜等
+          日常寒暄：天气、心情、吃饭等
+          赞美或吐槽：与业务无关的闲聊
+
+
+          ## 回复原则
+          1. 简短友好，1-2句话为宜
+          2. 适当使用表情符号增加亲和力
+          3. 如用户表达感谢，回应“不客气，有需要随时找我”
+          4. 如用户表达告别，回应“好的，有问题随时来问哦”
+          5. 如果用户话题涉及具体业务，引导用户提出具体需求
+
+
+
+
+          ## 注意事项
+          不主动询问用户个人信息
+          不提供任何业务咨询（价格、政策、流程等）
+          如果用户开始咨询业务，回复“好的，请问您想咨询什么呢？”
+
+
+
+
+          ## 输出格式
+          直接输出回复文本
+        llmId: 109750152
+        domain: MiniMaxAI/MiniMax-M2.7
+        serviceId: MiniMaxAI/MiniMax-M2.7
+        url: https://api.gmi-serving.com/v1/chat/completions
+        modelId: 6
+        isThink: false
+        multiMode: false
+        modelName: MiniMax-M2.7
+        modelEnabled: true
+        source: openai
+        extraParams:
+          temperature: 1
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/largeModelIcon.png
+      description: 根据输入的提示词，调用选定的大模型，对提示词作出回答
+      updatable: false
+  - id: knowledge-base::cbc395e5-fe2c-46d6-896e-5f5a695d2c70
+    dragging: false
+    selected: false
+    width: 361
+    height: 131
+    position:
+      x: 1681.2022908093388
+      y: 152.48728848963646
+    positionAbsolute:
+      x: 1681.2022908093388
+      y: 152.48728848963646
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 知识库_1
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        nodeType: 工具
+        aliasName: 知识库
+      inputs:
+      - id: 034e1582-406e-4c17-a1d6-2e6a99638b73
+        name: query
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: c8627322-d7ad-4ce3-855c-c3eb0c4210fc
+              nodeId: spark-llm::74627209-0452-4b67-98cf-7a261d9e4029
+              name: rag_keywords
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 4fed805b-5588-4953-a01c-15632fc9705f
+        name: results
+        nameErrMsg: ''
+        schema:
+          type: array-object
+          properties:
+          - id: 9f706432-346c-4e27-a319-82248baf7671
+            name: score
+            required: true
+            type: number
+            default: ''
+          - id: 90590a21-f08b-4a9f-9e53-aa37dc623b6b
+            name: docId
+            required: true
+            type: string
+            default: ''
+          - id: aae29b2e-a09f-4094-92e0-245d75d3957e
+            name: title
+            required: true
+            type: string
+            default: ''
+          - id: 33062f08-6238-4b04-bbed-6b380be6e6a8
+            name: content
+            required: true
+            type: string
+            default: ''
+          - id: 053a316e-9cc4-4181-8b9f-2c9fc8f1fe84
+            name: context
+            required: true
+            type: string
+            default: ''
+          - id: 756559e6-5e88-496d-a1aa-a52a190e1cb0
+            name: references
+            required: true
+            type: object
+            default: ''
+        required: true
+      nodeParam:
+        repoId:
+        - 7c056da4e4bf455b8aeb41dfaa737f42
+        repoList:
+        - id: 12
+          name: 车辆信息2.0
+          userId: c24abfd0-bf64-4b94-813a-b536731a4bf1
+          outerRepoId: 7c056da4e4bf455b8aeb41dfaa737f42
+          coreRepoId: 7c056da4e4bf455b8aeb41dfaa737f42
+          description: 车辆信息2.0
+          status: 1
+          visibility: 0
+          source: 0
+          enableAudit: false
+          deleted: false
+          createTime: '2026-03-28T01:11:18.000+00:00'
+          updateTime: '2026-03-28T01:11:18.000+00:00'
+          isTop: false
+          tag: Ragflow-RAG
+          address: http://minio:9000/console-oss/
+          fileCount: 1
+          charCount: 211
+          corner: http://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/rag/20251011-140414.png
+        topN: 3
+        score: 0.2
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        flowId: '7440647612092588032'
+        ragType: Ragflow-RAG
+        repoIdErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/knowledgeIcon.png
+      description: 调用知识库，可以指定知识库进行知识检索和答复
+      updatable: false
+  - id: knowledge-base::1fcbf75d-fc69-478b-8e76-b06f9f1fd05e
+    dragging: false
+    selected: false
+    width: 361
+    height: 131
+    position:
+      x: 1723.2869876969003
+      y: 358.85115440195284
+    positionAbsolute:
+      x: 1723.2869876969003
+      y: 358.85115440195284
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 知识库_2
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        nodeType: 工具
+        aliasName: 知识库
+      inputs:
+      - id: 35436d88-0a52-4b0f-b99c-eb2fadcdabf5
+        name: query
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: c8627322-d7ad-4ce3-855c-c3eb0c4210fc
+              nodeId: spark-llm::74627209-0452-4b67-98cf-7a261d9e4029
+              name: rag_keywords
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: eae44a7c-90b3-4aed-a818-0fbcd2df9841
+        name: results
+        nameErrMsg: ''
+        schema:
+          type: array-object
+          properties:
+          - id: c0f220b9-85b4-4d04-accc-29edfafee470
+            name: score
+            required: true
+            type: number
+            default: ''
+          - id: ae5ec811-e9a4-4887-b025-c2f5ee342557
+            name: docId
+            required: true
+            type: string
+            default: ''
+          - id: 6580ae1a-6b2d-4d5b-bbfd-8a2778c625fe
+            name: title
+            required: true
+            type: string
+            default: ''
+          - id: 634d6163-aebc-46af-97ea-be24672b6799
+            name: content
+            required: true
+            type: string
+            default: ''
+          - id: 7cc20788-eb99-405d-87fe-43450c92ea14
+            name: context
+            required: true
+            type: string
+            default: ''
+          - id: aa6be952-8495-4f62-b8c9-e1c415f9a4fb
+            name: references
+            required: true
+            type: object
+            default: ''
+        required: true
+      nodeParam:
+        repoId:
+        - 5180f5d3ed494b08b5567486c2fe3d6d
+        repoList:
+        - id: 7
+          name: used_car
+          userId: c24abfd0-bf64-4b94-813a-b536731a4bf1
+          outerRepoId: 5180f5d3ed494b08b5567486c2fe3d6d
+          coreRepoId: 5180f5d3ed494b08b5567486c2fe3d6d
+          description: 二手车信息
+          status: 1
+          visibility: 0
+          source: 0
+          enableAudit: false
+          deleted: false
+          createTime: '2026-03-27T08:00:36.000+00:00'
+          updateTime: '2026-03-27T08:00:36.000+00:00'
+          isTop: false
+          tag: Ragflow-RAG
+          address: http://minio:9000/console-oss/
+          fileCount: 3
+          charCount: 37071
+          corner: http://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/rag/20251011-140414.png
+        topN: 3
+        score: 0.2
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        flowId: '7440647612092588032'
+        ragType: Ragflow-RAG
+        repoIdErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/knowledgeIcon.png
+      description: 调用知识库，可以指定知识库进行知识检索和答复
+      updatable: false
+  - id: spark-llm::8011a8dc-07a6-438d-a621-f3179a9180c1
+    dragging: false
+    selected: false
+    width: 361
+    height: 131
+    position:
+      x: 2689.6154558559374
+      y: 562.5285568150985
+    positionAbsolute:
+      x: 2689.6154558559374
+      y: 562.5285568150985
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 大模型_1
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        nodeType: 基础节点
+        aliasName: 大模型
+      inputs:
+      - id: 27ae8367-63de-429f-a57f-a5fb18968a5c
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+              name: AGENT_USER_INPUT
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 5267c30c-f4b2-425e-b23b-71fde768e272
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        maxTokens: 2048
+        topK: 4
+        auditing: default
+        template: '{{input}}'
+        respFormat: 0
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        enableChatHistoryV2:
+          isEnabled: true
+          rounds: 3
+        templateErrMsg: ''
+        llmId: 254769832
+        domain: astron-code-latest
+        serviceId: astron-code-latest
+        url: https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions
+        modelId: 5
+        isThink: false
+        multiMode: false
+        modelName: astron-code-latest
+        modelEnabled: true
+        llmIdErrMsg: ''
+        source: openai
+        extraParams:
+          temperature: 1
+        systemTemplate: |-
+          ### 角色
+          二手车出口业务顾问
+
+
+
+
+          ### 任务
+          线索生成完成后，进行收尾并推进下一步
+
+
+
+
+          用户使用{{lang}}进行询问，请结合用户问题使用的语言和判断的语言{{lang}}综合评估，选择适合的语言进行回复
+
+
+
+
+          ### 执行逻辑
+          1. 告知用户后续操作（如：销售联系）
+          2. 保持友好收尾，同时保留继续咨询的入口
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/largeModelIcon.png
+      description: 根据输入的提示词，调用选定的大模型，对提示词作出回答
+      updatable: false
+  - id: question-answer::8429f343-84b9-4a51-818a-020745c08c3f
+    dragging: false
+    selected: false
+    width: 361
+    height: 179
+    position:
+      x: 2058.3819165359364
+      y: 516.1674162283115
+    positionAbsolute:
+      x: 2058.3819165359364
+      y: 516.1674162283115
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 问答节点_1
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 问答节点
+        nodeType: 基础节点
+      inputs:
+      - id: 98119945-e164-4e9d-a667-c17a46f08b28
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+              name: AGENT_USER_INPUT
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 544631e5-b2fa-4ceb-8473-00e9f3e46273
+        name: query
+        nameErrMsg: ''
+        schema:
+          type: string
+          description: 该节点提问内容
+          default: ''
+        required: true
+      - id: a860e3bb-df10-4921-bdfd-b962be6d2d1f
+        name: content
+        nameErrMsg: ''
+        schema:
+          type: string
+          description: 用户回复内容
+          default: ''
+        required: true
+      nodeParam:
+        question: |+
+          请留下您的联系方式，我们的销售经理会在24小时内与您联系，为您提供详细的方案。
+
+        timeout: 3
+        needReply: false
+        answerType: direct
+        directAnswer:
+          handleResponse: false
+          maxRetryCounts: 2
+        optionAnswer:
+        - id: option-one-of::ff95b591-ba69-47f8-9f9a-0dd76dc29fbd
+          name: A
+          type: 2
+          content: ''
+          content_type: string
+        - id: option-one-of::4fac7949-3fbc-4cbb-bc7e-f6ff04c48303
+          name: B
+          type: 2
+          content: ''
+          content_type: string
+        - id: option-one-of::c63e3558-ac96-4b85-b017-2c40f696c64b
+          name: default
+          type: 1
+          content: ''
+          content_type: string
+        maxTokens: 2048
+        topK: 4
+        model: spark
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        questionErrMsg: ''
+        llmId: 254769832
+        domain: astron-code-latest
+        serviceId: astron-code-latest
+        url: https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions
+        modelId: 5
+        isThink: false
+        multiMode: false
+        modelName: astron-code-latest
+        modelEnabled: true
+        llmIdErrMsg: ''
+        source: openai
+        extraParams:
+          temperature: 1
+      icon: https://oss-beijing-m8.openstorage.cn/SparkBot/test4/answer-new2.png
+      description: 支持在此节点向用户提问，接收用户回复，并输出回复内容及提取的信息
+      updatable: false
+  - id: spark-llm::831548e4-830b-4eeb-bf4b-ec756aff71cf
+    dragging: false
+    selected: false
+    width: 361
+    height: 131
+    position:
+      x: 2779.586786172274
+      y: 134.71381667043147
+    positionAbsolute:
+      x: 2779.586786172274
+      y: 134.71381667043147
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 大模型_2
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        nodeType: 基础节点
+        aliasName: 大模型
+      inputs:
+      - id: 704935c3-f41f-461d-92a4-3824630cf7e2
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+              name: AGENT_USER_INPUT
+            contentErrMsg: ''
+        fileType: ''
+      - id: c97ceded-22f7-4d79-bd9e-6600024da3b3
+        name: context
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: f04864da-f6c5-47b0-979f-423af5e4a999
+              nodeId: knowledge-base::cbc395e5-fe2c-46d6-896e-5f5a695d2c70
+              name: results.content
+            contentErrMsg: ''
+        fileType: ''
+      - id: 367a9a11-21c9-45c2-8e36-544eafcd9da6
+        name: lang
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: c583d963-9aec-49c6-9dea-545a13fac2ec
+              nodeId: ifly-code::38e75d80-084a-4394-86ef-b118befafc4c
+              name: lang
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 11a8f415-51d8-4ce1-85de-fae82e66d8c0
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        maxTokens: 2048
+        topK: 4
+        auditing: default
+        template: '{{input}}'
+        respFormat: 0
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        enableChatHistoryV2:
+          isEnabled: true
+          rounds: 5
+        templateErrMsg: ''
+        llmIdErrMsg: ''
+        systemTemplate: |-
+          # 角色说明
+          你是**中国二手车出口智能客服**，通过RAG检索知识库，为咨询二手车的用户提供**精准、简洁、人性化**的车辆推荐。回复要像真人客服，**简单问候、清晰、不啰嗦**。**不允许虚构信息**，不重复回答。不滥用历史记忆中的信息。
+
+
+          用户使用{{lang}}进行询问，请结合用户问题使用的语言和判断的语言{{lang}}综合评估，选择适合的语言进行回复
+
+
+
+
+          ---
+
+
+
+
+          # 核心规则
+          1.  **唯一信息来源：** 你只能根据下面提供的“上下文信息”来回答用户的问题。除了这个上下文，你不可以调用或依赖任何预先训练的内部知识。
+          2.  **拒绝臆测：** 如果用户的问题无法通过提供的“上下文信息”得到答案，你必须直接、坦诚地告知用户“根据提供的资料，暂时无法回答这个问题”或类似话语，严禁自己编造或组装信息。
+          3.  **基于上下文回答：** 你的所有回答都必须严格基于“上下文信息”。
+          4. **状态过滤**：推荐车辆是展示"出售中"车辆，针对性查询可展示其他状态但需标注
+          5. **回复要求**：
+             - **简洁**：每辆车3-5句话，不说废话
+             - **直接**：先说车，再说理由
+             - **自然**：像真人聊天，不生硬
+          ---
+
+
+
+
+          # 用户问题
+          {{input}}
+
+
+
+
+          ---
+
+
+
+
+          # 上下文信息
+
+
+
+
+          <context>
+          {{context}}
+          </context>
+
+
+
+
+          ---
+
+
+
+
+          # 回复结构
+
+
+
+
+          ## 1. 简单问候
+
+
+
+
+          - 第一次询问，适当使用友好词，“您好！”
+          - 根据用户问题简单回应：“关于您问的问题”/“帮您看了下” / “为您找到了几款” / “关于您问的{车型}”
+
+
+
+
+          ## 2. 车辆推荐
+
+
+
+
+          按格式列出符合条件的“上下文”中的真实车辆
+
+
+
+
+          ## 3. 信息模糊引导
+
+
+
+
+          如果用户咨询信息过于模糊，引导提供更多的信息
+
+
+
+
+          ## 4. 适度互动
+
+
+
+
+          - “这些符合您需求吗？”
+          - “您可以提供更多的信息吗？”
+
+
+
+
+          ---
+
+
+
+
+          # 推荐车辆必须是上下文信息里提供，不虚构
+
+
+
+
+          ```
+          🔥{品牌} {车系} {车型}
+
+
+
+
+          • 车辆编号：{售价}
+          • 价格：{售价}
+          • 里程：{表显里程}
+          • 状态：{车辆状态}
+          • 其它细节：{车辆类型}、{驱动信息}等
+          • 推荐理由：简短几句话说透为什么适合用户
+          ```
+          ---
+
+
+
+
+          # 推荐理由速写指南
+
+
+
+
+          | 场景 | 推荐理由话术 |
+          |------|------------|
+          | 豪华品牌 | 彰显身份与品位/气场出众/倍显尊崇 |
+          | SUV | 空间大/家用合适/视野好 |
+          | 轿车 | 舒适/操控稳/商务家用都行 |
+          | 里程低 | 准新车/车况好/用得少 |
+          | 价格实惠 | 性价比高/入手好时机 |
+
+
+
+
+          ---
+
+
+
+
+          # 回答示例（**严格遵守上下文信息**）
+
+
+
+
+          > 您好！帮您看了下，目前有这几款符合您需求：
+          >
+          > 🔥*奥迪Q2L 2021款 35 TFSI 进取动感型*
+          >
+          > • 车辆编号：12345
+          > • 价格：10.98万
+          > • 里程：4.6万公里
+          > • 状态：已出售
+          > • 其它细节：SUV、前驱
+          > • 推荐理由：城市代步好开省油，停车方便，适合日常通勤
+          >
+          > 🔥*宝马 宝马X1 2021款 sDrive20Li 时尚型*
+          >
+          > • 车辆编号：12345
+          > • 价格：11.88万
+          > • 里程：8.6万公里
+          > • 状态：出售中
+          > • 其它细节：SUV、前驱
+          > • 推荐理由：性价比高，适合日常使用，空间宽敞舒适。
+          >
+          > 感兴趣的话，您可以点击查看详情~
+
+
+
+
+          # 回答示例（信息引导）
+
+
+
+
+          ## **示例1：用户只说“想买辆车”**
+
+
+
+
+          > 您好！ 感谢您的咨询。不过您说的“{用户问题}”信息比较宽泛，我这边不太好精准推荐～
+          >
+          > 您可以告诉我更多的信息吗？例如：
+          > • 您的预算大概多少？
+          > • 您喜欢轿车还是SUV？
+          > • 主要家用还是商务？
+          >
+          > 我帮您先看看有没有合适的～
+
+
+
+
+
+
+
+
+          # 回答示例（知识库无车源）
+
+
+
+
+          > 您好！帮您看了下，目前库里暂时没有找到符合“30万以内四驱SUV”的车源。
+          >
+          > 不过您可以留下联系方式，我们会根据您的要求定向寻找合适的车源，找到后第一时间通知您。
+          >
+          > 或者您也可以看看其他类型的车型，需要我为您推荐吗？
+
+
+
+
+          # 不同场景的问候示例
+
+
+
+
+          | 用户问题类型 | 问候语示例 |
+          |-------------|-----------|
+          | 具体车型查询 | “您好！关于您问的奥迪Q2L，帮您找到了这台：” |
+          | 模糊需求（20万以内SUV） | “您好！20万以内的SUV，帮您看了下这几款：” |
+          | 首次咨询 | “您好！欢迎咨询，帮您筛选了符合条件的车源：” |
+          | 无合适车源引导 | 引导用户留下联系方式 |
+        llmId: 254769832
+        domain: astron-code-latest
+        serviceId: astron-code-latest
+        url: https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions
+        modelId: 5
+        isThink: false
+        multiMode: false
+        modelName: astron-code-latest
+        modelEnabled: true
+        source: openai
+        extraParams:
+          temperature: 1
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/largeModelIcon.png
+      description: 根据输入的提示词，调用选定的大模型，对提示词作出回答
+      updatable: false
+  - id: spark-llm::0a094cb1-bf10-486b-9b1d-63e4fa19197a
+    dragging: false
+    selected: false
+    width: 361
+    height: 131
+    position:
+      x: 2779.6710393137796
+      y: -56.80727731430088
+    positionAbsolute:
+      x: 2779.6710393137796
+      y: -56.80727731430088
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 大模型_3
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        nodeType: 基础节点
+        aliasName: 大模型
+      inputs:
+      - id: 248dbb3a-4eb7-4d46-aadb-5edb3eee4537
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+              name: AGENT_USER_INPUT
+            contentErrMsg: ''
+        fileType: ''
+      - id: 5ba4d986-5605-4b87-bbfb-dcfcaafd6117
+        name: lang
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: c583d963-9aec-49c6-9dea-545a13fac2ec
+              nodeId: ifly-code::38e75d80-084a-4394-86ef-b118befafc4c
+              name: lang
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 75d3f203-0c61-4caa-9efa-e96b2b7a5af6
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        maxTokens: 2048
+        topK: 4
+        auditing: default
+        template: '{{input}}'
+        respFormat: 0
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        enableChatHistoryV2:
+          isEnabled: true
+          rounds: 5
+        templateErrMsg: ''
+        llmIdErrMsg: ''
+        systemTemplate: |-
+          # 角色说明
+          你是**中国二手车出口的智能客服**。你的核心任务是：针对用户问题进行回复，**真实告知用户结果，主动引导留资，保持友好不放弃**。回复要像真人客服，**简单问候、清晰、不啰嗦**。不滥用历史记忆中的信息。
+
+
+          用户使用{{lang}}进行询问，请结合用户问题使用的语言和判断的语言{{lang}}综合评估，选择适合的语言进行回复
+
+
+          ---
+
+
+          # 用户问题
+          {{input}}
+          ---
+
+
+          # 核心规则
+
+
+          1. **诚实告知**：直接说明当前没有找到匹配车源
+          2. **留有余地**：询问是否需要放宽条件或查看其他类型，保持对话延续性
+          3. 避免提及你从上下文中获取的信息。
+          4. **回复要求**：
+             - **简洁**：不说废话，2-3句话完成告知+引导
+             - **真诚**：语气自然，像真人客服一样体谅用户
+             - **有行动点**：必须包含明确的下一步引导（填单/放宽条件）
+          ---
+
+
+
+
+          # 回复结构
+
+
+          ## 1. 简单回应
+          - 根据用户问题做出回应：“帮您看了下” / “关于您问的{车型}” / “按您的要求查找后”
+
+
+          ## 2. 坦诚告知无结果
+          - 直接说明没有找到匹配车源，语气平和自然
+
+
+          ## 3. 可选互动
+          - 询问是否需要放宽条件（如提高预算/扩大车龄范围）
+          - 询问是否需要查看其他类型车辆
+
+
+          ---
+
+
+          # 回答示例
+
+
+          ## 示例1：用户只说“想买辆车”
+
+
+          > 您好！ 感谢您的咨询。不过您说的“{用户问题}”信息比较宽泛，我这边不太好精准推荐～
+          >
+          > 您可以告诉我更多的信息吗？例如：
+          > • 您的预算大概多少？
+          > • 您喜欢轿车还是SUV？
+          > • 主要家用还是商务？
+          >
+          > 我帮您先看看有没有合适的～
+
+
+          ## 示例2：用户有明确预算+车型要求
+
+
+          > 您好！按您说的“30万以内四驱SUV”帮您仔细查了，目前库里暂时没有完全匹配的车源。
+          >
+          > 不过您可以留下联系方式，我们会根据您的要求定向寻找，有合适的车源第一时间通知您。
+          >
+          > 或者您也可以考虑放宽一点预算？需要我帮您看看35万左右的吗？
+
+
+          ## 示例3：用户问具体车型（如奥迪Q5L）
+
+
+          > 您好！关于您问的奥迪Q5L，我查了一下咱们当前的在库车源，暂时没有这款车在售。
+          >
+          > 您可以留下联系方式，告诉我们您心仪的具体年份和预算，我们帮您定向找。
+          >
+          > 或者您对奥迪Q3或者Q2L感兴趣吗？这两款目前有车源，需要我发您看看？
+
+
+          ## 示例4：用户问不要具体车型（如不要奥迪Q5L）
+
+
+          > 您好，关于您不要奥迪Q5L的车型，请问您有心仪的车辆选择吗？您可以告诉我预算大概多少？您喜欢轿车还是SUV？
+          >
+
+
+          ---
+
+
+          # 核心禁忌
+
+
+          ❌ 禁止编造不存在的车源
+          ❌ 禁止强行推荐完全不相关的车辆
+          ❌ 禁止只说“没有”就结束对话，必须引导
+          ❌ 禁止语气生硬冷漠
+        llmId: 254769832
+        domain: astron-code-latest
+        serviceId: astron-code-latest
+        url: https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions
+        modelId: 5
+        isThink: false
+        multiMode: false
+        modelName: astron-code-latest
+        modelEnabled: true
+        source: openai
+        extraParams:
+          temperature: 1
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/largeModelIcon.png
+      description: 根据输入的提示词，调用选定的大模型，对提示词作出回答
+      updatable: false
+  - id: if-else::5977f7f7-fa0d-4451-92e9-d731b70eacfb
+    dragging: false
+    selected: false
+    width: 361
+    height: 133
+    position:
+      x: 2197.383775538585
+      y: 3.1868969668468026
+    positionAbsolute:
+      x: 2197.383775538585
+      y: 3.1868969668468026
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: false
+      label: 分支器_3
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        nodeType: 分支器
+        aliasName: 分支器
+      inputs:
+      - id: 3e9d0980-0f5c-4a49-ac2e-930bf300d64e
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: f04864da-f6c5-47b0-979f-423af5e4a999
+              nodeId: knowledge-base::cbc395e5-fe2c-46d6-896e-5f5a695d2c70
+              name: results.content
+            contentErrMsg: ''
+      - id: b33d1ec5-2028-4cee-bcfa-4a73fbef90bf
+        name: input1
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: literal
+            content: ''
+            contentErrMsg: ''
+      outputs: [
+        ]
+      nodeParam:
+        cases:
+        - id: branch_one_of::eca7a4dd-39ba-42a5-9184-4d8ec1c0683b
+          level: 1
+          logicalOperator: and
+          conditions:
+          - id: ''
+            leftVarIndex: 3e9d0980-0f5c-4a49-ac2e-930bf300d64e
+            rightVarIndex: b33d1ec5-2028-4cee-bcfa-4a73fbef90bf
+            compareOperator: empty
+            compareOperatorErrMsg: ''
+        - id: branch_one_of::339c408b-e570-4d9d-b0bd-7b75fd5a2315
+          level: 999
+          logicalOperator: and
+          conditions: [
+            ]
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/if-else-node-icon.png
+      description: 根据设立的条件，判断选择分支走向
+      updatable: false
+  - id: spark-llm::fb966ce4-70e2-410a-927a-5b187bed9447
+    dragging: false
+    selected: false
+    width: 361
+    height: 131
+    position:
+      x: 2784.0065616321513
+      y: 367.56368626975035
+    positionAbsolute:
+      x: 2784.0065616321513
+      y: 367.56368626975035
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 大模型_4
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        nodeType: 基础节点
+        aliasName: 大模型
+      inputs:
+      - id: 9ffc29f0-d812-43f6-87e7-017cff8dceae
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+              name: AGENT_USER_INPUT
+            contentErrMsg: ''
+        fileType: ''
+      - id: 9ec89145-9cdb-4340-bb62-347538f1fcd9
+        name: context
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 7cc20788-eb99-405d-87fe-43450c92ea14
+              nodeId: knowledge-base::1fcbf75d-fc69-478b-8e76-b06f9f1fd05e
+              name: results.context
+            contentErrMsg: ''
+        fileType: ''
+      - id: f8260677-c291-4c13-89a7-6f4712f84d11
+        name: lang
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: c583d963-9aec-49c6-9dea-545a13fac2ec
+              nodeId: ifly-code::38e75d80-084a-4394-86ef-b118befafc4c
+              name: lang
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 579b5c5f-aad5-491d-ae19-977778b8177c
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        maxTokens: 2048
+        topK: 4
+        auditing: default
+        template: '{{input}}'
+        respFormat: 0
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        enableChatHistoryV2:
+          isEnabled: true
+          rounds: 5
+        templateErrMsg: ''
+        systemTemplate: |-
+          # 角色与规则
+
+
+
+
+          你是**中国二手车出口客服**，主要业务是中国二手车车出口服务。通过RAG检索知识库，为咨询公司或二手车相关的用户提供**精准、简洁、人性化**回答。回复要像真人客服，**简单问候、清晰分段，重点突出、不啰嗦、不重复**。尽可能的满足用户的咨询需求。不滥用历史记忆中的信息。
+
+
+
+
+          用户使用{{lang}}进行询问，请结合用户问题使用的语言和判断的语言{{lang}}综合评估，选择适合的语言进行回复
+
+
+
+
+          ---
+
+
+
+
+          # 用户问题
+
+
+
+
+          {{input}}
+
+
+
+
+          ---
+
+
+
+
+          # 知识库检索结果
+
+
+
+
+          <context>
+          {{context}}
+          </context>
+
+
+
+
+          ---
+          # 核心规则
+
+
+
+
+          1. 如果你不知道，就说你不知道。如果你不确定时不知道，寻求澄清。
+          2. **回复要求**：
+             - **简洁**：回复精简，清晰分段，重点突出
+             - **自然**：像真人聊天，不生硬
+          3. 不承诺知识库外的服务
+          4. 不要出现仅、只有等过于绝对的词
+          5. **基于知识库的内容回答，一定不能编造数据**
+          6. 避免提及你从上下文中获取的信息。
+
+
+
+
+          # 响应流程
+
+
+
+
+          ## 步骤一：结合知识库回答
+          根据识别到的意图，参考知识库信息，提供针对性回答。
+
+
+
+
+          ## 步骤二：必要时的引导
+          如果知识库信息不足，主动引导用户进入下一步。
+
+
+
+
+
+
+
+
+
+
+
+
+          # 响应规范
+
+
+
+
+          ## 2. 公司咨询
+
+
+
+
+          - 使用知识库中的公司介绍
+          - 突出业务：向全球出口中国优质二手车
+          - 提及主要市场：俄罗斯、中亚、中东、非洲等
+          - 强调平台优势
+
+
+
+
+
+
+
+
+          ## 3. 合作意向
+          - 这里合作不是指购买车辆
+          - 提供合作方式与流程
+          - 表达合作诚意
+
+
+
+
+
+
+
+
+          ## 9. 一般问题
+          - 基于知识库直接回答用户问题
+          - 提供清晰准确的答案
+        llmId: 254769832
+        domain: astron-code-latest
+        serviceId: astron-code-latest
+        url: https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions
+        modelId: 5
+        isThink: false
+        multiMode: false
+        modelName: astron-code-latest
+        modelEnabled: true
+        llmIdErrMsg: ''
+        source: openai
+        extraParams:
+          temperature: 1
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/largeModelIcon.png
+      description: 根据输入的提示词，调用选定的大模型，对提示词作出回答
+      updatable: false
+  - id: extractor-parameter::d64aaf50-d398-4a5e-b52c-6292994c25ef
+    dragging: false
+    selected: false
+    width: 361
+    height: 131
+    position:
+      x: 2120.2221371763926
+      y: 803.8531438718943
+    positionAbsolute:
+      x: 2120.2221371763926
+      y: 803.8531438718943
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 提取联系方式_1
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        nodeType: 基础节点
+        aliasName: 变量提取器
+      inputs:
+      - id: 9f040844-28d6-4554-aa36-84128232019d
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: a860e3bb-df10-4921-bdfd-b962be6d2d1f
+              nodeId: question-answer::8429f343-84b9-4a51-818a-020745c08c3f
+              name: content
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 0adff8b6-0449-419d-aec1-dd29f6236504
+        name: phone
+        nameErrMsg: ''
+        schema:
+          type: string
+          description: ''
+          default: 用户联系方式
+        required: true
+      - id: 5a3b3836-baf8-4893-9a3c-11d926c4362b
+        name: name
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 用户称呼
+        required: false
+      nodeParam:
+        maxTokens: 2048
+        topK: 4
+        auditing: default
+        model: spark
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        reasonMode: 1
+        llmIdErrMsg: ''
+        llmId: 254769832
+        domain: astron-code-latest
+        serviceId: astron-code-latest
+        url: https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions
+        modelId: 5
+        isThink: false
+        multiMode: false
+        modelName: astron-code-latest
+        modelEnabled: true
+        source: openai
+        extraParams:
+          temperature: 1
+        setAnswerContentErrMsg: 输出中变量名校验不通过,自动生成JSON失败
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/variable-extractor-icon.png
+      description: 结合提取变量描述，将上一节点输出的自然语言进行提取
+      updatable: false
+  - id: node-variable::d022ae58-a668-4ec6-8d5f-310e5527ef0f
+    dragging: false
+    selected: false
+    width: 361
+    height: 81
+    position:
+      x: 2344.0459247436593
+      y: 1057.6959048941537
+    positionAbsolute:
+      x: 2344.0459247436593
+      y: 1057.6959048941537
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 存储联系方式_1
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        nodeType: 基础节点
+        aliasName: 变量存储器
+      inputs:
+      - id: a2a7d667-d520-40ca-ac84-4e0a6b67cb7c
+        name: phone
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 0adff8b6-0449-419d-aec1-dd29f6236504
+              nodeId: extractor-parameter::d64aaf50-d398-4a5e-b52c-6292994c25ef
+              name: phone
+            contentErrMsg: ''
+        fileType: ''
+      - id: b55e71d0-46f0-4753-bd77-5d858b9ae232
+        name: name
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 5a3b3836-baf8-4893-9a3c-11d926c4362b
+              nodeId: extractor-parameter::d64aaf50-d398-4a5e-b52c-6292994c25ef
+              name: name
+            contentErrMsg: ''
+        fileType: ''
+      outputs: [
+        ]
+      nodeParam:
+        method: set
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        flowId: '7440647612092588032'
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/variable-memory-icon.png
+      description: 可以设定多个变量，用于长期保存数据，且持续生效和更新
+      updatable: false
+  - id: database::cb04dab3-400c-4d3c-af00-87fb5df8d1b1
+    dragging: false
+    selected: false
+    width: 361
+    height: 81
+    position:
+      x: 2665.5346795284718
+      y: 862.8537549473929
+    positionAbsolute:
+      x: 2665.5346795284718
+      y: 862.8537549473929
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 数据库_1
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 数据库节点
+        nodeType: 基础节点
+      inputs:
+      - id: 69d6fecb-8bdf-48dc-b638-71100e289bae
+        name: content
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+              name: AGENT_USER_INPUT
+            contentErrMsg: ''
+        fileType: ''
+        required: true
+      - id: 76bc1cac-aea2-48e2-ab8c-89965359b9b3
+        name: type
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: literal
+            content: 用户线索
+            contentErrMsg: ''
+      - id: 598342a9-4137-4dfe-94f8-ca5a9bc1c473
+        name: phone
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 0adff8b6-0449-419d-aec1-dd29f6236504
+              nodeId: extractor-parameter::d64aaf50-d398-4a5e-b52c-6292994c25ef
+              name: phone
+            contentErrMsg: ''
+        fileType: ''
+      - id: 407f9101-432e-481d-a6cc-9fae3a2e571b
+        name: name
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 5a3b3836-baf8-4893-9a3c-11d926c4362b
+              nodeId: extractor-parameter::d64aaf50-d398-4a5e-b52c-6292994c25ef
+              name: name
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: e26ef80b-1011-4dc5-a958-381caef2c727
+        name: isSuccess
+        nameErrMsg: ''
+        schema:
+          type: boolean
+          default: SQL语句执行状态标识，成功true，失败false
+      - id: 780c0690-d9df-439e-b94f-80c22d8ffa4a
+        name: message
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 失败原因
+      - id: 93c53e3c-c515-4af5-b711-c8aea4beadd6
+        name: outputList
+        nameErrMsg: ''
+        schema:
+          type: array-object
+          properties: [
+            ]
+          default: 执行结果
+      nodeParam:
+        mode: 1
+        appId: 680ab54f
+        uid: c24abfd0-bf64-4b94-813a-b536731a4bf1
+        dbErrMsg: ''
+        sqlErrMsg: 值不能为空
+        dbId: '7440683142771703808'
+        tableName: work_order
+        assignmentList: [
+          ]
+        orderData: [
+          ]
+        cases: [
+          ]
+        tableNameErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/SparkBotDev/icon/user/sparkBot_1752568522509_database_icon.svg
+      description: 支持用户自定义的SQL完成对数据库的增删改查操作
+      updatable: false
+  edges:
+  - source: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+    target: ifly-code::38e75d80-084a-4394-86ef-b118befafc4c
+    type: customEdge
+    id: reactflow__edge-node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783-ifly-code::38e75d80-084a-4394-86ef-b118befafc4c
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: spark-llm::74627209-0452-4b67-98cf-7a261d9e4029
+    sourceHandle: ''
+    target: if-else::48952a89-11c4-4b80-8a52-cbe3fdf980ef
+    type: customEdge
+    id: reactflow__edge-spark-llm::74627209-0452-4b67-98cf-7a261d9e4029-if-else::48952a89-11c4-4b80-8a52-cbe3fdf980ef
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: if-else::48952a89-11c4-4b80-8a52-cbe3fdf980ef
+    sourceHandle: branch_one_of::e92ea657-d1b6-45c1-9d67-cd52e7e531ac
+    target: spark-llm::0223721e-182e-4114-a787-2afaa320ec4b
+    type: customEdge
+    id: reactflow__edge-if-else::48952a89-11c4-4b80-8a52-cbe3fdf980efbranch_one_of::e92ea657-d1b6-45c1-9d67-cd52e7e531ac-spark-llm::0223721e-182e-4114-a787-2afaa320ec4b
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: ifly-code::38e75d80-084a-4394-86ef-b118befafc4c
+    target: spark-llm::74627209-0452-4b67-98cf-7a261d9e4029
+    type: customEdge
+    id: reactflow__edge-ifly-code::38e75d80-084a-4394-86ef-b118befafc4c-spark-llm::74627209-0452-4b67-98cf-7a261d9e4029
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: if-else::48952a89-11c4-4b80-8a52-cbe3fdf980ef
+    sourceHandle: branch_one_of::ce4fe6c2-f219-400f-b833-df4b04b25e29
+    target: knowledge-base::cbc395e5-fe2c-46d6-896e-5f5a695d2c70
+    type: customEdge
+    id: reactflow__edge-if-else::48952a89-11c4-4b80-8a52-cbe3fdf980efbranch_one_of::ce4fe6c2-f219-400f-b833-df4b04b25e29-knowledge-base::cbc395e5-fe2c-46d6-896e-5f5a695d2c70
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: if-else::48952a89-11c4-4b80-8a52-cbe3fdf980ef
+    sourceHandle: branch_one_of::2977f829-fd31-4bb0-b22e-06cc35a9d348
+    target: knowledge-base::1fcbf75d-fc69-478b-8e76-b06f9f1fd05e
+    type: customEdge
+    id: reactflow__edge-if-else::48952a89-11c4-4b80-8a52-cbe3fdf980efbranch_one_of::2977f829-fd31-4bb0-b22e-06cc35a9d348-knowledge-base::1fcbf75d-fc69-478b-8e76-b06f9f1fd05e
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: knowledge-base::cbc395e5-fe2c-46d6-896e-5f5a695d2c70
+    sourceHandle: ''
+    target: if-else::5977f7f7-fa0d-4451-92e9-d731b70eacfb
+    type: customEdge
+    id: reactflow__edge-knowledge-base::cbc395e5-fe2c-46d6-896e-5f5a695d2c70-if-else::5977f7f7-fa0d-4451-92e9-d731b70eacfb
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: if-else::5977f7f7-fa0d-4451-92e9-d731b70eacfb
+    sourceHandle: branch_one_of::eca7a4dd-39ba-42a5-9184-4d8ec1c0683b
+    target: spark-llm::0a094cb1-bf10-486b-9b1d-63e4fa19197a
+    type: customEdge
+    id: reactflow__edge-if-else::5977f7f7-fa0d-4451-92e9-d731b70eacfbbranch_one_of::eca7a4dd-39ba-42a5-9184-4d8ec1c0683b-spark-llm::0a094cb1-bf10-486b-9b1d-63e4fa19197a
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: if-else::5977f7f7-fa0d-4451-92e9-d731b70eacfb
+    sourceHandle: branch_one_of::339c408b-e570-4d9d-b0bd-7b75fd5a2315
+    target: spark-llm::831548e4-830b-4eeb-bf4b-ec756aff71cf
+    type: customEdge
+    id: reactflow__edge-if-else::5977f7f7-fa0d-4451-92e9-d731b70eacfbbranch_one_of::339c408b-e570-4d9d-b0bd-7b75fd5a2315-spark-llm::831548e4-830b-4eeb-bf4b-ec756aff71cf
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: knowledge-base::1fcbf75d-fc69-478b-8e76-b06f9f1fd05e
+    sourceHandle: ''
+    target: spark-llm::fb966ce4-70e2-410a-927a-5b187bed9447
+    type: customEdge
+    id: reactflow__edge-knowledge-base::1fcbf75d-fc69-478b-8e76-b06f9f1fd05e-spark-llm::fb966ce4-70e2-410a-927a-5b187bed9447
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: question-answer::8429f343-84b9-4a51-818a-020745c08c3f
+    target: extractor-parameter::d64aaf50-d398-4a5e-b52c-6292994c25ef
+    type: customEdge
+    id: reactflow__edge-question-answer::8429f343-84b9-4a51-818a-020745c08c3f-extractor-parameter::d64aaf50-d398-4a5e-b52c-6292994c25ef
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: extractor-parameter::d64aaf50-d398-4a5e-b52c-6292994c25ef
+    target: node-variable::d022ae58-a668-4ec6-8d5f-310e5527ef0f
+    type: customEdge
+    id: reactflow__edge-extractor-parameter::d64aaf50-d398-4a5e-b52c-6292994c25ef-node-variable::d022ae58-a668-4ec6-8d5f-310e5527ef0f
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: node-variable::d022ae58-a668-4ec6-8d5f-310e5527ef0f
+    target: database::cb04dab3-400c-4d3c-af00-87fb5df8d1b1
+    type: customEdge
+    id: reactflow__edge-node-variable::d022ae58-a668-4ec6-8d5f-310e5527ef0f-database::cb04dab3-400c-4d3c-af00-87fb5df8d1b1
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: database::cb04dab3-400c-4d3c-af00-87fb5df8d1b1
+    target: spark-llm::8011a8dc-07a6-438d-a621-f3179a9180c1
+    type: customEdge
+    id: reactflow__edge-database::cb04dab3-400c-4d3c-af00-87fb5df8d1b1-spark-llm::8011a8dc-07a6-438d-a621-f3179a9180c1
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: if-else::48952a89-11c4-4b80-8a52-cbe3fdf980ef
+    sourceHandle: branch_one_of::0e600e5c-50d9-4e56-9d53-d2aa0f48f30d
+    target: question-answer::8429f343-84b9-4a51-818a-020745c08c3f
+    type: customEdge
+    id: reactflow__edge-if-else::48952a89-11c4-4b80-8a52-cbe3fdf980efbranch_one_of::0e600e5c-50d9-4e56-9d53-d2aa0f48f30d-question-answer::8429f343-84b9-4a51-818a-020745c08c3f
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: spark-llm::8011a8dc-07a6-438d-a621-f3179a9180c1
+    target: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    type: customEdge
+    id: reactflow__edge-spark-llm::8011a8dc-07a6-438d-a621-f3179a9180c1-node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: spark-llm::fb966ce4-70e2-410a-927a-5b187bed9447
+    target: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    type: customEdge
+    id: reactflow__edge-spark-llm::fb966ce4-70e2-410a-927a-5b187bed9447-node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: spark-llm::831548e4-830b-4eeb-bf4b-ec756aff71cf
+    target: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    type: customEdge
+    id: reactflow__edge-spark-llm::831548e4-830b-4eeb-bf4b-ec756aff71cf-node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: spark-llm::0a094cb1-bf10-486b-9b1d-63e4fa19197a
+    target: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    type: customEdge
+    id: reactflow__edge-spark-llm::0a094cb1-bf10-486b-9b1d-63e4fa19197a-node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: spark-llm::0223721e-182e-4114-a787-2afaa320ec4b
+    target: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    type: customEdge
+    id: reactflow__edge-spark-llm::0223721e-182e-4114-a787-2afaa320ec4b-node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve

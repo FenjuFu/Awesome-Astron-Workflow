@@ -16,6 +16,9 @@
     - [简历智优通](#13-简历智优通)
     - [文档问答助手 (Docs Workflow)](#22-文档问答助手-docs-workflow)
     - [AI 研究助手](#26-ai-研究助手)
+    - [酒店管理数字员工](#31-酒店管理数字员工)
+    - [二手车出口智能客服](#32-二手车出口智能客服)
+    - [教案评审智能体](#33-教案评审智能体)
   - [创意写作](#创意写作)
     - [多平台内容写作](#3-多平台内容写作)
     - [AI 播客生成器](#4-ai-播客生成器)
@@ -161,6 +164,48 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 - 深度网络搜索与内容抓取
 - 生成带引用的结构化报告
 - 多源信息综合
+
+#### 31. 酒店管理数字员工
+
+**描述：** 酒店管理数字员工，提供智能化的客房预订、查询和客户服务支持，提升酒店运营效率。
+
+- **用户案例：** [视频演示](https://www.youtube.com/watch?v=SbfZpXj9AXg&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=31&pp=iAQBsAgC)
+- **工作流：** [酒店管理数字员工.yml](https://github.com/tomatoes1208/hotelmanage)
+- **活动标签：** Astron Training Camp · Cohort #1
+
+**主要功能：**
+- 智能化的酒店客房查询与预订
+- 自动化处理客户常见问题与服务请求
+- 提升酒店前台及客户服务运营效率
+- 提供全天候数字员工服务支持
+
+#### 32. 二手车出口智能客服
+
+**描述：** 专为二手车出口业务设计的智能客服工作流，解答关于车型、报价及出口流程的咨询，提供专业的出海业务支持。
+
+- **用户案例：** [视频演示](https://www.youtube.com/watch?v=RRCwnfI-A8Y&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=32&pp=iAQBsAgC)
+- **工作流：** [二手车出口智能客服.yml](https://github.com/hack-feng/astron_used_car_workflow)
+- **活动标签：** Astron Training Camp · Cohort #1
+
+**主要功能：**
+- 二手车车型与报价智能查询解答
+- 自动化提供车辆出口流程与政策咨询
+- 多语言交互以支持国际客户服务
+- 提升二手车出海业务客户响应效率
+
+#### 33. 教案评审智能体
+
+**描述：** 面向教学设计场景的教案评审工具。支持提交教案标题、适用年级和教案内容，返回智能评审结果、改进建议与历史记录。
+
+- **用户案例：** [视频演示](https://www.youtube.com/watch?v=cxpO-M2fxtY&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=33&pp=iAQB0gcJCdkKAYcqIYzvsAgC)
+- **工作流：** [教案评审员.yml](https://github.com/BarryYin/Digital_Employee_for_Teaching_Plan_Review.git)
+- **活动标签：** Astron Training Camp · Cohort #1
+
+**主要功能：**
+- 智能解析教案内容并自动生成评审结果
+- 提供针对性的教学设计改进建议
+- 自动记录教案评审历史以便追溯
+- 结合适用年级与学科进行多维度评估
 
 ### 创意写作
 

@@ -154,6 +154,47 @@ Each case includes:
 - Structured report generation with citations
 - Multi-source information synthesis
 
+#### 31. Hotel Management Digital Employee
+
+**Description:** A digital employee for hotel management that provides intelligent room booking, inquiry, and customer service support to improve hotel operational efficiency.
+
+- **User Case:** [Video Showcase](https://www.youtube.com/watch?v=SbfZpXj9AXg&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=31&pp=iAQBsAgC)
+- **Workflow:** [酒店管理数字员工.yml](https://github.com/tomatoes1208/hotelmanage)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
+
+**Key Features:**
+- Intelligent hotel room inquiry and booking
+- Automated handling of common customer questions and service requests
+- Enhances hotel front desk and customer service operations
+- 24/7 digital employee service support
+
+#### 32. Used Car Export Smart Customer Service
+
+**Description:** A smart customer service workflow designed for the used car export business. It answers inquiries regarding car models, quotes, and export processes, providing professional business support.
+
+- **User Case:** [Video Showcase](https://www.youtube.com/watch?v=RRCwnfI-A8Y&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=32&pp=iAQBsAgC)
+- **Workflow:** [二手车出口智能客服.yml](https://github.com/hack-feng/astron_used_car_workflow)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
+
+**Key Features:**
+- Intelligent inquiry for used car models and quotes
+- Automated consultation on vehicle export processes and policies
+- Multi-language interaction to support international customers
+- Improves customer response efficiency for used car export business
+
+#### 33. Teaching Plan Review Digital Employee
+
+**Description:** A teaching plan review tool for instructional design scenarios. It supports submitting teaching plan titles, applicable grades, and content, and returns intelligent review results, improvement suggestions, and historical records.
+
+- **User Case:** [Video Showcase](https://www.youtube.com/watch?v=cxpO-M2fxtY&list=PLpSUIRpjMINCELDvnnHdVmPKEINljeluw&index=33&pp=iAQB0gcJCdkKAYcqIYzvsAgC)
+- **Workflow:** [教案评审员.yml](https://github.com/BarryYin/Digital_Employee_for_Teaching_Plan_Review.git)
+- **Hashtag Event:** Astron Training Camp · Cohort #1
+
+**Key Features:**
+- Intelligently parses teaching plan content and auto-generates review results
+- Provides targeted improvement suggestions for instructional design
+- Automatically records teaching plan review history for traceability
+- Multi-dimensional evaluation combining applicable grades and subjects
 
 ### Creative Writing
 
