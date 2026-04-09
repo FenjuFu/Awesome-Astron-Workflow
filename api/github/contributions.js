@@ -127,16 +127,45 @@ export default async function handler(request, response) {
     const fromStr = formatDate(fromDate);
     const toStr = formatDate(toDate);
 
-    // 3. REST Search API Queries
-    const targetRepos = ['iflytek/astron-agent', 'iflytek/astron-rpa', 'iflytek/skillhub'];
+    // 3. Fetch repositories by topic: iflytek-astron
+    const fetchTopicRepos = async (topic) => {
+      return await fetchAllPages(async (page) => {
+        const url = `https://api.github.com/search/repositories?q=topic:${topic}&per_page=100&page=${page}`;
+        const res = await fetch(url, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/vnd.github.v3+json',
+          }
+        });
+        if (!res.ok) {
+          console.error(`Failed to fetch topic repos: ${url}`, await res.text());
+          return { items: [], hasNext: false };
+        }
+        const data = await res.json();
+        return {
+          items: data.items.map(repo => repo.full_name),
+          hasNext: hasNextPage(res.headers.get('link'))
+        };
+      });
+    };
+
+    const topicRepos = await fetchTopicRepos('iflytek-astron');
+    
+    // Combine with existing hardcoded list to ensure we don't miss anything
+    // and maintain aliases for specific repositories
+    const baseTargetRepos = Array.from(new Set([...topicRepos, 'iflytek/astron-agent', 'iflytek/astron-rpa', 'iflytek/skillhub']));
+    
     const targetRepoAliases = {
       'iflytek/astron-agent': ['iflytek/astron-agent', 'FenjuFu/astron-agent'],
       'iflytek/astron-rpa': ['iflytek/astron-rpa', 'FenjuFu/astron-rpa'],
       'iflytek/skillhub': ['iflytek/skillhub']
     };
-    const targetReposMap = Object.entries(targetRepoAliases).reduce((acc, [canonicalRepo, aliases]) => {
+
+    const targetRepos = baseTargetRepos;
+    const targetReposMap = targetRepos.reduce((acc, repo) => {
+      const aliases = targetRepoAliases[repo] || [repo];
       aliases.forEach((alias) => {
-        acc[normalizeRepoFullName(alias)] = canonicalRepo;
+        acc[normalizeRepoFullName(alias)] = repo;
       });
       return acc;
     }, {});

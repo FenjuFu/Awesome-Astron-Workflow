@@ -2,6 +2,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Github, LogOut, Loader2, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
+// We will keep this as is for now, but in a real app, this should also fetch from the topic or the same API as GitHubConnect.
+// For now, I will just update the hardcoded list to include the topic repos if possible, 
+// but since it's a const, I'll just leave it as a placeholder for now as it's not used.
 const TARGET_REPOSITORIES = ['iflytek/astron-agent', 'iflytek/astron-rpa', 'iflytek/skillhub'] as const;
 const OAUTH_STATE_KEY = 'github_oauth_state';
 const ACCESS_TOKEN_KEY = 'github_access_token';
