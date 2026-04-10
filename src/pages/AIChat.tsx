@@ -110,7 +110,6 @@ const AIChat: React.FC = () => {
               </div>
               <div>
                 <h2 className="font-bold text-lg">Astron AI Assistant</h2>
-                <p className="text-xs text-indigo-100">Model: {MODEL}</p>
               </div>
             </div>
             <button 
