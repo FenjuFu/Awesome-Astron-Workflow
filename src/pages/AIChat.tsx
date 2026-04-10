@@ -190,7 +190,7 @@ const AIChat: React.FC = () => {
               </button>
             </div>
             <p className="mt-2 text-[10px] text-gray-400 text-center">
-              Powered by Astron Coding Plan (astron-code-latest)
+              Powered by Astron Coding Plan
             </p>
           </div>
         </div>
