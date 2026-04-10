@@ -3,8 +3,8 @@
 ```mermaid
 graph TD
   A[用户浏览器] --> B[React前端应用]
-  B --> C[AI API服务层]
-  C --> D[astroncodingplan API]
+  B --> C[/api/chat 代理 (Vercel Serverless)]
+  C --> D[MAAS Chat Completions API]
   
   subgraph "前端层"
     B
@@ -19,7 +19,7 @@ graph TD
 
 - 前端: React@18 + tailwindcss@3 + vite
 - 初始化工具: vite-init
-- 后端: 无独立后端，直接从前端调用AI API
+- 后端: 通过 Vercel Serverless Functions 提供 `/api/chat` 代理，避免浏览器 CORS 且不暴露密钥
 - AI模型配置: astroncodingplan/astron-code-latest
 
 ## 3. 路由定义
@@ -33,14 +33,16 @@ graph TD
 ### 4.1 AI聊天API
 
 ```
-POST https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions
+POST /api/chat
 ```
 
 请求头:
 ```
-Authorization: Bearer 47bc740733f5f73523f329423ea23a46:MjYwZGM4MGMzODdlYjI4YWY1NTY3Y2Mz
 Content-Type: application/json
 ```
+
+说明:
+- 上游 `Authorization` 由服务端注入（环境变量 `ASTRON_MAAS_API_KEY`），前端不直接持有密钥
 
 请求体:
 | 参数名 | 参数类型 | 是否必需 | 描述 |

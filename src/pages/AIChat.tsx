@@ -10,6 +10,16 @@ interface Message {
   content: string;
 }
 
+interface ChatApiResponse {
+  choices?: Array<{
+    message?: {
+      content?: string;
+    };
+  }>;
+  error?: string;
+  details?: string;
+}
+
 const AIChat: React.FC = () => {
   const { t } = useLanguage();
   const [messages, setMessages] = useState<Message[]>([]);
@@ -17,8 +27,7 @@ const AIChat: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const API_KEY = '47bc740733f5f73523f329423ea23a46:MjYwZGM4MGMzODdlYjI4YWY1NTY3Y2Mz';
-  const BASE_URL = 'https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions';
+  const BASE_URL = '/api/chat';
   const MODEL = 'astron-code-latest';
 
   // Load chat history from localStorage on mount
@@ -56,7 +65,6 @@ const AIChat: React.FC = () => {
       const response = await fetch(BASE_URL, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -67,21 +75,28 @@ const AIChat: React.FC = () => {
         }),
       });
 
+      const data: ChatApiResponse = await response.json();
       if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
+        throw new Error(data.error || `API error: ${response.status}`);
       }
 
-      const data = await response.json();
+      const assistantContent = data.choices?.[0]?.message?.content;
+      if (!assistantContent) {
+        throw new Error('AI response payload is missing message content');
+      }
+
       const assistantMessage: Message = {
         role: 'assistant',
-        content: data.choices[0].message.content,
+        content: assistantContent,
       };
       setMessages([...newMessages, assistantMessage]);
     } catch (error) {
       console.error('Failed to get AI response', error);
       const errorMessage: Message = {
         role: 'assistant',
-        content: '抱歉，我现在无法处理您的请求。请稍后再试。',
+        content: error instanceof Error
+          ? `抱歉，AI Chat 暂时不可用：${error.message}`
+          : '抱歉，我现在无法处理您的请求。请稍后再试。',
       };
       setMessages([...newMessages, errorMessage]);
     } finally {
