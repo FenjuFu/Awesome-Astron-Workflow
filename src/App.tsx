@@ -9,7 +9,6 @@ import RegistrationForm from './pages/activities/RegistrationForm';
 import RegistrationSuccess from './pages/activities/RegistrationSuccess';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AIChat from './pages/AIChat';
-import Playground from './pages/Playground';
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/chat" element={<AIChat />} />
-          <Route path="/playground" element={<Playground />} />
           <Route path="/stats" element={<ContributionStats />} />
           <Route path="/activities" element={<ActivityList />} />
           <Route path="/activities/admin" element={<AdminDashboard />} />

@@ -52,11 +52,6 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="/playground" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  {t('nav.playground')}
-                </a>
-              </li>
-              <li>
                 <a href="/#contribute" className="text-gray-400 hover:text-white transition-colors duration-200">
                   {t('nav.contribute')}
                 </a>
