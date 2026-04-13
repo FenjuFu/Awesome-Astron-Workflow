@@ -346,6 +346,15 @@ const translations = {
     'swag.event': 'Astron Event Swag',
     'swag.download': 'Download',
 
+    'community.channels.title': 'Communication Channels',
+    'community.channels.subtitle': 'Connect with us and the community across different platforms.',
+    'community.channels.wechat.title': 'WeChat Group',
+    'community.channels.wechat.description': 'Scan to join our WeChat community.',
+    'community.channels.discord.title': 'Discord Servers',
+    'community.channels.discord.description': 'Join our Discord servers for specific projects.',
+    'community.channels.github_topics.title': 'GitHub Topics',
+    'community.channels.github_topics.description': 'Explore all projects under the iflytek-astron topic.',
+
     'way.title': 'WayToSuperAgent',
     'way.subtitle': 'Astron Video List',
     'way.talk.title': 'Talk',
@@ -702,6 +711,15 @@ const translations = {
     'swag.redPackets': 'Astron 星辰马年红包 / Hóngbāo',
     'swag.event': 'Astron 活动周边',
     'swag.download': '下载',
+
+    'community.channels.title': '沟通渠道',
+    'community.channels.subtitle': '在不同平台与我们和社区建立联系。',
+    'community.channels.wechat.title': '微信群',
+    'community.channels.wechat.description': '扫码加入我们的微信社区。',
+    'community.channels.discord.title': 'Discord 服务器',
+    'community.channels.discord.description': '加入特定项目的 Discord 服务器。',
+    'community.channels.github_topics.title': 'GitHub 话题',
+    'community.channels.github_topics.description': '探索 iflytek-astron 话题下的所有项目。',
 
     'way.title': 'WayToSuperAgent',
     'way.subtitle': 'Astron 视频列表',

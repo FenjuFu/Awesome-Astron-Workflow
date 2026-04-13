@@ -1,5 +1,5 @@
 import React from 'react';
-import { Music, Image as ImageIcon, Play, Pause, Download, Gift, ChevronLeft, ChevronRight, Repeat, Repeat1, Shuffle, SkipBack, SkipForward, Video, VolumeX, Volume2 } from 'lucide-react';
+import { Music, Image as ImageIcon, Play, Pause, Download, Gift, ChevronLeft, ChevronRight, Repeat, Repeat1, Shuffle, SkipBack, SkipForward, Video, VolumeX, Volume2, Github, MessageCircle, MessageSquare, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const CommunityVibeVault: React.FC = () => {
@@ -466,6 +466,90 @@ const CommunityVibeVault: React.FC = () => {
               </div>
             </div>
             <audio ref={audioRef} onEnded={handleTrackEnd} />
+          </div>
+
+          {/* Communication Channels Section */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 lg:col-span-2">
+            <div className="flex items-center mb-6">
+              <MessageSquare className="h-8 w-8 text-indigo-600 mr-3" />
+              <h3 className="text-2xl font-bold text-gray-900">{t('community.channels.title')}</h3>
+            </div>
+            <p className="text-gray-600 mb-8">{t('community.channels.subtitle')}</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* WeChat */}
+              <div className="bg-indigo-50 rounded-xl p-6 flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                  <MessageCircle className="h-6 w-6 text-green-600" />
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-2">{t('community.channels.wechat.title')}</h4>
+                <p className="text-sm text-gray-600 mb-4">{t('community.channels.wechat.description')}</p>
+                <div className="bg-white p-2 rounded-lg shadow-sm mb-4">
+                  <img 
+                    src="https://raw.githubusercontent.com/iflytek/astron-agent/main/docs/imgs/WeCom_Group.png" 
+                    alt="WeChat Group"
+                    className="w-32 h-32 object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Discord */}
+              <div className="bg-indigo-50 rounded-xl p-6 md:col-span-2">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                    <MessageSquare className="h-6 w-6 text-indigo-600" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-gray-900">{t('community.channels.discord.title')}</h4>
+                    <p className="text-sm text-gray-600">{t('community.channels.discord.description')}</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {[
+                    { name: 'astron-agent', link: 'https://discord.gg/YgG2v9NEMH' },
+                    { name: 'astron-rpa', link: 'https://discord.gg/bNqQHxMbnh' },
+                    { name: 'skillhub', link: 'https://discord.gg/qHYvtDNPHS' },
+                    { name: 'astronclaw-tutorial', link: 'https://discord.gg/8zEnKb9Q8G' },
+                    { name: 'iFly-Skills', link: 'https://discord.gg/jndxN4Wbz9' },
+                    { name: 'harnessclaw', link: 'https://discord.gg/zzGsXqs5tv' },
+                    { name: 'harnessclaw-engine', link: 'https://discord.gg/SeseGE7ZUH' }
+                  ].map((discord) => (
+                    <a 
+                      key={discord.name}
+                      href={discord.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between p-3 bg-white rounded-lg hover:bg-indigo-600 hover:text-white transition-all group shadow-sm"
+                    >
+                      <span className="text-sm font-medium">{discord.name}</span>
+                      <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* GitHub Topics */}
+              <div className="bg-indigo-50 rounded-xl p-6 md:col-span-3 flex items-center justify-between">
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mr-4">
+                    <Github className="h-6 w-6 text-gray-900" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-gray-900">{t('community.channels.github_topics.title')}</h4>
+                    <p className="text-sm text-gray-600">{t('community.channels.github_topics.description')}</p>
+                  </div>
+                </div>
+                <a 
+                  href="https://github.com/topics/iflytek-astron"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors flex items-center"
+                >
+                  <span className="mr-2">Explore on GitHub</span>
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Swag Section */}
