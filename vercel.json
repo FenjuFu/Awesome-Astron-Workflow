@@ -6,6 +6,22 @@
   },
   "rewrites": [
     {
+      "source": "/api/activities/create",
+      "destination": "/api/activities"
+    },
+    {
+      "source": "/api/activities/update",
+      "destination": "/api/activities"
+    },
+    {
+      "source": "/api/activities/delete",
+      "destination": "/api/activities"
+    },
+    {
+      "source": "/api/github/:action",
+      "destination": "/api/github?action=:action"
+    },
+    {
       "source": "/activities/:slug",
       "destination": "/api/og/activity?slug=:slug"
     },

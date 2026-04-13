@@ -1,4 +1,4 @@
-import { supabaseAdmin } from '../lib/supabase-admin.js';
+import { supabaseAdmin } from '../_lib/supabase-admin.js';
 
 const parseBase64 = (base64Data) => {
   if (typeof base64Data !== 'string' || !base64Data.trim()) {
