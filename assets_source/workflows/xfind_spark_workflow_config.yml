@@ -1,0 +1,968 @@
+flowMeta:
+  name: 自定义e9020251103142125
+  description: ''
+  avatarIcon: http://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/emojiitem_00_6@2x.png
+  avatarColor: '#FFEAD5'
+  advancedConfig: '{"prologue":{"enabled":true,"inputExample":["","",""]},"textToSpeech":{"enabled":true,"vcn_cn":"x4_lingxiaoqi","vcn_en":"x4_EnUs_Luna"},"needGuide":false}'
+  dslVersion: v1
+flowData:
+  nodes:
+  - id: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+    dragging: false
+    selected: false
+    width: 657
+    height: 294
+    position:
+      x: -3123.8874950951085
+      y: -137.8408210014071
+    positionAbsolute:
+      x: -3123.8874950951085
+      y: -137.8408210014071
+    type: 开始节点
+    data:
+      allowInputReference: false
+      allowOutputReference: true
+      label: 开始
+      status: ''
+      nodeMeta:
+        aliasName: 开始节点
+        nodeType: 基础节点
+      inputs: [
+        ]
+      outputs:
+      - id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+        name: AGENT_USER_INPUT
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 用户本轮对话输入内容
+        required: true
+        deleteDisabled: true
+      nodeParam: {
+        }
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/start-node-icon.png
+      description: 工作流的开启节点，用于定义流程调用所需的业务变量信息。
+      updatable: false
+  - id: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    dragging: false
+    selected: false
+    width: 407
+    height: 615
+    position:
+      x: 1446.0812136094335
+      y: -53.80816362569769
+    positionAbsolute:
+      x: 1446.0812136094335
+      y: -53.80816362569769
+    type: 结束节点
+    data:
+      allowInputReference: true
+      allowOutputReference: false
+      label: 结束
+      references:
+      - children:
+        - references:
+          - originId: agent::656a8ef1-186c-4196-aebb-1833619baba5
+            id: 73df1dbb-1379-4eb4-b242-14346c69cfea
+            label: REASONING_CONTENT
+            type: string
+            value: REASONING_CONTENT
+            fileType: ''
+          - originId: agent::656a8ef1-186c-4196-aebb-1833619baba5
+            id: 961d6518-d20d-4dd2-a022-57a6bc40cbaf
+            label: output
+            type: string
+            value: output
+            fileType: ''
+          label: ''
+          value: ''
+        label: Agent智能决策_1
+        parentNode: true
+        value: agent::656a8ef1-186c-4196-aebb-1833619baba5
+      - children:
+        - references:
+          - originId: spark-llm::59ec57cd-faf2-48c2-81c0-55315ec812fd
+            id: ed9de1ac-fc0f-44d3-b4f8-a91275e1e2c1
+            label: output
+            type: string
+            value: output
+            fileType: ''
+          label: ''
+          value: ''
+        label: 大模型_1
+        parentNode: true
+        value: spark-llm::59ec57cd-faf2-48c2-81c0-55315ec812fd
+      - children:
+        - references:
+          - originId: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+            id: 383fa809-5adc-4291-bcd1-4a4e13f88fa3
+            label: class_name
+            type: string
+            value: class_name
+            fileType: ''
+          label: ''
+          value: ''
+        label: 决策_1
+        parentNode: true
+        value: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+      - children:
+        - references:
+          - originId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+            id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+            label: AGENT_USER_INPUT
+            type: string
+            value: AGENT_USER_INPUT
+            fileType: ''
+          label: ''
+          value: ''
+        label: 开始
+        parentNode: true
+        value: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+      - children:
+        - references:
+          - originId: database::0a4cab96-d060-43e5-b2e4-f157299864a2
+            id: 8605177f-0f73-4e02-a5e4-791038251d15
+            label: isSuccess
+            type: boolean
+            value: isSuccess
+            fileType: ''
+          - originId: database::0a4cab96-d060-43e5-b2e4-f157299864a2
+            id: 6cc35842-6b83-4f2f-b0ee-526519f579c8
+            label: message
+            type: string
+            value: message
+            fileType: ''
+          - originId: database::0a4cab96-d060-43e5-b2e4-f157299864a2
+            children: [
+              ]
+            id: 2bfd2527-9652-4ce7-81b8-7c086d601b77
+            label: outputList
+            type: array-object
+            value: outputList
+            fileType: ''
+          label: ''
+          value: ''
+        label: 数据库_1
+        parentNode: true
+        value: database::0a4cab96-d060-43e5-b2e4-f157299864a2
+      - children:
+        - references:
+          - originId: database::a1a12611-2446-4ea5-b77f-808112849295
+            id: 8605177f-0f73-4e02-a5e4-791038251d15
+            label: isSuccess
+            type: boolean
+            value: isSuccess
+            fileType: ''
+          - originId: database::a1a12611-2446-4ea5-b77f-808112849295
+            id: 6cc35842-6b83-4f2f-b0ee-526519f579c8
+            label: message
+            type: string
+            value: message
+            fileType: ''
+          - originId: database::a1a12611-2446-4ea5-b77f-808112849295
+            children: [
+              ]
+            id: 1ce8b378-f2f0-4a09-ac96-6abc751fa3a7
+            label: outputList
+            type: array-object
+            value: outputList
+            fileType: ''
+          label: ''
+          value: ''
+        label: 数据库_2
+        parentNode: true
+        value: database::a1a12611-2446-4ea5-b77f-808112849295
+      status: ''
+      nodeMeta:
+        aliasName: 结束节点
+        nodeType: 基础节点
+      inputs:
+      - id: 82de2b42-a059-4c98-bffb-b6b4800fcac9
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: output
+              id: 961d6518-d20d-4dd2-a022-57a6bc40cbaf
+              nodeId: agent::656a8ef1-186c-4196-aebb-1833619baba5
+            contentErrMsg: ''
+        fileType: ''
+      outputs: [
+        ]
+      nodeParam:
+        template: '{{output}}}'
+        streamOutput: true
+        templateErrMsg: ''
+        outputMode: 1
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/end-node-icon.png
+      description: 工作流的结束节点，用于输出工作流运行后的最终结果。
+      updatable: false
+  - id: agent::656a8ef1-186c-4196-aebb-1833619baba5
+    dragging: false
+    selected: false
+    width: 686
+    height: 1911
+    position:
+      x: 290.1495571703033
+      y: -383.27594260190085
+    positionAbsolute:
+      x: 290.1495571703033
+      y: -383.27594260190085
+    type: 智能体节点
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: Agent智能决策_1
+      labelEdit: false
+      references:
+      - children:
+        - references:
+          - originId: spark-llm::59ec57cd-faf2-48c2-81c0-55315ec812fd
+            id: ed9de1ac-fc0f-44d3-b4f8-a91275e1e2c1
+            label: output
+            type: string
+            value: output
+            fileType: ''
+          label: ''
+          value: ''
+        label: 大模型_1
+        parentNode: true
+        value: spark-llm::59ec57cd-faf2-48c2-81c0-55315ec812fd
+      - children:
+        - references:
+          - originId: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+            id: 383fa809-5adc-4291-bcd1-4a4e13f88fa3
+            label: class_name
+            type: string
+            value: class_name
+            fileType: ''
+          label: ''
+          value: ''
+        label: 决策_1
+        parentNode: true
+        value: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+      - children:
+        - references:
+          - originId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+            id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+            label: AGENT_USER_INPUT
+            type: string
+            value: AGENT_USER_INPUT
+            fileType: ''
+          label: ''
+          value: ''
+        label: 开始
+        parentNode: true
+        value: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+      - children:
+        - references:
+          - originId: database::0a4cab96-d060-43e5-b2e4-f157299864a2
+            id: 8605177f-0f73-4e02-a5e4-791038251d15
+            label: isSuccess
+            type: boolean
+            value: isSuccess
+            fileType: ''
+          - originId: database::0a4cab96-d060-43e5-b2e4-f157299864a2
+            id: 6cc35842-6b83-4f2f-b0ee-526519f579c8
+            label: message
+            type: string
+            value: message
+            fileType: ''
+          - originId: database::0a4cab96-d060-43e5-b2e4-f157299864a2
+            children: [
+              ]
+            id: 2bfd2527-9652-4ce7-81b8-7c086d601b77
+            label: outputList
+            type: array-object
+            value: outputList
+            fileType: ''
+          label: ''
+          value: ''
+        label: 数据库_1
+        parentNode: true
+        value: database::0a4cab96-d060-43e5-b2e4-f157299864a2
+      status: ''
+      nodeMeta:
+        aliasName: 智能体节点
+        nodeType: Agent节点
+      inputs:
+      - id: 831259a2-27f7-4919-8336-817ae223c5be
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: class_name
+              id: 383fa809-5adc-4291-bcd1-4a4e13f88fa3
+              nodeId: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+            contentErrMsg: ''
+        fileType: ''
+      - id: b1253862-b16c-44f8-bbbe-a4f1412d81ce
+        name: search_query
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: output
+              id: ed9de1ac-fc0f-44d3-b4f8-a91275e1e2c1
+              nodeId: spark-llm::59ec57cd-faf2-48c2-81c0-55315ec812fd
+            contentErrMsg: ''
+        fileType: ''
+      - id: ff4d08bc-23d3-4a41-bea6-179f47bd75e5
+        name: history
+        nameErrMsg: ''
+        schema:
+          type: array-object
+          value:
+            type: ref
+            content:
+              name: outputList
+              id: 2bfd2527-9652-4ce7-81b8-7c086d601b77
+              nodeId: database::0a4cab96-d060-43e5-b2e4-f157299864a2
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 73df1dbb-1379-4eb4-b242-14346c69cfea
+        name: REASONING_CONTENT
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 模型思考过程
+        customParameterType: deepseekr1
+      - id: 961d6518-d20d-4dd2-a022-57a6bc40cbaf
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        modelConfig:
+          domain: xdeepseekv3
+          api: wss://maas-api.cn-huabei-1.xf-yun.com/v1.1/chat
+          agentStrategy: 1
+        maxLoopCount: 10
+        modelId: 141
+        enableChatHistoryV2:
+          isEnabled: false
+          rounds: 1
+        llmId: 141
+        url: wss://maas-api.cn-huabei-1.xf-yun.com/v1.1/chat
+        uid: '19759772592'
+        modelName: DeepSeek-V3
+        patchId: '0'
+        plugin:
+          workflowIds: [
+            ]
+          toolsList:
+          - toolId: tool@72b113b2c021000
+            isLatest: true
+            name: 论文搜索 - arXiv
+            icon: icon/user/sparkBot_1745889270591_image_9.png
+            type: tool
+          mcpServerUrls: [
+            ]
+          mcpServerIds: [
+            ]
+          tools: [
+            ]
+          knowledge: [
+            ]
+        instruction:
+          queryErrMsg: ''
+          answer: 你是一个论文辅助助手
+          reasoning: ''
+          query: |+
+            {{history[0]}}}返回jason格式：用户5篇论文的标题，作者，简介。以下是案例：
+            你要严格遵循这个jason格式不能有半点出错
+            {
+              "papers": [
+                {
+                  "title": "基于深度学习的医学影像诊断系统研究",
+                  "authors": "张伟, 李娜, 王强",
+                  "abstract": "本文提出了一种基于深度卷积神经网络的医学影像自动诊断系统。该系统在多个医学影像数据集上进行了验证，包括X光片、CT扫描和MRI图像。实验结果表明，我们的方法在肺结节检测任务上达到了95.3%的准确率，在脑肿瘤分类任务上达到了92.7%的准确率，显著优于传统方法。",
+                  "year": 2024,
+                  "venue": "Medical Image Analysis",
+                  "tags": ["深度学习", "医疗诊断", "计算机视觉"]
+                },
+                {
+                  "title": "迁移学习在小样本医疗数据中的应用",
+                  "authors": "陈明, 刘洋, 赵静",
+                  "abstract": "针对医疗领域标注数据稀缺的问题，本研究探索了迁移学习技术在小样本医疗数据分析中的应用。通过在ImageNet上预训练的模型进行微调，我们在仅使用500个样本的情况下，在罕见疾病诊断任务上取得了89.2%的F1分数。",
+                  "year": 2023,
+                  "venue": "IEEE JBHI",
+                  "tags": ["迁移学习", "小样本学习", "医疗AI"]
+                },
+                {
+                  "title": "可解释性AI在临床决策支持系统中的应用",
+                  "authors": "吴敏, 周杰, 孙丽",
+                  "abstract": "本文提出了一个可解释的深度学习框架用于临床决策支持。通过注意力机制和梯度加权类激活映射，系统能够生成可视化的解释，帮助医生理解AI的诊断依据。在三家医院的临床试验中，该系统获得了医生的高度认可。",
+                  "year": 2024,
+                  "venue": "Nature Medicine",
+                  "tags": ["可解释AI", "临床决策", "医疗系统"]
+                },
+                {
+                  "title": "多模态融合网络在疾病预测中的研究",
+                  "authors": "黄涛, 郑芳, 马超",
+                  "abstract": "本研究设计了一个多模态深度学习架构，融合电子病历文本、医学影像和基因组数据进行疾病风险预测。实验表明，多模态融合比单一模态方法提升了12.5%的预测准确率，为精准医疗提供了新的技术路径。",
+                  "year": 2024,
+                  "venue": "ICML 2024",
+                  "tags": ["多模态学习", "疾病预测", "精准医疗"]
+                },
+                {
+                  "title": "联邦学习框架下的隐私保护医疗数据分析",
+                  "authors": "林峰, 胡萍, 谢亮",
+                  "abstract": "考虑到医疗数据的隐私敏感性，本文提出了基于联邦学习的分布式医疗AI模型训练框架。该方法允许多个医疗机构在不共享原始数据的情况下协作训练模型，在保护患者隐私的同时提升了模型性能，准确率提升了8.7%。",
+                  "year": 2023,
+                  "venue": "ACL 2023",
+                  "tags": ["联邦学习", "隐私保护", "医疗数据"]
+                }
+              ]
+            }
+
+
+
+        appId: 12a0a7e2
+        domain: xdeepseekv3
+        modelEnabled: true
+        serviceId: xdeepseekv3
+        llmIdErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/agent.png
+      description: 依据任务需求，通过选择合适的工具列表，实现大 模型的智能调度
+      updatable: false
+  - id: spark-llm::59ec57cd-faf2-48c2-81c0-55315ec812fd
+    dragging: false
+    selected: false
+    width: 586
+    height: 872
+    position:
+      x: -1403.495860787578
+      y: -67.39544433385421
+    positionAbsolute:
+      x: -1403.495860787578
+      y: -67.39544433385421
+    type: 大模型
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 大模型_1
+      labelEdit: false
+      references:
+      - children:
+        - references:
+          - originId: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+            id: 383fa809-5adc-4291-bcd1-4a4e13f88fa3
+            label: class_name
+            type: string
+            value: class_name
+            fileType: ''
+          label: ''
+          value: ''
+        label: 决策_1
+        parentNode: true
+        value: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+      - children:
+        - references:
+          - originId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+            id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+            label: AGENT_USER_INPUT
+            type: string
+            value: AGENT_USER_INPUT
+            fileType: ''
+          label: ''
+          value: ''
+        label: 开始
+        parentNode: true
+        value: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+      status: ''
+      nodeMeta:
+        aliasName: 大模型
+        nodeType: 基础节点
+      inputs:
+      - id: 39205818-f7ff-4598-8542-e5ee4baab179
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: class_name
+              id: 383fa809-5adc-4291-bcd1-4a4e13f88fa3
+              nodeId: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: ed9de1ac-fc0f-44d3-b4f8-a91275e1e2c1
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        topK: 4
+        template: 你把用户输入的提示词中他想搜寻论文的方向标题翻译成英文然后只输出英文
+        modelId: 3
+        enableChatHistoryV2:
+          isEnabled: false
+          rounds: 1
+        auditing: default
+        llmId: 3
+        url: wss://spark-api.xf-yun.com/v3.1/chat
+        multiMode: false
+        uid: '19759772592'
+        modelName: Spark Pro
+        patchId: '0'
+        isThink: false
+        templateErrMsg: ''
+        domain: generalv3
+        appId: 12a0a7e2
+        maxTokens: 2048
+        temperature: 0.5
+        systemTemplate: 你把用户输入的提示词中他想搜寻论文的方向标题翻译成英文然后只输出英文
+        model: spark
+        modelEnabled: true
+        serviceId: bm3
+        respFormat: 0
+        llmIdErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/largeModelIcon.png
+      description: 根据输入的提示词，调用选定的大模型，对提示词作出回答
+      updatable: false
+  - id: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+    dragging: false
+    selected: false
+    width: 586
+    height: 908
+    position:
+      x: -2321.8636570515146
+      y: -447.4815382813092
+    positionAbsolute:
+      x: -2321.8636570515146
+      y: -447.4815382813092
+    type: 决策
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 决策_1
+      labelEdit: false
+      references:
+      - children:
+        - references:
+          - originId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+            id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+            label: AGENT_USER_INPUT
+            type: string
+            value: AGENT_USER_INPUT
+            fileType: ''
+          label: ''
+          value: ''
+        label: 开始
+        parentNode: true
+        value: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+      status: ''
+      nodeMeta:
+        aliasName: 决策
+        nodeType: 基础节点
+      inputs:
+      - id: c94b7ee7-a5c2-4764-b78e-54465a46b2ea
+        name: Query
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: AGENT_USER_INPUT
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 383fa809-5adc-4291-bcd1-4a4e13f88fa3
+        name: class_name
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        topK: 4
+        modelId: 141
+        enableChatHistoryV2:
+          isEnabled: false
+          rounds: 1
+        reasonMode: 1
+        auditing: default
+        llmId: 141
+        promptPrefix: ''
+        url: wss://maas-api.cn-huabei-1.xf-yun.com/v1.1/chat
+        multiMode: false
+        uid: '19759772592'
+        modelName: DeepSeek-V3
+        patchId: '0'
+        isThink: false
+        intentChains:
+        - intentType: 2
+          name: jason
+          description: 如果用户输入的是一个论文的标题年份还有作者的jason表
+          id: intent-one-of::81091def-4001-482d-ba75-49b91a586422
+          nameErrMsg: ''
+          descriptionErrMsg: ''
+        - intentType: 1
+          name: default
+          description: 默认意图
+          id: intent-one-of::3a347515-e2b3-4edc-96f9-b78645624416
+          nameErrMsg: ''
+          descriptionErrMsg: ''
+        searchDisable: true
+        domain: xdeepseekv3
+        appId: 12a0a7e2
+        maxTokens: 8192
+        temperature: 0.5
+        model: spark
+        useFunctionCall: true
+        modelEnabled: true
+        serviceId: xdeepseekv3
+        llmIdErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/designMakeIcon.png
+      description: 结合输入的参数与填写的意图，决定后续的逻辑走向
+      updatable: false
+  - id: database::0a4cab96-d060-43e5-b2e4-f157299864a2
+    dragging: false
+    selected: false
+    width: 586
+    height: 820
+    position:
+      x: -1354.9809209400937
+      y: 907.645815230132
+    positionAbsolute:
+      x: -1354.9809209400937
+      y: 907.645815230132
+    type: 数据库节点
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 数据库_1
+      labelEdit: false
+      references:
+      - children:
+        - references:
+          - originId: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+            id: 383fa809-5adc-4291-bcd1-4a4e13f88fa3
+            label: class_name
+            type: string
+            value: class_name
+            fileType: ''
+          label: ''
+          value: ''
+        label: 决策_1
+        parentNode: true
+        value: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+      - children:
+        - references:
+          - originId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+            id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+            label: AGENT_USER_INPUT
+            type: string
+            value: AGENT_USER_INPUT
+            fileType: ''
+          label: ''
+          value: ''
+        label: 开始
+        parentNode: true
+        value: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+      status: ''
+      nodeMeta:
+        aliasName: 数据库节点
+        nodeType: 基础节点
+      inputs: [
+        ]
+      outputs:
+      - id: 8605177f-0f73-4e02-a5e4-791038251d15
+        name: isSuccess
+        nameErrMsg: ''
+        schema:
+          type: boolean
+          default: SQL语句执行状态标识，成功true，失败false
+      - id: 6cc35842-6b83-4f2f-b0ee-526519f579c8
+        name: message
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 失败原因
+      - id: 2bfd2527-9652-4ce7-81b8-7c086d601b77
+        name: outputList
+        nameErrMsg: ''
+        schema:
+          type: array-object
+          properties: [
+            ]
+          default: 执行结果
+      nodeParam:
+        cases: [
+          ]
+        dbErrMsg: ''
+        assignmentList: [
+          ]
+        tableName: dasda
+        sql: |+
+          SELECT * FROM dasda;
+
+
+        mode: 0
+        uid: '19759772592'
+        appId: 12a0a7e2
+        sqlErrMsg: ''
+        dbId: '7390418792587628544'
+        orderData: [
+          ]
+        fieldNameErrMsg: ''
+        setAnswerContentErrMsg: 输出中变量名校验不通过,自动生成JSON失败
+        tableNameErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/SparkBotDev/icon/user/sparkBot_1752568522509_database_icon.svg
+      description: 支持用户自定义的SQL完成对数据库的增删改查操作
+      updatable: false
+  - id: database::a1a12611-2446-4ea5-b77f-808112849295
+    dragging: false
+    selected: false
+    width: 586
+    height: 1162
+    position:
+      x: -541.2932899638831
+      y: -896.8291747661481
+    positionAbsolute:
+      x: -541.2932899638831
+      y: -896.8291747661481
+    type: 数据库节点
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 数据库_2
+      labelEdit: false
+      references:
+      - children:
+        - references:
+          - originId: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+            id: 383fa809-5adc-4291-bcd1-4a4e13f88fa3
+            label: class_name
+            type: string
+            value: class_name
+            fileType: ''
+          label: ''
+          value: ''
+        label: 决策_1
+        parentNode: true
+        value: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+      - children:
+        - references:
+          - originId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+            id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+            label: AGENT_USER_INPUT
+            type: string
+            value: AGENT_USER_INPUT
+            fileType: ''
+          label: ''
+          value: ''
+        label: 开始
+        parentNode: true
+        value: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+      status: ''
+      nodeMeta:
+        aliasName: 数据库节点
+        nodeType: 基础节点
+      inputs:
+      - id: b40db711-3ff0-466b-a16b-37131d1de5f2
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: class_name
+              id: 383fa809-5adc-4291-bcd1-4a4e13f88fa3
+              nodeId: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 8605177f-0f73-4e02-a5e4-791038251d15
+        name: isSuccess
+        nameErrMsg: ''
+        schema:
+          type: boolean
+          default: SQL语句执行状态标识，成功true，失败false
+      - id: 6cc35842-6b83-4f2f-b0ee-526519f579c8
+        name: message
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 失败原因
+      - id: 1ce8b378-f2f0-4a09-ac96-6abc751fa3a7
+        name: outputList
+        nameErrMsg: ''
+        schema:
+          type: array-object
+          properties: [
+            ]
+          default: 执行结果
+      nodeParam:
+        cases: [
+          ]
+        dbErrMsg: ''
+        handlingEdge: normal_one_of::71bc91f5-b3c9-4faa-9e44-8eca5e3120fc
+        exceptionHandlingEdge: fail_one_of::32032c9f-360f-4248-a026-91d44eda8077
+        assignmentList: [
+          ]
+        tableName: dasda
+        sql: |+
+          INSERT INTO dasda (uid, create_time, title, abstract)
+          VALUES
+          ('user001', datetime('now'), '{{input.selected_papers[0].title}}', '{{input.selected_papers[0].abstract}}'),
+          ('user001', datetime('now'), '{{input.selected_papers[1].title}}', '{{input.selected_papers[1].abstract}}'),
+          ('user001', datetime('now'), '{{input.selected_papers[2].title}}', '{{input.selected_papers[2].abstract}}');
+          ('user001', datetime('now'), '{{input.selected_papers[3].title}}', '{{input.selected_papers[3].abstract}}');
+          ('user001', datetime('now'), '{{input.selected_papers[2].title}}', '{{input.selected_papers[2].abstract}}');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        mode: 0
+        uid: '19759772592'
+        appId: 12a0a7e2
+        sqlErrMsg: ''
+        dbId: '7390418792587628544'
+        orderData: [
+          ]
+        fieldNameErrMsg: ''
+        setAnswerContentErrMsg: 输出中变量名校验不通过,自动生成JSON失败
+        tableNameErrMsg: ''
+      retryConfig:
+        shouldRetry: false
+      icon: https://oss-beijing-m8.openstorage.cn/SparkBotDev/icon/user/sparkBot_1752568522509_database_icon.svg
+      description: 支持用户自定义的SQL完成对数据库的增删改查操作
+      updatable: false
+  edges:
+  - source: spark-llm::59ec57cd-faf2-48c2-81c0-55315ec812fd
+    target: agent::656a8ef1-186c-4196-aebb-1833619baba5
+    type: customEdge
+    id: reactflow__edge-spark-llm::59ec57cd-faf2-48c2-81c0-55315ec812fd-agent::656a8ef1-186c-4196-aebb-1833619baba5
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: agent::656a8ef1-186c-4196-aebb-1833619baba5
+    target: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    targetHandle: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    type: customEdge
+    id: reactflow__edge-agent::656a8ef1-186c-4196-aebb-1833619baba5-node-end::cda617af-551e-462e-b3b8-3bb9a041bf88node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+    target: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+    type: customEdge
+    id: reactflow__edge-node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783-decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+    sourceHandle: intent-one-of::3a347515-e2b3-4edc-96f9-b78645624416
+    target: spark-llm::59ec57cd-faf2-48c2-81c0-55315ec812fd
+    type: customEdge
+    id: reactflow__edge-decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1intent-one-of::3a347515-e2b3-4edc-96f9-b78645624416-spark-llm::59ec57cd-faf2-48c2-81c0-55315ec812fd
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+    sourceHandle: intent-one-of::3a347515-e2b3-4edc-96f9-b78645624416
+    target: agent::656a8ef1-186c-4196-aebb-1833619baba5
+    type: customEdge
+    id: reactflow__edge-decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1intent-one-of::3a347515-e2b3-4edc-96f9-b78645624416-agent::656a8ef1-186c-4196-aebb-1833619baba5
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: database::0a4cab96-d060-43e5-b2e4-f157299864a2
+    target: agent::656a8ef1-186c-4196-aebb-1833619baba5
+    type: customEdge
+    id: reactflow__edge-database::0a4cab96-d060-43e5-b2e4-f157299864a2-agent::656a8ef1-186c-4196-aebb-1833619baba5
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: database::a1a12611-2446-4ea5-b77f-808112849295
+    sourceHandle: normal_one_of::71bc91f5-b3c9-4faa-9e44-8eca5e3120fc
+    target: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    targetHandle: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    type: customEdge
+    id: reactflow__edge-database::a1a12611-2446-4ea5-b77f-808112849295normal_one_of::71bc91f5-b3c9-4faa-9e44-8eca5e3120fc-node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+    sourceHandle: intent-one-of::3a347515-e2b3-4edc-96f9-b78645624416
+    target: database::0a4cab96-d060-43e5-b2e4-f157299864a2
+    type: customEdge
+    id: reactflow__edge-decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1intent-one-of::3a347515-e2b3-4edc-96f9-b78645624416-database::0a4cab96-d060-43e5-b2e4-f157299864a2
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1
+    sourceHandle: intent-one-of::81091def-4001-482d-ba75-49b91a586422
+    target: database::a1a12611-2446-4ea5-b77f-808112849295
+    type: customEdge
+    id: reactflow__edge-decision-making::7adfe591-ec3b-4463-a12e-ed8a71d198c1intent-one-of::81091def-4001-482d-ba75-49b91a586422-database::a1a12611-2446-4ea5-b77f-808112849295
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve

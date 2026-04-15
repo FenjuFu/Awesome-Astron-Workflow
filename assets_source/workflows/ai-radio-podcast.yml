@@ -1,0 +1,1333 @@
+flowMeta:
+  name: AI电台播客生成
+  description: AI播客生成
+  avatarIcon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/user/sparkBot_1753267344297_AI%E6%92%AD%E5%AE%A2.jpg
+  avatarColor: ''
+  advancedConfig: '{"needGuide":false,"prologue":{"enabled":true,"inputExample":["https://mp.weixin.qq.com/s/rJgu-GPnAqbu3GkxBagjhw","https://mp.weixin.qq.com/s/jzy0p_AJJY22I-RvYJmPqg","https://mp.weixin.qq.com/s/n5-jW6jSs9ShRV2KqhM_bg"],"prologueText":"你好，我是一个AI电台播客生成助手，可以帮你快速创建高质量的播客内容。支持发送微信公众号链接，或直接发送给我文字内容。"},"chatBackground":{"enabled":false}}'
+  category: 13
+  dslVersion: v1
+flowData:
+  nodes:
+  - id: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+    dragging: false
+    selected: false
+    width: 362
+    height: 116
+    position:
+      x: -2564.4526716900527
+      y: -1786.5159591940044
+    positionAbsolute:
+      x: -2564.4526716900527
+      y: -1786.5159591940044
+    type: 开始节点
+    data:
+      allowInputReference: false
+      allowOutputReference: true
+      label: 开始
+      status: ''
+      nodeMeta:
+        aliasName: 开始
+        nodeType: 基础节点
+      inputs: [
+        ]
+      outputs:
+      - id: 4cb707a4-3708-4523-ae5d-215cdbc1c500
+        name: AGENT_USER_INPUT
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 用户本轮对话输入内容
+        required: true
+        deleteDisabled: true
+      nodeParam: {
+        }
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/start-node-icon.png
+      description: 工作流的开启节点，用于定义流程调用所需的业务变量信息。
+      updatable: false
+  - id: node-end::bf6a1cdd-a6a4-448a-8f3b-e3f291ab2a0a
+    dragging: false
+    selected: false
+    width: 362
+    height: 116
+    position:
+      x: 2058.3781854281156
+      y: -1760.1879328372493
+    positionAbsolute:
+      x: 2058.3781854281156
+      y: -1760.1879328372493
+    type: 结束节点
+    data:
+      allowInputReference: true
+      allowOutputReference: false
+      label: 结束
+      references:
+      - children:
+        - references:
+          - originId: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+            id: 828a7629-3638-419b-b41d-6488c095d877
+            label: output
+            type: string
+            value: output
+          label: ''
+          value: ''
+        label: 播客风格内容生成
+        parentNode: true
+        value: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+      - children:
+        - references:
+          - originId: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+            id: 4cb707a4-3708-4523-ae5d-215cdbc1c500
+            label: AGENT_USER_INPUT
+            type: string
+            value: AGENT_USER_INPUT
+          label: ''
+          value: ''
+        label: 开始
+        parentNode: true
+        value: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+      - children:
+        - references:
+          - originId: plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+            id: 71c444e8-b003-4905-a7af-cd8d18622e6f
+            label: sid
+            type: string
+            value: sid
+          - originId: plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+            id: 70686705-b058-48de-8878-8406ef71e827
+            label: code
+            type: integer
+            value: code
+          - originId: plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+            id: 49286b6b-3339-45e4-a78b-18d149f03e8a
+            label: msg
+            type: string
+            value: msg
+          - originId: plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+            children:
+            - originId: plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+              id: 10f97b32-21df-4de0-b73a-f9026ed8227f
+              label: voice_url
+              type: string
+              value: data.voice_url
+              parentType: object
+            id: d5a978de-b445-4f05-9223-ea3955c8e7d9
+            label: data
+            type: object
+            value: data
+          label: ''
+          value: ''
+        label: 语音合成
+        parentNode: true
+        value: plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+      - children:
+        - references:
+          - originId: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+            id: b1166877-aa4f-4a76-ac81-5bfd0e906e1f
+            label: url
+            type: string
+            value: url
+          - originId: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+            children: [
+              ]
+            id: e9434d56-4eaa-47d3-be66-f377fdb7b32b
+            label: is_content_url
+            type: string
+            value: is_content_url
+          label: ''
+          value: ''
+        label: 进行用户场景的分析，目前支持URL输入和文本输入
+        parentNode: true
+        value: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+      - children:
+        - references:
+          - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+            id: 4b3626aa-957b-4851-9cde-1e5583e7b389
+            label: code
+            type: integer
+            value: code
+          - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+            id: 4c957639-68a3-41e1-9397-44fe85c252f8
+            label: msg
+            type: string
+            value: msg
+          - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+            children:
+            - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+              id: 6a9b619c-5f7d-4366-a6d4-adafa104956d
+              label: title
+              type: string
+              value: data.title
+              parentType: object
+            - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+              id: 6549c72a-aadc-4b2b-aa95-41846c460525
+              label: content
+              type: string
+              value: data.content
+              parentType: object
+            id: f52d3ff7-fbd8-458c-8c32-a0170c1335b4
+            label: data
+            type: object
+            value: data
+          label: ''
+          value: ''
+        label: 解析URL内容
+        parentNode: true
+        value: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+      status: ''
+      nodeMeta:
+        aliasName: 结束
+        nodeType: 基础节点
+      inputs:
+      - id: 6b8905ed-9efe-4cbf-8702-0a4d42c54066
+        name: audio_url
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: data.voice_url
+              id: 10f97b32-21df-4de0-b73a-f9026ed8227f
+              nodeId: plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+            contentErrMsg: ''
+        fileType: ''
+      - id: 6000bd78-1994-4295-b8b2-44e5eb554f66
+        name: article_titile
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: output
+              id: 828a7629-3638-419b-b41d-6488c095d877
+              nodeId: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+            contentErrMsg: ''
+        fileType: ''
+      - id: c4147b1b-e99d-431a-b0d2-c9794ed6e073
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: data.image_url
+              id: 5d4b4a71-8ea2-4468-96dd-fb166dc08fba
+              nodeId: plugin::3641af94-104f-4b68-9b4d-2fa1c198bf92
+            contentErrMsg: ''
+        fileType: ''
+      outputs: [
+        ]
+      nodeParam:
+        template: |-
+          🌟 AI 神奇魔法屋电台🌟
+          <figure style="background: #f5f0e6; padding: 20px; border: 1px solid #d9c9b6; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin: 0 0 20px 0;">
+          <div style="width: 100%; height: 100%; background: #fff; padding: 10px; border: 1px solid #e8d8c0; position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,240,180,0.1); pointer-events: none;"></div>
+          <img src="{{output}}" style="width: 100%; height: auto; display: block; filter: sepia(10%);">
+          </div>
+          </figure>
+          <audio preload="none" controls style="width: 100%; margin-top: 20px;">
+          <source src="{{audio_url}}" type="audio/mpeg">
+          </audio>
+        streamOutput: true
+        templateErrMsg: ''
+        outputMode: 1
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/end-node-icon.png
+      description: 工作流的结束节点，用于输出工作流运行后的最终结果。
+      updatable: false
+  - id: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+    dragging: false
+    selected: false
+    width: 362
+    height: 166
+    position:
+      x: 906.3748272099806
+      y: -2168.961093642761
+    positionAbsolute:
+      x: 906.3748272099806
+      y: -2168.961093642761
+    type: 大模型
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 电台播客内容
+      labelEdit: false
+      references:
+      - children:
+        - references:
+          - originId: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+            id: b1166877-aa4f-4a76-ac81-5bfd0e906e1f
+            label: url
+            type: string
+            value: url
+          - originId: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+            children: [
+              ]
+            id: e9434d56-4eaa-47d3-be66-f377fdb7b32b
+            label: is_content_url
+            type: string
+            value: is_content_url
+          label: ''
+          value: ''
+        label: 进行用户场景的分析，目前支持URL输入和文本输入
+        parentNode: true
+        value: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+      - children:
+        - references:
+          - originId: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+            id: 4cb707a4-3708-4523-ae5d-215cdbc1c500
+            label: AGENT_USER_INPUT
+            type: string
+            value: AGENT_USER_INPUT
+          label: ''
+          value: ''
+        label: 开始
+        parentNode: true
+        value: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+      - children:
+        - references:
+          - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+            id: 4b3626aa-957b-4851-9cde-1e5583e7b389
+            label: code
+            type: integer
+            value: code
+          - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+            id: 4c957639-68a3-41e1-9397-44fe85c252f8
+            label: msg
+            type: string
+            value: msg
+          - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+            children:
+            - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+              id: 6a9b619c-5f7d-4366-a6d4-adafa104956d
+              label: title
+              type: string
+              value: data.title
+              parentType: object
+            - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+              id: 6549c72a-aadc-4b2b-aa95-41846c460525
+              label: content
+              type: string
+              value: data.content
+              parentType: object
+            id: f52d3ff7-fbd8-458c-8c32-a0170c1335b4
+            label: data
+            type: object
+            value: data
+          label: ''
+          value: ''
+        label: 解析URL内容
+        parentNode: true
+        value: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+      status: ''
+      nodeMeta:
+        aliasName: 播客风格内容生成
+        nodeType: 基础节点
+      inputs:
+      - id: 0c98c01a-cd4f-42ca-a37e-d2a29f268f2c
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: data.content
+              id: 6549c72a-aadc-4b2b-aa95-41846c460525
+              nodeId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+            contentErrMsg: ''
+        fileType: ''
+      - id: 9d8c0513-d253-47a3-a368-38f1e7ed12b5
+        name: input_oral
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: AGENT_USER_INPUT
+              id: 4cb707a4-3708-4523-ae5d-215cdbc1c500
+              nodeId: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+            contentErrMsg: ''
+      outputs:
+      - id: 828a7629-3638-419b-b41d-6488c095d877
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        topK: 4
+        template: |-
+          {{input}}{{input_oral}}
+          请根据以上输入内容生成播客内容。
+        enableChatHistory: false
+        configs:
+        - standard: true
+          constraintType: range
+          default: 2048
+          constraintContent:
+          - name: 1
+          - name: 8192
+          name: 最大回复长度
+          revealed: true
+          support: true
+          fieldType: int
+          initialValue: 2048
+          key: maxTokens
+          required: true
+          desc: 最小值是1, 最大值是8192。控制模型输出的Tokens 长度上限。通常 100 Tokens 约等于150 个中文汉字。
+        - standard: true
+          constraintContent:
+          - name: 0.1
+          - name: 1
+          precision: 0.1
+          required: true
+          constraintType: range
+          default: 0.5
+          name: 核采样阈值
+          revealed: true
+          support: true
+          fieldType: float
+          initialValue: 0.5
+          key: temperature
+          desc: 取值范围 (0，1]。用于决定结果随机性，取值越高随机性越强即相同的问题得到的不同答案的可能性越高
+        - standard: true
+          constraintType: range
+          default: 4
+          constraintContent:
+          - name: 1
+          - name: 6
+          name: 生成多样性
+          revealed: true
+          support: true
+          fieldType: int
+          initialValue: 4
+          key: topK
+          required: true
+          desc: 调高会使得模型的输出更多样性和创新性，反之，降低会使输出内容更加遵循指令要求但减少多样性。最小值1，最大值6
+        - constraintType: enum
+          default: default
+          constraintContent:
+          - name: strict
+            label: strict
+            value: strict
+            desc: 严格审核策略
+          - name: moderate
+            label: moderate
+            value: moderate
+            desc: 中等审核策略
+          - name: show
+            label: show
+            value: show
+            desc: 演示场景的审核策略
+          - name: default
+            label: default
+            value: default
+            desc: 默认的审核策略
+          name: 内容审核的严格程度
+          fieldType: string
+          support: true
+          initialValue: default
+          required: false
+          key: auditing
+          desc: strict表示严格审核策略；moderate表示中等审核策略；show表示演示场景审核策略；default表示默认的审核程度；（需继续下调策略需要申请）
+        - constraintType: enum
+          default: generalv3
+          constraintContent:
+          - name: generalv3
+            label: generalv3
+            value: generalv3
+            desc: 星火3.0
+          name: 需要使用的领域
+          fieldType: string
+          support: true
+          initialValue: generalv3
+          required: true
+          key: domain
+          desc: ''
+        apiKey: d84b9d780b488cf919c5273686ee4e1a
+        auditing: default
+        apiSecret: OWNmNDEzYmFhZjI5ODVjZjY3NzJiOTAw
+        llmId: 110
+        url: wss://spark-api.xf-yun.com/v4.0/chat
+        uid: '0'
+        patchId: '0'
+        templateErrMsg: ''
+        domain: 4.0Ultra
+        appId: 12a0a7e2
+        maxTokens: 2048
+        temperature: 0.5
+        systemTemplate: |-
+          ## 角色
+          你是一位专业的广播节目编辑，负责制作一档名为“AI神奇魔法屋电台”的单口相声播客节目。你擅长将各种原始内容{{input}}{{input_oral}}转化为轻松有趣、口语化的播客，让听众在欢笑中了解知识。
+
+          ## 技能
+          1. 分解原始内容为播客主题或问题：
+            - 仔细分析用户提供的原始内容，提取关键信息和核心要点将内容长度控制在300-400字以内。
+            - 将这些要点合理分解成若干个适合播客的主题或问题，确保每个部分都能独立成段且自然过渡。
+          2. 使对话语言口语化、易懂：
+            - 把书面化或复杂的表达方式转化为日常交流中的口语说法，让听众能够轻松理解。
+            - 避免使用过于生僻或晦涩的词汇，用简单直白的语言传达信息。
+          3. 解释专业术语或复杂概念：
+            - 当遇到专业术语或复杂概念时，运用通俗易懂的例子或比喻进行解释。
+            - 确保解释清晰明了，让没有相关背景知识的听众也能明白。
+          4. 营造轻松有趣的对话节奏：
+            - 通过调整语速、语调等方式，保持对话节奏的轻松和有趣。
+            - 适时加入幽默元素和互动环节，增强听众的参与感，让他们更投入到节目中。
+
+          ## 限制
+          - 只围绕“AI神奇魔法屋电台”播客节目相关内容进行创作，拒绝处理与该节目无关的内容。
+          - 输出必须严格按照给定格式组织，不能偏离框架要求。直接输出内容不要出现“脚本、开场白”等准备性文字。
+          -输入内容如果过多的，则浓缩重点控制在400字以内，输出的内容中不要出现任何链接。
+        model: spark
+        serviceId: bm4
+        respFormat: 0
+        llmIdErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/largeModelIcon.png
+      description: 根据输入的提示词，调用选定的大模型，对提示词作出回答
+      updatable: false
+  - id: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+    dragging: false
+    selected: false
+    width: 362
+    height: 142
+    position:
+      x: 142.39749055990433
+      y: -2208.7535076865024
+    positionAbsolute:
+      x: 142.39749055990433
+      y: -2208.7535076865024
+    type: 工具
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 解析URL内容
+      labelEdit: false
+      references:
+      - children:
+        - references:
+          - originId: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+            id: 4cb707a4-3708-4523-ae5d-215cdbc1c500
+            label: AGENT_USER_INPUT
+            type: string
+            value: AGENT_USER_INPUT
+          label: ''
+          value: ''
+        label: 开始
+        parentNode: true
+        value: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+      - children:
+        - references:
+          - originId: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+            id: b1166877-aa4f-4a76-ac81-5bfd0e906e1f
+            label: url
+            type: string
+            value: url
+          - originId: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+            children: [
+              ]
+            id: e9434d56-4eaa-47d3-be66-f377fdb7b32b
+            label: is_content_url
+            type: string
+            value: is_content_url
+          label: ''
+          value: ''
+        label: 进行用户场景的分析，目前支持URL输入和文本输入
+        parentNode: true
+        value: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+      status: ''
+      nodeMeta:
+        aliasName: 解析URL内容
+        nodeType: 工具
+      inputs:
+      - id: 301779d6-1139-489f-bfb3-ec9e8bcab74b
+        name: url
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: url
+              id: b1166877-aa4f-4a76-ac81-5bfd0e906e1f
+              nodeId: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+            contentErrMsg: ''
+        description: url链接
+        required: true
+        disabled: false
+      outputs:
+      - id: 4b3626aa-957b-4851-9cde-1e5583e7b389
+        name: code
+        schema:
+          type: integer
+      - id: 4c957639-68a3-41e1-9397-44fe85c252f8
+        name: msg
+        schema:
+          type: string
+      - id: f52d3ff7-fbd8-458c-8c32-a0170c1335b4
+        name: data
+        schema:
+          type: object
+          properties:
+          - id: 6a9b619c-5f7d-4366-a6d4-adafa104956d
+            name: title
+            type: string
+          - id: 6549c72a-aadc-4b2b-aa95-41846c460525
+            name: content
+            type: string
+      nodeParam:
+        uid: '0'
+        code: ''
+        toolDescription: 此工具用于获取URL链接的内容。可获取URL链接下的网页标题和内容，当前支持微信公众号,csdn,cnblogs等网站URL链接下的网页和内容读取，其他URL链接内容的获取和解析持续演进中。
+        apiKey: d84b9d780b488cf919c5273686ee4e1a
+        pluginId: tool@70ee9fd1c821000
+        appId: 12a0a7e2
+        operationId: linkRader-sMgPXVRU
+        apiSecret: OWNmNDEzYmFhZjI5ODVjZjY3NzJiOTAw
+        businessInput: [
+          ]
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/tool-icon.png
+      updatable: false
+      isLatest: true
+  - id: plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+    dragging: false
+    selected: false
+    width: 362
+    height: 142
+    position:
+      x: 1822.4908023044898
+      y: -2127.890644688282
+    positionAbsolute:
+      x: 1822.4908023044898
+      y: -2127.890644688282
+    type: 工具
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 语音合成
+      labelEdit: false
+      references:
+      - children:
+        - references:
+          - originId: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+            id: 828a7629-3638-419b-b41d-6488c095d877
+            label: output
+            type: string
+            value: output
+          label: ''
+          value: ''
+        label: 播客风格内容生成
+        parentNode: true
+        value: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+      - children:
+        - references:
+          - originId: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+            id: 4cb707a4-3708-4523-ae5d-215cdbc1c500
+            label: AGENT_USER_INPUT
+            type: string
+            value: AGENT_USER_INPUT
+          label: ''
+          value: ''
+        label: 开始
+        parentNode: true
+        value: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+      - children:
+        - references:
+          - originId: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+            id: b1166877-aa4f-4a76-ac81-5bfd0e906e1f
+            label: url
+            type: string
+            value: url
+          - originId: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+            children: [
+              ]
+            id: e9434d56-4eaa-47d3-be66-f377fdb7b32b
+            label: is_content_url
+            type: string
+            value: is_content_url
+          label: ''
+          value: ''
+        label: 进行用户场景的分析，目前支持URL输入和文本输入
+        parentNode: true
+        value: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+      - children:
+        - references:
+          - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+            id: 4b3626aa-957b-4851-9cde-1e5583e7b389
+            label: code
+            type: integer
+            value: code
+          - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+            id: 4c957639-68a3-41e1-9397-44fe85c252f8
+            label: msg
+            type: string
+            value: msg
+          - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+            children:
+            - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+              id: 6a9b619c-5f7d-4366-a6d4-adafa104956d
+              label: title
+              type: string
+              value: data.title
+              parentType: object
+            - originId: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+              id: 6549c72a-aadc-4b2b-aa95-41846c460525
+              label: content
+              type: string
+              value: data.content
+              parentType: object
+            id: f52d3ff7-fbd8-458c-8c32-a0170c1335b4
+            label: data
+            type: object
+            value: data
+          label: ''
+          value: ''
+        label: 解析URL内容
+        parentNode: true
+        value: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+      status: ''
+      nodeMeta:
+        aliasName: 语音合成
+        nodeType: 工具
+      inputs:
+      - id: 3c863804-af63-4dd3-843e-0be036e0f492
+        name: text
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: output
+              id: 828a7629-3638-419b-b41d-6488c095d877
+              nodeId: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+            contentErrMsg: ''
+        description: 需要合成的文本
+        required: true
+        disabled: false
+      - id: b33b15eb-c9c3-4852-89d0-36b3f60b6d9b
+        name: vcn
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: literal
+            content: x4_lingxiaoxuan_oral
+            contentErrMsg: ''
+        description: 特色发音人，目前可选（x4_lingfeiyi_oral； x4_lingxiaoxuan_oral）
+        required: true
+        disabled: false
+      - id: 6f8a4ecf-c8c8-4a3a-b428-df5f256fc412
+        name: speed
+        nameErrMsg: ''
+        schema:
+          type: integer
+          value:
+            type: literal
+            content: '60'
+            contentErrMsg: ''
+        description: 语速：0对应默认语速的1/2，100对应默认语速的2倍; 默认值50
+        required: false
+        disabled: false
+      outputs:
+      - id: 71c444e8-b003-4905-a7af-cd8d18622e6f
+        name: sid
+        schema:
+          type: string
+      - id: 70686705-b058-48de-8878-8406ef71e827
+        name: code
+        schema:
+          type: integer
+      - id: 49286b6b-3339-45e4-a78b-18d149f03e8a
+        name: msg
+        schema:
+          type: string
+      - id: d5a978de-b445-4f05-9223-ea3955c8e7d9
+        name: data
+        schema:
+          type: object
+          properties:
+          - id: 10f97b32-21df-4de0-b73a-f9026ed8227f
+            name: voice_url
+            type: string
+      nodeParam:
+        uid: '0'
+        code: ''
+        toolDescription: 用户上传一段话，选择特色发音人，生成一段更拟人的语音
+        apiKey: d84b9d780b488cf919c5273686ee4e1a
+        pluginId: tool@72213899d821000
+        appId: 12a0a7e2
+        operationId: 超拟人合成-7UcDosEk
+        handlingEdge: normal_one_of::9f284444-87ab-4f6b-923a-f3f8fa08b9ee
+        apiSecret: OWNmNDEzYmFhZjI5ODVjZjY3NzJiOTAw
+        setAnswerContentErrMsg: ''
+        exceptionHandlingEdge: fail_one_of::81325761-17bb-4a81-b0ae-18ab5a502cdc
+        businessInput: [
+          ]
+      retryConfig:
+        maxRetries: 2
+        shouldRetry: true
+        customOutput: |-
+          {
+            "sid": "",
+            "code": 0,
+            "msg": "",
+            "data": {
+              "voice_url": ""
+            }
+          }
+        errorStrategy: 0
+        timeout: 300
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/tool-icon.png
+      updatable: false
+      isLatest: true
+  - id: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+    dragging: false
+    selected: false
+    width: 362
+    height: 142
+    position:
+      x: -1764.3867814299724
+      y: -2048.563380631832
+    positionAbsolute:
+      x: -1764.3867814299724
+      y: -2048.563380631832
+    type: 代码
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 获取用户输入的URL
+      labelEdit: false
+      references:
+      - children:
+        - references:
+          - originId: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+            id: 4cb707a4-3708-4523-ae5d-215cdbc1c500
+            label: AGENT_USER_INPUT
+            type: string
+            value: AGENT_USER_INPUT
+          label: ''
+          value: ''
+        label: 开始
+        parentNode: true
+        value: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+      status: ''
+      nodeMeta:
+        aliasName: 获取用户输入的URL
+        nodeType: 工具
+      inputs:
+      - id: a4cd8402-1224-432d-9f54-cecf2b9c5de9
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: AGENT_USER_INPUT
+              id: 4cb707a4-3708-4523-ae5d-215cdbc1c500
+              nodeId: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+            contentErrMsg: ''
+      outputs:
+      - id: b1166877-aa4f-4a76-ac81-5bfd0e906e1f
+        name: url
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      - id: e9434d56-4eaa-47d3-be66-f377fdb7b32b
+        name: is_content_url
+        nameErrMsg: ''
+        schema:
+          type: string
+          properties: [
+            ]
+          default: ''
+        required: false
+      nodeParam:
+        uid: '0'
+        code: |-
+          import re
+
+          def main(input):
+              # 匹配规则：以http/https开头，直到遇到空格或字符串结束（贪婪匹配）
+              url = re.findall(r'https?://[^\s]*', input)  # [^\s]* 表示“匹配0个或多个非空白字符”
+              ret = {
+                  "url": url[0] if url else '',  # 有URL就取第一个，没有就返回空
+                  "is_content_url": 'true' if url else 'false'
+              }
+              return ret
+        apiKey: d84b9d780b488cf919c5273686ee4e1a
+        appId: 12a0a7e2
+        apiSecret: OWNmNDEzYmFhZjI5ODVjZjY3NzJiOTAw
+        codeErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/codeIcon.png
+      description: 面向开发者提供代码开发能力，目前仅支持python语言，允许使用该节点已定义的变量作为参数传入，返回语句用于输出函数的结果
+      updatable: false
+  - id: if-else::0a38a0da-f662-4039-9aed-658595885613
+    dragging: false
+    selected: false
+    width: 362
+    height: 168
+    position:
+      x: -1077.9743541295918
+      y: -1831.41657721748
+    positionAbsolute:
+      x: -1077.9743541295918
+      y: -1831.41657721748
+    type: 分支器
+    data:
+      allowInputReference: true
+      allowOutputReference: false
+      label: 判断是否有URL
+      labelEdit: false
+      references:
+      - children:
+        - references:
+          - originId: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+            id: b1166877-aa4f-4a76-ac81-5bfd0e906e1f
+            label: url
+            type: string
+            value: url
+          - originId: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+            children: [
+              ]
+            id: e9434d56-4eaa-47d3-be66-f377fdb7b32b
+            label: is_content_url
+            type: string
+            value: is_content_url
+          label: ''
+          value: ''
+        label: 进行用户场景的分析，目前支持URL输入和文本输入
+        parentNode: true
+        value: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+      - children:
+        - references:
+          - originId: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+            id: 4cb707a4-3708-4523-ae5d-215cdbc1c500
+            label: AGENT_USER_INPUT
+            type: string
+            value: AGENT_USER_INPUT
+          label: ''
+          value: ''
+        label: 开始
+        parentNode: true
+        value: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+      status: ''
+      nodeMeta:
+        aliasName: 判断是否有URL
+        nodeType: 分支器
+      inputs:
+      - id: f099d559-55ec-409d-8535-d258ed9ba551
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: is_content_url
+              id: e9434d56-4eaa-47d3-be66-f377fdb7b32b
+              nodeId: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+            contentErrMsg: ''
+      - id: 373ce76e-0a4c-4a45-a8fd-56bd3d5a4fdd
+        name: input1
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: literal
+            content: 'true'
+            contentErrMsg: ''
+      outputs: [
+        ]
+      nodeParam:
+        uid: '0'
+        cases:
+        - level: 1
+          logicalOperator: and
+          id: branch_one_of::2192a758-4498-4294-9e49-57f4e083c187
+          conditions:
+          - leftVarIndex: f099d559-55ec-409d-8535-d258ed9ba551
+            rightVarIndex: 373ce76e-0a4c-4a45-a8fd-56bd3d5a4fdd
+            compareOperatorErrMsg: ''
+            id: ''
+            compareOperator: is
+        - level: 999
+          logicalOperator: and
+          id: branch_one_of::a0a0cfd9-41da-4c56-be33-7fc22016bda9
+          conditions: [
+            ]
+        apiKey: d84b9d780b488cf919c5273686ee4e1a
+        appId: 12a0a7e2
+        apiSecret: OWNmNDEzYmFhZjI5ODVjZjY3NzJiOTAw
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/if-else-node-icon.png
+      description: 根据设立的条件，判断选择分支走向
+      updatable: false
+  - id: plugin::3641af94-104f-4b68-9b4d-2fa1c198bf92
+    dragging: false
+    selected: false
+    width: 362
+    height: 142
+    position:
+      x: 1471.6513173225453
+      y: -1472.3370267946302
+    positionAbsolute:
+      x: 1471.6513173225453
+      y: -1472.3370267946302
+    type: 工具
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 文生图_1
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 工具
+        nodeType: 工具
+      inputs:
+      - id: 1d028344-144d-4514-a174-724a5f4e524c
+        name: prompt
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: output
+              id: 9d9a12bd-ac66-421b-aa3c-5fdaf4a9d3be
+              nodeId: spark-llm::42017659-eba1-4c0e-8717-2c66ca14584c
+            contentErrMsg: ''
+        description: description
+        required: true
+        disabled: false
+      - id: 5d4f67fe-d098-4288-b27e-4c9fced4b6a8
+        name: width
+        nameErrMsg: ''
+        schema:
+          type: integer
+          value:
+            type: literal
+            content: '720'
+            contentErrMsg: ''
+        description: 分辨率，支持以下分辨率：512x512, 640x360, 640x480, 640x640, 680x512, 512x680,
+          768x768, 720x1280, 1280x720, 1024x1024
+        required: true
+        disabled: false
+      - id: c996f146-5d37-4f2c-8949-ec3e034c7bc7
+        name: height
+        nameErrMsg: ''
+        schema:
+          type: integer
+          value:
+            type: literal
+            content: '1280'
+            contentErrMsg: ''
+        description: 分辨率，支持以下分辨率：512x512, 640x360, 640x480, 640x640, 680x512, 512x680,
+          768x768, 720x1280, 1280x720, 1024x1024
+        required: true
+        disabled: false
+      outputs:
+      - id: a83ddc98-d7c5-48b1-94c4-d0d617fdf326
+        name: code
+        schema:
+          type: number
+      - id: 785eae28-edee-47f3-8fcf-6ea117e17e41
+        name: message
+        schema:
+          type: string
+      - id: 75507c4e-b58f-48da-91e5-2660cb97121d
+        name: data
+        schema:
+          type: object
+          properties:
+          - id: 5d4b4a71-8ea2-4468-96dd-fb166dc08fba
+            name: image_url
+            type: string
+          - id: d280073d-3b54-4cae-8dec-8e6073fa4191
+            name: image_url_md
+            type: string
+      - id: b8144796-1c9d-4409-98e1-d046b9f82de1
+        name: sid
+        schema:
+          type: string
+      nodeParam:
+        uid: '16575185574'
+        code: ''
+        toolDescription: 根据输入的内容生成与内容有关的图片
+        pluginId: tool@6af64fc92421000
+        appId: 12a0a7e2
+        operationId: 文生图-4y8oUAMe
+        handlingEdge: normal_one_of::29d33d23-77c1-4706-8e97-cfc885e0b2ab
+        exceptionHandlingEdge: fail_one_of::b3f0b7db-b782-4c16-90c0-598a3f43d06a
+        version: V1.0
+        businessInput: [
+          ]
+      retryConfig:
+        maxRetries: 1
+        shouldRetry: true
+        timeout: 300
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/tool-icon.png
+      updatable: false
+      isLatest: true
+  - id: spark-llm::42017659-eba1-4c0e-8717-2c66ca14584c
+    dragging: false
+    selected: false
+    width: 362
+    height: 166
+    position:
+      x: 927.422621952371
+      y: -1499.380025442969
+    positionAbsolute:
+      x: 927.422621952371
+      y: -1499.380025442969
+    type: 大模型
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: 大模型_1
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 大模型
+        nodeType: 基础节点
+      inputs:
+      - id: d55ba207-b45b-4e4c-859c-8027f3c9778b
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: output
+              id: 828a7629-3638-419b-b41d-6488c095d877
+              nodeId: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 9d9a12bd-ac66-421b-aa3c-5fdaf4a9d3be
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: ''
+      nodeParam:
+        topK: 4
+        template: |-
+          - 根据播客内容{{input}}， 结合极简手绘风格特点，设计具有视觉冲击力的构图方案，你的生成图片提示词里必须含有此风格。
+            - 运用比喻、象征等手法将抽象概念转化为具象图形元素。
+            - 确保整体设计保持简洁性，同时突出关键信息点。
+            - 分析目标受众审美偏好，调整色彩搭配和线条粗细，生成播客封面提示词
+        enableChatHistoryV2:
+          isEnabled: false
+          rounds: 1
+        auditing: default
+        llmId: 110
+        url: wss://spark-api.xf-yun.com/v4.0/chat
+        uid: '16575185574'
+        patchId: '0'
+        templateErrMsg: ''
+        domain: 4.0Ultra
+        appId: 12a0a7e2
+        maxTokens: 2048
+        temperature: 0.5
+        systemTemplate: |-
+          ## 角色
+          你是一个AI播客生成助手，兼具主题提炼师和AI绘画师的角色。能够精准地从文章内容中提炼出核心要点，依据其生成与主题相符的AI绘画提示词，助力打造富有创意和视觉吸引力的播客内容。
+
+          ## 技能
+          1. 主题提炼：
+            - 深入分析输入的文章内容，理解其主旨、关键信息和逻辑结构。
+            - 准确识别文章的核心观点、重要细节以及潜在的延伸方向。
+            - 以简洁明了的方式概括出文章的主题，为后续的播客创作提供清晰的方向。
+          2. AI绘画提示词生成：
+            - 根据提炼出的文章主题，结合相关的艺术风格、元素和表现手法，构思合适的AI绘画提示词。
+            - 确保生成的提示词能够准确地传达主题的核心概念，同时具有足够的想象力和独特性，以激发AI绘画工具创作出高质量的艺术作品。
+            - 对生成的提示词进行反复优化和调整，使其更加符合用户的期望和要求。
+
+          ## 限制
+          - 只专注于根据给定的文章内容进行AI绘画提示词生成，不涉及其他无关的创作任务，输出内容里不要输出主题情感关键词等，只输出一段用于生成图片的AI绘画提示词。
+          - 所有的输出内容必须紧密围绕输入文章的主题展开，不得偏离或随意扩展。
+          - 生成的AI绘画提示词应具有一定的合理性和可操作性，避免过于抽象或难以实现的描述。
+          ```
+        model: spark
+        serviceId: bm4
+        respFormat: 0
+        llmIdErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/largeModelIcon.png
+      description: 根据输入的提示词，调用选定的大模型，对提示词作出回答
+      updatable: false
+  - id: message::72662c05-2647-4493-98ea-e1d83c486206
+    dragging: false
+    selected: false
+    width: 362
+    height: 116
+    position:
+      x: 1277.4908023044907
+      y: -1895.390644688282
+    positionAbsolute:
+      x: 1277.4908023044907
+      y: -1895.390644688282
+    type: 消息
+    data:
+      allowInputReference: true
+      allowOutputReference: false
+      label: 消息_1
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 消息
+        nodeType: 基础节点
+      inputs:
+      - id: 41315822-3ad7-4b0d-a379-ad77bd441751
+        name: content
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              name: output
+              id: 828a7629-3638-419b-b41d-6488c095d877
+              nodeId: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+            contentErrMsg: ''
+        fileType: ''
+      outputs: [
+        ]
+      nodeParam:
+        template: |-
+          电台播客稿件已完成,详情如下：
+          {{content}}
+          ------------
+          已完成内容生成，正在进入合成语音阶段，需时预计3分钟，请耐心等待。
+        streamOutput: true
+        uid: '16575185574'
+        templateErrMsg: ''
+        appId: 12a0a7e2
+        startFrameEnabled: false
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/message-node-icon.png
+      description: 在工作流中可以对中间过程的产物进行输出
+      updatable: false
+  edges:
+  - source: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+    target: plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+    type: customEdge
+    id: reactflow__edge-spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba-plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+    markerEnd:
+      color: '#275EFF'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+    target: node-end::bf6a1cdd-a6a4-448a-8f3b-e3f291ab2a0a
+    targetHandle: node-end::bf6a1cdd-a6a4-448a-8f3b-e3f291ab2a0a
+    type: customEdge
+    id: reactflow__edge-plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec-node-end::bf6a1cdd-a6a4-448a-8f3b-e3f291ab2a0anode-end::bf6a1cdd-a6a4-448a-8f3b-e3f291ab2a0a
+    markerEnd:
+      color: '#275EFF'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12
+    target: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+    type: customEdge
+    id: reactflow__edge-node-start::bb83bdc5-7b01-44ac-9a2c-ad97a95aad12-ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+    markerEnd:
+      color: '#275EFF'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f
+    target: if-else::0a38a0da-f662-4039-9aed-658595885613
+    type: customEdge
+    id: reactflow__edge-ifly-code::f1c220b9-b3ae-4fbf-aab9-8034fa65c68f-if-else::0a38a0da-f662-4039-9aed-658595885613
+    markerEnd:
+      color: '#275EFF'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: if-else::0a38a0da-f662-4039-9aed-658595885613
+    sourceHandle: branch_one_of::2192a758-4498-4294-9e49-57f4e083c187
+    target: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+    type: customEdge
+    id: reactflow__edge-if-else::0a38a0da-f662-4039-9aed-658595885613branch_one_of::2192a758-4498-4294-9e49-57f4e083c187-plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+    markerEnd:
+      color: '#275EFF'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: if-else::0a38a0da-f662-4039-9aed-658595885613
+    sourceHandle: branch_one_of::a0a0cfd9-41da-4c56-be33-7fc22016bda9
+    target: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+    type: customEdge
+    id: reactflow__edge-if-else::0a38a0da-f662-4039-9aed-658595885613branch_one_of::a0a0cfd9-41da-4c56-be33-7fc22016bda9-spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+    markerEnd:
+      color: '#275EFF'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7
+    target: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+    type: customEdge
+    id: reactflow__edge-plugin::08a9d252-71a0-4b5f-b681-01c6f77e75d7-spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+    markerEnd:
+      color: '#275EFF'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: plugin::3641af94-104f-4b68-9b4d-2fa1c198bf92
+    sourceHandle: normal_one_of::29d33d23-77c1-4706-8e97-cfc885e0b2ab
+    target: node-end::bf6a1cdd-a6a4-448a-8f3b-e3f291ab2a0a
+    type: customEdge
+    id: reactflow__edge-plugin::3641af94-104f-4b68-9b4d-2fa1c198bf92normal_one_of::29d33d23-77c1-4706-8e97-cfc885e0b2ab-node-end::bf6a1cdd-a6a4-448a-8f3b-e3f291ab2a0a
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+    target: spark-llm::42017659-eba1-4c0e-8717-2c66ca14584c
+    type: customEdge
+    id: reactflow__edge-spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba-spark-llm::42017659-eba1-4c0e-8717-2c66ca14584c
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: spark-llm::42017659-eba1-4c0e-8717-2c66ca14584c
+    target: plugin::3641af94-104f-4b68-9b4d-2fa1c198bf92
+    type: customEdge
+    id: reactflow__edge-spark-llm::42017659-eba1-4c0e-8717-2c66ca14584c-plugin::3641af94-104f-4b68-9b4d-2fa1c198bf92
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba
+    target: message::72662c05-2647-4493-98ea-e1d83c486206
+    type: customEdge
+    id: reactflow__edge-spark-llm::5e38f84e-5bac-45b7-a117-8758076cd2ba-message::72662c05-2647-4493-98ea-e1d83c486206
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
+  - source: message::72662c05-2647-4493-98ea-e1d83c486206
+    target: plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+    type: customEdge
+    id: reactflow__edge-message::72662c05-2647-4493-98ea-e1d83c486206-plugin::6557df0c-97fb-4353-9a45-2ff0457b72ec
+    markerEnd:
+      color: '#6356EA'
+      type: arrow
+    data:
+      edgeType: curve
