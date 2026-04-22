@@ -346,13 +346,13 @@ const AstronLandscape: React.FC = () => {
                       </div>
 
                       {/* QR Code - Inside harnessclaw-engine box */}
-                      <div className="absolute bottom-2 right-2 flex flex-col items-center gap-1 bg-white/80 backdrop-blur-md p-2 rounded-xl border border-white/90 shadow-xl z-[150]">
+                      <div className="absolute bottom-2 right-2 flex flex-col items-center gap-1 bg-white/70 backdrop-blur-md p-1.5 rounded-xl border border-white/80 shadow-lg z-[150]">
                         <img 
                           src="/iflytek-astron.png" 
                           alt="QR Code" 
-                          className="w-32 h-32 rounded-md mix-blend-multiply opacity-100"
+                          className="w-24 h-24 rounded-md mix-blend-multiply opacity-100"
                         />
-                        <span className="text-[10px] font-extrabold text-slate-900 uppercase tracking-tight leading-none">
+                        <span className="text-[8px] font-extrabold text-slate-900 uppercase tracking-tighter leading-none">
                           {isZH ? '扫码了解更多' : 'Scan to learn more'}
                         </span>
                       </div>
