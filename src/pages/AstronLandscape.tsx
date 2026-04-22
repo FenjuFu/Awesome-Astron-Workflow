@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { toPng } from 'html-to-image';
 import Navigation from '../components/Navigation';
@@ -9,41 +9,60 @@ const AstronLandscape: React.FC = () => {
   const { language } = useLanguage();
   const cardRef = useRef<HTMLDivElement>(null);
 
+  // Pre-load fonts and wait for them to be ready
+  useEffect(() => {
+    if (document.fonts) {
+      document.fonts.ready.then(() => {
+        console.log('Fonts are ready');
+      });
+    }
+  }, []);
+
   const handleDownload = useCallback(() => {
     if (cardRef.current === null) {
       return;
     }
 
-    // Set scale to 1 for high-quality capture
-    const originalTransform = cardRef.current.style.transform;
-    cardRef.current.style.transform = 'scale(1)';
-    
-    toPng(cardRef.current, {
+    // Capture settings for high-quality PNG
+    const options = {
       cacheBust: true,
       width: 1280,
       height: 720,
+      pixelRatio: 2, // Double pixel ratio for higher quality
       style: {
         transform: 'scale(1)',
+        transformOrigin: 'top left',
         left: '0',
         top: '0',
+        margin: '0',
+        padding: '0',
       }
-    })
-      .then((dataUrl) => {
-        const link = document.createElement('a');
-        link.download = `astron-landscape-${language}.png`;
-        link.href = dataUrl;
-        link.click();
-        // Restore transform
-        if (cardRef.current) {
-          cardRef.current.style.transform = originalTransform;
-        }
-      })
-      .catch((err) => {
-        console.error('oops, something went wrong!', err);
-        if (cardRef.current) {
-          cardRef.current.style.transform = originalTransform;
-        }
-      });
+    };
+
+    // Temporarily disable the scale transform for capture
+    const originalTransform = cardRef.current.style.transform;
+    cardRef.current.style.transform = 'scale(1)';
+    
+    // Use a small delay to allow for any layout recalculations
+    setTimeout(() => {
+      toPng(cardRef.current!, options)
+        .then((dataUrl) => {
+          const link = document.createElement('a');
+          link.download = `astron-landscape-${language}.png`;
+          link.href = dataUrl;
+          link.click();
+          // Restore transform
+          if (cardRef.current) {
+            cardRef.current.style.transform = originalTransform;
+          }
+        })
+        .catch((err) => {
+          console.error('oops, something went wrong!', err);
+          if (cardRef.current) {
+            cardRef.current.style.transform = originalTransform;
+          }
+        });
+    }, 100);
   }, [language]);
 
   const isZH = language === 'zh-CN';
@@ -123,7 +142,8 @@ const AstronLandscape: React.FC = () => {
               height: '720px',
               transform: 'scale(min(calc((100vw - 40px) / 1280), calc((100vh - 200px) / 720), 1))',
               transformOrigin: 'center top',
-              background: 'linear-gradient(180deg, #e0f2fe 0%, #bae6fd 40%, #7dd3fc 100%)'
+              background: 'linear-gradient(180deg, #e0f2fe 0%, #bae6fd 40%, #7dd3fc 100%)',
+              fontFamily: '"Inter", "PingFang SC", "Microsoft YaHei", sans-serif'
             }}
           >
             {/* Ambient bubbles inside card */}
@@ -141,9 +161,9 @@ const AstronLandscape: React.FC = () => {
                 </svg>
                 {content.title}
               </div>
-              <div className="text-sm text-slate-800 font-semibold flex items-center gap-2 drop-shadow-sm">
+              <div className="text-sm text-slate-800 font-semibold flex items-center gap-2 drop-shadow-sm whitespace-nowrap">
                 {content.subtitle}
-                <span className="bg-white/60 text-indigo-600 px-2.5 py-1 rounded-xl text-xs font-bold border border-white/90 shadow-sm">
+                <span className="bg-white/60 text-indigo-600 px-2.5 py-1 rounded-xl text-xs font-bold border border-white/90 shadow-sm whitespace-nowrap">
                   {content.badge}
                 </span>
               </div>
@@ -175,10 +195,10 @@ const AstronLandscape: React.FC = () => {
               </g>
 
               <g fontSize="12" fontWeight="700" fill="#334155" style={{ textShadow: '0 0 4px #fff, 0 0 8px #fff' }}>
-                <text x="740" y="415" textAnchor="middle" fill="#4f46e5">{content.orchestration}</text>
-                <text x="1270" y="375" textAnchor="end" fill="#4f46e5">{content.apis}</text>
-                <text x="20" y="435" textAnchor="start" fill="#0d9488">{content.rpa}</text>
-                <text x="530" y="115" textAnchor="middle" fill="#db2777">{content.capabilities}</text>
+                <text x="740" y="415" textAnchor="middle" fill="#4f46e5" className="select-none">{content.orchestration}</text>
+                <text x="1270" y="375" textAnchor="end" fill="#4f46e5" className="select-none">{content.apis}</text>
+                <text x="20" y="435" textAnchor="start" fill="#0d9488" className="select-none">{content.rpa}</text>
+                <text x="530" y="115" textAnchor="middle" fill="#db2777" className="select-none">{content.capabilities}</text>
               </g>
             </svg>
 
@@ -198,9 +218,9 @@ const AstronLandscape: React.FC = () => {
                       </div>
                       <div className="text-2xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.workflow.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.workflow.desc}</div>
-                      <div className="flex flex-wrap gap-1.5 mt-auto">
+                      <div className="flex flex-wrap gap-2 mt-auto">
                         {content.groups.workflow.tags.map(tag => (
-                          <span key={tag} className="text-[11px] px-2.5 py-1 rounded-xl bg-white/80 font-bold border border-white shadow-sm flex items-center gap-1">
+                          <span key={tag} className="text-[11px] px-3 py-1 rounded-xl bg-white/85 font-bold border border-white shadow-sm flex items-center gap-1.5 whitespace-nowrap">
                             {tag === 'Java' && <div className="w-1.5 h-1.5 rounded-full bg-[#b07219]" />}
                             {tag === 'Python' && <div className="w-1.5 h-1.5 rounded-full bg-[#3572A5]" />}
                             {tag}
@@ -222,9 +242,9 @@ const AstronLandscape: React.FC = () => {
                       </div>
                       <div className="text-xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.automation.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.automation.desc}</div>
-                      <div className="flex flex-wrap gap-1.5 mt-auto">
+                      <div className="flex flex-wrap gap-2 mt-auto">
                         {content.groups.automation.tags.map(tag => (
-                          <span key={tag} className="text-[11px] px-2.5 py-1 rounded-xl bg-white/80 font-bold border border-white shadow-sm flex items-center gap-1">
+                          <span key={tag} className="text-[11px] px-3 py-1 rounded-xl bg-white/85 font-bold border border-white shadow-sm flex items-center gap-1.5 whitespace-nowrap">
                             {tag === 'Java' && <div className="w-1.5 h-1.5 rounded-full bg-[#b07219]" />}
                             {tag === 'Python' && <div className="w-1.5 h-1.5 rounded-full bg-[#3572A5]" />}
                             {tag}
@@ -250,9 +270,9 @@ const AstronLandscape: React.FC = () => {
                       </div>
                       <div className="text-xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.skills.official.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.skills.official.desc}</div>
-                      <div className="flex flex-wrap gap-1.5 mt-auto">
+                      <div className="flex flex-wrap gap-2 mt-auto">
                         {content.groups.skills.official.tags.map(tag => (
-                          <span key={tag} className="text-[11px] px-2.5 py-1 rounded-xl bg-white/80 font-bold border border-white shadow-sm flex items-center gap-1">
+                          <span key={tag} className="text-[11px] px-3 py-1 rounded-xl bg-white/85 font-bold border border-white shadow-sm flex items-center gap-1.5 whitespace-nowrap">
                             {tag === 'Python' && <div className="w-1.5 h-1.5 rounded-full bg-[#3572A5]" />}
                             {tag}
                           </span>
@@ -266,9 +286,9 @@ const AstronLandscape: React.FC = () => {
                       </div>
                       <div className="text-lg font-extrabold mb-1 leading-tight tracking-tight">{content.groups.skills.registry.title}</div>
                       <div className="text-[13px] leading-relaxed font-medium opacity-90 mb-2 flex-1">{content.groups.skills.registry.desc}</div>
-                      <div className="flex flex-wrap gap-1.5 mt-auto">
+                      <div className="flex flex-wrap gap-2 mt-auto">
                         {content.groups.skills.registry.tags.map(tag => (
-                          <span key={tag} className="text-[11px] px-2.5 py-1 rounded-xl bg-white/80 font-bold border border-white shadow-sm flex items-center gap-1">
+                          <span key={tag} className="text-[11px] px-3 py-1 rounded-xl bg-white/85 font-bold border border-white shadow-sm flex items-center gap-1.5 whitespace-nowrap">
                             {tag === 'Java' && <div className="w-1.5 h-1.5 rounded-full bg-[#b07219]" />}
                             {tag}
                           </span>
@@ -289,9 +309,9 @@ const AstronLandscape: React.FC = () => {
                       </div>
                       <div className="text-xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.tutorial.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.tutorial.desc}</div>
-                      <div className="flex flex-wrap gap-1.5 mt-auto">
+                      <div className="flex flex-wrap gap-2 mt-auto">
                         {content.groups.tutorial.tags.map(tag => (
-                          <span key={tag} className="text-[11px] px-2.5 py-1 rounded-xl bg-white/80 font-bold border border-white shadow-sm">{tag}</span>
+                          <span key={tag} className="text-[11px] px-3 py-1 rounded-xl bg-white/85 font-bold border border-white shadow-sm whitespace-nowrap">{tag}</span>
                         ))}
                       </div>
                     </div>
@@ -313,9 +333,9 @@ const AstronLandscape: React.FC = () => {
                       </div>
                       <div className="text-xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.management.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.management.desc}</div>
-                      <div className="flex flex-wrap gap-1.5 mt-auto">
+                      <div className="flex flex-wrap gap-2 mt-auto">
                         {content.groups.management.tags.map(tag => (
-                          <span key={tag} className="text-[11px] px-2.5 py-1 rounded-xl bg-white/80 font-bold border border-white shadow-sm flex items-center gap-1">
+                          <span key={tag} className="text-[11px] px-3 py-1 rounded-xl bg-white/85 font-bold border border-white shadow-sm flex items-center gap-1.5 whitespace-nowrap">
                             {tag === 'TypeScript' && <div className="w-1.5 h-1.5 rounded-full bg-[#3178c6]" />}
                             {tag}
                           </span>
@@ -336,9 +356,9 @@ const AstronLandscape: React.FC = () => {
                       </div>
                       <div className="text-xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.engine.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.engine.desc}</div>
-                      <div className="flex flex-wrap gap-1.5 mt-auto">
+                      <div className="flex flex-wrap gap-2 mt-auto">
                         {content.groups.engine.tags.map(tag => (
-                          <span key={tag} className="text-[11px] px-2.5 py-1 rounded-xl bg-white/80 font-bold border border-white shadow-sm flex items-center gap-1">
+                          <span key={tag} className="text-[11px] px-3 py-1 rounded-xl bg-white/85 font-bold border border-white shadow-sm flex items-center gap-1.5 whitespace-nowrap">
                             {tag === 'Go' && <div className="w-1.5 h-1.5 rounded-full bg-[#00ADD8]" />}
                             {tag}
                           </span>
