@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useEffect } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { toPng } from 'html-to-image';
 import Navigation from '../components/Navigation';
@@ -9,60 +9,38 @@ const AstronLandscape: React.FC = () => {
   const { language } = useLanguage();
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // Pre-load fonts and wait for them to be ready
-  useEffect(() => {
-    if (document.fonts) {
-      document.fonts.ready.then(() => {
-        console.log('Fonts are ready');
-      });
-    }
-  }, []);
-
   const handleDownload = useCallback(() => {
     if (cardRef.current === null) {
       return;
     }
 
-    // Capture settings for high-quality PNG
-    const options = {
-      cacheBust: true,
-      width: 1280,
-      height: 720,
-      pixelRatio: 2, // Double pixel ratio for higher quality
-      style: {
-        transform: 'scale(1)',
-        transformOrigin: 'top left',
-        left: '0',
-        top: '0',
-        margin: '0',
-        padding: '0',
-      }
-    };
+    const exportNode = cardRef.current;
 
-    // Temporarily disable the scale transform for capture
-    const originalTransform = cardRef.current.style.transform;
-    cardRef.current.style.transform = 'scale(1)';
-    
-    // Use a small delay to allow for any layout recalculations
-    setTimeout(() => {
-      toPng(cardRef.current!, options)
+    const waitForFonts = document.fonts ? document.fonts.ready : Promise.resolve();
+
+    waitForFonts
+      .then(() =>
+        toPng(exportNode, {
+          cacheBust: true,
+          width: 1280,
+          height: 720,
+          pixelRatio: 2,
+          skipAutoScale: true,
+          style: {
+            margin: '0',
+            transform: 'none',
+          },
+        })
+      )
         .then((dataUrl) => {
           const link = document.createElement('a');
           link.download = `astron-landscape-${language}.png`;
           link.href = dataUrl;
           link.click();
-          // Restore transform
-          if (cardRef.current) {
-            cardRef.current.style.transform = originalTransform;
-          }
         })
         .catch((err) => {
           console.error('oops, something went wrong!', err);
-          if (cardRef.current) {
-            cardRef.current.style.transform = originalTransform;
-          }
         });
-    }, 100);
   }, [language]);
 
   const isZH = language === 'zh-CN';
@@ -133,19 +111,23 @@ const AstronLandscape: React.FC = () => {
           <div className="absolute w-[400px] h-[400px] bottom-0 right-0 bg-indigo-100 rounded-full blur-3xl opacity-50" />
         </div>
 
-        <div className="scale-container flex justify-center items-center w-full overflow-auto">
-          <div 
-            ref={cardRef}
-            className="card-container bg-blue-50/30 backdrop-blur-xl border-2 border-white/60 shadow-2xl flex flex-col shrink-0 rounded-2xl relative"
-            style={{ 
-              width: '1280px', 
-              height: '720px',
-              transform: 'scale(min(calc((100vw - 40px) / 1280), calc((100vh - 200px) / 720), 1))',
+        <div className="scale-container flex justify-center items-start w-full overflow-auto">
+          <div
+            style={{
+              transform: 'scale(min(calc((100vw - 40px) / 1280), calc((100vh - 220px) / 720), 1))',
               transformOrigin: 'center top',
-              background: 'linear-gradient(180deg, #e0f2fe 0%, #bae6fd 40%, #7dd3fc 100%)',
-              fontFamily: '"Inter", "PingFang SC", "Microsoft YaHei", sans-serif'
             }}
           >
+            <div
+              ref={cardRef}
+              className="card-container bg-blue-50/30 backdrop-blur-xl border-2 border-white/60 shadow-2xl flex flex-col shrink-0 rounded-2xl relative"
+              style={{
+                width: '1280px',
+                height: '720px',
+                background: 'linear-gradient(180deg, #e0f2fe 0%, #bae6fd 40%, #7dd3fc 100%)',
+                fontFamily: '"Inter", "PingFang SC", "Microsoft YaHei", sans-serif',
+              }}
+            >
             {/* Ambient bubbles inside card */}
             <div className="absolute w-16 h-16 top-[15%] left-[20%] rounded-full bg-white/40 border border-white/50 shadow-inner" />
             <div className="absolute w-10 h-10 top-[30%] left-[80%] rounded-full bg-white/40 border border-white/50 shadow-inner" />
@@ -379,7 +361,8 @@ const AstronLandscape: React.FC = () => {
               </div>
             </div>
 
-            <div className="h-3 bg-transparent" />
+              <div className="h-3 bg-transparent" />
+            </div>
           </div>
         </div>
 
