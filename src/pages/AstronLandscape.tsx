@@ -362,6 +362,18 @@ const AstronLandscape: React.FC = () => {
             </div>
 
             <div className="h-3 bg-transparent" />
+
+            {/* QR Code */}
+            <div className="absolute bottom-3 right-3 flex flex-col items-center gap-1 z-[100] bg-white/40 backdrop-blur-md p-1.5 rounded-lg border border-white/60 shadow-sm">
+              <img 
+                src="/iflytek-astron.png" 
+                alt="QR Code" 
+                className="w-16 h-16 rounded-sm mix-blend-multiply opacity-90"
+              />
+              <span className="text-[9px] font-bold text-slate-800 uppercase tracking-tighter opacity-80">
+                {isZH ? '扫码了解更多' : 'Scan to learn more'}
+              </span>
+            </div>
           </div>
         </div>
       </main>
