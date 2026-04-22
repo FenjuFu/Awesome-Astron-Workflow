@@ -107,7 +107,7 @@ const AstronLandscape: React.FC = () => {
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <Navigation />
       
-      <main className="flex-1 flex flex-col items-center py-8 px-4 overflow-hidden relative">
+      <main className="flex-1 flex flex-col items-center pt-24 pb-8 px-4 overflow-hidden relative">
         {/* Ambient background bubbles for the whole page */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
           <div className="absolute w-[600px] h-[600px] -top-48 -left-48 bg-blue-100 rounded-full blur-3xl opacity-50" />
