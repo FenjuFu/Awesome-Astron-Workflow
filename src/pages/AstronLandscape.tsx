@@ -338,22 +338,23 @@ const AstronLandscape: React.FC = () => {
                       </div>
                       <div className="text-xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.engine.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.engine.desc}</div>
-                      <div className="flex flex-wrap gap-2 mt-auto">
-                        {content.groups.engine.tags.map(tag => (
-                          <span key={tag} className="text-[11px] px-3 py-1 rounded-xl bg-white/85 font-bold border border-white shadow-sm flex items-center gap-1.5 whitespace-nowrap">
-                            {tag === 'Go' && <div className="w-1.5 h-1.5 rounded-full bg-[#00ADD8]" />}
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                      <div className="mt-auto flex items-end gap-3">
+                        <div className="flex flex-wrap gap-2 flex-1 min-w-0">
+                          {content.groups.engine.tags.map(tag => (
+                            <span key={tag} className="text-[11px] px-3 py-1 rounded-xl bg-white/85 font-bold border border-white shadow-sm flex items-center gap-1.5 whitespace-nowrap">
+                              {tag === 'Go' && <div className="w-1.5 h-1.5 rounded-full bg-[#00ADD8]" />}
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
 
-                      {/* QR Code - Inside harnessclaw-engine box */}
-                      <div className="absolute bottom-2 right-2 bg-white/60 backdrop-blur-md p-1 rounded-lg border border-white/80 shadow-md z-[150]">
-                        <img 
-                          src="/iflytek-astron.png" 
-                          alt="QR Code" 
-                          className="w-16 h-16 rounded-sm mix-blend-multiply opacity-100"
-                        />
+                        <div className="shrink-0 bg-white/60 backdrop-blur-md p-1 rounded-lg border border-white/80 shadow-md">
+                          <img
+                            src="/iflytek-astron.png"
+                            alt="QR Code"
+                            className="w-16 h-16 rounded-sm mix-blend-multiply opacity-100"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
