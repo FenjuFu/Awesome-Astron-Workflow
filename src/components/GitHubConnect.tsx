@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Github, Loader2, ShieldCheck, LogOut, GitPullRequest, GitMerge, AlertCircle } from 'lucide-react';
+import { Github, Loader2, ShieldCheck, LogOut, GitPullRequest, GitMerge, AlertCircle, Coins } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import RedemptionSystem from './RedemptionSystem';
 
 interface GitHubItem {
   html_url: string;
@@ -174,6 +175,13 @@ const GitHubConnect: React.FC = () => {
     window.location.reload();
   };
 
+  const totalContributions = data?.contribution_dates ? 
+    Object.values(data.contribution_dates).reduce((total, repoDates) => {
+      return total + Object.values(repoDates).reduce((repoTotal, dates) => repoTotal + dates.length, 0);
+    }, 0) : 0;
+
+  const [activeTab, setActiveTab] = useState<'stats' | 'redeem'>('stats');
+
   if (loading) {
     return (
       <div className="flex justify-center p-8">
@@ -250,11 +258,7 @@ const GitHubConnect: React.FC = () => {
             </div>
             {data.contribution_fields && data.contribution_dates && (
               <div className="text-xs font-medium text-indigo-600 mt-0.5">
-                {t('contribute.github.totalContributions')}: {
-                  Object.values(data.contribution_dates).reduce((total, repoDates) => {
-                    return total + Object.values(repoDates).reduce((repoTotal, dates) => repoTotal + dates.length, 0);
-                  }, 0)
-                }
+                {t('contribute.github.totalContributions')}: {totalContributions}
               </div>
             )}
           </div>
@@ -268,7 +272,41 @@ const GitHubConnect: React.FC = () => {
         </button>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="flex border-b border-gray-200">
+        <button
+          onClick={() => setActiveTab('stats')}
+          className={`px-6 py-3 text-sm font-medium transition-colors relative ${
+            activeTab === 'stats' ? 'text-indigo-600' : 'text-gray-500 hover:text-gray-700'
+          }`}
+        >
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4" />
+            Contribution Stats
+          </div>
+          {activeTab === 'stats' && (
+            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600" />
+          )}
+        </button>
+        <button
+          onClick={() => setActiveTab('redeem')}
+          className={`px-6 py-3 text-sm font-medium transition-colors relative ${
+            activeTab === 'redeem' ? 'text-indigo-600' : 'text-gray-500 hover:text-gray-700'
+          }`}
+        >
+          <div className="flex items-center gap-2">
+            <Coins className="h-4 w-4" />
+            {t('redeem.title')}
+          </div>
+          {activeTab === 'redeem' && (
+            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600" />
+          )}
+        </button>
+      </div>
+
+      {activeTab === 'redeem' ? (
+        <RedemptionSystem totalContributions={totalContributions} />
+      ) : (
+        <div className="grid md:grid-cols-2 gap-6">
         {Object.entries(data.repos).map(([repoName, stats]) => (
           <div key={repoName} className="bg-white rounded-xl shadow-lg border border-indigo-50 overflow-hidden hover:shadow-xl transition-shadow duration-300 col-span-1 md:col-span-2">
             <div className="bg-gradient-to-r from-indigo-50 to-white p-4 border-b border-indigo-50 flex justify-between items-center">
@@ -348,6 +386,7 @@ const GitHubConnect: React.FC = () => {
           </div>
         ))}
       </div>
+      )}
     </div>
   );
 };

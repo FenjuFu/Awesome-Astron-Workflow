@@ -378,7 +378,27 @@ const translations = {
     'footer.reportIssues': 'Report Issues',
     'footer.contribute': 'Contribute',
     'footer.madeWithLove': 'Made with ❤️ by the community',
-    'footer.rightsReserved': 'All rights reserved.'
+    'footer.rightsReserved': 'All rights reserved.',
+
+    // Redemptions
+    'redeem.title': 'Rewards & Points',
+    'redeem.points': 'Points',
+    'redeem.available': 'Available',
+    'redeem.spent': 'Spent',
+    'redeem.prizes': 'Available Rewards',
+    'redeem.history': 'Redemption History',
+    'redeem.status.pending': 'Pending',
+    'redeem.status.issued': 'Issued',
+    'redeem.status.rejected': 'Rejected',
+    'redeem.prize.astronclaw': 'AstronClaw Membership',
+    'redeem.prize.astronclaw.desc': 'Value 16.8 CNY, valid for 1 month.',
+    'redeem.submit': 'Redeem Now',
+    'redeem.success': 'Redemption submitted! Please wait for review.',
+    'redeem.error': 'Failed to submit redemption.',
+    'redeem.form.phone': 'Phone Number',
+    'redeem.form.email': 'Email Address',
+    'redeem.form.confirm': 'Confirm Redemption',
+    'redeem.points.insufficient': 'Insufficient points'
   },
   'zh-CN': {
     // Navigation
@@ -746,7 +766,27 @@ const translations = {
     'footer.reportIssues': '报告问题',
     'footer.contribute': '贡献',
     'footer.madeWithLove': '由社区用 ❤️ 制作',
-    'footer.rightsReserved': '保留所有权利。'
+    'footer.rightsReserved': '保留所有权利。',
+
+    // Redemptions
+    'redeem.title': '积分兑换',
+    'redeem.points': '积分',
+    'redeem.available': '可用',
+    'redeem.spent': '已消耗',
+    'redeem.prizes': '可兑换奖品',
+    'redeem.history': '兑换记录',
+    'redeem.status.pending': '审核中',
+    'redeem.status.issued': '已发放',
+    'redeem.status.rejected': '已拒绝',
+    'redeem.prize.astronclaw': 'AstronClaw 会员',
+    'redeem.prize.astronclaw.desc': '价值 16.8 元，有效期 1 个月。',
+    'redeem.submit': '立即兑换',
+    'redeem.success': '兑换申请已提交，请等待审核！',
+    'redeem.error': '兑换提交失败。',
+    'redeem.form.phone': '手机号',
+    'redeem.form.email': '邮箱',
+    'redeem.form.confirm': '确认兑换',
+    'redeem.points.insufficient': '积分不足'
   }
 };
 
