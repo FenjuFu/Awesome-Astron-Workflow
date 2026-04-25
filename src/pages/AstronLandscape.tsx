@@ -46,8 +46,8 @@ const AstronLandscape: React.FC = () => {
   const isZH = language === 'zh-CN';
 
   const content = {
-    title: isZH ? '讯飞 Astron 全景图' : 'iFLYTEK Astron Landscape',
-    subtitle: isZH ? '下一代智能体（Agent）与工作流全景图' : 'The Next-Generation Agentic Intelligence & Workflow Panorama',
+    title: isZH ? '讯飞 Astron 开源项目全景图' : 'iFLYTEK Astron Open Source Project Landscape',
+    subtitle: isZH ? '全球首个企业级智能体开源生态全景图' : 'The World\'s First Enterprise-grade Agent Open Source Ecosystem Landscape',
     badge: isZH ? '关系视图' : 'Relations View',
     orchestration: isZH ? '驱动编排' : 'Powers Orchestration',
     apis: isZH ? '提供 API' : 'Provides APIs',
