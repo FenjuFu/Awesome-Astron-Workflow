@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { toPng } from 'html-to-image';
 import Navigation from '../components/Navigation';
@@ -6,8 +6,9 @@ import Footer from '../components/Footer';
 import { Download } from 'lucide-react';
 
 const AstronLandscape: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const cardRef = useRef<HTMLDivElement>(null);
+  const [showQRCode, setShowQRCode] = useState(true);
 
   const handleDownload = useCallback(() => {
     if (cardRef.current === null) {
@@ -344,13 +345,15 @@ const AstronLandscape: React.FC = () => {
                           ))}
                         </div>
 
-                        <div className="shrink-0 bg-white/60 backdrop-blur-md p-1 rounded-lg border border-white/80 shadow-md">
-                          <img
-                            src="/iflytek-astron.png"
-                            alt="QR Code"
-                            className="w-16 h-16 rounded-sm mix-blend-multiply opacity-100"
-                          />
-                        </div>
+                        {showQRCode && (
+                          <div className="shrink-0 bg-white/60 backdrop-blur-md p-1 rounded-lg border border-white/80 shadow-md">
+                            <img
+                              src="/iflytek-astron.png"
+                              alt="QR Code"
+                              className="w-16 h-16 rounded-sm mix-blend-multiply opacity-100"
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -363,14 +366,33 @@ const AstronLandscape: React.FC = () => {
           </div>
         </div>
 
-        {/* Save Button - Fixed at bottom right for better accessibility and no obstruction */}
-        <button
-          onClick={handleDownload}
-          className="fixed bottom-10 right-10 flex items-center gap-2 px-6 py-3 bg-indigo-600/90 hover:bg-indigo-700 backdrop-blur-md text-white rounded-full transition-all shadow-2xl font-bold z-[200] hover:scale-105 active:scale-95 group"
-        >
-          <Download size={20} className="group-hover:translate-y-0.5 transition-transform" />
-          {isZH ? '保存高清图片' : 'Save HD Image'}
-        </button>
+        {/* Save Button & Options - Fixed at bottom right */}
+        <div className="fixed bottom-10 right-10 flex flex-col items-end gap-3 z-[200]">
+          {/* QR Code Toggle Option */}
+          <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-md border border-indigo-100 rounded-full shadow-lg hover:shadow-xl transition-all group">
+            <input
+              type="checkbox"
+              id="qr-toggle"
+              checked={showQRCode}
+              onChange={(e) => setShowQRCode(e.target.checked)}
+              className="w-4 h-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500 cursor-pointer"
+            />
+            <label 
+              htmlFor="qr-toggle" 
+              className="text-sm font-bold text-slate-700 cursor-pointer select-none group-hover:text-indigo-600 transition-colors"
+            >
+              {t('landscape.includeQR')}
+            </label>
+          </div>
+
+          <button
+            onClick={handleDownload}
+            className="flex items-center gap-2 px-6 py-3 bg-indigo-600/90 hover:bg-indigo-700 backdrop-blur-md text-white rounded-full transition-all shadow-2xl font-bold hover:scale-105 active:scale-95 group"
+          >
+            <Download size={20} className="group-hover:translate-y-0.5 transition-transform" />
+            {isZH ? '保存高清图片' : 'Save HD Image'}
+          </button>
+        </div>
       </main>
       
       <Footer />
