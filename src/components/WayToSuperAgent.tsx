@@ -84,6 +84,23 @@ const WayToSuperAgent: React.FC = () => {
               </a>
 
               <a 
+                href="https://www.youtube.com/watch?v=8OiW9qVLML4&list=PLpSUIRpjMINDrkExmtOQ58A3xMpQOIhNm" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group block bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:border-red-200"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Youtube className="h-6 w-6 text-red-600 mr-3 group-hover:scale-110 transition-transform" />
+                    <span className="font-medium text-gray-900 group-hover:text-red-600 transition-colors">
+                      {t('way.showcase.skillhub')}
+                    </span>
+                  </div>
+                  <ExternalLink className="h-4 w-4 text-gray-400 group-hover:text-red-500" />
+                </div>
+              </a>
+
+              <a 
                 href="https://vimeo.com/showcase/12038826" 
                 target="_blank" 
                 rel="noopener noreferrer"
