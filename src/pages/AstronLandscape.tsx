@@ -25,7 +25,7 @@ const AstronLandscape: React.FC = () => {
           cacheBust: true,
           width: 1280,
           height: 720,
-          pixelRatio: 2,
+          pixelRatio: 4,
           skipAutoScale: true,
           style: {
             margin: '0',
