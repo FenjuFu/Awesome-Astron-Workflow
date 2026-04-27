@@ -48,6 +48,7 @@ const AstronLandscape: React.FC = () => {
 
   const content = {
     title: isZH ? '讯飞 Astron 开源生态全景图' : 'iFLYTEK Astron Open Source Ecosystem Landscape',
+    topicUrl: 'https://github.com/topics/iflytek-astron',
     subtitle: isZH ? '全球首个企业级智能体开源项目矩阵全景图' : 'The World\'s First Enterprise-grade Agent Open Source Project Matrix Landscape',
     orchestration: isZH ? '驱动编排' : 'Powers Orchestration',
     apis: isZH ? '提供 API' : 'Provides APIs',
@@ -56,12 +57,16 @@ const AstronLandscape: React.FC = () => {
     groups: {
       workflow: {
         header: isZH ? '智能体工作流 (agentic-workflow)' : 'agentic-workflow',
+        repo: 'iflytek / astron-agent',
+        url: 'https://github.com/iflytek/astron-agent',
         title: isZH ? '工作流平台' : 'Workflow Platform',
         desc: isZH ? '企业级、商用友好的智能体工作流平台，用于构建下一代超级智能体（SuperAgents）。提供核心编排和 MCP 能力。' : 'Enterprise-grade, commercial-friendly agentic workflow platform for building next-generation SuperAgents. Provides core orchestration and MCP capabilities.',
         tags: isZH ? ['Java', 'Python', '工作流', 'AI', 'MCP', '多智能体'] : ['Java', 'Python', 'workflow', 'ai', 'mcp', 'multi-agent']
       },
       automation: {
         header: isZH ? '智能体自动化 (agentic-automation)' : 'agentic-automation',
+        repo: 'iflytek / astron-rpa',
+        url: 'https://github.com/iflytek/astron-rpa',
         title: isZH ? '自动化套件' : 'Automation Suite',
         desc: isZH ? '面向智能体的 RPA 套件，内置开箱即用的自动化工具。专为个人和企业打造。' : 'Agent-ready RPA suite with out-of-the-box automation tools. Built for individuals and enterprises.',
         tags: isZH ? ['Java', 'Python', '自动化', 'RPA', '低代码'] : ['Java', 'Python', 'automation', 'rpa', 'low-code']
@@ -69,30 +74,40 @@ const AstronLandscape: React.FC = () => {
       skills: {
         header: isZH ? '智能体技能 (agent-skills)' : 'agent-skills',
         official: {
+          repo: 'iflytek / iFly-Skills',
+          url: 'https://github.com/iflytek/iFly-Skills',
           title: isZH ? '讯飞官方技能库' : 'Official iFLYTEK Skills',
           desc: isZH ? '讯飞官方技能库，包含语音、OCR、翻译及多模态 AI 能力。' : 'Official collection of iFLYTEK skills for speech, OCR, translation, and multimodal AI capabilities.',
           tags: isZH ? ['Python', '语音', 'OCR', '多模态'] : ['Python', 'speech', 'ocr', 'multimodal']
         },
         registry: {
-            title: isZH ? '技能管理平台' : 'Skill Registry',
-            desc: isZH ? '私有化智能体技能管理平台。支持基于角色访问控制（RBAC）的技能包发布与版本管理。' : 'Self-hosted agent skill registry. Publish & version skill packages with RBAC.',
-            tags: isZH ? ['Java', '技能管理', '治理'] : ['Java', 'skill-manager', 'governance']
-          }
+          repo: 'iflytek / skillhub',
+          url: 'https://github.com/iflytek/skillhub',
+          title: isZH ? '技能管理平台' : 'Skill Registry',
+          desc: isZH ? '私有化智能体技能管理平台。支持基于角色访问控制（RBAC）的技能包发布与版本管理。' : 'Self-hosted agent skill registry. Publish & version skill packages with RBAC.',
+          tags: isZH ? ['Java', '技能管理', '治理'] : ['Java', 'skill-manager', 'governance']
+        }
       },
       tutorial: {
         header: isZH ? '教程指南 (tutorial)' : 'tutorial',
+        repo: 'iflytek / astronclaw-tutorial',
+        url: 'https://github.com/iflytek/astronclaw-tutorial',
         title: isZH ? '从零到一管理 AI 助理' : 'Zero to AI Assistant Management',
         desc: isZH ? '掌握 AstronClaw（云端 AI）与 Loomy（桌面 AI）的完整教程。' : 'A complete tutorial to master AstronClaw (cloud AI) & Loomy (desktop AI).',
         tags: isZH ? ['学习', '指南'] : ['learning', 'guide']
       },
       management: {
         header: isZH ? '智能体管理 (agent-management)' : 'agent-management',
+        repo: 'harnessclaw / harnessclaw',
+        url: 'https://github.com/harnessclaw/harnessclaw',
         title: isZH ? '桌面应用程序' : 'Desktop App',
         desc: isZH ? '基于 Electron 的桌面应用程序，旨在无缝管理、对话及操作 AI 智能体与技能。' : 'Electron-based desktop application designed to manage, chat with, and operate AI agents and skills seamlessly.',
         tags: isZH ? ['TypeScript', '智能体客户端', '桌面端'] : ['TypeScript', 'agent-client', 'desktop']
       },
       engine: {
         header: isZH ? '智能体引擎 (agent-engine)' : 'agent-engine',
+        repo: 'harnessclaw / harnessclaw-engine',
+        url: 'https://github.com/harnessclaw/harnessclaw-engine',
         title: 'harnessclaw-engine',
         desc: isZH ? '基于 Go 语言构建的大模型编程助手引擎，支持 WebSocket、多轮对话、工具调用及权限管理。' : 'LLM programming assistant engine built with Go, supporting WebSocket, multi-turn dialogues, tool calling, and permissions.',
         tags: isZH ? ['Go', '引擎', 'WebSocket'] : ['Go', 'engine', 'websocket']
@@ -137,12 +152,17 @@ const AstronLandscape: React.FC = () => {
 
             {/* Header */}
             <div className="h-20 flex items-center justify-between px-8 bg-transparent border-b-2 border-white/50 relative z-[100]">
-              <div className={`${isZH ? 'text-3xl' : 'text-xl'} font-black text-slate-900 flex items-center gap-4 drop-shadow-md`}>
-                <svg width={isZH ? "32" : "24"} height={isZH ? "32" : "24"} viewBox="0 0 16 16" fill="currentColor">
+              <a 
+                href={content.topicUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${isZH ? 'text-3xl' : 'text-xl'} font-black text-slate-900 flex items-center gap-4 drop-shadow-md hover:text-indigo-600 transition-colors cursor-pointer group`}
+              >
+                <svg width={isZH ? "32" : "24"} height={isZH ? "32" : "24"} viewBox="0 0 16 16" fill="currentColor" className="group-hover:scale-110 transition-transform">
                   <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
                 </svg>
                 {content.title}
-              </div>
+              </a>
               <div className="text-base text-slate-800 font-bold drop-shadow-sm whitespace-nowrap opacity-90">
                 {content.subtitle}
               </div>
@@ -191,10 +211,15 @@ const AstronLandscape: React.FC = () => {
                   </div>
                   <div className="flex-1 flex p-2">
                     <div className="w-full flex flex-col p-4 rounded-lg border border-white/80 shadow-inner bg-gradient-to-br from-sky-100/60 to-sky-200/70 text-sky-900 relative z-10">
-                      <div className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5">
+                      <a 
+                        href={content.groups.workflow.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5 hover:text-indigo-600 transition-colors"
+                      >
                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1h-8a1 1 0 00-1 1v6.708A2.486 2.486 0 014.5 9h8V1.5z" /></svg>
-                        iflytek / astron-agent
-                      </div>
+                        {content.groups.workflow.repo}
+                      </a>
                       <div className="text-2xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.workflow.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.workflow.desc}</div>
                       <div className="flex flex-wrap gap-2 mt-auto">
@@ -215,10 +240,15 @@ const AstronLandscape: React.FC = () => {
                   </div>
                   <div className="flex-1 flex p-2">
                     <div className="w-full flex flex-col p-4 rounded-lg border border-white/80 shadow-inner bg-gradient-to-br from-teal-100/60 to-teal-200/70 text-teal-900 relative z-10">
-                      <div className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5">
+                      <a 
+                        href={content.groups.automation.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5 hover:text-indigo-600 transition-colors"
+                      >
                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1h-8a1 1 0 00-1 1v6.708A2.486 2.486 0 014.5 9h8V1.5z" /></svg>
-                        iflytek / astron-rpa
-                      </div>
+                        {content.groups.automation.repo}
+                      </a>
                       <div className="text-xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.automation.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.automation.desc}</div>
                       <div className="flex flex-wrap gap-2 mt-auto">
@@ -243,10 +273,15 @@ const AstronLandscape: React.FC = () => {
                   </div>
                   <div className="flex-1 flex flex-col gap-2 p-2">
                     <div className="h-[55%] flex flex-col p-4 rounded-lg border border-white/80 shadow-inner bg-gradient-to-br from-green-100/60 to-green-200/70 text-green-900 relative z-10">
-                      <div className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5">
+                      <a 
+                        href={content.groups.skills.official.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5 hover:text-indigo-600 transition-colors"
+                      >
                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1h-8a1 1 0 00-1 1v6.708A2.486 2.486 0 014.5 9h8V1.5z" /></svg>
-                        iflytek / iFly-Skills
-                      </div>
+                        {content.groups.skills.official.repo}
+                      </a>
                       <div className="text-xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.skills.official.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.skills.official.desc}</div>
                       <div className="flex flex-wrap gap-2 mt-auto">
@@ -259,10 +294,15 @@ const AstronLandscape: React.FC = () => {
                       </div>
                     </div>
                     <div className="h-[45%] flex flex-col p-4 rounded-lg border border-white/80 shadow-inner bg-gradient-to-br from-emerald-200/60 to-emerald-300/70 text-green-900 relative z-10">
-                      <div className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5">
+                      <a 
+                        href={content.groups.skills.registry.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5 hover:text-indigo-600 transition-colors"
+                      >
                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1h-8a1 1 0 00-1 1v6.708A2.486 2.486 0 014.5 9h8V1.5z" /></svg>
-                        iflytek / skillhub
-                      </div>
+                        {content.groups.skills.registry.repo}
+                      </a>
                       <div className="text-lg font-extrabold mb-1 leading-tight tracking-tight">{content.groups.skills.registry.title}</div>
                       <div className="text-[13px] leading-relaxed font-medium opacity-90 mb-2 flex-1">{content.groups.skills.registry.desc}</div>
                       <div className="flex flex-wrap gap-2 mt-auto">
@@ -282,10 +322,15 @@ const AstronLandscape: React.FC = () => {
                   </div>
                   <div className="flex-1 flex p-2">
                     <div className="w-full flex flex-col p-4 rounded-lg border border-white/80 shadow-inner bg-gradient-to-br from-yellow-100/60 to-yellow-200/70 text-yellow-900 relative z-10">
-                      <div className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5">
+                      <a 
+                        href={content.groups.tutorial.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5 hover:text-indigo-600 transition-colors"
+                      >
                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1h-8a1 1 0 00-1 1v6.708A2.486 2.486 0 014.5 9h8V1.5z" /></svg>
-                        iflytek / astronclaw-tutorial
-                      </div>
+                        {content.groups.tutorial.repo}
+                      </a>
                       <div className="text-xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.tutorial.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.tutorial.desc}</div>
                       <div className="flex flex-wrap gap-2 mt-auto">
@@ -306,10 +351,15 @@ const AstronLandscape: React.FC = () => {
                   </div>
                   <div className="flex-1 flex p-2">
                     <div className="w-full flex flex-col p-4 rounded-lg border border-white/80 shadow-inner bg-gradient-to-br from-purple-100/60 to-purple-200/70 text-purple-900 relative z-10">
-                      <div className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5">
+                      <a 
+                        href={content.groups.management.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5 hover:text-indigo-600 transition-colors"
+                      >
                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1h-8a1 1 0 00-1 1v6.708A2.486 2.486 0 014.5 9h8V1.5z" /></svg>
-                        harnessclaw / harnessclaw
-                      </div>
+                        {content.groups.management.repo}
+                      </a>
                       <div className="text-xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.management.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.management.desc}</div>
                       <div className="flex flex-wrap gap-2 mt-auto">
@@ -329,10 +379,15 @@ const AstronLandscape: React.FC = () => {
                   </div>
                   <div className="flex-1 flex p-2">
                     <div className="w-full flex flex-col p-4 rounded-lg border border-white/80 shadow-inner bg-gradient-to-br from-indigo-100/60 to-indigo-200/70 text-indigo-900 relative z-10">
-                      <div className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5">
+                      <a 
+                        href={content.groups.engine.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5 hover:text-indigo-600 transition-colors"
+                      >
                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1h-8a1 1 0 00-1 1v6.708A2.486 2.486 0 014.5 9h8V1.5z" /></svg>
-                        harnessclaw / harnessclaw
-                      </div>
+                        {content.groups.engine.repo}
+                      </a>
                       <div className="text-xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.engine.title}</div>
                       <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.engine.desc}</div>
                       <div className="mt-auto flex items-end gap-3">
