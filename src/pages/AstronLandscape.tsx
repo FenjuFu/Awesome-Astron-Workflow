@@ -81,7 +81,7 @@ const AstronLandscape: React.FC = () => {
       },
       tutorial: {
         header: isZH ? '教程指南 (tutorial)' : 'tutorial',
-        title: isZH ? '从零到一掌握工作流' : 'Zero to Workflow',
+        title: isZH ? '从零到一管理 AI 助理' : 'Zero to AI Assistant Management',
         desc: isZH ? '掌握 AstronClaw（云端 AI）与 Loomy（桌面 AI）的完整教程。' : 'A complete tutorial to master AstronClaw (cloud AI) & Loomy (desktop AI).',
         tags: isZH ? ['学习', '指南'] : ['learning', 'guide']
       },
