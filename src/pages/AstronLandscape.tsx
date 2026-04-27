@@ -74,10 +74,10 @@ const AstronLandscape: React.FC = () => {
           tags: isZH ? ['Python', '语音', 'OCR', '多模态'] : ['Python', 'speech', 'ocr', 'multimodal']
         },
         registry: {
-          title: isZH ? '技能注册平台' : 'Skill Registry',
-          desc: isZH ? '私有化智能体技能注册表。支持基于角色访问控制（RBAC）的技能包发布与版本管理。' : 'Self-hosted agent skill registry. Publish & version skill packages with RBAC.',
-          tags: isZH ? ['Java', '技能管理', '治理'] : ['Java', 'skill-manager', 'governance']
-        }
+            title: isZH ? '技能管理平台' : 'Skill Registry',
+            desc: isZH ? '私有化智能体技能管理平台。支持基于角色访问控制（RBAC）的技能包发布与版本管理。' : 'Self-hosted agent skill registry. Publish & version skill packages with RBAC.',
+            tags: isZH ? ['Java', '技能管理', '治理'] : ['Java', 'skill-manager', 'governance']
+          }
       },
       tutorial: {
         header: isZH ? '教程指南 (tutorial)' : 'tutorial',
