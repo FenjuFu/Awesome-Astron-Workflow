@@ -26,7 +26,7 @@ const PRIZES: Prize[] = [
     id: 'astronclaw_membership',
     nameKey: 'redeem.prize.astronclaw',
     descKey: 'redeem.prize.astronclaw.desc',
-    points: 7,
+    points: 15,
     icon: <Gift className="h-6 w-6 text-indigo-600" />,
   },
 ];
