@@ -19,6 +19,7 @@ const translations = {
     'nav.community': 'Community Vibe Vault',
     'nav.about': 'Stats',
     'nav.activities': 'Activities',
+    'nav.luckyDraw': 'Lucky Draw',
     'nav.landscape': 'Landscape',
     'landscape.includeQR': 'Include QR Code',
     'nav.contribute': 'Contribute',
@@ -400,7 +401,22 @@ const translations = {
     'redeem.form.phone': 'Phone Number',
     'redeem.form.email': 'Email Address',
     'redeem.form.confirm': 'Confirm Redemption',
-    'redeem.points.insufficient': 'Insufficient points'
+    'redeem.points.insufficient': 'Insufficient points',
+
+    // Lucky Draw
+    'lucky.title': 'Astron Lucky Draw',
+    'lucky.subtitle': 'Try your luck and win amazing prizes!',
+    'lucky.start': 'Start Drawing',
+    'lucky.drawing': 'Drawing...',
+    'lucky.result.win': 'Congratulations! You won {prize}!',
+    'lucky.result.lose': 'Better luck next time!',
+    'lucky.history': 'Draw History',
+    'lucky.rules': 'Rules',
+    'lucky.rules.content': '1. Each draw costs 10 points. 2. Prizes will be issued within 24 hours. 3. Good luck!',
+    'lucky.prize.points': 'Points',
+    'lucky.prize.swag': 'Astron Swag',
+    'lucky.prize.membership': 'AstronClaw Membership',
+    'lucky.prize.thanks': 'Thanks for participating'
   },
   'zh-CN': {
     // Navigation
@@ -410,6 +426,7 @@ const translations = {
     'nav.community': '社区氛围宝库',
     'nav.about': '统计',
     'nav.activities': '活动',
+    'nav.luckyDraw': '幸运抽奖',
     'nav.landscape': '全景图',
     'landscape.includeQR': '包含二维码',
     'nav.contribute': '贡献',
@@ -790,7 +807,22 @@ const translations = {
     'redeem.form.phone': '手机号',
     'redeem.form.email': '邮箱',
     'redeem.form.confirm': '确认兑换',
-    'redeem.points.insufficient': '积分不足'
+    'redeem.points.insufficient': '积分不足',
+
+    // Lucky Draw
+    'lucky.title': 'Astron 幸运抽奖',
+    'lucky.subtitle': '试试你的运气，赢取精彩奖品！',
+    'lucky.start': '开始抽奖',
+    'lucky.drawing': '抽奖中...',
+    'lucky.result.win': '恭喜你！你赢得了 {prize}！',
+    'lucky.result.lose': '下次好运！',
+    'lucky.history': '抽奖记录',
+    'lucky.rules': '活动规则',
+    'lucky.rules.content': '1. 每次抽奖消耗 10 积分。2. 奖品将在 24 小时内发放。3. 祝你好运！',
+    'lucky.prize.points': '积分',
+    'lucky.prize.swag': 'Astron 周边',
+    'lucky.prize.membership': 'AstronClaw 会员',
+    'lucky.prize.thanks': '谢谢参与'
   }
 };
 
