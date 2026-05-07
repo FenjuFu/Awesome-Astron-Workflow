@@ -6,6 +6,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import ActivityList from './pages/activities/ActivityList';
 import ActivityDetail from './pages/activities/ActivityDetail';
 import LuckyDraw from './pages/activities/LuckyDraw';
+import LuckyDrawAdmin from './pages/activities/LuckyDrawAdmin';
 import RegistrationForm from './pages/activities/RegistrationForm';
 import RegistrationSuccess from './pages/activities/RegistrationSuccess';
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -26,6 +27,7 @@ function App() {
           <Route path="/stats/admin" element={<RedemptionManage />} />
           <Route path="/activities" element={<ActivityList />} />
           <Route path="/activities/lucky_draw" element={<LuckyDraw />} />
+          <Route path="/activities/lucky_draw/admin" element={<LuckyDrawAdmin />} />
           <Route path="/activities/admin" element={<AdminDashboard />} />
           <Route path="/activities/:activityKey" element={<ActivityDetail />} />
           <Route path="/register/:activityKey" element={<RegistrationForm />} />
