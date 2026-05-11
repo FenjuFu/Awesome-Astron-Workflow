@@ -406,6 +406,8 @@ const translations = {
     'redeem.error': 'Failed to submit redemption.',
     'redeem.form.phone': 'Phone Number',
     'redeem.form.email': 'Email Address',
+    'redeem.form.name': 'Recipient Name',
+    'redeem.form.address': 'Shipping Address',
     'redeem.form.confirm': 'Confirm Redemption',
     'redeem.points.insufficient': 'Insufficient points',
 
@@ -818,6 +820,8 @@ const translations = {
     'redeem.error': '兑换提交失败。',
     'redeem.form.phone': '手机号',
     'redeem.form.email': '邮箱',
+    'redeem.form.name': '收件昵称',
+    'redeem.form.address': '地址',
     'redeem.form.confirm': '确认兑换',
     'redeem.points.insufficient': '积分不足',
 

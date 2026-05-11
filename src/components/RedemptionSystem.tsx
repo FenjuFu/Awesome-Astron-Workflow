@@ -48,7 +48,7 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [selectedPrize, setSelectedPrize] = useState<Prize | null>(null);
-  const [formData, setFormData] = useState({ phone: '', email: '' });
+  const [formData, setFormData] = useState({ phone: '', email: '', name: '', address: '' });
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   const spentPoints = redemptions
@@ -96,7 +96,7 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
       if (res.ok) {
         setMessage({ type: 'success', text: t('redeem.success') });
         setSelectedPrize(null);
-        setFormData({ phone: '', email: '' });
+        setFormData({ phone: '', email: '', name: '', address: '' });
         fetchRedemptions();
       } else {
         setMessage({ type: 'error', text: t('redeem.error') });
@@ -203,6 +203,26 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
                     className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">{t('redeem.form.name')}</label>
+                  <input 
+                    type="text" 
+                    required
+                    className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">{t('redeem.form.address')}</label>
+                  <textarea 
+                    required
+                    rows={2}
+                    className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none resize-none"
+                    value={formData.address}
+                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   />
                 </div>
                 <button

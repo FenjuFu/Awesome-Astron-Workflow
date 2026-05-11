@@ -24,6 +24,8 @@ interface Redemption {
   points_spent: number;
   phone: string;
   email: string;
+  recipient_name: string;
+  address: string;
   status: 'pending' | 'issued' | 'rejected';
   created_at: string;
 }
@@ -109,7 +111,9 @@ const RedemptionManage: React.FC = () => {
   const filteredRedemptions = redemptions.filter(r => 
     r.github_login.toLowerCase().includes(searchTerm.toLowerCase()) ||
     r.phone.includes(searchTerm) ||
-    r.email.toLowerCase().includes(searchTerm.toLowerCase())
+    r.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (r.recipient_name && r.recipient_name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (r.address && r.address.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   if (!isAuthenticated) {
@@ -201,6 +205,7 @@ const RedemptionManage: React.FC = () => {
                   <tr>
                     <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">申请人</th>
                     <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">联系方式</th>
+                    <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">收货信息</th>
                     <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">兑换内容</th>
                     <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">消耗积分</th>
                     <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">状态</th>
@@ -210,14 +215,14 @@ const RedemptionManage: React.FC = () => {
                 <tbody className="divide-y divide-gray-100">
                   {loading ? (
                     <tr>
-                      <td colSpan={6} className="px-6 py-12 text-center">
+                      <td colSpan={7} className="px-6 py-12 text-center">
                         <Loader2 className="w-8 h-8 animate-spin text-indigo-600 mx-auto" />
                         <p className="text-gray-400 mt-2">加载数据中...</p>
                       </td>
                     </tr>
                   ) : filteredRedemptions.length === 0 ? (
                     <tr>
-                      <td colSpan={6} className="px-6 py-12 text-center">
+                      <td colSpan={7} className="px-6 py-12 text-center">
                         <p className="text-gray-400">暂无兑换记录</p>
                       </td>
                     </tr>
@@ -248,6 +253,20 @@ const RedemptionManage: React.FC = () => {
                               {r.email}
                             </div>
                           </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          {r.recipient_name || r.address ? (
+                            <div className="space-y-1">
+                              {r.recipient_name && (
+                                <div className="text-sm font-medium text-gray-900">{r.recipient_name}</div>
+                              )}
+                              {r.address && (
+                                <div className="text-xs text-gray-500 max-w-[200px] break-words">{r.address}</div>
+                              )}
+                            </div>
+                          ) : (
+                            <span className="text-xs text-gray-400 italic">无需物流</span>
+                          )}
                         </td>
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-2">

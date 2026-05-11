@@ -100,7 +100,7 @@ async function handleGetRedemptions(githubLogin, res) {
 }
 
 async function handleCreateRedemption(githubLogin, body, res) {
-  const { prizeId, prizeName, pointsSpent, phone, email } = body;
+  const { prizeId, prizeName, pointsSpent, phone, email, name, address } = body;
 
   if (!prizeId || !prizeName || !pointsSpent || !phone || !email) {
     return res.status(400).json({ error: 'Missing required fields' });
@@ -117,6 +117,8 @@ async function handleCreateRedemption(githubLogin, body, res) {
           points_spent: pointsSpent,
           phone,
           email,
+          recipient_name: name,
+          address,
           status: 'pending',
         },
       ])
