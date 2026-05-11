@@ -170,12 +170,41 @@ async function handleContributions(request, response) {
   const pushDate = (target, key, value) => { if (value && target[key]) target[key].push(value); };
   const isDateInRange = (value, fromDate, toDate) => { if (!value) return false; const d = new Date(value); return d >= fromDate && d <= toDate; };
 
-  const userResponse = await fetch('https://api.github.com/user', {
-    headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' },
-  });
-  if (!userResponse.ok) return response.status(userResponse.status).json({ error: 'Failed to fetch user' });
-  const userData = await userResponse.json();
-  const login = userData.login;
+  let userData;
+  let login = request.query.login;
+
+  // Admin check
+  const adminPassword = process.env.VITE_ADMIN_PASSWORD;
+  const authHeader = request.headers['x-admin-password'];
+  const isAdmin = adminPassword && authHeader === adminPassword;
+
+  if (login && !isAdmin) {
+    return response.status(403).json({ error: 'Forbidden: Only admin can fetch other user contributions' });
+  }
+
+  if (token) {
+    const userResponse = await fetch('https://api.github.com/user', {
+      headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' },
+    });
+    if (!userResponse.ok) return response.status(userResponse.status).json({ error: 'Failed to fetch user' });
+    userData = await userResponse.json();
+    if (!login) {
+      login = userData.login;
+    } else {
+      // If admin is fetching another user, we still want the target user's basic info
+      const targetUserRes = await fetch(`https://api.github.com/users/${login}`, {
+        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' },
+      });
+      if (targetUserRes.ok) {
+        userData = await targetUserRes.json();
+      }
+    }
+  } else if (isAdmin && login) {
+    // We need a token even if admin is authenticated via password
+    return response.status(401).json({ error: 'Unauthorized: GitHub token required' });
+  } else {
+    return response.status(401).json({ error: 'Unauthorized' });
+  }
 
   const now = new Date();
   const oneYearAgo = new Date(); oneYearAgo.setFullYear(now.getFullYear() - 1);

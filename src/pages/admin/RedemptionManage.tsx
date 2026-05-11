@@ -12,9 +12,11 @@ import {
   User,
   Mail,
   Phone,
-  Gift
+  Gift,
+  BarChart3
 } from 'lucide-react';
 import Navigation from '../../components/Navigation';
+import ContributionDetailModal from '../../components/admin/ContributionDetailModal';
 
 interface Redemption {
   id: string;
@@ -38,6 +40,7 @@ const RedemptionManage: React.FC = () => {
   const [redemptions, setRedemptions] = useState<Redemption[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [selectedLogin, setSelectedLogin] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -235,7 +238,16 @@ const RedemptionManage: React.FC = () => {
                               <User className="w-4 h-4" />
                             </div>
                             <div>
-                              <div className="font-bold text-gray-900">{r.github_login}</div>
+                              <div className="flex items-center gap-2">
+                                <div className="font-bold text-gray-900">{r.github_login}</div>
+                                <button 
+                                  onClick={() => setSelectedLogin(r.github_login)}
+                                  className="p-1 text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+                                  title="查看贡献详情"
+                                >
+                                  <BarChart3 className="w-3 h-3" />
+                                </button>
+                              </div>
                               <div className="text-[10px] text-gray-400">
                                 {new Date(r.created_at).toLocaleString()}
                               </div>
@@ -322,6 +334,13 @@ const RedemptionManage: React.FC = () => {
           </div>
         </div>
       </main>
+
+      {selectedLogin && (
+        <ContributionDetailModal 
+          login={selectedLogin} 
+          onClose={() => setSelectedLogin(null)} 
+        />
+      )}
     </div>
   );
 };
