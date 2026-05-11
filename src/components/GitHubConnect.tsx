@@ -175,10 +175,10 @@ const GitHubConnect: React.FC = () => {
     window.location.reload();
   };
 
-  const totalContributions = data?.contribution_dates ? 
+  const totalContributions = (data?.contribution_dates ? 
     Object.values(data.contribution_dates).reduce((total, repoDates) => {
       return total + Object.values(repoDates).reduce((repoTotal, dates) => repoTotal + dates.length, 0);
-    }, 0) : 0;
+    }, 0) : 0) + (data?.astron?.agent?.workflows || 0) + (data?.astron?.rpa?.tasks || 0);
 
   const [activeTab, setActiveTab] = useState<'stats' | 'redeem'>('stats');
 

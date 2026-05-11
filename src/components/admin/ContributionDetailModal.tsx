@@ -160,10 +160,10 @@ const ContributionDetailModal: React.FC<Props> = ({ login, onClose }) => {
     fetchData();
   }, [login]);
 
-  const totalContributions = data?.contribution_dates ? 
+  const totalContributions = (data?.contribution_dates ? 
     Object.values(data.contribution_dates).reduce((total, repoDates) => {
       return total + Object.values(repoDates).reduce((repoTotal, dates) => repoTotal + dates.length, 0);
-    }, 0) : 0;
+    }, 0) : 0) + (data?.astron?.agent?.workflows || 0) + (data?.astron?.rpa?.tasks || 0);
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
@@ -243,6 +243,32 @@ const ContributionDetailModal: React.FC<Props> = ({ login, onClose }) => {
                   </div>
                 </div>
               </div>
+
+              {/* Astron Platform Stats */}
+              {data.astron && (data.astron.agent.workflows > 0 || data.astron.rpa.tasks > 0) && (
+                <div className="border border-indigo-100 rounded-xl overflow-hidden shadow-sm bg-indigo-50/30">
+                  <div className="bg-indigo-50 px-4 py-3 border-b border-indigo-100 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4 text-indigo-600" />
+                      <span className="font-bold text-gray-900">Astron 平台贡献</span>
+                    </div>
+                  </div>
+                  <div className="p-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <StatBox 
+                      label="Agent Workflows" 
+                      count={data.astron.agent.workflows} 
+                      icon={<ShieldCheck className="w-4 h-4" />}
+                      color="purple"
+                    />
+                    <StatBox 
+                      label="RPA Tasks" 
+                      count={data.astron.rpa.tasks} 
+                      icon={<ShieldCheck className="w-4 h-4" />}
+                      color="green"
+                    />
+                  </div>
+                </div>
+              )}
 
               {/* Repo Stats */}
               <div className="space-y-6">
