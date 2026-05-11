@@ -29,6 +29,13 @@ const PRIZES: Prize[] = [
     points: 15,
     icon: <Gift className="h-6 w-6 text-indigo-600" />,
   },
+  {
+    id: 'bladeless_fan',
+    nameKey: 'redeem.prize.fan',
+    descKey: 'redeem.prize.fan.desc',
+    points: 15,
+    icon: <img src="/images/prizes/bladeless-fan.jpg" alt="Bladeless Fan" className="h-10 w-10 object-cover rounded-md" />,
+  },
 ];
 
 interface RedemptionSystemProps {
