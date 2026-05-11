@@ -348,6 +348,10 @@ const translations = {
     'swag.redPackets': 'Astron Horse Year Red Envelope / Hóngbāo',
     'swag.event': 'Astron Event Swag',
     'swag.download': 'Download',
+    'community.forGood': 'Astron for Good',
+    'community.forGood.subtitle': 'Showcasing Astron charity and community impact.',
+    'community.forGood.activity1.title': 'Adopt a fruit tree, kindness will grow',
+    'community.forGood.viewDetails': 'View Details',
 
     'community.channels.title': 'Communication Channels',
     'community.channels.subtitle': 'Connect with us and the community across different platforms.',
@@ -754,6 +758,10 @@ const translations = {
     'swag.redPackets': 'Astron 星辰马年红包 / Hóngbāo',
     'swag.event': 'Astron 活动周边',
     'swag.download': '下载',
+    'community.forGood': 'Astron for Good 公益活动',
+    'community.forGood.subtitle': '展示 Astron 社区的公益活动与社会影响力。',
+    'community.forGood.activity1.title': '认养一棵果树，善意会长大',
+    'community.forGood.viewDetails': '查看详情',
 
     'community.channels.title': '沟通渠道',
     'community.channels.subtitle': '在不同平台与我们和社区建立联系。',

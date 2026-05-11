@@ -1,5 +1,5 @@
 import React from 'react';
-import { Music, Image as ImageIcon, Play, Pause, Download, Gift, ChevronLeft, ChevronRight, Repeat, Repeat1, Shuffle, SkipBack, SkipForward, Video, VolumeX, Volume2, Github, MessageCircle, MessageSquare, ExternalLink } from 'lucide-react';
+import { Music, Image as ImageIcon, Play, Pause, Download, Gift, ChevronLeft, ChevronRight, Repeat, Repeat1, Shuffle, SkipBack, SkipForward, Video, VolumeX, Volume2, Github, MessageCircle, MessageSquare, ExternalLink, Heart } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const CommunityVibeVault: React.FC = () => {
@@ -204,6 +204,15 @@ const CommunityVibeVault: React.FC = () => {
     { id: 4, src: '/swag/event/4Y4A6319.JPG', alt: 'Event Swag 4' },
     { id: 5, src: '/swag/event/4Y4A6323.JPG', alt: 'Event Swag 5' },
     { id: 6, src: '/swag/event/4Y4A6324.JPG', alt: 'Event Swag 6' },
+  ];
+
+  const forGoodActivities = [
+    {
+      id: 1,
+      title: t('community.forGood.activity1.title'),
+      image: '/images/for-good/astron-for-good-1.jpg',
+      link: 'https://mp.weixin.qq.com/s/M6e02YKR1FbM9Oq3SqzKKg'
+    }
   ];
 
   return (
@@ -466,6 +475,44 @@ const CommunityVibeVault: React.FC = () => {
               </div>
             </div>
             <audio ref={audioRef} onEnded={handleTrackEnd} />
+          </div>
+
+          {/* Astron for Good Section */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 lg:col-span-2">
+            <div className="flex items-center mb-6">
+              <Heart className="h-8 w-8 text-red-500 mr-3" />
+              <h3 className="text-2xl font-bold text-gray-900">{t('community.forGood')}</h3>
+            </div>
+            <p className="text-gray-600 mb-8">{t('community.forGood.subtitle')}</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {forGoodActivities.map((activity) => (
+                <a 
+                  key={activity.id}
+                  href={activity.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-indigo-50 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
+                >
+                  <div className="aspect-[16/9] overflow-hidden">
+                    <img 
+                      src={activity.image} 
+                      alt={activity.title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-6 flex-grow flex flex-col justify-between">
+                    <h4 className="text-lg font-bold text-gray-900 group-hover:text-indigo-600 transition-colors mb-2">
+                      {activity.title}
+                    </h4>
+                    <div className="flex items-center text-indigo-600 text-sm font-medium">
+                      <span>{t('community.forGood.viewDetails')}</span>
+                      <ExternalLink className="h-4 w-4 ml-2" />
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Communication Channels Section */}
