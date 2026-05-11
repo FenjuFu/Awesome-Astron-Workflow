@@ -2,9 +2,9 @@ import cookie from 'cookie';
 import { supabaseAdmin } from './_lib/supabase-admin.js';
 
 export default async function handler(req, res) {
-  const adminPassword = process.env.VITE_ADMIN_PASSWORD || 'astron-workflow-admin';
+  const adminPassword = process.env.VITE_ADMIN_PASSWORD;
   const authHeader = req.headers['x-admin-password'];
-  const isAdmin = authHeader === adminPassword;
+  const isAdmin = adminPassword && authHeader === adminPassword;
 
   if (isAdmin) {
     if (req.method === 'GET') {

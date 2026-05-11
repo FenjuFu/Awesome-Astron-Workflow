@@ -50,9 +50,9 @@ const RedemptionManage: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'astron-workflow-admin';
+    const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
     
-    if (password === adminPassword) {
+    if (adminPassword && password === adminPassword) {
       setIsAuthenticated(true);
       sessionStorage.setItem('stats_admin_auth', 'true');
       setError('');
@@ -65,7 +65,7 @@ const RedemptionManage: React.FC = () => {
   const fetchRedemptions = async () => {
     try {
       setLoading(true);
-      const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'astron-workflow-admin';
+      const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
       const res = await fetch('/api/redemptions', {
         headers: {
           'x-admin-password': adminPassword
@@ -87,7 +87,7 @@ const RedemptionManage: React.FC = () => {
   const updateStatus = async (id: string, status: 'issued' | 'rejected') => {
     try {
       setUpdatingId(id);
-      const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'astron-workflow-admin';
+      const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
       const res = await fetch('/api/redemptions', {
         method: 'PATCH',
         headers: {

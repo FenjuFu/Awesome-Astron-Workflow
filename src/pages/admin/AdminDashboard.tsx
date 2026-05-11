@@ -23,7 +23,7 @@ const AdminDashboard: React.FC = () => {
     e.preventDefault();
     const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
     
-    if (password === adminPassword) {
+    if (adminPassword && password === adminPassword) {
       setIsAuthenticated(true);
       sessionStorage.setItem('admin_auth', 'true');
       setError('');

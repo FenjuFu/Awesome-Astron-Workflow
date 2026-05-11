@@ -77,7 +77,8 @@ const LuckyDrawAdmin: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'astron-workflow-admin') {
+    const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
+    if (adminPassword && password === adminPassword) {
       setIsAuthenticated(true);
       setError('');
     } else {
