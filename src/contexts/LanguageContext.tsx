@@ -350,7 +350,7 @@ const translations = {
     'swag.download': 'Download',
     'community.forGood': 'Astron for Good',
     'community.forGood.subtitle': 'Showcasing Astron charity and community impact.',
-    'community.forGood.activity1.title': 'Adopt a fruit tree, kindness will grow',
+    'community.forGood.activity1.title': 'Huaixin Farm Grapevine Adoption Charity Project | Caring for Children with Autism',
     'community.forGood.viewDetails': 'View Details',
 
     'community.channels.title': 'Communication Channels',
@@ -760,7 +760,7 @@ const translations = {
     'swag.download': '下载',
     'community.forGood': 'Astron for Good 公益活动',
     'community.forGood.subtitle': '展示 Astron 社区的公益活动与社会影响力。',
-    'community.forGood.activity1.title': '认养一棵果树，善意会长大',
+    'community.forGood.activity1.title': '怀心农场认养葡萄树公益项目 | 关爱星星的孩子',
     'community.forGood.viewDetails': '查看详情',
 
     'community.channels.title': '沟通渠道',
