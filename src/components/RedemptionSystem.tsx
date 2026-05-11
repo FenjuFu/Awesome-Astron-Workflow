@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Gift, History, CheckCircle2, Clock, XCircle, Send, Loader2 } from 'lucide-react';
+import { Gift, History, CheckCircle2, Clock, XCircle, Send, Loader2, ZoomIn, X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface Redemption {
@@ -19,6 +19,7 @@ interface Prize {
   descKey: string;
   points: number;
   icon: React.ReactNode;
+  imageUrl?: string;
 }
 
 const PRIZES: Prize[] = [
@@ -35,6 +36,7 @@ const PRIZES: Prize[] = [
     descKey: 'redeem.prize.fan.desc',
     points: 15,
     icon: <img src="/images/prizes/bladeless-fan.jpg" alt="Bladeless Fan" className="h-10 w-10 object-cover rounded-md" />,
+    imageUrl: "/images/prizes/bladeless-fan.jpg",
   },
 ];
 
@@ -48,6 +50,7 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [selectedPrize, setSelectedPrize] = useState<Prize | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [formData, setFormData] = useState({ phone: '', email: '', name: '', address: '' });
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
@@ -152,8 +155,20 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
                 onClick={() => setSelectedPrize(prize)}
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-indigo-100 rounded-lg">
+                  <div className="p-3 bg-indigo-100 rounded-lg relative group">
                     {prize.icon}
+                    {prize.imageUrl && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setPreviewImage(prize.imageUrl!);
+                        }}
+                        className="absolute -top-2 -right-2 p-1 bg-white rounded-full shadow-md border border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-indigo-50"
+                        title="View large image"
+                      >
+                        <ZoomIn className="h-3.5 w-3.5 text-indigo-600" />
+                      </button>
+                    )}
                   </div>
                   <div className="flex-grow">
                     <div className="flex justify-between items-start">
@@ -282,6 +297,31 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      )}
+
+      {/* Image Preview Modal */}
+      {previewImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={() => setPreviewImage(null)}
+        >
+          <div 
+            className="relative max-w-4xl max-h-[90vh] bg-white rounded-2xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setPreviewImage(null)}
+              className="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur-md rounded-full text-gray-800 hover:bg-white transition-colors z-10 shadow-lg"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <img 
+              src={previewImage} 
+              alt="Prize Preview" 
+              className="w-full h-auto max-h-[85vh] object-contain"
+            />
           </div>
         </div>
       )}
