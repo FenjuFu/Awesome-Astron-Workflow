@@ -234,11 +234,22 @@ async function handleContributions(request, response) {
     contributionDatesByRepo[repo] = createEmptyContributionDates();
   });
 
+  const delay = ms => new Promise(r => setTimeout(r, ms));
   const search = async (q) => {
-    const res = await fetch(`https://api.github.com/search/issues?q=${encodeURIComponent(q)}&per_page=100`, {
+    let res = await fetch(`https://api.github.com/search/issues?q=${encodeURIComponent(q)}&per_page=100`, {
       headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' }
     });
-    if (!res.ok) throw new Error('Search failed');
+    if (res.status === 403 || res.status === 429) {
+      await delay(2000);
+      res = await fetch(`https://api.github.com/search/issues?q=${encodeURIComponent(q)}&per_page=100`, {
+        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' }
+      });
+    }
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error(`Search failed for ${q}: ${res.status} ${errText}`);
+      return { total_count: 0, items: [] };
+    }
     return res.json();
   };
 
