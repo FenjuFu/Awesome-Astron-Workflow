@@ -255,7 +255,7 @@ async function handleContributions(request, response) {
 
   promises.push((async () => {
     const starred = await fetchAllPages(async (p) => {
-      const r = await fetch(`https://api.github.com/user/starred?sort=created&direction=desc&per_page=100&page=${p}`, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3.star+json' } });
+      const r = await fetch(`https://api.github.com/users/${login}/starred?sort=created&direction=desc&per_page=100&page=${p}`, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3.star+json' } });
       return { items: await r.json(), hasNext: hasNextPage(r.headers.get('link')) };
     });
     starred.forEach(s => {
@@ -266,7 +266,7 @@ async function handleContributions(request, response) {
 
   promises.push((async () => {
     const userRepos = await fetchAllPages(async (p) => {
-      const r = await fetch(`https://api.github.com/user/repos?affiliation=owner&sort=created&direction=desc&per_page=100&page=${p}`, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' } });
+      const r = await fetch(`https://api.github.com/users/${login}/repos?type=owner&sort=created&direction=desc&per_page=100&page=${p}`, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' } });
       return { items: await r.json(), hasNext: hasNextPage(r.headers.get('link')) };
     });
     const forks = userRepos.filter(r => r.fork);
