@@ -6,10 +6,19 @@ import { Gift, Trophy, Info, Loader2, Calendar, ArrowRight, Camera, Hash, Lock, 
 import { supabase } from '../../lib/supabase';
 import { format } from 'date-fns';
 
+interface PrizeConfig {
+  id: number;
+  name: string;
+  quantity: number;
+  icon: string;
+  color: string;
+}
+
 interface LuckyDrawConfig {
   id: string;
   title: string;
   description: string;
+  prizes: PrizeConfig[];
   draw_time: string;
   is_active: boolean;
 }
@@ -17,8 +26,16 @@ interface LuckyDrawConfig {
 interface Winner {
   id: string;
   number: number;
+  prize_name: string;
   created_at: string;
 }
+
+const ICON_MAP: Record<string, React.ReactNode> = {
+  'Gift': <Gift className="h-8 w-8" />,
+  'Trophy': <Trophy className="h-8 w-8" />,
+  'Coins': <Coins className="h-8 w-8" />,
+  'Info': <Info className="h-8 w-8" />,
+};
 
 const LuckyDraw: React.FC = () => {
   const { language, t } = useLanguage();
@@ -38,6 +55,7 @@ const LuckyDraw: React.FC = () => {
   
   const [isDrawing, setIsDrawing] = useState(false);
   const [currentDrawNumber, setCurrentDrawNumber] = useState<number | null>(null);
+  const [selectedPrizeTier, setSelectedPrizeTier] = useState<number>(0);
 
   useEffect(() => {
     fetchActiveDraw();
@@ -181,7 +199,7 @@ const LuckyDraw: React.FC = () => {
   };
 
   const handleDrawWinner = async () => {
-    if (!config || isDrawing || participantsCount === 0) return;
+    if (!config || isDrawing || participantsCount === 0 || !config.prizes || config.prizes.length === 0) return;
     
     // Fetch all participants
     const { data: participants, error: pError } = await supabase
@@ -217,19 +235,21 @@ const LuckyDraw: React.FC = () => {
         // Pick final winner
         const finalWinner = eligibleParticipants[Math.floor(Math.random() * eligibleParticipants.length)];
         setCurrentDrawNumber(finalWinner.number);
-        saveWinner(finalWinner.id, finalWinner.number);
+        const currentPrize = config.prizes[selectedPrizeTier];
+        saveWinner(finalWinner.id, finalWinner.number, currentPrize.name);
       }
     }, interval);
   };
 
-  const saveWinner = async (participantId: string, number: number) => {
+  const saveWinner = async (participantId: string, number: number, prizeName: string) => {
     try {
       const { error } = await supabase
         .from('lucky_draw_winners')
         .insert([{
           draw_id: config?.id,
           participant_id: participantId,
-          number: number
+          number: number,
+          prize_name: prizeName
         }]);
         
       if (error) throw error;
@@ -373,6 +393,31 @@ const LuckyDraw: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
               <div className="flex items-center gap-3 mb-4">
+                <Gift className="h-6 w-6 text-indigo-600" />
+                <h2 className="text-lg font-bold text-gray-900">{language === 'zh-CN' ? '奖项设置' : 'Prizes'}</h2>
+              </div>
+              <div className="space-y-3">
+                {config.prizes?.map((prize, idx) => {
+                  const Icon = ICON_MAP[prize.icon] || <Gift className="h-5 w-5" />;
+                  return (
+                    <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                      <div className="flex items-center gap-3">
+                        <div className={`p-2 rounded-lg ${prize.color || 'bg-gray-100 text-gray-600'}`}>
+                          {React.cloneElement(Icon as React.ReactElement, { className: 'h-5 w-5' })}
+                        </div>
+                        <span className="font-bold text-gray-900">{prize.name}</span>
+                      </div>
+                      <span className="text-sm font-bold text-gray-500 bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">
+                        {prize.quantity} {language === 'zh-CN' ? '名' : 'Winners'}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+              <div className="flex items-center gap-3 mb-4">
                 <Info className="h-6 w-6 text-indigo-600" />
                 <h2 className="text-lg font-bold text-gray-900">{t('lucky.rules')}</h2>
               </div>
@@ -413,14 +458,29 @@ const LuckyDraw: React.FC = () => {
                     {currentDrawNumber !== null ? currentDrawNumber.toString().padStart(3, '0') : '---'}
                   </div>
                   
-                  {isAdmin && (
-                    <button
-                      onClick={handleDrawWinner}
-                      disabled={isDrawing || participantsCount === 0}
-                      className="mt-8 bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-3 rounded-xl font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed w-full shadow-[0_0_20px_rgba(234,179,8,0.3)]"
-                    >
-                      {isDrawing ? 'Drawing...' : 'Draw Winner'}
-                    </button>
+                  {isAdmin && config.prizes && config.prizes.length > 0 && (
+                    <div className="mt-8 bg-gray-800 p-4 rounded-xl text-left">
+                      <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Select Prize to Draw</label>
+                      <select 
+                        value={selectedPrizeTier}
+                        onChange={(e) => setSelectedPrizeTier(Number(e.target.value))}
+                        disabled={isDrawing}
+                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none mb-4"
+                      >
+                        {config.prizes.map((prize, idx) => (
+                          <option key={idx} value={idx}>
+                            {prize.name} ({prize.quantity} total)
+                          </option>
+                        ))}
+                      </select>
+                      <button
+                        onClick={handleDrawWinner}
+                        disabled={isDrawing || participantsCount === 0}
+                        className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-3 rounded-xl font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed w-full shadow-[0_0_20px_rgba(234,179,8,0.3)]"
+                      >
+                        {isDrawing ? 'Drawing...' : `Draw ${config.prizes[selectedPrizeTier]?.name || 'Winner'}`}
+                      </button>
+                    </div>
                   )}
                 </div>
               )}
@@ -442,9 +502,14 @@ const LuckyDraw: React.FC = () => {
                             {winner.number.toString().padStart(3, '0')}
                           </span>
                         </div>
-                        <div className="flex items-center gap-2 text-xs text-gray-500">
-                          <CheckCircle2 className="h-4 w-4 text-green-500" />
-                          {format(new Date(winner.created_at), 'HH:mm:ss')}
+                        <div className="flex flex-col items-end">
+                          <span className="text-sm font-bold text-gray-900 bg-yellow-100 px-2 py-0.5 rounded text-yellow-800 mb-1">
+                            {winner.prize_name}
+                          </span>
+                          <div className="flex items-center gap-2 text-xs text-gray-500">
+                            <CheckCircle2 className="h-4 w-4 text-green-500" />
+                            {format(new Date(winner.created_at), 'HH:mm:ss')}
+                          </div>
                         </div>
                       </li>
                     ))}

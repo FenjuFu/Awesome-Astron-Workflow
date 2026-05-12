@@ -107,7 +107,11 @@ const LuckyDrawAdmin: React.FC = () => {
     setCurrentDraw({
       title: '',
       description: '',
-      prizes: [],
+      prizes: [
+        { id: 0, name: 'First Prize', quantity: 1, icon: 'Trophy', color: 'bg-yellow-100 text-yellow-600' },
+        { id: 1, name: 'Second Prize', quantity: 2, icon: 'Gift', color: 'bg-purple-100 text-purple-600' },
+        { id: 2, name: 'Third Prize', quantity: 5, icon: 'Coins', color: 'bg-blue-100 text-blue-600' }
+      ],
       draw_time: new Date().toISOString().slice(0, 16),
       is_active: true
     });
@@ -138,6 +142,11 @@ const LuckyDrawAdmin: React.FC = () => {
   const handleSave = async () => {
     if (!currentDraw.title) {
       alert('Title is required');
+      return;
+    }
+
+    if (currentDraw.prizes?.some(p => !p.name || p.quantity <= 0)) {
+      alert('Please fill in all prize names and ensure quantities are greater than 0');
       return;
     }
 
@@ -173,6 +182,30 @@ const LuckyDrawAdmin: React.FC = () => {
     } finally {
       setSaving(false);
     }
+  };
+
+  const updatePrize = (index: number, field: keyof PrizeConfig, value: any) => {
+    const newPrizes = [...(currentDraw.prizes || [])];
+    newPrizes[index] = { ...newPrizes[index], [field]: value };
+    setCurrentDraw({ ...currentDraw, prizes: newPrizes });
+  };
+
+  const addPrize = () => {
+    const newPrizes = [...(currentDraw.prizes || [])];
+    newPrizes.push({
+      id: newPrizes.length,
+      name: '',
+      quantity: 1,
+      icon: 'Gift',
+      color: 'bg-blue-100 text-blue-600'
+    });
+    setCurrentDraw({ ...currentDraw, prizes: newPrizes });
+  };
+
+  const removePrize = (index: number) => {
+    const newPrizes = [...(currentDraw.prizes || [])];
+    newPrizes.splice(index, 1);
+    setCurrentDraw({ ...currentDraw, prizes: newPrizes });
   };
 
   if (!isAuthenticated) {
@@ -295,6 +328,91 @@ const LuckyDrawAdmin: React.FC = () => {
                     </button>
                     <span className="text-sm font-semibold text-gray-700">Active Status</span>
                   </div>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                    <Gift className="h-5 w-5 text-indigo-600" />
+                    Prizes Configuration
+                  </h3>
+                  <button
+                    onClick={addPrize}
+                    className="flex items-center gap-1 text-sm font-bold text-indigo-600 hover:text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-lg transition-colors"
+                  >
+                    <Plus className="h-4 w-4" />
+                    Add Prize
+                  </button>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {currentDraw.prizes?.map((prize, index) => (
+                    <div key={index} className="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3 relative group">
+                      <button
+                        onClick={() => removePrize(index)}
+                        className="absolute top-2 right-2 p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors opacity-0 group-hover:opacity-100"
+                        title="Remove prize"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-bold text-indigo-600 uppercase">Prize Tier {index + 1}</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <label className="block text-xs font-semibold text-gray-500 mb-1">Name</label>
+                          <input
+                            type="text"
+                            className="w-full px-3 py-1.5 text-sm rounded-lg border border-gray-200"
+                            value={prize.name}
+                            onChange={(e) => updatePrize(index, 'name', e.target.value)}
+                            placeholder="e.g., First Prize"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-semibold text-gray-500 mb-1">Quantity</label>
+                          <input
+                            type="number"
+                            min="1"
+                            className="w-full px-3 py-1.5 text-sm rounded-lg border border-gray-200"
+                            value={prize.quantity}
+                            onChange={(e) => updatePrize(index, 'quantity', parseInt(e.target.value))}
+                          />
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <label className="block text-xs font-semibold text-gray-500 mb-1">Icon</label>
+                          <select
+                            className="w-full px-3 py-1.5 text-sm rounded-lg border border-gray-200"
+                            value={prize.icon}
+                            onChange={(e) => updatePrize(index, 'icon', e.target.value)}
+                          >
+                            {ICON_OPTIONS.map(opt => (
+                              <option key={opt.name} value={opt.name}>{opt.name}</option>
+                            ))}
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-xs font-semibold text-gray-500 mb-1">Color</label>
+                          <select
+                            className="w-full px-3 py-1.5 text-sm rounded-lg border border-gray-200"
+                            value={prize.color}
+                            onChange={(e) => updatePrize(index, 'color', e.target.value)}
+                          >
+                            {COLOR_OPTIONS.map(opt => (
+                              <option key={opt.class} value={opt.class}>{opt.name}</option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  {(!currentDraw.prizes || currentDraw.prizes.length === 0) && (
+                    <div className="col-span-2 p-8 text-center border-2 border-dashed border-gray-200 rounded-xl text-gray-500">
+                      No prizes configured. Add some prizes to make the lucky draw exciting!
+                    </div>
+                  )}
                 </div>
               </div>
 
