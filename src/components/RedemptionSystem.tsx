@@ -38,6 +38,14 @@ const PRIZES: Prize[] = [
     icon: <img src="/images/prizes/bladeless-fan.jpg" alt="Bladeless Fan" className="h-10 w-10 object-cover rounded-md" />,
     imageUrl: "/images/prizes/bladeless-fan.jpg",
   },
+  {
+    id: 'astron_watch',
+    nameKey: 'redeem.prize.watch',
+    descKey: 'redeem.prize.watch.desc',
+    points: 30,
+    icon: <img src="/images/prizes/watch.jpg" alt="Astron Watch" className="h-10 w-10 object-cover rounded-md" />,
+    imageUrl: "/images/prizes/watch.jpg",
+  },
 ];
 
 interface RedemptionSystemProps {
