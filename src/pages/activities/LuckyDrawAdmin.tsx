@@ -309,7 +309,7 @@ const LuckyDrawAdmin: React.FC = () => {
                     <input
                       type="datetime-local"
                       className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none"
-                      value={currentDraw.draw_time?.slice(0, 16)}
+                      value={currentDraw.draw_time ? new Date(currentDraw.draw_time).toLocaleString('sv-SE').replace(' ', 'T').slice(0, 16) : ''}
                       onChange={(e) => setCurrentDraw({ ...currentDraw, draw_time: new Date(e.target.value).toISOString() })}
                     />
                   </div>
