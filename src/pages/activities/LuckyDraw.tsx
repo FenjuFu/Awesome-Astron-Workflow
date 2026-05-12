@@ -167,21 +167,27 @@ const LuckyDraw: React.FC = () => {
     if (!config || gettingNumber) return;
     setGettingNumber(true);
     try {
-      const { data, error } = await supabase
-        .from('lucky_draw_participants')
-        .insert([{ draw_id: config.id }])
-        .select()
-        .single();
+      const response = await fetch('/api/lucky-draw/participate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ draw_id: config.id }),
+      });
 
-      if (error) throw error;
-      
-      if (data) {
-        setMyNumber(data.number);
-        localStorage.setItem(`lucky_draw_number_${config.id}`, data.number.toString());
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to get number');
       }
-    } catch (err) {
+      
+      if (result.number) {
+        setMyNumber(result.number);
+        localStorage.setItem(`lucky_draw_number_${config.id}`, result.number.toString());
+      }
+    } catch (err: any) {
       console.error('Failed to get number:', err);
-      alert('Failed to get a number. Please try again.');
+      alert(err.message || 'Failed to get a number. Please try again.');
     } finally {
       setGettingNumber(false);
     }
