@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { Gift, Trophy, Info, Loader2, Calendar, ArrowRight, Camera, Hash, Lock, CheckCircle2 } from 'lucide-react';
+import { Gift, Trophy, Info, Loader2, Calendar, ArrowRight, Camera, Hash, Lock, CheckCircle2, Coins } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { format } from 'date-fns';
 
