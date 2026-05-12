@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -48,14 +48,7 @@ const LuckyDraw: React.FC = () => {
   const [participantsCount, setParticipantsCount] = useState(0);
   
   const [winners, setWinners] = useState<Winner[]>([]);
-  
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [adminPassword, setAdminPassword] = useState('');
-  const [showAdminLogin, setShowAdminLogin] = useState(false);
-  
-  const [isDrawing, setIsDrawing] = useState(false);
-  const [currentDrawNumber, setCurrentDrawNumber] = useState<number | null>(null);
-  const [selectedPrizeTier, setSelectedPrizeTier] = useState<number>(0);
+  const hasTriggeredAutoDraw = useRef(false);
 
   useEffect(() => {
     fetchActiveDraw();
@@ -71,6 +64,15 @@ const LuckyDraw: React.FC = () => {
         if (diff <= 0) {
           setTimeLeft('');
           clearInterval(timer);
+          
+          if (!hasTriggeredAutoDraw.current) {
+            hasTriggeredAutoDraw.current = true;
+            fetch('/api/lucky-draw/auto-draw', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ draw_id: config.id })
+            }).catch(console.error);
+          }
         } else {
           const days = Math.floor(diff / (1000 * 60 * 60 * 24));
           const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -193,82 +195,6 @@ const LuckyDraw: React.FC = () => {
     }
   };
 
-  const handleAdminLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    const envPassword = import.meta.env.VITE_ADMIN_PASSWORD;
-    if (adminPassword === envPassword) {
-      setIsAdmin(true);
-      setShowAdminLogin(false);
-    } else {
-      alert('Invalid password');
-    }
-  };
-
-  const handleDrawWinner = async () => {
-    if (!config || isDrawing || participantsCount === 0 || !config.prizes || config.prizes.length === 0) return;
-    
-    // Fetch all participants
-    const { data: participants, error: pError } = await supabase
-      .from('lucky_draw_participants')
-      .select('id, number')
-      .eq('draw_id', config.id);
-      
-    if (pError || !participants || participants.length === 0) return;
-
-    // Filter out existing winners
-    const winnerNumbers = new Set(winners.map(w => w.number));
-    const eligibleParticipants = participants.filter(p => !winnerNumbers.has(p.number));
-    
-    if (eligibleParticipants.length === 0) {
-      alert('Everyone has won already!');
-      return;
-    }
-
-    setIsDrawing(true);
-    
-    // Animation
-    let duration = 3000; // 3 seconds
-    let interval = 50;
-    let elapsed = 0;
-    
-    const animate = setInterval(() => {
-      elapsed += interval;
-      const randomP = eligibleParticipants[Math.floor(Math.random() * eligibleParticipants.length)];
-      setCurrentDrawNumber(randomP.number);
-      
-      if (elapsed >= duration) {
-        clearInterval(animate);
-        // Pick final winner
-        const finalWinner = eligibleParticipants[Math.floor(Math.random() * eligibleParticipants.length)];
-        setCurrentDrawNumber(finalWinner.number);
-        const currentPrize = config.prizes[selectedPrizeTier];
-        saveWinner(finalWinner.id, finalWinner.number, currentPrize.name);
-      }
-    }, interval);
-  };
-
-  const saveWinner = async (participantId: string, number: number, prizeName: string) => {
-    try {
-      const { error } = await supabase
-        .from('lucky_draw_winners')
-        .insert([{
-          draw_id: config?.id,
-          participant_id: participantId,
-          number: number,
-          prize_name: prizeName
-        }]);
-        
-      if (error) throw error;
-      
-      setTimeout(() => {
-        setIsDrawing(false);
-      }, 2000);
-    } catch (err) {
-      console.error('Failed to save winner', err);
-      setIsDrawing(false);
-    }
-  };
-
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -320,36 +246,7 @@ const LuckyDraw: React.FC = () => {
           <p className="text-xl text-gray-500 max-w-2xl mx-auto">
             {config.description}
           </p>
-          <button 
-            onClick={() => setShowAdminLogin(true)}
-            className="absolute top-0 right-0 p-2 text-gray-300 hover:text-indigo-600 transition-colors"
-          >
-            <Lock className="h-5 w-5" />
-          </button>
         </div>
-
-        {/* Admin Login Modal */}
-        {showAdminLogin && !isAdmin && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Admin Access</h3>
-              <form onSubmit={handleAdminLogin}>
-                <input
-                  type="password"
-                  value={adminPassword}
-                  onChange={(e) => setAdminPassword(e.target.value)}
-                  placeholder="Enter password"
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg mb-4 focus:ring-2 focus:ring-indigo-500 outline-none"
-                  autoFocus
-                />
-                <div className="flex justify-end gap-2">
-                  <button type="button" onClick={() => setShowAdminLogin(false)} className="px-4 py-2 text-gray-600 font-medium">Cancel</button>
-                  <button type="submit" className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium">Login</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* User Number Section */}
@@ -459,35 +356,11 @@ const LuckyDraw: React.FC = () => {
                 </div>
               ) : (
                 <div className="py-6 relative z-10">
-                  <div className="text-sm text-gray-400 uppercase font-bold tracking-wider mb-2">Winning Number</div>
-                  <div className={`text-8xl font-black font-mono transition-all duration-75 ${isDrawing ? 'text-yellow-400 blur-[1px]' : 'text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]'}`}>
-                    {currentDrawNumber !== null ? currentDrawNumber.toString().padStart(3, '0') : '---'}
+                  <div className="text-sm text-green-400 uppercase font-bold tracking-wider mb-4">Draw Completed</div>
+                  <div className="text-2xl font-black text-white mb-2">
+                    {winners.length > 0 ? 'Results are out!' : 'No participants'}
                   </div>
-                  
-                  {isAdmin && config.prizes && config.prizes.length > 0 && (
-                    <div className="mt-8 bg-gray-800 p-4 rounded-xl text-left">
-                      <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Select Prize to Draw</label>
-                      <select 
-                        value={selectedPrizeTier}
-                        onChange={(e) => setSelectedPrizeTier(Number(e.target.value))}
-                        disabled={isDrawing}
-                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none mb-4"
-                      >
-                        {config.prizes.map((prize, idx) => (
-                          <option key={idx} value={idx}>
-                            {prize.name} ({prize.quantity} total)
-                          </option>
-                        ))}
-                      </select>
-                      <button
-                        onClick={handleDrawWinner}
-                        disabled={isDrawing || participantsCount === 0}
-                        className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-3 rounded-xl font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed w-full shadow-[0_0_20px_rgba(234,179,8,0.3)]"
-                      >
-                        {isDrawing ? 'Drawing...' : `Draw ${config.prizes[selectedPrizeTier]?.name || 'Winner'}`}
-                      </button>
-                    </div>
-                  )}
+                  <p className="text-gray-400 text-sm">Check the recent winners list below to see if you won.</p>
                 </div>
               )}
             </div>
