@@ -2,53 +2,45 @@ import React, { useState, useEffect } from 'react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { Gift, Trophy, History, Info, Loader2, Coins, Calendar, ArrowRight } from 'lucide-react';
+import { Gift, Trophy, Info, Loader2, Calendar, ArrowRight, Camera, Hash, Lock, CheckCircle2 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { format } from 'date-fns';
-
-interface Prize {
-  id: number;
-  name: string;
-  icon: string;
-  color: string;
-  quantity: number;
-}
 
 interface LuckyDrawConfig {
   id: string;
   title: string;
   description: string;
-  prizes: Prize[];
   draw_time: string;
   is_active: boolean;
 }
 
-const ICON_MAP: Record<string, React.ReactNode> = {
-  'Gift': <Gift className="h-8 w-8" />,
-  'Trophy': <Trophy className="h-8 w-8" />,
-  'Coins': <Coins className="h-8 w-8" />,
-  'Info': <Info className="h-8 w-8" />,
-};
-
-// Grid order for the animation: 0 -> 1 -> 2 -> 4 -> 7 -> 6 -> 5 -> 3 -> 0
-const GRID_ORDER = [0, 1, 2, 4, 7, 6, 5, 3];
+interface Winner {
+  id: string;
+  number: number;
+  created_at: string;
+}
 
 const LuckyDraw: React.FC = () => {
   const { language, t } = useLanguage();
-  const [isDrawing, setIsDrawing] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(-1);
-  const [result, setResult] = useState<Prize | null>(null);
   const [loading, setLoading] = useState(true);
   const [config, setConfig] = useState<LuckyDrawConfig | null>(null);
-  const [history, setHistory] = useState<{ prize: string, date: string }[]>([]);
   const [timeLeft, setTimeLeft] = useState<string>('');
+  
+  const [myNumber, setMyNumber] = useState<number | null>(null);
+  const [gettingNumber, setGettingNumber] = useState(false);
+  const [participantsCount, setParticipantsCount] = useState(0);
+  
+  const [winners, setWinners] = useState<Winner[]>([]);
+  
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [adminPassword, setAdminPassword] = useState('');
+  const [showAdminLogin, setShowAdminLogin] = useState(false);
+  
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [currentDrawNumber, setCurrentDrawNumber] = useState<number | null>(null);
 
   useEffect(() => {
     fetchActiveDraw();
-    const savedHistory = localStorage.getItem('lucky_draw_history');
-    if (savedHistory) {
-      setHistory(JSON.parse(savedHistory));
-    }
   }, []);
 
   useEffect(() => {
@@ -75,7 +67,7 @@ const LuckyDraw: React.FC = () => {
 
   const fetchActiveDraw = async () => {
     try {
-      const { data, error } = await supabase
+      const { data: drawData, error: drawError } = await supabase
         .from('lucky_draws')
         .select('*')
         .eq('is_active', true)
@@ -83,8 +75,42 @@ const LuckyDraw: React.FC = () => {
         .limit(1)
         .single();
 
-      if (error) throw error;
-      setConfig(data);
+      if (drawError && drawError.code !== 'PGRST116') throw drawError;
+      
+      if (drawData) {
+        setConfig(drawData);
+        
+        // Load user's number from local storage
+        const savedNum = localStorage.getItem(`lucky_draw_number_${drawData.id}`);
+        if (savedNum) {
+          setMyNumber(parseInt(savedNum, 10));
+        }
+
+        fetchStats(drawData.id);
+        
+        // Subscribe to winners
+        const channel = supabase
+          .channel('winners_channel')
+          .on(
+            'postgres_changes',
+            { event: 'INSERT', schema: 'public', table: 'lucky_draw_winners', filter: `draw_id=eq.${drawData.id}` },
+            (payload) => {
+              setWinners(prev => [payload.new as Winner, ...prev]);
+            }
+          )
+          .on(
+            'postgres_changes',
+            { event: 'INSERT', schema: 'public', table: 'lucky_draw_participants', filter: `draw_id=eq.${drawData.id}` },
+            (payload) => {
+              setParticipantsCount(prev => prev + 1);
+            }
+          )
+          .subscribe();
+
+        return () => {
+          supabase.removeChannel(channel);
+        };
+      }
     } catch (err) {
       console.error('Failed to fetch active draw:', err);
     } finally {
@@ -92,50 +118,129 @@ const LuckyDraw: React.FC = () => {
     }
   };
 
-  const startDraw = () => {
-    if (isDrawing || !config || timeLeft) return;
+  const fetchStats = async (drawId: string) => {
+    try {
+      // Get participants count
+      const { count, error: countError } = await supabase
+        .from('lucky_draw_participants')
+        .select('*', { count: 'exact', head: true })
+        .eq('draw_id', drawId);
+      
+      if (!countError && count !== null) {
+        setParticipantsCount(count);
+      }
+
+      // Get winners
+      const { data: winnersData, error: winnersError } = await supabase
+        .from('lucky_draw_winners')
+        .select('*')
+        .eq('draw_id', drawId)
+        .order('created_at', { ascending: false });
+        
+      if (!winnersError && winnersData) {
+        setWinners(winnersData);
+      }
+    } catch (err) {
+      console.error('Error fetching stats', err);
+    }
+  };
+
+  const handleGetNumber = async () => {
+    if (!config || gettingNumber) return;
+    setGettingNumber(true);
+    try {
+      const { data, error } = await supabase
+        .from('lucky_draw_participants')
+        .insert([{ draw_id: config.id }])
+        .select()
+        .single();
+
+      if (error) throw error;
+      
+      if (data) {
+        setMyNumber(data.number);
+        localStorage.setItem(`lucky_draw_number_${config.id}`, data.number.toString());
+      }
+    } catch (err) {
+      console.error('Failed to get number:', err);
+      alert('Failed to get a number. Please try again.');
+    } finally {
+      setGettingNumber(false);
+    }
+  };
+
+  const handleAdminLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    const envPassword = import.meta.env.VITE_ADMIN_PASSWORD;
+    if (adminPassword === envPassword) {
+      setIsAdmin(true);
+      setShowAdminLogin(false);
+    } else {
+      alert('Invalid password');
+    }
+  };
+
+  const handleDrawWinner = async () => {
+    if (!config || isDrawing || participantsCount === 0) return;
+    
+    // Fetch all participants
+    const { data: participants, error: pError } = await supabase
+      .from('lucky_draw_participants')
+      .select('id, number')
+      .eq('draw_id', config.id);
+      
+    if (pError || !participants || participants.length === 0) return;
+
+    // Filter out existing winners
+    const winnerNumbers = new Set(winners.map(w => w.number));
+    const eligibleParticipants = participants.filter(p => !winnerNumbers.has(p.number));
+    
+    if (eligibleParticipants.length === 0) {
+      alert('Everyone has won already!');
+      return;
+    }
 
     setIsDrawing(true);
-    setResult(null);
-
-    let speed = 100;
-    let laps = 0;
-    let currentPos = 0;
-    const totalLaps = 5 + Math.floor(Math.random() * 3);
-    const targetPos = Math.floor(Math.random() * 8);
-
-    const animate = () => {
-      setCurrentIndex(GRID_ORDER[currentPos]);
-      currentPos++;
-
-      if (currentPos >= 8) {
-        currentPos = 0;
-        laps++;
+    
+    // Animation
+    let duration = 3000; // 3 seconds
+    let interval = 50;
+    let elapsed = 0;
+    
+    const animate = setInterval(() => {
+      elapsed += interval;
+      const randomP = eligibleParticipants[Math.floor(Math.random() * eligibleParticipants.length)];
+      setCurrentDrawNumber(randomP.number);
+      
+      if (elapsed >= duration) {
+        clearInterval(animate);
+        // Pick final winner
+        const finalWinner = eligibleParticipants[Math.floor(Math.random() * eligibleParticipants.length)];
+        setCurrentDrawNumber(finalWinner.number);
+        saveWinner(finalWinner.id, finalWinner.number);
       }
+    }, interval);
+  };
 
-      if (laps >= totalLaps && currentPos === targetPos) {
-        const winPrize = config.prizes[GRID_ORDER[targetPos]];
-        setResult(winPrize);
-        setIsDrawing(false);
+  const saveWinner = async (participantId: string, number: number) => {
+    try {
+      const { error } = await supabase
+        .from('lucky_draw_winners')
+        .insert([{
+          draw_id: config?.id,
+          participant_id: participantId,
+          number: number
+        }]);
         
-        // Save to history
-        const newHistory = [{
-          prize: winPrize.name,
-          date: new Date().toLocaleString()
-        }, ...history].slice(0, 10);
-        setHistory(newHistory);
-        localStorage.setItem('lucky_draw_history', JSON.stringify(newHistory));
-        return;
-      }
-
-      // Adjust speed
-      if (laps < 2) speed = Math.max(50, speed - 10);
-      else if (laps >= totalLaps - 1) speed += 30;
-
-      setTimeout(animate, speed);
-    };
-
-    animate();
+      if (error) throw error;
+      
+      setTimeout(() => {
+        setIsDrawing(false);
+      }, 2000);
+    } catch (err) {
+      console.error('Failed to save winner', err);
+      setIsDrawing(false);
+    }
   };
 
   if (loading) {
@@ -182,37 +287,86 @@ const LuckyDraw: React.FC = () => {
       <Navigation />
       
       <main className="max-w-4xl mx-auto px-4 pt-24 pb-12">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 relative">
           <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
             {config.title}
           </h1>
           <p className="text-xl text-gray-500 max-w-2xl mx-auto">
             {config.description}
           </p>
+          <button 
+            onClick={() => setShowAdminLogin(true)}
+            className="absolute top-0 right-0 p-2 text-gray-300 hover:text-indigo-600 transition-colors"
+          >
+            <Lock className="h-5 w-5" />
+          </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Status & Rules */}
-          <div className="md:col-span-1 space-y-6">
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-              <div className="flex items-center gap-3 mb-4">
-                <Calendar className="h-6 w-6 text-indigo-600" />
-                <h2 className="text-lg font-bold text-gray-900">Draw Status</h2>
-              </div>
-              {timeLeft ? (
-                <div className="space-y-3">
-                  <div className="text-sm text-gray-500 uppercase font-bold tracking-wider">Starts in</div>
-                  <div className="text-2xl font-black text-indigo-600 font-mono bg-indigo-50 p-4 rounded-xl text-center">
-                    {timeLeft}
-                  </div>
-                  <div className="text-xs text-gray-400 text-center">
-                    Draw opens at {format(new Date(config.draw_time), 'yyyy-MM-dd HH:mm')}
-                  </div>
+        {/* Admin Login Modal */}
+        {showAdminLogin && !isAdmin && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Admin Access</h3>
+              <form onSubmit={handleAdminLogin}>
+                <input
+                  type="password"
+                  value={adminPassword}
+                  onChange={(e) => setAdminPassword(e.target.value)}
+                  placeholder="Enter password"
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg mb-4 focus:ring-2 focus:ring-indigo-500 outline-none"
+                  autoFocus
+                />
+                <div className="flex justify-end gap-2">
+                  <button type="button" onClick={() => setShowAdminLogin(false)} className="px-4 py-2 text-gray-600 font-medium">Cancel</button>
+                  <button type="submit" className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium">Login</button>
                 </div>
+              </form>
+            </div>
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* User Number Section */}
+          <div className="space-y-6">
+            <div className="bg-white p-8 rounded-3xl shadow-xl border-2 border-indigo-100 flex flex-col items-center text-center relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+              
+              <Hash className="h-12 w-12 text-indigo-200 mb-4" />
+              
+              {myNumber === null ? (
+                <>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">Get Your Raffle Number</h2>
+                  <p className="text-gray-500 mb-8">
+                    {language === 'zh-CN' ? '仅限现场领取。点击下方按钮获取您的专属号码牌参与抽奖！' : 'Limited to on-site redemption. Click below to get your exclusive number for the draw!'}
+                  </p>
+                  <button
+                    onClick={handleGetNumber}
+                    disabled={gettingNumber}
+                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:scale-[1.02] transition-all disabled:opacity-50 disabled:scale-100"
+                  >
+                    {gettingNumber ? <Loader2 className="h-6 w-6 animate-spin mx-auto" /> : (language === 'zh-CN' ? '立即取号' : 'Get Number')}
+                  </button>
+                </>
               ) : (
-                <div className="flex items-center gap-3 text-green-600 bg-green-50 p-4 rounded-xl">
-                  <div className="w-3 h-3 bg-green-600 rounded-full animate-pulse" />
-                  <span className="font-bold">Event Live Now!</span>
+                <div className="w-full animate-in zoom-in duration-500">
+                  <h2 className="text-lg font-bold text-gray-500 mb-2 uppercase tracking-wider">
+                    {language === 'zh-CN' ? '您的专属号码' : 'Your Number'}
+                  </h2>
+                  <div className="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-purple-600 my-6 font-mono drop-shadow-sm">
+                    {myNumber.toString().padStart(3, '0')}
+                  </div>
+                  
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 flex items-start gap-3 text-left">
+                    <Camera className="h-6 w-6 text-yellow-600 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-bold text-yellow-800 text-sm">
+                        {language === 'zh-CN' ? '请截图保存！' : 'Please screenshot and save!'}
+                      </h4>
+                      <p className="text-yellow-700 text-xs mt-1">
+                        {language === 'zh-CN' ? '请出示此截图作为现场领奖的唯一凭证。' : 'Please present this screenshot as the only proof for on-site prize redemption.'}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -224,119 +378,89 @@ const LuckyDraw: React.FC = () => {
               </div>
               <div className="text-sm text-gray-600 space-y-2 whitespace-pre-line">
                 {language === 'zh-CN' 
-                  ? '1. 抽奖在指定时间开启。\n2. 奖品将在 24 小时内发放。\n3. 祝你好运！' 
-                  : '1. Draw opens at the specified time.\n2. Prizes will be issued within 24 hours.\n3. Good luck!'}
+                  ? '1. 仅限现场活动参与者领取号码。\n2. 每人限领一号。\n3. 请务必截图保存您的号码牌。\n4. 中奖后凭截图至工作人员处兑换奖品。' 
+                  : '1. Limited to on-site event participants.\n2. One number per person.\n3. Please screenshot and save your number.\n4. Present the screenshot to staff to claim your prize if you win.'}
               </div>
             </div>
           </div>
 
-          {/* Lucky Draw Grid */}
-          <div className="md:col-span-2">
-            <div className="bg-white p-4 rounded-3xl shadow-xl border-8 border-indigo-600 aspect-square max-w-md mx-auto relative overflow-hidden">
-              <div className="grid grid-cols-3 grid-rows-3 gap-2 h-full">
-                {config.prizes.slice(0, 3).map((prize, i) => (
-                  <PrizeCard key={i} prize={prize} active={currentIndex === i} />
-                ))}
-                
-                <PrizeCard prize={config.prizes[3]} active={currentIndex === 3} />
-                <button
-                  onClick={startDraw}
-                  disabled={isDrawing || !!timeLeft}
-                  className={`flex flex-col items-center justify-center rounded-xl font-bold text-white transition-all shadow-lg active:scale-95 ${
-                    isDrawing || !!timeLeft 
-                      ? 'bg-gray-300 cursor-not-allowed' 
-                      : 'bg-gradient-to-br from-indigo-600 to-purple-600 hover:shadow-indigo-200 hover:shadow-2xl'
-                  }`}
-                >
-                  <span className="text-lg">{isDrawing ? t('lucky.drawing') : t('lucky.start')}</span>
-                  {timeLeft && <span className="text-[10px] opacity-80 mt-1 uppercase">Wait</span>}
-                </button>
-                <PrizeCard prize={config.prizes[4]} active={currentIndex === 4} />
-
-                {config.prizes.slice(5, 8).map((prize, i) => (
-                  <PrizeCard key={i+5} prize={prize} active={currentIndex === i+5} />
-                ))}
+          {/* Live Draw Section */}
+          <div className="space-y-6">
+            <div className="bg-gray-900 p-8 rounded-3xl shadow-xl text-center relative overflow-hidden text-white">
+              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+              
+              <div className="flex items-center justify-between mb-8 relative z-10">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+                  <span className="font-bold text-red-400 uppercase tracking-wider text-sm">Live Draw</span>
+                </div>
+                <div className="text-sm text-gray-400">
+                  {participantsCount} Participants
+                </div>
               </div>
 
-              {/* Result Overlay */}
-              {result && (
-                <div className="absolute inset-0 bg-black/60 flex items-center justify-center p-6 animate-in fade-in zoom-in duration-300 z-10">
-                  <div className="bg-white rounded-2xl p-8 text-center shadow-2xl max-w-xs w-full">
-                    <div className={`w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4 ${result.color}`}>
-                      {ICON_MAP[result.icon]}
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      {result.name === 'Thanks for participating' || result.name === '谢谢参与' 
-                        ? t('lucky.result.lose') 
-                        : t('lucky.result.win').replace('{prize}', result.name)}
-                    </h3>
-                    <button
-                      onClick={() => setResult(null)}
-                      className="mt-6 w-full py-2 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-colors"
-                    >
-                      OK
-                    </button>
+              {timeLeft ? (
+                <div className="py-8 relative z-10">
+                  <div className="text-sm text-gray-400 uppercase font-bold tracking-wider mb-4">Starts in</div>
+                  <div className="text-4xl font-black text-white font-mono tracking-widest">
+                    {timeLeft}
                   </div>
+                </div>
+              ) : (
+                <div className="py-6 relative z-10">
+                  <div className="text-sm text-gray-400 uppercase font-bold tracking-wider mb-2">Winning Number</div>
+                  <div className={`text-8xl font-black font-mono transition-all duration-75 ${isDrawing ? 'text-yellow-400 blur-[1px]' : 'text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]'}`}>
+                    {currentDrawNumber !== null ? currentDrawNumber.toString().padStart(3, '0') : '---'}
+                  </div>
+                  
+                  {isAdmin && (
+                    <button
+                      onClick={handleDrawWinner}
+                      disabled={isDrawing || participantsCount === 0}
+                      className="mt-8 bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-8 py-3 rounded-xl font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed w-full shadow-[0_0_20px_rgba(234,179,8,0.3)]"
+                    >
+                      {isDrawing ? 'Drawing...' : 'Draw Winner'}
+                    </button>
+                  )}
                 </div>
               )}
             </div>
-          </div>
-        </div>
 
-        {/* History */}
-        <div className="mt-12">
-          <div className="flex items-center gap-3 mb-6">
-            <History className="h-6 w-6 text-indigo-600" />
-            <h2 className="text-2xl font-bold text-gray-900">{t('lucky.history')}</h2>
-          </div>
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-            {history.length > 0 ? (
-              <table className="w-full text-left">
-                <thead className="bg-gray-50 text-gray-500 text-sm uppercase">
-                  <tr>
-                    <th className="px-6 py-4 font-medium">Prize</th>
-                    <th className="px-6 py-4 font-medium text-right">Date</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100">
-                  {history.map((h, i) => (
-                    <tr key={i} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-4 font-medium text-gray-900">{h.prize}</td>
-                      <td className="px-6 py-4 text-gray-500 text-right text-sm">{h.date}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            ) : (
-              <div className="p-12 text-center text-gray-400 italic">
-                No draw history yet.
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+              <div className="p-4 bg-gray-50 border-b border-gray-100 flex items-center gap-2">
+                <Trophy className="h-5 w-5 text-yellow-500" />
+                <h3 className="font-bold text-gray-900">Recent Winners</h3>
               </div>
-            )}
+              <div className="max-h-60 overflow-y-auto">
+                {winners.length > 0 ? (
+                  <ul className="divide-y divide-gray-100">
+                    {winners.map((winner, idx) => (
+                      <li key={winner.id} className="p-4 flex items-center justify-between hover:bg-gray-50 transition-colors animate-in fade-in slide-in-from-left-2">
+                        <div className="flex items-center gap-3">
+                          <span className="text-sm font-bold text-gray-400 w-6">#{idx + 1}</span>
+                          <span className="text-xl font-black text-indigo-600 font-mono">
+                            {winner.number.toString().padStart(3, '0')}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                          <CheckCircle2 className="h-4 w-4 text-green-500" />
+                          {format(new Date(winner.created_at), 'HH:mm:ss')}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="p-8 text-center text-gray-400 italic text-sm">
+                    No winners drawn yet.
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </main>
 
       <Footer />
-    </div>
-  );
-};
-
-const PrizeCard: React.FC<{ prize: Prize, active: boolean }> = ({ prize, active }) => {
-  return (
-    <div className={`flex flex-col items-center justify-center p-2 rounded-xl transition-all duration-100 border-2 ${
-      active 
-        ? 'border-yellow-400 bg-yellow-50 shadow-inner scale-95 z-0' 
-        : 'border-transparent bg-gray-50'
-    }`}>
-      <div className={`p-2 rounded-lg mb-1 ${prize.color}`}>
-        {ICON_MAP[prize.icon] || <Gift className="h-8 w-8" />}
-      </div>
-      <span className="text-[10px] font-bold text-gray-600 text-center leading-tight">
-        {prize.name}
-      </span>
-      {prize.quantity > 0 && (
-        <span className="text-[8px] text-gray-400 mt-0.5">Qty: {prize.quantity}</span>
-      )}
     </div>
   );
 };

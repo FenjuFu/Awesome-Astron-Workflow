@@ -107,16 +107,7 @@ const LuckyDrawAdmin: React.FC = () => {
     setCurrentDraw({
       title: '',
       description: '',
-      prizes: [
-        { id: 0, name: '', quantity: 0, icon: 'Gift', color: 'bg-blue-100 text-blue-600' },
-        { id: 1, name: '', quantity: 0, icon: 'Trophy', color: 'bg-purple-100 text-purple-600' },
-        { id: 2, name: '', quantity: 0, icon: 'Coins', color: 'bg-yellow-100 text-yellow-600' },
-        { id: 3, name: '', quantity: 0, icon: 'Info', color: 'bg-gray-100 text-gray-600' },
-        { id: 4, name: '', quantity: 0, icon: 'Gift', color: 'bg-blue-100 text-blue-600' },
-        { id: 5, name: '', quantity: 0, icon: 'Trophy', color: 'bg-purple-100 text-purple-600' },
-        { id: 6, name: '', quantity: 0, icon: 'Coins', color: 'bg-yellow-100 text-yellow-600' },
-        { id: 7, name: '', quantity: 0, icon: 'Info', color: 'bg-gray-100 text-gray-600' },
-      ],
+      prizes: [],
       draw_time: new Date().toISOString().slice(0, 16),
       is_active: true
     });
@@ -145,8 +136,8 @@ const LuckyDrawAdmin: React.FC = () => {
   };
 
   const handleSave = async () => {
-    if (!currentDraw.title || currentDraw.prizes?.length !== 8) {
-      alert('Title is required and exactly 8 prizes must be set');
+    if (!currentDraw.title) {
+      alert('Title is required');
       return;
     }
 
@@ -182,12 +173,6 @@ const LuckyDrawAdmin: React.FC = () => {
     } finally {
       setSaving(false);
     }
-  };
-
-  const updatePrize = (index: number, field: keyof PrizeConfig, value: any) => {
-    const newPrizes = [...(currentDraw.prizes || [])];
-    newPrizes[index] = { ...newPrizes[index], [field]: value };
-    setCurrentDraw({ ...currentDraw, prizes: newPrizes });
   };
 
   if (!isAuthenticated) {
@@ -313,69 +298,6 @@ const LuckyDrawAdmin: React.FC = () => {
                 </div>
               </div>
 
-              <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <Gift className="h-5 w-5 text-indigo-600" />
-                  Prizes (Exactly 8)
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {currentDraw.prizes?.map((prize, index) => (
-                    <div key={index} className="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-bold text-indigo-600 uppercase">Position {index + 1}</span>
-                      </div>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div>
-                          <label className="block text-xs font-semibold text-gray-500 mb-1">Name</label>
-                          <input
-                            type="text"
-                            className="w-full px-3 py-1.5 text-sm rounded-lg border border-gray-200"
-                            value={prize.name}
-                            onChange={(e) => updatePrize(index, 'name', e.target.value)}
-                            placeholder="Prize name"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-semibold text-gray-500 mb-1">Quantity</label>
-                          <input
-                            type="number"
-                            className="w-full px-3 py-1.5 text-sm rounded-lg border border-gray-200"
-                            value={prize.quantity}
-                            onChange={(e) => updatePrize(index, 'quantity', parseInt(e.target.value))}
-                          />
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div>
-                          <label className="block text-xs font-semibold text-gray-500 mb-1">Icon</label>
-                          <select
-                            className="w-full px-3 py-1.5 text-sm rounded-lg border border-gray-200"
-                            value={prize.icon}
-                            onChange={(e) => updatePrize(index, 'icon', e.target.value)}
-                          >
-                            {ICON_OPTIONS.map(opt => (
-                              <option key={opt.name} value={opt.name}>{opt.name}</option>
-                            ))}
-                          </select>
-                        </div>
-                        <div>
-                          <label className="block text-xs font-semibold text-gray-500 mb-1">Color</label>
-                          <select
-                            className="w-full px-3 py-1.5 text-sm rounded-lg border border-gray-200"
-                            value={prize.color}
-                            onChange={(e) => updatePrize(index, 'color', e.target.value)}
-                          >
-                            {COLOR_OPTIONS.map(opt => (
-                              <option key={opt.class} value={opt.class}>{opt.name}</option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               <div className="flex justify-end gap-3 pt-6 border-t border-gray-100">
                 <button
                   onClick={() => setIsEditing(false)}
@@ -408,7 +330,6 @@ const LuckyDrawAdmin: React.FC = () => {
                     <tr className="bg-gray-50/50 border-b border-gray-100">
                       <th className="px-6 py-4 text-sm font-bold text-gray-700 uppercase">Lucky Draw</th>
                       <th className="px-6 py-4 text-sm font-bold text-gray-700 uppercase">Draw Time</th>
-                      <th className="px-6 py-4 text-sm font-bold text-gray-700 uppercase text-center">Prizes</th>
                       <th className="px-6 py-4 text-sm font-bold text-gray-700 uppercase text-center">Status</th>
                       <th className="px-6 py-4 text-sm font-bold text-gray-700 uppercase text-right">Actions</th>
                     </tr>
@@ -425,11 +346,6 @@ const LuckyDrawAdmin: React.FC = () => {
                             <Calendar className="h-4 w-4 text-gray-400" />
                             {format(new Date(draw.draw_time), 'yyyy-MM-dd HH:mm')}
                           </div>
-                        </td>
-                        <td className="px-6 py-4 text-center">
-                          <span className="bg-indigo-50 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full border border-indigo-100">
-                            {draw.prizes?.length} prizes
-                          </span>
                         </td>
                         <td className="px-6 py-4 text-center">
                           <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
