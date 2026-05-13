@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { Gift, Trophy, Info, Loader2, Calendar, ArrowRight, Camera, Hash, Lock, CheckCircle2, Coins } from 'lucide-react';
+import { Gift, Trophy, Info, Loader2, ArrowRight, Camera, Hash, CheckCircle2, Coins } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { format } from 'date-fns';
 
@@ -50,57 +50,34 @@ const LuckyDraw: React.FC = () => {
   const [winners, setWinners] = useState<Winner[]>([]);
   const hasTriggeredAutoDraw = useRef(false);
 
-  useEffect(() => {
-    fetchActiveDraw();
+  const fetchStats = useCallback(async (drawId: string, drawTime: string) => {
+    try {
+      const { count, error: countError } = await supabase
+        .from('lucky_draw_participants')
+        .select('*', { count: 'exact', head: true })
+        .eq('draw_id', drawId)
+        .eq('draw_time', drawTime);
+      
+      if (!countError && count !== null) {
+        setParticipantsCount(count);
+      }
+
+      const { data: winnersData, error: winnersError } = await supabase
+        .from('lucky_draw_winners')
+        .select('*')
+        .eq('draw_id', drawId)
+        .eq('draw_time', drawTime)
+        .order('created_at', { ascending: false });
+        
+      if (!winnersError && winnersData) {
+        setWinners(winnersData);
+      }
+    } catch (err) {
+      console.error('Error fetching stats', err);
+    }
   }, []);
 
-  useEffect(() => {
-    if (config?.draw_time) {
-      const timer = setInterval(() => {
-        const now = new Date().getTime();
-        const target = new Date(config.draw_time).getTime();
-        const diff = target - now;
-
-        if (diff <= 0) {
-          setTimeLeft('');
-          clearInterval(timer);
-          
-          if (!hasTriggeredAutoDraw.current) {
-            hasTriggeredAutoDraw.current = true;
-            // Attempt auto-draw, with a fallback retry if no winners appear
-            const attemptAutoDraw = () => {
-              fetch('/api/lucky-draw/auto-draw', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ draw_id: config.id })
-              }).catch(console.error);
-            };
-            
-            attemptAutoDraw();
-            
-            // Retry once after 5 seconds if still no winners
-            setTimeout(() => {
-              setWinners(currentWinners => {
-                if (currentWinners.length === 0) {
-                  attemptAutoDraw();
-                }
-                return currentWinners;
-              });
-            }, 5000);
-          }
-        } else {
-          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-          const secs = Math.floor((diff % (1000 * 60)) / 1000);
-          setTimeLeft(`${days}d ${hours}h ${mins}m ${secs}s`);
-        }
-      }, 1000);
-      return () => clearInterval(timer);
-    }
-  }, [config]);
-
-  const fetchActiveDraw = async () => {
+  const fetchActiveDraw = useCallback(async () => {
     try {
       const { data: drawData, error: drawError } = await supabase
         .from('lucky_draws')
@@ -115,7 +92,6 @@ const LuckyDraw: React.FC = () => {
       if (drawData) {
         setConfig(drawData);
         
-        // Load user's number from local storage (scoped by draw time)
         const storageKey = `lucky_draw_number_${drawData.id}_${drawData.draw_time}`;
         const savedNum = localStorage.getItem(storageKey);
         if (savedNum) {
@@ -126,7 +102,6 @@ const LuckyDraw: React.FC = () => {
 
         fetchStats(drawData.id, drawData.draw_time);
         
-        // Subscribe to winners
         const channel = supabase
           .channel('winners_channel')
           .on(
@@ -135,7 +110,6 @@ const LuckyDraw: React.FC = () => {
             (payload) => {
               if (new Date(payload.new.draw_time).getTime() === new Date(drawData.draw_time).getTime()) {
                 setWinners(prev => {
-                  // Prevent duplicate additions
                   if (prev.some(w => w.id === payload.new.id)) return prev;
                   return [payload.new as Winner, ...prev];
                 });
@@ -162,36 +136,67 @@ const LuckyDraw: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
 
-  const fetchStats = async (drawId: string, drawTime: string) => {
-    try {
-      // Get participants count
-      const { count, error: countError } = await supabase
-        .from('lucky_draw_participants')
-        .select('*', { count: 'exact', head: true })
-        .eq('draw_id', drawId)
-        .eq('draw_time', drawTime);
-      
-      if (!countError && count !== null) {
-        setParticipantsCount(count);
-      }
+    return undefined;
+  }, [fetchStats]);
 
-      // Get winners
-      const { data: winnersData, error: winnersError } = await supabase
-        .from('lucky_draw_winners')
-        .select('*')
-        .eq('draw_id', drawId)
-        .eq('draw_time', drawTime)
-        .order('created_at', { ascending: false });
-        
-      if (!winnersError && winnersData) {
-        setWinners(winnersData);
-      }
-    } catch (err) {
-      console.error('Error fetching stats', err);
+  useEffect(() => {
+    const cleanupPromise = fetchActiveDraw();
+
+    return () => {
+      cleanupPromise.then((cleanup) => cleanup?.());
+    };
+  }, [fetchActiveDraw]);
+
+  useEffect(() => {
+    hasTriggeredAutoDraw.current = false;
+  }, [config?.id, config?.draw_time]);
+
+  useEffect(() => {
+    if (config?.draw_time) {
+      const attemptAutoDraw = async () => {
+        try {
+          await fetch('/api/lucky-draw/auto-draw', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ draw_id: config.id })
+          });
+        } catch (error) {
+          console.error('Failed to trigger auto draw:', error);
+        } finally {
+          fetchStats(config.id, config.draw_time);
+        }
+      };
+
+      const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const target = new Date(config.draw_time).getTime();
+        const diff = target - now;
+
+        if (diff <= 0) {
+          setTimeLeft('');
+          clearInterval(timer);
+          
+          if (!hasTriggeredAutoDraw.current) {
+            hasTriggeredAutoDraw.current = true;
+            attemptAutoDraw();
+            
+            // Retry once to cover delayed serverless cold starts or network hiccups.
+            setTimeout(() => {
+              attemptAutoDraw();
+            }, 5000);
+          }
+        } else {
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const secs = Math.floor((diff % (1000 * 60)) / 1000);
+          setTimeLeft(`${days}d ${hours}h ${mins}m ${secs}s`);
+        }
+      }, 1000);
+      return () => clearInterval(timer);
     }
-  };
+  }, [config, fetchStats]);
 
   const handleGetNumber = async () => {
     if (!config || gettingNumber) return;
@@ -205,7 +210,7 @@ const LuckyDraw: React.FC = () => {
         body: JSON.stringify({ draw_id: config.id }),
       });
 
-      const result = await response.json();
+      const result: { error?: string; number?: number } = await response.json();
 
       if (!response.ok) {
         throw new Error(result.error || 'Failed to get number');
@@ -215,9 +220,10 @@ const LuckyDraw: React.FC = () => {
         setMyNumber(result.number);
         localStorage.setItem(`lucky_draw_number_${config.id}_${config.draw_time}`, result.number.toString());
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Failed to get a number. Please try again.';
       console.error('Failed to get number:', err);
-      alert(err.message || 'Failed to get a number. Please try again.');
+      alert(message);
     } finally {
       setGettingNumber(false);
     }

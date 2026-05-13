@@ -1,10 +1,9 @@
-import { drawWinnersForDraw } from '../_lib/lucky-draw.js';
+import { drawDueLuckyDraws } from '../_lib/lucky-draw.js';
 
 export default async function handler(req, res) {
-  // Add CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
   res.setHeader(
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
@@ -15,25 +14,22 @@ export default async function handler(req, res) {
     return;
   }
 
-  if (req.method !== 'POST') {
+  if (req.method !== 'GET' && req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { draw_id } = req.body;
+    const results = await drawDueLuckyDraws();
+    const completed = results.filter((item) => item.success && !item.alreadyCompleted);
 
-    if (!draw_id) {
-      return res.status(400).json({ error: 'draw_id is required' });
-    }
-    const result = await drawWinnersForDraw(draw_id);
-
-    if (!result.success) {
-      return res.status(result.status || 400).json({ error: result.error });
-    }
-
-    return res.status(200).json(result);
+    return res.status(200).json({
+      success: true,
+      processed: results.length,
+      completed: completed.length,
+      results,
+    });
   } catch (error) {
-    console.error('Error auto-drawing winners:', error);
+    console.error('Error processing due lucky draws:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
