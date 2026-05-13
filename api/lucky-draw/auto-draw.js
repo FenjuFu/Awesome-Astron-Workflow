@@ -38,7 +38,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Draw not found or inactive' });
     }
     
-    if (new Date(draw.draw_time).getTime() > new Date().getTime()) {
+    if (new Date(draw.draw_time).getTime() > new Date().getTime() + 10000) {
        return res.status(400).json({ error: 'Draw time has not been reached yet' });
     }
 

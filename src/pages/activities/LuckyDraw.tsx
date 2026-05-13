@@ -67,11 +67,26 @@ const LuckyDraw: React.FC = () => {
           
           if (!hasTriggeredAutoDraw.current) {
             hasTriggeredAutoDraw.current = true;
-            fetch('/api/lucky-draw/auto-draw', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ draw_id: config.id })
-            }).catch(console.error);
+            // Attempt auto-draw, with a fallback retry if no winners appear
+            const attemptAutoDraw = () => {
+              fetch('/api/lucky-draw/auto-draw', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ draw_id: config.id })
+              }).catch(console.error);
+            };
+            
+            attemptAutoDraw();
+            
+            // Retry once after 5 seconds if still no winners
+            setTimeout(() => {
+              setWinners(currentWinners => {
+                if (currentWinners.length === 0) {
+                  attemptAutoDraw();
+                }
+                return currentWinners;
+              });
+            }, 5000);
           }
         } else {
           const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -118,8 +133,12 @@ const LuckyDraw: React.FC = () => {
             'postgres_changes',
             { event: 'INSERT', schema: 'public', table: 'lucky_draw_winners', filter: `draw_id=eq.${drawData.id}` },
             (payload) => {
-              if (payload.new.draw_time === drawData.draw_time) {
-                setWinners(prev => [payload.new as Winner, ...prev]);
+              if (new Date(payload.new.draw_time).getTime() === new Date(drawData.draw_time).getTime()) {
+                setWinners(prev => {
+                  // Prevent duplicate additions
+                  if (prev.some(w => w.id === payload.new.id)) return prev;
+                  return [payload.new as Winner, ...prev];
+                });
               }
             }
           )
@@ -127,7 +146,7 @@ const LuckyDraw: React.FC = () => {
             'postgres_changes',
             { event: 'INSERT', schema: 'public', table: 'lucky_draw_participants', filter: `draw_id=eq.${drawData.id}` },
             (payload) => {
-              if (payload.new.draw_time === drawData.draw_time) {
+              if (new Date(payload.new.draw_time).getTime() === new Date(drawData.draw_time).getTime()) {
                 setParticipantsCount(prev => prev + 1);
               }
             }
@@ -367,9 +386,11 @@ const LuckyDraw: React.FC = () => {
                 <div className="py-6 relative z-10">
                   <div className="text-sm text-green-400 uppercase font-bold tracking-wider mb-4">Draw Completed</div>
                   <div className="text-2xl font-black text-white mb-2">
-                    {winners.length > 0 ? 'Results are out!' : 'No participants'}
+                    {winners.length > 0 ? 'Results are out!' : (participantsCount > 0 ? 'Drawing...' : 'No participants')}
                   </div>
-                  <p className="text-gray-400 text-sm">Check the recent winners list below to see if you won.</p>
+                  <p className="text-gray-400 text-sm">
+                    {winners.length > 0 || participantsCount === 0 ? 'Check the recent winners list below to see if you won.' : 'Please wait while we allocate the prizes.'}
+                  </p>
                 </div>
               )}
             </div>
