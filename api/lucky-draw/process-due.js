@@ -30,6 +30,9 @@ export default async function handler(req, res) {
     });
   } catch (error) {
     console.error('Error processing due lucky draws:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message || String(error),
+    });
   }
 }

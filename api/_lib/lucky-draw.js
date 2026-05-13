@@ -91,7 +91,15 @@ export async function drawWinnersForDraw(drawId) {
       .from('lucky_draw_winners')
       .insert(winnersToInsert);
 
-    if (insertError) throw insertError;
+    if (insertError) {
+      // Retry without prize_name in case the column hasn't been created yet.
+      const fallback = winnersToInsert.map(({ prize_name, ...rest }) => rest);
+      const { error: retryError } = await supabaseAdmin
+        .from('lucky_draw_winners')
+        .insert(fallback);
+
+      if (retryError) throw retryError;
+    }
   }
 
   return {
@@ -115,11 +123,20 @@ export async function drawDueLuckyDraws() {
   const results = [];
 
   for (const draw of dueDraws || []) {
-    const result = await drawWinnersForDraw(draw.id);
-    results.push({
-      draw_id: draw.id,
-      ...result,
-    });
+    try {
+      const result = await drawWinnersForDraw(draw.id);
+      results.push({
+        draw_id: draw.id,
+        ...result,
+      });
+    } catch (drawError) {
+      console.error(`Error processing draw ${draw.id}:`, drawError);
+      results.push({
+        draw_id: draw.id,
+        success: false,
+        error: drawError.message || 'Unknown error',
+      });
+    }
   }
 
   return results;

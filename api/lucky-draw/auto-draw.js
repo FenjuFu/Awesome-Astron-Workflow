@@ -34,6 +34,9 @@ export default async function handler(req, res) {
     return res.status(200).json(result);
   } catch (error) {
     console.error('Error auto-drawing winners:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message || String(error),
+    });
   }
 }
