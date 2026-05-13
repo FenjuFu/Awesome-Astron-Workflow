@@ -173,23 +173,17 @@ const LuckyDraw: React.FC = () => {
         }
       };
 
-      const timer = setInterval(() => {
+      const updateCountdownAndDraw = () => {
         const now = new Date().getTime();
         const target = new Date(config.draw_time).getTime();
         const diff = target - now;
 
         if (diff <= 0) {
           setTimeLeft('');
-          clearInterval(timer);
           
           if (!hasTriggeredAutoDraw.current) {
             hasTriggeredAutoDraw.current = true;
             attemptAutoDraw();
-            
-            // Retry once to cover delayed serverless cold starts or network hiccups.
-            setTimeout(() => {
-              attemptAutoDraw();
-            }, 5000);
           }
         } else {
           const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -198,10 +192,24 @@ const LuckyDraw: React.FC = () => {
           const secs = Math.floor((diff % (1000 * 60)) / 1000);
           setTimeLeft(`${days}d ${hours}h ${mins}m ${secs}s`);
         }
-      }, 1000);
-      return () => clearInterval(timer);
+      };
+
+      updateCountdownAndDraw();
+      const countdownTimer = setInterval(updateCountdownAndDraw, 1000);
+      const autoDrawRetryTimer = setInterval(() => {
+        const target = new Date(config.draw_time).getTime();
+
+        if (Date.now() >= target && winners.length === 0 && participantsCount > 0) {
+          attemptAutoDraw();
+        }
+      }, 5000);
+
+      return () => {
+        clearInterval(countdownTimer);
+        clearInterval(autoDrawRetryTimer);
+      };
     }
-  }, [config, fetchStats]);
+  }, [config, fetchStats, participantsCount, winners.length]);
 
   const handleGetNumber = async () => {
     if (!config || gettingNumber) return;
