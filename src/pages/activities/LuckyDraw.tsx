@@ -79,6 +79,11 @@ const LuckyDraw: React.FC = () => {
 
   const fetchActiveDraw = useCallback(async () => {
     try {
+      // Process any overdue draws first so results can appear even without a platform cron.
+      await fetch('/api/lucky-draw/process-due').catch((error) => {
+        console.error('Failed to process due lucky draws:', error);
+      });
+
       const { data: drawData, error: drawError } = await supabase
         .from('lucky_draws')
         .select('*')

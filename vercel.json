@@ -4,12 +4,6 @@
       "includeFiles": "dist/index.html"
     }
   },
-  "crons": [
-    {
-      "path": "/api/lucky-draw/process-due",
-      "schedule": "* * * * *"
-    }
-  ],
   "rewrites": [
     {
       "source": "/api/activities/create",
