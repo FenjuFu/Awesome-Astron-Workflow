@@ -26,18 +26,6 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'draw_id is required' });
     }
 
-    // 1. Check if winners already exist (prevent duplicate runs)
-    const { count, error: countError } = await supabaseAdmin
-      .from('lucky_draw_winners')
-      .select('*', { count: 'exact', head: true })
-      .eq('draw_id', draw_id);
-
-    if (countError) throw countError;
-
-    if (count > 0) {
-      return res.status(200).json({ message: 'Draw has already been completed' });
-    }
-
     // 2. Fetch draw config (prizes)
     const { data: draw, error: drawError } = await supabaseAdmin
       .from('lucky_draws')
@@ -54,11 +42,25 @@ export default async function handler(req, res) {
        return res.status(400).json({ error: 'Draw time has not been reached yet' });
     }
 
-    // 3. Fetch all participants
+    // 1. Check if winners already exist for this draw_time (prevent duplicate runs)
+    const { count, error: countError } = await supabaseAdmin
+      .from('lucky_draw_winners')
+      .select('*', { count: 'exact', head: true })
+      .eq('draw_id', draw_id)
+      .eq('draw_time', draw.draw_time);
+
+    if (countError) throw countError;
+
+    if (count > 0) {
+      return res.status(200).json({ message: 'Draw has already been completed for this time' });
+    }
+
+    // 3. Fetch all participants for this draw_time
     const { data: participants, error: pError } = await supabaseAdmin
       .from('lucky_draw_participants')
       .select('id, number')
-      .eq('draw_id', draw_id);
+      .eq('draw_id', draw_id)
+      .eq('draw_time', draw.draw_time);
 
     if (pError) throw pError;
 
@@ -80,6 +82,7 @@ export default async function handler(req, res) {
         
         winnersToInsert.push({
           draw_id: draw_id,
+          draw_time: draw.draw_time,
           participant_id: shuffledParticipants[participantIndex].id,
           number: shuffledParticipants[participantIndex].number,
           prize_name: prize.name

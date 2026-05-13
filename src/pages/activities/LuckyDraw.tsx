@@ -100,13 +100,16 @@ const LuckyDraw: React.FC = () => {
       if (drawData) {
         setConfig(drawData);
         
-        // Load user's number from local storage
-        const savedNum = localStorage.getItem(`lucky_draw_number_${drawData.id}`);
+        // Load user's number from local storage (scoped by draw time)
+        const storageKey = `lucky_draw_number_${drawData.id}_${drawData.draw_time}`;
+        const savedNum = localStorage.getItem(storageKey);
         if (savedNum) {
           setMyNumber(parseInt(savedNum, 10));
+        } else {
+          setMyNumber(null);
         }
 
-        fetchStats(drawData.id);
+        fetchStats(drawData.id, drawData.draw_time);
         
         // Subscribe to winners
         const channel = supabase
@@ -115,14 +118,18 @@ const LuckyDraw: React.FC = () => {
             'postgres_changes',
             { event: 'INSERT', schema: 'public', table: 'lucky_draw_winners', filter: `draw_id=eq.${drawData.id}` },
             (payload) => {
-              setWinners(prev => [payload.new as Winner, ...prev]);
+              if (payload.new.draw_time === drawData.draw_time) {
+                setWinners(prev => [payload.new as Winner, ...prev]);
+              }
             }
           )
           .on(
             'postgres_changes',
             { event: 'INSERT', schema: 'public', table: 'lucky_draw_participants', filter: `draw_id=eq.${drawData.id}` },
             (payload) => {
-              setParticipantsCount(prev => prev + 1);
+              if (payload.new.draw_time === drawData.draw_time) {
+                setParticipantsCount(prev => prev + 1);
+              }
             }
           )
           .subscribe();
@@ -138,13 +145,14 @@ const LuckyDraw: React.FC = () => {
     }
   };
 
-  const fetchStats = async (drawId: string) => {
+  const fetchStats = async (drawId: string, drawTime: string) => {
     try {
       // Get participants count
       const { count, error: countError } = await supabase
         .from('lucky_draw_participants')
         .select('*', { count: 'exact', head: true })
-        .eq('draw_id', drawId);
+        .eq('draw_id', drawId)
+        .eq('draw_time', drawTime);
       
       if (!countError && count !== null) {
         setParticipantsCount(count);
@@ -155,6 +163,7 @@ const LuckyDraw: React.FC = () => {
         .from('lucky_draw_winners')
         .select('*')
         .eq('draw_id', drawId)
+        .eq('draw_time', drawTime)
         .order('created_at', { ascending: false });
         
       if (!winnersError && winnersData) {
@@ -185,7 +194,7 @@ const LuckyDraw: React.FC = () => {
       
       if (result.number) {
         setMyNumber(result.number);
-        localStorage.setItem(`lucky_draw_number_${config.id}`, result.number.toString());
+        localStorage.setItem(`lucky_draw_number_${config.id}_${config.draw_time}`, result.number.toString());
       }
     } catch (err: any) {
       console.error('Failed to get number:', err);

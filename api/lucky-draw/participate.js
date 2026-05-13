@@ -29,10 +29,21 @@ export default async function handler(req, res) {
     // Get IP address from Vercel headers
     const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
 
-    // Insert participant with IP
+    // Fetch the current draw_time for this draw_id
+    const { data: draw, error: drawError } = await supabaseAdmin
+      .from('lucky_draws')
+      .select('draw_time, is_active')
+      .eq('id', draw_id)
+      .single();
+
+    if (drawError || !draw || !draw.is_active) {
+      return res.status(400).json({ error: 'Draw not found or inactive' });
+    }
+
+    // Insert participant with IP and draw_time
     const { data, error } = await supabaseAdmin
       .from('lucky_draw_participants')
-      .insert([{ draw_id, ip_address: ipAddress }])
+      .insert([{ draw_id, draw_time: draw.draw_time, ip_address: ipAddress }])
       .select()
       .single();
 
