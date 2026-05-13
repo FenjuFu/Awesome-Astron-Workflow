@@ -28,6 +28,7 @@ interface Redemption {
   email: string;
   recipient_name: string;
   address: string;
+  remark?: string;
   status: 'pending' | 'issued' | 'rejected';
   created_at: string;
 }
@@ -116,7 +117,8 @@ const RedemptionManage: React.FC = () => {
     r.phone.includes(searchTerm) ||
     r.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
     (r.recipient_name && r.recipient_name.toLowerCase().includes(searchTerm.toLowerCase())) ||
-    (r.address && r.address.toLowerCase().includes(searchTerm.toLowerCase()))
+    (r.address && r.address.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (r.remark && r.remark.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   if (!isAuthenticated) {
@@ -267,13 +269,16 @@ const RedemptionManage: React.FC = () => {
                           </div>
                         </td>
                         <td className="px-6 py-4">
-                          {r.recipient_name || r.address ? (
+                          {r.recipient_name || r.address || r.remark ? (
                             <div className="space-y-1">
                               {r.recipient_name && (
                                 <div className="text-sm font-medium text-gray-900">{r.recipient_name}</div>
                               )}
                               {r.address && (
                                 <div className="text-xs text-gray-500 max-w-[200px] break-words">{r.address}</div>
+                              )}
+                              {r.remark && (
+                                <div className="text-xs text-indigo-600 font-medium max-w-[200px] break-words">备注: {r.remark}</div>
                               )}
                             </div>
                           ) : (

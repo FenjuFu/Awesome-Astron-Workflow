@@ -46,6 +46,14 @@ const PRIZES: Prize[] = [
     icon: <img src="/images/prizes/watch.jpg" alt="Astron Watch" className="h-10 w-10 object-cover rounded-md" />,
     imageUrl: "/images/prizes/watch.jpg",
   },
+  {
+    id: 'bag',
+    nameKey: 'redeem.prize.bag',
+    descKey: 'redeem.prize.bag.desc',
+    points: 15,
+    icon: <img src="/images/prizes/bag.jpg" alt="Waterproof Nylon Tote Bag" className="h-10 w-10 object-cover rounded-md" />,
+    imageUrl: "/images/prizes/bag.jpg",
+  },
 ];
 
 interface RedemptionSystemProps {
@@ -59,7 +67,7 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
   const [submitting, setSubmitting] = useState(false);
   const [selectedPrize, setSelectedPrize] = useState<Prize | null>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const [formData, setFormData] = useState({ phone: '', email: '', name: '', address: '' });
+  const [formData, setFormData] = useState({ phone: '', email: '', name: '', address: '', remark: '' });
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   const spentPoints = redemptions
@@ -107,7 +115,7 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
       if (res.ok) {
         setMessage({ type: 'success', text: t('redeem.success') });
         setSelectedPrize(null);
-        setFormData({ phone: '', email: '', name: '', address: '' });
+        setFormData({ phone: '', email: '', name: '', address: '', remark: '' });
         fetchRedemptions();
       } else {
         setMessage({ type: 'error', text: t('redeem.error') });
@@ -246,6 +254,16 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
                     className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none resize-none"
                     value={formData.address}
                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">{t('redeem.form.remark')}</label>
+                  <input 
+                    type="text" 
+                    placeholder={t('redeem.form.remark.placeholder')}
+                    className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    value={formData.remark}
+                    onChange={(e) => setFormData({ ...formData, remark: e.target.value })}
                   />
                 </div>
                 <button
