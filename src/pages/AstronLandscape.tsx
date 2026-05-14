@@ -135,7 +135,7 @@ const AstronLandscape: React.FC = () => {
           >
             <div
               ref={cardRef}
-              className="card-container bg-blue-50/30 backdrop-blur-xl border-2 border-white/60 shadow-2xl flex flex-col shrink-0 rounded-2xl relative"
+              className="card-container bg-blue-50/30 backdrop-blur-xl border-2 border-white/60 shadow-2xl flex flex-col shrink-0 rounded-2xl relative overflow-hidden"
               style={{
                 width: '1280px',
                 height: '720px',
@@ -186,7 +186,7 @@ const AstronLandscape: React.FC = () => {
                 {/* Engine -> Workflow */}
                 <path d="M 980 450 C 800 480, 700 380, 500 350" stroke="#6366f1" markerEnd="url(#arrowBlue)" />
                 {/* Engine -> Management */}
-                <path d="M 1250 500 C 1300 450, 1300 300, 1250 250" stroke="#6366f1" markerEnd="url(#arrowBlue)" />
+                <path d="M 1200 490 C 1245 440, 1245 310, 1200 260" stroke="#6366f1" markerEnd="url(#arrowBlue)" />
                 {/* Workflow -> Automation */}
                 <path d="M 50 320 C 15 380, 15 450, 45 495" stroke="#14b8a6" markerEnd="url(#arrowTeal)" />
                 {/* Skills -> Workflow */}
@@ -194,18 +194,18 @@ const AstronLandscape: React.FC = () => {
               </g>
 
               <g fontSize="12" fontWeight="700" fill="#334155" style={{ textShadow: '0 0 4px #fff, 0 0 8px #fff' }}>
-                <text x="740" y="415" textAnchor="middle" fill="#4f46e5" className="select-none">{content.orchestration}</text>
-                <text x="1270" y="375" textAnchor="end" fill="#4f46e5" className="select-none">{content.apis}</text>
+                <text x="820" y="415" textAnchor="middle" fill="#4f46e5" className="select-none">{content.orchestration}</text>
+                <text x="1240" y="375" textAnchor="end" fill="#4f46e5" className="select-none">{content.apis}</text>
                 <text x="20" y="435" textAnchor="start" fill="#0d9488" className="select-none">{content.rpa}</text>
                 <text x="530" y="115" textAnchor="middle" fill="#db2777" className="select-none">{content.capabilities}</text>
               </g>
             </svg>
 
             {/* Treemap Content */}
-            <div className="flex-1 flex gap-3 p-3 bg-transparent">
+            <div className="flex-1 flex gap-2 p-2 bg-transparent min-h-0">
               {/* Column 1 (Left): Agent & Automation */}
-              <div className="w-[42%] flex flex-col gap-3">
-                <div className="flex flex-col bg-white/25 backdrop-blur-md border border-white/60 rounded-xl overflow-hidden shadow-lg h-[58%]">
+              <div className="w-[42%] flex flex-col gap-2">
+                <div className="flex flex-col bg-white/25 backdrop-blur-md border border-white/60 rounded-xl overflow-hidden shadow-lg flex-[58] min-h-0">
                   <div className="h-[30px] flex items-center px-3 text-[13px] text-slate-900 font-extrabold uppercase tracking-wider border-b border-white/50">
                     {content.groups.workflow.header}
                   </div>
@@ -234,7 +234,7 @@ const AstronLandscape: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col bg-white/25 backdrop-blur-md border border-white/60 rounded-xl overflow-hidden shadow-lg h-[42%]">
+                <div className="flex flex-col bg-white/25 backdrop-blur-md border border-white/60 rounded-xl overflow-hidden shadow-lg flex-[42] min-h-0">
                   <div className="h-[30px] flex items-center px-3 text-[13px] text-slate-900 font-extrabold uppercase tracking-wider border-b border-white/50">
                     {content.groups.automation.header}
                   </div>
@@ -266,8 +266,8 @@ const AstronLandscape: React.FC = () => {
               </div>
 
               {/* Column 2 (Center): Skills & Tutorial */}
-              <div className="w-[33%] flex flex-col gap-3">
-                <div className="flex flex-col bg-white/25 backdrop-blur-md border border-white/60 rounded-xl overflow-hidden shadow-lg h-[65%]">
+              <div className="w-[33%] flex flex-col gap-2">
+                <div className="flex flex-col bg-white/25 backdrop-blur-md border border-white/60 rounded-xl overflow-hidden shadow-lg flex-[65] min-h-0">
                   <div className="h-[30px] flex items-center px-3 text-[13px] text-slate-900 font-extrabold uppercase tracking-wider border-b border-white/50">
                     {content.groups.skills.header}
                   </div>
@@ -316,7 +316,7 @@ const AstronLandscape: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col bg-white/25 backdrop-blur-md border border-white/60 rounded-xl overflow-hidden shadow-lg h-[35%]">
+                <div className="flex flex-col bg-white/25 backdrop-blur-md border border-white/60 rounded-xl overflow-hidden shadow-lg flex-[35] min-h-0">
                   <div className="h-[30px] flex items-center px-3 text-[13px] text-slate-900 font-extrabold uppercase tracking-wider border-b border-white/50">
                     {content.groups.tutorial.header}
                   </div>
@@ -344,8 +344,8 @@ const AstronLandscape: React.FC = () => {
               </div>
 
               {/* Column 3 (Right): Desktop App & Engine */}
-              <div className="w-[25%] flex flex-col gap-3">
-                <div className="flex flex-col bg-white/25 backdrop-blur-md border border-white/60 rounded-xl overflow-hidden shadow-lg h-[50%]">
+              <div className="w-[25%] flex flex-col gap-2">
+                <div className="flex flex-col bg-white/25 backdrop-blur-md border border-white/60 rounded-xl overflow-hidden shadow-lg flex-[50] min-h-0">
                   <div className="h-[30px] flex items-center px-3 text-[13px] text-slate-900 font-extrabold uppercase tracking-wider border-b border-white/50">
                     {content.groups.management.header}
                   </div>
@@ -373,24 +373,24 @@ const AstronLandscape: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col bg-white/25 backdrop-blur-md border border-white/60 rounded-xl overflow-hidden shadow-lg h-[50%]">
+                <div className="flex flex-col bg-white/25 backdrop-blur-md border border-white/60 rounded-xl overflow-hidden shadow-lg flex-[50] min-h-0">
                   <div className="h-[30px] flex items-center px-3 text-[13px] text-slate-900 font-extrabold uppercase tracking-wider border-b border-white/50">
                     {content.groups.engine.header}
                   </div>
                   <div className="flex-1 flex p-2">
-                    <div className="w-full flex flex-col p-4 rounded-lg border border-white/80 shadow-inner bg-gradient-to-br from-indigo-100/60 to-indigo-200/70 text-indigo-900 relative z-10">
-                      <a 
+                    <div className="w-full flex flex-col p-3 rounded-lg border border-white/80 shadow-inner bg-gradient-to-br from-indigo-100/60 to-indigo-200/70 text-indigo-900 relative z-10">
+                      <a
                         href={content.groups.engine.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[13px] font-bold mb-2 opacity-85 flex items-center gap-1.5 hover:text-indigo-600 transition-colors"
+                        className="text-[13px] font-bold mb-1 opacity-85 flex items-center gap-1.5 hover:text-indigo-600 transition-colors"
                       >
                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1h-8a1 1 0 00-1 1v6.708A2.486 2.486 0 014.5 9h8V1.5z" /></svg>
                         {content.groups.engine.repo}
                       </a>
-                      <div className="text-xl font-extrabold mb-2 leading-tight tracking-tight">{content.groups.engine.title}</div>
-                      <div className="text-sm leading-relaxed font-medium opacity-90 mb-3 flex-1">{content.groups.engine.desc}</div>
-                      <div className="mt-auto flex items-end gap-3">
+                      <div className="text-xl font-extrabold mb-1 leading-tight tracking-tight">{content.groups.engine.title}</div>
+                      <div className="text-sm leading-snug font-medium opacity-90 mb-1 flex-1">{content.groups.engine.desc}</div>
+                      <div className="mt-auto flex items-start gap-3">
                         <div className="flex flex-wrap gap-2 flex-1 min-w-0">
                           {content.groups.engine.tags.map(tag => (
                             <span key={tag} className="text-[11px] px-3 py-1 rounded-xl bg-white/85 font-bold border border-white shadow-sm flex items-center gap-1.5 whitespace-nowrap">
@@ -416,7 +416,7 @@ const AstronLandscape: React.FC = () => {
               </div>
             </div>
 
-              <div className="h-3 bg-transparent" />
+              <div className="h-2 bg-transparent" />
             </div>
           </div>
         </div>
