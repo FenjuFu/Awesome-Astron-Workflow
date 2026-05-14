@@ -108,7 +108,7 @@ const AstronLandscape: React.FC = () => {
         header: isZH ? '智能体引擎 (agent-engine)' : 'agent-engine',
         repo: 'harnessclaw / harnessclaw-engine',
         url: 'https://github.com/harnessclaw/harnessclaw-engine',
-        title: 'harnessclaw-engine',
+        title: isZH ? '高性能 LLM 编程助手与 Agent 引擎' : 'High-Performance LLM Coding Assistant and Agent Engine',
         desc: isZH ? '基于 Go 语言构建的大模型编程助手引擎，支持 WebSocket、多轮对话、工具调用及权限管理。' : 'LLM programming assistant engine built with Go, supporting WebSocket, multi-turn dialogues, tool calling, and permissions.',
         tags: isZH ? ['Go', '引擎', 'WebSocket'] : ['Go', 'engine', 'websocket']
       }
