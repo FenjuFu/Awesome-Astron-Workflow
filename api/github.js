@@ -15,6 +15,8 @@ export default async function handler(req, res) {
         return await handleToken(req, res);
       case 'contributions':
         return await handleContributions(req, res);
+      case 'leaderboard':
+        return await handleLeaderboard(req, res);
       default:
         return res.status(404).json({ error: 'Not Found' });
     }
@@ -310,5 +312,63 @@ async function handleContributions(request, response) {
     if (u?.contributions) astronStats = u.contributions;
   } catch (e) { console.error('DB Error', e); }
 
+  const totalContributions = Object.values(contributionDatesByRepo).reduce((total, repoDates) => {
+    return total + Object.values(repoDates).reduce((repoTotal, dates) => repoTotal + dates.length, 0);
+  }, 0) + (astronStats.agent?.workflows || 0) + (astronStats.rpa?.tasks || 0);
+
+  const repoSummary = {};
+  for (const [repo, stats] of Object.entries(repoStats)) {
+    repoSummary[repo] = {
+      pr_created: stats.pr_created.total_count,
+      pr_merged: stats.pr_merged.total_count,
+      issues_created: stats.issues_created.total_count,
+    };
+  }
+
+  try {
+    const client = await clientPromise;
+    const db = client.db('astron_workflow');
+    await db.collection('contribution_cache').updateOne(
+      { github_username: login },
+      { $set: {
+        github_username: login,
+        name: userData.name || userData.login,
+        avatar_url: userData.avatar_url,
+        total_contributions: totalContributions,
+        repo_summary: repoSummary,
+        updated_at: new Date(),
+      }},
+      { upsert: true }
+    );
+  } catch (e) { console.error('Cache write error', e); }
+
   response.status(200).json({ user: { login: userData.login, name: userData.name, avatar_url: userData.avatar_url, html_url: userData.html_url }, range: { from: fromDate, to: toDate }, repos: repoStats, contribution_fields: CONTRIBUTION_FIELDS, contribution_dates: contributionDatesByRepo, astron: astronStats });
+}
+
+async function handleLeaderboard(request, response) {
+  try {
+    const client = await clientPromise;
+    const db = client.db('astron_workflow');
+    const cached = await db.collection('contribution_cache')
+      .find({})
+      .sort({ total_contributions: -1 })
+      .limit(100)
+      .toArray();
+
+    const leaderboard = cached.map((entry, index) => ({
+      rank: index + 1,
+      login: entry.github_username,
+      name: entry.name,
+      avatar_url: entry.avatar_url,
+      total_contributions: entry.total_contributions,
+      repo_summary: entry.repo_summary,
+      updated_at: entry.updated_at,
+    }));
+
+    response.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
+    response.status(200).json(leaderboard);
+  } catch (e) {
+    console.error('Leaderboard error', e);
+    response.status(500).json({ error: 'Failed to load leaderboard' });
+  }
 }
