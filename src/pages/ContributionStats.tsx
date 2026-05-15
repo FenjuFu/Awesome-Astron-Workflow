@@ -17,9 +17,6 @@ const ContributionStats: React.FC = () => {
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
               {t('contribute.github.title') || 'Contribution Statistics'}
             </h1>
-            <p className="text-gray-600">
-              {t('contribute.github.subtitle') || 'Detailed breakdown of your contributions to the Astron ecosystem.'}
-            </p>
           </div>
           
           <GitHubConnect />
