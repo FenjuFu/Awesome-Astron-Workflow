@@ -387,31 +387,3 @@ async function handleLeaderboard(request, response) {
     response.status(500).json({ error: 'Failed to load leaderboard' });
   }
 }
-
-async function handleLeaderboard(request, response) {
-  try {
-    const client = await clientPromise;
-    const db = client.db('astron_workflow');
-    const cached = await db.collection('contribution_cache')
-      .find({})
-      .sort({ total_contributions: -1 })
-      .limit(100)
-      .toArray();
-
-    const leaderboard = cached.map((entry, index) => ({
-      rank: index + 1,
-      login: entry.github_username,
-      name: entry.name,
-      avatar_url: entry.avatar_url,
-      total_contributions: entry.total_contributions,
-      repo_summary: entry.repo_summary,
-      updated_at: entry.updated_at,
-    }));
-
-    response.setHeader('Cache-Control', 'no-store');
-    response.status(200).json(leaderboard);
-  } catch (e) {
-    console.error('Leaderboard error', e);
-    response.status(500).json({ error: 'Failed to load leaderboard' });
-  }
-}
