@@ -12,6 +12,10 @@ export default async function handler(req, res) {
         return await handleLogin(req, res);
       case 'callback':
         return await handleCallback(req, res);
+      case 'logout':
+        return await handleLogout(req, res);
+      case 'session':
+        return await handleSession(req, res);
       case 'token':
         return await handleToken(req, res);
       case 'contributions':
@@ -122,6 +126,8 @@ const buildGitHubHeaders = (token, accept = 'application/vnd.github.v3+json') =>
   }
   return headers;
 };
+
+const buildExpiredCookie = (name) => `${name}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`;
 
 const upsertGitHubUserProfile = async (db, userData, extraFields = {}) => {
   if (!userData?.login) return;
@@ -476,6 +482,58 @@ async function handleCallback(request, response) {
   response.redirect(returnTo);
 }
 
+async function handleLogout(request, response) {
+  if (request.method !== 'POST') {
+    return response.status(405).json({ error: 'Method Not Allowed' });
+  }
+
+  response.setHeader('Set-Cookie', [buildExpiredCookie('gh_token')]);
+  response.status(200).json({ ok: true });
+}
+
+async function handleSession(request, response) {
+  const cookies = cookie.parse(request.headers.cookie || '');
+  const token = cookies.gh_token;
+  if (!token) {
+    return response.status(401).json({ authenticated: false });
+  }
+
+  try {
+    const userResponse = await fetch('https://api.github.com/user', {
+      headers: buildGitHubHeaders(token),
+    });
+
+    if (!userResponse.ok) {
+      if (userResponse.status === 401 || userResponse.status === 403) {
+        response.setHeader('Set-Cookie', [buildExpiredCookie('gh_token')]);
+        return response.status(401).json({ authenticated: false });
+      }
+
+      return response.status(userResponse.status).json({ error: 'Failed to validate session' });
+    }
+
+    const userData = await userResponse.json();
+    const client = await clientPromise;
+    const db = client.db('astron_workflow');
+    await upsertGitHubUserProfile(db, userData, {
+      oauth_token: token,
+      last_login_at: new Date(),
+    });
+
+    return response.status(200).json({
+      authenticated: true,
+      user: {
+        login: userData.login,
+        name: userData.name,
+        avatar_url: userData.avatar_url,
+        html_url: userData.html_url,
+      },
+    });
+  } catch (error) {
+    return response.status(502).json({ error: error.message || 'Failed to validate session' });
+  }
+}
+
 async function handleToken(request, response) {
   if (request.method !== 'POST') return response.status(405).json({ error: 'Method Not Allowed' });
 
@@ -531,7 +589,6 @@ async function handleContributions(request, response) {
 
 async function handleLeaderboard(request, response) {
   try {
-    const cookies = cookie.parse(request.headers.cookie || '');
     const client = await clientPromise;
     const db = client.db('astron_workflow');
     const [cached, users, redemptionsResult] = await Promise.all([
@@ -548,8 +605,6 @@ async function handleLeaderboard(request, response) {
     }
 
     const entriesByLogin = new Map();
-    const usersByLogin = new Map(users.map((user) => [user.github_username, user]));
-
     for (const redemption of redemptionsResult.data || []) {
       upsertLeaderboardEntry(entriesByLogin, {
         login: redemption.github_login,
@@ -576,41 +631,6 @@ async function handleLeaderboard(request, response) {
       });
     }
 
-    const now = new Date();
-    const oneYearAgo = new Date();
-    oneYearAgo.setFullYear(now.getFullYear() - 1);
-    const missingCacheEntries = Array.from(entriesByLogin.values()).filter(
-      (entry) => typeof entry.total_contributions !== 'number'
-    );
-
-    for (const entry of missingCacheEntries) {
-      const storedUser = usersByLogin.get(entry.login);
-      const backfillToken = storedUser?.oauth_token || cookies.gh_token;
-      if (!backfillToken) {
-        continue;
-      }
-
-      try {
-        const contributionData = await fetchContributionSnapshot({
-          token: backfillToken,
-          login: entry.login,
-          fromDate: oneYearAgo,
-          toDate: now,
-        });
-
-        upsertLeaderboardEntry(entriesByLogin, {
-          login: contributionData.user.login,
-          name: contributionData.user.name,
-          avatar_url: contributionData.user.avatar_url,
-          total_contributions: contributionData.total_contributions,
-          repo_summary: contributionData.repo_summary,
-          updated_at: contributionData.updated_at,
-        });
-      } catch (error) {
-        console.error(`Leaderboard backfill failed for ${entry.login}:`, error);
-      }
-    }
-
     const leaderboard = Array.from(entriesByLogin.values())
       .filter((entry) => typeof entry.total_contributions === 'number')
       .sort((a, b) => {
@@ -625,7 +645,7 @@ async function handleLeaderboard(request, response) {
         ...entry,
       }));
 
-    // The leaderboard should reflect newly synced users immediately after login.
+    // Keep the leaderboard request fast by returning cached entries only.
     response.setHeader('Cache-Control', 'no-store');
     response.status(200).json(leaderboard);
   } catch (e) {

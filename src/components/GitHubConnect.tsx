@@ -181,6 +181,7 @@ const GitHubConnect: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<ContributionsData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [authenticated, setAuthenticated] = useState(false);
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [leaderboardLoading, setLeaderboardLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'leaderboard' | 'stats' | 'redeem'>('leaderboard');
@@ -196,7 +197,7 @@ const GitHubConnect: React.FC = () => {
     }
 
     fetchLeaderboard();
-    fetchData();
+    initializePersonalData();
   }, []);
 
   const fetchLeaderboard = async () => {
@@ -214,10 +215,11 @@ const GitHubConnect: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      setLoading(true);
-      const res = await fetchWithTimeout('/api/github/contributions');
+      setError(null);
+      const res = await fetchWithTimeout('/api/github/contributions', {}, 45000);
 
       if (res.status === 401) {
+        setAuthenticated(false);
         setData(null);
         return;
       }
@@ -240,9 +242,44 @@ const GitHubConnect: React.FC = () => {
       }
     } catch (err: unknown) {
       if (err instanceof Error && err.name === 'AbortError') {
-        setError('请求超时，请检查网络连接后重试');
+        setError('加载贡献数据超时，请稍后重试');
       } else {
         setError('加载贡献数据失败');
+      }
+    }
+  };
+
+  const initializePersonalData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const sessionRes = await fetchWithTimeout('/api/github/session', {}, 8000);
+      if (sessionRes.status === 401) {
+        setAuthenticated(false);
+        setData(null);
+        return;
+      }
+
+      if (!sessionRes.ok) {
+        throw new Error('Failed to check session');
+      }
+
+      const session = await sessionRes.json();
+      if (!session?.authenticated) {
+        setAuthenticated(false);
+        setData(null);
+        return;
+      }
+
+      setAuthenticated(true);
+      await fetchData();
+    } catch (err: unknown) {
+      setAuthenticated(false);
+      if (err instanceof Error && err.name === 'AbortError') {
+        setError('检查登录状态超时，请稍后重试');
+      } else {
+        setError('检查登录状态失败');
       }
     } finally {
       setLoading(false);
@@ -254,8 +291,15 @@ const GitHubConnect: React.FC = () => {
     window.location.href = `/api/github/login?from=${encodeURIComponent(currentPath)}`;
   };
 
-  const handleLogout = () => {
-    document.cookie = 'gh_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/github/logout', {
+        method: 'POST',
+      });
+    } catch {
+      // Reset local UI even if the network request fails.
+    }
+    setAuthenticated(false);
     setData(null);
     setError(null);
     setActiveTab('leaderboard');
@@ -263,7 +307,8 @@ const GitHubConnect: React.FC = () => {
 
   const totalContributions = data?.total_contributions ?? 0;
 
-  const isLoggedIn = !!data;
+  const isLoggedIn = authenticated;
+  const hasContributionData = !!data;
   const currentUserEntry = data ? {
     login: data.user.login,
     name: data.user.name || data.user.login,
@@ -277,7 +322,7 @@ const GitHubConnect: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* User bar - show when logged in */}
-      {isLoggedIn && (
+      {hasContributionData && (
         <div className="flex items-center justify-between bg-white p-4 rounded-xl shadow-sm border border-gray-100">
           <div className="flex items-center gap-3">
             <img
@@ -323,7 +368,7 @@ const GitHubConnect: React.FC = () => {
             <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600" />
           )}
         </button>
-        {isLoggedIn && (
+        {hasContributionData && (
           <>
             <button
               onClick={() => setActiveTab('stats')}
@@ -366,16 +411,16 @@ const GitHubConnect: React.FC = () => {
           personalLoading={loading}
           personalError={error}
           onLogin={handleLogin}
-          onRetry={fetchData}
+          onRetry={initializePersonalData}
           t={t}
         />
       )}
 
-      {activeTab === 'stats' && isLoggedIn && (
+      {activeTab === 'stats' && data && (
         <PersonalStatsView data={data} t={t} />
       )}
 
-      {activeTab === 'redeem' && isLoggedIn && (
+      {activeTab === 'redeem' && data && (
         <RedemptionSystem totalContributions={totalContributions} />
       )}
     </div>
@@ -404,6 +449,26 @@ const LeaderboardView: React.FC<{
 
   return (
     <div className="space-y-4">
+      {isLoggedIn && !personalLoading && personalError && (
+        <div className="bg-amber-50 rounded-xl p-4 border border-amber-200 flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center gap-3">
+            <AlertCircle className="h-5 w-5 text-amber-600" />
+            <div>
+              <p className="text-sm font-medium text-gray-900">
+                {t('contribute.github.myStats') || '我的贡献'}
+              </p>
+              <p className="text-xs text-amber-700 mt-0.5">{personalError}</p>
+            </div>
+          </div>
+          <button
+            onClick={onRetry}
+            className="inline-flex items-center px-3 py-1.5 text-sm border border-amber-300 text-amber-800 rounded-lg hover:bg-white transition-colors"
+          >
+            {t('contribute.github.retry') || '重试'}
+          </button>
+        </div>
+      )}
+
       {/* Login prompt for non-logged-in users */}
       {!isLoggedIn && !personalLoading && (
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4 border border-indigo-100 flex items-center justify-between flex-wrap gap-3">
