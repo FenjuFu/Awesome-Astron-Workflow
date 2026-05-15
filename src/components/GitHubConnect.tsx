@@ -176,7 +176,6 @@ const mergeCurrentUserIntoLeaderboard = (
       rank: index + 1,
     }));
 };
-
 const GitHubConnect: React.FC = () => {
   const { t } = useLanguage();
   const [loading, setLoading] = useState(true);
