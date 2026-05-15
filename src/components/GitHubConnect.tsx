@@ -141,6 +141,42 @@ const RANK_STYLES = [
   { bg: 'bg-orange-50', border: 'border-orange-200', badge: 'bg-orange-400 text-white', icon: '🥉' },
 ];
 
+const buildRepoSummaryFromStats = (repos: ContributionsData['repos'] = {}) =>
+  Object.fromEntries(
+    Object.entries(repos).map(([repoName, stats]) => [
+      repoName,
+      {
+        pr_created: stats.pr_created.total_count,
+        pr_merged: stats.pr_merged.total_count,
+        issues_created: stats.issues_created.total_count,
+      }
+    ])
+  );
+
+const mergeCurrentUserIntoLeaderboard = (
+  leaderboard: LeaderboardEntry[],
+  currentUser: Omit<LeaderboardEntry, 'rank'> | null
+): LeaderboardEntry[] => {
+  const entries = currentUser
+    ? [
+        ...leaderboard.filter((entry) => entry.login !== currentUser.login),
+        { rank: 0, ...currentUser }
+      ]
+    : leaderboard;
+
+  return [...entries]
+    .sort((a, b) => {
+      if (b.total_contributions !== a.total_contributions) {
+        return b.total_contributions - a.total_contributions;
+      }
+      return a.login.localeCompare(b.login);
+    })
+    .map((entry, index) => ({
+      ...entry,
+      rank: index + 1,
+    }));
+};
+
 const GitHubConnect: React.FC = () => {
   const { t } = useLanguage();
   const [loading, setLoading] = useState(true);
@@ -229,6 +265,15 @@ const GitHubConnect: React.FC = () => {
   const totalContributions = data?.total_contributions ?? 0;
 
   const isLoggedIn = !!data;
+  const currentUserEntry = data ? {
+    login: data.user.login,
+    name: data.user.name || data.user.login,
+    avatar_url: data.user.avatar_url,
+    total_contributions: totalContributions,
+    repo_summary: buildRepoSummaryFromStats(data.repos),
+    updated_at: new Date().toISOString(),
+  } : null;
+  const displayLeaderboard = mergeCurrentUserIntoLeaderboard(leaderboard, currentUserEntry);
 
   return (
     <div className="space-y-6">
@@ -316,7 +361,7 @@ const GitHubConnect: React.FC = () => {
       {/* Tab content */}
       {activeTab === 'leaderboard' && (
         <LeaderboardView
-          leaderboard={leaderboard}
+          leaderboard={displayLeaderboard}
           loading={leaderboardLoading}
           isLoggedIn={isLoggedIn}
           personalLoading={loading}

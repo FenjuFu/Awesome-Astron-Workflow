@@ -47,6 +47,18 @@ const fetchAllPages = async (fetchPage) => {
   return results;
 };
 
+const buildRepoSummary = (repoStats) => {
+  const repoSummary = {};
+  for (const [repo, stats] of Object.entries(repoStats)) {
+    repoSummary[repo] = {
+      pr_created: stats.pr_created.total_count,
+      pr_merged: stats.pr_merged.total_count,
+      issues_created: stats.issues_created.total_count,
+    };
+  }
+  return repoSummary;
+};
+
 // --- Action Handlers ---
 
 async function handleLogin(request, response) {
@@ -325,14 +337,7 @@ async function handleContributions(request, response) {
   }, 0);
   const totalContributions = searchBasedTotal + otherBehaviorsTotal + (astronStats.agent?.workflows || 0) + (astronStats.rpa?.tasks || 0);
 
-  const repoSummary = {};
-  for (const [repo, stats] of Object.entries(repoStats)) {
-    repoSummary[repo] = {
-      pr_created: stats.pr_created.total_count,
-      pr_merged: stats.pr_merged.total_count,
-      issues_created: stats.issues_created.total_count,
-    };
-  }
+  const repoSummary = buildRepoSummary(repoStats);
 
   try {
     const client = await clientPromise;
@@ -374,7 +379,8 @@ async function handleLeaderboard(request, response) {
       updated_at: entry.updated_at,
     }));
 
-    response.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
+    // The leaderboard should reflect newly synced users immediately after login.
+    response.setHeader('Cache-Control', 'no-store');
     response.status(200).json(leaderboard);
   } catch (e) {
     console.error('Leaderboard error', e);
