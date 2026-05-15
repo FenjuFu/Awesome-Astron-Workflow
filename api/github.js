@@ -47,6 +47,18 @@ const fetchAllPages = async (fetchPage) => {
   return results;
 };
 
+const buildRepoSummary = (repoStats) => {
+  const repoSummary = {};
+  for (const [repo, stats] of Object.entries(repoStats)) {
+    repoSummary[repo] = {
+      pr_created: stats.pr_created.total_count,
+      pr_merged: stats.pr_merged.total_count,
+      issues_created: stats.issues_created.total_count,
+    };
+  }
+  return repoSummary;
+};
+
 // --- Action Handlers ---
 
 async function handleLogin(request, response) {
@@ -312,18 +324,20 @@ async function handleContributions(request, response) {
     if (u?.contributions) astronStats = u.contributions;
   } catch (e) { console.error('DB Error', e); }
 
-  const totalContributions = Object.values(contributionDatesByRepo).reduce((total, repoDates) => {
-    return total + Object.values(repoDates).reduce((repoTotal, dates) => repoTotal + dates.length, 0);
-  }, 0) + (astronStats.agent?.workflows || 0) + (astronStats.rpa?.tasks || 0);
+  // Use repoStats total_count (accurate from GitHub API, not limited by per_page=100)
+  // for PR/Issue categories, and contribution_dates for other behaviors
+  const searchTrackedKeys = new Set(['pr_creation_date_list', 'pr_merged_date_list', 'issue_creation_date_list']);
+  const searchBasedTotal = Object.values(repoStats).reduce((sum, stats) => {
+    return sum + stats.pr_created.total_count + stats.pr_merged.total_count + stats.issues_created.total_count;
+  }, 0);
+  const otherBehaviorsTotal = Object.values(contributionDatesByRepo).reduce((total, repoDates) => {
+    return total + Object.entries(repoDates).reduce((repoTotal, [key, dates]) => {
+      return searchTrackedKeys.has(key) ? repoTotal : repoTotal + dates.length;
+    }, 0);
+  }, 0);
+  const totalContributions = searchBasedTotal + otherBehaviorsTotal + (astronStats.agent?.workflows || 0) + (astronStats.rpa?.tasks || 0);
 
-  const repoSummary = {};
-  for (const [repo, stats] of Object.entries(repoStats)) {
-    repoSummary[repo] = {
-      pr_created: stats.pr_created.total_count,
-      pr_merged: stats.pr_merged.total_count,
-      issues_created: stats.issues_created.total_count,
-    };
-  }
+  const repoSummary = buildRepoSummary(repoStats);
 
   try {
     const client = await clientPromise;
@@ -342,7 +356,7 @@ async function handleContributions(request, response) {
     );
   } catch (e) { console.error('Cache write error', e); }
 
-  response.status(200).json({ user: { login: userData.login, name: userData.name, avatar_url: userData.avatar_url, html_url: userData.html_url }, range: { from: fromDate, to: toDate }, repos: repoStats, contribution_fields: CONTRIBUTION_FIELDS, contribution_dates: contributionDatesByRepo, astron: astronStats });
+  response.status(200).json({ user: { login: userData.login, name: userData.name, avatar_url: userData.avatar_url, html_url: userData.html_url }, range: { from: fromDate, to: toDate }, repos: repoStats, contribution_fields: CONTRIBUTION_FIELDS, contribution_dates: contributionDatesByRepo, astron: astronStats, total_contributions: totalContributions });
 }
 
 async function handleLeaderboard(request, response) {
@@ -365,7 +379,8 @@ async function handleLeaderboard(request, response) {
       updated_at: entry.updated_at,
     }));
 
-    response.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
+    // The leaderboard should reflect newly synced users immediately after login.
+    response.setHeader('Cache-Control', 'no-store');
     response.status(200).json(leaderboard);
   } catch (e) {
     console.error('Leaderboard error', e);
