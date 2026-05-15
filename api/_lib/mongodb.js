@@ -6,7 +6,9 @@ const options = {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
+  connectTimeoutMS: 5000,
+  serverSelectionTimeoutMS: 5000,
 };
 
 let client;
