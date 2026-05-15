@@ -59,6 +59,16 @@ interface LeaderboardEntry {
   updated_at: string;
 }
 
+interface LeaderboardEntry {
+  rank: number;
+  login: string;
+  name: string;
+  avatar_url: string;
+  total_contributions: number;
+  repo_summary: Record<string, { pr_created: number; pr_merged: number; issues_created: number }>;
+  updated_at: string;
+}
+
 const BEHAVIOR_LABELS: Record<string, string> = {
   fork_date_list: 'Fork 仓库',
   star_date_list: 'Star 仓库',
