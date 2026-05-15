@@ -323,6 +323,7 @@ const translations = {
     'contribute.github.login': 'Authorize GitHub and View Contributions',
     'contribute.github.logout': 'Log out',
     'contribute.github.loggedInAs': 'Logged in as',
+    'contribute.github.totalContributions': 'Total Contributions',
     'contribute.github.loading': 'Loading contribution data...',
     'contribute.github.stats.commits': 'Commits',
     'contribute.github.stats.pullRequests': 'Pull Requests',

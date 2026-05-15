@@ -46,6 +46,7 @@ interface ContributionsData {
   contribution_fields?: Record<string, string[]>;
   contribution_dates?: Record<string, Record<string, string[]>>;
   astron?: AstronStats;
+  total_contributions?: number;
 }
 
 interface LeaderboardEntry {
@@ -200,6 +201,7 @@ const GitHubConnect: React.FC = () => {
       setData(json);
       if (json) {
         setActiveTab('stats');
+        fetchLeaderboard();
       }
     } catch (err: unknown) {
       if (err instanceof Error && err.name === 'AbortError') {
@@ -224,10 +226,7 @@ const GitHubConnect: React.FC = () => {
     setActiveTab('leaderboard');
   };
 
-  const totalContributions = (data?.contribution_dates ?
-    Object.values(data.contribution_dates).reduce((total, repoDates) => {
-      return total + Object.values(repoDates).reduce((repoTotal, dates) => repoTotal + dates.length, 0);
-    }, 0) : 0) + (data?.astron?.agent?.workflows || 0) + (data?.astron?.rpa?.tasks || 0);
+  const totalContributions = data?.total_contributions ?? 0;
 
   const isLoggedIn = !!data;
 
