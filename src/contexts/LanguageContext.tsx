@@ -769,7 +769,7 @@ const translations = {
     'contribute.github.leaderboardTitle': 'Astron 社区贡献排行榜',
     'contribute.github.leaderboardDesc': '已授权登录用户基于 PR、Issue、代码提交等 GitHub 贡献行为的综合积分排名',
     'contribute.github.noLeaderboard': '暂无排行数据',
-    'contribute.github.noLeaderboardDesc': '登录 GitHub 后查看贡献数据即可自动加入排行榜',
+    'contribute.github.noLeaderboardDesc': '登录 GitHub 后即可查看贡献并加入排行榜',
     'contribute.github.loginPrompt': '登录 GitHub 查看你的详细贡献并参与积分兑换',
     'contribute.github.retry': '重试',
     'community.title': 'Astron 社区氛围宝库',

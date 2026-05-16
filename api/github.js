@@ -37,6 +37,7 @@ const hasNextPage = (linkHeader) => {
 };
 
 const normalizeRepoFullName = (repoFullName) => repoFullName?.toLowerCase();
+const normalizeGitHubLogin = (login) => login?.trim().toLowerCase();
 
 const fetchAllPages = async (fetchPage) => {
   const results = [];
@@ -66,29 +67,59 @@ const buildRepoSummary = (repoStats) => {
 const buildDefaultAvatarUrl = (login) => `https://github.com/${encodeURIComponent(login)}.png?size=80`;
 
 const upsertLeaderboardEntry = (entriesByLogin, entry) => {
-  const login = entry?.login;
-  if (!login) return;
+  const normalizedLogin = normalizeGitHubLogin(entry?.login);
+  if (!normalizedLogin) return;
 
-  const existing = entriesByLogin.get(login) || {};
-  const repoSummary = entry.repo_summary && Object.keys(entry.repo_summary).length > 0
-    ? entry.repo_summary
-    : existing.repo_summary || {};
+  const existing = entriesByLogin.get(normalizedLogin) || {};
+  const existingUpdatedAt = existing.updated_at ? new Date(existing.updated_at).getTime() : 0;
+  const incomingUpdatedAt = entry.updated_at ? new Date(entry.updated_at).getTime() : 0;
+  const hasIncomingRepoSummary = !!(entry.repo_summary && Object.keys(entry.repo_summary).length > 0);
+  const shouldUseIncomingTotal = typeof entry.total_contributions === 'number' && (
+    typeof existing.total_contributions !== 'number'
+    || !existing.updated_at
+    || incomingUpdatedAt >= existingUpdatedAt
+  );
+  const shouldUseIncomingRepoSummary = hasIncomingRepoSummary && (
+    !existing.repo_summary
+    || Object.keys(existing.repo_summary).length === 0
+    || !existing.updated_at
+    || incomingUpdatedAt >= existingUpdatedAt
+  );
 
-  entriesByLogin.set(login, {
-    login,
-    name: entry.name || existing.name || login,
-    avatar_url: entry.avatar_url || existing.avatar_url || buildDefaultAvatarUrl(login),
-    total_contributions:
-      typeof entry.total_contributions === 'number' && typeof existing.total_contributions === 'number'
-        ? Math.max(existing.total_contributions, entry.total_contributions)
-        : typeof entry.total_contributions === 'number'
-          ? entry.total_contributions
-          : typeof existing.total_contributions === 'number'
-            ? existing.total_contributions
-            : null,
-    repo_summary: repoSummary,
-    updated_at: entry.updated_at || existing.updated_at || null,
+  entriesByLogin.set(normalizedLogin, {
+    login: entry.login || existing.login || normalizedLogin,
+    name: entry.name || existing.name || entry.login || existing.login || normalizedLogin,
+    avatar_url: entry.avatar_url || existing.avatar_url || buildDefaultAvatarUrl(entry.login || existing.login || normalizedLogin),
+    total_contributions: shouldUseIncomingTotal
+      ? entry.total_contributions
+      : typeof existing.total_contributions === 'number'
+        ? existing.total_contributions
+        : null,
+    repo_summary: shouldUseIncomingRepoSummary
+      ? entry.repo_summary
+      : existing.repo_summary || {},
+    updated_at:
+      incomingUpdatedAt >= existingUpdatedAt
+        ? entry.updated_at || existing.updated_at || null
+        : existing.updated_at || entry.updated_at || null,
   });
+};
+
+const hasLeaderboardActivity = (entry) => {
+  if (!entry || typeof entry.total_contributions !== 'number') return false;
+  if (entry.total_contributions > 0) return true;
+
+  return Object.values(entry.repo_summary || {}).some((repo) => {
+    return (repo?.pr_created || 0) > 0 || (repo?.pr_merged || 0) > 0 || (repo?.issues_created || 0) > 0;
+  });
+};
+
+const hasFreshLeaderboardCache = (cachedEntry, userEntry) => {
+  if (typeof cachedEntry?.total_contributions !== 'number') return false;
+  if (cachedEntry.total_contributions === 0 && !hasLeaderboardActivity(cachedEntry)) return false;
+  if (!userEntry?.last_login_at) return true;
+  if (!cachedEntry?.updated_at) return false;
+  return new Date(cachedEntry.updated_at).getTime() >= new Date(userEntry.last_login_at).getTime();
 };
 
 const CONTRIBUTION_FIELDS = {
