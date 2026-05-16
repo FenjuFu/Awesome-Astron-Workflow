@@ -1,7 +1,6 @@
 import cookie from 'cookie';
 import crypto from 'crypto';
 import clientPromise from './_lib/mongodb.js';
-import { supabaseAdmin } from './_lib/supabase-admin.js';
 
 export default async function handler(req, res) {
   const action = req.query.action;
@@ -180,24 +179,6 @@ const safeDatabaseWrite = async (db, label, writeOperation) => {
     await writeOperation();
   } catch (error) {
     console.error(`${label} failed`, error);
-  }
-};
-
-const getRedemptionEntries = async () => {
-  try {
-    const redemptionsResult = await supabaseAdmin
-      .from('redemptions')
-      .select('github_login')
-      .not('github_login', 'is', null);
-
-    if (redemptionsResult.error) {
-      throw redemptionsResult.error;
-    }
-
-    return redemptionsResult.data || [];
-  } catch (error) {
-    console.error('Supabase redemptions unavailable', error);
-    return [];
   }
 };
 
@@ -817,38 +798,29 @@ async function handleContributions(request, response) {
 async function handleLeaderboard(request, response) {
   try {
     const db = await getDatabase();
-    const [cached, users, redemptions] = await Promise.all([
+    const [cached, users] = await Promise.all([
       safeDatabaseRead(
         db,
         'Loading contribution cache',
-        () => db.collection('contribution_cache').find({}).toArray(),
+        () => db.collection('contribution_cache').find({ github_username: { $exists: true, $ne: null } }).toArray(),
         []
       ),
       safeDatabaseRead(
         db,
         'Loading GitHub users',
-        () => db.collection('users').find({}, { projection: { github_username: 1, name: 1, avatar_url: 1, updated_at: 1, last_login_at: 1, oauth_token: 1 } }).toArray(),
+        () => db.collection('users').find(
+          { last_login_at: { $exists: true, $ne: null } },
+          { projection: { github_username: 1, name: 1, avatar_url: 1, updated_at: 1, last_login_at: 1 } }
+        ).toArray(),
         []
       ),
-      getRedemptionEntries(),
     ]);
 
     const entriesByLogin = new Map();
-    for (const redemption of redemptions) {
-      upsertLeaderboardEntry(entriesByLogin, {
-        login: redemption.github_login,
-      });
-    }
 
-    for (const user of users) {
-      upsertLeaderboardEntry(entriesByLogin, {
-        login: user.github_username,
-        name: user.name,
-        avatar_url: user.avatar_url,
-        updated_at: user.updated_at || user.last_login_at,
-      });
-    }
-
+    // A contribution_cache snapshot is only written after a GitHub-authorized
+    // contribution fetch, so cached users are eligible even if their users
+    // profile no longer stores an OAuth token.
     for (const entry of cached) {
       upsertLeaderboardEntry(entriesByLogin, {
         login: entry.github_username,
@@ -857,6 +829,17 @@ async function handleLeaderboard(request, response) {
         total_contributions: entry.total_contributions,
         repo_summary: entry.repo_summary,
         updated_at: entry.updated_at,
+      });
+    }
+
+    // Include users who have authorized login but whose contribution snapshot is
+    // still being generated, so they can appear with 0 points until refresh ends.
+    for (const user of users) {
+      upsertLeaderboardEntry(entriesByLogin, {
+        login: user.github_username,
+        name: user.name,
+        avatar_url: user.avatar_url,
+        updated_at: user.updated_at || user.last_login_at,
       });
     }
 
