@@ -101,11 +101,29 @@ const CONTRIBUTION_FIELDS = {
 };
 
 const DATE_FIELD_KEYS = Object.values(CONTRIBUTION_FIELDS).flat();
+const CACHE_REFRESH_INTERVAL_MS = 6 * 60 * 60 * 1000;
 
 const createEmptyContributionDates = () => DATE_FIELD_KEYS.reduce((acc, key) => {
   acc[key] = [];
   return acc;
 }, {});
+
+const createEmptyStatCategory = (totalCount = 0) => ({
+  total_count: totalCount,
+  items: [],
+});
+
+const buildRepoStatsFromSummary = (repoSummary = {}) =>
+  Object.fromEntries(
+    Object.entries(repoSummary).map(([repoName, stats]) => [
+      repoName,
+      {
+        pr_created: createEmptyStatCategory(stats?.pr_created || 0),
+        pr_merged: createEmptyStatCategory(stats?.pr_merged || 0),
+        issues_created: createEmptyStatCategory(stats?.issues_created || 0),
+      }
+    ])
+  );
 
 const pushDate = (target, key, value) => {
   if (value && target[key]) target[key].push(value);
@@ -128,6 +146,13 @@ const buildGitHubHeaders = (token, accept = 'application/vnd.github.v3+json') =>
 };
 
 const buildExpiredCookie = (name) => `${name}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`;
+
+const getDefaultContributionWindow = (referenceDate = new Date()) => {
+  const toDate = new Date(referenceDate);
+  const fromDate = new Date(toDate);
+  fromDate.setFullYear(toDate.getFullYear() - 1);
+  return { fromDate, toDate };
+};
 
 const getDatabase = async () => {
   try {
@@ -193,6 +218,90 @@ const upsertGitHubUserProfile = async (db, userData, extraFields = {}) => {
     },
     { upsert: true }
   );
+};
+
+const buildCachedContributionResponse = (entry) => {
+  if (!entry?.github_username) return null;
+
+  const referenceDate = entry.updated_at || new Date();
+  const { fromDate, toDate } = getDefaultContributionWindow(referenceDate);
+
+  return {
+    user: {
+      login: entry.github_username,
+      name: entry.name || entry.github_username,
+      avatar_url: entry.avatar_url || buildDefaultAvatarUrl(entry.github_username),
+      html_url: entry.html_url || `https://github.com/${encodeURIComponent(entry.github_username)}`,
+    },
+    range: {
+      from: entry.range?.from || fromDate,
+      to: entry.range?.to || toDate,
+    },
+    repos: entry.repos && Object.keys(entry.repos).length > 0
+      ? entry.repos
+      : buildRepoStatsFromSummary(entry.repo_summary),
+    contribution_fields: entry.contribution_fields || CONTRIBUTION_FIELDS,
+    contribution_dates: entry.contribution_dates || {},
+    astron: entry.astron || { agent: { workflows: 0, runs: 0 }, rpa: { tasks: 0, hoursSaved: 0 } },
+    total_contributions: entry.total_contributions,
+    repo_summary: entry.repo_summary || {},
+    updated_at: entry.updated_at || new Date().toISOString(),
+  };
+};
+
+const persistContributionSnapshot = async (db, snapshot) => {
+  if (!db || !snapshot?.user?.login) return;
+
+  await db.collection('contribution_cache').updateOne(
+    { github_username: snapshot.user.login },
+    {
+      $set: {
+        github_username: snapshot.user.login,
+        name: snapshot.user.name || snapshot.user.login,
+        avatar_url: snapshot.user.avatar_url,
+        html_url: snapshot.user.html_url,
+        range: snapshot.range,
+        repos: snapshot.repos,
+        contribution_fields: snapshot.contribution_fields,
+        contribution_dates: snapshot.contribution_dates,
+        astron: snapshot.astron,
+        total_contributions: snapshot.total_contributions,
+        repo_summary: snapshot.repo_summary,
+        updated_at: new Date(snapshot.updated_at || new Date()),
+      },
+    },
+    { upsert: true }
+  );
+};
+
+const queueContributionCacheRefresh = ({ token, login, force = false }) => {
+  if (!token || !login) return;
+
+  Promise.resolve()
+    .then(async () => {
+      const db = await getDatabase();
+      const existingCache = await safeDatabaseRead(
+        db,
+        'Loading contribution cache entry',
+        () => db.collection('contribution_cache').findOne({ github_username: login }),
+        null
+      );
+
+      const hasDetailedSnapshot = existingCache?.repos && existingCache?.contribution_dates;
+      const isFresh = existingCache?.updated_at
+        ? Date.now() - new Date(existingCache.updated_at).getTime() < CACHE_REFRESH_INTERVAL_MS
+        : false;
+
+      if (!force && hasDetailedSnapshot && isFresh) {
+        return;
+      }
+
+      const { fromDate, toDate } = getDefaultContributionWindow();
+      await fetchContributionSnapshot({ token, login, fromDate, toDate });
+    })
+    .catch((error) => {
+      console.error(`Background contribution cache refresh failed for ${login}`, error);
+    });
 };
 
 async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
@@ -397,25 +506,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   }, 0);
   const totalContributions = searchBasedTotal + otherBehaviorsTotal + (astronStats.agent?.workflows || 0) + (astronStats.rpa?.tasks || 0);
   const repoSummary = buildRepoSummary(repoStats);
-
-  await safeDatabaseWrite(db, 'Updating contribution cache', () =>
-    db.collection('contribution_cache').updateOne(
-      { github_username: targetLogin },
-      {
-        $set: {
-          github_username: targetLogin,
-          name: userData.name || userData.login,
-          avatar_url: userData.avatar_url,
-          total_contributions: totalContributions,
-          repo_summary: repoSummary,
-          updated_at: new Date(),
-        }
-      },
-      { upsert: true }
-    )
-  );
-
-  return {
+  const snapshot = {
     user: {
       login: userData.login,
       name: userData.name,
@@ -431,6 +522,12 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
     repo_summary: repoSummary,
     updated_at: new Date().toISOString(),
   };
+
+  await safeDatabaseWrite(db, 'Updating contribution cache', () =>
+    persistContributionSnapshot(db, snapshot)
+  );
+
+  return snapshot;
 }
 
 // --- Action Handlers ---
@@ -516,6 +613,11 @@ async function handleCallback(request, response) {
         oauth_token: tokenData.access_token,
         last_login_at: new Date(),
       });
+      queueContributionCacheRefresh({
+        token: tokenData.access_token,
+        login: userData.login,
+        force: true,
+      });
     }
   } catch (error) {
     console.error('User sync error', error);
@@ -583,6 +685,11 @@ async function handleSession(request, response) {
       )
       .catch((e) => console.error('Session: background profile upsert failed', e));
 
+    queueContributionCacheRefresh({
+      token,
+      login: userData.login,
+    });
+
     return response.status(200).json({
       authenticated: true,
       user: {
@@ -620,9 +727,9 @@ async function handleToken(request, response) {
 }
 
 async function handleContributions(request, response) {
+  const db = await getDatabase();
   const cookies = cookie.parse(request.headers.cookie || '');
   const token = cookies.gh_token;
-  if (!token) return response.status(401).json({ error: 'Unauthorized' });
   let login = request.query.login;
   const adminPassword = process.env.VITE_ADMIN_PASSWORD;
   const authHeader = request.headers['x-admin-password'];
@@ -632,20 +739,68 @@ async function handleContributions(request, response) {
     return response.status(403).json({ error: 'Forbidden: Only admin can fetch other user contributions' });
   }
 
-  const now = new Date();
-  const oneYearAgo = new Date();
-  oneYearAgo.setFullYear(now.getFullYear() - 1);
-  const fromDate = request.query.from ? new Date(request.query.from) : oneYearAgo;
-  const toDate = request.query.to ? new Date(request.query.to) : now;
+  let effectiveToken = token;
+  if (login && isAdmin && !effectiveToken) {
+    effectiveToken = await safeDatabaseRead(
+      db,
+      'Loading stored GitHub token',
+      async () => {
+        const storedUser = await db.collection('users').findOne(
+          { github_username: login },
+          { projection: { oauth_token: 1 } }
+        );
+        return storedUser?.oauth_token || null;
+      },
+      null
+    );
+  }
+
+  if (!effectiveToken) {
+    if (login && isAdmin) {
+      const cachedSnapshot = buildCachedContributionResponse(await safeDatabaseRead(
+        db,
+        'Loading cached contribution snapshot',
+        () => db.collection('contribution_cache').findOne({ github_username: login }),
+        null
+      ));
+
+      if (cachedSnapshot) {
+        response.setHeader('Cache-Control', 'no-store');
+        return response.status(200).json(cachedSnapshot);
+      }
+
+      return response.status(404).json({ error: 'No saved contribution data for this user' });
+    }
+
+    return response.status(401).json({ error: 'Unauthorized' });
+  }
+
+  const defaultWindow = getDefaultContributionWindow();
+  const fromDate = request.query.from ? new Date(request.query.from) : defaultWindow.fromDate;
+  const toDate = request.query.to ? new Date(request.query.to) : defaultWindow.toDate;
   try {
     const contributionData = await fetchContributionSnapshot({
-      token,
+      token: effectiveToken,
       login,
       fromDate,
       toDate,
     });
     response.status(200).json(contributionData);
   } catch (error) {
+    if (login && isAdmin) {
+      const cachedSnapshot = buildCachedContributionResponse(await safeDatabaseRead(
+        db,
+        'Loading cached contribution snapshot',
+        () => db.collection('contribution_cache').findOne({ github_username: login }),
+        null
+      ));
+
+      if (cachedSnapshot) {
+        response.setHeader('Cache-Control', 'no-store');
+        return response.status(200).json(cachedSnapshot);
+      }
+    }
+
     response.status(error.statusCode || 500).json({ error: error.message || 'Failed to fetch contributions' });
   }
 }
