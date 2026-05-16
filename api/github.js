@@ -802,14 +802,14 @@ async function handleLeaderboard(request, response) {
       safeDatabaseRead(
         db,
         'Loading contribution cache',
-        () => db.collection('contribution_cache').find({}).toArray(),
+        () => db.collection('contribution_cache').find({ github_username: { $exists: true, $ne: null } }).toArray(),
         []
       ),
       safeDatabaseRead(
         db,
         'Loading GitHub users',
         () => db.collection('users').find(
-          { oauth_token: { $exists: true, $ne: null } },
+          { last_login_at: { $exists: true, $ne: null } },
           { projection: { github_username: 1, name: 1, avatar_url: 1, updated_at: 1, last_login_at: 1 } }
         ).toArray(),
         []
@@ -831,6 +831,9 @@ async function handleLeaderboard(request, response) {
       });
     }
 
+    // A contribution_cache snapshot is only written after a GitHub-authorized
+    // contribution fetch, so cached users are eligible even if their users
+    // profile no longer stores an OAuth token.
     for (const entry of cached) {
       if (!authorizedLogins.has(entry.github_username)) continue;
 
