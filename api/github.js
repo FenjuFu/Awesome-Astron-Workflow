@@ -160,6 +160,53 @@ const buildGitHubHeaders = (token, accept = 'application/vnd.github.v3+json') =>
 
 const buildExpiredCookie = (name) => `${name}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`;
 
+const getDatabase = async () => {
+  try {
+    const client = await clientPromise;
+    return client.db('astron_workflow');
+  } catch (error) {
+    console.error('GitHub stats database unavailable', error);
+    return null;
+  }
+};
+
+const safeDatabaseRead = async (db, label, readOperation, fallbackValue) => {
+  if (!db) return fallbackValue;
+  try {
+    return await readOperation();
+  } catch (error) {
+    console.error(`${label} failed`, error);
+    return fallbackValue;
+  }
+};
+
+const safeDatabaseWrite = async (db, label, writeOperation) => {
+  if (!db) return;
+  try {
+    await writeOperation();
+  } catch (error) {
+    console.error(`${label} failed`, error);
+  }
+};
+
+const getRedemptionEntries = async () => {
+  try {
+    const redemptionsResult = await supabaseAdmin
+      .from('redemptions')
+      .select('github_login')
+      .not('github_login', 'is', null);
+
+    if (redemptionsResult.error) {
+      throw redemptionsResult.error;
+    }
+
+    return redemptionsResult.data || [];
+  } catch (error) {
+    console.error('Supabase redemptions unavailable', error);
+    return [];
+  }
+};
+
 const upsertGitHubUserProfile = async (db, userData, extraFields = {}) => {
   if (!userData?.login) return;
 
@@ -186,8 +233,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
     throw error;
   }
 
-  const client = await clientPromise;
-  const db = client.db('astron_workflow');
+  const db = await getDatabase();
   const authHeaders = buildGitHubHeaders(token);
   const userResponse = await fetch('https://api.github.com/user', {
     headers: authHeaders,
@@ -200,10 +246,12 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   }
 
   const requesterUser = await userResponse.json();
-  await upsertGitHubUserProfile(db, requesterUser, {
-    oauth_token: token,
-    last_login_at: new Date(),
-  });
+  await safeDatabaseWrite(db, 'Upserting requester GitHub profile', () =>
+    upsertGitHubUserProfile(db, requesterUser, {
+      oauth_token: token,
+      last_login_at: new Date(),
+    })
+  );
 
   let userData = requesterUser;
   let targetLogin = login || requesterUser.login;
@@ -220,7 +268,9 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
     userData = await targetUserRes.json();
   }
 
-  await upsertGitHubUserProfile(db, userData);
+  await safeDatabaseWrite(db, 'Upserting target GitHub profile', () =>
+    upsertGitHubUserProfile(db, userData)
+  );
 
   const fromStr = fromDate.toISOString().split('T')[0];
   const toStr = toDate.toISOString().split('T')[0];
@@ -360,7 +410,12 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
     });
   });
 
-  const storedUser = await db.collection('users').findOne({ github_username: targetLogin });
+  const storedUser = await safeDatabaseRead(
+    db,
+    'Loading stored GitHub user profile',
+    () => db.collection('users').findOne({ github_username: targetLogin }),
+    null
+  );
   const astronStats = storedUser?.contributions || { agent: { workflows: 0, runs: 0 }, rpa: { tasks: 0, hoursSaved: 0 } };
   const searchTrackedKeys = new Set(['pr_creation_date_list', 'pr_merged_date_list', 'issue_creation_date_list']);
   const searchBasedTotal = Object.values(repoStats).reduce((sum, stats) => {
@@ -374,19 +429,21 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   const totalContributions = searchBasedTotal + otherBehaviorsTotal + (astronStats.agent?.workflows || 0) + (astronStats.rpa?.tasks || 0);
   const repoSummary = buildRepoSummary(repoStats);
 
-  await db.collection('contribution_cache').updateOne(
-    { github_username: targetLogin },
-    {
-      $set: {
-        github_username: targetLogin,
-        name: userData.name || userData.login,
-        avatar_url: userData.avatar_url,
-        total_contributions: totalContributions,
-        repo_summary: repoSummary,
-        updated_at: new Date(),
-      }
-    },
-    { upsert: true }
+  await safeDatabaseWrite(db, 'Updating contribution cache', () =>
+    db.collection('contribution_cache').updateOne(
+      { github_username: targetLogin },
+      {
+        $set: {
+          github_username: targetLogin,
+          name: userData.name || userData.login,
+          avatar_url: userData.avatar_url,
+          total_contributions: totalContributions,
+          repo_summary: repoSummary,
+          updated_at: new Date(),
+        }
+      },
+      { upsert: true }
+    )
   );
 
   return {
@@ -626,20 +683,29 @@ async function handleContributions(request, response) {
 
 async function handleLeaderboard(request, response) {
   try {
-    const client = await clientPromise;
-    const db = client.db('astron_workflow');
-    const redemptionsResult = await supabaseAdmin
-      .from('redemptions')
-      .select('github_login')
-      .not('github_login', 'is', null);
-
-    if (redemptionsResult.error) {
-      throw redemptionsResult.error;
-    }
+    const db = await getDatabase();
+    const [cached, users, redemptions] = await Promise.all([
+      safeDatabaseRead(
+        db,
+        'Loading contribution cache',
+        () => db.collection('contribution_cache').find({}).toArray(),
+        []
+      ),
+      safeDatabaseRead(
+        db,
+        'Loading GitHub users',
+        () => db.collection('users').find(
+          {},
+          { projection: { github_username: 1, name: 1, avatar_url: 1, updated_at: 1, last_login_at: 1, oauth_token: 1 } }
+        ).toArray(),
+        []
+      ),
+      getRedemptionEntries(),
+    ]);
 
     const redeemedLogins = Array.from(
       new Set(
-        (redemptionsResult.data || [])
+        redemptions
           .map((redemption) => normalizeGitHubLogin(redemption.github_login))
           .filter(Boolean)
       )
@@ -649,11 +715,6 @@ async function handleLeaderboard(request, response) {
       response.setHeader('Cache-Control', 'no-store');
       return response.status(200).json([]);
     }
-
-    const [cached, users] = await Promise.all([
-      db.collection('contribution_cache').find({}).toArray(),
-      db.collection('users').find({}, { projection: { github_username: 1, name: 1, avatar_url: 1, updated_at: 1, last_login_at: 1, oauth_token: 1 } }).toArray(),
-    ]);
 
     const cachedByLogin = new Map();
     for (const entry of cached) {
