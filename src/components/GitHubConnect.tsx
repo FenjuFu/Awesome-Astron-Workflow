@@ -59,6 +59,8 @@ interface LeaderboardEntry {
   updated_at: string;
 }
 
+const normalizeGitHubLogin = (login?: string | null) => login?.trim().toLowerCase() || '';
+
 const BEHAVIOR_LABELS: Record<string, string> = {
   fork_date_list: 'Fork 仓库',
   star_date_list: 'Star 仓库',
@@ -155,11 +157,12 @@ const buildRepoSummaryFromStats = (repos: ContributionsData['repos'] = {}) =>
 
 const mergeCurrentUserIntoLeaderboard = (
   leaderboard: LeaderboardEntry[],
-  currentUser: Omit<LeaderboardEntry, 'rank'> | null
+  currentUser: Omit<LeaderboardEntry, 'rank'> | null,
+  shouldMergeCurrentUser: boolean
 ): LeaderboardEntry[] => {
-  const entries = currentUser
+  const entries = currentUser && shouldMergeCurrentUser
     ? [
-        ...leaderboard.filter((entry) => entry.login !== currentUser.login),
+        ...leaderboard.filter((entry) => normalizeGitHubLogin(entry.login) !== normalizeGitHubLogin(currentUser.login)),
         { rank: 0, ...currentUser }
       ]
     : leaderboard;
@@ -317,7 +320,10 @@ const GitHubConnect: React.FC = () => {
     repo_summary: buildRepoSummaryFromStats(data.repos),
     updated_at: new Date().toISOString(),
   } : null;
-  const displayLeaderboard = mergeCurrentUserIntoLeaderboard(leaderboard, currentUserEntry);
+  const currentUserIsRanked = !!currentUserEntry && leaderboard.some((entry) => {
+    return normalizeGitHubLogin(entry.login) === normalizeGitHubLogin(currentUserEntry.login);
+  });
+  const displayLeaderboard = mergeCurrentUserIntoLeaderboard(leaderboard, currentUserEntry, currentUserIsRanked);
 
   return (
     <div className="space-y-6">
