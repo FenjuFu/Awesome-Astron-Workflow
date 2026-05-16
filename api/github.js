@@ -852,7 +852,7 @@ async function handleLeaderboard(request, response) {
       safeDatabaseRead(
         db,
         'Loading contribution cache',
-        () => db.collection('contribution_cache').find({}).toArray(),
+        () => db.collection('contribution_cache').find({ github_username: { $exists: true, $ne: null } }).toArray(),
         []
       ),
       safeDatabaseRead(
