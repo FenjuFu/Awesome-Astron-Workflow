@@ -54,6 +54,7 @@ interface ContributionsData {
   contribution_fields?: Record<string, string[]>;
   contribution_dates?: Record<string, Record<string, string[]>>;
   astron?: AstronStats;
+  total_contributions?: number;
 }
 
 const BEHAVIOR_LABELS: Record<string, string> = {
@@ -160,10 +161,12 @@ const ContributionDetailModal: React.FC<Props> = ({ login, onClose }) => {
     fetchData();
   }, [login]);
 
-  const totalContributions = (data?.contribution_dates ? 
-    Object.values(data.contribution_dates).reduce((total, repoDates) => {
-      return total + Object.values(repoDates).reduce((repoTotal, dates) => repoTotal + dates.length, 0);
-    }, 0) : 0) + (data?.astron?.agent?.workflows || 0) + (data?.astron?.rpa?.tasks || 0);
+  const totalContributions = data?.total_contributions ?? (
+    (data?.contribution_dates ?
+      Object.values(data.contribution_dates).reduce((total, repoDates) => {
+        return total + Object.values(repoDates).reduce((repoTotal, dates) => repoTotal + dates.length, 0);
+      }, 0) : 0) + (data?.astron?.agent?.workflows || 0) + (data?.astron?.rpa?.tasks || 0)
+  );
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
