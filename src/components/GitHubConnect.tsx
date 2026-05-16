@@ -254,7 +254,7 @@ const GitHubConnect: React.FC = () => {
       setLoading(true);
       setError(null);
 
-      const sessionRes = await fetchWithTimeout('/api/github/session', {}, 8000);
+      const sessionRes = await fetchWithTimeout('/api/github/session', {}, 12000);
       if (sessionRes.status === 401) {
         setAuthenticated(false);
         setData(null);
