@@ -500,15 +500,24 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   promises.push(...baseTargetRepos.map((repo) => (async () => {
     await Promise.all((targetRepoAliases[repo] || [repo]).map(async (alias) => {
       const [owner, name] = alias.split('/');
-      const res = await fetch(`https://api.github.com/repos/${owner}/${name}/commits?author=${targetLogin}&since=${fromDate.toISOString()}&until=${toDate.toISOString()}&per_page=100`, {
-        headers: authHeaders,
+      const commits = await fetchAllPages(async (page) => {
+        const res = await fetch(
+          `https://api.github.com/repos/${owner}/${name}/commits?author=${targetLogin}&since=${fromDate.toISOString()}&until=${toDate.toISOString()}&per_page=100&page=${page}`,
+          { headers: authHeaders }
+        );
+
+        if (!res.ok) {
+          return { items: [], hasNext: false };
+        }
+
+        const items = await res.json();
+        return { items, hasNext: hasNextPage(res.headers.get('link')) };
       });
-      if (res.ok) {
-        (await res.json()).forEach((commit) => {
-          pushDate(contributionDatesByRepo[repo], 'code_author_date_list', commit.commit?.author?.date);
-          pushDate(contributionDatesByRepo[repo], 'code_committer_date_list', commit.commit?.committer?.date);
-        });
-      }
+
+      commits.forEach((commit) => {
+        pushDate(contributionDatesByRepo[repo], 'code_author_date_list', commit.commit?.author?.date);
+        pushDate(contributionDatesByRepo[repo], 'code_committer_date_list', commit.commit?.committer?.date);
+      });
     }));
   })()));
 
