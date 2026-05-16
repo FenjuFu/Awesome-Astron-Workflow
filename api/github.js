@@ -544,12 +544,18 @@ async function handleSession(request, response) {
     }
 
     const userData = await userResponse.json();
-    const client = await clientPromise;
-    const db = client.db('astron_workflow');
-    await upsertGitHubUserProfile(db, userData, {
-      oauth_token: token,
-      last_login_at: new Date(),
-    });
+
+    // DB upsert is fire-and-forget to keep the session check fast.
+    // The callback handler already persists the token on first login.
+    clientPromise
+      .then((c) => c.db('astron_workflow'))
+      .then((db) =>
+        upsertGitHubUserProfile(db, userData, {
+          oauth_token: token,
+          last_login_at: new Date(),
+        })
+      )
+      .catch((e) => console.error('Session: background profile upsert failed', e));
 
     return response.status(200).json({
       authenticated: true,
