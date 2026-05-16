@@ -1,7 +1,6 @@
 import cookie from 'cookie';
 import crypto from 'crypto';
 import clientPromise from './_lib/mongodb.js';
-import { supabaseAdmin } from './_lib/supabase-admin.js';
 
 export default async function handler(req, res) {
   const action = req.query.action;
@@ -180,24 +179,6 @@ const safeDatabaseWrite = async (db, label, writeOperation) => {
     await writeOperation();
   } catch (error) {
     console.error(`${label} failed`, error);
-  }
-};
-
-const getRedemptionEntries = async () => {
-  try {
-    const redemptionsResult = await supabaseAdmin
-      .from('redemptions')
-      .select('github_login')
-      .not('github_login', 'is', null);
-
-    if (redemptionsResult.error) {
-      throw redemptionsResult.error;
-    }
-
-    return redemptionsResult.data || [];
-  } catch (error) {
-    console.error('Supabase redemptions unavailable', error);
-    return [];
   }
 };
 
@@ -817,7 +798,7 @@ async function handleContributions(request, response) {
 async function handleLeaderboard(request, response) {
   try {
     const db = await getDatabase();
-    const [cached, users, redemptions] = await Promise.all([
+    const [cached, users] = await Promise.all([
       safeDatabaseRead(
         db,
         'Loading contribution cache',
@@ -827,20 +808,21 @@ async function handleLeaderboard(request, response) {
       safeDatabaseRead(
         db,
         'Loading GitHub users',
-        () => db.collection('users').find({}, { projection: { github_username: 1, name: 1, avatar_url: 1, updated_at: 1, last_login_at: 1, oauth_token: 1 } }).toArray(),
+        () => db.collection('users').find(
+          { oauth_token: { $exists: true, $ne: null } },
+          { projection: { github_username: 1, name: 1, avatar_url: 1, updated_at: 1, last_login_at: 1 } }
+        ).toArray(),
         []
       ),
-      getRedemptionEntries(),
     ]);
 
     const entriesByLogin = new Map();
-    for (const redemption of redemptions) {
-      upsertLeaderboardEntry(entriesByLogin, {
-        login: redemption.github_login,
-      });
-    }
+    const authorizedLogins = new Set();
 
     for (const user of users) {
+      if (!user.github_username) continue;
+
+      authorizedLogins.add(user.github_username);
       upsertLeaderboardEntry(entriesByLogin, {
         login: user.github_username,
         name: user.name,
@@ -850,6 +832,8 @@ async function handleLeaderboard(request, response) {
     }
 
     for (const entry of cached) {
+      if (!authorizedLogins.has(entry.github_username)) continue;
+
       upsertLeaderboardEntry(entriesByLogin, {
         login: entry.github_username,
         name: entry.name,

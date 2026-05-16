@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Github, Loader2, ShieldCheck, LogOut, GitPullRequest, GitMerge, AlertCircle, Coins, Trophy, Medal } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import RedemptionSystem from './RedemptionSystem';
@@ -186,21 +186,7 @@ const GitHubConnect: React.FC = () => {
   const [leaderboardLoading, setLeaderboardLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'leaderboard' | 'stats' | 'redeem'>('leaderboard');
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get('code');
-    const state = params.get('state');
-
-    if (code && state) {
-      window.location.replace(`/api/github/callback?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`);
-      return;
-    }
-
-    fetchLeaderboard();
-    initializePersonalData();
-  }, []);
-
-  const fetchLeaderboard = async () => {
+  const fetchLeaderboard = useCallback(async () => {
     try {
       const res = await fetchWithTimeout('/api/github/leaderboard', {}, 10000);
       if (res.ok) {
@@ -211,9 +197,9 @@ const GitHubConnect: React.FC = () => {
     } finally {
       setLeaderboardLoading(false);
     }
-  };
+  }, []);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       setError(null);
       const res = await fetchWithTimeout('/api/github/contributions', {}, 45000);
@@ -247,9 +233,9 @@ const GitHubConnect: React.FC = () => {
         setError('加载贡献数据失败');
       }
     }
-  };
+  }, [fetchLeaderboard]);
 
-  const initializePersonalData = async () => {
+  const initializePersonalData = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -284,7 +270,21 @@ const GitHubConnect: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [fetchData]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const state = params.get('state');
+
+    if (code && state) {
+      window.location.replace(`/api/github/callback?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`);
+      return;
+    }
+
+    fetchLeaderboard();
+    initializePersonalData();
+  }, [fetchLeaderboard, initializePersonalData]);
 
   const handleLogin = () => {
     const currentPath = window.location.pathname + window.location.search;
@@ -417,7 +417,7 @@ const GitHubConnect: React.FC = () => {
       )}
 
       {activeTab === 'stats' && data && (
-        <PersonalStatsView data={data} t={t} />
+        <PersonalStatsView data={data} />
       )}
 
       {activeTab === 'redeem' && data && (
@@ -512,7 +512,7 @@ const LeaderboardView: React.FC<{
               <h3 className="font-bold text-lg">{t('contribute.github.leaderboardTitle') || 'Astron 社区贡献排行榜'}</h3>
             </div>
             <p className="text-indigo-100 text-xs mt-1">
-              {t('contribute.github.leaderboardDesc') || '基于 PR、Issue、代码提交等 GitHub 贡献行为的综合积分排名'}
+              {t('contribute.github.leaderboardDesc') || '已授权登录用户基于 PR、Issue、代码提交等 GitHub 贡献行为的综合积分排名'}
             </p>
           </div>
           <div className="divide-y divide-gray-100">
@@ -597,8 +597,7 @@ const LeaderboardView: React.FC<{
 
 const PersonalStatsView: React.FC<{
   data: ContributionsData;
-  t: (key: string) => string;
-}> = ({ data, t }) => (
+}> = ({ data }) => (
   <div className="grid md:grid-cols-2 gap-6">
     {Object.entries(data.repos).map(([repoName, stats]) => (
       <div key={repoName} className="bg-white rounded-xl shadow-lg border border-indigo-50 overflow-hidden hover:shadow-xl transition-shadow duration-300 col-span-1 md:col-span-2">

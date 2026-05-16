@@ -150,9 +150,9 @@ const ContributionDetailModal: React.FC<Props> = ({ login, onClose }) => {
 
         const json = await res.json();
         setData(json);
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error(err);
-        setError(err.message);
+        setError(err instanceof Error ? err.message : 'Failed to fetch contribution data');
       } finally {
         setLoading(false);
       }

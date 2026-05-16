@@ -120,7 +120,7 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
       } else {
         setMessage({ type: 'error', text: t('redeem.error') });
       }
-    } catch (err) {
+    } catch {
       setMessage({ type: 'error', text: t('redeem.error') });
     } finally {
       setSubmitting(false);

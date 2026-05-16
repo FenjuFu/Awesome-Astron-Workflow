@@ -184,7 +184,7 @@ const LuckyDrawAdmin: React.FC = () => {
     }
   };
 
-  const updatePrize = (index: number, field: keyof PrizeConfig, value: any) => {
+  const updatePrize = (index: number, field: keyof PrizeConfig, value: PrizeConfig[keyof PrizeConfig]) => {
     const newPrizes = [...(currentDraw.prizes || [])];
     newPrizes[index] = { ...newPrizes[index], [field]: value };
     setCurrentDraw({ ...currentDraw, prizes: newPrizes });
