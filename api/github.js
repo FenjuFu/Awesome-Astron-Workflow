@@ -817,11 +817,26 @@ async function handleLeaderboard(request, response) {
     ]);
 
     const entriesByLogin = new Map();
+    const authorizedLogins = new Set();
+
+    for (const user of users) {
+      if (!user.github_username) continue;
+
+      authorizedLogins.add(user.github_username);
+      upsertLeaderboardEntry(entriesByLogin, {
+        login: user.github_username,
+        name: user.name,
+        avatar_url: user.avatar_url,
+        updated_at: user.updated_at || user.last_login_at,
+      });
+    }
 
     // A contribution_cache snapshot is only written after a GitHub-authorized
     // contribution fetch, so cached users are eligible even if their users
     // profile no longer stores an OAuth token.
     for (const entry of cached) {
+      if (!authorizedLogins.has(entry.github_username)) continue;
+
       upsertLeaderboardEntry(entriesByLogin, {
         login: entry.github_username,
         name: entry.name,
@@ -829,17 +844,6 @@ async function handleLeaderboard(request, response) {
         total_contributions: entry.total_contributions,
         repo_summary: entry.repo_summary,
         updated_at: entry.updated_at,
-      });
-    }
-
-    // Include users who have authorized login but whose contribution snapshot is
-    // still being generated, so they can appear with 0 points until refresh ends.
-    for (const user of users) {
-      upsertLeaderboardEntry(entriesByLogin, {
-        login: user.github_username,
-        name: user.name,
-        avatar_url: user.avatar_url,
-        updated_at: user.updated_at || user.last_login_at,
       });
     }
 
