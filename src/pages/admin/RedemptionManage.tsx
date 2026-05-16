@@ -6,7 +6,6 @@ import {
   CheckCircle2, 
   XCircle, 
   Clock, 
-  ExternalLink,
   Loader2,
   RefreshCcw,
   User,
@@ -81,7 +80,7 @@ const RedemptionManage: React.FC = () => {
       } else {
         setError('获取数据失败');
       }
-    } catch (err) {
+    } catch {
       setError('网络错误');
     } finally {
       setLoading(false);
@@ -105,7 +104,7 @@ const RedemptionManage: React.FC = () => {
       } else {
         alert('更新失败');
       }
-    } catch (err) {
+    } catch {
       alert('网络错误');
     } finally {
       setUpdatingId(null);

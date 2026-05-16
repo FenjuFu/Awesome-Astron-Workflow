@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, Trash2, Bot, User, Loader2 } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { useLanguage } from '../contexts/LanguageContext';
 import ReactMarkdown from 'react-markdown';
 
 interface Message {
@@ -21,7 +20,6 @@ interface ChatApiResponse {
 }
 
 const AIChat: React.FC = () => {
-  const { t } = useLanguage();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
