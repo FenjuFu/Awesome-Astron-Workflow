@@ -968,6 +968,11 @@ async function handleLeaderboard(request, response) {
 
     const leaderboard = Array.from(entriesByLogin.values())
       .filter(hasLeaderboardActivity)
+      .map((entry) => ({
+        ...entry,
+        total_contributions: typeof entry.total_contributions === 'number' ? entry.total_contributions : 0,
+        repo_summary: entry.repo_summary || {},
+      }))
       .sort((a, b) => {
         if (b.total_contributions !== a.total_contributions) {
           return b.total_contributions - a.total_contributions;
