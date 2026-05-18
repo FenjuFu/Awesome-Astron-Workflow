@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildLeaderboard } from './github.js';
+import { buildLeaderboard, normalizeGitHubLogin } from './github.js';
 
 test('leaderboard keeps stale cached snapshot when refresh fails', async () => {
   const refreshCalls = [];
@@ -133,4 +133,42 @@ test('leaderboard prefers refreshed snapshot over stale cache when refresh succe
       issues_created: 1,
     },
   });
+});
+
+test('normalizeGitHubLogin extracts login from profile urls', () => {
+  assert.equal(normalizeGitHubLogin('github.com/shawn0915/'), 'shawn0915');
+  assert.equal(normalizeGitHubLogin('https://github.com/shawn0915/?tab=overview'), 'shawn0915');
+  assert.equal(normalizeGitHubLogin('@Shawn0915'), 'shawn0915');
+});
+
+test('leaderboard matches cached users when redemption login is a github profile url', async () => {
+  const leaderboard = await buildLeaderboard({
+    cached: [
+      {
+        github_username: 'shawn0915',
+        name: 'Shawn',
+        avatar_url: 'https://example.com/shawn.png',
+        total_contributions: 21,
+        repo_summary: {
+          'iflytek/astron-agent': {
+            pr_created: 3,
+            pr_merged: 2,
+            issues_created: 1,
+          },
+        },
+        updated_at: '2026-05-18T00:00:00.000Z',
+      },
+    ],
+    users: [],
+    redemptions: [
+      { github_login: 'github.com/shawn0915/' },
+    ],
+    fetchSnapshot: async () => {
+      throw new Error('Should not refresh without oauth token');
+    },
+  });
+
+  assert.equal(leaderboard.length, 1);
+  assert.equal(leaderboard[0].login, 'shawn0915');
+  assert.equal(leaderboard[0].total_contributions, 21);
 });

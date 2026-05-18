@@ -38,7 +38,20 @@ const hasNextPage = (linkHeader) => {
 };
 
 const normalizeRepoFullName = (repoFullName) => repoFullName?.toLowerCase();
-const normalizeGitHubLogin = (login) => login?.trim().toLowerCase();
+export const normalizeGitHubLogin = (login) => {
+  const rawLogin = typeof login === 'string' ? login.trim() : '';
+  if (!rawLogin) return null;
+
+  const withoutAt = rawLogin.replace(/^@/, '');
+  const urlMatch = withoutAt.match(/^(?:https?:\/\/)?(?:www\.)?github\.com\/([^/?#]+)(?:[/?#].*)?$/i);
+  const normalizedCandidate = (urlMatch?.[1] || withoutAt)
+    .replace(/^@/, '')
+    .replace(/^\/+|\/+$/g, '')
+    .trim()
+    .toLowerCase();
+
+  return normalizedCandidate || null;
+};
 
 const fetchAllPages = async (fetchPage) => {
   const results = [];
@@ -893,7 +906,7 @@ async function handleContributions(request, response) {
   const db = await getDatabase();
   const cookies = cookie.parse(request.headers.cookie || '');
   const token = cookies.gh_token;
-  let login = request.query.login;
+  let login = normalizeGitHubLogin(request.query.login);
   const adminPassword = process.env.VITE_ADMIN_PASSWORD;
   const authHeader = request.headers['x-admin-password'];
   const isAdmin = adminPassword && authHeader === adminPassword;

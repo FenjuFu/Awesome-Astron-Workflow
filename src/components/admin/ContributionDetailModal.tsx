@@ -137,7 +137,7 @@ const ContributionDetailModal: React.FC<Props> = ({ login, onClose }) => {
       try {
         setLoading(true);
         const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
-        const res = await fetch(`/api/github?action=contributions&login=${login}`, {
+        const res = await fetch(`/api/github?action=contributions&login=${encodeURIComponent(login)}`, {
           headers: {
             'x-admin-password': adminPassword
           }
