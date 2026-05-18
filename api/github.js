@@ -851,9 +851,10 @@ async function handleLeaderboard(request, response) {
     const authorizedLogins = new Set();
 
     for (const user of users) {
-      if (!user.github_username) continue;
+      const normalizedUserLogin = normalizeGitHubLogin(user.github_username);
+      if (!normalizedUserLogin) continue;
 
-      authorizedLogins.add(user.github_username);
+      authorizedLogins.add(normalizedUserLogin);
       upsertLeaderboardEntry(entriesByLogin, {
         login: user.github_username,
         name: user.name,
@@ -866,7 +867,8 @@ async function handleLeaderboard(request, response) {
     // contribution fetch, so cached users are eligible even if their users
     // profile no longer stores an OAuth token.
     for (const entry of cached) {
-      if (!authorizedLogins.has(entry.github_username)) continue;
+      const normalizedCachedLogin = normalizeGitHubLogin(entry.github_username);
+      if (!normalizedCachedLogin || !authorizedLogins.has(normalizedCachedLogin)) continue;
 
       upsertLeaderboardEntry(entriesByLogin, {
         login: entry.github_username,
