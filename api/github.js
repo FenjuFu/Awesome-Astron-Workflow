@@ -123,6 +123,129 @@ const hasFreshLeaderboardCache = (cachedEntry, userEntry) => {
   return new Date(cachedEntry.updated_at).getTime() >= new Date(userEntry.last_login_at).getTime();
 };
 
+export const buildLeaderboard = async ({
+  cached = [],
+  users = [],
+  redemptions = [],
+  fetchSnapshot = fetchContributionSnapshot,
+  now = new Date(),
+} = {}) => {
+  const redeemedLogins = Array.from(
+    new Set(
+      redemptions
+        .map((redemption) => normalizeGitHubLogin(redemption.github_login))
+        .filter(Boolean)
+    )
+  );
+
+  if (redeemedLogins.length === 0) {
+    return [];
+  }
+
+  const cachedByLogin = new Map();
+  for (const entry of cached) {
+    const normalizedLogin = normalizeGitHubLogin(entry.github_username);
+    if (normalizedLogin) {
+      cachedByLogin.set(normalizedLogin, entry);
+    }
+  }
+
+  const usersByLogin = new Map();
+  for (const user of users) {
+    const normalizedLogin = normalizeGitHubLogin(user.github_username);
+    if (normalizedLogin) {
+      usersByLogin.set(normalizedLogin, user);
+    }
+  }
+
+  const oneYearAgo = new Date(now);
+  oneYearAgo.setFullYear(now.getFullYear() - 1);
+
+  const refreshCandidates = redeemedLogins.filter((login) => {
+    const cachedEntry = cachedByLogin.get(login);
+    const user = usersByLogin.get(login);
+    return !!user?.oauth_token && !hasFreshLeaderboardCache(cachedEntry, user);
+  });
+
+  const refreshedEntries = await Promise.allSettled(
+    refreshCandidates.map(async (login) => {
+      const user = usersByLogin.get(login);
+      const snapshot = await fetchSnapshot({
+        token: user.oauth_token,
+        login: user.github_username,
+        fromDate: oneYearAgo,
+        toDate: now,
+      });
+
+      return {
+        login: snapshot.user.login,
+        name: snapshot.user.name || snapshot.user.login,
+        avatar_url: snapshot.user.avatar_url,
+        total_contributions: snapshot.total_contributions,
+        repo_summary: snapshot.repo_summary,
+        updated_at: snapshot.updated_at,
+      };
+    })
+  );
+
+  const entriesByLogin = new Map();
+  for (const login of redeemedLogins) {
+    upsertLeaderboardEntry(entriesByLogin, { login });
+  }
+
+  for (const login of redeemedLogins) {
+    const user = usersByLogin.get(login);
+    if (!user) continue;
+    upsertLeaderboardEntry(entriesByLogin, {
+      login: user.github_username,
+      name: user.name,
+      avatar_url: user.avatar_url,
+      updated_at: user.updated_at || user.last_login_at,
+    });
+  }
+
+  for (const login of redeemedLogins) {
+    const entry = cachedByLogin.get(login);
+    if (!entry) continue;
+    upsertLeaderboardEntry(entriesByLogin, {
+      login: entry.github_username,
+      name: entry.name,
+      avatar_url: entry.avatar_url,
+      total_contributions: entry.total_contributions,
+      repo_summary: entry.repo_summary,
+      updated_at: entry.updated_at,
+    });
+  }
+
+  for (const result of refreshedEntries) {
+    if (result.status !== 'fulfilled') {
+      console.error('Leaderboard refresh skipped', result.reason);
+      continue;
+    }
+
+    upsertLeaderboardEntry(entriesByLogin, result.value);
+  }
+
+  return Array.from(entriesByLogin.values())
+    .filter(hasLeaderboardActivity)
+    .map((entry) => ({
+      ...entry,
+      total_contributions: typeof entry.total_contributions === 'number' ? entry.total_contributions : 0,
+      repo_summary: entry.repo_summary || {},
+    }))
+    .sort((a, b) => {
+      if (b.total_contributions !== a.total_contributions) {
+        return b.total_contributions - a.total_contributions;
+      }
+      return a.login.localeCompare(b.login);
+    })
+    .slice(0, 100)
+    .map((entry, index) => ({
+      rank: index + 1,
+      ...entry,
+    }));
+};
+
 const CONTRIBUTION_FIELDS = {
   observe: ['fork_date_list', 'star_date_list'],
   issue: ['issue_creation_date_list', 'issue_comments_date_list'],
@@ -866,131 +989,9 @@ async function handleLeaderboard(request, response) {
       ),
       getRedemptionEntries(),
     ]);
+    const leaderboard = await buildLeaderboard({ cached, users, redemptions });
 
-<<<<<<< HEAD
-    const redeemedLogins = Array.from(
-      new Set(
-        redemptions
-          .map((redemption) => normalizeGitHubLogin(redemption.github_login))
-          .filter(Boolean)
-      )
-    );
-=======
-    const entriesByLogin = new Map();
->>>>>>> 03bcccd (fix leaderboard visibility for authorized github users)
-
-    if (redeemedLogins.length === 0) {
-      response.setHeader('Cache-Control', 'no-store');
-      return response.status(200).json([]);
-    }
-
-    const cachedByLogin = new Map();
-    for (const entry of cached) {
-      const normalizedLogin = normalizeGitHubLogin(entry.github_username);
-      if (normalizedLogin) {
-        cachedByLogin.set(normalizedLogin, entry);
-      }
-    }
-
-    const usersByLogin = new Map();
-    for (const user of users) {
-      const normalizedLogin = normalizeGitHubLogin(user.github_username);
-      if (normalizedLogin) {
-        usersByLogin.set(normalizedLogin, user);
-      }
-    }
-
-<<<<<<< HEAD
-    const now = new Date();
-    const oneYearAgo = new Date();
-    oneYearAgo.setFullYear(now.getFullYear() - 1);
-    const refreshCandidates = redeemedLogins.filter((login) => {
-      const cachedEntry = cachedByLogin.get(login);
-      const user = usersByLogin.get(login);
-      return !!user?.oauth_token && !hasFreshLeaderboardCache(cachedEntry, user);
-    });
-
-    const refreshedEntries = await Promise.allSettled(
-      refreshCandidates.map(async (login) => {
-        const user = usersByLogin.get(login);
-        const snapshot = await fetchContributionSnapshot({
-          token: user.oauth_token,
-          login: user.github_username,
-          fromDate: oneYearAgo,
-          toDate: now,
-        });
-
-        return {
-          login: snapshot.user.login,
-          name: snapshot.user.name || snapshot.user.login,
-          avatar_url: snapshot.user.avatar_url,
-          total_contributions: snapshot.total_contributions,
-          repo_summary: snapshot.repo_summary,
-          updated_at: snapshot.updated_at,
-        };
-      })
-    );
-
-    const entriesByLogin = new Map();
-    for (const login of redeemedLogins) {
-      upsertLeaderboardEntry(entriesByLogin, {
-        login,
-      });
-    }
-
-    for (const login of redeemedLogins) {
-      const user = usersByLogin.get(login);
-      if (!user) continue;
-      upsertLeaderboardEntry(entriesByLogin, {
-        login: user.github_username,
-        name: user.name,
-        avatar_url: user.avatar_url,
-        updated_at: user.updated_at || user.last_login_at,
-      });
-    }
-
-    for (const login of redeemedLogins) {
-      const entry = cachedByLogin.get(login);
-      if (!entry || !hasFreshLeaderboardCache(entry, usersByLogin.get(login))) continue;
-      upsertLeaderboardEntry(entriesByLogin, {
-        login: entry.github_username,
-        name: entry.name,
-        avatar_url: entry.avatar_url,
-        total_contributions: entry.total_contributions,
-        repo_summary: entry.repo_summary,
-        updated_at: entry.updated_at,
-      });
-    }
-
-    for (const result of refreshedEntries) {
-      if (result.status !== 'fulfilled') {
-        console.error('Leaderboard refresh skipped', result.reason);
-        continue;
-      }
-
-      upsertLeaderboardEntry(entriesByLogin, result.value);
-    }
-
-    const leaderboard = Array.from(entriesByLogin.values())
-      .filter(hasLeaderboardActivity)
-      .map((entry) => ({
-        ...entry,
-        total_contributions: typeof entry.total_contributions === 'number' ? entry.total_contributions : 0,
-        repo_summary: entry.repo_summary || {},
-      }))
-      .sort((a, b) => {
-        if (b.total_contributions !== a.total_contributions) {
-          return b.total_contributions - a.total_contributions;
-        }
-        return a.login.localeCompare(b.login);
-      })
-      .slice(0, 100)
-      .map((entry, index) => ({
-        rank: index + 1,
-        ...entry,
-      }));
-
-    // Return only redeemed users with verified contribution totals.
+    // Return redeemed users with the best available contribution totals.
     response.setHeader('Cache-Control', 'no-store');
     response.status(200).json(leaderboard);
   } catch (e) {
