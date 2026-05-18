@@ -867,6 +867,7 @@ async function handleLeaderboard(request, response) {
       getRedemptionEntries(),
     ]);
 
+<<<<<<< HEAD
     const redeemedLogins = Array.from(
       new Set(
         redemptions
@@ -874,6 +875,9 @@ async function handleLeaderboard(request, response) {
           .filter(Boolean)
       )
     );
+=======
+    const entriesByLogin = new Map();
+>>>>>>> 03bcccd (fix leaderboard visibility for authorized github users)
 
     if (redeemedLogins.length === 0) {
       response.setHeader('Cache-Control', 'no-store');
@@ -896,6 +900,7 @@ async function handleLeaderboard(request, response) {
       }
     }
 
+<<<<<<< HEAD
     const now = new Date();
     const oneYearAgo = new Date();
     oneYearAgo.setFullYear(now.getFullYear() - 1);
