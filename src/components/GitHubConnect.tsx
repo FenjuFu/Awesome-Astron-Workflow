@@ -323,7 +323,7 @@ const GitHubConnect: React.FC = () => {
   const currentUserIsRanked = !!currentUserEntry && leaderboard.some((entry) => {
     return normalizeGitHubLogin(entry.login) === normalizeGitHubLogin(currentUserEntry.login);
   });
-  const displayLeaderboard = mergeCurrentUserIntoLeaderboard(leaderboard, currentUserEntry, currentUserIsRanked);
+  const displayLeaderboard = mergeCurrentUserIntoLeaderboard(leaderboard, currentUserEntry, !currentUserIsRanked);
 
   return (
     <div className="space-y-6">
