@@ -80,6 +80,47 @@ const buildRepoSummary = (repoStats) => {
 
 const buildDefaultAvatarUrl = (login) => `https://github.com/${encodeURIComponent(login)}.png?size=80`;
 const hasOAuthAccess = (user) => !!(user?.oauth_token || user?.last_login_at);
+const getNumericContributionCount = (value) => {
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return value;
+  }
+
+  if (typeof value === 'string' && value.trim() !== '') {
+    const parsed = Number(value);
+    if (Number.isFinite(parsed)) {
+      return parsed;
+    }
+  }
+
+  return null;
+};
+
+const getEntryTotalContributions = (entry) => {
+  if (!entry) return null;
+
+  const explicitTotal = getNumericContributionCount(entry.total_contributions);
+  if (explicitTotal !== null) {
+    return explicitTotal;
+  }
+
+  const hasRepoStats = !!(entry.repos && Object.keys(entry.repos).length > 0);
+  const hasRepoSummary = !!(entry.repo_summary && Object.keys(entry.repo_summary).length > 0);
+  const hasContributionDates = !!(entry.contribution_dates && Object.keys(entry.contribution_dates).length > 0);
+
+  if (!hasRepoStats && !hasRepoSummary && !hasContributionDates) {
+    return null;
+  }
+
+  const repoStats = hasRepoStats
+    ? entry.repos
+    : buildRepoStatsFromSummary(entry.repo_summary);
+
+  return calculateTotalContributions({
+    repoStats,
+    contributionDatesByRepo: entry.contribution_dates || {},
+    astronStats: entry.astron || { agent: { workflows: 0, runs: 0 }, rpa: { tasks: 0, hoursSaved: 0 } },
+  });
+};
 
 const createLeaderboardCandidateLogins = ({ cached = [], users = [], redemptions = [] } = {}) => {
   const candidateLogins = new Set();
@@ -114,8 +155,10 @@ const upsertLeaderboardEntry = (entriesByLogin, entry) => {
   const existingUpdatedAt = existing.updated_at ? new Date(existing.updated_at).getTime() : 0;
   const incomingUpdatedAt = entry.updated_at ? new Date(entry.updated_at).getTime() : 0;
   const hasIncomingRepoSummary = !!(entry.repo_summary && Object.keys(entry.repo_summary).length > 0);
-  const shouldUseIncomingTotal = typeof entry.total_contributions === 'number' && (
-    typeof existing.total_contributions !== 'number'
+  const incomingTotalContributions = getEntryTotalContributions(entry);
+  const existingTotalContributions = getEntryTotalContributions(existing);
+  const shouldUseIncomingTotal = typeof incomingTotalContributions === 'number' && (
+    typeof existingTotalContributions !== 'number'
     || !existing.updated_at
     || incomingUpdatedAt >= existingUpdatedAt
   );
@@ -131,9 +174,9 @@ const upsertLeaderboardEntry = (entriesByLogin, entry) => {
     name: entry.name || existing.name || entry.login || existing.login || normalizedLogin,
     avatar_url: entry.avatar_url || existing.avatar_url || buildDefaultAvatarUrl(entry.login || existing.login || normalizedLogin),
     total_contributions: shouldUseIncomingTotal
-      ? entry.total_contributions
-      : typeof existing.total_contributions === 'number'
-        ? existing.total_contributions
+      ? incomingTotalContributions
+      : typeof existingTotalContributions === 'number'
+        ? existingTotalContributions
         : null,
     repo_summary: shouldUseIncomingRepoSummary
       ? entry.repo_summary
@@ -146,8 +189,17 @@ const upsertLeaderboardEntry = (entriesByLogin, entry) => {
 };
 
 const hasLeaderboardActivity = (entry) => {
-  if (!entry || typeof entry.total_contributions !== 'number') return false;
-  if (entry.total_contributions > 0) return true;
+  if (!entry) return false;
+
+  const totalContributions = getEntryTotalContributions(entry);
+  if (typeof totalContributions === 'number' && totalContributions > 0) return true;
+
+  const repoStatsActivity = Object.values(entry.repos || {}).some((repo) => {
+    return (repo?.pr_created?.total_count || 0) > 0
+      || (repo?.pr_merged?.total_count || 0) > 0
+      || (repo?.issues_created?.total_count || 0) > 0;
+  });
+  if (repoStatsActivity) return true;
 
   return Object.values(entry.repo_summary || {}).some((repo) => {
     return (repo?.pr_created || 0) > 0 || (repo?.pr_merged || 0) > 0 || (repo?.issues_created || 0) > 0;
@@ -155,8 +207,9 @@ const hasLeaderboardActivity = (entry) => {
 };
 
 const hasFreshLeaderboardCache = (cachedEntry, userEntry) => {
-  if (typeof cachedEntry?.total_contributions !== 'number') return false;
-  if (cachedEntry.total_contributions === 0 && !hasLeaderboardActivity(cachedEntry)) return false;
+  const cachedTotalContributions = getEntryTotalContributions(cachedEntry);
+  if (typeof cachedTotalContributions !== 'number') return false;
+  if (cachedTotalContributions === 0 && !hasLeaderboardActivity(cachedEntry)) return false;
   if (!userEntry?.last_login_at) return true;
   if (!cachedEntry?.updated_at) return false;
   return new Date(cachedEntry.updated_at).getTime() >= new Date(userEntry.last_login_at).getTime();
@@ -244,6 +297,9 @@ export const buildLeaderboard = async ({
       login: entry.github_username,
       name: entry.name,
       avatar_url: entry.avatar_url,
+      repos: entry.repos,
+      contribution_dates: entry.contribution_dates,
+      astron: entry.astron,
       total_contributions: entry.total_contributions,
       repo_summary: entry.repo_summary,
       updated_at: entry.updated_at,
@@ -513,7 +569,7 @@ const buildCachedContributionResponse = (entry) => {
     contribution_fields: entry.contribution_fields || CONTRIBUTION_FIELDS,
     contribution_dates: entry.contribution_dates || {},
     astron: entry.astron || { agent: { workflows: 0, runs: 0 }, rpa: { tasks: 0, hoursSaved: 0 } },
-    total_contributions: entry.total_contributions,
+    total_contributions: getEntryTotalContributions(entry),
     repo_summary: entry.repo_summary || {},
     updated_at: entry.updated_at || new Date().toISOString(),
   };

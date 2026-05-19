@@ -200,6 +200,44 @@ test('leaderboard includes cached authorized users without redemptions', async (
   assert.equal(leaderboard[0].total_contributions, 196);
 });
 
+test('leaderboard keeps legacy cached snapshots without explicit total_contributions', async () => {
+  const leaderboard = await buildLeaderboard({
+    cached: [
+      {
+        github_username: 'legacy-user',
+        name: 'Legacy User',
+        avatar_url: 'https://example.com/legacy-user.png',
+        repo_summary: {
+          'iflytek/astron-agent': {
+            pr_created: 3,
+            pr_merged: 2,
+            issues_created: 1,
+          },
+        },
+        contribution_dates: {
+          'iflytek/astron-agent': {
+            pr_creation_date_list: ['2026-05-01T00:00:00.000Z', '2026-05-02T00:00:00.000Z', '2026-05-03T00:00:00.000Z'],
+            pr_merged_date_list: ['2026-05-04T00:00:00.000Z', '2026-05-05T00:00:00.000Z'],
+            issue_creation_date_list: ['2026-05-06T00:00:00.000Z'],
+            code_author_date_list: ['2026-05-07T00:00:00.000Z', '2026-05-07T00:00:00.000Z'],
+          },
+        },
+        astron: {
+          agent: { workflows: 1 },
+          rpa: { tasks: 2 },
+        },
+        updated_at: '2026-05-18T00:00:00.000Z',
+      },
+    ],
+    users: [],
+    redemptions: [],
+  });
+
+  assert.equal(leaderboard.length, 1);
+  assert.equal(leaderboard[0].login, 'legacy-user');
+  assert.equal(leaderboard[0].total_contributions, 11);
+});
+
 test('leaderboard refreshes authorized users without redemptions when cache is stale', async () => {
   const refreshCalls = [];
   const leaderboard = await buildLeaderboard({
