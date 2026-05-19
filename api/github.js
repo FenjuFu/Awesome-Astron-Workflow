@@ -79,6 +79,32 @@ const buildRepoSummary = (repoStats) => {
 };
 
 const buildDefaultAvatarUrl = (login) => `https://github.com/${encodeURIComponent(login)}.png?size=80`;
+const hasOAuthAccess = (user) => !!(user?.oauth_token || user?.last_login_at);
+
+const createLeaderboardCandidateLogins = ({ cached = [], users = [], redemptions = [] } = {}) => {
+  const candidateLogins = new Set();
+
+  redemptions.forEach((redemption) => {
+    const normalizedLogin = normalizeGitHubLogin(redemption.github_login);
+    if (normalizedLogin) candidateLogins.add(normalizedLogin);
+  });
+
+  cached.forEach((entry) => {
+    const normalizedLogin = normalizeGitHubLogin(entry.github_username);
+    if (normalizedLogin && hasLeaderboardActivity(entry)) {
+      candidateLogins.add(normalizedLogin);
+    }
+  });
+
+  users.forEach((user) => {
+    const normalizedLogin = normalizeGitHubLogin(user.github_username);
+    if (normalizedLogin && hasOAuthAccess(user)) {
+      candidateLogins.add(normalizedLogin);
+    }
+  });
+
+  return Array.from(candidateLogins);
+};
 
 const upsertLeaderboardEntry = (entriesByLogin, entry) => {
   const normalizedLogin = normalizeGitHubLogin(entry?.login);
@@ -143,15 +169,9 @@ export const buildLeaderboard = async ({
   fetchSnapshot = fetchContributionSnapshot,
   now = new Date(),
 } = {}) => {
-  const redeemedLogins = Array.from(
-    new Set(
-      redemptions
-        .map((redemption) => normalizeGitHubLogin(redemption.github_login))
-        .filter(Boolean)
-    )
-  );
+  const leaderboardLogins = createLeaderboardCandidateLogins({ cached, users, redemptions });
 
-  if (redeemedLogins.length === 0) {
+  if (leaderboardLogins.length === 0) {
     return [];
   }
 
@@ -174,7 +194,7 @@ export const buildLeaderboard = async ({
   const oneYearAgo = new Date(now);
   oneYearAgo.setFullYear(now.getFullYear() - 1);
 
-  const refreshCandidates = redeemedLogins.filter((login) => {
+  const refreshCandidates = leaderboardLogins.filter((login) => {
     const cachedEntry = cachedByLogin.get(login);
     const user = usersByLogin.get(login);
     return !!user?.oauth_token && !hasFreshLeaderboardCache(cachedEntry, user);
@@ -202,11 +222,11 @@ export const buildLeaderboard = async ({
   );
 
   const entriesByLogin = new Map();
-  for (const login of redeemedLogins) {
+  for (const login of leaderboardLogins) {
     upsertLeaderboardEntry(entriesByLogin, { login });
   }
 
-  for (const login of redeemedLogins) {
+  for (const login of leaderboardLogins) {
     const user = usersByLogin.get(login);
     if (!user) continue;
     upsertLeaderboardEntry(entriesByLogin, {
@@ -217,7 +237,7 @@ export const buildLeaderboard = async ({
     });
   }
 
-  for (const login of redeemedLogins) {
+  for (const login of leaderboardLogins) {
     const entry = cachedByLogin.get(login);
     if (!entry) continue;
     upsertLeaderboardEntry(entriesByLogin, {
@@ -327,6 +347,56 @@ const buildRepoStatsFromSummary = (repoSummary = {}) =>
 
 const pushDate = (target, key, value) => {
   if (value && target[key]) target[key].push(value);
+};
+
+const createTargetRepoAliases = (baseTargetRepos, targetLogin) => {
+  const normalizedLogin = normalizeGitHubLogin(targetLogin);
+
+  return baseTargetRepos.reduce((acc, repo) => {
+    const [owner, repoName] = repo.split('/');
+    const aliases = new Set([repo]);
+
+    if (repo === 'iflytek/astron-agent') {
+      aliases.add('FenjuFu/astron-agent');
+    }
+
+    if (repo === 'iflytek/astron-rpa') {
+      aliases.add('FenjuFu/astron-rpa');
+    }
+
+    if (repo === 'iflytek/skillhub') {
+      aliases.add('FenjuFu/skillhub');
+    }
+
+    if (normalizedLogin && normalizeGitHubLogin(owner) !== normalizedLogin) {
+      aliases.add(`${normalizedLogin}/${repoName}`);
+    }
+
+    acc[repo] = Array.from(aliases);
+    return acc;
+  }, {});
+};
+
+export const calculateTotalContributions = ({
+  repoStats = {},
+  contributionDatesByRepo = {},
+  astronStats = {},
+} = {}) => {
+  const searchBasedTotal = Object.values(repoStats).reduce((sum, stats) => {
+    return sum + stats.pr_created.total_count + stats.pr_merged.total_count + stats.issues_created.total_count;
+  }, 0);
+
+  const searchTrackedKeys = new Set(['pr_creation_date_list', 'pr_merged_date_list', 'issue_creation_date_list']);
+  const otherBehaviorsTotal = Object.values(contributionDatesByRepo).reduce((total, repoDates) => {
+    return total + Object.entries(repoDates).reduce((repoTotal, [key, dates]) => {
+      return searchTrackedKeys.has(key) ? repoTotal : repoTotal + dates.length;
+    }, 0);
+  }, 0);
+
+  return searchBasedTotal
+    + otherBehaviorsTotal
+    + (astronStats.agent?.workflows || 0)
+    + (astronStats.rpa?.tasks || 0);
 };
 
 const isDateInRange = (value, fromDate, toDate) => {
@@ -562,11 +632,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   });
 
   const baseTargetRepos = Array.from(new Set([...topicRepos, 'iflytek/astron-agent', 'iflytek/astron-rpa', 'iflytek/skillhub']));
-  const targetRepoAliases = {
-    'iflytek/astron-agent': ['iflytek/astron-agent', 'FenjuFu/astron-agent'],
-    'iflytek/astron-rpa': ['iflytek/astron-rpa', 'FenjuFu/astron-rpa'],
-    'iflytek/skillhub': ['iflytek/skillhub']
-  };
+  const targetRepoAliases = createTargetRepoAliases(baseTargetRepos, targetLogin);
   const targetReposMap = baseTargetRepos.reduce((acc, repo) => {
     (targetRepoAliases[repo] || [repo]).forEach((alias) => {
       acc[normalizeRepoFullName(alias)] = repo;
@@ -693,7 +759,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   await Promise.all(promises);
   Object.values(contributionDatesByRepo).forEach((repo) => {
     Object.keys(repo).forEach((key) => {
-      repo[key] = [...new Set(repo[key])].sort();
+      repo[key] = [...repo[key]].sort();
     });
   });
 
@@ -704,16 +770,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
     null
   );
   const astronStats = storedUser?.contributions || { agent: { workflows: 0, runs: 0 }, rpa: { tasks: 0, hoursSaved: 0 } };
-  const searchTrackedKeys = new Set(['pr_creation_date_list', 'pr_merged_date_list', 'issue_creation_date_list']);
-  const searchBasedTotal = Object.values(repoStats).reduce((sum, stats) => {
-    return sum + stats.pr_created.total_count + stats.pr_merged.total_count + stats.issues_created.total_count;
-  }, 0);
-  const otherBehaviorsTotal = Object.values(contributionDatesByRepo).reduce((total, repoDates) => {
-    return total + Object.entries(repoDates).reduce((repoTotal, [key, dates]) => {
-      return searchTrackedKeys.has(key) ? repoTotal : repoTotal + dates.length;
-    }, 0);
-  }, 0);
-  const totalContributions = searchBasedTotal + otherBehaviorsTotal + (astronStats.agent?.workflows || 0) + (astronStats.rpa?.tasks || 0);
+  const totalContributions = calculateTotalContributions({ repoStats, contributionDatesByRepo, astronStats });
   const repoSummary = buildRepoSummary(repoStats);
   const snapshot = {
     user: {

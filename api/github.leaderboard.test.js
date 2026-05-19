@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildLeaderboard, normalizeGitHubLogin, searchOpenAndClosedIssues } from './github.js';
+import { buildLeaderboard, calculateTotalContributions, normalizeGitHubLogin, searchOpenAndClosedIssues } from './github.js';
 
 test('leaderboard keeps stale cached snapshot when refresh fails', async () => {
   const refreshCalls = [];
@@ -171,6 +171,118 @@ test('leaderboard matches cached users when redemption login is a github profile
   assert.equal(leaderboard.length, 1);
   assert.equal(leaderboard[0].login, 'shawn0915');
   assert.equal(leaderboard[0].total_contributions, 21);
+});
+
+test('leaderboard includes cached authorized users without redemptions', async () => {
+  const leaderboard = await buildLeaderboard({
+    cached: [
+      {
+        github_username: 'FenjuFu',
+        name: 'FenjuFu',
+        avatar_url: 'https://example.com/fenjufu.png',
+        total_contributions: 196,
+        repo_summary: {
+          'iflytek/skillhub': {
+            pr_created: 8,
+            pr_merged: 4,
+            issues_created: 2,
+          },
+        },
+        updated_at: '2026-05-18T00:00:00.000Z',
+      },
+    ],
+    users: [],
+    redemptions: [],
+  });
+
+  assert.equal(leaderboard.length, 1);
+  assert.equal(leaderboard[0].login, 'FenjuFu');
+  assert.equal(leaderboard[0].total_contributions, 196);
+});
+
+test('leaderboard refreshes authorized users without redemptions when cache is stale', async () => {
+  const refreshCalls = [];
+  const leaderboard = await buildLeaderboard({
+    cached: [
+      {
+        github_username: 'fenjufu',
+        name: 'FenjuFu',
+        avatar_url: 'https://example.com/fenjufu-stale.png',
+        total_contributions: 120,
+        repo_summary: {
+          'iflytek/skillhub': {
+            pr_created: 3,
+            pr_merged: 1,
+            issues_created: 1,
+          },
+        },
+        updated_at: '2026-05-01T00:00:00.000Z',
+      },
+    ],
+    users: [
+      {
+        github_username: 'FenjuFu',
+        name: 'FenjuFu',
+        avatar_url: 'https://example.com/fenjufu-user.png',
+        last_login_at: '2026-05-10T00:00:00.000Z',
+        oauth_token: 'token',
+      },
+    ],
+    redemptions: [],
+    now: new Date('2026-05-18T00:00:00.000Z'),
+    fetchSnapshot: async (params) => {
+      refreshCalls.push(params);
+      return {
+        user: {
+          login: 'FenjuFu',
+          name: 'FenjuFu Fresh',
+          avatar_url: 'https://example.com/fenjufu-fresh.png',
+        },
+        total_contributions: 196,
+        repo_summary: {
+          'iflytek/skillhub': {
+            pr_created: 8,
+            pr_merged: 4,
+            issues_created: 2,
+          },
+        },
+        updated_at: '2026-05-18T00:00:00.000Z',
+      };
+    },
+  });
+
+  assert.equal(refreshCalls.length, 1);
+  assert.equal(leaderboard.length, 1);
+  assert.equal(leaderboard[0].login, 'FenjuFu');
+  assert.equal(leaderboard[0].total_contributions, 196);
+});
+
+test('calculateTotalContributions keeps duplicate-timestamp behaviors', () => {
+  const total = calculateTotalContributions({
+    repoStats: {
+      'iflytek/skillhub': {
+        pr_created: { total_count: 2, items: [] },
+        pr_merged: { total_count: 1, items: [] },
+        issues_created: { total_count: 3, items: [] },
+      },
+    },
+    contributionDatesByRepo: {
+      'iflytek/skillhub': {
+        pr_creation_date_list: ['2026-05-01T00:00:00.000Z', '2026-05-02T00:00:00.000Z'],
+        pr_merged_date_list: ['2026-05-03T00:00:00.000Z'],
+        issue_creation_date_list: ['2026-05-04T00:00:00.000Z', '2026-05-05T00:00:00.000Z', '2026-05-06T00:00:00.000Z'],
+        code_author_date_list: ['2026-05-07T10:00:00.000Z', '2026-05-07T10:00:00.000Z'],
+        code_committer_date_list: ['2026-05-07T10:00:00.000Z'],
+        star_date_list: ['2026-05-08T00:00:00.000Z'],
+      },
+    },
+    astronStats: {
+      agent: { workflows: 2 },
+      rpa: { tasks: 1 },
+    },
+  });
+
+  assert.equal(total, 13);
 });
 
 test('searchOpenAndClosedIssues keeps created contributions after item is closed', async () => {
