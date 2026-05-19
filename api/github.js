@@ -223,6 +223,12 @@ export const buildLeaderboard = async ({
   now = new Date(),
 } = {}) => {
   const leaderboardLogins = createLeaderboardCandidateLogins({ cached, users, redemptions });
+  const authorizedLogins = new Set(
+    users
+      .filter(hasOAuthAccess)
+      .map((user) => normalizeGitHubLogin(user.github_username))
+      .filter(Boolean)
+  );
 
   if (leaderboardLogins.length === 0) {
     return [];
@@ -316,7 +322,10 @@ export const buildLeaderboard = async ({
   }
 
   return Array.from(entriesByLogin.values())
-    .filter(hasLeaderboardActivity)
+    .filter((entry) => {
+      const normalizedLogin = normalizeGitHubLogin(entry.login);
+      return (normalizedLogin && authorizedLogins.has(normalizedLogin)) || hasLeaderboardActivity(entry);
+    })
     .map((entry) => ({
       ...entry,
       total_contributions: typeof entry.total_contributions === 'number' ? entry.total_contributions : 0,

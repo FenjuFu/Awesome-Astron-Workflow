@@ -238,6 +238,38 @@ test('leaderboard keeps legacy cached snapshots without explicit total_contribut
   assert.equal(leaderboard[0].total_contributions, 11);
 });
 
+test('leaderboard includes authorized users even when contribution snapshot is unavailable', async () => {
+  const consoleError = console.error;
+  console.error = () => {};
+
+  try {
+    const leaderboard = await buildLeaderboard({
+      cached: [],
+      users: [
+        {
+          github_username: 'AuthorizedUser',
+          name: 'Authorized User',
+          avatar_url: 'https://example.com/authorized-user.png',
+          last_login_at: '2026-05-18T00:00:00.000Z',
+          oauth_token: 'token',
+        },
+      ],
+      redemptions: [],
+      now: new Date('2026-05-18T00:00:00.000Z'),
+      fetchSnapshot: async () => {
+        throw new Error('GitHub unavailable');
+      },
+    });
+
+    assert.equal(leaderboard.length, 1);
+    assert.equal(leaderboard[0].login, 'AuthorizedUser');
+    assert.equal(leaderboard[0].name, 'Authorized User');
+    assert.equal(leaderboard[0].total_contributions, 0);
+  } finally {
+    console.error = consoleError;
+  }
+});
+
 test('leaderboard refreshes authorized users without redemptions when cache is stale', async () => {
   const refreshCalls = [];
   const leaderboard = await buildLeaderboard({
