@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildLeaderboard, normalizeGitHubLogin } from './github.js';
+import { buildLeaderboard, normalizeGitHubLogin, searchOpenAndClosedIssues } from './github.js';
 
 test('leaderboard keeps stale cached snapshot when refresh fails', async () => {
   const refreshCalls = [];
@@ -171,4 +171,33 @@ test('leaderboard matches cached users when redemption login is a github profile
   assert.equal(leaderboard.length, 1);
   assert.equal(leaderboard[0].login, 'shawn0915');
   assert.equal(leaderboard[0].total_contributions, 21);
+});
+
+test('searchOpenAndClosedIssues keeps created contributions after item is closed', async () => {
+  const queries = [];
+  const results = await searchOpenAndClosedIssues(async (query) => {
+    queries.push(query);
+
+    if (query.endsWith('is:open')) {
+      return {
+        total_count: 0,
+        items: [],
+      };
+    }
+
+    return {
+      total_count: 2,
+      items: [
+        { id: 101, created_at: '2026-05-01T00:00:00.000Z' },
+        { id: 102, created_at: '2026-05-03T00:00:00.000Z' },
+      ],
+    };
+  }, 'repo:iflytek/skillhub type:issue author:shawn0915 created:2026-05-01..2026-05-31');
+
+  assert.deepEqual(queries, [
+    'repo:iflytek/skillhub type:issue author:shawn0915 created:2026-05-01..2026-05-31 is:open',
+    'repo:iflytek/skillhub type:issue author:shawn0915 created:2026-05-01..2026-05-31 is:closed',
+  ]);
+  assert.equal(results.total_count, 2);
+  assert.deepEqual(results.items.map((item) => item.id), [101, 102]);
 });

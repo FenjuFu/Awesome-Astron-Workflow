@@ -259,6 +259,39 @@ export const buildLeaderboard = async ({
     }));
 };
 
+const mergeSearchResults = (...results) => {
+  const items = [];
+  const seenKeys = new Set();
+  let totalCount = 0;
+
+  for (const result of results) {
+    if (!result) continue;
+
+    totalCount += result.total_count || 0;
+
+    for (const item of result.items || []) {
+      const key = item.id || item.node_id || item.html_url || JSON.stringify(item);
+      if (seenKeys.has(key)) continue;
+      seenKeys.add(key);
+      items.push(item);
+    }
+  }
+
+  return {
+    total_count: totalCount,
+    items,
+  };
+};
+
+export const searchOpenAndClosedIssues = async (searchFn, baseQuery) => {
+  const [openResults, closedResults] = await Promise.all([
+    searchFn(`${baseQuery} is:open`),
+    searchFn(`${baseQuery} is:closed`),
+  ]);
+
+  return mergeSearchResults(openResults, closedResults);
+};
+
 const CONTRIBUTION_FIELDS = {
   observe: ['fork_date_list', 'star_date_list'],
   issue: ['issue_creation_date_list', 'issue_comments_date_list'],
@@ -574,7 +607,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   const promises = [];
   baseTargetRepos.forEach((repo) => {
     (targetRepoAliases[repo] || [repo]).forEach((alias) => {
-      promises.push(search(`repo:${alias} type:pr author:${targetLogin} created:${fromStr}..${toStr}`).then((data) => {
+      promises.push(searchOpenAndClosedIssues(search, `repo:${alias} type:pr author:${targetLogin} created:${fromStr}..${toStr}`).then((data) => {
         repoStats[repo].pr_created.total_count += data.total_count;
         repoStats[repo].pr_created.items.push(...data.items);
         data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_creation_date_list', item.created_at));
@@ -584,15 +617,15 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
         repoStats[repo].pr_merged.items.push(...data.items);
         data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_merged_date_list', item.closed_at));
       }));
-      promises.push(search(`repo:${alias} type:issue author:${targetLogin} created:${fromStr}..${toStr}`).then((data) => {
+      promises.push(searchOpenAndClosedIssues(search, `repo:${alias} type:issue author:${targetLogin} created:${fromStr}..${toStr}`).then((data) => {
         repoStats[repo].issues_created.total_count += data.total_count;
         repoStats[repo].issues_created.items.push(...data.items);
         data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_creation_date_list', item.created_at));
       }));
-      promises.push(search(`repo:${alias} type:issue commenter:${targetLogin} updated:${fromStr}..${toStr}`).then((data) => {
+      promises.push(searchOpenAndClosedIssues(search, `repo:${alias} type:issue commenter:${targetLogin} updated:${fromStr}..${toStr}`).then((data) => {
         data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_comments_date_list', item.updated_at));
       }));
-      promises.push(search(`repo:${alias} type:pr commenter:${targetLogin} updated:${fromStr}..${toStr}`).then((data) => {
+      promises.push(searchOpenAndClosedIssues(search, `repo:${alias} type:pr commenter:${targetLogin} updated:${fromStr}..${toStr}`).then((data) => {
         data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_comments_date_list', item.updated_at));
       }));
     });
