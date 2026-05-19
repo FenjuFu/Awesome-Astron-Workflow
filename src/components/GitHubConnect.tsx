@@ -157,11 +157,11 @@ const buildRepoSummaryFromStats = (repos: ContributionsData['repos'] = {}) =>
 
 const mergeCurrentUserIntoLeaderboard = (
   leaderboard: LeaderboardEntry[],
-  currentUser: Omit<LeaderboardEntry, 'rank'> | null,
-  shouldMergeCurrentUser: boolean
+  currentUser: Omit<LeaderboardEntry, 'rank'> | null
 ): LeaderboardEntry[] => {
-  const entries = currentUser && shouldMergeCurrentUser
+  const entries = currentUser
     ? [
+        // Personal stats are fetched on demand and should override any stale leaderboard snapshot.
         ...leaderboard.filter((entry) => normalizeGitHubLogin(entry.login) !== normalizeGitHubLogin(currentUser.login)),
         { rank: 0, ...currentUser }
       ]
@@ -320,10 +320,7 @@ const GitHubConnect: React.FC = () => {
     repo_summary: buildRepoSummaryFromStats(data.repos),
     updated_at: new Date().toISOString(),
   } : null;
-  const currentUserIsRanked = !!currentUserEntry && leaderboard.some((entry) => {
-    return normalizeGitHubLogin(entry.login) === normalizeGitHubLogin(currentUserEntry.login);
-  });
-  const displayLeaderboard = mergeCurrentUserIntoLeaderboard(leaderboard, currentUserEntry, !currentUserIsRanked);
+  const displayLeaderboard = mergeCurrentUserIntoLeaderboard(leaderboard, currentUserEntry);
 
   return (
     <div className="space-y-6">
