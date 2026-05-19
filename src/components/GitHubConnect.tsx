@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Github, Loader2, ShieldCheck, LogOut, GitPullRequest, GitMerge, AlertCircle, Coins, Trophy, Medal } from 'lucide-react';
+import { Github, Loader2, ShieldCheck, LogOut, GitPullRequest, GitMerge, AlertCircle, Coins, Trophy, Medal, RefreshCcw } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import RedemptionSystem from './RedemptionSystem';
 
@@ -187,9 +187,16 @@ const GitHubConnect: React.FC = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [leaderboardLoading, setLeaderboardLoading] = useState(true);
+  const [leaderboardRefreshing, setLeaderboardRefreshing] = useState(false);
   const [activeTab, setActiveTab] = useState<'leaderboard' | 'stats' | 'redeem'>('leaderboard');
 
-  const fetchLeaderboard = useCallback(async () => {
+  const fetchLeaderboard = useCallback(async ({ silent = false }: { silent?: boolean } = {}) => {
+    if (silent) {
+      setLeaderboardRefreshing(true);
+    } else {
+      setLeaderboardLoading(true);
+    }
+
     try {
       const res = await fetchWithTimeout('/api/github/leaderboard', {}, 10000);
       if (res.ok) {
@@ -198,6 +205,9 @@ const GitHubConnect: React.FC = () => {
     } catch {
       // Leaderboard fetch failed silently - page still works
     } finally {
+      if (silent) {
+        setLeaderboardRefreshing(false);
+      }
       setLeaderboardLoading(false);
     }
   }, []);
@@ -227,7 +237,7 @@ const GitHubConnect: React.FC = () => {
       setData(json);
       if (json) {
         setActiveTab('stats');
-        fetchLeaderboard();
+        fetchLeaderboard({ silent: true });
       }
     } catch (err: unknown) {
       if (err instanceof Error && err.name === 'AbortError') {
@@ -410,9 +420,11 @@ const GitHubConnect: React.FC = () => {
         <LeaderboardView
           leaderboard={displayLeaderboard}
           loading={leaderboardLoading}
+          refreshing={leaderboardRefreshing}
           isLoggedIn={isLoggedIn}
           personalLoading={loading}
           personalError={error}
+          onRefresh={() => fetchLeaderboard({ silent: true })}
           onLogin={handleLogin}
           onRetry={initializePersonalData}
           t={t}
@@ -435,13 +447,15 @@ const GitHubConnect: React.FC = () => {
 const LeaderboardView: React.FC<{
   leaderboard: LeaderboardEntry[];
   loading: boolean;
+  refreshing: boolean;
   isLoggedIn: boolean;
   personalLoading: boolean;
   personalError: string | null;
+  onRefresh: () => void;
   onLogin: () => void;
   onRetry: () => void;
   t: (key: string) => string;
-}> = ({ leaderboard, loading, isLoggedIn, personalLoading, personalError, onLogin, onRetry, t }) => {
+}> = ({ leaderboard, loading, refreshing, isLoggedIn, personalLoading, personalError, onRefresh, onLogin, onRetry, t }) => {
   if (loading) {
     return (
       <div className="flex justify-center p-8">
@@ -452,6 +466,17 @@ const LeaderboardView: React.FC<{
 
   return (
     <div className="space-y-4">
+      <div className="flex justify-end">
+        <button
+          onClick={onRefresh}
+          disabled={refreshing}
+          className="inline-flex items-center px-3 py-1.5 text-sm border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          <RefreshCcw className={`h-4 w-4 mr-1.5 ${refreshing ? 'animate-spin' : ''}`} />
+          {refreshing ? '刷新中...' : '刷新排行榜'}
+        </button>
+      </div>
+
       {isLoggedIn && !personalLoading && personalError && (
         <div className="bg-amber-50 rounded-xl p-4 border border-amber-200 flex items-center justify-between flex-wrap gap-3">
           <div className="flex items-center gap-3">
