@@ -1,7 +1,5 @@
 import cookie from 'cookie';
 import crypto from 'crypto';
-import clientPromise from './_lib/mongodb.js';
-import { supabaseAdmin } from './_lib/supabase-admin.js';
 
 export default async function handler(req, res) {
   const action = req.query.action;
@@ -489,8 +487,24 @@ const getDefaultContributionWindow = (referenceDate = new Date()) => {
   return { fromDate, toDate };
 };
 
+let mongodbClientPromise;
+const getMongoClientPromise = async () => {
+  if (!mongodbClientPromise) {
+    mongodbClientPromise = import('./_lib/mongodb.js')
+      .then((module) => module.default)
+      .catch((error) => {
+        console.error('Mongo client unavailable', error);
+        return null;
+      });
+  }
+
+  return mongodbClientPromise;
+};
+
 const getDatabase = async () => {
   try {
+    const clientPromise = await getMongoClientPromise();
+    if (!clientPromise) return null;
     const client = await clientPromise;
     return client.db('astron_workflow');
   } catch (error) {
@@ -518,8 +532,27 @@ const safeDatabaseWrite = async (db, label, writeOperation) => {
   }
 };
 
+let supabaseAdminClientPromise;
+const getSupabaseAdminClient = async () => {
+  if (!supabaseAdminClientPromise) {
+    supabaseAdminClientPromise = import('./_lib/supabase-admin.js')
+      .then((module) => module.supabaseAdmin)
+      .catch((error) => {
+        console.error('Supabase admin client unavailable', error);
+        return null;
+      });
+  }
+
+  return supabaseAdminClientPromise;
+};
+
 const getRedemptionEntries = async () => {
   try {
+    const supabaseAdmin = await getSupabaseAdminClient();
+    if (!supabaseAdmin) {
+      return [];
+    }
+
     const redemptionsResult = await supabaseAdmin
       .from('redemptions')
       .select('github_login')
@@ -938,12 +971,13 @@ async function handleCallback(request, response) {
 
     if (userResponse.ok) {
       const userData = await userResponse.json();
-      const client = await clientPromise;
-      const db = client.db('astron_workflow');
-      await upsertGitHubUserProfile(db, userData, {
-        oauth_token: tokenData.access_token,
-        last_login_at: new Date(),
-      });
+      const db = await getDatabase();
+      if (db) {
+        await upsertGitHubUserProfile(db, userData, {
+          oauth_token: tokenData.access_token,
+          last_login_at: new Date(),
+        });
+      }
       queueContributionCacheRefresh({
         token: tokenData.access_token,
         login: userData.login,
