@@ -1,6 +1,7 @@
 import cookie from 'cookie';
 import crypto from 'crypto';
 import clientPromise from './_lib/mongodb.js';
+import { supabaseAdmin } from './_lib/supabase-admin.js';
 
 export default async function handler(req, res) {
   const action = req.query.action;
@@ -37,7 +38,20 @@ const hasNextPage = (linkHeader) => {
 };
 
 const normalizeRepoFullName = (repoFullName) => repoFullName?.toLowerCase();
-const normalizeGitHubLogin = (login) => login?.trim().toLowerCase();
+export const normalizeGitHubLogin = (login) => {
+  const rawLogin = typeof login === 'string' ? login.trim() : '';
+  if (!rawLogin) return null;
+
+  const withoutAt = rawLogin.replace(/^@/, '');
+  const urlMatch = withoutAt.match(/^(?:https?:\/\/)?(?:www\.)?github\.com\/([^/?#]+)(?:[/?#].*)?$/i);
+  const normalizedCandidate = (urlMatch?.[1] || withoutAt)
+    .replace(/^@/, '')
+    .replace(/^\/+|\/+$/g, '')
+    .trim()
+    .toLowerCase();
+
+  return normalizedCandidate || null;
+};
 
 const fetchAllPages = async (fetchPage) => {
   const results = [];
@@ -65,6 +79,32 @@ const buildRepoSummary = (repoStats) => {
 };
 
 const buildDefaultAvatarUrl = (login) => `https://github.com/${encodeURIComponent(login)}.png?size=80`;
+const hasOAuthAccess = (user) => !!(user?.oauth_token || user?.last_login_at);
+
+const createLeaderboardCandidateLogins = ({ cached = [], users = [], redemptions = [] } = {}) => {
+  const candidateLogins = new Set();
+
+  redemptions.forEach((redemption) => {
+    const normalizedLogin = normalizeGitHubLogin(redemption.github_login);
+    if (normalizedLogin) candidateLogins.add(normalizedLogin);
+  });
+
+  cached.forEach((entry) => {
+    const normalizedLogin = normalizeGitHubLogin(entry.github_username);
+    if (normalizedLogin && hasLeaderboardActivity(entry)) {
+      candidateLogins.add(normalizedLogin);
+    }
+  });
+
+  users.forEach((user) => {
+    const normalizedLogin = normalizeGitHubLogin(user.github_username);
+    if (normalizedLogin && hasOAuthAccess(user)) {
+      candidateLogins.add(normalizedLogin);
+    }
+  });
+
+  return Array.from(candidateLogins);
+};
 
 const upsertLeaderboardEntry = (entriesByLogin, entry) => {
   const normalizedLogin = normalizeGitHubLogin(entry?.login);
@@ -122,6 +162,156 @@ const hasFreshLeaderboardCache = (cachedEntry, userEntry) => {
   return new Date(cachedEntry.updated_at).getTime() >= new Date(userEntry.last_login_at).getTime();
 };
 
+export const buildLeaderboard = async ({
+  cached = [],
+  users = [],
+  redemptions = [],
+  fetchSnapshot = fetchContributionSnapshot,
+  now = new Date(),
+} = {}) => {
+  const leaderboardLogins = createLeaderboardCandidateLogins({ cached, users, redemptions });
+
+  if (leaderboardLogins.length === 0) {
+    return [];
+  }
+
+  const cachedByLogin = new Map();
+  for (const entry of cached) {
+    const normalizedLogin = normalizeGitHubLogin(entry.github_username);
+    if (normalizedLogin) {
+      cachedByLogin.set(normalizedLogin, entry);
+    }
+  }
+
+  const usersByLogin = new Map();
+  for (const user of users) {
+    const normalizedLogin = normalizeGitHubLogin(user.github_username);
+    if (normalizedLogin) {
+      usersByLogin.set(normalizedLogin, user);
+    }
+  }
+
+  const oneYearAgo = new Date(now);
+  oneYearAgo.setFullYear(now.getFullYear() - 1);
+
+  const refreshCandidates = leaderboardLogins.filter((login) => {
+    const cachedEntry = cachedByLogin.get(login);
+    const user = usersByLogin.get(login);
+    return !!user?.oauth_token && !hasFreshLeaderboardCache(cachedEntry, user);
+  });
+
+  const refreshedEntries = await Promise.allSettled(
+    refreshCandidates.map(async (login) => {
+      const user = usersByLogin.get(login);
+      const snapshot = await fetchSnapshot({
+        token: user.oauth_token,
+        login: user.github_username,
+        fromDate: oneYearAgo,
+        toDate: now,
+      });
+
+      return {
+        login: snapshot.user.login,
+        name: snapshot.user.name || snapshot.user.login,
+        avatar_url: snapshot.user.avatar_url,
+        total_contributions: snapshot.total_contributions,
+        repo_summary: snapshot.repo_summary,
+        updated_at: snapshot.updated_at,
+      };
+    })
+  );
+
+  const entriesByLogin = new Map();
+  for (const login of leaderboardLogins) {
+    upsertLeaderboardEntry(entriesByLogin, { login });
+  }
+
+  for (const login of leaderboardLogins) {
+    const user = usersByLogin.get(login);
+    if (!user) continue;
+    upsertLeaderboardEntry(entriesByLogin, {
+      login: user.github_username,
+      name: user.name,
+      avatar_url: user.avatar_url,
+      updated_at: user.updated_at || user.last_login_at,
+    });
+  }
+
+  for (const login of leaderboardLogins) {
+    const entry = cachedByLogin.get(login);
+    if (!entry) continue;
+    upsertLeaderboardEntry(entriesByLogin, {
+      login: entry.github_username,
+      name: entry.name,
+      avatar_url: entry.avatar_url,
+      total_contributions: entry.total_contributions,
+      repo_summary: entry.repo_summary,
+      updated_at: entry.updated_at,
+    });
+  }
+
+  for (const result of refreshedEntries) {
+    if (result.status !== 'fulfilled') {
+      console.error('Leaderboard refresh skipped', result.reason);
+      continue;
+    }
+
+    upsertLeaderboardEntry(entriesByLogin, result.value);
+  }
+
+  return Array.from(entriesByLogin.values())
+    .filter(hasLeaderboardActivity)
+    .map((entry) => ({
+      ...entry,
+      total_contributions: typeof entry.total_contributions === 'number' ? entry.total_contributions : 0,
+      repo_summary: entry.repo_summary || {},
+    }))
+    .sort((a, b) => {
+      if (b.total_contributions !== a.total_contributions) {
+        return b.total_contributions - a.total_contributions;
+      }
+      return a.login.localeCompare(b.login);
+    })
+    .slice(0, 100)
+    .map((entry, index) => ({
+      rank: index + 1,
+      ...entry,
+    }));
+};
+
+const mergeSearchResults = (...results) => {
+  const items = [];
+  const seenKeys = new Set();
+  let totalCount = 0;
+
+  for (const result of results) {
+    if (!result) continue;
+
+    totalCount += result.total_count || 0;
+
+    for (const item of result.items || []) {
+      const key = item.id || item.node_id || item.html_url || JSON.stringify(item);
+      if (seenKeys.has(key)) continue;
+      seenKeys.add(key);
+      items.push(item);
+    }
+  }
+
+  return {
+    total_count: totalCount,
+    items,
+  };
+};
+
+export const searchOpenAndClosedIssues = async (searchFn, baseQuery) => {
+  const [openResults, closedResults] = await Promise.all([
+    searchFn(`${baseQuery} is:open`),
+    searchFn(`${baseQuery} is:closed`),
+  ]);
+
+  return mergeSearchResults(openResults, closedResults);
+};
+
 const CONTRIBUTION_FIELDS = {
   observe: ['fork_date_list', 'star_date_list'],
   issue: ['issue_creation_date_list', 'issue_comments_date_list'],
@@ -157,6 +347,56 @@ const buildRepoStatsFromSummary = (repoSummary = {}) =>
 
 const pushDate = (target, key, value) => {
   if (value && target[key]) target[key].push(value);
+};
+
+const createTargetRepoAliases = (baseTargetRepos, targetLogin) => {
+  const normalizedLogin = normalizeGitHubLogin(targetLogin);
+
+  return baseTargetRepos.reduce((acc, repo) => {
+    const [owner, repoName] = repo.split('/');
+    const aliases = new Set([repo]);
+
+    if (repo === 'iflytek/astron-agent') {
+      aliases.add('FenjuFu/astron-agent');
+    }
+
+    if (repo === 'iflytek/astron-rpa') {
+      aliases.add('FenjuFu/astron-rpa');
+    }
+
+    if (repo === 'iflytek/skillhub') {
+      aliases.add('FenjuFu/skillhub');
+    }
+
+    if (normalizedLogin && normalizeGitHubLogin(owner) !== normalizedLogin) {
+      aliases.add(`${normalizedLogin}/${repoName}`);
+    }
+
+    acc[repo] = Array.from(aliases);
+    return acc;
+  }, {});
+};
+
+export const calculateTotalContributions = ({
+  repoStats = {},
+  contributionDatesByRepo = {},
+  astronStats = {},
+} = {}) => {
+  const searchBasedTotal = Object.values(repoStats).reduce((sum, stats) => {
+    return sum + stats.pr_created.total_count + stats.pr_merged.total_count + stats.issues_created.total_count;
+  }, 0);
+
+  const searchTrackedKeys = new Set(['pr_creation_date_list', 'pr_merged_date_list', 'issue_creation_date_list']);
+  const otherBehaviorsTotal = Object.values(contributionDatesByRepo).reduce((total, repoDates) => {
+    return total + Object.entries(repoDates).reduce((repoTotal, [key, dates]) => {
+      return searchTrackedKeys.has(key) ? repoTotal : repoTotal + dates.length;
+    }, 0);
+  }, 0);
+
+  return searchBasedTotal
+    + otherBehaviorsTotal
+    + (astronStats.agent?.workflows || 0)
+    + (astronStats.rpa?.tasks || 0);
 };
 
 const isDateInRange = (value, fromDate, toDate) => {
@@ -210,6 +450,24 @@ const safeDatabaseWrite = async (db, label, writeOperation) => {
     await writeOperation();
   } catch (error) {
     console.error(`${label} failed`, error);
+  }
+};
+
+const getRedemptionEntries = async () => {
+  try {
+    const redemptionsResult = await supabaseAdmin
+      .from('redemptions')
+      .select('github_login')
+      .not('github_login', 'is', null);
+
+    if (redemptionsResult.error) {
+      throw redemptionsResult.error;
+    }
+
+    return redemptionsResult.data || [];
+  } catch (error) {
+    console.error('Supabase redemptions unavailable', error);
+    return [];
   }
 };
 
@@ -374,11 +632,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   });
 
   const baseTargetRepos = Array.from(new Set([...topicRepos, 'iflytek/astron-agent', 'iflytek/astron-rpa', 'iflytek/skillhub']));
-  const targetRepoAliases = {
-    'iflytek/astron-agent': ['iflytek/astron-agent', 'FenjuFu/astron-agent'],
-    'iflytek/astron-rpa': ['iflytek/astron-rpa', 'FenjuFu/astron-rpa'],
-    'iflytek/skillhub': ['iflytek/skillhub']
-  };
+  const targetRepoAliases = createTargetRepoAliases(baseTargetRepos, targetLogin);
   const targetReposMap = baseTargetRepos.reduce((acc, repo) => {
     (targetRepoAliases[repo] || [repo]).forEach((alias) => {
       acc[normalizeRepoFullName(alias)] = repo;
@@ -419,7 +673,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   const promises = [];
   baseTargetRepos.forEach((repo) => {
     (targetRepoAliases[repo] || [repo]).forEach((alias) => {
-      promises.push(search(`repo:${alias} type:pr author:${targetLogin} created:${fromStr}..${toStr}`).then((data) => {
+      promises.push(searchOpenAndClosedIssues(search, `repo:${alias} type:pr author:${targetLogin} created:${fromStr}..${toStr}`).then((data) => {
         repoStats[repo].pr_created.total_count += data.total_count;
         repoStats[repo].pr_created.items.push(...data.items);
         data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_creation_date_list', item.created_at));
@@ -429,15 +683,15 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
         repoStats[repo].pr_merged.items.push(...data.items);
         data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_merged_date_list', item.closed_at));
       }));
-      promises.push(search(`repo:${alias} type:issue author:${targetLogin} created:${fromStr}..${toStr}`).then((data) => {
+      promises.push(searchOpenAndClosedIssues(search, `repo:${alias} type:issue author:${targetLogin} created:${fromStr}..${toStr}`).then((data) => {
         repoStats[repo].issues_created.total_count += data.total_count;
         repoStats[repo].issues_created.items.push(...data.items);
         data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_creation_date_list', item.created_at));
       }));
-      promises.push(search(`repo:${alias} type:issue commenter:${targetLogin} updated:${fromStr}..${toStr}`).then((data) => {
+      promises.push(searchOpenAndClosedIssues(search, `repo:${alias} type:issue commenter:${targetLogin} updated:${fromStr}..${toStr}`).then((data) => {
         data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_comments_date_list', item.updated_at));
       }));
-      promises.push(search(`repo:${alias} type:pr commenter:${targetLogin} updated:${fromStr}..${toStr}`).then((data) => {
+      promises.push(searchOpenAndClosedIssues(search, `repo:${alias} type:pr commenter:${targetLogin} updated:${fromStr}..${toStr}`).then((data) => {
         data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_comments_date_list', item.updated_at));
       }));
     });
@@ -505,7 +759,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   await Promise.all(promises);
   Object.values(contributionDatesByRepo).forEach((repo) => {
     Object.keys(repo).forEach((key) => {
-      repo[key] = [...new Set(repo[key])].sort();
+      repo[key] = [...repo[key]].sort();
     });
   });
 
@@ -516,16 +770,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
     null
   );
   const astronStats = storedUser?.contributions || { agent: { workflows: 0, runs: 0 }, rpa: { tasks: 0, hoursSaved: 0 } };
-  const searchTrackedKeys = new Set(['pr_creation_date_list', 'pr_merged_date_list', 'issue_creation_date_list']);
-  const searchBasedTotal = Object.values(repoStats).reduce((sum, stats) => {
-    return sum + stats.pr_created.total_count + stats.pr_merged.total_count + stats.issues_created.total_count;
-  }, 0);
-  const otherBehaviorsTotal = Object.values(contributionDatesByRepo).reduce((total, repoDates) => {
-    return total + Object.entries(repoDates).reduce((repoTotal, [key, dates]) => {
-      return searchTrackedKeys.has(key) ? repoTotal : repoTotal + dates.length;
-    }, 0);
-  }, 0);
-  const totalContributions = searchBasedTotal + otherBehaviorsTotal + (astronStats.agent?.workflows || 0) + (astronStats.rpa?.tasks || 0);
+  const totalContributions = calculateTotalContributions({ repoStats, contributionDatesByRepo, astronStats });
   const repoSummary = buildRepoSummary(repoStats);
   const snapshot = {
     user: {
@@ -751,7 +996,7 @@ async function handleContributions(request, response) {
   const db = await getDatabase();
   const cookies = cookie.parse(request.headers.cookie || '');
   const token = cookies.gh_token;
-  let login = request.query.login;
+  let login = normalizeGitHubLogin(request.query.login);
   const adminPassword = process.env.VITE_ADMIN_PASSWORD;
   const authHeader = request.headers['x-admin-password'];
   const isAdmin = adminPassword && authHeader === adminPassword;
@@ -829,7 +1074,7 @@ async function handleContributions(request, response) {
 async function handleLeaderboard(request, response) {
   try {
     const db = await getDatabase();
-    const [cached, users] = await Promise.all([
+    const [cached, users, redemptions] = await Promise.all([
       safeDatabaseRead(
         db,
         'Loading contribution cache',
@@ -840,65 +1085,16 @@ async function handleLeaderboard(request, response) {
         db,
         'Loading GitHub users',
         () => db.collection('users').find(
-          { last_login_at: { $exists: true, $ne: null } },
-          { projection: { github_username: 1, name: 1, avatar_url: 1, updated_at: 1, last_login_at: 1 } }
+          {},
+          { projection: { github_username: 1, name: 1, avatar_url: 1, updated_at: 1, last_login_at: 1, oauth_token: 1 } }
         ).toArray(),
         []
       ),
+      getRedemptionEntries(),
     ]);
+    const leaderboard = await buildLeaderboard({ cached, users, redemptions });
 
-    const entriesByLogin = new Map();
-    const authorizedLogins = new Set();
-
-    for (const user of users) {
-      const normalizedUserLogin = normalizeGitHubLogin(user.github_username);
-      if (!normalizedUserLogin) continue;
-
-      authorizedLogins.add(normalizedUserLogin);
-      upsertLeaderboardEntry(entriesByLogin, {
-        login: user.github_username,
-        name: user.name,
-        avatar_url: user.avatar_url,
-        updated_at: user.updated_at || user.last_login_at,
-      });
-    }
-
-    // A contribution_cache snapshot is only written after a GitHub-authorized
-    // contribution fetch, so cached users are eligible even if their users
-    // profile no longer stores an OAuth token.
-    for (const entry of cached) {
-      const normalizedCachedLogin = normalizeGitHubLogin(entry.github_username);
-      if (!normalizedCachedLogin || !authorizedLogins.has(normalizedCachedLogin)) continue;
-
-      upsertLeaderboardEntry(entriesByLogin, {
-        login: entry.github_username,
-        name: entry.name,
-        avatar_url: entry.avatar_url,
-        total_contributions: entry.total_contributions,
-        repo_summary: entry.repo_summary,
-        updated_at: entry.updated_at,
-      });
-    }
-
-    const leaderboard = Array.from(entriesByLogin.values())
-      .map((entry) => ({
-        ...entry,
-        total_contributions: typeof entry.total_contributions === 'number' ? entry.total_contributions : 0,
-        repo_summary: entry.repo_summary || {},
-      }))
-      .sort((a, b) => {
-        if (b.total_contributions !== a.total_contributions) {
-          return b.total_contributions - a.total_contributions;
-        }
-        return a.login.localeCompare(b.login);
-      })
-      .slice(0, 100)
-      .map((entry, index) => ({
-        rank: index + 1,
-        ...entry,
-      }));
-
-    // Keep the leaderboard request fast by returning cached entries only.
+    // Return redeemed users with the best available contribution totals.
     response.setHeader('Cache-Control', 'no-store');
     response.status(200).json(leaderboard);
   } catch (e) {
