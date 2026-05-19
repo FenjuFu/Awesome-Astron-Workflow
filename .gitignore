@@ -29,3 +29,9 @@ dist-ssr
 .vercel
 .env*.local
 .env
+
+# Local temporary files
+scripts/mongodb-keepalive.js
+tmp_index_bundle.js
+tmp_stats_page.html
+tmp_vendor_bundle.js
