@@ -18,6 +18,8 @@ export default async function handler(req, res) {
         return await handleToken(req, res);
       case 'contributions':
         return await handleContributions(req, res);
+      case 'warm-redemption-contributions':
+        return await handleWarmRedemptionContributions(req, res);
       case 'leaderboard':
         return await handleLeaderboard(req, res);
       default:
@@ -78,6 +80,11 @@ const buildRepoSummary = (repoStats) => {
 
 const buildDefaultAvatarUrl = (login) => `https://github.com/${encodeURIComponent(login)}.png?size=80`;
 const hasOAuthAccess = (user) => !!(user?.oauth_token || user?.last_login_at);
+const isAdminRequest = (request) => {
+  const adminPassword = process.env.VITE_ADMIN_PASSWORD;
+  const authHeader = request.headers['x-admin-password'];
+  return !!(adminPassword && authHeader === adminPassword);
+};
 const getNumericContributionCount = (value) => {
   if (typeof value === 'number' && Number.isFinite(value)) {
     return value;
@@ -340,6 +347,96 @@ export const buildLeaderboard = async ({
       rank: index + 1,
       ...entry,
     }));
+};
+
+export const warmRedemptionContributionSnapshots = async ({
+  cached = [],
+  users = [],
+  redemptions = [],
+  fetchSnapshot = fetchContributionSnapshot,
+  now = new Date(),
+} = {}) => {
+  const cachedByLogin = new Map();
+  cached.forEach((entry) => {
+    const normalizedLogin = normalizeGitHubLogin(entry.github_username);
+    if (normalizedLogin) {
+      cachedByLogin.set(normalizedLogin, entry);
+    }
+  });
+
+  const usersByLogin = new Map();
+  users.forEach((user) => {
+    const normalizedLogin = normalizeGitHubLogin(user.github_username);
+    if (normalizedLogin) {
+      usersByLogin.set(normalizedLogin, user);
+    }
+  });
+
+  const uniqueLogins = Array.from(new Set(
+    redemptions
+      .map((entry) => normalizeGitHubLogin(entry.github_login))
+      .filter(Boolean)
+  ));
+
+  const summary = {
+    total_redemption_logins: uniqueLogins.length,
+    refreshed: [],
+    skipped_cached: [],
+    skipped_missing_token: [],
+    failed: [],
+  };
+
+  if (uniqueLogins.length === 0) {
+    return summary;
+  }
+
+  const { fromDate, toDate } = getDefaultContributionWindow(now);
+
+  const refreshResults = await Promise.allSettled(uniqueLogins.map(async (login) => {
+    const user = usersByLogin.get(login);
+
+    if (user?.oauth_token) {
+      await fetchSnapshot({
+        token: user.oauth_token,
+        login: user.github_username || login,
+        fromDate,
+        toDate,
+      });
+      return { login, status: 'refreshed' };
+    }
+
+    if (cachedByLogin.has(login)) {
+      return { login, status: 'skipped_cached' };
+    }
+
+    return { login, status: 'skipped_missing_token' };
+  }));
+
+  refreshResults.forEach((result, index) => {
+    const login = uniqueLogins[index];
+
+    if (result.status === 'rejected') {
+      summary.failed.push({
+        login,
+        error: result.reason?.message || 'Failed to warm contribution snapshot',
+      });
+      return;
+    }
+
+    if (result.value.status === 'refreshed') {
+      summary.refreshed.push(result.value.login);
+      return;
+    }
+
+    if (result.value.status === 'skipped_cached') {
+      summary.skipped_cached.push(result.value.login);
+      return;
+    }
+
+    summary.skipped_missing_token.push(result.value.login);
+  });
+
+  return summary;
 };
 
 const mergeSearchResults = (...results) => {
@@ -1096,9 +1193,7 @@ async function handleContributions(request, response) {
   const cookies = cookie.parse(request.headers.cookie || '');
   const token = cookies.gh_token;
   let login = normalizeGitHubLogin(request.query.login);
-  const adminPassword = process.env.VITE_ADMIN_PASSWORD;
-  const authHeader = request.headers['x-admin-password'];
-  const isAdmin = adminPassword && authHeader === adminPassword;
+  const isAdmin = isAdminRequest(request);
 
   if (login && !isAdmin) {
     return response.status(403).json({ error: 'Forbidden: Only admin can fetch other user contributions' });
@@ -1167,6 +1262,45 @@ async function handleContributions(request, response) {
     }
 
     response.status(error.statusCode || 500).json({ error: error.message || 'Failed to fetch contributions' });
+  }
+}
+
+async function handleWarmRedemptionContributions(request, response) {
+  if (request.method !== 'POST') {
+    return response.status(405).json({ error: 'Method Not Allowed' });
+  }
+
+  if (!isAdminRequest(request)) {
+    return response.status(403).json({ error: 'Forbidden: Admin access required' });
+  }
+
+  try {
+    const db = await getDatabase();
+    const [cached, users, redemptions] = await Promise.all([
+      safeDatabaseRead(
+        db,
+        'Loading contribution cache',
+        () => db.collection('contribution_cache').find({ github_username: { $exists: true, $ne: null } }).toArray(),
+        []
+      ),
+      safeDatabaseRead(
+        db,
+        'Loading GitHub users',
+        () => db.collection('users').find(
+          {},
+          { projection: { github_username: 1, oauth_token: 1 } }
+        ).toArray(),
+        []
+      ),
+      getRedemptionEntries(),
+    ]);
+
+    const summary = await warmRedemptionContributionSnapshots({ cached, users, redemptions });
+    response.setHeader('Cache-Control', 'no-store');
+    return response.status(200).json(summary);
+  } catch (error) {
+    console.error('Warm redemption contributions error', error);
+    return response.status(500).json({ error: 'Failed to warm redemption contributions' });
   }
 }
 

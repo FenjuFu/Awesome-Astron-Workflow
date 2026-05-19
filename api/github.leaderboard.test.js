@@ -1,7 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildLeaderboard, calculateTotalContributions, normalizeGitHubLogin, searchOpenAndClosedIssues } from './github.js';
+import {
+  buildLeaderboard,
+  calculateTotalContributions,
+  normalizeGitHubLogin,
+  searchOpenAndClosedIssues,
+  warmRedemptionContributionSnapshots,
+} from './github.js';
 
 test('leaderboard keeps stale cached snapshot when refresh fails', async () => {
   const refreshCalls = [];
@@ -325,6 +331,95 @@ test('leaderboard refreshes authorized users without redemptions when cache is s
   assert.equal(leaderboard.length, 1);
   assert.equal(leaderboard[0].login, 'FenjuFu');
   assert.equal(leaderboard[0].total_contributions, 196);
+});
+
+test('warmRedemptionContributionSnapshots refreshes redemption users with oauth tokens', async () => {
+  const refreshCalls = [];
+
+  const summary = await warmRedemptionContributionSnapshots({
+    cached: [
+      {
+        github_username: 'cached-only',
+        total_contributions: 8,
+        repo_summary: {},
+      },
+    ],
+    users: [
+      {
+        github_username: 'FenjuFu',
+        oauth_token: 'token-1',
+      },
+    ],
+    redemptions: [
+      { github_login: 'FenjuFu' },
+      { github_login: 'cached-only' },
+      { github_login: 'missing-user' },
+    ],
+    now: new Date('2026-05-18T00:00:00.000Z'),
+    fetchSnapshot: async (params) => {
+      refreshCalls.push(params);
+      return {
+        user: {
+          login: params.login,
+        },
+      };
+    },
+  });
+
+  assert.equal(refreshCalls.length, 1);
+  assert.equal(refreshCalls[0].token, 'token-1');
+  assert.equal(refreshCalls[0].login, 'FenjuFu');
+  assert.deepEqual(summary, {
+    total_redemption_logins: 3,
+    refreshed: ['fenjufu'],
+    skipped_cached: ['cached-only'],
+    skipped_missing_token: ['missing-user'],
+    failed: [],
+  });
+});
+
+test('warmRedemptionContributionSnapshots records refresh failures without aborting the batch', async () => {
+  const summary = await warmRedemptionContributionSnapshots({
+    cached: [],
+    users: [
+      {
+        github_username: 'Alice',
+        oauth_token: 'token-a',
+      },
+      {
+        github_username: 'Bob',
+        oauth_token: 'token-b',
+      },
+    ],
+    redemptions: [
+      { github_login: 'alice' },
+      { github_login: 'bob' },
+    ],
+    fetchSnapshot: async ({ login }) => {
+      if (login.toLowerCase() === 'alice') {
+        throw new Error('GitHub unavailable');
+      }
+
+      return {
+        user: {
+          login,
+        },
+      };
+    },
+  });
+
+  assert.deepEqual(summary, {
+    total_redemption_logins: 2,
+    refreshed: ['bob'],
+    skipped_cached: [],
+    skipped_missing_token: [],
+    failed: [
+      {
+        login: 'alice',
+        error: 'GitHub unavailable',
+      },
+    ],
+  });
 });
 
 test('calculateTotalContributions keeps duplicate-timestamp behaviors', () => {

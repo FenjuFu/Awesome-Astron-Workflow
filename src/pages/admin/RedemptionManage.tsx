@@ -32,15 +32,28 @@ interface Redemption {
   created_at: string;
 }
 
+interface WarmSummary {
+  total_redemption_logins: number;
+  refreshed: string[];
+  skipped_cached: string[];
+  skipped_missing_token: string[];
+  failed: Array<{
+    login: string;
+    error: string;
+  }>;
+}
+
 const RedemptionManage: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [refreshingAll, setRefreshingAll] = useState(false);
   const [redemptions, setRedemptions] = useState<Redemption[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [selectedLogin, setSelectedLogin] = useState<string | null>(null);
+  const [refreshSummary, setRefreshSummary] = useState<string>('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -68,6 +81,7 @@ const RedemptionManage: React.FC = () => {
   const fetchRedemptions = async () => {
     try {
       setLoading(true);
+      setError('');
       const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
       const res = await fetch('/api/redemptions', {
         headers: {
@@ -84,6 +98,55 @@ const RedemptionManage: React.FC = () => {
       setError('网络错误');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const refreshAdminAndLeaderboardData = async () => {
+    try {
+      setRefreshingAll(true);
+      setError('');
+      setRefreshSummary('');
+
+      const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
+      const warmResponse = await fetch('/api/github?action=warm-redemption-contributions', {
+        method: 'POST',
+        headers: {
+          'x-admin-password': adminPassword
+        }
+      });
+
+      if (!warmResponse.ok) {
+        const errorData = await warmResponse.json().catch(() => null);
+        throw new Error(errorData?.error || '预热贡献缓存失败');
+      }
+
+      const warmSummary: WarmSummary = await warmResponse.json();
+
+      const leaderboardPromise = fetch('/api/github?action=leaderboard').then(async (res) => {
+        if (!res.ok) {
+          throw new Error('刷新排行榜失败');
+        }
+        return res.json();
+      });
+
+      await Promise.all([fetchRedemptions(), leaderboardPromise]);
+
+      const summaryParts = [
+        `兑换账号 ${warmSummary.total_redemption_logins} 个`,
+        `预热成功 ${warmSummary.refreshed.length} 个`,
+        `已有缓存 ${warmSummary.skipped_cached.length} 个`,
+        `缺少 Token ${warmSummary.skipped_missing_token.length} 个`,
+      ];
+
+      if (warmSummary.failed.length > 0) {
+        summaryParts.push(`刷新失败 ${warmSummary.failed.length} 个`);
+      }
+
+      setRefreshSummary(summaryParts.join('，'));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : '刷新数据失败');
+    } finally {
+      setRefreshingAll(false);
     }
   };
 
@@ -176,13 +239,22 @@ const RedemptionManage: React.FC = () => {
               <p className="text-gray-600 mt-1">管理用户积分兑换申请，审核并核销奖品。</p>
             </div>
             <button 
-              onClick={fetchRedemptions}
-              className="inline-flex items-center px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+              onClick={refreshAdminAndLeaderboardData}
+              disabled={loading || refreshingAll}
+              className="inline-flex items-center px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              <RefreshCcw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
-              刷新数据
+              <RefreshCcw className={`w-4 h-4 mr-2 ${(loading || refreshingAll) ? 'animate-spin' : ''}`} />
+              {refreshingAll ? '预热并刷新中...' : '刷新数据'}
             </button>
           </div>
+
+          {(refreshSummary || error) && (
+            <div className={`mb-6 rounded-xl border px-4 py-3 text-sm ${
+              error ? 'border-red-200 bg-red-50 text-red-700' : 'border-green-200 bg-green-50 text-green-700'
+            }`}>
+              {error || refreshSummary}
+            </div>
+          )}
 
           {/* Filters & Search */}
           <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 mb-6 flex flex-wrap gap-4 items-center">
