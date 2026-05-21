@@ -9,138 +9,6 @@ import {
   warmRedemptionContributionSnapshots,
 } from './github.js';
 
-test('leaderboard keeps stale cached snapshot when refresh fails', async () => {
-  const refreshCalls = [];
-  const consoleError = console.error;
-  console.error = () => {};
-
-  try {
-    const leaderboard = await buildLeaderboard({
-      cached: [
-        {
-          github_username: 'Alice',
-          name: 'Alice',
-          avatar_url: 'https://example.com/alice.png',
-          total_contributions: 12,
-          repo_summary: {
-            'astron/example': {
-              pr_created: 2,
-              pr_merged: 1,
-              issues_created: 0,
-            },
-          },
-          updated_at: '2026-05-01T00:00:00.000Z',
-        },
-      ],
-      users: [
-        {
-          github_username: 'alice',
-          name: 'Alice From Users',
-          avatar_url: 'https://example.com/alice-user.png',
-          last_login_at: '2026-05-10T00:00:00.000Z',
-          oauth_token: 'token',
-        },
-      ],
-      redemptions: [
-        { github_login: 'ALICE' },
-      ],
-      now: new Date('2026-05-18T00:00:00.000Z'),
-      fetchSnapshot: async (params) => {
-        refreshCalls.push(params);
-        throw new Error('GitHub unavailable');
-      },
-    });
-
-    assert.equal(refreshCalls.length, 1);
-    assert.equal(leaderboard.length, 1);
-    assert.equal(leaderboard[0].rank, 1);
-    assert.equal(leaderboard[0].login, 'Alice');
-    assert.equal(leaderboard[0].name, 'Alice');
-    assert.equal(leaderboard[0].avatar_url, 'https://example.com/alice.png');
-    assert.equal(leaderboard[0].total_contributions, 12);
-    assert.deepEqual(leaderboard[0].repo_summary, {
-      'astron/example': {
-        pr_created: 2,
-        pr_merged: 1,
-        issues_created: 0,
-      },
-    });
-  } finally {
-    console.error = consoleError;
-  }
-});
-
-test('leaderboard prefers refreshed snapshot over stale cache when refresh succeeds', async () => {
-  const refreshCalls = [];
-
-  const leaderboard = await buildLeaderboard({
-    cached: [
-      {
-        github_username: 'Alice',
-        name: 'Alice',
-        avatar_url: 'https://example.com/alice-stale.png',
-        total_contributions: 12,
-        repo_summary: {
-          'astron/example': {
-            pr_created: 2,
-            pr_merged: 1,
-            issues_created: 0,
-          },
-        },
-        updated_at: '2026-05-01T00:00:00.000Z',
-      },
-    ],
-    users: [
-      {
-        github_username: 'alice',
-        name: 'Alice From Users',
-        avatar_url: 'https://example.com/alice-user.png',
-        last_login_at: '2026-05-10T00:00:00.000Z',
-        oauth_token: 'token',
-      },
-    ],
-    redemptions: [
-      { github_login: 'alice' },
-    ],
-    now: new Date('2026-05-18T00:00:00.000Z'),
-    fetchSnapshot: async (params) => {
-      refreshCalls.push(params);
-      return {
-        user: {
-          login: 'alice',
-          name: 'Alice Fresh',
-          avatar_url: 'https://example.com/alice-fresh.png',
-        },
-        total_contributions: 34,
-        repo_summary: {
-          'astron/example': {
-            pr_created: 4,
-            pr_merged: 3,
-            issues_created: 1,
-          },
-        },
-        updated_at: '2026-05-18T00:00:00.000Z',
-      };
-    },
-  });
-
-  assert.equal(refreshCalls.length, 1);
-  assert.equal(leaderboard.length, 1);
-  assert.equal(leaderboard[0].rank, 1);
-  assert.equal(leaderboard[0].login, 'alice');
-  assert.equal(leaderboard[0].name, 'Alice Fresh');
-  assert.equal(leaderboard[0].avatar_url, 'https://example.com/alice-fresh.png');
-  assert.equal(leaderboard[0].total_contributions, 34);
-  assert.equal(leaderboard[0].updated_at, '2026-05-18T00:00:00.000Z');
-  assert.deepEqual(leaderboard[0].repo_summary, {
-    'astron/example': {
-      pr_created: 4,
-      pr_merged: 3,
-      issues_created: 1,
-    },
-  });
-});
-
 test('normalizeGitHubLogin extracts login from profile urls', () => {
   assert.equal(normalizeGitHubLogin('github.com/shawn0915/'), 'shawn0915');
   assert.equal(normalizeGitHubLogin('https://github.com/shawn0915/?tab=overview'), 'shawn0915');
@@ -169,9 +37,6 @@ test('leaderboard matches cached users when redemption login is a github profile
     redemptions: [
       { github_login: 'github.com/shawn0915/' },
     ],
-    fetchSnapshot: async () => {
-      throw new Error('Should not refresh without oauth token');
-    },
   });
 
   assert.equal(leaderboard.length, 1);
@@ -244,150 +109,25 @@ test('leaderboard keeps legacy cached snapshots without explicit total_contribut
   assert.equal(leaderboard[0].total_contributions, 11);
 });
 
-test('leaderboard includes authorized users even when contribution snapshot is unavailable', async () => {
-  const consoleError = console.error;
-  console.error = () => {};
-
-  try {
-    const leaderboard = await buildLeaderboard({
-      cached: [],
-      users: [
-        {
-          github_username: 'AuthorizedUser',
-          name: 'Authorized User',
-          avatar_url: 'https://example.com/authorized-user.png',
-          last_login_at: '2026-05-18T00:00:00.000Z',
-          oauth_token: 'token',
-        },
-      ],
-      redemptions: [],
-      now: new Date('2026-05-18T00:00:00.000Z'),
-      fetchSnapshot: async () => {
-        throw new Error('GitHub unavailable');
-      },
-    });
-
-    assert.equal(leaderboard.length, 1);
-    assert.equal(leaderboard[0].login, 'AuthorizedUser');
-    assert.equal(leaderboard[0].name, 'Authorized User');
-    assert.equal(leaderboard[0].total_contributions, 0);
-  } finally {
-    console.error = consoleError;
-  }
-});
-
-test('leaderboard refreshes authorized users without redemptions when cache is stale', async () => {
-  const refreshCalls = [];
+test('leaderboard includes authorized users with no cached snapshot', async () => {
   const leaderboard = await buildLeaderboard({
-    cached: [
-      {
-        github_username: 'fenjufu',
-        name: 'FenjuFu',
-        avatar_url: 'https://example.com/fenjufu-stale.png',
-        total_contributions: 120,
-        repo_summary: {
-          'iflytek/skillhub': {
-            pr_created: 3,
-            pr_merged: 1,
-            issues_created: 1,
-          },
-        },
-        updated_at: '2026-05-01T00:00:00.000Z',
-      },
-    ],
+    cached: [],
     users: [
       {
-        github_username: 'FenjuFu',
-        name: 'FenjuFu',
-        avatar_url: 'https://example.com/fenjufu-user.png',
-        last_login_at: '2026-05-10T00:00:00.000Z',
+        github_username: 'AuthorizedUser',
+        name: 'Authorized User',
+        avatar_url: 'https://example.com/authorized-user.png',
+        last_login_at: '2026-05-18T00:00:00.000Z',
         oauth_token: 'token',
       },
     ],
     redemptions: [],
-    now: new Date('2026-05-18T00:00:00.000Z'),
-    fetchSnapshot: async (params) => {
-      refreshCalls.push(params);
-      return {
-        user: {
-          login: 'FenjuFu',
-          name: 'FenjuFu Fresh',
-          avatar_url: 'https://example.com/fenjufu-fresh.png',
-        },
-        total_contributions: 196,
-        repo_summary: {
-          'iflytek/skillhub': {
-            pr_created: 8,
-            pr_merged: 4,
-            issues_created: 2,
-          },
-        },
-        updated_at: '2026-05-18T00:00:00.000Z',
-      };
-    },
   });
 
-  assert.equal(refreshCalls.length, 1);
   assert.equal(leaderboard.length, 1);
-  assert.equal(leaderboard[0].login, 'FenjuFu');
-  assert.equal(leaderboard[0].total_contributions, 196);
-});
-
-test('leaderboard refreshes cached authorized users when cache is older than freshness window', async () => {
-  const refreshCalls = [];
-  const leaderboard = await buildLeaderboard({
-    cached: [
-      {
-        github_username: 'FenjuFu',
-        name: 'FenjuFu',
-        avatar_url: 'https://example.com/fenjufu-stale.png',
-        total_contributions: 196,
-        repo_summary: {
-          'iflytek/skillhub': {
-            pr_created: 8,
-            pr_merged: 4,
-            issues_created: 2,
-          },
-        },
-        updated_at: '2026-05-01T00:00:00.000Z',
-      },
-    ],
-    users: [
-      {
-        github_username: 'FenjuFu',
-        name: 'FenjuFu',
-        avatar_url: 'https://example.com/fenjufu-user.png',
-        last_login_at: '2026-05-01T00:00:00.000Z',
-        oauth_token: 'token',
-      },
-    ],
-    redemptions: [],
-    now: new Date('2026-05-18T00:00:00.000Z'),
-    fetchSnapshot: async (params) => {
-      refreshCalls.push(params);
-      return {
-        user: {
-          login: 'FenjuFu',
-          name: 'FenjuFu Fresh',
-          avatar_url: 'https://example.com/fenjufu-fresh.png',
-        },
-        total_contributions: 356,
-        repo_summary: {
-          'iflytek/skillhub': {
-            pr_created: 12,
-            pr_merged: 7,
-            issues_created: 3,
-          },
-        },
-        updated_at: '2026-05-18T00:00:00.000Z',
-      };
-    },
-  });
-
-  assert.equal(refreshCalls.length, 1);
-  assert.equal(leaderboard.length, 1);
-  assert.equal(leaderboard[0].login, 'FenjuFu');
-  assert.equal(leaderboard[0].total_contributions, 356);
+  assert.equal(leaderboard[0].login, 'AuthorizedUser');
+  assert.equal(leaderboard[0].name, 'Authorized User');
+  assert.equal(leaderboard[0].total_contributions, 0);
 });
 
 test('warmRedemptionContributionSnapshots refreshes redemption users with oauth tokens', async () => {

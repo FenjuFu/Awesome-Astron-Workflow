@@ -211,31 +211,10 @@ const hasLeaderboardActivity = (entry) => {
   });
 };
 
-const hasFreshLeaderboardCache = (cachedEntry, userEntry, now = new Date()) => {
-  const cachedTotalContributions = getEntryTotalContributions(cachedEntry);
-  if (typeof cachedTotalContributions !== 'number') return false;
-  if (cachedTotalContributions === 0 && !hasLeaderboardActivity(cachedEntry)) return false;
-  if (!cachedEntry?.updated_at) return false;
-
-  const cachedUpdatedAt = new Date(cachedEntry.updated_at).getTime();
-  const nowTimestamp = now.getTime();
-  if (!Number.isFinite(cachedUpdatedAt)) return false;
-  if (nowTimestamp - cachedUpdatedAt >= CACHE_REFRESH_INTERVAL_MS) return false;
-
-  if (!userEntry?.last_login_at) return true;
-
-  const lastLoginAt = new Date(userEntry.last_login_at).getTime();
-  if (!Number.isFinite(lastLoginAt)) return true;
-
-  return cachedUpdatedAt >= lastLoginAt;
-};
-
 export const buildLeaderboard = async ({
   cached = [],
   users = [],
   redemptions = [],
-  fetchSnapshot = fetchContributionSnapshot,
-  now = new Date(),
 } = {}) => {
   const leaderboardLogins = createLeaderboardCandidateLogins({ cached, users, redemptions });
   const authorizedLogins = new Set(
@@ -264,36 +243,6 @@ export const buildLeaderboard = async ({
       usersByLogin.set(normalizedLogin, user);
     }
   }
-
-  const oneYearAgo = new Date(now);
-  oneYearAgo.setFullYear(now.getFullYear() - 1);
-
-  const refreshCandidates = leaderboardLogins.filter((login) => {
-    const cachedEntry = cachedByLogin.get(login);
-    const user = usersByLogin.get(login);
-    return !!user?.oauth_token && !hasFreshLeaderboardCache(cachedEntry, user, now);
-  });
-
-  const refreshedEntries = await Promise.allSettled(
-    refreshCandidates.map(async (login) => {
-      const user = usersByLogin.get(login);
-      const snapshot = await fetchSnapshot({
-        token: user.oauth_token,
-        login: user.github_username,
-        fromDate: oneYearAgo,
-        toDate: now,
-      });
-
-      return {
-        login: snapshot.user.login,
-        name: snapshot.user.name || snapshot.user.login,
-        avatar_url: snapshot.user.avatar_url,
-        total_contributions: snapshot.total_contributions,
-        repo_summary: snapshot.repo_summary,
-        updated_at: snapshot.updated_at,
-      };
-    })
-  );
 
   const entriesByLogin = new Map();
   for (const login of leaderboardLogins) {
@@ -325,15 +274,6 @@ export const buildLeaderboard = async ({
       repo_summary: entry.repo_summary,
       updated_at: entry.updated_at,
     });
-  }
-
-  for (const result of refreshedEntries) {
-    if (result.status !== 'fulfilled') {
-      console.error('Leaderboard refresh skipped', result.reason);
-      continue;
-    }
-
-    upsertLeaderboardEntry(entriesByLogin, result.value);
   }
 
   return Array.from(entriesByLogin.values())
@@ -493,6 +433,41 @@ const CONTRIBUTION_FIELDS = {
 const DATE_FIELD_KEYS = Object.values(CONTRIBUTION_FIELDS).flat();
 const CACHE_REFRESH_INTERVAL_MS = 6 * 60 * 60 * 1000;
 
+// /repos/:owner/:name/issues/events returns 100 events/page sorted newest-first.
+// 5 pages = 500 events per (repo × alias) which is plenty to cover a year of
+// admin activity on the tracked repos while keeping the per-snapshot wall time
+// bounded under Vercel's serverless-function timeout.
+const ISSUE_EVENT_MAX_PAGES = 5;
+
+const ISSUE_EVENT_FIELD_MAP = {
+  issue: {
+    labeled: 'issue_labeled_date_list',
+    unlabeled: 'issue_unlabeled_date_list',
+    closed: 'issue_closed_date_list',
+    reopened: 'issue_reopened_date_list',
+    assigned: 'issue_assigned_date_list',
+    unassigned: 'issue_unassigned_date_list',
+    milestoned: 'issue_milestoned_date_list',
+    demilestoned: 'issue_demilestoned_date_list',
+    marked_as_duplicate: 'issue_marked_as_duplicate_date_list',
+    transferred: 'issue_transferred_date_list',
+    renamed: 'issue_renamed_title_date_list',
+  },
+  pr: {
+    labeled: 'pr_labeled_date_list',
+    unlabeled: 'pr_unlabeled_date_list',
+    closed: 'pr_closed_date_list',
+    reopened: 'pr_reopened_date_list',
+    assigned: 'pr_assigned_date_list',
+    unassigned: 'pr_unassigned_date_list',
+    milestoned: 'pr_milestoned_date_list',
+    demilestoned: 'pr_demilestoned_date_list',
+    marked_as_duplicate: 'pr_marked_as_duplicate_date_list',
+    transferred: 'pr_transferred_date_list',
+    renamed: 'pr_renamed_title_date_list',
+  },
+};
+
 const createEmptyContributionDates = () => DATE_FIELD_KEYS.reduce((acc, key) => {
   acc[key] = [];
   return acc;
@@ -576,6 +551,37 @@ const isDateInRange = (value, fromDate, toDate) => {
 };
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// Gates concurrent calls through a queue. Used inside fetchContributionSnapshot
+// to keep the per-snapshot fan-out (many GitHub REST + search calls across
+// several repos × aliases) below GitHub's secondary rate-limit threshold and
+// avoid swamping Node's default agent sockets — both of which can push the
+// serverless function past Vercel's request timeout.
+const createConcurrencyGate = (limit) => {
+  let active = 0;
+  const queue = [];
+  const runNext = () => {
+    if (active >= limit || queue.length === 0) return;
+    active += 1;
+    const job = queue.shift();
+    Promise.resolve()
+      .then(job.task)
+      .then(job.resolve, job.reject)
+      .finally(() => {
+        active -= 1;
+        runNext();
+      });
+  };
+  return (task) => new Promise((resolve, reject) => {
+    queue.push({ task, resolve, reject });
+    runNext();
+  });
+};
+
+// Concurrency cap for outbound GitHub API calls per fetchContributionSnapshot.
+// Empirically GitHub's secondary rate-limit kicks in around ~10 in-flight
+// requests from a single token; 8 leaves headroom for retries.
+const GITHUB_FETCH_CONCURRENCY = 8;
 
 const buildGitHubHeaders = (token, accept = 'application/vnd.github.v3+json') => {
   const headers = { Accept: accept };
@@ -788,7 +794,9 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
 
   const db = await getDatabase();
   const authHeaders = buildGitHubHeaders(token);
-  const userResponse = await fetch('https://api.github.com/user', {
+  const githubGate = createConcurrencyGate(GITHUB_FETCH_CONCURRENCY);
+  const gatedFetch = (url, init) => githubGate(() => fetch(url, init));
+  const userResponse = await gatedFetch('https://api.github.com/user', {
     headers: authHeaders,
   });
 
@@ -810,7 +818,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   let targetLogin = login || requesterUser.login;
 
   if (targetLogin !== requesterUser.login) {
-    const targetUserRes = await fetch(`https://api.github.com/users/${targetLogin}`, {
+    const targetUserRes = await gatedFetch(`https://api.github.com/users/${targetLogin}`, {
       headers: authHeaders,
     });
     if (!targetUserRes.ok) {
@@ -828,7 +836,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   const fromStr = fromDate.toISOString().split('T')[0];
   const toStr = toDate.toISOString().split('T')[0];
   const topicRepos = await fetchAllPages(async (page) => {
-    const res = await fetch(`https://api.github.com/search/repositories?q=topic:iflytek-astron&per_page=100&page=${page}`, {
+    const res = await gatedFetch(`https://api.github.com/search/repositories?q=topic:iflytek-astron&per_page=100&page=${page}`, {
       headers: authHeaders,
     });
     if (!res.ok) return { items: [], hasNext: false };
@@ -836,7 +844,14 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
     return { items: data.items.map((repo) => repo.full_name), hasNext: hasNextPage(res.headers.get('link')) };
   });
 
-  const baseTargetRepos = Array.from(new Set([...topicRepos, 'iflytek/astron-agent', 'iflytek/astron-rpa', 'iflytek/skillhub']));
+  const baseTargetRepos = Array.from(new Set([
+    ...topicRepos,
+    'iflytek/astron-agent',
+    'iflytek/astron-rpa',
+    'iflytek/skillhub',
+    'iflytek/iFly-Skills',
+    'iflytek/astronclaw-tutorial',
+  ]));
   const targetRepoAliases = createTargetRepoAliases(baseTargetRepos, targetLogin);
   const targetReposMap = baseTargetRepos.reduce((acc, repo) => {
     (targetRepoAliases[repo] || [repo]).forEach((alias) => {
@@ -858,21 +873,37 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   });
 
   const search = async (q) => {
-    let res = await fetch(`https://api.github.com/search/issues?q=${encodeURIComponent(q)}&per_page=100`, {
-      headers: authHeaders,
-    });
-    if (res.status === 403 || res.status === 429) {
-      await delay(2000);
-      res = await fetch(`https://api.github.com/search/issues?q=${encodeURIComponent(q)}&per_page=100`, {
-        headers: authHeaders,
-      });
-    }
-    if (!res.ok) {
+    const url = `https://api.github.com/search/issues?q=${encodeURIComponent(q)}&per_page=100`;
+    for (let attempt = 0; attempt < 4; attempt += 1) {
+      const res = await gatedFetch(url, { headers: authHeaders });
+      if (res.ok) return res.json();
+
+      if (res.status === 403 || res.status === 429) {
+        const retryAfterSec = parseInt(res.headers.get('retry-after') || '', 10);
+        const resetSec = parseInt(res.headers.get('x-ratelimit-reset') || '', 10);
+        let waitMs;
+        if (Number.isFinite(retryAfterSec)) {
+          waitMs = retryAfterSec * 1000;
+        } else if (Number.isFinite(resetSec)) {
+          waitMs = Math.max(0, resetSec * 1000 - Date.now());
+        } else {
+          waitMs = (attempt + 1) * 5000;
+        }
+        waitMs = Math.min(Math.max(waitMs, 1000), 60000);
+        console.warn(`GitHub Search rate-limited (${res.status}) on "${q}", waiting ${waitMs}ms (attempt ${attempt + 1}/4)`);
+        await delay(waitMs);
+        continue;
+      }
+
       const errText = await res.text();
       console.error(`Search failed for ${q}: ${res.status} ${errText}`);
-      return { total_count: 0, items: [] };
+      const error = new Error(`GitHub search failed: ${res.status}`);
+      error.statusCode = res.status;
+      throw error;
     }
-    return res.json();
+    const error = new Error(`GitHub search persistently rate-limited: ${q}`);
+    error.statusCode = 429;
+    throw error;
   };
 
   const promises = [];
@@ -904,7 +935,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
 
   promises.push((async () => {
     const starred = await fetchAllPages(async (page) => {
-      const res = await fetch(`https://api.github.com/users/${targetLogin}/starred?sort=created&direction=desc&per_page=100&page=${page}`, {
+      const res = await gatedFetch(`https://api.github.com/users/${targetLogin}/starred?sort=created&direction=desc&per_page=100&page=${page}`, {
         headers: buildGitHubHeaders(token, 'application/vnd.github.v3.star+json'),
       });
       return { items: await res.json(), hasNext: hasNextPage(res.headers.get('link')) };
@@ -919,14 +950,14 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
 
   promises.push((async () => {
     const userRepos = await fetchAllPages(async (page) => {
-      const res = await fetch(`https://api.github.com/users/${targetLogin}/repos?type=owner&sort=created&direction=desc&per_page=100&page=${page}`, {
+      const res = await gatedFetch(`https://api.github.com/users/${targetLogin}/repos?type=owner&sort=created&direction=desc&per_page=100&page=${page}`, {
         headers: authHeaders,
       });
       return { items: await res.json(), hasNext: hasNextPage(res.headers.get('link')) };
     });
     const forks = userRepos.filter((repo) => repo.fork);
     await Promise.all(forks.map(async (repo) => {
-      const res = await fetch(repo.url, { headers: authHeaders });
+      const res = await gatedFetch(repo.url, { headers: authHeaders });
       if (res.ok) {
         const fullRepo = await res.json();
         const normalizedUpstream = normalizeRepoFullName(fullRepo.source?.full_name || fullRepo.parent?.full_name);
@@ -941,7 +972,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
     await Promise.all((targetRepoAliases[repo] || [repo]).map(async (alias) => {
       const [owner, name] = alias.split('/');
       const commits = await fetchAllPages(async (page) => {
-        const res = await fetch(
+        const res = await gatedFetch(
           `https://api.github.com/repos/${owner}/${name}/commits?author=${targetLogin}&since=${fromDate.toISOString()}&until=${toDate.toISOString()}&per_page=100&page=${page}`,
           { headers: authHeaders }
         );
@@ -958,6 +989,46 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
         pushDate(contributionDatesByRepo[repo], 'code_author_date_list', commit.commit?.author?.date);
         pushDate(contributionDatesByRepo[repo], 'code_committer_date_list', commit.commit?.committer?.date);
       });
+    }));
+  })()));
+
+  promises.push(...baseTargetRepos.map((repo) => (async () => {
+    await Promise.all((targetRepoAliases[repo] || [repo]).map(async (alias) => {
+      const [owner, name] = alias.split('/');
+      let page = 1;
+      while (page <= ISSUE_EVENT_MAX_PAGES) {
+        const res = await gatedFetch(
+          `https://api.github.com/repos/${owner}/${name}/issues/events?per_page=100&page=${page}`,
+          { headers: authHeaders }
+        );
+
+        if (!res.ok) break;
+
+        const events = await res.json();
+        if (!Array.isArray(events) || events.length === 0) break;
+
+        let reachedOlder = false;
+        for (const event of events) {
+          if (!event.created_at) continue;
+          const eventDate = new Date(event.created_at);
+          if (eventDate < fromDate) {
+            reachedOlder = true;
+            break;
+          }
+          if (eventDate > toDate) continue;
+          if (event.actor?.login !== targetLogin) continue;
+
+          const kind = event.issue?.pull_request ? 'pr' : 'issue';
+          const field = ISSUE_EVENT_FIELD_MAP[kind]?.[event.event];
+          if (field) {
+            pushDate(contributionDatesByRepo[repo], field, event.created_at);
+          }
+        }
+
+        if (reachedOlder) break;
+        if (!hasNextPage(res.headers.get('link'))) break;
+        page += 1;
+      }
     }));
   })()));
 
