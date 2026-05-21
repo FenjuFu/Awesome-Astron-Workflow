@@ -465,6 +465,181 @@ export const searchOpenAndClosedIssues = async (searchFn, baseQuery) => {
   return mergeSearchResults(openResults, closedResults);
 };
 
+// GraphQL batch search support.
+//
+// The REST search subsystem fans out 5 logical queries × 7 base repos × ~2
+// aliases ≈ 70 calls per snapshot, and `searchOpenAndClosedIssues` doubles
+// 4 of those into open/closed pairs for ~126 calls total. Under GitHub's
+// authenticated search rate-limit (~30/min/token) that takes ~4 minutes of
+// wall time even with our token-bucket pacer. A single GraphQL request can
+// alias all 126 searches into one network round-trip and lives under a
+// completely separate rate-limit budget (5000 points/hour), so we use it as
+// the primary path and fall back to REST only on errors.
+
+// Logical search "kinds" we issue per (repo, alias). `splitOpenClosed` mirrors
+// the existing searchOpenAndClosedIssues behavior: GitHub's search returns
+// items in either is:open or is:closed depending on current state, and we
+// issue both legs so that PRs/issues closed mid-window still count in
+// total_count when they were created in-window.
+const CONTRIBUTION_SEARCH_KINDS = [
+  {
+    kind: 'pr_created',
+    splitOpenClosed: true,
+    buildQuery: ({ alias, targetLogin, fromStr, toStr }) =>
+      `repo:${alias} type:pr author:${targetLogin} created:${fromStr}..${toStr}`,
+  },
+  {
+    kind: 'pr_merged',
+    splitOpenClosed: false,
+    buildQuery: ({ alias, targetLogin, fromStr, toStr }) =>
+      `repo:${alias} type:pr author:${targetLogin} is:merged merged:${fromStr}..${toStr}`,
+  },
+  {
+    kind: 'issues_created',
+    splitOpenClosed: true,
+    buildQuery: ({ alias, targetLogin, fromStr, toStr }) =>
+      `repo:${alias} type:issue author:${targetLogin} created:${fromStr}..${toStr}`,
+  },
+  {
+    kind: 'issue_commenter',
+    splitOpenClosed: true,
+    buildQuery: ({ alias, targetLogin, fromStr, toStr }) =>
+      `repo:${alias} type:issue commenter:${targetLogin} updated:${fromStr}..${toStr}`,
+  },
+  {
+    kind: 'pr_commenter',
+    splitOpenClosed: true,
+    buildQuery: ({ alias, targetLogin, fromStr, toStr }) =>
+      `repo:${alias} type:pr commenter:${targetLogin} updated:${fromStr}..${toStr}`,
+  },
+];
+
+// Build the flat list of (repo, alias, kind, query) specs that fetchContributionSnapshot
+// would otherwise issue one-by-one through search(). Exported for testing.
+export const buildContributionSearchSpecs = ({
+  baseTargetRepos = [],
+  targetRepoAliases = {},
+  targetLogin,
+  fromStr,
+  toStr,
+} = {}) => {
+  const specs = [];
+  for (const repo of baseTargetRepos) {
+    const aliases = targetRepoAliases[repo] || [repo];
+    for (const alias of aliases) {
+      for (const kindSpec of CONTRIBUTION_SEARCH_KINDS) {
+        const baseQuery = kindSpec.buildQuery({ alias, targetLogin, fromStr, toStr });
+        if (kindSpec.splitOpenClosed) {
+          specs.push({ kind: kindSpec.kind, repo, alias, query: `${baseQuery} is:open` });
+          specs.push({ kind: kindSpec.kind, repo, alias, query: `${baseQuery} is:closed` });
+        } else {
+          specs.push({ kind: kindSpec.kind, repo, alias, query: baseQuery });
+        }
+      }
+    }
+  }
+  return specs;
+};
+
+// Batch size cap for one GraphQL request. GitHub's GraphQL endpoint has a
+// node-count and complexity ceiling; aliasing ~50 search subfields per request
+// stays comfortably under both. With ~126 specs this means ~3 parallel
+// requests, vs ~126 sequential REST searches before.
+const GRAPHQL_SEARCH_BATCH_SIZE = 50;
+
+const chunkSpecsForGraphQL = (specs, size = GRAPHQL_SEARCH_BATCH_SIZE) => {
+  const chunks = [];
+  for (let i = 0; i < specs.length; i += size) {
+    chunks.push(specs.slice(i, i + size));
+  }
+  return chunks;
+};
+
+const buildGraphQLSearchBatchQuery = (specs) => {
+  const subQueries = specs.map((spec, i) => (
+    `  q${i}: search(query: ${JSON.stringify(spec.query)}, type: ISSUE, first: 100) {\n` +
+    `    issueCount\n` +
+    `    nodes {\n` +
+    `      __typename\n` +
+    `      ... on Issue { databaseId createdAt updatedAt closedAt url }\n` +
+    `      ... on PullRequest { databaseId createdAt updatedAt closedAt mergedAt url }\n` +
+    `    }\n` +
+    `  }`
+  ));
+  return `query {\n${subQueries.join('\n')}\n}`;
+};
+
+// Maps a GraphQL response object back onto the per-spec result shape that
+// the rest of fetchContributionSnapshot expects (mirrors REST search payload).
+// Exported for testing.
+export const parseGraphQLSearchBatchResponse = (specs, data) => {
+  if (!data) return specs.map((spec) => ({ ...spec, total_count: 0, items: [] }));
+  return specs.map((spec, i) => {
+    const result = data[`q${i}`];
+    if (!result) return { ...spec, total_count: 0, items: [] };
+    return {
+      ...spec,
+      total_count: result.issueCount || 0,
+      items: (result.nodes || []).map((node) => ({
+        id: node.databaseId,
+        created_at: node.createdAt,
+        updated_at: node.updatedAt,
+        closed_at: node.closedAt,
+        merged_at: node.mergedAt,
+        html_url: node.url,
+      })),
+    };
+  });
+};
+
+// Single GraphQL POST. `runGraphQL` is injectable for tests.
+const defaultRunGraphQL = async ({ token, query }) => {
+  const res = await fetch('https://api.github.com/graphql', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({ query }),
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    const error = new Error(`GraphQL batch HTTP ${res.status}: ${text.slice(0, 200)}`);
+    error.statusCode = res.status;
+    throw error;
+  }
+  const body = await res.json();
+  if (body.errors && body.errors.length > 0) {
+    const error = new Error(
+      `GraphQL batch returned errors: ${body.errors.map((e) => e.message).join('; ')}`,
+    );
+    error.graphqlErrors = body.errors;
+    throw error;
+  }
+  return body.data;
+};
+
+// Run the full batch (chunked under GRAPHQL_SEARCH_BATCH_SIZE per request).
+// Returns the flat per-spec result array in the same order as `specs`.
+// Exported for testing.
+export const fetchSearchResultsViaGraphQL = async ({
+  token,
+  specs,
+  runGraphQL = defaultRunGraphQL,
+} = {}) => {
+  if (!Array.isArray(specs) || specs.length === 0) return [];
+  const chunks = chunkSpecsForGraphQL(specs);
+  const chunkResults = await Promise.all(
+    chunks.map(async (chunk) => {
+      const query = buildGraphQLSearchBatchQuery(chunk);
+      const data = await runGraphQL({ token, query });
+      return parseGraphQLSearchBatchResponse(chunk, data);
+    }),
+  );
+  return chunkResults.flat();
+};
+
 const CONTRIBUTION_FIELDS = {
   observe: ['fork_date_list', 'star_date_list'],
   issue: ['issue_creation_date_list', 'issue_comments_date_list'],
@@ -1052,32 +1227,91 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
     throw error;
   };
 
-  const promises = [];
-  baseTargetRepos.forEach((repo) => {
-    (targetRepoAliases[repo] || [repo]).forEach((alias) => {
-      promises.push(searchOpenAndClosedIssues(search, `repo:${alias} type:pr author:${targetLogin} created:${fromStr}..${toStr}`).then((data) => {
-        repoStats[repo].pr_created.total_count += data.total_count;
-        repoStats[repo].pr_created.items.push(...data.items);
-        data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_creation_date_list', item.created_at));
-      }));
-      promises.push(search(`repo:${alias} type:pr author:${targetLogin} is:merged merged:${fromStr}..${toStr}`).then((data) => {
-        repoStats[repo].pr_merged.total_count += data.total_count;
-        repoStats[repo].pr_merged.items.push(...data.items);
-        data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_merged_date_list', item.closed_at));
-      }));
-      promises.push(searchOpenAndClosedIssues(search, `repo:${alias} type:issue author:${targetLogin} created:${fromStr}..${toStr}`).then((data) => {
-        repoStats[repo].issues_created.total_count += data.total_count;
-        repoStats[repo].issues_created.items.push(...data.items);
-        data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_creation_date_list', item.created_at));
-      }));
-      promises.push(searchOpenAndClosedIssues(search, `repo:${alias} type:issue commenter:${targetLogin} updated:${fromStr}..${toStr}`).then((data) => {
-        data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_comments_date_list', item.updated_at));
-      }));
-      promises.push(searchOpenAndClosedIssues(search, `repo:${alias} type:pr commenter:${targetLogin} updated:${fromStr}..${toStr}`).then((data) => {
-        data.items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_comments_date_list', item.updated_at));
-      }));
-    });
+  // Build the full search spec list (PR created / merged / issues created /
+  // issue commenter / PR commenter for each repo × alias, with open/closed
+  // split where applicable) and try the GraphQL batch first. If GraphQL fails
+  // for any reason — endpoint outage, query complexity, schema drift — fall
+  // back to the existing per-call REST search() path, which is slower but
+  // independently exercised by tests and proven.
+  const searchSpecs = buildContributionSearchSpecs({
+    baseTargetRepos,
+    targetRepoAliases,
+    targetLogin,
+    fromStr,
+    toStr,
   });
+
+  const applySearchResultsToStats = (specResults) => {
+    // Group open/closed legs of the same logical query so we sum total_count
+    // (matching mergeSearchResults) and dedup items by id (so date lists
+    // don't double-count items present in both legs after a state change).
+    const grouped = new Map();
+    for (const result of specResults) {
+      const key = `${result.repo}::${result.kind}`;
+      let bucket = grouped.get(key);
+      if (!bucket) {
+        bucket = { repo: result.repo, kind: result.kind, total_count: 0, items: [], seenIds: new Set() };
+        grouped.set(key, bucket);
+      }
+      bucket.total_count += result.total_count || 0;
+      for (const item of result.items || []) {
+        const dedupKey = item.id ?? item.node_id ?? item.html_url ?? JSON.stringify(item);
+        if (bucket.seenIds.has(dedupKey)) continue;
+        bucket.seenIds.add(dedupKey);
+        bucket.items.push(item);
+      }
+    }
+
+    for (const { repo, kind, total_count, items } of grouped.values()) {
+      switch (kind) {
+        case 'pr_created':
+          repoStats[repo].pr_created.total_count += total_count;
+          repoStats[repo].pr_created.items.push(...items);
+          items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_creation_date_list', item.created_at));
+          break;
+        case 'pr_merged':
+          repoStats[repo].pr_merged.total_count += total_count;
+          repoStats[repo].pr_merged.items.push(...items);
+          items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_merged_date_list', item.closed_at));
+          break;
+        case 'issues_created':
+          repoStats[repo].issues_created.total_count += total_count;
+          repoStats[repo].issues_created.items.push(...items);
+          items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_creation_date_list', item.created_at));
+          break;
+        case 'issue_commenter':
+          items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'issue_comments_date_list', item.updated_at));
+          break;
+        case 'pr_commenter':
+          items.forEach((item) => pushDate(contributionDatesByRepo[repo], 'pr_comments_date_list', item.updated_at));
+          break;
+        default:
+          break;
+      }
+    }
+  };
+
+  const promises = [];
+  promises.push((async () => {
+    try {
+      const specResults = await fetchSearchResultsViaGraphQL({ token, specs: searchSpecs });
+      applySearchResultsToStats(specResults);
+    } catch (graphqlError) {
+      console.warn(
+        `GraphQL search batch failed for ${targetLogin}, falling back to REST: ${graphqlError.message}`,
+      );
+      const restResults = await Promise.all(searchSpecs.map(async (spec) => {
+        try {
+          const data = await search(spec.query);
+          return { ...spec, total_count: data.total_count || 0, items: data.items || [] };
+        } catch (restError) {
+          console.error(`REST fallback search failed for "${spec.query}":`, restError);
+          return { ...spec, total_count: 0, items: [] };
+        }
+      }));
+      applySearchResultsToStats(restResults);
+    }
+  })());
 
   promises.push((async () => {
     const starred = await fetchAllPages(async (page) => {
