@@ -5,6 +5,7 @@ import {
   buildLeaderboard,
   calculateTotalContributions,
   normalizeGitHubLogin,
+  pickStaleestSnapshotCandidate,
   searchOpenAndClosedIssues,
   warmRedemptionContributionSnapshots,
 } from './github.js';
@@ -245,6 +246,85 @@ test('calculateTotalContributions keeps duplicate-timestamp behaviors', () => {
   });
 
   assert.equal(total, 13);
+});
+
+test('pickStaleestSnapshotCandidate picks the user with no cache first', () => {
+  const candidate = pickStaleestSnapshotCandidate({
+    users: [
+      { github_username: 'fresh', oauth_token: 'tok-fresh' },
+      { github_username: 'stale', oauth_token: 'tok-stale' },
+      { github_username: 'uncached', oauth_token: 'tok-uncached' },
+    ],
+    cached: [
+      { github_username: 'fresh', updated_at: '2026-05-21T00:00:00.000Z' },
+      { github_username: 'stale', updated_at: '2026-05-15T00:00:00.000Z' },
+    ],
+  });
+
+  assert.equal(candidate?.login, 'uncached');
+  assert.equal(candidate?.updatedAtMs, 0);
+  assert.equal(candidate?.token, 'tok-uncached');
+});
+
+test('pickStaleestSnapshotCandidate picks the oldest cached user when all have cache', () => {
+  const candidate = pickStaleestSnapshotCandidate({
+    users: [
+      { github_username: 'recent', oauth_token: 'tok-recent' },
+      { github_username: 'medium', oauth_token: 'tok-medium' },
+      { github_username: 'oldest', oauth_token: 'tok-oldest' },
+    ],
+    cached: [
+      { github_username: 'recent', updated_at: '2026-05-21T00:00:00.000Z' },
+      { github_username: 'medium', updated_at: '2026-05-19T00:00:00.000Z' },
+      { github_username: 'oldest', updated_at: '2026-05-10T00:00:00.000Z' },
+    ],
+  });
+
+  assert.equal(candidate?.login, 'oldest');
+});
+
+test('pickStaleestSnapshotCandidate skips users without oauth_token', () => {
+  const candidate = pickStaleestSnapshotCandidate({
+    users: [
+      { github_username: 'no-token' },
+      { github_username: 'has-token', oauth_token: 'tok' },
+    ],
+    cached: [
+      { github_username: 'has-token', updated_at: '2026-05-21T00:00:00.000Z' },
+    ],
+  });
+
+  assert.equal(candidate?.login, 'has-token');
+});
+
+test('pickStaleestSnapshotCandidate returns null when nobody is eligible', () => {
+  const candidate = pickStaleestSnapshotCandidate({
+    users: [
+      { github_username: 'no-token' },
+      { github_username: '', oauth_token: 'tok-blank-login' },
+    ],
+    cached: [],
+  });
+
+  assert.equal(candidate, null);
+});
+
+test('pickStaleestSnapshotCandidate tie-breaks alphabetically on identical updated_at', () => {
+  const sameTimestamp = '2026-05-15T00:00:00.000Z';
+  const candidate = pickStaleestSnapshotCandidate({
+    users: [
+      { github_username: 'Zeta', oauth_token: 'tok-z' },
+      { github_username: 'Alpha', oauth_token: 'tok-a' },
+      { github_username: 'Mike', oauth_token: 'tok-m' },
+    ],
+    cached: [
+      { github_username: 'Zeta', updated_at: sameTimestamp },
+      { github_username: 'Alpha', updated_at: sameTimestamp },
+      { github_username: 'Mike', updated_at: sameTimestamp },
+    ],
+  });
+
+  assert.equal(candidate?.login, 'Alpha');
 });
 
 test('searchOpenAndClosedIssues keeps created contributions after item is closed', async () => {

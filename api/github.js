@@ -20,6 +20,8 @@ export default async function handler(req, res) {
         return await handleContributions(req, res);
       case 'warm-redemption-contributions':
         return await handleWarmRedemptionContributions(req, res);
+      case 'warm-snapshots':
+        return await handleWarmSnapshots(req, res);
       case 'leaderboard':
         return await handleLeaderboard(req, res);
       default:
@@ -209,6 +211,47 @@ const hasLeaderboardActivity = (entry) => {
   return Object.values(entry.repo_summary || {}).some((repo) => {
     return (repo?.pr_created || 0) > 0 || (repo?.pr_merged || 0) > 0 || (repo?.issues_created || 0) > 0;
   });
+};
+
+// Picks the single most-stale user with an oauth token for the warm-snapshots
+// cron. Users with no cache entry get priority (updated_at = 0), then by oldest
+// `updated_at`. Returns null when no eligible candidate exists. Exported for
+// unit testing.
+export const pickStaleestSnapshotCandidate = ({ users = [], cached = [] } = {}) => {
+  const cachedByLogin = new Map();
+  for (const entry of cached) {
+    const normalizedLogin = normalizeGitHubLogin(entry.github_username);
+    if (normalizedLogin) {
+      cachedByLogin.set(normalizedLogin, entry);
+    }
+  }
+
+  const candidates = [];
+  for (const user of users) {
+    if (!user?.oauth_token) continue;
+    const normalizedLogin = normalizeGitHubLogin(user.github_username);
+    if (!normalizedLogin) continue;
+    const cachedEntry = cachedByLogin.get(normalizedLogin);
+    const updatedAtMs = cachedEntry?.updated_at
+      ? new Date(cachedEntry.updated_at).getTime()
+      : 0;
+    candidates.push({
+      login: user.github_username,
+      normalizedLogin,
+      token: user.oauth_token,
+      updatedAtMs: Number.isFinite(updatedAtMs) ? updatedAtMs : 0,
+    });
+  }
+
+  if (candidates.length === 0) return null;
+
+  // Oldest first; tie-break alphabetically for determinism.
+  candidates.sort((a, b) => {
+    if (a.updatedAtMs !== b.updatedAtMs) return a.updatedAtMs - b.updatedAtMs;
+    return a.normalizedLogin.localeCompare(b.normalizedLogin);
+  });
+
+  return candidates[0];
 };
 
 export const buildLeaderboard = async ({
@@ -1534,6 +1577,95 @@ async function handleWarmRedemptionContributions(request, response) {
   } catch (error) {
     console.error('Warm redemption contributions error', error);
     return response.status(500).json({ error: 'Failed to warm redemption contributions' });
+  }
+}
+
+const isAuthorizedWarmSnapshotRequest = (request) => {
+  // When CRON_SECRET is configured, Vercel's cron sender includes it in the
+  // Authorization header. We accept that, OR an explicit admin override via
+  // the existing x-admin-password header.
+  const cronSecret = process.env.CRON_SECRET;
+  if (cronSecret) {
+    const authHeader = request.headers.authorization || '';
+    if (authHeader === `Bearer ${cronSecret}`) return true;
+  }
+  if (isAdminRequest(request)) return true;
+  // If no CRON_SECRET is configured, fall back to the project's existing
+  // "cron path is implicitly trusted" pattern (matches /api/lucky-draw/process-due).
+  return !cronSecret;
+};
+
+async function handleWarmSnapshots(request, response) {
+  if (request.method !== 'GET' && request.method !== 'POST') {
+    return response.status(405).json({ error: 'Method Not Allowed' });
+  }
+
+  if (!isAuthorizedWarmSnapshotRequest(request)) {
+    return response.status(403).json({ error: 'Forbidden' });
+  }
+
+  try {
+    const db = await getDatabase();
+    const [users, cached] = await Promise.all([
+      safeDatabaseRead(
+        db,
+        'Loading users with oauth tokens',
+        () => db.collection('users').find(
+          { oauth_token: { $exists: true, $ne: null } },
+          { projection: { github_username: 1, oauth_token: 1 } }
+        ).toArray(),
+        []
+      ),
+      safeDatabaseRead(
+        db,
+        'Loading contribution cache for warm pick',
+        () => db.collection('contribution_cache').find(
+          { github_username: { $exists: true, $ne: null } },
+          { projection: { github_username: 1, updated_at: 1 } }
+        ).toArray(),
+        []
+      ),
+    ]);
+
+    const candidate = pickStaleestSnapshotCandidate({ users, cached });
+    if (!candidate) {
+      response.setHeader('Cache-Control', 'no-store');
+      return response.status(200).json({
+        refreshed: null,
+        reason: 'no_eligible_candidates',
+      });
+    }
+
+    const startedAt = Date.now();
+    const { fromDate, toDate } = getDefaultContributionWindow();
+    try {
+      await fetchContributionSnapshot({
+        token: candidate.token,
+        login: candidate.login,
+        fromDate,
+        toDate,
+      });
+      response.setHeader('Cache-Control', 'no-store');
+      return response.status(200).json({
+        refreshed: candidate.login,
+        previous_updated_at: candidate.updatedAtMs
+          ? new Date(candidate.updatedAtMs).toISOString()
+          : null,
+        took_ms: Date.now() - startedAt,
+      });
+    } catch (error) {
+      console.error(`Warm snapshot failed for ${candidate.login}`, error);
+      response.setHeader('Cache-Control', 'no-store');
+      return response.status(200).json({
+        refreshed: null,
+        attempted: candidate.login,
+        error: error.message || 'snapshot_failed',
+        took_ms: Date.now() - startedAt,
+      });
+    }
+  } catch (error) {
+    console.error('Warm snapshots error', error);
+    return response.status(500).json({ error: 'Failed to warm snapshots' });
   }
 }
 

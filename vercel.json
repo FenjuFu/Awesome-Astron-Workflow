@@ -2,12 +2,19 @@
   "functions": {
     "api/og/activity.js": {
       "includeFiles": "dist/index.html"
+    },
+    "api/github.js": {
+      "maxDuration": 60
     }
   },
   "crons": [
     {
       "path": "/api/lucky-draw/process-due",
       "schedule": "* * * * *"
+    },
+    {
+      "path": "/api/github/warm-snapshots",
+      "schedule": "*/10 * * * *"
     }
   ],
   "rewrites": [
