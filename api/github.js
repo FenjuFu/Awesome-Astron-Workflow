@@ -1275,6 +1275,7 @@ async function handleContributions(request, response) {
   const token = cookies.gh_token;
   let login = normalizeGitHubLogin(request.query.login);
   const isAdmin = isAdminRequest(request);
+  const forceRefresh = request.query.force === '1' || request.query.force === 'true';
 
   if (login && !isAdmin) {
     return response.status(403).json({ error: 'Forbidden: Only admin can fetch other user contributions' });
@@ -1296,14 +1297,37 @@ async function handleContributions(request, response) {
     );
   }
 
+  // Resolve the requester's login from the stored token when an admin override
+  // wasn't supplied, so the cache lookup below works on self-requests too.
+  let cacheLookupLogin = login;
+  if (!cacheLookupLogin && effectiveToken) {
+    cacheLookupLogin = await safeDatabaseRead(
+      db,
+      'Loading github_username for token',
+      async () => {
+        const storedUser = await db.collection('users').findOne(
+          { oauth_token: effectiveToken },
+          { projection: { github_username: 1 } }
+        );
+        return storedUser?.github_username || null;
+      },
+      null
+    );
+  }
+
+  const loadCachedEntry = async () => {
+    if (!cacheLookupLogin) return null;
+    return safeDatabaseRead(
+      db,
+      'Loading cached contribution snapshot',
+      () => db.collection('contribution_cache').findOne({ github_username: cacheLookupLogin }),
+      null
+    );
+  };
+
   if (!effectiveToken) {
     if (login && isAdmin) {
-      const cachedSnapshot = buildCachedContributionResponse(await safeDatabaseRead(
-        db,
-        'Loading cached contribution snapshot',
-        () => db.collection('contribution_cache').findOne({ github_username: login }),
-        null
-      ));
+      const cachedSnapshot = buildCachedContributionResponse(await loadCachedEntry());
 
       if (cachedSnapshot) {
         response.setHeader('Cache-Control', 'no-store');
@@ -1314,6 +1338,32 @@ async function handleContributions(request, response) {
     }
 
     return response.status(401).json({ error: 'Unauthorized' });
+  }
+
+  // Cache-first: if a fresh (< 6h) detailed snapshot exists, return it
+  // immediately and queue a background refresh. This keeps /stats responsive
+  // and protects us from running fetchContributionSnapshot (which fans out to
+  // dozens of GitHub search/REST calls and is very prone to rate-limit) on
+  // every page load. ?force=1 bypasses the cache for the explicit refresh
+  // button on the page.
+  const existingCacheEntry = forceRefresh ? null : await loadCachedEntry();
+  const cacheIsFresh = existingCacheEntry?.updated_at
+    && existingCacheEntry?.repos
+    && existingCacheEntry?.contribution_dates
+    && Date.now() - new Date(existingCacheEntry.updated_at).getTime() < CACHE_REFRESH_INTERVAL_MS;
+
+  if (cacheIsFresh) {
+    const cachedSnapshot = buildCachedContributionResponse(existingCacheEntry);
+    if (cachedSnapshot) {
+      // Fire-and-forget background refresh so the cache stays warm even when
+      // /stats is the only thing the user opens.
+      queueContributionCacheRefresh({
+        token: effectiveToken,
+        login: cacheLookupLogin,
+      });
+      response.setHeader('Cache-Control', 'no-store');
+      return response.status(200).json(cachedSnapshot);
+    }
   }
 
   const defaultWindow = getDefaultContributionWindow();
@@ -1328,18 +1378,17 @@ async function handleContributions(request, response) {
     });
     response.status(200).json(contributionData);
   } catch (error) {
-    if (login && isAdmin) {
-      const cachedSnapshot = buildCachedContributionResponse(await safeDatabaseRead(
-        db,
-        'Loading cached contribution snapshot',
-        () => db.collection('contribution_cache').findOne({ github_username: login }),
-        null
-      ));
+    console.error(`Contribution snapshot failed for ${cacheLookupLogin || '<self>'}`, error);
 
-      if (cachedSnapshot) {
-        response.setHeader('Cache-Control', 'no-store');
-        return response.status(200).json(cachedSnapshot);
-      }
+    // Fall back to whatever cached snapshot we have (stale or otherwise) so
+    // the page can still render something instead of bubbling a 5xx.
+    const cachedSnapshot = buildCachedContributionResponse(
+      existingCacheEntry || await loadCachedEntry()
+    );
+
+    if (cachedSnapshot) {
+      response.setHeader('Cache-Control', 'no-store');
+      return response.status(200).json(cachedSnapshot);
     }
 
     response.status(error.statusCode || 500).json({ error: error.message || 'Failed to fetch contributions' });
