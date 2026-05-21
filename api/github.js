@@ -22,6 +22,8 @@ export default async function handler(req, res) {
         return await handleWarmRedemptionContributions(req, res);
       case 'warm-snapshots':
         return await handleWarmSnapshots(req, res);
+      case 'diagnose-snapshot':
+        return await handleDiagnoseSnapshot(req, res);
       case 'leaderboard':
         return await handleLeaderboard(req, res);
       default:
@@ -1840,28 +1842,67 @@ async function handleWarmSnapshots(request, response) {
 
   try {
     const db = await getDatabase();
-    const [users, cached] = await Promise.all([
-      safeDatabaseRead(
-        db,
-        'Loading users with oauth tokens',
-        () => db.collection('users').find(
-          { oauth_token: { $exists: true, $ne: null } },
-          { projection: { github_username: 1, oauth_token: 1 } }
-        ).toArray(),
-        []
-      ),
-      safeDatabaseRead(
-        db,
-        'Loading contribution cache for warm pick',
-        () => db.collection('contribution_cache').find(
-          { github_username: { $exists: true, $ne: null } },
-          { projection: { github_username: 1, updated_at: 1 } }
-        ).toArray(),
-        []
-      ),
-    ]);
+    const overrideLogin = normalizeGitHubLogin(request.query.login);
 
-    const candidate = pickStaleestSnapshotCandidate({ users, cached });
+    let candidate = null;
+    if (overrideLogin) {
+      // Targeted refresh for a single user (debugging / manual catch-up).
+      const user = await safeDatabaseRead(
+        db,
+        'Loading override user',
+        () => db.collection('users').findOne(
+          { github_username: { $regex: `^${overrideLogin}$`, $options: 'i' } },
+          { projection: { github_username: 1, oauth_token: 1 } }
+        ),
+        null
+      );
+      if (!user?.oauth_token) {
+        response.setHeader('Cache-Control', 'no-store');
+        return response.status(404).json({
+          refreshed: null,
+          attempted: overrideLogin,
+          error: 'user_not_found_or_missing_oauth_token',
+        });
+      }
+      const cachedEntry = await safeDatabaseRead(
+        db,
+        'Loading override user cache',
+        () => db.collection('contribution_cache').findOne(
+          { github_username: { $regex: `^${user.github_username}$`, $options: 'i' } },
+          { projection: { github_username: 1, updated_at: 1 } }
+        ),
+        null
+      );
+      candidate = {
+        login: user.github_username,
+        normalizedLogin: overrideLogin,
+        token: user.oauth_token,
+        updatedAtMs: cachedEntry?.updated_at ? new Date(cachedEntry.updated_at).getTime() : 0,
+      };
+    } else {
+      const [users, cached] = await Promise.all([
+        safeDatabaseRead(
+          db,
+          'Loading users with oauth tokens',
+          () => db.collection('users').find(
+            { oauth_token: { $exists: true, $ne: null } },
+            { projection: { github_username: 1, oauth_token: 1 } }
+          ).toArray(),
+          []
+        ),
+        safeDatabaseRead(
+          db,
+          'Loading contribution cache for warm pick',
+          () => db.collection('contribution_cache').find(
+            { github_username: { $exists: true, $ne: null } },
+            { projection: { github_username: 1, updated_at: 1 } }
+          ).toArray(),
+          []
+        ),
+      ]);
+      candidate = pickStaleestSnapshotCandidate({ users, cached });
+    }
+
     if (!candidate) {
       response.setHeader('Cache-Control', 'no-store');
       return response.status(200).json({
@@ -1900,6 +1941,96 @@ async function handleWarmSnapshots(request, response) {
   } catch (error) {
     console.error('Warm snapshots error', error);
     return response.status(500).json({ error: 'Failed to warm snapshots' });
+  }
+}
+
+// Returns per-repo per-field counts of contribution_dates for a given login.
+// Returns ONLY aggregate counts, never raw timestamps, so it's safe to expose
+// without auth. Useful for debugging why a snapshot total looks off without
+// asking the user to share their full snapshot.
+async function handleDiagnoseSnapshot(request, response) {
+  const login = normalizeGitHubLogin(request.query.login);
+  if (!login) {
+    return response.status(400).json({ error: 'Missing ?login=' });
+  }
+
+  try {
+    const db = await getDatabase();
+    const cachedEntry = await safeDatabaseRead(
+      db,
+      'Loading contribution cache for diagnostic',
+      () => db.collection('contribution_cache').findOne({
+        github_username: { $regex: `^${login}$`, $options: 'i' },
+      }),
+      null
+    );
+
+    if (!cachedEntry) {
+      return response.status(404).json({ error: 'No cached snapshot for that login' });
+    }
+
+    const reposListed = Object.keys(cachedEntry.contribution_dates || {}).sort();
+    const datesPerRepo = {};
+    let dateGrandTotal = 0;
+    const searchTrackedKeys = new Set([
+      'pr_creation_date_list', 'pr_merged_date_list', 'issue_creation_date_list',
+    ]);
+    let otherBehaviorsTotal = 0;
+    const aggregatedFieldCounts = {};
+
+    for (const repo of reposListed) {
+      const repoDates = cachedEntry.contribution_dates[repo] || {};
+      const repoSummary = {};
+      for (const [field, dates] of Object.entries(repoDates)) {
+        const count = Array.isArray(dates) ? dates.length : 0;
+        if (count > 0) {
+          repoSummary[field] = count;
+          dateGrandTotal += count;
+          aggregatedFieldCounts[field] = (aggregatedFieldCounts[field] || 0) + count;
+          if (!searchTrackedKeys.has(field)) {
+            otherBehaviorsTotal += count;
+          }
+        }
+      }
+      datesPerRepo[repo] = repoSummary;
+    }
+
+    const repoStatsSummary = {};
+    let searchTotal = 0;
+    for (const [repo, stats] of Object.entries(cachedEntry.repos || {})) {
+      repoStatsSummary[repo] = {
+        pr_created: stats?.pr_created?.total_count || 0,
+        pr_merged: stats?.pr_merged?.total_count || 0,
+        issues_created: stats?.issues_created?.total_count || 0,
+      };
+      searchTotal += repoStatsSummary[repo].pr_created
+        + repoStatsSummary[repo].pr_merged
+        + repoStatsSummary[repo].issues_created;
+    }
+
+    const astron = cachedEntry.astron || {};
+    const astronTotal = (astron.agent?.workflows || 0) + (astron.rpa?.tasks || 0);
+
+    response.setHeader('Cache-Control', 'no-store');
+    return response.status(200).json({
+      login: cachedEntry.github_username,
+      updated_at: cachedEntry.updated_at,
+      total_contributions: cachedEntry.total_contributions,
+      recomputed: {
+        search_total: searchTotal,
+        other_behaviors_total: otherBehaviorsTotal,
+        astron_total: astronTotal,
+        grand_total: searchTotal + otherBehaviorsTotal + astronTotal,
+      },
+      repos_listed: reposListed,
+      repo_stats: repoStatsSummary,
+      contribution_field_counts_aggregated: aggregatedFieldCounts,
+      contribution_field_counts_per_repo: datesPerRepo,
+      total_date_entries_across_all_repos: dateGrandTotal,
+    });
+  } catch (error) {
+    console.error('Diagnose snapshot error', error);
+    return response.status(500).json({ error: error.message || 'diagnose_failed' });
   }
 }
 
