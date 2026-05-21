@@ -333,6 +333,63 @@ test('leaderboard refreshes authorized users without redemptions when cache is s
   assert.equal(leaderboard[0].total_contributions, 196);
 });
 
+test('leaderboard refreshes cached authorized users when cache is older than freshness window', async () => {
+  const refreshCalls = [];
+  const leaderboard = await buildLeaderboard({
+    cached: [
+      {
+        github_username: 'FenjuFu',
+        name: 'FenjuFu',
+        avatar_url: 'https://example.com/fenjufu-stale.png',
+        total_contributions: 196,
+        repo_summary: {
+          'iflytek/skillhub': {
+            pr_created: 8,
+            pr_merged: 4,
+            issues_created: 2,
+          },
+        },
+        updated_at: '2026-05-01T00:00:00.000Z',
+      },
+    ],
+    users: [
+      {
+        github_username: 'FenjuFu',
+        name: 'FenjuFu',
+        avatar_url: 'https://example.com/fenjufu-user.png',
+        last_login_at: '2026-05-01T00:00:00.000Z',
+        oauth_token: 'token',
+      },
+    ],
+    redemptions: [],
+    now: new Date('2026-05-18T00:00:00.000Z'),
+    fetchSnapshot: async (params) => {
+      refreshCalls.push(params);
+      return {
+        user: {
+          login: 'FenjuFu',
+          name: 'FenjuFu Fresh',
+          avatar_url: 'https://example.com/fenjufu-fresh.png',
+        },
+        total_contributions: 356,
+        repo_summary: {
+          'iflytek/skillhub': {
+            pr_created: 12,
+            pr_merged: 7,
+            issues_created: 3,
+          },
+        },
+        updated_at: '2026-05-18T00:00:00.000Z',
+      };
+    },
+  });
+
+  assert.equal(refreshCalls.length, 1);
+  assert.equal(leaderboard.length, 1);
+  assert.equal(leaderboard[0].login, 'FenjuFu');
+  assert.equal(leaderboard[0].total_contributions, 356);
+});
+
 test('warmRedemptionContributionSnapshots refreshes redemption users with oauth tokens', async () => {
   const refreshCalls = [];
 

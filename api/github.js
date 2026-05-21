@@ -211,13 +211,23 @@ const hasLeaderboardActivity = (entry) => {
   });
 };
 
-const hasFreshLeaderboardCache = (cachedEntry, userEntry) => {
+const hasFreshLeaderboardCache = (cachedEntry, userEntry, now = new Date()) => {
   const cachedTotalContributions = getEntryTotalContributions(cachedEntry);
   if (typeof cachedTotalContributions !== 'number') return false;
   if (cachedTotalContributions === 0 && !hasLeaderboardActivity(cachedEntry)) return false;
-  if (!userEntry?.last_login_at) return true;
   if (!cachedEntry?.updated_at) return false;
-  return new Date(cachedEntry.updated_at).getTime() >= new Date(userEntry.last_login_at).getTime();
+
+  const cachedUpdatedAt = new Date(cachedEntry.updated_at).getTime();
+  const nowTimestamp = now.getTime();
+  if (!Number.isFinite(cachedUpdatedAt)) return false;
+  if (nowTimestamp - cachedUpdatedAt >= CACHE_REFRESH_INTERVAL_MS) return false;
+
+  if (!userEntry?.last_login_at) return true;
+
+  const lastLoginAt = new Date(userEntry.last_login_at).getTime();
+  if (!Number.isFinite(lastLoginAt)) return true;
+
+  return cachedUpdatedAt >= lastLoginAt;
 };
 
 export const buildLeaderboard = async ({
@@ -261,7 +271,7 @@ export const buildLeaderboard = async ({
   const refreshCandidates = leaderboardLogins.filter((login) => {
     const cachedEntry = cachedByLogin.get(login);
     const user = usersByLogin.get(login);
-    return !!user?.oauth_token && !hasFreshLeaderboardCache(cachedEntry, user);
+    return !!user?.oauth_token && !hasFreshLeaderboardCache(cachedEntry, user, now);
   });
 
   const refreshedEntries = await Promise.allSettled(
