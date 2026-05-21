@@ -1831,6 +1831,15 @@ const isAuthorizedWarmSnapshotRequest = (request) => {
   return !cronSecret;
 };
 
+// Time budget for one batch-refresh invocation. vercel.json sets maxDuration
+// to 60s for this function; leave 10s margin to write the final response.
+const BATCH_REFRESH_TIME_BUDGET_MS = 50_000;
+
+const isBatchRefreshRequest = (request) => {
+  const value = request.query.refresh_all;
+  return value === '1' || value === 'true';
+};
+
 async function handleWarmSnapshots(request, response) {
   if (request.method !== 'GET' && request.method !== 'POST') {
     return response.status(405).json({ error: 'Method Not Allowed' });
@@ -1838,6 +1847,10 @@ async function handleWarmSnapshots(request, response) {
 
   if (!isAuthorizedWarmSnapshotRequest(request)) {
     return response.status(403).json({ error: 'Forbidden' });
+  }
+
+  if (isBatchRefreshRequest(request)) {
+    return await handleWarmSnapshotsBatch(request, response);
   }
 
   try {
@@ -1941,6 +1954,125 @@ async function handleWarmSnapshots(request, response) {
   } catch (error) {
     console.error('Warm snapshots error', error);
     return response.status(500).json({ error: 'Failed to warm snapshots' });
+  }
+}
+
+// Refresh as many stale users as we can fit in BATCH_REFRESH_TIME_BUDGET_MS.
+// Iterates sequentially (so each completed snapshot is persisted before the
+// next starts and the response payload accurately reflects what landed in
+// the cache), oldest-first by current cache updated_at. If we hit the time
+// budget mid-loop, remaining users are reported back so the caller can
+// re-invoke until the queue drains. Designed for one-off admin sweeps after
+// a deploy that invalidates cached data — the periodic cron at 10-min
+// intervals continues to handle steady-state drift.
+async function handleWarmSnapshotsBatch(request, response) {
+  const startedAt = Date.now();
+  try {
+    const db = await getDatabase();
+    const [users, cached] = await Promise.all([
+      safeDatabaseRead(
+        db,
+        'Loading users with oauth tokens (batch)',
+        () => db.collection('users').find(
+          { oauth_token: { $exists: true, $ne: null } },
+          { projection: { github_username: 1, oauth_token: 1 } }
+        ).toArray(),
+        []
+      ),
+      safeDatabaseRead(
+        db,
+        'Loading contribution cache for batch warm',
+        () => db.collection('contribution_cache').find(
+          { github_username: { $exists: true, $ne: null } },
+          { projection: { github_username: 1, updated_at: 1 } }
+        ).toArray(),
+        []
+      ),
+    ]);
+
+    const cachedByLogin = new Map();
+    for (const entry of cached) {
+      const normalizedLogin = normalizeGitHubLogin(entry.github_username);
+      if (normalizedLogin) cachedByLogin.set(normalizedLogin, entry);
+    }
+
+    // Sort users by cache staleness (oldest updated_at first, uncached at the
+    // very front). Skips users without oauth_token defensively even though
+    // the DB query already filters them.
+    const sortedUsers = users
+      .filter((user) => !!user?.oauth_token)
+      .map((user) => {
+        const normalizedLogin = normalizeGitHubLogin(user.github_username);
+        if (!normalizedLogin) return null;
+        const cachedEntry = cachedByLogin.get(normalizedLogin);
+        const updatedAtMs = cachedEntry?.updated_at
+          ? new Date(cachedEntry.updated_at).getTime()
+          : 0;
+        return {
+          login: user.github_username,
+          normalizedLogin,
+          token: user.oauth_token,
+          updatedAtMs: Number.isFinite(updatedAtMs) ? updatedAtMs : 0,
+        };
+      })
+      .filter(Boolean);
+
+    sortedUsers.sort((a, b) => {
+      if (a.updatedAtMs !== b.updatedAtMs) return a.updatedAtMs - b.updatedAtMs;
+      return a.normalizedLogin.localeCompare(b.normalizedLogin);
+    });
+
+    const processed = [];
+    const failed = [];
+    const remaining = [];
+    const { fromDate, toDate } = getDefaultContributionWindow();
+
+    for (const candidate of sortedUsers) {
+      if (Date.now() - startedAt > BATCH_REFRESH_TIME_BUDGET_MS) {
+        remaining.push(candidate.login);
+        continue;
+      }
+      const userStartedAt = Date.now();
+      try {
+        await fetchContributionSnapshot({
+          token: candidate.token,
+          login: candidate.login,
+          fromDate,
+          toDate,
+        });
+        processed.push({
+          login: candidate.login,
+          previous_updated_at: candidate.updatedAtMs
+            ? new Date(candidate.updatedAtMs).toISOString()
+            : null,
+          took_ms: Date.now() - userStartedAt,
+        });
+      } catch (error) {
+        console.error(`Batch warm failed for ${candidate.login}`, error);
+        failed.push({
+          login: candidate.login,
+          error: error.message || 'snapshot_failed',
+          took_ms: Date.now() - userStartedAt,
+        });
+      }
+    }
+
+    response.setHeader('Cache-Control', 'no-store');
+    return response.status(200).json({
+      mode: 'batch',
+      processed,
+      failed,
+      remaining,
+      elapsed_ms: Date.now() - startedAt,
+      hit_time_limit: remaining.length > 0,
+      total_eligible: sortedUsers.length,
+    });
+  } catch (error) {
+    console.error('Batch warm snapshots error', error);
+    return response.status(500).json({
+      error: 'Failed to batch warm snapshots',
+      elapsed_ms: Date.now() - startedAt,
+    });
   }
 }
 
