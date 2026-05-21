@@ -583,6 +583,104 @@ const createConcurrencyGate = (limit) => {
 // requests from a single token; 8 leaves headroom for retries.
 const GITHUB_FETCH_CONCURRENCY = 8;
 
+// GitHub's authenticated search API allows ~30 requests per minute per token.
+// Pace at 28/min to leave headroom for any concurrent background refresh fired
+// from this warm instance and to avoid bumping into secondary rate-limits.
+const SEARCH_RATE_LIMIT_PER_MINUTE = 28;
+const SEARCH_RATE_LIMIT_REFILL_MS = 60_000 / SEARCH_RATE_LIMIT_PER_MINUTE;
+const SEARCH_RATE_LIMITER_TTL_MS = 10 * 60 * 1000;
+
+// Per-token token buckets. The Map persists across requests within a warm
+// serverless instance so two snapshot calls fired in quick succession for the
+// same user share a budget. Cold starts reset the buckets, which matches
+// GitHub's own behavior (the limit is wall-clock per-token, not in our state).
+const searchRateLimiters = new Map();
+
+const pruneStaleSearchRateLimiters = (now = Date.now()) => {
+  for (const [key, bucket] of searchRateLimiters) {
+    if (now - bucket.lastUsedAt > SEARCH_RATE_LIMITER_TTL_MS) {
+      if (bucket.timer) clearTimeout(bucket.timer);
+      searchRateLimiters.delete(key);
+    }
+  }
+};
+
+const getSearchRateLimiterBucket = (token) => {
+  let bucket = searchRateLimiters.get(token);
+  if (!bucket) {
+    const now = Date.now();
+    bucket = {
+      tokens: SEARCH_RATE_LIMIT_PER_MINUTE,
+      lastRefillAt: now,
+      lastUsedAt: now,
+      queue: [],
+      timer: null,
+    };
+    searchRateLimiters.set(token, bucket);
+  }
+  return bucket;
+};
+
+const refillSearchBucket = (bucket, at) => {
+  const elapsed = at - bucket.lastRefillAt;
+  if (elapsed <= 0) return;
+  bucket.tokens = Math.min(
+    SEARCH_RATE_LIMIT_PER_MINUTE,
+    bucket.tokens + elapsed / SEARCH_RATE_LIMIT_REFILL_MS,
+  );
+  bucket.lastRefillAt = at;
+};
+
+const drainSearchBucket = (bucket) => {
+  refillSearchBucket(bucket, Date.now());
+  while (bucket.queue.length > 0 && bucket.tokens >= 1) {
+    bucket.tokens -= 1;
+    bucket.lastUsedAt = Date.now();
+    const resolve = bucket.queue.shift();
+    resolve();
+  }
+  if (bucket.queue.length > 0 && !bucket.timer) {
+    const tokensNeeded = 1 - bucket.tokens;
+    const waitMs = Math.max(50, Math.ceil(tokensNeeded * SEARCH_RATE_LIMIT_REFILL_MS));
+    bucket.timer = setTimeout(() => {
+      bucket.timer = null;
+      drainSearchBucket(bucket);
+    }, waitMs);
+    if (typeof bucket.timer?.unref === 'function') bucket.timer.unref();
+  }
+};
+
+// Per-token rate limit gate for search/issues calls. Token-bucket: starts full
+// (capacity = SEARCH_RATE_LIMIT_PER_MINUTE) so the first burst of a fresh
+// snapshot fires immediately, then paces at SEARCH_RATE_LIMIT_PER_MINUTE.
+// Exported for unit testing only.
+export const acquireSearchSlot = (token) => new Promise((resolve) => {
+  if (!token) {
+    resolve();
+    return;
+  }
+  pruneStaleSearchRateLimiters();
+  const bucket = getSearchRateLimiterBucket(token);
+  refillSearchBucket(bucket, Date.now());
+  if (bucket.tokens >= 1 && bucket.queue.length === 0) {
+    bucket.tokens -= 1;
+    bucket.lastUsedAt = Date.now();
+    resolve();
+    return;
+  }
+  bucket.queue.push(resolve);
+  drainSearchBucket(bucket);
+});
+
+// Exported for unit testing only. Clears all per-token buckets so tests run
+// in isolation and a fresh process starts from a known state.
+export const __resetSearchRateLimiters = () => {
+  for (const bucket of searchRateLimiters.values()) {
+    if (bucket.timer) clearTimeout(bucket.timer);
+  }
+  searchRateLimiters.clear();
+};
+
 const buildGitHubHeaders = (token, accept = 'application/vnd.github.v3+json') => {
   const headers = { Accept: accept };
   if (token) {
@@ -875,6 +973,11 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   const search = async (q) => {
     const url = `https://api.github.com/search/issues?q=${encodeURIComponent(q)}&per_page=100`;
     for (let attempt = 0; attempt < 4; attempt += 1) {
+      // Pace search calls per-token against GitHub's ~30/min cap. The retry
+      // loop below stays as a safety net for residual 403/429 (secondary
+      // rate-limits, shared org limits, etc.) but the limiter should keep us
+      // out of those in steady state.
+      await acquireSearchSlot(token);
       const res = await gatedFetch(url, { headers: authHeaders });
       if (res.ok) return res.json();
 
