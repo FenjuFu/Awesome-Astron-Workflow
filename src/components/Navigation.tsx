@@ -74,7 +74,7 @@ const Navigation: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1 overflow-x-auto">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) =>
               item.children ? (
                 <div
