@@ -493,6 +493,35 @@ const CONTRIBUTION_FIELDS = {
 const DATE_FIELD_KEYS = Object.values(CONTRIBUTION_FIELDS).flat();
 const CACHE_REFRESH_INTERVAL_MS = 6 * 60 * 60 * 1000;
 
+const ISSUE_EVENT_FIELD_MAP = {
+  issue: {
+    labeled: 'issue_labeled_date_list',
+    unlabeled: 'issue_unlabeled_date_list',
+    closed: 'issue_closed_date_list',
+    reopened: 'issue_reopened_date_list',
+    assigned: 'issue_assigned_date_list',
+    unassigned: 'issue_unassigned_date_list',
+    milestoned: 'issue_milestoned_date_list',
+    demilestoned: 'issue_demilestoned_date_list',
+    marked_as_duplicate: 'issue_marked_as_duplicate_date_list',
+    transferred: 'issue_transferred_date_list',
+    renamed: 'issue_renamed_title_date_list',
+  },
+  pr: {
+    labeled: 'pr_labeled_date_list',
+    unlabeled: 'pr_unlabeled_date_list',
+    closed: 'pr_closed_date_list',
+    reopened: 'pr_reopened_date_list',
+    assigned: 'pr_assigned_date_list',
+    unassigned: 'pr_unassigned_date_list',
+    milestoned: 'pr_milestoned_date_list',
+    demilestoned: 'pr_demilestoned_date_list',
+    marked_as_duplicate: 'pr_marked_as_duplicate_date_list',
+    transferred: 'pr_transferred_date_list',
+    renamed: 'pr_renamed_title_date_list',
+  },
+};
+
 const createEmptyContributionDates = () => DATE_FIELD_KEYS.reduce((acc, key) => {
   acc[key] = [];
   return acc;
@@ -836,7 +865,14 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
     return { items: data.items.map((repo) => repo.full_name), hasNext: hasNextPage(res.headers.get('link')) };
   });
 
-  const baseTargetRepos = Array.from(new Set([...topicRepos, 'iflytek/astron-agent', 'iflytek/astron-rpa', 'iflytek/skillhub']));
+  const baseTargetRepos = Array.from(new Set([
+    ...topicRepos,
+    'iflytek/astron-agent',
+    'iflytek/astron-rpa',
+    'iflytek/skillhub',
+    'iflytek/iFly-Skills',
+    'iflytek/astronclaw-tutorial',
+  ]));
   const targetRepoAliases = createTargetRepoAliases(baseTargetRepos, targetLogin);
   const targetReposMap = baseTargetRepos.reduce((acc, repo) => {
     (targetRepoAliases[repo] || [repo]).forEach((alias) => {
@@ -858,21 +894,37 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   });
 
   const search = async (q) => {
-    let res = await fetch(`https://api.github.com/search/issues?q=${encodeURIComponent(q)}&per_page=100`, {
-      headers: authHeaders,
-    });
-    if (res.status === 403 || res.status === 429) {
-      await delay(2000);
-      res = await fetch(`https://api.github.com/search/issues?q=${encodeURIComponent(q)}&per_page=100`, {
-        headers: authHeaders,
-      });
-    }
-    if (!res.ok) {
+    const url = `https://api.github.com/search/issues?q=${encodeURIComponent(q)}&per_page=100`;
+    for (let attempt = 0; attempt < 4; attempt += 1) {
+      const res = await fetch(url, { headers: authHeaders });
+      if (res.ok) return res.json();
+
+      if (res.status === 403 || res.status === 429) {
+        const retryAfterSec = parseInt(res.headers.get('retry-after') || '', 10);
+        const resetSec = parseInt(res.headers.get('x-ratelimit-reset') || '', 10);
+        let waitMs;
+        if (Number.isFinite(retryAfterSec)) {
+          waitMs = retryAfterSec * 1000;
+        } else if (Number.isFinite(resetSec)) {
+          waitMs = Math.max(0, resetSec * 1000 - Date.now());
+        } else {
+          waitMs = (attempt + 1) * 5000;
+        }
+        waitMs = Math.min(Math.max(waitMs, 1000), 60000);
+        console.warn(`GitHub Search rate-limited (${res.status}) on "${q}", waiting ${waitMs}ms (attempt ${attempt + 1}/4)`);
+        await delay(waitMs);
+        continue;
+      }
+
       const errText = await res.text();
       console.error(`Search failed for ${q}: ${res.status} ${errText}`);
-      return { total_count: 0, items: [] };
+      const error = new Error(`GitHub search failed: ${res.status}`);
+      error.statusCode = res.status;
+      throw error;
     }
-    return res.json();
+    const error = new Error(`GitHub search persistently rate-limited: ${q}`);
+    error.statusCode = 429;
+    throw error;
   };
 
   const promises = [];
@@ -958,6 +1010,46 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
         pushDate(contributionDatesByRepo[repo], 'code_author_date_list', commit.commit?.author?.date);
         pushDate(contributionDatesByRepo[repo], 'code_committer_date_list', commit.commit?.committer?.date);
       });
+    }));
+  })()));
+
+  promises.push(...baseTargetRepos.map((repo) => (async () => {
+    await Promise.all((targetRepoAliases[repo] || [repo]).map(async (alias) => {
+      const [owner, name] = alias.split('/');
+      let page = 1;
+      while (page <= 30) {
+        const res = await fetch(
+          `https://api.github.com/repos/${owner}/${name}/issues/events?per_page=100&page=${page}`,
+          { headers: authHeaders }
+        );
+
+        if (!res.ok) break;
+
+        const events = await res.json();
+        if (!Array.isArray(events) || events.length === 0) break;
+
+        let reachedOlder = false;
+        for (const event of events) {
+          if (!event.created_at) continue;
+          const eventDate = new Date(event.created_at);
+          if (eventDate < fromDate) {
+            reachedOlder = true;
+            break;
+          }
+          if (eventDate > toDate) continue;
+          if (event.actor?.login !== targetLogin) continue;
+
+          const kind = event.issue?.pull_request ? 'pr' : 'issue';
+          const field = ISSUE_EVENT_FIELD_MAP[kind]?.[event.event];
+          if (field) {
+            pushDate(contributionDatesByRepo[repo], field, event.created_at);
+          }
+        }
+
+        if (reachedOlder) break;
+        if (!hasNextPage(res.headers.get('link'))) break;
+        page += 1;
+      }
     }));
   })()));
 
