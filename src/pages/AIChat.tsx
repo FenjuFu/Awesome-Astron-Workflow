@@ -19,6 +19,29 @@ interface ChatApiResponse {
   details?: string;
 }
 
+function formatChatError(error: unknown) {
+  if (!(error instanceof Error)) {
+    return '抱歉，我现在无法处理您的请求。请稍后再试。';
+  }
+
+  if (error.message.includes('Missing server configuration: ASTRON_MAAS_API_KEY')) {
+    return '抱歉，AI Chat 尚未完成配置。请在项目根目录的 `.env` 中设置 `ASTRON_MAAS_API_KEY`，或在部署平台补充同名环境变量后重试。';
+  }
+
+  if (
+    error.message.includes('Upstream API error: 401')
+    || error.message.includes('Upstream API error: 403')
+  ) {
+    return '抱歉，AI Chat 的服务凭证无效或权限不足，请检查 `ASTRON_MAAS_API_KEY` 是否填写正确。';
+  }
+
+  if (error.message.includes('Upstream request timed out')) {
+    return '抱歉，AI Chat 响应超时，请稍后再试。';
+  }
+
+  return `抱歉，AI Chat 暂时不可用：${error.message}`;
+}
+
 const AIChat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -92,9 +115,7 @@ const AIChat: React.FC = () => {
       console.error('Failed to get AI response', error);
       const errorMessage: Message = {
         role: 'assistant',
-        content: error instanceof Error
-          ? `抱歉，AI Chat 暂时不可用：${error.message}`
-          : '抱歉，我现在无法处理您的请求。请稍后再试。',
+        content: formatChatError(error),
       };
       setMessages([...newMessages, errorMessage]);
     } finally {

@@ -433,6 +433,26 @@ Each case includes:
 - Web search for nutritional knowledge
 - Visual aids with Text-to-Image generation
 
+## Development Configuration
+
+The `/activities/admin` page uses an admin password configured in `.env`:
+
+```env
+VITE_ADMIN_PASSWORD=your_secure_password_here
+```
+
+AI Chat also requires server-side environment variables. Before local development, copy `.env.example` to `.env` and provide at least:
+
+```env
+ASTRON_MAAS_API_KEY=your_astron_maas_api_key
+ASTRON_MAAS_MODEL=astron-code-latest
+ASTRON_MAAS_BASE_URL=https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions
+ASTRON_MAAS_MAX_TOKENS=32768
+ASTRON_MAAS_TEMPERATURE=0.7
+```
+
+If `ASTRON_MAAS_API_KEY` is missing, the `/chat` page returns an "AI Chat is temporarily unavailable" message. When deploying to Vercel or another hosting platform, set the same environment variables there as well.
+
 ## Contributing
 
 We welcome contributions to this repository! If you have an Astron workflow or user case to share:

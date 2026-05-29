@@ -454,6 +454,18 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 VITE_ADMIN_PASSWORD=your_secure_password_here
 ```
 
+AI Chat 依赖服务端环境变量。首次本地运行前，建议先将 `.env.example` 复制为 `.env`，并至少补齐以下配置：
+
+```env
+ASTRON_MAAS_API_KEY=your_astron_maas_api_key
+ASTRON_MAAS_MODEL=astron-code-latest
+ASTRON_MAAS_BASE_URL=https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions
+ASTRON_MAAS_MAX_TOKENS=32768
+ASTRON_MAAS_TEMPERATURE=0.7
+```
+
+如果缺少 `ASTRON_MAAS_API_KEY`，`/chat` 页面会返回“AI Chat 暂时不可用”。部署到 Vercel 等平台时，也需要同步配置同名环境变量。
+
 ## 贡献指南
 
 我们欢迎对本仓库的贡献！如果您有想要分享的 Astron 工作流或用户案例，请：
