@@ -20,11 +20,13 @@ import RegistrationSuccess from './pages/activities/RegistrationSuccess';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import RedemptionManage from './pages/admin/RedemptionManage';
 import AIChat from './pages/AIChat';
+import Privacy from './pages/Privacy';
 import AstronLandscape from './pages/AstronLandscape';
 
 const routePatterns = [
   '/',
   '/chat',
+  '/privacy',
   '/landscape',
   '/astron-landscape',
   '/stats',
@@ -99,6 +101,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/chat" element={<AIChat />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="/landscape" element={<AstronLandscape />} />
           <Route path="/astron-landscape" element={<AstronLandscape />} />
           <Route path="/stats" element={<ContributionStats />} />

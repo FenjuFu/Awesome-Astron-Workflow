@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Trash2, Bot, User, Loader2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Send, Trash2, Bot, User, Loader2, ShieldCheck } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import ReactMarkdown from 'react-markdown';
+
+const CONSENT_KEY = 'astron_chat_consent';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -63,13 +66,15 @@ const AIChat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [consent, setConsent] = useState<boolean>(false);
+  const [showConsentModal, setShowConsentModal] = useState<boolean>(false);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const previousMessageCountRef = useRef(0);
 
   const BASE_URL = '/api/chat';
   const MODEL = 'astron-code-latest';
 
-  // Load chat history from localStorage on mount
+  // Load chat history + consent state from localStorage on mount
   useEffect(() => {
     const savedMessages = localStorage.getItem('astron_chat_history');
     if (savedMessages) {
@@ -79,7 +84,20 @@ const AIChat: React.FC = () => {
         console.error('Failed to parse chat history', e);
       }
     }
+
+    const savedConsent = localStorage.getItem(CONSENT_KEY);
+    if (savedConsent === 'granted') {
+      setConsent(true);
+    } else {
+      setShowConsentModal(true);
+    }
   }, []);
+
+  const acceptConsent = () => {
+    localStorage.setItem(CONSENT_KEY, 'granted');
+    setConsent(true);
+    setShowConsentModal(false);
+  };
 
   // Save chat history to localStorage whenever messages change
   useEffect(() => {
@@ -118,6 +136,10 @@ const AIChat: React.FC = () => {
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
+    if (!consent) {
+      setShowConsentModal(true);
+      return;
+    }
 
     const userMessage: Message = { role: 'user', content: input };
     const newMessages = [...messages, userMessage];
@@ -136,6 +158,7 @@ const AIChat: React.FC = () => {
           messages: newMessages,
           max_tokens: 32768,
           temperature: 0.7,
+          logConsent: consent,
         }),
       });
 
@@ -176,6 +199,56 @@ const AIChat: React.FC = () => {
   return (
     <div className="h-screen bg-gray-50 flex flex-col pt-16 overflow-hidden">
       <Navigation />
+
+      {/* Consent gate modal */}
+      {showConsentModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
+          <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-6">
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="bg-indigo-100 text-indigo-600 p-2 rounded-lg">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h3 className="font-bold text-lg text-gray-900">使用前须知</h3>
+            </div>
+            <div className="text-sm text-gray-600 space-y-3">
+              <p>
+                为了向你返回回答，你的提问会发送至{' '}
+                <a
+                  href="https://maas.xfyun.cn/modelSquare"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-indigo-600 underline hover:opacity-80"
+                >
+                  讯飞星辰 MaaS
+                </a>{' '}
+                进行大模型推理。
+              </p>
+              <p>
+                在你同意后，我们会将<strong>问答内容</strong>保存到受控的后端数据库，仅用于分析高频问题、改进知识库与产品体验，不会出售你的数据。详情见{' '}
+                <Link to="/privacy" className="text-indigo-600 underline hover:opacity-80">
+                  《隐私政策》
+                </Link>
+                。
+              </p>
+              <p className="text-gray-500">点击“同意并开始”即表示你已阅读并同意上述说明。</p>
+            </div>
+            <div className="mt-6 flex flex-col gap-2">
+              <button
+                onClick={acceptConsent}
+                className="w-full py-2.5 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-colors"
+              >
+                同意并开始
+              </button>
+              <Link
+                to="/"
+                className="w-full py-2.5 text-center text-gray-500 rounded-xl font-medium hover:bg-gray-50 transition-colors"
+              >
+                暂不使用
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
       
       <main className="flex-1 min-h-0 container mx-auto px-4 py-8 flex flex-col max-w-5xl overflow-hidden">
         <div className="bg-white rounded-2xl shadow-xl flex flex-col flex-1 min-h-0 overflow-hidden">
@@ -262,13 +335,14 @@ const AIChat: React.FC = () => {
                     handleSend();
                   }
                 }}
-                placeholder="输入您的问题..."
-                className="flex-grow p-3 pr-12 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none resize-none max-h-32 transition-all duration-200"
+                placeholder={consent ? '输入您的问题...' : '请先阅读并同意隐私政策后开始对话'}
+                disabled={!consent}
+                className="flex-grow p-3 pr-12 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none resize-none max-h-32 transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed"
                 rows={1}
               />
               <button
                 onClick={handleSend}
-                disabled={!input.trim() || isLoading}
+                disabled={!input.trim() || isLoading || !consent}
                 className="p-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 disabled:opacity-50 disabled:hover:bg-indigo-600 transition-colors shadow-lg shadow-indigo-200"
               >
                 <Send className="w-5 h-5" />
@@ -284,6 +358,10 @@ const AIChat: React.FC = () => {
               >
                 讯飞星辰 MaaS
               </a>
+              {' · '}
+              <Link to="/privacy" className="underline hover:text-indigo-600">
+                隐私政策
+              </Link>
             </p>
           </div>
         </div>

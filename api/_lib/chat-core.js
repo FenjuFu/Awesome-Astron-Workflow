@@ -32,6 +32,26 @@ function selectHits(query) {
   return hits.filter((h) => h.score >= floor).slice(0, TOP_K);
 }
 
+// Persist a chat turn for later analysis. Best-effort: only when the user has
+// consented and Supabase is configured; any failure is swallowed so logging
+// never affects the chat response. Runs server-side with the service_role key.
+async function logChatTurn(env, record) {
+  if (!record.consent) return;
+  if (!env.VITE_SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) return;
+  if (!record.question) return;
+  try {
+    const { supabaseAdmin } = await import('./supabase-admin.js');
+    await supabaseAdmin.from('chat_logs').insert({
+      question: record.question,
+      answer: record.answer || null,
+      model: record.model || null,
+      consent: true,
+    });
+  } catch (e) {
+    console.warn(`[chat] log failed: ${e?.message || e}`);
+  }
+}
+
 function systemPrompt(knowledgeBlock) {
   const base =
     '你是 Astron（讯飞星辰）智能体平台与 Astron RPA 的官方技术支持助手。' +
@@ -99,7 +119,14 @@ export async function runChat(body = {}, env = {}) {
         json: { error: `Upstream API error: ${upstreamRes.status} ${upstreamRes.statusText}`, details: text },
       };
     }
-    return { status: 200, json: text ? JSON.parse(text) : {} };
+    const json = text ? JSON.parse(text) : {};
+    await logChatTurn(env, {
+      consent: body.logConsent === true,
+      question: lastUserMessage(messages),
+      answer: json?.choices?.[0]?.message?.content || '',
+      model,
+    });
+    return { status: 200, json };
   } catch (error) {
     const message = error?.name === 'AbortError' ? 'Upstream request timed out' : (error?.message || 'AI request failed');
     return { status: 502, json: { error: message } };
