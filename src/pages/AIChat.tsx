@@ -41,6 +41,26 @@ function formatChatError(error: unknown) {
   return `抱歉，AI Chat 暂时不可用：${error.message}`;
 }
 
+// Default greeting shown (as an assistant bubble) before the first message.
+const WELCOME_MARKDOWN = `你好！我是 **Astron 学习助手（Learning Assistant）** 🤖
+
+欢迎来到 **iFLYTEK Astron 智能体开源项目**！🚀 Astron 是企业级 AI Agent 开源项目矩阵，涵盖 Agent 工作流编排、RPA 自动化、MCP 工具生态、企业级技能管理、多智能体协同等核心能力，助力打造可规模化落地的 SuperAgents。
+
+请问你有什么需求？希望先体验哪款工具——**AstronClaw**（云端）还是 **Loomy**（本地桌面端）？告诉我，我会为你推荐并引导下一步操作。
+
+- 🌐 项目全景图：[awesome-astron-workflow.dev/landscape](https://awesome-astron-workflow.dev/landscape)
+- 💻 参与项目贡献：[github.com/topics/iflytek-astron](https://github.com/topics/iflytek-astron) —— ⭐ Star ｜ 🍴 Fork ｜ 🐞 Issue ｜ 🔧 PR，参与社区共建即可攒积分换好礼
+- 🎁 社区积分商城：[awesome-astron-workflow.dev/stats](https://awesome-astron-workflow.dev/stats)
+
+欢迎一起交流、体验、共建 AI Agent 开源生态 ❤`;
+
+// Render markdown links as new-tab anchors (used in the greeting and replies).
+const markdownComponents = {
+  a: (props: React.ComponentPropsWithoutRef<'a'>) => (
+    <a {...props} target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80" />
+  ),
+};
+
 const AIChat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -186,9 +206,15 @@ const AIChat: React.FC = () => {
             className="flex-1 min-h-0 overflow-y-auto p-4 space-y-4"
           >
             {messages.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center text-gray-400 space-y-4">
-                <Bot className="w-16 h-16 opacity-20" />
-                <p className="text-lg">开始一段对话吧！您可以向我询问任何编程或工作流相关的问题。</p>
+              <div className="flex justify-start">
+                <div className="flex max-w-[85%] space-x-3 flex-row">
+                  <div className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 text-gray-600">
+                    <Bot className="w-6 h-6" />
+                  </div>
+                  <div className="p-4 rounded-2xl shadow-sm prose prose-sm max-w-none bg-gray-50 text-gray-800 rounded-tl-none border border-gray-100">
+                    <ReactMarkdown components={markdownComponents}>{WELCOME_MARKDOWN}</ReactMarkdown>
+                  </div>
+                </div>
               </div>
             ) : (
               messages.map((msg, idx) => (
@@ -205,7 +231,7 @@ const AIChat: React.FC = () => {
                         ? 'bg-indigo-600 text-white rounded-tr-none' 
                         : 'bg-gray-50 text-gray-800 rounded-tl-none border border-gray-100'
                     }`}>
-                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                      <ReactMarkdown components={markdownComponents}>{msg.content}</ReactMarkdown>
                     </div>
                   </div>
                 </div>
@@ -251,7 +277,15 @@ const AIChat: React.FC = () => {
               </button>
             </div>
             <p className="mt-2 text-[10px] text-gray-400 text-center">
-              Powered by Astron Coding Plan
+              Powered by{' '}
+              <a
+                href="https://maas.xfyun.cn/modelSquare"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-indigo-600"
+              >
+                讯飞星辰 MaaS
+              </a>
             </p>
           </div>
         </div>
