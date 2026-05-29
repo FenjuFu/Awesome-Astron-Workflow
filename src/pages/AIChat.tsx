@@ -46,13 +46,11 @@ const WELCOME_MARKDOWN = `你好！我是 **Astron 学习助手（Learning Assis
 
 欢迎来到 **iFLYTEK Astron 智能体开源项目**！🚀 Astron 是企业级 AI Agent 开源项目矩阵，涵盖 Agent 工作流编排、RPA 自动化、MCP 工具生态、企业级技能管理、多智能体协同等核心能力，助力打造可规模化落地的 SuperAgents。
 
-请问你有什么需求？希望先体验哪款工具——**AstronClaw**（云端）还是 **Loomy**（本地桌面端）？告诉我，我会为你推荐并引导下一步操作。
+请问你有什么需求？希望先体验哪款工具？告诉我，我会为你推荐并引导下一步操作。
 
 - 🌐 项目全景图：[awesome-astron-workflow.dev/landscape](https://awesome-astron-workflow.dev/landscape)
 - 💻 参与项目贡献：[github.com/topics/iflytek-astron](https://github.com/topics/iflytek-astron) —— ⭐ Star ｜ 🍴 Fork ｜ 🐞 Issue ｜ 🔧 PR，参与社区共建即可攒积分换好礼
-- 🎁 社区积分商城：[awesome-astron-workflow.dev/stats](https://awesome-astron-workflow.dev/stats)
-
-欢迎一起交流、体验、共建 AI Agent 开源生态 ❤`;
+- 🎁 社区积分商城：[awesome-astron-workflow.dev/stats](https://awesome-astron-workflow.dev/stats)`;
 
 // Render markdown links as new-tab anchors (used in the greeting and replies).
 const markdownComponents = {
