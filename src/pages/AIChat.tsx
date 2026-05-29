@@ -46,7 +46,8 @@ const AIChat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const previousMessageCountRef = useRef(0);
 
   const BASE_URL = '/api/chat';
   const MODEL = 'astron-code-latest';
@@ -66,11 +67,36 @@ const AIChat: React.FC = () => {
   // Save chat history to localStorage whenever messages change
   useEffect(() => {
     localStorage.setItem('astron_chat_history', JSON.stringify(messages));
-    scrollToBottom();
   }, [messages]);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  useEffect(() => {
+    if (messages.length === 0) {
+      previousMessageCountRef.current = 0;
+      return;
+    }
+
+    const behavior = previousMessageCountRef.current === 0 ? 'auto' : 'smooth';
+    if (messages.length !== previousMessageCountRef.current) {
+      scrollToBottom(behavior);
+    }
+
+    previousMessageCountRef.current = messages.length;
+  }, [messages]);
+
+  useEffect(() => {
+    if (isLoading) {
+      scrollToBottom('smooth');
+    }
+  }, [isLoading]);
+
+  const scrollToBottom = (behavior: ScrollBehavior = 'smooth') => {
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    container.scrollTo({
+      top: container.scrollHeight,
+      behavior,
+    });
   };
 
   const handleSend = async () => {
@@ -156,7 +182,10 @@ const AIChat: React.FC = () => {
           </div>
 
           {/* Chat Messages */}
-          <div className="flex-grow overflow-y-auto p-4 space-y-4 scroll-smooth">
+          <div
+            ref={messagesContainerRef}
+            className="flex-grow overflow-y-auto p-4 space-y-4"
+          >
             {messages.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-gray-400 space-y-4">
                 <Bot className="w-16 h-16 opacity-20" />
@@ -196,7 +225,6 @@ const AIChat: React.FC = () => {
                 </div>
               </div>
             )}
-            <div ref={messagesEndRef} />
           </div>
 
           {/* Input Area */}
