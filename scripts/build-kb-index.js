@@ -62,8 +62,8 @@ function deriveTitle(filePath, content) {
 }
 
 // Split one markdown file into retrieval chunks.
-function chunkMarkdown(filePath, content) {
-  const title = deriveTitle(filePath, content);
+function chunkMarkdown(filePath, content, titleOverride) {
+  const title = titleOverride || deriveTitle(filePath, content);
   const lines = content.split(/\r?\n/);
 
   // Pass 1: break into heading-delimited blocks. A heading is `## ` .. `###### `.
@@ -261,7 +261,204 @@ function collectQaChunks() {
   return { files, chunks: out };
 }
 
-function main() {
+// ---------------------------------------------------------------------------
+// External GitHub docs ingestion: official iFLYTEK / Astron project docs.
+// Fetched from raw.githubusercontent.com at build time (dev machine only —
+// Vercel just downloads the finished index). Files that 404 are skipped, so
+// the manifest can list optional translations/dirs without breaking the build.
+// ---------------------------------------------------------------------------
+
+const GITHUB_BRANCH = 'main';
+const GITHUB_DOCS = [
+  { repo: 'iflytek/astron-agent', label: 'Astron Agent', files: [
+    ['README.md', '项目总览'],
+    ['FAQ.md', '高频问题汇总'],
+    ['CONTRIBUTING.md', '贡献指南'],
+    ['GOVERNANCE.md', '治理规范'],
+    ['GOVERNANCE-zh.md', '治理规范（中文）'],
+    ['AGENTS.md', 'Agent 定义与规范'],
+    ['docs/DEPLOYMENT_GUIDE.md', '标准部署指南'],
+    ['docs/DEPLOYMENT_GUIDE_zh.md', '标准部署指南（中文）'],
+    ['docs/DEPLOYMENT_GUIDE_WITH_AUTH.md', '含鉴权部署'],
+    ['docs/DEPLOYMENT_GUIDE_WITH_AUTH_zh.md', '含鉴权部署（中文）'],
+    ['docs/DEPLOYMENT_GUIDE_WITH_AUTH_RPA.md', '含 RPA 的鉴权部署'],
+    ['docs/DEPLOYMENT_GUIDE_WITH_AUTH_RPA_zh.md', '含 RPA 的鉴权部署（中文）'],
+    ['docs/DEPLOYMENT_FAQ_zh.md', '部署常见问题'],
+    ['docs/CONFIGURATION.md', '配置项说明'],
+    ['docs/CONFIGURATION_zh.md', '配置项说明（中文）'],
+    ['docs/PROJECT_MODULES.md', '模块架构说明'],
+    ['docs/PROJECT_MODULES_zh.md', '模块架构说明（中文）'],
+    ['faq/setup.md', '安装配置 FAQ'],
+    ['faq/config.md', '配置相关 FAQ'],
+    ['faq/features.md', '功能特性 FAQ'],
+    ['faq/models.md', '模型接入 FAQ'],
+    ['faq/troubleshooting.md', '故障排查 FAQ'],
+  ]},
+  { repo: 'iflytek/astron-rpa', label: 'Astron RPA', files: [
+    ['README.md', '项目总览'],
+    ['README.zh.md', '项目总览（中文）'],
+    ['FAQ.md', '高频问题汇总'],
+    ['FAQ.zh.md', '高频问题汇总（中文）'],
+    ['BUILD_GUIDE.md', '构建指南'],
+    ['BUILD_GUIDE.zh.md', '构建指南（中文）'],
+    ['docs/devel/zh-CN/README.md', '开发者指南（中文）'],
+    ['docs/devel/en-US/README.md', '开发者指南（英文）'],
+  ]},
+  { repo: 'iflytek/skillhub', label: 'SkillHub', files: [
+    ['README.md', '项目总览'],
+    ['README_zh.md', '项目总览（中文）'],
+    ['docs/skillhub/introduction.md', '产品介绍'],
+    ['docs/skillhub/quickstart.md', '快速上手'],
+    ['docs/skillhub/faq.md', 'FAQ'],
+    ['docs/skillhub/en/faq.md', 'FAQ（英文）'],
+    ['docs/skillhub/guide/skill-publish.md', '技能发布流程'],
+    ['docs/skillhub/guide/skill-discovery.md', '技能发现'],
+    ['docs/skillhub/guide/namespace.md', '命名空间管理'],
+    ['docs/skillhub/guide/review.md', '审核流程'],
+    ['docs/skillhub/guide/cli.md', 'CLI 工具'],
+    ['docs/skillhub/guide/kubernetes.md', 'Kubernetes 部署'],
+    ['docs/00-product-direction.md', '产品方向'],
+    ['docs/01-system-architecture.md', '系统架构'],
+    ['docs/06-api-design.md', 'API 设计'],
+    ['docs/07-skill-protocol.md', 'Skill 协议规范'],
+    ['docs/09-deployment.md', '部署指南'],
+    ['docs/openclaw-integration.md', '与 OpenClaw 集成'],
+    ['docs/openclaw-integration-en.md', '与 OpenClaw 集成（英文）'],
+  ]},
+  { repo: 'iflytek/astronclaw-tutorial', label: 'AstronClaw 教程', files: [
+    ['docs/guide/astronclaw/introduction.md', 'AstronClaw 产品介绍'],
+    ['docs/guide/astronclaw/getting-started.md', 'AstronClaw 快速开始'],
+    ['docs/guide/astronclaw/skills.md', 'AstronClaw 技能使用'],
+    ['docs/guide/astronclaw/channels.md', 'AstronClaw 渠道配置'],
+    ['docs/guide/astronclaw/scenarios.md', 'AstronClaw 使用场景'],
+    ['docs/guide/astronclaw/billing.md', 'AstronClaw 计费说明'],
+    ['docs/guide/astronclaw/faq.md', 'AstronClaw FAQ'],
+    ['docs/guide/loomy/introduction.md', 'Loomy 产品介绍'],
+    ['docs/guide/loomy/quick-start.md', 'Loomy 快速开始'],
+    ['docs/guide/loomy/models.md', 'Loomy 模型配置'],
+    ['docs/guide/loomy/toolbox.md', 'Loomy 工具箱'],
+    ['docs/guide/loomy/scheduled-tasks.md', 'Loomy 定时任务'],
+    ['docs/guide/loomy/remote-control.md', 'Loomy 远程控制'],
+    ['docs/guide/loomy/scenarios.md', 'Loomy 使用场景'],
+    ['docs/guide/loomy/faq.md', 'Loomy FAQ'],
+  ]},
+  { repo: 'harnessclaw/harnessclaw', label: 'HarnessClaw 桌面端', files: [
+    ['README.md', '项目总览'],
+    ['README_zh.md', '项目总览（中文）'],
+    ['CHANGELOG.md', '版本更新记录'],
+    ['CHANGELOG_zh.md', '版本更新记录（中文）'],
+    ['docs/db.md', '数据库设计'],
+    ['docs/architecture/user-question-sequence.md', '用户提问序列架构'],
+  ]},
+  { repo: 'harnessclaw/harnessclaw-engine', label: 'HarnessClaw 引擎', files: [
+    ['README.md', '项目总览'],
+    ['README_zh.md', '项目总览（中文）'],
+    ['CHANGELOG.md', '版本更新记录'],
+    ['docs/api/console-api.md', 'Console API 文档'],
+    ['docs/api/tools-catalog.md', '工具目录'],
+    ['docs/protocols/websocket.md', 'WebSocket 协议'],
+  ]},
+  { repo: 'iflytek/iFly-Skills', label: '讯飞官方技能包', files: [
+    ['README.md', '技能集总览'],
+    ['README_zh.md', '技能集总览（中文）'],
+    ['ifly-hyper-tts/README.md', '超拟人语音合成'],
+    ['ifly-hyper-tts/README_zh.md', '超拟人语音合成（中文）'],
+    ['ifly-speed-transcription/README.md', '快速语音转写'],
+    ['ifly-speed-transcription/README_zh.md', '快速语音转写（中文）'],
+    ['ifly-ocr-invoice/README.md', '发票 OCR'],
+    ['ifly-ocr-invoice/README_zh.md', '发票 OCR（中文）'],
+    ['ifly-pdf-image-ocr/README.md', 'PDF/图片 OCR'],
+    ['ifly-pdf-image-ocr/README_zh.md', 'PDF/图片 OCR（中文）'],
+    ['ifly-image-understanding/README.md', '图像理解'],
+    ['ifly-image-understanding/README_zh.md', '图像理解（中文）'],
+    ['ifly-translate/README.md', '文本翻译'],
+    ['ifly-translate/README_zh.md', '文本翻译（中文）'],
+    ['ifly-text-proofread/README.md', '文本纠错'],
+    ['ifly-text-proofread/README_zh.md', '文本纠错（中文）'],
+    ['ifly-video-translate/README.md', '视频翻译'],
+    ['ifly-video-translate/README_zh.md', '视频翻译（中文）'],
+    ['ifly-voiceclone-tts/README.md', '声音克隆 TTS'],
+    ['ifly-voiceclone-tts/README_zh.md', '声音克隆 TTS（中文）'],
+    ['ifly-contract-intelligence-review/README.md', '合同智能审核'],
+    ['ifly-contract-intelligence-review/README_zh.md', '合同智能审核（中文）'],
+  ]},
+];
+
+// Drop the leading H1 so chunkMarkdown doesn't treat the whole README as
+// skippable preamble; the human-readable title comes from titleOverride.
+function stripFirstH1(md) {
+  return md.replace(/^#\s+.+$/m, '').replace(/^\s+/, '');
+}
+
+const FETCH_TIMEOUT_MS = 15_000;
+const FETCH_ATTEMPTS = 4;
+
+// raw.githubusercontent.com is unreliable from some networks, so each file is
+// tried against multiple mirrors (jsDelivr CDN is usually reachable) with a few
+// retries and a per-attempt timeout. A 404 on a mirror is treated as "this file
+// doesn't exist" and short-circuits (no point retrying optional translations).
+function mirrorsFor(repo, file) {
+  // jsDelivr CDN first — it's reliably reachable where raw.githubusercontent.com
+  // often times out; raw is kept only as a secondary fallback.
+  return [
+    `https://cdn.jsdelivr.net/gh/${repo}@${GITHUB_BRANCH}/${file}`,
+    `https://raw.githubusercontent.com/${repo}/${GITHUB_BRANCH}/${file}`,
+  ];
+}
+
+async function fetchOnce(url) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  try {
+    const res = await fetch(url, { headers: { 'User-Agent': 'astron-kb-builder' }, signal: controller.signal });
+    if (res.status === 404) return { notFound: true };
+    if (!res.ok) return { error: `HTTP ${res.status}` };
+    return { text: await res.text() };
+  } catch (e) {
+    return { error: e?.name === 'AbortError' ? 'timeout' : (e?.message || String(e)) };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// Returns the file text, or null if it genuinely 404s / is unreachable.
+async function fetchDoc(repo, file) {
+  const urls = mirrorsFor(repo, file);
+  for (let attempt = 0; attempt < FETCH_ATTEMPTS; attempt++) {
+    for (const url of urls) {
+      const r = await fetchOnce(url);
+      if (r.text != null) return r.text;
+      if (r.notFound) return null; // file doesn't exist — don't keep retrying
+    }
+    await new Promise((res) => setTimeout(res, 400 * (attempt + 1)));
+  }
+  return null;
+}
+
+async function fetchGithubChunks() {
+  const out = [];
+  let okFiles = 0;
+  let missFiles = 0;
+  for (const { repo, label, files } of GITHUB_DOCS) {
+    for (const [file, desc] of files) {
+      const md = await fetchDoc(repo, file);
+      if (!md || md.trim().length < MIN_CHUNK_CHARS) {
+        console.warn(`[gh] skipped ${repo}/${file}`);
+        missFiles++;
+        continue;
+      }
+      const title = `${label} - ${desc}`;
+      for (const c of chunkMarkdown(`${repo}/${file}`, stripFirstH1(md), title)) {
+        c.section = c.section || file; // fall back to the file path for context
+        out.push(c);
+      }
+      okFiles++;
+    }
+  }
+  return { okFiles, missFiles, chunks: out };
+}
+
+async function main() {
   if (!fs.existsSync(sourceRoot)) {
     console.error(`Source directory not found: ${sourceRoot}`);
     console.error('Pass the path to "01_可直接训练" as the first argument.');
@@ -292,10 +489,24 @@ function main() {
   for (const c of qa.chunks) addChunk(c);
   const qaCount = chunks.length - faqCount;
 
+  // 3) Official GitHub project docs (fetched at build time; failures are
+  // non-fatal so the index still builds from local sources offline).
+  let ghCount = 0;
+  let ghFiles = 0;
+  try {
+    const gh = await fetchGithubChunks();
+    for (const c of gh.chunks) addChunk(c);
+    ghCount = chunks.length - faqCount - qaCount;
+    ghFiles = gh.okFiles;
+    console.log(`GitHub docs: ${gh.okFiles} files ok, ${gh.missFiles} skipped -> ${ghCount} chunks (after dedup)`);
+  } catch (e) {
+    console.warn(`[gh] GitHub docs stage failed: ${e?.message || e} — building without them`);
+  }
+
   const out = {
     generatedAt: new Date().toISOString(),
     sourceRoot,
-    fileCount: files.length + qa.files,
+    fileCount: files.length + qa.files + ghFiles,
     count: chunks.length,
     chunks,
   };
@@ -303,8 +514,12 @@ function main() {
   fs.writeFileSync(OUT_PATH, JSON.stringify(out, null, 2), 'utf8');
   console.log(`FAQ/cases: ${files.length} files -> ${faqCount} chunks`);
   console.log(`QA extracts: ${qa.files} files -> ${qaCount} chunks (after filtering + dedup)`);
+  console.log(`GitHub docs: ${ghFiles} files -> ${ghCount} chunks`);
   console.log(`Total: ${chunks.length} chunks`);
   console.log(`Wrote ${OUT_PATH}`);
 }
 
-main();
+main().catch((e) => {
+  console.error('Build failed:', e?.message || e);
+  process.exit(1);
+});
