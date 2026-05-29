@@ -35,3 +35,10 @@ scripts/mongodb-keepalive.js
 tmp_index_bundle.js
 tmp_stats_page.html
 tmp_vendor_bundle.js
+
+# KB index — contains group-chat content; stored in a private Supabase bucket
+# and fetched at build time by the "prebuild" hook (scripts/fetch-kb-index.js).
+api/_lib/kb-index.json
+
+# Claude Code local lock file
+.claude/scheduled_tasks.lock

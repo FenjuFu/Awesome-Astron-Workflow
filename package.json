@@ -5,12 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/fetch-kb-index.js",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "check": "tsc -b --noEmit",
     "check-registrations": "node --env-file=.env scripts/check-registrations.js",
-    "sync-workflows": "node scripts/sync-workflows.js"
+    "sync-workflows": "node scripts/sync-workflows.js",
+    "kb:build": "node scripts/build-kb-index.js",
+    "kb:upload": "node --env-file=.env scripts/upload-kb-index.js",
+    "build-kb": "npm run kb:build && npm run kb:upload"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
