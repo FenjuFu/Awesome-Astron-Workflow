@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a href="/stats" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  {t('nav.about')}
+                  {t('nav.stats')}
                 </a>
               </li>
             </ul>

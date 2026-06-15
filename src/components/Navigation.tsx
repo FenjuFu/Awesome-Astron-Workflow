@@ -41,16 +41,17 @@ const Navigation: React.FC = () => {
   };
 
   const navItems: NavItem[] = [
-    { href: '/#home', label: t('nav.home') },
     {
-      href: '/#workflows',
-      label: t('nav.workflows'),
+      href: '/#home',
+      label: t('nav.home'),
       children: [
+        { href: '/#workflows', label: t('nav.workflows') },
         { href: '/#way-to-super-agent', label: t('nav.wayToSuperAgent') },
         { href: '/#community', label: t('nav.community') },
-        { href: '/landscape', label: t('nav.landscape') },
+        { href: '/#about', label: t('nav.about') },
       ],
     },
+    { href: '/landscape', label: t('nav.landscape') },
     {
       href: '/activities',
       label: t('nav.activities'),
@@ -59,7 +60,7 @@ const Navigation: React.FC = () => {
       ],
     },
     { href: '/chat', label: t('nav.chat') },
-    { href: '/stats', label: t('nav.about') },
+    { href: '/stats', label: t('nav.stats') },
   ];
 
   const itemClass = 'whitespace-nowrap text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium transition-colors duration-200';
