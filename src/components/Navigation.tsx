@@ -60,7 +60,6 @@ const Navigation: React.FC = () => {
     },
     { href: '/chat', label: t('nav.chat') },
     { href: '/stats', label: t('nav.about') },
-    { href: '/#contribute', label: t('nav.contribute') },
   ];
 
   const itemClass = 'whitespace-nowrap text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium transition-colors duration-200';

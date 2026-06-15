@@ -5,7 +5,6 @@ import WorkflowShowcase from '../components/WorkflowShowcase';
 import About from '../components/About';
 import CommunityVibeVault from '../components/CommunityVibeVault';
 import WayToSuperAgent from '../components/WayToSuperAgent';
-import Contribute from '../components/Contribute';
 import Footer from '../components/Footer';
 
 const Home: React.FC = () => {
@@ -18,7 +17,6 @@ const Home: React.FC = () => {
         <WayToSuperAgent />
         <CommunityVibeVault />
         <About />
-        <Contribute />
       </main>
       <Footer />
     </div>

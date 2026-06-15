@@ -51,11 +51,6 @@ const Footer: React.FC = () => {
                   {t('nav.about')}
                 </a>
               </li>
-              <li>
-                <a href="/#contribute" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  {t('nav.contribute')}
-                </a>
-              </li>
             </ul>
           </div>
 

@@ -248,7 +248,9 @@ const WorkflowShowcase: React.FC = () => {
               {t('workflows.ctaDescription')}
             </p>
             <a
-              href="#contribute"
+              href="https://github.com/your-username/Awesome-Astron-Workflow"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center px-8 py-4 bg-white text-indigo-600 font-bold rounded-xl hover:bg-indigo-50 transition-colors duration-200 shadow-lg"
             >
               {t('workflows.contribute')}
