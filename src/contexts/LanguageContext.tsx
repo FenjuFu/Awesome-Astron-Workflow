@@ -388,6 +388,7 @@ const translations = {
     'way.slides.huqi': 'Astron Quick Build and Apply Agent by HuQi',
     'way.slides.rpa': 'Practical Integration of Astron Agent and RPA',
     'way.slides.zhutailong': 'SkillHub and AstronClaw Practice (AtomGit at Qingdao City College) by Zhu Tailong',
+    'way.slides.deployRpa': 'Astron Agent Open Platform Deployment and RPA Automation Integration',
 
     'footer.description': 'A curated collection of powerful AI-driven workflows for Astron automation platform.',
     'footer.quickLinks': 'Quick Links',
@@ -817,6 +818,7 @@ const translations = {
     'way.slides.huqi': 'Astron 助力智能体快速构建与应用 by 胡琦',
     'way.slides.rpa': 'Astron Agent 与 RPA 的实战融合',
     'way.slides.zhutailong': 'SkillHub 与 AstronClaw 实践 (AtomGit 走进青岛城市学院) by 朱太龙',
+    'way.slides.deployRpa': 'Astron Agent 开源平台的部署流程及 RPA 自动化集成方案',
 
     'footer.description': '专为 Astron 自动化平台设计的强大 AI 驱动工作流精选集合。',
     'footer.quickLinks': '快速链接',
