@@ -1,0 +1,1206 @@
+[
+  {
+    "question": "@某用户 开源的相关问题可以优先在issue上面提，着急的问题可以在群里交流也行",
+    "answer": "部署了，打不开"
+  },
+  {
+    "question": "我这里已经部署好了，但是不知道哪里配置的问题，直接就打不开404。\n\n我就是按照文档来配置的\n我在看看把\n\n404是不是这里配置的原因",
+    "answer": "需要您提供一些docker compose 日志\n参数配置错误，请检查下.env文件\n按照我们提供的配置文件说明文档调整\n您提个issue，对应的技术人员会快速对接的\n方便么？"
+  },
+  {
+    "question": "怎么一直报这个错误\n\n这个没有起来，是不是这个原因\n我也是\n这个看那个容器的日志？",
+    "answer": "能提供一些日志么？\n\n我本地直接pull 修改配置 up一下就OK的\n这个组建应该要正常启动的。\n\n这样，您清理赶紧本地的docker，然后pull下最新的image和compose文件，然后修改.env 再启动试试"
+  },
+  {
+    "question": "@某用户，可以给我们提issue\n网页版问题??",
+    "answer": "好"
+  },
+  {
+    "question": "晓悟机器人体验3个月到期后怎么办呢？个人商业版个人使用怎么收费呢？",
+    "answer": "@某用户"
+  },
+  {
+    "question": "晓悟机器人体验3个月到期后怎么办呢？个人商业版个人使用怎么收费呢？\"",
+    "answer": "@某用户 您看看先填个工单？https://www.sobot.com/workorder/index.html?sysNum=1f851a5acb6e4f408a3e3e5487750951&templateId=a54ce07cf8284787b19df56e15360793&formTitleFlag=1"
+  },
+  {
+    "question": "晓悟机器人体验3个月到期后怎么办呢？个人商业版个人使用怎么收费呢？\"",
+    "answer": "@某用户 您好，当前个人使用没有体验期限的限制"
+  },
+  {
+    "question": "老师们，1024演示那个京东下单的RPA是怎么搭建的，流程可以分享一下吗",
+    "answer": "大概是这样"
+  },
+  {
+    "question": "您好，RPA智能录制的操作流程，保存后就看不到了，这个是哪里操作不对吗@某用户",
+    "answer": "@某用户"
+  },
+  {
+    "question": "就一直遇到报错\n\n哪位老师可以帮忙看一下，非常感谢\n切换网络环境也不行\n本地docker desktop是登录状态",
+    "answer": "看看是否docker对应的registry未login\n@某用户\ndocker login\n然后在做compose up\n本地镜像都拉到了咩"
+  },
+  {
+    "question": "应该是权限问题\n\n哦\n你要那个\n\n我看了第一个\n\n也没啥\n\n太多了，看不完，我deepseek了一下\n有人有相同问题吗？\n\n这个password在哪里\n\n添加了那个password\n\n现在连模型都找不到了\n我直接重启了\n改了password，然后重启\n依旧如此，还是上传文件403，还是访问不到\n\n哎，我电脑本地自己做mcp服务器，直接在cursor里面用，没啥大事，就是docker，一用到docker不管是centos还是各自红队靶场都是这种问题，我都在考虑直接卸了\n\n我都没用这个模型，连连接都没有，都还能有tokens消耗\n主要是我一直在试，怎么连接，换了cursor ，trae，vscode\n不知道怎么搞的\n都没有连接，还是有tokens消耗\n我还没试\n我试了一试用那个HTTP\n那个应该可以\n不知道主办方可不可以直接搭在本地\n对?\n应该是docker自己的问题",
+    "answer": "对的，需要日志看看具体是哪里权限有问题\n是hub组件的日志\ndocker ps一下\n看这个提示感觉是请求模型参数有问题，认证没过\n你看看官方deployment文档，搜索下这个key，我记得有写\ndown -v 然后再up -d ，好像不支持热加载\n重启了不\n那就不知道了，提个issue吧，响应还挺快的\n我用的ultra那个模型，没碰到啥问题\n编程场景，这个模型效果好么\n你也参加了么"
+  },
+  {
+    "question": "RPA智能录取，无法捕获保存，进行后续运行操作无反应?@某用户@某用户\n\n您好，麻烦同意一下好友申请，我私发过来",
+    "answer": "\"拾光\nRPA智能录取，无法捕获保存，进行后续运行操作无反应?@某用户@某用户\n------\n@某用户 麻烦能拍一个视频看下什么现象吗"
+  },
+  {
+    "question": "问下智能体的对话日志有单独管理界面吗？比如可以检索到某个智能体的对话记录 统计最多点赞点踩这种",
+    "answer": "后台管理"
+  },
+  {
+    "question": "想问一下 这个问题是怎么回事呀\n重启了一下docker好了现在",
+    "answer": "提议提供下日志 nginx组件"
+  },
+  {
+    "question": "但是不管问什么都提示请求失败\n这个功能怎么用呢",
+    "answer": "@某用户 看看~"
+  },
+  {
+    "question": "请问下这个平台本地部署后，工作流编排功能是否能正常使用？跟云平台的功能是完全一样的吗？",
+    "answer": "@某用户"
+  },
+  {
+    "question": "请问我在本地使用工具显示报错是为什么？在.env里面也配置了平台的API\n\n\n\n\n在插件的测试里面可以用",
+    "answer": "能发下日志不\n或者去社区提个issue\n@某用户"
+  },
+  {
+    "question": "这个需要买了，才能用吗？\n\n还总是这个问题\n配了\n我现在提交了issue了\n在agent页面里面。我现在在尝试重新安装docker。我发现之前的ChatGPT web vue 同样出现此问题，应该在docker问题\nhttps://github.com/iflytek/astron-agent/issues/493\n这是我遇到是三个大问题，每个都使得这个agent 无法使用",
+    "answer": "\"? 粥周褶皱?\n[Photo]\"\n------\n@某用户 粥周褶皱? 您的余量是充足的 免费的包还没用过\n.env 文件配 api key等了吗？\n好的 issue链接您也发下\n\"? 粥周褶皱?\nhttps://github.com/iflytek/astron-agent/issues/493\"\n------\n好的@某用户 Guo 看看请技术同学回复issue/答疑"
+  },
+  {
+    "question": "你也来一篇？\n求产求产 这必须安排一波群发",
+    "answer": "也不是不行\n目前就是那种不怎么会用的状态 后期补一篇"
+  },
+  {
+    "question": "请问，大家有用到生产的吗？",
+    "answer": "《HAI领导力-Weely》HAI人本智能实验室周刊 187期\n精选值得关注的全球AI创新案例，帮助投资人、企业家、创业者拨云见日，把握AI时代机遇\n希望对大家有所帮助[Coffee] (招募编委会伙伴)"
+  },
+  {
+    "question": "\"某用户\n[Link]在本地部署了一套超轻量的 Agent 工作流工具\"\n------\n@某用户 您看看这篇实践呢\n\"船长@某用户\n[HAI领导力-Weekly-HAI人本智能实验室周刊-187.pdf]\"\n------\n已踢，警惕",
+    "answer": "好的\n我之前测试joyagent， 感觉开源的代码只能测试一下，没法上生产"
+  },
+  {
+    "question": "\"某用户\n[Link]在本地部署了一套超轻量的 Agent 工作流工具\"\n------\n这篇文章也有提到~",
+    "answer": "搭建一下 研究研究"
+  },
+  {
+    "question": "astron不是自研的吗？\n@某用户",
+    "answer": "是自研的"
+  },
+  {
+    "question": "@某用户",
+    "answer": "\"Andu\n@某用户\n------\n@某用户 支持"
+  },
+  {
+    "question": "@某用户，问下平台支持自定义MCP吗？没看到配置入口呢\n@某用户\n\n@某用户，部署后完全没法用起来，新建工作流、模型、应用都失败了",
+    "answer": "支持，自定义MCP的配置入口在工作流 工具节点中\n\n\n\"Andu：\n@某用户\n------\n@某用户 1. 确保您在讯飞开放平台获取的凭证正确配置:\nXINGHUO_APP_ID=您的应用ID  \nXINGHUO_APP_SECRET=您的应用密钥  \nXINGHUO_RAG_URL=http://chatdoc.xfyun.cn/\n\n2. 检查数据集ID配置\n创建数据集需要预先配置XINGHUO_DATASET_ID:\nXINGHUO_DATASET_ID=您的数据集ID\n\nhttps://deepwiki.com/search/rag-63343-astronagent-docs-xin_94c2f8e5-9bc8-4a54-b3d0-34e3ac16a54a?mode=fast 供您参考"
+  },
+  {
+    "question": "能看下具体的错误日志么？\nastron-agent-console-hub\n可以的",
+    "answer": "需要看哪个容器的日志？\n\n@某用户 Guo?加你微信了，私聊？不占用群资源"
+  },
+  {
+    "question": "鼓励大家star fork issue pr积累贡献~https://oss-compass.org/analyze/insight/sip39yat?range=6M&tab=contributor&mileage=%5B%22core%22%2C%22regular%22%2C%22guest%22%5D\n\n@某用户",
+    "answer": "我有个rpa 问题，咨询哪位老师比较合适，谢谢\n这个点下班了，明天再麻烦各位老师??"
+  },
+  {
+    "question": "@某用户\n我也想学习一下",
+    "answer": "您真贴心"
+  },
+  {
+    "question": "@某用户，我的rpa 部署在台式机了\n互相学习，我也刚用一个月不到????",
+    "answer": "嗯嗯"
+  },
+  {
+    "question": "at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:926)\n\n\tat org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:906)\n\n\tat org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:741)\n\n\tat org.springframework.security.oauth2.jwt.NimbusJwtDecoder$JwkSetUriJwtDecoderBuilder$SpringJWKSource.fetchJwks(NimbusJwtDecoder.java:501)\n\n\tat org.springframework.cache.support.NoOpCache.get(NoOpCache.java:78)\n\n\tat org.springframework.security.oauth2.jwt.NimbusJwtDecoder$JwkSetUriJwtDecoderBuilder$SpringJWKSource.getJWKSet(NimbusJwtDecoder.java:515)\n\n\t... 101 common frames omitted\n\nCaused by: java.net.UnknownHostException: casdoor\n\n\tat java.base/sun.nio.ch.NioSocketImpl.connect(Unknown Source)\n\n\tat java.base/java.net.Socket.connect(Unknown Source)\n\n\tat java.base/java.net.Socket.connect(Unknown Source)\n\n\tat java.base/sun.net.NetworkClient.doConnect(Unknown Source)\n\n\tat java.base/sun.net.www.http.HttpClient.openServer(Unknown Source)\n\n\tat java.base/sun.net.www.http.HttpClient.openServer(Unknown Source)\n\n\tat java.base/sun.net.www.http.HttpClient.\n(Unknown Source)\n\n\tat java.base/sun.net.www.http.HttpClient.New(Unknown Source)\n\n\tat java.base/sun.net.www.http.HttpClient.New(Unknown Source)\n\n\tat java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)\n\n\tat java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)\n\n\tat java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)\n\n\tat java.base/sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)\n\n\tat org.springframework.http.client.SimpleClientHttpRequest.executeInternal(SimpleClientHttpRequest.java:79)\n\n\tat org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:71)\n\n\tat org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:81)\n\n\tat org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:900)\n\n\t... 105 common frames omitted\n?@某用户\n本地搭建的服务，新建工作流报错，麻烦看下这是什么原因？",
+    "answer": "@。?让旭东他们看看"
+  },
+  {
+    "question": "老师，我这是这个问题：循环30组：点击选择框，点击下拉框（懒加载_虚拟列表）\n\n大概操作：点1框，选1下拉；点2【+】；点3框，选3下拉；点4【+】；点5框，点5下拉...... \n\n下拉的菜单是懒加载的虚拟列表，只能显示10个。只要运行超过10组，第十一组的下拉列表就需要滚动鼠标下拉。已经选择过的也不会消失。\n\n@某用户，我这是这个问题：循环30组：点击选择框，点击下拉框（懒加载_虚拟列表）\n\n大概操作：点1框，选1下拉；点2【+】；点3框，选3下拉；点4【+】；点5框，点5下拉...... \n\n下拉的菜单是懒加载的虚拟列表，只能显示10个。只要运行超过10组，第十一组的下拉列表就需要滚动鼠标下拉。已经选择过的也不会消失。\n@某用户\n头10个好选择，下拉菜单是虚拟列表，到第十一个就需要向下滚动鼠标轴。\n整个下拉菜单是有200+，选择过的不会隐藏掉，也无法通过输入选择，只能往下滚鼠标。",
+    "answer": "您好，是否可以录个视频大概演示一下"
+  },
+  {
+    "question": "@某用户，问下这边的多租户支持，有具体文档没有？",
+    "answer": "“论文推荐/检索 + 存储”的 Astron 工作流\n“论文推荐/检索 + 存储”的 Astron 工作流"
+  },
+  {
+    "question": "docker部署完后，创建工作流服务器会开小差怎么办，配置了PLATFORM的三个参数和SPARK_API_PASSWORD，还需要做什么吗？",
+    "answer": "\"某用户\ndocker部署完后，创建工作流服务器会开小差怎么办，配置了PLATFORM的三个参数和SPARK_API_PASSWORD，还需要做什么吗？\"\n------\n@某用户 请提供更多的日志\n\n可以在astron-agent/docker/astronAgent 目录下 执行下面的命令\n\ndocker compose logs >> logs.txt\n\"Andu：\n@某用户，问下这边的多租户支持，有具体文档没有？\"\n------\n@某用户 抱歉迟复~也推荐大家提issue才不会漏回还可以攒开源贡献；https://github.com/iflytek/astron-agent/tree/main/core/tenant 多租户服务位于核心平台服务的 core/tenant/ 目录下，采用 Go 语言实现，专门用于处理多租户相关的逻辑；如果您是问具体的文档，目前代码库中没有找到专门的多租户文档。多租户功能主要通过 core-tenant 服务、数据库表结构(space/enterprise 模型)和权限系统来实现。如果需要更详细的使用文档,建议查看部署指南 docker/astronAgent/README_zh.md 中的配置说明部分；同时https://github.com/iflytek/astron-agent/discussions/525 供您参考\n\"\n[logs.txt]\"\n------\n@某用户 @。 看看~"
+  },
+  {
+    "question": "AstronRPA这个怎么用啊\n请问有视频教程吗",
+    "answer": "rpa我在用，互相学习"
+  },
+  {
+    "question": "Astron-RPA是免费商用吗？\n收费项是什么？",
+    "answer": "！不好意思，我用的是讯飞晓悟RPA"
+  },
+  {
+    "question": "讯飞晓悟RPA怎么试用\n小白怎么才能用上",
+    "answer": "晓悟开源之后现在就是叫AstronRPA哈\n可以从星辰agent官网中rpa节点用到rpa"
+  },
+  {
+    "question": "@某用户，我前天咨询的循环点击懒加载下拉菜单的，您那边有什么方法吗~  我有点点基础，基本可以自己解决\n但是没什么思路\n懒加载我这边基本可以解决",
+    "answer": "这个有些复杂，还在让同事看\n您这个网页有吗，可以发我们试试"
+  },
+  {
+    "question": "Astron Agent 结合AstronRPA的使用是怎么用？有相关文档吗？",
+    "answer": "astron-agent 可以调用 astronrpa 里面编排好的rpa脚本。相对browseruse类的mcp tool，rpa在准确性、执行效率、token的消耗想都有非常大的优势。"
+  },
+  {
+    "question": "开源版的怎么添加模型，以及开源版的使用docker compose -f docker-compose-with-auth-rpa.yaml up -d  部署的agent和rpa, .env 如何配置rpa?",
+    "answer": "mcp是起在openapi-service上的，所以没修改的话是8020端口"
+  },
+  {
+    "question": "开源版本地部署后，如何添加模型？\n\"\n[图片]\"\n------\n@某用户 openai 兼容的LLM 如何设置？\nrpa 也不知道怎么配置，使用docker compose -f docker-compose-with-auth-rpa.yaml up -d  部署的agent和rpa",
+    "answer": "\"和谐的灵感：\n[图片]\"\n------\n那跟我之前的报错还不一样，我之前是这样的\n\n@某用户\n\"\n开源版本地部署后，如何添加模型？\"\n------\n同问，我本地部署的模型，是OpenAi风格的api，填到这里一直显示url解码错误"
+  },
+  {
+    "question": "RPA该怎么用呢？资源管理那里新增RPA，增加的云端的RPA\n下载了\n我下载的RPA客户端是iflyrpa_5.1.2_x64_zh-CN.msi\n我在这个客户端创建一个api key，把这个key复制到本地部署的rpa里，提示：RPA api returned non-zero code: null, message: null\n我希望是使用本地部署的RPA，配置Astron Agent使用。客户端的安装包是否有误？",
+    "answer": "你下载rpa的客户端了吗\n你用公有云版本的RPA的API_Key配置到你自己部署的Agent平台上吗\nhttps://github.com/iflytek/astron-rpa/releases/tag/v1.0.0\n这是开源版本的RPA包"
+  },
+  {
+    "question": "这是开源版本的RPA包\"",
+    "answer": "@某用户 是需要用源码 构建客户端安装包吗？"
+  },
+  {
+    "question": "@某用户，https://api.xxxx.xx",
+    "answer": "我用的不是gpt\n本地部署的，也没有API密钥"
+  },
+  {
+    "question": "国内的 deepseek等 有配置成功的吗？我的下拉框都是空的？是数据库没初始化成功吗？\n@某用户 rpa 客户端启动一直卡着，是什么原因？是否是服务端url 没配置对的原因？\n因为初始打开，是默认的服务端url",
+    "answer": "是的，你要换成自己的URL"
+  },
+  {
+    "question": "我改了这个里面的casdoor 的组织、应用，改成我新增的组织了，如何验证我修改成功了。（因为我现在rpa客户端的登录页面都显示不出来了，没改的时候，只是用户名、密码不对）\n对 改成我自己服务器的url了\n\"\n[图片]\"\n------\n我把这个env，又使用默认的了，我在那个组织下 建用户算了，谢谢你\n\"\n默认的可以进去是吗\"\n------\n@某用户 对，不知是不是哪里做了设置，我只能在默认的应用下 再建一下用户\n机器人里面的AI 大模型 如何配置deepseek的token?",
+    "answer": "你现在RPA那个URL改成什么了，http://xxxxxx:32742吗\n默认的可以进去是吗\n好的，我来验证一下"
+  },
+  {
+    "question": "Rpa这块 大家有自己搭建过吗？",
+    "answer": "我只用了晓梧版本的rpa"
+  },
+  {
+    "question": "@某用户",
+    "answer": "不是免费吗？"
+  },
+  {
+    "question": "我看这个dify的url是官网的吗？RPA的dify流程，需要配自己项目的路径，以及在RPA页面是怎么设置？ 是否有相关文档？\nRPA里的LLM 又如何设置呢？",
+    "answer": "\"\n我看这个dify的url是官网的吗？RPA的dify流程，需要配自己项目的路径，以及在RPA页面是怎么设置？ 是否有相关文档？\"\n------\n@某用户 目前开源版是写死了官网的URL，你现在想使用的话可以直接修改这个链接为你自己项目的链接。\nLLM目前是在.env里配置\n\nAICHAT_BASE_URL=\"\"\nAICHAT_API_KEY=\"\"\n这两天会更新一下，把这几个配置都放到客户端去"
+  },
+  {
+    "question": "怎么找到创建的RPA流程源码文件目录\n是的\n这项目砸了影刀的锅",
+    "answer": "您是指每个机器人的源码？\n没有源码，按行解析的"
+  },
+  {
+    "question": "开源的RPA:   1. 我想配自己的dify url, 2. 以及发布成mcp 在dify使用；  3. 配置自己的LLM，都如何配呢？比如修改dify url，可以直接去容器里改python代码吗？是哪个容器?\n好的 谢谢你",
+    "answer": "openapi-service，你早上贴的代码是对的"
+  },
+  {
+    "question": "为啥我加入没有触发自动欢迎动作？\n这里可以讨论AstronRPA的问题么？\n你们的RPA工具，支持解析和操作微信或者企微界面元素么？\n那微信3.9的可以元素识别咯？\n企微呢？\n哦，好的，",
+    "answer": "可以的\n新版微信只能用图像识别\n企业微信也是一样，新版只能图像识别\n\"Rn氡：\n那微信3.9的可以元素识别咯？\"\n------\n@某用户 是的"
+  },
+  {
+    "question": "@某用户",
+    "answer": "哦 ，看到了"
+  },
+  {
+    "question": "@某用户 RPA客户端，我看到官方介绍是主要支持windows，请问支持mac和linux不？",
+    "answer": "应该不支持"
+  },
+  {
+    "question": "我在b站搜了一圈，咋没发现一个astronRPA的视频？太低调了吧",
+    "answer": "不支持"
+  },
+  {
+    "question": "有适配新版微信的计划吗？",
+    "answer": "RPA编排界面的 CV图像 组件，是调用服务端的资源，还是调用客户端的资源来完成的呀"
+  },
+  {
+    "question": "Astron Agent搭建的一个 AI 驱动的英语作文批改与反馈助手。用户提交作文内容后，Agent 将提供结构化评价，指出语法与表达问题，给出修改建议与示例句/段，并按雅思或 CEFR 标准估计作文等级。",
+    "answer": "我就是看这篇文章好到你们的"
+  },
+  {
+    "question": "两个question。1专为企业搭建？个人也能用免费的吧？2 没看到智能体调rpa的操作，或者和rpa的集成啊？",
+    "answer": "企业级，是说功能牛，安全性高"
+  },
+  {
+    "question": "这两个网页打开是全英文的吧，还是什么原因？",
+    "answer": "\"某用户\n两个question。1专为企业搭建？个人也能用免费的吧？2 没看到智能体调rpa的操作，或者和rpa的集成啊？\"\n------\n@某用户 你试用下官方版星辰agent应该就有感觉了"
+  },
+  {
+    "question": "@某用户。我肯定会去体验的。感谢分享",
+    "answer": "RPA的ocr 都不能用，是需要配置什么吗？"
+  },
+  {
+    "question": "RPA的ocr 都不能用，是需要配置什么吗？\"",
+    "answer": "@某用户 .env里的\n\nXFYUN_APP_ID=\"\"\nXFYUN_API_SECRET=\"\"\nXFYUN_API_KEY=\"\""
+  },
+  {
+    "question": "到哪里申请这些",
+    "answer": "https://www.xfyun.cn/"
+  },
+  {
+    "question": "我昨天申请了晓悟RPA的试用，大概多久有答复？\n怎样操作？\n免费试用还是3个月么？\nhttps://agent.xfyun.cn/ ，是这个饿？\n刚刚收到申请通过邮件了",
+    "answer": "现在不需要这样申请了，大家可以直接从Agent的RPA节点自动注册\n一样的\n星辰Agent官网"
+  },
+  {
+    "question": "讯飞的RPA效果这样？",
+    "answer": "正常使用，教程太少\n基本没有"
+  },
+  {
+    "question": "模型参数不支持多级配置吗？\n\n\"chat_template_kwargs\": {\n    \"thinking\": true\n  }\n比如这样",
+    "answer": "应该把申请去掉，直接让用户使用，也不要限制3个月，不然怎么和别的rpa抗衡"
+  },
+  {
+    "question": "请问工作流发布的MCP工具，放在另一个工作流里Agent，调试报错：\n\n应该如何解决\n应用未绑定工作流\n我试试\n还是不行，请问逻辑是这样吗：\n\n还是工作流发布为MCP后，必须等待审核通过才可以\n或者可能是我没有给应用里用到LLM领取额度吧，我再试试",
+    "answer": "发布成API一下，然后需要绑定一下应用\n不需要审核，看下你绑定的应用是不是你订单管理里面appid"
+  },
+  {
+    "question": "各位大佬，想咨询一下，astron已部署好，但创建语音虚拟人不成功，这需要增加哪些配置吗？",
+    "answer": "请问现在结合知识库问答的时候，为什么没有返回内容来源呢"
+  },
+  {
+    "question": "@某用户 @某用户 @某用户 麻烦看下上边的问题哈",
+    "answer": "我自己创建的RPA，运行时提示这个"
+  },
+  {
+    "question": "RPA编排界面的 CV图像 组件，是调用服务端的资源，还是调用客户端的资源来完成的呀\"",
+    "answer": "@某用户 这个麻烦解惑一下"
+  },
+  {
+    "question": "RPA编排界面的 CV图像 组件，是调用服务端的资源，还是调用客户端的资源来完成的呀\"",
+    "answer": "@某用户 客户端资源哈"
+  },
+  {
+    "question": "我自己创建的RPA，运行时提示这个\"",
+    "answer": "@某用户 你得看我看下调用的什么能力"
+  },
+  {
+    "question": "@某用户  客户端资源哈\"",
+    "answer": "好的"
+  },
+  {
+    "question": "星辰Agent平台支持 多Agent 吗 @某用户",
+    "answer": "同问"
+  },
+  {
+    "question": "需要另外安装？",
+    "answer": "请问现在结合知识库问答的时候，为什么没有返回内容来源呢"
+  },
+  {
+    "question": "RPA编辑界面，为啥采集元素的保存，反应要点时间？\n是需要实时保存到后台服务器么？\n\n为啥启动前的准备时间好久\n然后RPA的运行日志，不能打印执行的指令行号或者是结局么？",
+    "answer": "要的哈"
+  },
+  {
+    "question": "麻烦大佬看看这个\"",
+    "answer": "@某用户 截图看下哪个页面"
+  },
+  {
+    "question": "后续会加上吗 不然知识库问答无法溯源呀\"",
+    "answer": "后续会考虑@某用户 ，当前可以用工作流智能体去做，然后知识库节点去看输入输出，查到知识来源"
+  },
+  {
+    "question": "我看到开源版本没有发布成MCP Server这个选项\"",
+    "answer": "@某用户 到智能体平台，然后用工作流节点去添加该智能体"
+  },
+  {
+    "question": "为啥启动前的准备时间好久?@某用户\n然后RPA的运行日志，不能打印执行的指令行号或者是结局么？\n然后RPA的运行日志，不能打印执行的指令行号或者是运行结果，\n\n比如友商的\n后者是在日志输入栏，搞个选项，是选择详细日志还是精简日志（只打印【输出日志】指令的）\n\n我这个电脑配置不差吧？\n好吧，",
+    "answer": "这个开始就是有点慢，跟电脑也有关系，跑几次就快了。\n然后结局是什么意思\n\"\n[图片]\"\n------\n我回复了\n您电脑配置非常好，它就是开始启动会有点慢，我们正在研究如何加快启动速度\n关于日志的，这边就是需要您手动打开想要看到输出的原子能力，不会把所有的日志都输出"
+  },
+  {
+    "question": "@某用户，可是工作流列表还是空的，是我操作有问题吗",
+    "answer": ""
+  },
+  {
+    "question": "@某用户，可是工作流列表还是空的，是我操作有问题吗\"",
+    "answer": "@某用户 你发布成API试下，不需要审核"
+  },
+  {
+    "question": "RPA里头创建的团体，不能邀请另一个注册的手机号么？",
+    "answer": ""
+  },
+  {
+    "question": "RPA里头创建的团体，不能邀请另一个注册的手机号么？\"",
+    "answer": "@某用户 两个账号是同种方式注册的吗"
+  },
+  {
+    "question": "不行\"",
+    "answer": "你这是同一个账号下吧@某用户"
+  },
+  {
+    "question": "不是，一个是通过网页申请（你们发了邮件给我），一种是我自己在 https://agent.xfyun.cn/resource/rpa 自己【新建RPA】的方式创建的\"",
+    "answer": "@某用户 明白了，这样的话他们就在两个不同的租户上了"
+  },
+  {
+    "question": "用开源版的astron agent，能连自己的模型了吗？\n\n我这个下拉框为空，是不是数据初始化没成功？",
+    "answer": "\"\n是同一个账号\"\n------\n@某用户 你提个issu吧"
+  },
+  {
+    "question": "发布成智能体是需要审核吗？  需要谁审核，这个流程能闭环不",
+    "answer": "装上了，感觉不太会玩"
+  },
+  {
+    "question": "发布成智能体是需要审核吗？  需要谁审核，这个流程能闭环不\"",
+    "answer": "@某用户 开源的不需要审核"
+  },
+  {
+    "question": "@某用户\n好的",
+    "answer": "可以看下学习手册：https://www.xfyun.cn/doc/spark/Agent01-%E5%B9%B3%E5%8F%B0%E4%BB%8B%E7%BB%8D.html"
+  },
+  {
+    "question": "@某用户  停止 是用 docker compose down么\n! Network astronagent_astron-agent-network  Resource is still in use\n这个停止不了",
+    "answer": "网段黑名单：config_info 表 中的 NETWORK_SEGMENT_BLACK_LIST  可以在页面通过功能配置吗"
+  },
+  {
+    "question": "@某用户，同样的接口地址和密钥已经添加过，但模型不同",
+    "answer": "不是很理解为啥把192.168.加到黑名单，我的大模型是 192.168. 网段的，添加不上，在这里校验失败了"
+  },
+  {
+    "question": "@某用户，为啥我在RPA开发软件里头创建的机器人，在资源管理中看不到？\n谢谢",
+    "answer": "先发版到执行器，然后在执行器里配置外部设置"
+  },
+  {
+    "question": "这是管理界面吗？怎么才能不需要手机和邮箱验证码就能注册？有没有默认的账号密码\n\n地址是什么",
+    "answer": "有一个casdoor的管理界面，要在里面添加用户，这里就能登录\nip:8000 默认的话\nrpa的默认是这个组织\n\n特别想请教大家，开源的agent 怎么添加自己的模型，我添加模型的页面，下拉框都是空的"
+  },
+  {
+    "question": "@某用户，docker启动ragAgent时报端口占用，实际查不到占用，换了多个端口还是报占用",
+    "answer": "\"走路带点风??：\n@某用户，docker启动ragAgent时报端口占用，实际查不到占用，换了多个端口还是报占用\"\n------\n@某用户"
+  },
+  {
+    "question": "@某用户",
+    "answer": "@某用户\n\n使用开源的RPA，做OCR时报错，（已经在官网创建了应用，把app_id等填了）"
+  },
+  {
+    "question": "老师，RPA登陆平台，一直是这个界面，这个怎么解决呢？已经卸载重新安装了",
+    "answer": "等"
+  },
+  {
+    "question": "你下的是哪个版本的？第一次会比较久",
+    "answer": "\"\n使用开源的RPA，做OCR时报错，（已经在官网创建了应用，把app_id等填了）\"\n------\n@某用户 提个issue吧，让相关同事看下"
+  },
+  {
+    "question": "好，agent 不能增加模型 是只有我一个人吗？我那个页面，下拉框也都是空的",
+    "answer": "大家在使用过程中有问题，建议优先提issue，一起共建开源生态"
+  },
+  {
+    "question": "需要在模型管理中先新建一个模型，然后在工作流中使用@某用户\n添加不了，是指提交后报错还是？\n模型类型及后面可以不填，前面几个填了就能提交了",
+    "answer": "@某用户\n我这个页面 怎么都加不了模型\n是不是只有我一个人这样\n\n你们怎么加的"
+  },
+  {
+    "question": "拉的最新的代码，为什么卡在这里了",
+    "answer": "@某用户，端口没占用，但是起不来，改成别的端口也一样"
+  },
+  {
+    "question": "@某用户，端口没占用，但是起不来，改成别的端口也一样\"",
+    "answer": "@某用户"
+  },
+  {
+    "question": "ss -tulnp | 18999看一下？错误看上去就是端口被占了@某用户\n可以拉rpa的日志看看",
+    "answer": ""
+  },
+  {
+    "question": "这里的朗读怎么没有声音？",
+    "answer": "@某用户 帮忙指导下"
+  },
+  {
+    "question": "@某用户\ndocker compose xxx.yaml down -v  停掉所有的，再重新启动呢\n@某用户i_key的值吗？\nnc -l  -p 18999   尝试绑定这个端口看下",
+    "answer": "试过了 一样的报错"
+  },
+  {
+    "question": "@某用户，需要这个能力\n在讯飞开放平台上",
+    "answer": "这个估计没有"
+  },
+  {
+    "question": "对，我已经配置了appid依旧报错。公有云开通的是【超拟人数字人交互】的appid，但是虚拟人无法加载，除了.env还有其他地方配置么，我就问这个就行\n@某用户\nhttps://github.com/iflytek/astron-agent/issues/576\nhttps://github.com/iflytek/astron-agent/issues/570\n感谢，方总\n@某用户",
+    "answer": "\"Mr.Zhu：\n对，我已经配置了appid依旧报错。公有云开通的是【超拟人数字人交互】的appid，但是虚拟人无法加载，除了.env还有其他地方配置么，我就问这个就行\"\n------\n把issue单号发一下，我们优先看下@某用户\n\"Mr.Zhu：\n对，我已经配置了appid依旧报错。公有云开通的是【超拟人数字人交互】的appid，但是虚拟人无法加载，除了.env还有其他地方配置么，我就问这个就行\"\n------\n@某用户 理论上配好appid信息就行了\n在看了"
+  },
+  {
+    "question": "@某用户 部署不起来么 咋整",
+    "answer": "本地端口被占用了吧"
+  },
+  {
+    "question": "@某用户 FU 您好，我部署的astron-Agent，部署成功后，前端访问后端服务超时呢，怎么排查啊\n\n\n没有内容呢\n\n\n默认的docker-compose.yaml中kafka是未启用的，看日志像是服务中kafka失败？  这个默认的kafka是要启动吗？",
+    "answer": "请提供更多的日志\n\n可以在astron-agent/docker/astronAgent 目录下 执行下面的命令\n\ndocker compose logs >> logs.txt\n应该在文件夹里 您看看"
+  },
+  {
+    "question": "这样吗？\n\n昨天从git重新又拉的\n\n\n执行的这个\n\n这个吗？\n我看是java的，跟我现在用的麒麟V10系统没关系吧\n是的 刚调研呢 我就按照Deployment Guide 走的\n这个权限不就是多了个casdoor么",
+    "answer": "是的，这个看上去没有被占用，\n\n整个工程什么时候拉取的，建议更新一下\n执行的哪个docker-compose文件\n看下这个文件的更新时间呢\n没关系\n你应该要执行docker-compose-with-auth.yaml吧？\n执行这个应该不会报上面端口占用的错误，不是这个命令报错的吧\n\n复现步骤发一下\n\n或者停掉所有docker容器  直接跑docker-compose-with-auth.yaml\n先解决一下这里的ipv4转发被禁用的问题，再重新启动看看"
+  },
+  {
+    "question": "我在Casdoor 中配置了重定向，也保存了，但是访问astron-agent的时候还是报错误。日志如上  \n@某用户 FU 麻烦给看看呢",
+    "answer": "不用带80端口号\n按照网页里提示的地址原封不动填进去"
+  },
+  {
+    "question": "大佬还有两个有关本地部署的问题：\n1.做好的机器人是不是有本地机器人，云端机器人的两类？\n2.云端机器人的云端是讯飞的云端？还是可以是有部署的云端？",
+    "answer": "你部开源版就是上传到你自己的服务上"
+  },
+  {
+    "question": "\"",
+    "answer": "@某用户"
+  },
+  {
+    "question": "kafka打开了、重定向也去掉了端口。 现在不报错了\n\n\n@某用户 FU 您好，我已经申请了讯飞平台上的appID，也设置到.env中，然后用“图片理解”插件的时候，还报appid授权呢？",
+    "answer": "你好，请问，我想部署agent，不带casdoor模式，因为一直起不来，而且点击前端功能一直让我登录 都是跳localhost 8000，\n该如何处理？"
+  },
+  {
+    "question": "是因为这个插件https://agent.xfyun.cn/store/plugin/1388?isMcp=false&searchInput=&category=0&tab=\n需要用到图像识别能力，因此还需要额外申请?对吗@某用户",
+    "answer": "我是docker，部署linix服务器。win浏览器访问"
+  },
+  {
+    "question": "是因为这个插件https://agent.xfyun.cn/store/plugin/1388?isMcp=false&searchInput=&category=0&tab=\n需要用到图像识别能力，因此还需要额外申请?对吗[破涕为笑]@某用户",
+    "answer": "@某用户 @某用户 是的，图片理解这个原子能力需要去申请授权"
+  },
+  {
+    "question": "可以看下报错日志",
+    "answer": "日志走到这 就停了\n需要改什么配置吗？casdoor相关的？请问"
+  },
+  {
+    "question": "@某用户://www.xfyun.cn/services/ptow2025图片理解能力申请，有200万token免费额度",
+    "answer": ".env里面的base_host改成你linux服务器的io地址"
+  },
+  {
+    "question": "@某用户 还是不行",
+    "answer": "casdoor部署的时候确实遇到过一些问题。也可以替换成别的oauth2协议的authorization server，比如auth0, logto 其实都可以"
+  },
+  {
+    "question": "看下minio那个容器日志，是不是报错重启了",
+    "answer": "\"John Wong：\n这么好个项目，用啥casdoor，真是杀鸡用牛刀\"\n------\n@某用户 Wong 您有无推荐平替，可以交流下"
+  },
+  {
+    "question": "docker logs -f astron-agent-minio   这个不对吗？没有输出",
+    "answer": "请问这个怎么配置？"
+  },
+  {
+    "question": "kafka打开了、重定向也去掉了端口。 现在不报错了  [强][强]\"",
+    "answer": "@某用户 看看我这边的，你的问题前面我也碰到过"
+  },
+  {
+    "question": "我是这样处理的，然后就不报重定向问题了",
+    "answer": "好的请问这个界面是在哪里？\n找到了"
+  },
+  {
+    "question": "还是同样报错",
+    "answer": "星辰的官网怎么打不开？rpa可以用吗？企业版多少钱？"
+  },
+  {
+    "question": "@某用户，你单独部署一下minio看看，能否运行起来",
+    "answer": "我试试看"
+  },
+  {
+    "question": "Rpa有用过的吗？效果咋样\nRpa能局域网使用吗",
+    "answer": "效果可以，影刀的基本功能都给抄完了\n应该改名字叫 讯飞rpa, astron也不知道怎么发音，也不好记，主要是国内用，不喜欢起英文名字"
+  },
+  {
+    "question": "官方推荐使用讯飞大模型，这点无可厚非。但是应该不耦合大模型，现在Astron智能体依赖讯飞，数字人必须讯飞，必须配置外网的appid，这样不利于私有化部署，这个思路企业私有化无网络环境的服务器才敢用。供参考。@@某用户@某用户",
+    "answer": "模型也可以用友商的模型哈。数字人非必须配置，后续也可以支持友商的数字人"
+  },
+  {
+    "question": "智能体发布之后如何才能在智能体广场可见呢？",
+    "answer": "@某用户，主要是不支持私有化，比如支持3个私有化，更多需要讯飞api，解耦合。我们朋友的单位因为这个放弃了，昨天聊了聊。供参考"
+  },
+  {
+    "question": "刚来不太了解，不支持私有化怎么理解？\n不知道是不是安装包不是最新版，RPA问题比较多，拾取元素问题导致不能正常使用",
+    "answer": "什么现象呢"
+  },
+  {
+    "question": "然后我想问问，PRA的元素抓取，支持XPath自定义么?\n好的。\n\n为啥启动前的准备时间好久\n我也用过影刀和八爪鱼RPA",
+    "answer": "@某用户\n我们公司一直在用影刀，rpa这块可以提提建议\n可以多交流"
+  },
+  {
+    "question": "\"内容工厂周主任\n然后我想问问，PRA的元素抓取，支持XPath自定义么?\"\n------\n@某用户 支持的\n拾取完弹出的界面左侧可以配置",
+    "answer": "这XPath自定义语句，是在哪里可以设置，还是指令？"
+  },
+  {
+    "question": "RPA流程机器人在网页操作时，通过自定义组件串联时报错（如图所示）。这个有解决方案吗？\n\n目前是两个组件串联。测试组件1时正常，测试组件2时（第一步获取已打开的浏览器对象并输出）也可以在组件1的基础上继续运行。\n\n\n@某用户",
+    "answer": "上图，没有看到相关XPath的操作啊？"
+  },
+  {
+    "question": "\"拾光\n@某用户\n------\n@某用户 这个我们需要看一下\n\"内容工厂周主任\n上图，没有看到相关XPath的操作啊？\"\n------\n@某用户 左侧这些节点就是xpath",
+    "answer": "友商的自定义XPath功能是这样的"
+  },
+  {
+    "question": "提示这个错误是哪里的原因呀",
+    "answer": "@某用户"
+  },
+  {
+    "question": "那应该是服务端设置问题\n你的服务器配置了吗\n服务端地址\n开源版得配服务端的",
+    "answer": "嗯呐，但是不知道是哪里的设置问题，因为一直卡到这个界面，要是有安装过程记录就好了\nRPA只能先配置好服务端才能在本地运行是吧\n我以为配置好客户端就好了\n好嘞感谢感谢，我再配置一下"
+  },
+  {
+    "question": "请问下这个问题怎么处理呢",
+    "answer": "\"Rn氡：\n上图，没有看到相关XPath的操作啊？\"\n------\n@某用户 仔细看了一下，你这个拾取的是桌面元素，你拾取网页元素就能看到自定义XPath那一块了"
+  },
+  {
+    "question": "从github下载的客户端，有乱码问题呢",
+    "answer": "https://github.com/iflytek/astron-rpa/issues/145 可以参考这个ISSUE下面的解决方案"
+  },
+  {
+    "question": "你好 astron里的插件无法使用该如何配置下了",
+    "answer": "请问一下clineid是哪个ID 是CONSOLE_CASDOOR_ID配置错误么"
+  },
+  {
+    "question": "请问astron-agent这个开源项目，运行起来之后，无法显示虚拟人这个问题，怎么解决\n我看issue有人提问，但是没有回答",
+    "answer": "@某用户"
+  },
+  {
+    "question": "@某用户，也是类似的问题，搞了5天，没有解决",
+    "answer": "感觉这个是一个通用问题，我检查了一下没找到哪里配置错了"
+  },
+  {
+    "question": "你好 ，astron里的插件无法使用该如何配置下了啊",
+    "answer": "@某用户"
+  },
+  {
+    "question": "@某用户://github.com/iflytek/astron-agent/blob/main/docs/DEPLOYMENT_GUIDE_WITH_AUTH_zh.md#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E9%85%8D%E7%BD%AE-astronagent-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F参考\"2.2 配置 讯飞开放平台 相关 APP_ID API_KEY 等信息\"\n截个图看下",
+    "answer": "工作流突然使用不了，显示:用户无访问权限，请问如何处理？"
+  },
+  {
+    "question": "@某用户\n我不知道版本啊",
+    "answer": "这个助手是你搭建的嘛，可以提供一些信息给我嘛"
+  },
+  {
+    "question": "那个端口？",
+    "answer": "@某用户，当时使用了系统里的模板，10月底发布的，11.2还能使用，今天突然发现用不了"
+  },
+  {
+    "question": "这个在哪里能看",
+    "answer": "@某用户 1、你这个应该是公有云的版本，没有自己部署平台吧？2、然后你的问题应该是没发布经过人工审核通过\n\n把这个编号提供下@某用户\n\"\n这个在哪里能看\"\n------\n@某用户 公有云版本平台，构建后的智能体发布到星火desk，就能在星火app上找到自己的智能体去看"
+  },
+  {
+    "question": "@某用户，您有网址吗",
+    "answer": "https://virtual-man.xfyun.cn/console/api"
+  },
+  {
+    "question": "AstronRPA：https://github.com/iflytek/astron-rpa\n- Astron Agent：https://github.com/iflytek/astron-agent\n请教一下 这两个项目都本地部署了 rpa要怎么样才能接入到agent中",
+    "answer": "@某用户，配置到这里吗"
+  },
+  {
+    "question": "@某用户\n我这个一开始配置的是ultra的apipassword\n后来换成了max的  重启docker容器后，他还是掉的ultra\n\n这个咋看呀\nultra没了\nmax有  所以我想换max\n\n申请了",
+    "answer": "检查一下配置的appid有没有对应Spark4.0 Ultra能力的授权\nhttps://console.xfyun.cn/services/bm4\n\n你申请ultra-32k的看下"
+  },
+  {
+    "question": "麻烦问下，标准产品订阅一般多久能审核通过？",
+    "answer": "ai生成头像老报错"
+  },
+  {
+    "question": "[图片]\"",
+    "answer": "@某用户 您这个是开源版的吧"
+  },
+  {
+    "question": "新建智能体怎么跳转到这个空白链接？",
+    "answer": "最新的代码，为什么卡这了\n\n\n@某用户\n重启客户端又好了"
+  },
+  {
+    "question": "@某用户\n哦  确实\n现在可以了  感谢",
+    "answer": "是不是没开通图片生成的能力，地址是这个https://console.xfyun.cn/services/tti ?@某用户\n不客气"
+  },
+  {
+    "question": "大佬们，请教一下开源的rpa如何做SAP，如何点击，如何获取下拉框 再点击， 如何获取查询的结果",
+    "answer": "请问星辰rpa+agent一起部署有额外的配置么 我现在前后端调不通\n昨天单独部署agent的时候rpa只有晓悟的api接入后续就不知道怎么配了"
+  },
+  {
+    "question": "@某用户，是否更新到官网系统了？",
+    "answer": "安装rpa的客户端，然后把客户端的远程地址改成你自己部署的rpa服务端地址，然后在客户端生成密钥，在agent上填上密钥就行"
+  },
+  {
+    "question": "\"Jessie\n大佬们，请教一下开源的rpa如何做SAP，如何点击，如何获取下拉框 再点击， 如何获取查询的结果\"\n------\n@某用户 sap的内容暂时不开源",
+    "answer": "模拟鼠标点击，可以做吗？"
+  },
+  {
+    "question": "您说的RPA客户端是指什么",
+    "answer": "\"Jessie\n模拟鼠标点击，可以做吗？\"\n------\n@某用户 鼠标点击肯定能做"
+  },
+  {
+    "question": "鼠标位置的窗口左上角那里 应该填什么？\n\"\n您现在说的是sap还是普通的\"\n------\n@某用户\n\n我说这个是怎么填\n我发现元素管理那里 图像都是空的，是不是有文件服务器之内的配置？\n如果是星辰RPA\n\n这里有图像的\n但开源的这里就没有\n我要模拟点击，模拟输入，怎么保证是在sap上点击，而不是点到其他应用了？",
+    "answer": "您现在说的是sap还是普通的\n\"哼哈\n您说的RPA客户端是指什么\"\n------\n@某用户 https://github.com/iflytek/astron-rpa/releases/tag/v1.0.0\n[123,456] 这样\n但这里设计的不好，我准备给他改了\n是的，图像显示开源版有点Bug，不影响使用"
+  },
+  {
+    "question": "有做什么操作吗\nhttp://192.168.110.204:32742/api/robot/user/login-check 在浏览器里访问下看看\n安装目录下 /data/logs里的日志发我看下\n客户端这个包是通过代码构建的吗\nhttps://github.com/iflytek/astron-rpa/releases/tag/v1.0.0\n先用这个包试试，我验证下打包是不是有问题",
+    "answer": "我是把它打包出来后 修改为本地的地址\n\n{\"code\":\"900001\",\"data\":null,\"message\":\"unauthorized\"}\n\n服务其上docker是在用docker-compose-with-auth-rpa.yaml 两个一起部署的\n是的 可以直接用安装包么\n可以了\n服务器接入了客服端的api-key 怎么样才能同步机器人"
+  },
+  {
+    "question": "@某用户\n我知道啊 不过你这个看起来挺好看的",
+    "answer": "这个是讯飞的开源的astron agent+rpa界面"
+  },
+  {
+    "question": "大佬 进行外部配置接api报错 没进行外部配置能接入\n这是组件rpa-opensource-openapi-service的报错\nINFO:     172.18.0.16:58634 - \"POST /api-keys/create HTTP/1.0\" 201 Created\nINFO:     172.18.0.16:38046 - \"GET /api-keys/get?pageSize=15&pageNo=1 HTTP/1.0\" 200 OK\nINFO:     <<<{\"channel\": \"ping\"}\nINFO:     >>>{\"channel\": \"pong\"}\nINFO:     input_key: 3GovOzIVv6ZRFog4USplQogsheUHX5B1, hashed_key: $2b$12$LwmlyGJ.B3lHRr1jUadPme7sL2gVJjWdMHrap7bYMgw9VQYxKC2Ba\nERROR:    Error getting workflows: 'Workflow' object has no attribute 'example_project_id'\nINFO:     172.18.0.16:38052 - \"GET /workflows/get?pageNo=1&pageSize=100 HTTP/1.0\" 500 Internal Server Error",
+    "answer": "不支持mac"
+  },
+  {
+    "question": "大佬 进行外部配置接api报错 没进行外部配置能接入\n这是组件rpa-opensource-openapi-service的报错\nINFO:     172.18.0.16:58634 - \"POST /api-keys/create HTTP/1.0\" 201 Created\nINFO:     172.18.0.16:38046 - \"GET /api-keys/get?pageSize=15&pageNo=1 HTTP/1.0\" 200 OK\nINFO:     <<<{\"channel\": \"ping\"}\nINFO:     >>>{\"channel\": \"pong\"}\nINFO:     input_key: 3GovOzIVv6ZRFog4USplQogsheUHX5B1, hashed_key: $2b$12$LwmlyGJ.B3lHRr1jUadPme7sL2gVJjWdMHrap7bYMgw9VQYxKC2Ba\nERROR:    Error getting workflows: 'Workflow' object has no attribute 'example_project_id'\nINFO:     172.18.0.16:38052 - \"GET /workflows/get?pageNo=1&pageSize=100 HTTP/1.0\" 500 Internal Server Error\"",
+    "answer": "@某用户 代码更新过了，你如果是前几天拉的话重新拉一下"
+  },
+  {
+    "question": "@某用户 下面的报错怎么处理？\n\n刚进来就会跳转到这个页面，需要在安装的时候配置什么吗？",
+    "answer": "你创建应用的时候会有一个名单，你要把这个地址加到那个名单里"
+  },
+  {
+    "question": "http://192.168.110.204:32742/api/robot/user/login-check 更新完代码后502 Bad Gateway 晓悟性rpa登录不上了\"",
+    "answer": "@某用户 您再检查一下配置呢，或者提供更详细的信息"
+  },
+  {
+    "question": "astron agent远程服务器配置完正常登录完后点击创建智能体会跳localhost这个怎么解决？",
+    "answer": "\"\n修改了也没变化\"\n------\n@某用户 我验证一下"
+  },
+  {
+    "question": "我astron-rpa 端口没暴露我的问题\n更新后docker-compose.yaml 端口暴露又被注释了",
+    "answer": "可以修改.env里面的 HOST_BASE_ADDRESS 变量"
+  },
+  {
+    "question": "还是正常登录没问题，但是要点击创建智能体就不行了，跳转localhost",
+    "answer": "bug还不少"
+  },
+  {
+    "question": "tun模式?@某用户",
+    "answer": "大佬 这是什么意思"
+  },
+  {
+    "question": "这个意思？??",
+    "answer": "梯子么 这也开关过搞过"
+  },
+  {
+    "question": "git也要清理?\n哦 好的\n\n提示这个\n@某用户 Guo\n停止和启动也要么\n\n跳到这个页面之后咋也回去了\n\n这个里面是管理用户和组织的吧 其他的就不在这里面了吧",
+    "answer": "mount的一些文件会被修改，建议清理下\n你到这个目录下\n\n项目的跟目录\n是的"
+  },
+  {
+    "question": "mcp现在只支持sse的吗\"",
+    "answer": "@某用户(xie)先生?? 是的"
+  },
+  {
+    "question": "这里的mcp有页面能注册吗\"",
+    "answer": "@某用户(xie)先生?? 目前没有"
+  },
+  {
+    "question": "怎么进去\n没有后台?\n我今天下rpa 没下载下来",
+    "answer": "构建agent的话点创建 有提示词对话 工作流 和数字人的选项\n这我不太清楚\n重走了一遍还是卡登录  昨天都成功进行了 32742端口的nigx没日志 log说握手没成功"
+  },
+  {
+    "question": "@某用户，兄弟",
+    "answer": "都在调rpa还 没搞数字人"
+  },
+  {
+    "question": "这问题我也是卡了很久了",
+    "answer": "ragflow 这个连不上网注册不了账号，这个有人碰到吗？怎么解决"
+  },
+  {
+    "question": "从Agent仓库联合构建的RPA登录闪退的问题，昨天进行了详细的排查。目前得出的结论是，Commit d3c8545修改的initDataNewOnly = true（casdoor/conf/app.conf）跟RPA的登录校验逻辑冲突了，将这行改为false之后RPA可以正常登录。如果急用的话可以将这一行改为false，不着急可以等我们修订登录逻辑。@某用户 @某用户(xie)先生??",
+    "answer": "这个是我提的，initDataNewOnly = true不设置重启容器用户数据会关联不上呀"
+  },
+  {
+    "question": "这个平台没有后台么?\n\n模型在哪里配置\n都是在配置文件吗? 没有个管理后台?\n平台上配置 我没看到后台在哪额 只有一个管理用户的有后台\n啊 这就都是在前端完成  没有单独的后台?",
+    "answer": "平台功能依赖的模型，在.env文件中配置。\nagent内部依赖的模型，可以在平台上配置。\n\n平台的模型管理，就在这了"
+  },
+  {
+    "question": "astron 大模型节点     模型下拉框的大模型如何配置了哈~~~",
+    "answer": "可以参考平台的使用手册 https://www.xfyun.cn/doc/spark/Agent02-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.html\n@某用户"
+  },
+  {
+    "question": "大佬这个问题怎么处理？\n感谢",
+    "answer": "这个问题是Docker 拉取镜像时网络超时 / 连接失败导致的，核心解决思路是优化网络配置，步骤如下：\n1. 配置国内镜像加速器（最常用）\n编辑 Docker 配置文件，添加国内镜像源：\nbash\n运行\nsudo nano /etc/docker/daemon.json\n写入（选 1-2 个国内源）：\njson\n{\n  \"registry-mirrors\": [\"https://docker.mirrors.ustc.edu.cn\", \"https://hub-mirror.c.163.com\"]\n}\n重启 Docker 服务：\nbash\n运行\nsudo systemctl daemon-reload && sudo systemctl restart docker\n2. 重试启动\n重新执行docker compose up -d，若仍失败，可先手动拉取报错的镜像（如 redis）：\nbash\n运行\ndocker pull redis\n3. 检查网络（可选）\n若仍有问题，测试网络连通性：\nbash\n运行\ncurl -v https://registry-1.docker.io/v2/ --connect-timeout 5\n若超时，可临时修改 DNS（编辑/etc/resolv.conf）：\nplaintext\nnameserver 223.5.5.5  # 阿里云DNS"
+  },
+  {
+    "question": "这个后来怎么解决的？\n@某用户\ncasdoor中的应用的clientid在哪里找到？",
+    "answer": "env中oauth 中添加casdoor中的应用的clientid"
+  },
+  {
+    "question": "@某用户 早上好，RPA的插入EXCEL公式应该怎么用？\n插入excel公式，报错，给个示例，应该是怎么插公式\n执行错误 (-2147352567, '发生意外。', (0, None, None, None, 0, -2146827284), None)\n就是打开excel 然后插入excel公式",
+    "answer": "哪一块不会用\n这个报错估计跟你怎么用插入公式能力没关系，一般是你前面编辑完没保存又对他进行修改才会报错。你可以试试开个新的，就用创建Excel?插入Excel公式试试。"
+  },
+  {
+    "question": "@某用户  可以拉下相关同学，Astron项目相关问题，欢迎大家优先提issue，Astron团队会优先答复，其次群内交流，共建Astron生态。",
+    "answer": "好的"
+  },
+  {
+    "question": "本机部署AstronRPA，客户端remote_addr: 如何配置？",
+    "answer": "用astron-agent搭建了一个小说图文生成器"
+  },
+  {
+    "question": "@某用户 更新了RPA最新的源码，自己构建的客户端安装包，第一次启动，一直不动，看日志，有个报错：{\"level\":\"error\",\"msg\":\"ws: proxy error: error: Dial ws://我自有的ip隐藏:32742/api/rpa-openapi/ws error websocket: bad handshake\",\"time\":\"2025-11-25T09:50:25+08:00\"}\n[GIN] 2025/11/25 - 09:50:25 | 200 |     83.5351ms |       127.0.0.1 | GET      \"/api/rpa-openapi/ws\"  服务端是原来使用astron-agent部署的服务端。",
+    "answer": "调试插件节点时报错：Tool request failed(General error: auth name:Authorization, auth value:None)是什么原因？创建的时候调试是成功的。\n有没有大佬指导一下"
+  },
+  {
+    "question": "调试插件节点时报错：Tool request failed(General error: auth name:Authorization, auth value:None)是什么原因？创建的时候调试是成功的。\"",
+    "answer": "节点的输入是什么@某用户"
+  },
+  {
+    "question": "看报错信息是value值没有\n需要检查下输入",
+    "answer": "\"\n@某用户  更新了RPA最新的源码，自己构建的客户端安装包，第一次启动，一直不动，看日志，有个报错：{\"level\":\"error\",\"msg\":\"ws: proxy error: error: Dial ws://我自有的ip隐藏:32742/api/rpa-openapi/ws error websocket: bad handshake\",\"time\":\"2025-11-25T09:50:25+08:00\"}\n[GIN] 2025/11/25 - 09:50:25 | 200 |     83.5351ms |       127.0.0.1 | GET      \"/api/rpa-openapi/ws\"  服务端是原来使用astron-agent部署的服务端。\"\n------\n@某用户 服务端有更新吗"
+  },
+  {
+    "question": "@某用户@某用户 你好，有dify和astron 的功能实现对比文章吗",
+    "answer": "https://github.com/iflytek/astron-agent/discussions/640 我让copilot基于仓库代码分析的~您看看"
+  },
+  {
+    "question": "这个应该改成什么hose_base_url??\n127.0.0.1 不用改 是吗？",
+    "answer": "8003改为13159\n对的"
+  },
+  {
+    "question": "也就是说，Rpa的客户端也需要部署agent的服务端？\n@某用户\n我部署了RP自己的服务端，但客户端依然是连不进来\n我查了一下，docker的部署里边没有那个32732的那个端口\n\n\n\n客户端日志文件在哪里？\n\n启动了",
+    "answer": "你完全可以部署rpa自己的服务端\nagent也提供共同部署的方式\n\nhttp://localhost:32742/api/robot/user/login-check 这个浏览器打开一下看看通不通\n那就是没通，你的casdoor是不是没起来"
+  },
+  {
+    "question": "[图片]\"",
+    "answer": "@某用户 这里对的"
+  },
+  {
+    "question": "1. rpa的agent.py 少引用了logger, 报错日志是：{\"event_time\": 1764054942, \"data\": {\"log_type\": \"code\", \"process\": \"主流程\", \"process_id\": \"1993195579810803712\", \"atomic\": \"调用Dify流程\", \"key\": \"Agent.call_dify\", \"line_id\": \"bh762748698906693\", \"line\": 1, \"status\": \"error\", \"error_traceback\": \"Traceback (most recent call last):\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\actionlib\\\\atomic.py\\\", line 174, in atomic_run\\n    res = func(*args, **base_kwargs, **advance_kwargs)\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\ai\\\\agent.py\\\", line 85, in call_dify\\n    logger.info(result)\\n    ^^^^^^\\nNameError: name 'logger' is not defined\\n\", \"msg_str\": \"执行错误 name 'logger' is not defined\", \"log_level\": \"error\"}}  引入后，调用dify的工作流、对话流，能通了；\n2.OCR 的还是不能使用，报错日志是：{\"event_time\": 1764054510, \"data\": {\"log_type\": \"code\", \"process\": \"主流程\", \"process_id\": \"1993195579810803712\", \"atomic\": \"通用文字识别\", \"key\": \"OpenApi.common_ocr\", \"line_id\": \"bh762736732512325\", \"line\": 1, \"status\": \"error\", \"error_traceback\": \"Traceback (most recent call last):\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\actionlib\\\\atomic.py\\\", line 174, in atomic_run\\n    res = func(*args, **base_kwargs, **advance_kwargs)\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\openapi\\\\openapi.py\\\", line 543, in common_ocr\\n    res = OpenapiIflytek.common_ocr(header_dict, files)\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\openapi\\\\core_iflytek.py\\\", line 165, in common_ocr\\n    raise BaseException(AI_SERVER_ERROR, \\\"ai服务器无响应或错误 {}\\\".format(ret))\\nastronverse.baseline.error.error.BaseException: ai服务器无响应或错误\\n\", \"msg_str\": \"执行错误 ai服务器无响应或错误\", \"log_level\": \"error\"}}\n@某用户 excel 插入公式，只能插一次，接着就报错。正确的使用方式应该是怎样的？",
+    "answer": "\"\n1. rpa的agent.py 少引用了logger, 报错日志是：{\"event_time\": 1764054942, \"data\": {\"log_type\": \"code\", \"process\": \"主流程\", \"process_id\": \"1993195579810803712\", \"atomic\": \"调用Dify流程\", \"key\": \"Agent.call_dify\", \"line_id\": \"bh762748698906693\", \"line\": 1, \"status\": \"error\", \"error_traceback\": \"Traceback (most recent call last):\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\actionlib\\\\atomic.py\\\", line 174, in atomic_run\\n    res = func(*args, **base_kwargs, **advance_kwargs)\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\ai\\\\agent.py\\\", line 85, in call_dify\\n    logger.info(result)\\n    ^^^^^^\\nNameError: name 'logger' is not defined\\n\", \"msg_str\": \"执行错误 name 'logger' is not defined\", \"log_level\": \"error\"}}  引入后，调用dify的工作流、对话流，能通了；\n2.OCR 的还是不能使用，报错日志是：{\"event_time\": 1764054510, \"data\": {\"log_type\": \"code\", \"process\": \"主流程\", \"process_id\": \"1993195579810803712\", \"atomic\": \"通用文字识别\", \"key\": \"OpenApi.common_ocr\", \"line_id\": \"bh762736732512325\", \"line\": 1, \"status\": \"error\", \"error_traceback\": \"Traceback (most recent call last):\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\actionlib\\\\atomic.py\\\", line 174, in atomic_run\\n    res = func(*args, **base_kwargs, **advance_kwargs)\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\openapi\\\\openapi.py\\\", line 543, in common_ocr\\n    res = OpenapiIflytek.common_ocr(header_dict, files)\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\openapi\\\\core_iflytek.py\\\", line 165, in common_ocr\\n    raise BaseException(AI_SERVER_ERROR, \\\"ai服务器无响应或错误 {}\\\".format(ret))\\nastronverse.baseline.error.error.BaseException: ai服务器无响应或错误\\n\", \"msg_str\": \"执行错误 ai服务器无响应或错误\", \"log_level\": \"error\"}}\"\n------\n@某用户 收到"
+  },
+  {
+    "question": "问题1：RPA Agent Logger引用问题 ?已解决\n这个问题已经通过添加logger引用解决了。在agent.py文件中需要添加logger的导入：\n\npython\n下载\n复制\n运行\nimport logging\nlogger = logging.getLogger(__name__)\n问题2：OCR识别问题 ??需要进一步排查\nOCR的错误信息是\"ai服务器无响应或错误\"，这表明是连接科大讯飞AI服务时出现了问题。以下是详细的排查和解决方案：\n\n可能原因及解决方案：\n1. 网络连接问题\npython\n下载\n复制\n运行\n# 检查网络连接是否正常\n# 尝试ping科大讯飞的API服务器\n2. API密钥配置问题\n检查配置文件中的API密钥是否正确：\n\npython\n下载\n复制\n运行\n# 检查 openapi_iflytek.py 或相关配置文件\n# 确认以下信息是否正确：\n- APPID\n- APIKey  \n- APISecret\n3. 服务端问题\n可能是科大讯飞服务端临时故障，可以：\n\n稍后重试\n\n查看科大讯飞官方状态页面\n\n4. 请求参数问题\n检查传递给OCR接口的参数格式：\n\npython\n下载\n复制\n运行\n# 在 openapi_iflytek.py 第165行附近添加调试信息\ndef common_ocr(header_dict, files):\n    try:\n        # 添加调试日志\n        logger.debug(f\"请求头: {header_dict}\")\n        logger.debug(f\"文件信息: {files}\")\n        \n        ret = some_api_call()  # 实际的API调用\n        \n        if not ret or ret.get('code') != '0':\n            logger.error(f\"API返回异常: {ret}\")\n            raise BaseException(AI_SERVER_ERROR, f\"ai服务器无响应或错误 {ret}\")\n            \n        return ret\n    except Exception as e:\n        logger.error(f\"OCR请求失败: {str(e)}\")\n        raise\n5. 具体排查步骤\n步骤1：检查基础配置\n\nbash\n复制\n# 检查网络连通性\ncurl -I https://api.xfyun.cn\n步骤2：验证API凭证\n\n登录科大讯飞开放平台控制台\n\n确认应用状态正常\n\n检查套餐余量是否充足\n\n步骤3：测试简单OCR请求\n\n使用Postman或curl测试基础OCR功能：\n\nbash\n复制\ncurl -X POST \\\n  https://api.xfyun.cn/v1/service/v1/ocr/general \\\n  -H 'Content-Type: application/x-www-form-urlencoded' \\\n  -H 'X-Appid: YOUR_APP_ID' \\\n  -H 'X-CurTime: TIMESTAMP' \\\n  -H 'X-Param: BASE64_ENCODED_PARAMS' \\\n  -H 'X-CheckSum: CHECKSUM' \\\n  --data-binary '@某用户\n6. 临时替代方案\n如果科大讯飞服务持续不可用，可以考虑：\n\n切换其他OCR服务商（百度、阿里云等）\n\n使用本地OCR引擎（如Tesseract）\n\n7. 代码层面的错误处理增强\n建议在openapi_iflytek.py中添加更详细的错误处理：\n\npython\n下载\n复制\n运行\ndef common_ocr(header_dict, files):\n    try:\n        logger.info(\"开始调用讯飞OCR服务\")\n        \n        # 添加重试机制\n        for retry in range(3):\n            try:\n                ret = your_api_call_method(header_dict, files)\n                \n                if ret and ret.get('code') == '0':\n                    logger.info(\"OCR识别成功\")\n                    return ret\n                else:\n                    logger.warning(f\"第{retry+1}次尝试失败: {ret}\")\n                    \n            except Exception as e:\n                logger.error(f\"第{retry+1}次请求异常: {str(e)}\")\n                if retry == 2:  # 最后一次重试\n                    raise\n                time.sleep(1)  # 等待1秒后重试\n                \n    except BaseException as e:\n        logger.error(f\"OCR服务完全失败: {str(e)}\")\n        # 可以考虑返回模拟数据或降级处理\n        raise\n建议按照上述步骤逐一排查，通常这类问题多由网络或配置问题引起。",
+    "answer": "\"\n@某用户  excel 插入公式，只能插一次，接着就报错。正确的使用方式应该是怎样的？\"\n------\n@某用户 检查了一下，代码有问题\n我推个PR上去"
+  },
+  {
+    "question": "1. rpa的agent.py 少引用了logger, 报错日志是：{\"event_time\": 1764054942, \"data\": {\"log_type\": \"code\", \"process\": \"主流程\", \"process_id\": \"1993195579810803712\", \"atomic\": \"调用Dify流程\", \"key\": \"Agent.call_dify\", \"line_id\": \"bh762748698906693\", \"line\": 1, \"status\": \"error\", \"error_traceback\": \"Traceback (most recent call last):\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\actionlib\\\\atomic.py\\\", line 174, in atomic_run\\n    res = func(*args, **base_kwargs, **advance_kwargs)\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\ai\\\\agent.py\\\", line 85, in call_dify\\n    logger.info(result)\\n    ^^^^^^\\nNameError: name 'logger' is not defined\\n\", \"msg_str\": \"执行错误 name 'logger' is not defined\", \"log_level\": \"error\"}}  引入后，调用dify的工作流、对话流，能通了；\n2.OCR 的还是不能使用，报错日志是：{\"event_time\": 1764054510, \"data\": {\"log_type\": \"code\", \"process\": \"主流程\", \"process_id\": \"1993195579810803712\", \"atomic\": \"通用文字识别\", \"key\": \"OpenApi.common_ocr\", \"line_id\": \"bh762736732512325\", \"line\": 1, \"status\": \"error\", \"error_traceback\": \"Traceback (most recent call last):\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\actionlib\\\\atomic.py\\\", line 174, in atomic_run\\n    res = func(*args, **base_kwargs, **advance_kwargs)\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\openapi\\\\openapi.py\\\", line 543, in common_ocr\\n    res = OpenapiIflytek.common_ocr(header_dict, files)\\n  File \\\"D:\\\\Program Files\\\\astron-rpa\\\\data\\\\python_core\\\\Lib\\\\site-packages\\\\astronverse\\\\openapi\\\\core_iflytek.py\\\", line 165, in common_ocr\\n    raise BaseException(AI_SERVER_ERROR, \\\"ai服务器无响应或错误 {}\\\".format(ret))\\nastronverse.baseline.error.error.BaseException: ai服务器无响应或错误\\n\", \"msg_str\": \"执行错误 ai服务器无响应或错误\", \"log_level\": \"error\"}}\"",
+    "answer": "@某用户 https://github.com/iflytek/astron-rpa/pull/188"
+  },
+  {
+    "question": "有没有和讯飞的合作渠道，比如区域代理需要什么条件\n产品",
+    "answer": "代理什么"
+  },
+  {
+    "question": "rpa 使用浏览器打开网页 报错：执行错误 错误: 未定义的名称 'ElementCreateReturnType'\n好的",
+    "answer": "更新下，刚修了"
+  },
+  {
+    "question": "我配置了知识库的地址，怎么还是报错呢\n\n\nragflow后台显示是成功的，但是astron后台显示 是解析失败？",
+    "answer": "if astronverse.vision.cv.CV().is_image_exist(input_data=element('1993918870326374400'), exist_type='exist', match_similarity=0.37, wait_time=10, __info__=[1, '1993914793555161089']):\\n       ^^^^^^^^^^^^^^^^^^^^^\\nAttributeError: module 'astronverse.vision' has no attribute 'cv'\nrpa客户端更新，应该把安装包放在哪里？"
+  },
+  {
+    "question": "#提问 星辰 Agent和 星辰 RPA的私有化部署，对于机子的硬件要求是怎样的？",
+    "answer": "是否能提供一套使用外部mysql，redis，minio，nginx 版本的docker配置？"
+  },
+  {
+    "question": "没懂，要么就是更新代码，要么就是重新打包\"",
+    "answer": "@某用户 客户端 有检查更新"
+  },
+  {
+    "question": "@某用户 还有这个问题，帮忙看看：if astronverse.vision.cv.CV().is_image_exist(input_data=element('1993918870326374400'), exist_type='exist', match_similarity=0.37, wait_time=10, __info__=[1, '1993914793555161089']):\\n       ^^^^^^^^^^^^^^^^^^^^^\\nAttributeError: module 'astronverse.vision' has no attribute 'cv'",
+    "answer": "哦，看到关于硬件需求的介绍了： https://github.com/iflytek/astron-agent/blob/main/docs/DEPLOYMENT_GUIDE_WITH_AUTH_zh.md#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E9%85%8D%E7%BD%AE-astronagent-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"
+  },
+  {
+    "question": "PostgreSQL与 mysql 在项目中是否能统一成一个？",
+    "answer": "#576  issue\n 还没解决就关闭了，麻烦指点一下。@某用户@某用户\n感谢感谢"
+  },
+  {
+    "question": "不同数据落不同库，为了安全和性能？",
+    "answer": "计划任务，定时执行，一直不执行是什么原因，也没看到报错日志\n开始我以为docker容器内的时间不对，现在检查时间是一致的，定时计划任务毫无反应"
+  },
+  {
+    "question": "我们这边同学在这个上一个comment里已经回复了。当时问题已经知晓 环境变量的拆分预计今天或明天合入main",
+    "answer": "\"\n计划任务，定时执行，一直不执行是什么原因，也没看到报错日志\"\n------\n@某用户 可以发我下 客户端 trigger日志"
+  },
+  {
+    "question": "@某用户 ?? Astron Agent 郑州城市行 · 强势来袭！\n2025 iFLYTEK 开发者 TALK · 郑州站\n?? 本次活动最值得期待的 Astron 亮点\n? 1. 现场一次讲明白Astron Agent 如何加速 Agentic AI 落地？\n? 2. 「从入门到贡献」——一站式掌握 Astron Agent\n本场你将搞定两件关键事：\n?? 本地部署全流程：零基础也能当场跑起来\n?? 开源贡献指南：Issue / PR 怎么提？怎么参与社区？\n如果你想成为 Astron Contributor，这绝对是捷径！\n?? 活动时间\n2025.12.6（Sat） 14:00 – 17:30\n?? 活动地点\n郑州 · 金水区紫荆山路 1 号 · 紫荆山百货 F5 UFO WORK 办公空间\n?? 报名方式\n扫码海报二维码即可报名！\n? 建议提前抢位 —— 现场座位有限，满员即止??",
+    "answer": "啥时候来北京"
+  },
+  {
+    "question": "@某用户个小时就到了\n好的谢谢\n晚上管住吗我知道有咖啡茶点",
+    "answer": "可以的；没有这个限制；您报名后会有工作人员通知；没那么快~还需耐心等候??"
+  },
+  {
+    "question": "@某用户\n好好好",
+    "answer": "6\n不报销你不去不就得了"
+  },
+  {
+    "question": "@某用户\n好好好",
+    "answer": "是的，我看一下时间\n我顺便去见对象"
+  },
+  {
+    "question": "哥自费去?",
+    "answer": "本来就是要去玩的"
+  },
+  {
+    "question": "什么时候去都是一样，找一个借口而已",
+    "answer": "(●ˇ?ˇ●)"
+  },
+  {
+    "question": "dw是什么\n嗷嗷，懂了",
+    "answer": "我更新了最新代码，发现打开excel，报错：执行错误 未检测到wps和office注册表信息！我检查了注册表，有正常返回et.exe的路径。"
+  },
+  {
+    "question": "RPA开管理员模式了吧，WPS和office的注册表不会往管理员注册表里面写的，我也遇到过这个问题\nhttps://help.aliyun.com/zh/rpa/support/administrator-cannot-manage-wps-when-running-rpa\n看这个文章，自己改下路径",
+    "answer": "您后面怎么解决\n\"KaiHavertz：\nhttps://help.aliyun.com/zh/rpa/support/administrator-cannot-manage-wps-when-running-rpa\"\n------\n用这个 也没有成功，其实没有更新到最新代码，是能操作excel的"
+  },
+  {
+    "question": "估计是缓存问题。\n\n替换到 \\astronverse\\excel\\core_win下面试试\n稍等，有点问题\n\n不错，这个问题正愁没场景测试",
+    "answer": "我试一下\n换完：执行错误 type object 'ExcelCore' has no attribute 'get_default_excel_app'\n\"\n[core_win.py]\"\n------\n@某用户 可以"
+  },
+  {
+    "question": "工作流能生成文件吗？对话框中支持生成的文件展示吗？\n好的，感谢",
+    "answer": "“解(xie)先生??: \n工作流能生成文件吗？对话框中支持生成的文件展示吗？”\n------\n@某用户(xie)先生?? 可以通过插件或者rpa来生成文件。对话框目前不支持文件展示，后续计划支持。\n不客气哈。"
+  },
+  {
+    "question": "“ \n谁的平台弄完了 发出来体验一下啊”\n------\n@某用户 https://agent.xfyun.cn/home  可以直接体验我们的在线版本哈。\n“ \n@某用户  我本地撘完 头像上传不了”\n------\n现在就是release版本，是可以上传用户和智能体头像的。@某用户",
+    "answer": "你们的不算  我想找个自己搭的看看\n@某用户  我本地撘完 头像上传不了"
+  },
+  {
+    "question": "git clone https://github.com/iflytek/astron-agent.git 这个项目的使用是需要注册应用并审核通过才可以是吗？",
+    "answer": "最新的代码数字人依旧加载不出来。\n配置都对\n这个数字人是不是不开源"
+  },
+  {
+    "question": "分享我和讯飞星火大模型的对话，点击链接查看：https://xinghuo.xfyun.cn/share?key=177abb1a8c853a38ea1b9284e87041fc 您看下解决方案；也可以尝试问星火大模型~",
+    "answer": "谢谢"
+  },
+  {
+    "question": "@某用户，但是官网的是有的，这一块是咋弄的呀，用到什么技术栈了吗\n@某用户",
+    "answer": "想请问一下讯飞的人声识别模型api 有具体应用到视频制作的智能体平台么 比如上传视频 和台词文件 能将台词文件的角色男女区分出来"
+  },
+  {
+    "question": "“星辰RPA 可以整待办提醒吗  之前用的集简云免费额度改了”?@某用户",
+    "answer": "怎么样的待办提醒"
+  },
+  {
+    "question": "“??: \n@某用户，但是官网的是有的，这一块是咋弄的呀，用到什么技术栈了吗”\n------\n@某用户 这块确实在计划中，后续会发布到开源。",
+    "answer": "获取API信息的结果调用邮箱通知/抖音/微信之类的插件定时通知"
+  },
+  {
+    "question": "“??: \n感谢”\n------\n@某用户 不客气，可以在项目中提个issue哈，便于追踪，也能提升优先级",
+    "answer": "可以考虑用HTTP请求+邮件发送来实现类似功能\n@某用户"
+  },
+  {
+    "question": "最新镜像部署报错\nRPA 安装后有默认用户名密码吗?\n注册后的用户名登录会一直跳登录页面",
+    "answer": "桌面自动化的操作有手册吗"
+  },
+  {
+    "question": "RPA 安装后有默认用户名密码吗?\n注册后的用户名登录会一直跳登录页面\"",
+    "answer": "@某用户 你是通过astron-agent一起部署的吗"
+  },
+  {
+    "question": "开发者 TALK 的直播来啦，周末看起来～\n? 开源智能体的部署与开源贡献 \n? 从0到1构建数字员工智能体 \n? AI时代GEO的商用逻辑与产学研协同",
+    "answer": "看了非常好"
+  },
+  {
+    "question": "@某用户\n\n账号密码都打包都好了，目前卡在登陆回调上。\nredirect_uri 参数是 https:/tauri.localhost   修改RPA下的.env配置也没用\n修改 conf.yaml 中的 remote_addr\n修改 .env 中的 CASDOOR_EXTERNAL_ENDPOINT\n都有修改\n\n一会试试",
+    "answer": "\"\n是的，大佬多指导一下，急\"\n------\n@某用户 initDataNewOnly 改为 false 以后重新部署（casdoor/conf/app.conf）\n\"\n@某用户\n------\n@某用户 https://github.com/iflytek/astron-rpa/blob/main/FAQ.zh.md#-%E6%80%A7%E8%83%BD%E4%B8%8E%E5%8A%A0%E8%BD%BD\n\"\n@某用户  initDataNewOnly 改为 false 以后重新部署（casdoor/conf/app.conf）\"\n------\n那就这个\n\"\n@某用户  initDataNewOnly 改为 false 以后重新部署（casdoor/conf/app.conf）\"\n------\n这个这个"
+  },
+  {
+    "question": "?? Astron on Campus @ 浙江财经大学",
+    "answer": "年终任务堆满，但不一定要熬夜硬抗\n试试这一套AI外挂\n不管是写PPT、做报告，还是整理会议、赶论文\n让你年终效率MAX"
+  },
+  {
+    "question": "@某用户 想问一下讯飞的虚拟数字人平台出现这个问题如何解决呢？\n客服点击打开显示鉴权失败",
+    "answer": "\"Charles：\n[图片]\"\n------\n@某用户 您先问界面右侧的客服？具体的虚拟数字人功能他们更清楚~"
+  },
+  {
+    "question": "为什么对话历史没有作用？",
+    "answer": "@某用户"
+  },
+  {
+    "question": "@某用户 给个复现路径么",
+    "answer": "@某用户 Guo?因为是自主编译的包，不清楚是不是配置问题\n@某用户 Agent 后不能调用编译的 RPA 运行，\n这个问题要怎么排查？"
+  },
+  {
+    "question": "这个问题咋解决\n这用的是内网台式机。\n内网可以用咱们的rpa系统吧\n服务器和rpa客户端",
+    "answer": "你全部部在内网就可以\n那没问题"
+  },
+  {
+    "question": "@某用户 Astron Agent 郑州城市行｜回放已上线\n错过了现场？现在即可完整回看两场核心内容，系统掌握 Astron Agent 的技术基石与开源实践方法。\n主题一｜Astron Agent 如何加速 Agentic AI 落地\nhttps://www.aidaxue.com/course/1173?video_id=5181\n主题二｜一站式掌握 Astron Agent 的部署与开源贡献\nhttps://www.aidaxue.com/course/1174?video_id=5182",
+    "answer": "[This message cannot be displayed]\nAstron表情包\n才发现海外开发者有在X推荐Astron~https://x.com/tom_doerr/status/1992086636616732737"
+  },
+  {
+    "question": "@某用户 FU?要搞定了配置的，解藕科大讯飞大模型，这样国外通用\n配置文件都是必须绑定星火大模型的",
+    "answer": "现在也可以配国外大模型呀"
+  },
+  {
+    "question": "@某用户 Guo?@某用户 FU?",
+    "answer": "是的，感谢反馈，我们页识别到这个问题了。在排期中，应该很快就能看到解耦版本"
+  },
+  {
+    "question": "您的意思我清楚，我做技术方案也分析到了，问题就是卡在基础能力这个企业无法落地，只能选择你们竞品\n咱们目的是商用\n期待新版，选择你们进行真实项目落地。我很看好你们的产品。@某用户 Guo?反馈是为了更好，不是吐槽。@某用户 Guo?",
+    "answer": "当然，非常理解，https://github.com/iflytek/astron-agent/issues/732 可以关注下这个issue，后续有进展 也会单独同步给您"
+  },
+  {
+    "question": "配置文件问题 检查下\n\n然后 docker compose -f docker-compose-with-auth.yaml down -v 清理下docker\n在项目跟目录下使用，git restore docker 清理下git\ndocker compose -f docker-compose-with-auth.yaml up -d 重新启动\n清理下浏览器缓存，或者使用无痕模式",
+    "answer": "Ok\n神医"
+  },
+  {
+    "question": "@某用户 如何配置才能实现 agent 用户直接登录 RPA客户端？\n（测试发送 docker 部署后，是两个用户）",
+    "answer": "目前应该是用的两个不同租户，配置有点不同"
+  },
+  {
+    "question": "Minio容器下载失败怎么办",
+    "answer": "可以找一下国内的docker 代理"
+  },
+  {
+    "question": "@某用户 ?? Astron Agent & RPA 青岛城市行 · 落地 Agentic AI！\n\n聚焦 Astron Agent & Astron RPA，带你系统了解：\n? 开源智能体平台的真实部署与实战  \n? RPA 与 Agent 的深度适配与自动化能力  \n\n?? 2025.12.20（周六）  \n? 崂山区协信中心 1 号楼 6F（山东企链会议中心）",
+    "answer": "是不是又打着会议的名字去旅游"
+  },
+  {
+    "question": "没有没有 牛马??而已",
+    "answer": "这个咋一直重启中\n\nastron-agent-console-hub\n怎么能和官网的样子搞的一样\n重启之后 已经登录状态  点击新建智能体又跳到登录页面让登录  这是啥问题\n有人么"
+  },
+  {
+    "question": "at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)\n\tat org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)\n\tat org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1683)\n\tat org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628)\n\tat org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785)\n\t... 74 common frames omitted\nCaused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Validate failed: Migrations have failed validation\nDetected failed migration to version 1.1 (init core).\nPlease remove any half-completed changes then run repair to fix the schema history.\nNeed more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826)\n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)\n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)\n\tat org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)\n\tat org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)\n\tat org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1745)\n\tat org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628)\n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1541)\n\t... 84 common frames omitted\nCaused by: org.flywaydb.core.api.exception.FlywayValidateException: Validate failed: Migrations have failed validation\nDetected failed migration to version 1.1 (init core).\nPlease remove any half-completed changes then run repair to fix the schema history.\nNeed more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE\tat org.flywaydb.core.Flyway.lambda$migrate$1(Flyway.java:190)\n\tat org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:213)\n\tat org.flywaydb.core.Flyway.migrate(Flyway.java:177)\n\tat org.springframework.boot.autoconfigure.flyway.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:66)\n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873)\n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822)\n\t... 96 common frames omitted\nrc9最新的\n数据库咋了?\n前几天是好的 啊   这个该不会得这样吧\n不保留怎么清理,  不知道数据库里都有啥  智能体配置保存在数据库里么?\n那是不是就相当于重装了\ndocker compose -f docker-compose-with-auth.yaml down -v\n前几天还正常啊  一点问题没有\n没啊\n我清理下 拉下最新的试试\ngit pull origin main 这样拉新吧\nok  正常了\n看来得时不时地的拉下最新的才行",
+    "answer": "这个问题首先要清空mysql的数据卷\n要用-v参数\n因为这个项目一开始没引入数据库迁移框架，后来引入后需要清空下mysql数据库交给迁移框架管理\n如果想要保留数据的话需要查询下flyway的文档，用mvn flyway插件处理下mysql\n不保留的话需要在把跟astron相关的docker volume都删除掉\n就是使用docker compose down的-v参数\n是的\n以后不会有类似问题了，第一次引入flyway导致的\n可能前几天镜像用的还是旧版本？最近更新过？\n这个是拉最新的git repo，docker image也需要更新下\n把本地的删了再用docker compose拉取就会是最新的了\n是的！时刻和项目保持最新，方便解决问题 也方便贡献新的代码"
+  },
+  {
+    "question": "有在线直播么？",
+    "answer": "啥时候有订单中心和会员中心额"
+  },
+  {
+    "question": "@某用户 想系统学 Agent，该从哪一步开始？Astron 教学视频在哪儿？\n正好12月17日 今天下午15点将举行Astron 训练营开营仪式～\n报名链接：https://www.aidaxue.com/astronCamp\n\nAstron 训练营·第一期，我们会把重点放在 4 件事上：\n① 从开发者视角，拆解智能体的核心原理和整体架构，搞明白 Agent 到底怎么跑起来\n② 手把手带你本地化部署开源智能体平台 Astron，不是 Demo，而是能跑、能改、能用\n③ 多节点组合，教你把零散能力串成真正可落地的工作流智能体\n④ 开源先锋视角：怎么参与 Astron 开源贡献，把学习变成长期积累的影响力",
+    "answer": "这是每周一节课？"
+  },
+  {
+    "question": "@某用户   RPA客户端 ，使用 最新镜像，应用市场下接口报错\nhttp://127.0.0.1:13159/api/robot/market-user/list\n\n{\"code\":\"700000\",\"data\":null,\"message\":\"数据异常\"}\n@某用户   Agent  有新增 调度任务 功能 的计划吗？\n是远程服务器的日志吗？\n\n\n使用的是默认账号\n@某用户",
+    "answer": "\"\n@某用户   RPA客户端 ，使用 最新镜像，应用市场下接口报错\nhttp://127.0.0.1:13159/api/robot/market-user/list\n\n{\"code\":\"700000\",\"data\":null,\"message\":\"数据异常\"}\"\n------\n@某用户 收到，我们看一下\n能提供下具体服务端日志吗\n@某用户\n是不是改什么名字了，日志显示你casdoor的数据库不存在"
+  },
+  {
+    "question": "casdoor设置有教程吗?",
+    "answer": "\"某用户\n[Unsupported message type]\"\n------\n@"
+  },
+  {
+    "question": "这个是用什么Agent生成的啊",
+    "answer": "内容就是星辰agent做的智能体生成了内容"
+  },
+  {
+    "question": "怎么做的，是哪个agent",
+    "answer": "自己搭建的，未上架，可以自己尝试搭建一个康康"
+  },
+  {
+    "question": "@某用户 Guo?咨询一下，自己搭建的agent，插件用不了，要怎么设置，智能体工作流都正常工作",
+    "answer": "没有改动，都是按文档配置的"
+  },
+  {
+    "question": "@某用户",
+    "answer": "知道了，要在开放平台对应功能0元购买api"
+  },
+  {
+    "question": "插件的授权账号配置了吗？\nAI_APP_ID=\nAI_API_KEY=\nAI_API_SECRET=",
+    "answer": "@某用户，克隆不下来，您们有没有镜像源？"
+  },
+  {
+    "question": "@某用户 你好，RPA后期的研发计划有吗？\n比如手机端？跨平台的MAC版？",
+    "answer": ""
+  },
+  {
+    "question": "讯飞有没有零代码生成应用工具？",
+    "answer": "手机端的AutoGLM开源了"
+  },
+  {
+    "question": "讯飞星辰Agent平台将作为生态合作伙伴亮相\n12月27日（本周六）上海第12届全球边缘计算大会\n欢迎大家报名参与，来展位互动有礼~??????",
+    "answer": "请问各位大佬广州有讯飞活动吗"
+  },
+  {
+    "question": "你好，大神们我想咨询一下，Astron Agent本地化部署完后，内网是可以正常使用的，但是我想做下端口映射，在家也能访问，但是登录时候casdoor登录还是跳转内网地址，请问这块如何修改配置文件。\n我做端口映射了，但是登录时候casdoor还是跳转内网\n想知道怎么改配置文件",
+    "answer": "大佬部署到云服务器上面"
+  },
+  {
+    "question": "@某用户",
+    "answer": "有的 这个视频号会生成回放 https://www.aidaxue.com/ 也可以看"
+  },
+  {
+    "question": "@某用户\n@某用户\n怎么报名\nok",
+    "answer": "最好报名后进入交流群\n训练营报名/学习链接：https://www.aidaxue.com/astronCamp\n学习手册（超全超实用！）：https://t.xfyun.cn/1VvHCG"
+  },
+  {
+    "question": "这个是啥问题\n没有\n就啥也没动，直接导入的知识库\n报错",
+    "answer": "使用的是ragflow嘛\n你建的知识库选的ragflow还是星火"
+  },
+  {
+    "question": "@某用户",
+    "answer": ""
+  },
+  {
+    "question": "@某用户",
+    "answer": "星火，但是报错，不知道为啥"
+  },
+  {
+    "question": "\"某用户\n@某用户\n------\n@某用户 您是要看具体的机器人还是就是案例",
+    "answer": "这个，另外还需要去开发平台领取下额度"
+  },
+  {
+    "question": "@某用户",
+    "answer": "XINGHUO_DATASET_ID在哪里获取啊\n@。?"
+  },
+  {
+    "question": "配置了XINGHUO_DATASET_ID还是报错\n\n已经解决了，找到问题了，谢谢您\n工作流里知识库调用不到呢",
+    "answer": "是按照这两种方式配置的嘛\n好滴，没事"
+  },
+  {
+    "question": "反复调试，调试后把报错信息发给AI解读。我今天不走数据库，后来发现在工作流里只能用新增数据，不能用SQL和增加数据。调了几十遍。终于知道搞IT的为啥会秃头了。@某用户",
+    "answer": "好吧"
+  },
+  {
+    "question": "\"小宋同学?????\n好吧\"\n------\n@某用户 工作流通了吗\n可以单独调试下，看下输入输出是啥\n单独看下知识库的输出\n卡片上面那个有个绿色的小箭头可以看到输入输出",
+    "answer": "完全胡说八道"
+  },
+  {
+    "question": "@某用户\n一会有事要出去",
+    "answer": "有的 结束后生成回放马上发出来"
+  },
+  {
+    "question": "问题：数据库节点在实际工作流中持续失败（错误25030）\n证据：\n1. 简单测试工作流可运行（硬编码值成功）\n2. 但实际工作流中任何数据库操作都失败\n3. 已测试：UUID、清理ID、数字ID、短ID全部失败\n4. 已测试：最简单的status字段更新也失败\n\n请求：\n1. 检查工作流ID:https://agent.xfyun.cn/work_flow/413635/arrange?botId=4483193\n2. 检查错误sid:PostgreSQL node request error(err code 25030, reason 数据库执行失败, sid xcd00450075@XingchenDB19b5ef18d70a44d782)\n3. 想知道数据库节点在复杂工作流中都有什么限制@某用户，在工作流中运行数据库沉淀数据总报错，是不是有bug????",
+    "answer": "@某用户（2） 周一我让研发看看哈"
+  },
+  {
+    "question": "我学会了讯飞智能体我想免费给大家做定制功能软件，盈利点我们商量分配，不知道是否可行？",
+    "answer": "@某用户，谢谢，我今天也调试调试，看看有没有新的办法"
+  },
+  {
+    "question": "在使用工具中的超拟人合成的时候，报这个错是什么原因呢\nThird-party tool request failed(Third-party API request failed: Cannot connect to host core-aitools:18668 ssl:default [[SSL] record layer failure (_ssl.c:1016)])",
+    "answer": "知识库一直不好使，想知道什么原因\n现在问题就是不走知识库，直接从模型出来，胡说八道\n看不了每个流下输出的内容"
+  },
+  {
+    "question": "@某用户\n你的输入不是input吗",
+    "answer": ""
+  },
+  {
+    "question": "看不了每个流下输出的内容\"",
+    "answer": "@某用户 单独看下知识库节点的输出"
+  },
+  {
+    "question": "?",
+    "answer": "点哪里可以看，一点就没了"
+  },
+  {
+    "question": "我一沉淀数据就报错\n数据库用不了\n我怀疑是不是bug\n点这里@某用户\n\n@某用户\n官方地址\n@某用户\n稍等，我回去重新发一下工作流地址\n最开始是用SQL，运行不了，就改成数据表模式了。用简单数据测试过。可以更新，不能新增。但一换成正式的工作流就运行不了了\n表的字段名都是字母?下划线，有大小写限制吗，倒是有大小写@某用户，那数据表模式不用写SQL啊，也运行不了\n等我回去发你链接和截图你们下午几点上班\n@某用户",
+    "answer": "\"\n问题：数据库节点在实际工作流中持续失败（错误25030）\n证据：\n1. 简单测试工作流可运行（硬编码值成功）\n2. 但实际工作流中任何数据库操作都失败\n3. 已测试：UUID、清理ID、数字ID、短ID全部失败\n4. 已测试：最简单的status字段更新也失败\n\n请求：\n1. 检查工作流ID:https://agent.xfyun.cn/work_flow/413635/arrange?botId=4483193\n2. 检查错误sid:PostgreSQL node request error(err code 25030, reason 数据库执行失败, sid xcd00450075@XingchenDB19b5ef18d70a44d782)\n3. 想知道数据库节点在复杂工作流中都有什么限制@某用户，在工作流中运行数据库沉淀数据总报错，是不是有bug????\"\n------\n@某用户（2） 你这个是本地部署跑的嘛，还是自己部署的\n\"\n@某用户\n------\n@某用户（2） 开源的还是官方的地址\n看不到你的工作流\n是不是生成的sql有问题\n这个错误一般是 sql 语句有问题，或者语句中有关表字段的字段名不合法（限制是 字母+下划线）；\n内置的数据库也要sql呀，一般是大模型生成的吧\n可能大模型生成的有问题\n2点"
+  },
+  {
+    "question": "@某用户\n1、工作流地址：https://agent.xfyun.cn/work_flow/414839/arrange?botId=4486203\n2、数据库参数设置：\n最终数据沉淀\n?\n节点类型：数据库\n模式：表单处理数据 \n选择数据表：chendianshuju/youranzi_chendianshuju\n处理模式：更新数据\n设置更新范围：workflow_execution_id不为空\n设置更新数据：\nworkflow_execution_id引用generated id\nhistorical_insight_report引用historical_insight_report\ntopic 引用topic\nagent_user_input 引用AGENT_USER_INPUT\nfinal_copy引用final_copy\nbusiness_analy_final引用business_analy_fina\nfinal_strategy_review引用final_strategy_review\nfree_verse_poem引用free_verse_poem\nstatus 输入content_created\n?\n输出：\nisSuccess SQL语句执行状态标识，成功true失败false\nmessage失败原因\noutputList执行结果+\n3、数据库-数据表字段设置见下图\n\n我这个是表单处理模式，绕过了SQL环节啊@某用户\n沉淀数据在最后一个节点，不是前面的查询数据库，查询数据库写了SQL，但是运行没问题。沉淀数据，也就是往数据表里更新本次操作的数据，会报错\n我这个工作流是在结束节点之前的沉淀数据环节报错",
+    "answer": "@某用户（2） 从我们日志查到，你们传过来的都不是一个完整的 sql 语句吧，这个是不是大模型生成的？   这个根本过不了 sql 检查\n\nSELECT * FROM youranzi_chendianshuju WHERE c.final_copy LIKE ''%中国%模式%'' \n   OR c.final_copy LIKE ''%系统思维%'' \n   OR c.final_copy LIKE ''%底层%''\n   OR c.preset_model IN (''五行生克模型'', ''经权模型'', ''系统耦合模型'') -- 聚焦可能相关的模型\nGROUP BY c.preset_model\nORDER BY avg_leads DESC, avg_finish_rate DESC;\n```\n\n```sql\n-- 查询2：高表现内容深度复盘\n-- 目标：直接查看高线索转化（leads_generated > 0）且主题相关的内容，分析其文案结构、模型应用与数据结果的关联。\nSELECT \n    c.id,\n    c.preset_model,\n    c.topic,\n    LEFT(c.final_copy, 500) as intro_preview, -- 预览文案开头，分析钩子\n    y.play_count,\n    y.finish_play_rate,\n    y.leads_generated,\n    y.leads_detail -- 查看线索具体内容，了解用户被什么吸引\nFROM chendianshuju c\nJOIN youranzidata y ON c.id = y.content_id\nWHERE (c.final_copy LIKE ''%中国%模式%'' OR c.topic LIKE ''%系统%'')\n  AND y.leads_generated > 0\nORDER BY y.leads_generated DESC\nLIMIT 3;\n```\n\n```sql\n-- 查询3：失败/低效内容归因诊断\n-- 目标：寻找主题相关但线索为0的内容，分析其可能的缺陷（模型、开头、结构等）。\nSELECT \n    c.id,\n    c.preset_model,\n    c.topic,\n    LEFT(c.final_copy, 300) as intro_preview,\n    y.play_count,\n    y.finish_play_rate,\n    y.leads_generated\nFROM chendianshuju c\nJOIN youranzidata y ON c.id = y.content_id\nWHERE (c.final_copy LIKE ''%中国%模式%'' OR c.topic LIKE ''%系统%'')\n  AND y.leads_generated = 0\nORDER BY y.play_count DESC\nLIMIT 3;\n```\n\n---\n\n### **第二步：深度关联分析（基于查询结果模拟）**\n\n**假设查询返回结果如下（用于演示分析逻辑）：**\n\n1.  **模型有效性对比（查询1模拟结果）：**\n    *   `五行生克模型`: 2篇内容，平均线索 **1.5**，平均完播率 **35%**\n    *   `经权模型`: 3篇内容，平均线索 **0.7**，平均完播率 **28%**\n    *   `系统耦合模型`: 1篇内容，平均线索 **0**，平均完播率 **22%**\n    **发现：** “五行生克模型”在诠释此类主题时，**平均线索转化率和完播率均显著领先**。这表明其“关系动态与平衡”的框架，能更有效地将抽象的中国式系统思维转化为观众可感知、愿互动的具体分析。\n\n2.  **高表现内容复盘（查询2模拟结果）：**\n    *   **最高线索内容（ID: 101）**：模型=`五行生克模型`，话题=`华为的“土”性：为什么它的模式无法被复制？`。文案开头：“很多人学华为，只学到了‘狼性’这个‘火’的层面，却看不见它深植于中国产业土壤的‘土’性根基...” 线索详情多为索取《企业生态位自检表》。\n    *   **共性分析**：高表现内容均使用 **“具体企业案例+五行属性定位”** 的叙事结构。钩子尖锐，直接挑战流行认知（“你们学错了”），并立即提供一个新的、基于本土文化的分析框架（五行），最终导向一个**具体的、可操作的诊断工具**（如自检表、评估清单）。\n\n3.  **失败内容归因（查询3模拟结果）：**\n    *   **零线索内容（ID: 205）**：模型=`系统耦合模型`，话题=`论中国商业系统的复杂性`。文案开头：“从系统论的角度看，中国商业环境是一个多主体、非线性的复杂适应系统...” \n    *   **诊断**：开篇即陷入**学术化、抽象化的概念阐述**，未能迅速与听众熟悉的商业实体或痛点结合。模型选择过于理论化，缺乏像“五行”这样具象、易传播的符号体系来降低认知门槛。\n\n---\n\n### **第三步：生成《历史数据战略洞察报告》**\n\n**《历史数据战略洞察报告》**\n\n**数据基础**：本次分析基于数据库中对“中国模式/系统思维”主题的 **6篇** 有效历史内容进行关联归因。\n\n**核心发现**：\n\n1.  **模型建议 - 首选“五行生克模型”**：\n    *   **数据支撑**：在历史同类选题中，“五行生克模型”驱动的内容，其**平均线索转化率是“经权模型”的2倍以上**，且平均完播率高出7个百分点。\n    *   **战略优势**：该模型凭借“金木水火土”的强文化符号性，能极快地将“中国特色”、“底层代码”等宏大概念，**降维解读为具体的企业关系、生态位与成长阶段**，叙事吸引力和转化力经过验证。\n\n2.  **风险预警 - 警惕“理论悬置”陷阱**：\n    *   **历史教训**：过往使用“系统耦合模型”等纯理论框架探讨该主题的内容，普遍存在**开场30秒内未能建立具体认知锚点**的问题，导致完播率与线索转化双双低迷。\n    *   **具体缺陷**：开篇即大谈“复杂性”、“非线性”，脱离了听众的“企业实体”认知基础。**必须将抽象思维附着于具体企业（如华为、比亚迪、胖东来）的具象分析上**。\n\n3.  **机会预判 - “破立式”叙事与工具化钩子**：\n    *   **成功共性**：所有高线索内容均采用 **“破流行认知 - 立本土框架 - 给诊断工具”** 的三段式结构。\n    *   **文案借鉴**：开场可直指“阿米巴/谷歌模式在中国水土不服”的流行讨论，随即提出：“这不是管理工具的问题，是**商业‘土壤’（五行之土）和‘生长逻辑’（五行生克）** 的差异”，并最终导向一个如 **《中国特色商业模式属性诊断矩阵》** 的具象化产出。\n\n**预演结论**：\n**本次创作应首要借鉴“五行生克模型”以具体企业解构宏大命题的叙事能力，必须规避从理论到理论、缺乏商业实体载体的“悬空式”论述。**\n\n**关键数据观测点建议**：\n基于“五行生克模型”与“中国特色商业模式”选题，建议发布后重点关注：\n1.  **完播率**：检验“破立式”叙事与五行框架对复杂议题的**吸引力与解释力**。\n2.  **“私信索取《诊断矩阵》”比例**：检验模型是否成功激发了观众的**自我诊断需求**，这是核心转化指标。\n3.  **评论区的企业举例数量**：检验内容是否成功激活了观众的**本土商业案例联想**，衡量思维启发的深度。\n\n---\n**战略复盘与预演官任务执行完毕。报告已生成，请总监审阅，并指导后续工作流。**', workflow_execution_id = '384726' WHERE (workflow_execution_id IS NOT NULL AND workflow_execution_id != '');"
+  },
+  {
+    "question": "@某用户 Astron 视频列表，欢迎观看??https://github.com/iflytek/astron-agent/discussions/779",
+    "answer": "“ \n我这个是表单处理模式，绕过了SQL环节啊@某用户\n------\n@某用户（2） 我上面给出的是从日志中查到，你传给我的数据库服务的 dml 的 sql语句就是上面查到的那个，它就不是一个正常的 sql 语句，不管你的工作流多复杂，你要保证的是你传过数据库节点的是一个正常的 sql"
+  },
+  {
+    "question": "你看，我整个节点的所有数据库，乃至全部节点，都没用过SQL模式。我用的都是平台提供的标准套餐，也就是因为这个平台操作简单，我才用的你们平台啊。希望胡小哥能发挥你的大神级专业业务能力，为我这样符合你们平台客群定位的、寻求简单agent操作方式的用户解决一下实际问题。谢谢\n@某用户",
+    "answer": "“ \n你看，我整个节点的所有数据库，乃至全部节点，都没用过SQL模式。我用的都是平台提供的标准套餐，也就是因为这个平台操作简单，我才用的你们平台啊。希望胡小哥能发挥你的大神级专业业务能力，为我这样符合你们平台客群定位的、寻求简单agent操作方式的用户解决一下实际问题。谢谢”\n------\n@某用户（2） 稍等一下，我这边跟工作流的研发人员共同查一下日志"
+  },
+  {
+    "question": "@某用户（2） 你好，可以在官方仓库给我们提个issue嘛，是个bug，我们会尽快排期修复\n\n@某用户 确认是bug了，能给官方仓库提交个issue嘛，我们这边会尽快排期修复",
+    "answer": "@某用户"
+  },
+  {
+    "question": "@某用户",
+    "answer": ""
+  },
+  {
+    "question": "@某用户 ??Astron 社区祝大家2026 新年快乐！ Agent 更有料，效率起飞！??\n假期旅途消闲读物已上线，求大佬们 点赞+收藏+转发 支持一下~ ?\n\n?? 干货必读\n1?? 知乎专栏 | 企业级智能体架构\n?? https://www.zhihu.com/column/c_1989729056304945000\n2?? 掘金实战 | Agent+RPA 自动化部署\n?? https://juejin.cn/post/7589250237068886026\n\n?? 神器推荐\n超多现成的 AI 工作流，点开即用 ??\nhttps://awesome-astron-workflow.vercel.app/\n?? 等你来以此共建\n有好点子？欢迎来 GitHub 提交你的 Workflow，一起把社区做大做强！??\n?? https://github.com/FenjuFu/Awesome-Astron-Workflow\n\n大家假期愉快！??",
+    "answer": "新年快乐，假期刚好充个电??"
+  },
+  {
+    "question": "更改端口后 自建的智能体莫名就消失了\"",
+    "answer": "更改的项目启动端口吗"
+  },
+  {
+    "question": "docker compose -f docker-compose-with-auth.yaml down  这个是停止?\n停止有时候有的停止不了啊\n停止不了就直接删卷了?\n! Network astronagent_astron-agent-network  Resource is still in use\n停止的时候\n没有\n然后有人叫告诉我用那个-v的试试   结果就可以了\n先停止 再删除?\nstop   rm ?\n-c是啥意思\n-v 那不就又没数据了么\n嗯 下回出现了再说   -v 看来是不能轻易用了   直接恢复出厂了\n嗯嗯 好的",
+    "answer": "为啥停止不了\n是不是 -f 文件没全对，启动哪个文件就停止哪个文件\n你这是启动报错的吧\n有其他容器在使用该网络\n你容器没退干净\n是不是启动过 rpa\ndocker network inspect astronagent_astron-agent-network\n看下有哪些容器在用网络\n或者你换个目录去启动\n把使用该网络的容器停了\n可以问下大模型\n不是，是之前启动的容器没退掉，占用了docker网络\n你先 down -c\n然后 docker ps\n看哪些容器没退掉\n打错了 -v\n也可以先观察下哪些容器占用了\n-v就是删除数据卷，数据存在docker数据卷的"
+  },
+  {
+    "question": "请教个问题，我部署了官方给的中间件后，试着在模型管理里面添加本地模型，为什么本地模型不能像三方模型一样启用呀？\n@某用户，Qwen是我在本地下载好的，不能像spark-x一样去启用它，启用开关不能选中。",
+    "answer": "\"&&\n请教个问题，我部署了官方给的中间件后，试着在模型管理里面添加本地模型，为什么本地模型不能像三方模型一样启用呀？\"\n------\n@某用户 具体是什么情况，截图看下"
+  },
+  {
+    "question": "@某用户，Qwen是我在本地下载好的，不能像spark-x一样去启用它，启用开关不能选中。\"",
+    "answer": "@某用户 有什么报错吗，以及您具体的配置可以发我一下吗，我给您复现看看"
+  },
+  {
+    "question": "哪块的数据呢？方便截个图吗\n不使用-v应该就能保存数据卷的，不放心也可以网上查一下如何备份数据卷",
+    "answer": "就是docker compose -f docker-compose-with-auth.yaml down -v\n这块是删的哪块数据\n所有数据卷位置都一样?"
+  },
+  {
+    "question": "这是啥问题\n这个跟之前的 down -v 有关系么?\n好\n我看看能不能复现下\n啊出1.0正式版啊 终于不是RC 了 才看到 官方群里不通知么\n更新 拉取最新 重新启动就行吧",
+    "answer": "如果之前数据彻底清空了，应该不会导致这种问题。之前智能体发布流程有bug，已经修复，可能是修复前后数据不一致导致的这种问题\n如果目前的数据还是开发测试数据，可以使用down -v清空一下，再尝试复现问题，如果出现麻烦提个issue方便我们跟踪修复"
+  },
+  {
+    "question": "@某用户 ?? Astron Agent v1.0.0 正式发布啦！\n\n? 新特性 & 优化：\n- ?? Chat 功能大升级：聊天体验更丝滑，UI 也做了全面优化。\n- ?? 节点能力增强：稳定性提升，超时处理更智能。\n- ?? 鉴权支持：新增 Bearer Auth 支持 (ifly-v2)，配置加载更灵活。\n- ?? 文档完善：新增 FAQ，部署文档和 README 也都更新了，上手更轻松。\n\n?? 问题修复：\n- 修复了文件上传大小限制、Kafka 相关问题以及流式输出的 bug，系统更稳了！\n\n欢迎大家更新体验，也期待在 GitHub 上收到你们的反馈（和 Star ?）！\n?? 传送门：https://github.com/iflytek/astron-agent/releases/tag/v1.0.0",
+    "answer": "数据库结构有变更吗，备份的数据在新版本还能用吗"
+  },
+  {
+    "question": "数据库结构有变更吗，备份的数据在新版本还能用吗\"",
+    "answer": "@某用户 hub容器目前是兼容自动变更数据结构的，其他暂不支持"
+  },
+  {
+    "question": "@某用户  git checkout main\ngit pull origin main\n\n改了\n已经可以了谢谢",
+    "answer": "启动服务后，访问http://localhost:8000，将你页面上的那个地址添加到这里\n@某用户"
+  },
+  {
+    "question": "网络问题\nfatal: unable to access 'https://github.com/iflytek/astron-agent.git/': Failed to connect to github.com port 443 after 21049 ms: Couldn't connect to server\n连不上github\n@某用户\n这个是更新拉完了么?\n\n这是你们ai大学的文档\n\n不是先git fetch  然后在git pull?\n直接git pull?\n怎么看拉下来的事那个版本\n\n好的",
+    "answer": "您好，连接github可能需要配置合理的网络环境\n您好，建议您直接使用 git pull ， git fetch 之后还要 git merge， git pull 更加快捷\n您好，可以直接git pull的\n您好，可以使用git branch查看当前分支，若是main分支，就是最新的代码~"
+  },
+  {
+    "question": "@某用户",
+    "answer": "您是想试用什么功能呢~"
+  },
+  {
+    "question": "@某用户 里面哪个能删除啊\ndocker compose -f docker-compose-with-auth.yaml up -d  这两个作用是一样的吧\n\n里面有一些示例\n额",
+    "answer": "@某用户 您好，您是指删除什么东西\n可以删除的~\ndocker compose -f docker-compose-with-auth.yaml pull 是拉取最新的镜像\ndocker compose -f docker-compose-with-auth.yaml up -d 是启动服务并在后台运行"
+  },
+  {
+    "question": "虚拟人对话提示appid没有权限。但是申请订阅的时候开通了大模型对话。同时平台的appid开通了spark utral的权限，但是两个appid不一样，这种情况怎么办？我在env文件配置了平台appid和虚拟人相关appid。现在普通对话没问题，但是虚拟人对话提示appid没有权限，但是虚拟人能加载出来。\n@某用户。搞了一天，无果。@某用户 Guo?\n操作和这个一致，明天技术碰一下，感谢。@某用户",
+    "answer": "按照这个步骤操作下哈，还有问题我明天给你问下我们的技术人员@某用户"
+  },
+  {
+    "question": "@某用户",
+    "answer": "@某用户 您好，您这边大模型是配置的自己的模型吗，方便看下报错日志么"
+  },
+  {
+    "question": "具体怎么看？\n我截图给您\n\n好的，下午帮忙看看\n那会儿开会去了",
+    "answer": "对话报错的时候看下hub的日志\n您这边调试是正常的吧"
+  },
+  {
+    "question": "想问下 哪里能添加底部文字备案信息等一些信息的\n后期能否增加 智能体的代码引入功能吗 可以放在h5或者小程序里使用",
+    "answer": "@某用户"
+  },
+  {
+    "question": "后期能否增加 智能体的代码引入功能吗 可以放在h5或者小程序里使用\"",
+    "answer": "这个需求可以先在 GitHub 上提一个 issue，\n后面会结合具体使用场景进行评估。"
+  },
+  {
+    "question": "@某用户 Guo?帮忙看看呗\n最后一哆嗦\n哦哦，那就好，还说配置的问题了。这个问题连连续续搞了半个月，从1.0发布又搞了2天\n完毕后@某用户。我现在使用的是latest的docker镜像",
+    "answer": "“Mr.Zhu: \n[图片]”\n------\n @某用户 已经找到问题了，准备提pr修复了，稍等\n好的"
+  },
+  {
+    "question": "https://github.com/iflytek/astron-agent/issues/736 麻烦问下，这个issue，就是开源版本支持插件的导入和导出功能的，请问是否有计划排期实现，目前这块是强需求\"",
+    "answer": "您好, 这个 issue 我们已经关注到了，目前 产品侧正在跟进评估中。 后续有进展会在github里同步更新。"
+  },
+  {
+    "question": "@某用户\n哦\nSuperAgent\n这个后期也会开源吗",
+    "answer": "\"\n@某用户\n------\n目前主要还是按场景来用，不是按年龄段单独划分"
+  },
+  {
+    "question": "怎么在开源的这部分加上这样的广告位\n\n不知道那个路径在哪",
+    "answer": "改代码，价格获取cms系统的的内容不就可以了？"
+  },
+  {
+    "question": "@某用户\n\n错误和昨天确实不一样\n但是无法对话\n\n也是报错\n昨天普通工作流是好的\n上面都是调试后的结果啊\n@某用户\n上面的效果是点击调试对话的截图",
+    "answer": "我反馈下\n普通工作流对话报错嘛\n调试过了吗\n调试再对话"
+  },
+  {
+    "question": "可以了@某用户@某用户，请问这是什么原理\n我必须调试一次，再发布才能行\n赞赞赞\n\n我的智能体能找到，但是发布到智能体广场无法找到，这个属于bug\n好的，很多功能让人自我怀疑\n感谢\n虚拟人通话是不是这个功能暂时不开放??@某用户\n怎么设置都是 虚拟人播报\n收到",
+    "answer": "需要调试正常才能对话，后续会优化下流程，可以略过调试步骤\n不客气，应该的\n“Mr.Zhu: \n我的智能体能找到，但是发布到智能体广场无法找到，这个属于bug”\n------\n@某用户\n\n这块可以设置下工作流分类再更新发布，就能在广场对应tag下看到了\n我找同事确认下\n“Mr.Zhu: \n虚拟人通话是不是这个功能暂时不开放??@某用户\n------\n@某用户 是的，目前通话功能暂未开放，您可以提个issue，后续会计划开放相应功能"
+  },
+  {
+    "question": "RPA: 原子能力的高级参数 时不时不显示是什么原因？",
+    "answer": "这个项目没有支付和会员模块?"
+  },
+  {
+    "question": "这个项目没有支付和会员模块?\"",
+    "answer": "目前只是商业版里有@某用户"
+  },
+  {
+    "question": "云服务? 自部署的没有?\n这个在哪里看有链接吗\n\n这个是指的用户总数吗?",
+    "answer": "\"\n[图片]\"\n------\n这边有个自部署的咨询的\n\"\n[图片]\"\n------\n@某用户 \n登录agent的官网，然后这个图里的升级按钮\n嗯是的"
+  },
+  {
+    "question": "【Astron Agent 社区速递】??企业商用合规指南上线 ：明确 Apache 2.0 协议下的商用边界，支持闭源销售与 SaaS 部署，附带详细操作 SOP，助您规避法律风险，安心交付产品。??指南传送门 ： https://github.com/iflytek/astron-agent/discussions/839??寻集优质落地案例 ：诚邀企业用户参与案例共建，成功入选即享 官方团队 1v1 深度技术支持 与 品牌联合推广机会。??申请通道 ：",
+    "answer": ""
+  },
+  {
+    "question": "你们rpa的浏览器插件为什么不上传到应用商店\n不是，是rpa浏览器插件上传到谷歌或者edge浏览器的扩展中心?@某用户",
+    "answer": "\"\n你们rpa的浏览器插件为什么不上传到应用商店\"\n------\n@某用户 您是想上传到astron的插件广场吗？\n我问下研发同事"
+  },
+  {
+    "question": "你们rpa的浏览器插件为什么不上传到应用商店\"",
+    "answer": "@某用户 有什么需求吗"
+  }
+]

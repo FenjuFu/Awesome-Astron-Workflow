@@ -1,12 +1,12 @@
-// Build the AI Chat knowledge-base index from the qiwei-chat-records corpus.
+// Build the AI Chat knowledge-base index from the in-repo knowledge base.
 //
-// Source: the curated "可直接训练" subset (FAQ + user cases + QA extracts) of
-// the FenjuFu/qiwei-chat-records repo. Clone it first, then point this script
-// at the "01_可直接训练" directory:
+// Source: ./knowledge-base — a desensitized LLM wiki (FAQ + anonymized customer
+// cases + cleaned group-chat QA extracts) derived from internal support records.
+// Just run, no arguments needed:
 //
-//   git clone --filter=blob:none --no-checkout https://github.com/FenjuFu/qiwei-chat-records <dir>
-//   cd <dir> && git sparse-checkout set "给同事_机器人训练交付版/01_可直接训练" && git checkout
-//   node scripts/build-kb-index.js "<dir>/给同事_机器人训练交付版/01_可直接训练"
+//   node scripts/build-kb-index.js
+//
+// (An alternate source directory may still be passed as the first argument.)
 //
 // Output: api/_lib/kb-index.json (committed; loaded by the chat retriever).
 
@@ -18,16 +18,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
 const OUT_PATH = path.join(REPO_ROOT, 'api', '_lib', 'kb-index.json');
 
-const DEFAULT_SOURCE = 'D:/qiwei-kb-src/给同事_机器人训练交付版/01_可直接训练';
+const DEFAULT_SOURCE = path.join(REPO_ROOT, 'knowledge-base');
 const sourceRoot = process.argv[2] || DEFAULT_SOURCE;
 
 const MAX_CHUNK_CHARS = 1400;
 const MIN_CHUNK_CHARS = 24;
 
-// Only the high-value, deduped knowledge: FAQ docs + user cases. The raw QA
-// extracts (03_问答提取原始产物) are noisy and largely duplicate the FAQ, and
-// the priority doc is meta — both are excluded per README_交付说明.md guidance.
-const EXCLUDE_DIR_RE = /03_问答提取原始产物/;
+// The generic markdown chunker handles faq/ and cases/. The qa/ dir is skipped
+// here because its extracts have a dedicated parser (collectQaChunks) with
+// cleaning + quality filtering. README/meta docs are not indexed.
+const EXCLUDE_DIR_RE = /^qa$/;
 const EXCLUDE_FILE_RE = /(推荐训练素材优先级|README)/i;
 
 function walkMarkdown(dir) {
@@ -147,7 +147,7 @@ function normalizeForDedup(text) {
 // cleaning + quality filtering rather than the generic markdown chunker.
 // ---------------------------------------------------------------------------
 
-const QA_DIR_NAME = '03_问答提取原始产物';
+const QA_DIR_NAME = 'qa';
 const STOP_ANSWER_RE = /^(?:好的?|收到|谢谢\S*|感谢\S*|嗯+|哦+|啊+|是的?|对的?|可以了?|行|好嘞|在的?|稍等|没问题|明白了?|了解了?|ok|okay|👍+|[\s、。，！？!?.~…]+)$/i;
 const NOISE_TOKEN_RE = /\[(?:图片|表情|动画表情|文件|链接|视频|语音|聊天记录|位置|名片|引用|emoji)\]/g;
 
