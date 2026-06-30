@@ -21,6 +21,8 @@ const OUT_PATH = path.join(REPO_ROOT, 'api', '_lib', 'kb-index.json');
 const DEFAULT_SOURCE = path.join(REPO_ROOT, 'knowledge-base');
 const sourceRoot = process.argv[2] || DEFAULT_SOURCE;
 
+const SCRIPTS_DIR = path.join(REPO_ROOT, 'scripts');
+
 const MAX_CHUNK_CHARS = 1400;
 const MIN_CHUNK_CHARS = 24;
 
@@ -262,6 +264,62 @@ function collectQaChunks() {
 }
 
 // ---------------------------------------------------------------------------
+// Repo scripts ingestion: index the build/automation scripts under ./scripts
+// so /chat can answer questions about the project's own tooling (how the KB is
+// built, how workflows sync, etc.). Only each file's leading doc-comment header
+// is indexed — that's the human-readable description; the executable body is
+// skipped to keep the support corpus signal-rich rather than full of code.
+// ---------------------------------------------------------------------------
+
+// Extract the leading comment header of a JS file: the first contiguous run of
+// `//` lines (or a `/* ... */` block) at the top, before any code.
+function leadingDocComment(src) {
+  const lines = src.split(/\r?\n/);
+  // Block-comment header: /* ... */ starting on the first non-blank line.
+  let i = 0;
+  while (i < lines.length && lines[i].trim() === '') i++;
+  if (lines[i] && /^\s*\/\*/.test(lines[i])) {
+    const body = [];
+    for (; i < lines.length; i++) {
+      body.push(lines[i]);
+      if (/\*\//.test(lines[i])) break;
+    }
+    return body.join('\n').replace(/^\s*\/\*+/, '').replace(/\*+\/\s*$/, '')
+      .split(/\r?\n/).map((l) => l.replace(/^\s*\*\s?/, '')).join('\n').trim();
+  }
+  // Line-comment header: contiguous `//` lines from the top.
+  const out = [];
+  for (; i < lines.length; i++) {
+    const t = lines[i].trim();
+    if (t.startsWith('//')) { out.push(t.replace(/^\/\/\s?/, '')); continue; }
+    if (t === '' && out.length === 0) continue; // skip leading blanks
+    break;
+  }
+  return out.join('\n').trim();
+}
+
+function collectScriptChunks() {
+  if (!fs.existsSync(SCRIPTS_DIR)) return { files: 0, chunks: [] };
+  const out = [];
+  let files = 0;
+  for (const entry of fs.readdirSync(SCRIPTS_DIR, { withFileTypes: true })) {
+    if (!entry.isFile() || !entry.name.toLowerCase().endsWith('.js')) continue;
+    let src;
+    try { src = fs.readFileSync(path.join(SCRIPTS_DIR, entry.name), 'utf8'); } catch { continue; }
+    const doc = leadingDocComment(src);
+    if (doc.length < MIN_CHUNK_CHARS) continue; // skip undocumented scripts
+    out.push({
+      title: `项目脚本 - ${entry.name}`,
+      section: '构建与运维脚本',
+      heading: entry.name,
+      text: `脚本：scripts/${entry.name}\n\n${doc}`,
+    });
+    files++;
+  }
+  return { files, chunks: out };
+}
+
+// ---------------------------------------------------------------------------
 // External GitHub docs ingestion: official iFLYTEK / Astron project docs.
 // Fetched from raw.githubusercontent.com at build time (dev machine only —
 // Vercel just downloads the finished index). Files that 404 are skipped, so
@@ -489,14 +547,19 @@ async function main() {
   for (const c of qa.chunks) addChunk(c);
   const qaCount = chunks.length - faqCount;
 
-  // 3) Official GitHub project docs (fetched at build time; failures are
+  // 3) Repo build/automation scripts (header doc-comments only).
+  const scriptsResult = collectScriptChunks();
+  for (const c of scriptsResult.chunks) addChunk(c);
+  const scriptsCount = chunks.length - faqCount - qaCount;
+
+  // 4) Official GitHub project docs (fetched at build time; failures are
   // non-fatal so the index still builds from local sources offline).
   let ghCount = 0;
   let ghFiles = 0;
   try {
     const gh = await fetchGithubChunks();
     for (const c of gh.chunks) addChunk(c);
-    ghCount = chunks.length - faqCount - qaCount;
+    ghCount = chunks.length - faqCount - qaCount - scriptsCount;
     ghFiles = gh.okFiles;
     console.log(`GitHub docs: ${gh.okFiles} files ok, ${gh.missFiles} skipped -> ${ghCount} chunks (after dedup)`);
   } catch (e) {
@@ -506,7 +569,7 @@ async function main() {
   const out = {
     generatedAt: new Date().toISOString(),
     sourceRoot,
-    fileCount: files.length + qa.files + ghFiles,
+    fileCount: files.length + qa.files + scriptsResult.files + ghFiles,
     count: chunks.length,
     chunks,
   };
@@ -514,6 +577,7 @@ async function main() {
   fs.writeFileSync(OUT_PATH, JSON.stringify(out, null, 2), 'utf8');
   console.log(`FAQ/cases: ${files.length} files -> ${faqCount} chunks`);
   console.log(`QA extracts: ${qa.files} files -> ${qaCount} chunks (after filtering + dedup)`);
+  console.log(`Repo scripts: ${scriptsResult.files} files -> ${scriptsCount} chunks`);
   console.log(`GitHub docs: ${ghFiles} files -> ${ghCount} chunks`);
   console.log(`Total: ${chunks.length} chunks`);
   console.log(`Wrote ${OUT_PATH}`);
