@@ -4,6 +4,17 @@
 
 [![English](https://img.shields.io/badge/README-English-blue)](README.md) [![中文](https://img.shields.io/badge/README-%E4%B8%AD%E6%96%87-red)](README.zh-CN.md) [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/FenjuFu/Awesome-Astron-Workflow)
 
+## 💬 Ask the Astron Assistant
+
+Have a question about Astron Agent or Astron RPA — deployment, model access, troubleshooting, or how a workflow is built? Two ways to get an answer grounded in this project's knowledge:
+
+| | Where | What it answers from |
+| --- | --- | --- |
+| 🟢 **Live AI Chat** | **[awesome-astron-workflow.dev/chat](https://awesome-astron-workflow.dev/chat)** | Answers **only** from the curated [`knowledge-base/`](knowledge-base) (FAQ + anonymized customer cases + cleaned community Q&A) plus official iFLYTEK/Astron docs. |
+| 🤖 **Ask DeepWiki** | **[deepwiki.com/FenjuFu/Awesome-Astron-Workflow](https://deepwiki.com/FenjuFu/Awesome-Astron-Workflow)** | Indexes the **whole repository**, including [`knowledge-base/`](https://github.com/FenjuFu/Awesome-Astron-Workflow/tree/master/knowledge-base), and answers across all of it. |
+
+> 📚 **Knowledge base source:** [`knowledge-base/`](knowledge-base) is the desensitized corpus behind both. See [knowledge-base/README.md](knowledge-base/README.md) for layout and how it is compiled into the retrieval index. DeepWiki indexes this folder automatically as part of the repository — no extra configuration is needed for it to answer from these documents.
+
 ## Table of Contents
 
 - [Overview](#overview)

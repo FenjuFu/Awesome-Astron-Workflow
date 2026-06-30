@@ -4,6 +4,17 @@
 
 [![English](https://img.shields.io/badge/README-English-blue)](README.md) [![中文](https://img.shields.io/badge/README-%E4%B8%AD%E6%96%87-red)](README.zh-CN.md) [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/FenjuFu/Awesome-Astron-Workflow)
 
+## 💬 向 Astron 助手提问
+
+关于 Astron Agent 或 Astron RPA 的问题——部署、模型接入、故障排查、工作流怎么搭——有两种方式获得基于本项目知识的回答：
+
+| | 入口 | 回答来源 |
+| --- | --- | --- |
+| 🟢 **在线 AI 问答** | **[awesome-astron-workflow.dev/chat](https://awesome-astron-workflow.dev/chat)** | **仅**根据精选的 [`knowledge-base/`](knowledge-base) 知识库（FAQ + 脱敏客户案例 + 清洗后的社区问答）及讯飞/Astron 官方文档作答。 |
+| 🤖 **Ask DeepWiki** | **[deepwiki.com/FenjuFu/Awesome-Astron-Workflow](https://deepwiki.com/FenjuFu/Awesome-Astron-Workflow)** | 索引**整个仓库**（含 [`knowledge-base/`](https://github.com/FenjuFu/Awesome-Astron-Workflow/tree/master/knowledge-base)），跨全部内容作答。 |
+
+> 📚 **知识库来源：** [`knowledge-base/`](knowledge-base) 是支撑两者的脱敏语料，目录结构与索引构建方式见 [knowledge-base/README.md](knowledge-base/README.md)。DeepWiki 会随仓库自动索引该目录——无需额外配置即可根据这些文档作答。
+
 ## 目录
 
 - [概述](#概述)
