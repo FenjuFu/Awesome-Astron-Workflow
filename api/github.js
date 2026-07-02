@@ -909,6 +909,38 @@ const buildGitHubHeaders = (token, accept = 'application/vnd.github.v3+json') =>
   return headers;
 };
 
+const GITHUB_CALLBACK_PATH = '/api/github/callback';
+const resolveGitHubRedirectUri = (request) => {
+  const protocol = request.headers['x-forwarded-proto'] || 'http';
+  const host = request.headers.host;
+  const fallbackRedirectUri = `${protocol}://${host}${GITHUB_CALLBACK_PATH}`;
+  const configuredRedirectUri = process.env.GITHUB_REDIRECT_URI || process.env.VITE_GITHUB_REDIRECT_URI;
+
+  if (!configuredRedirectUri) {
+    return fallbackRedirectUri;
+  }
+
+  try {
+    const parsedConfiguredUri = new URL(configuredRedirectUri);
+    const parsedFallbackUri = new URL(fallbackRedirectUri);
+    const hasValidCallbackPath = parsedConfiguredUri.pathname === GITHUB_CALLBACK_PATH;
+    const hasSameOrigin = parsedConfiguredUri.origin === parsedFallbackUri.origin;
+
+    if (hasValidCallbackPath && hasSameOrigin) {
+      return parsedConfiguredUri.toString();
+    }
+  } catch (error) {
+    console.warn('Invalid GitHub redirect URI configuration, falling back to request origin', error);
+    return fallbackRedirectUri;
+  }
+
+  console.warn('Unsafe GitHub redirect URI configuration, falling back to request origin', {
+    configuredRedirectUri,
+    fallbackRedirectUri,
+  });
+  return fallbackRedirectUri;
+};
+
 const buildExpiredCookie = (name) => `${name}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`;
 
 const getDefaultContributionWindow = (referenceDate = new Date()) => {
@@ -1458,9 +1490,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
 
 async function handleLogin(request, response) {
   const clientId = process.env.GITHUB_CLIENT_ID || process.env.VITE_GITHUB_CLIENT_ID;
-  const protocol = request.headers['x-forwarded-proto'] || 'http';
-  const host = request.headers.host;
-  const redirectUri = process.env.VITE_GITHUB_REDIRECT_URI || `${protocol}://${host}/api/github/callback`;
+  const redirectUri = resolveGitHubRedirectUri(request);
 
   if (!clientId) {
     return response.status(500).json({ error: 'Missing GITHUB_CLIENT_ID' });
@@ -1504,9 +1534,7 @@ async function handleCallback(request, response) {
 
   const clientId = process.env.GITHUB_CLIENT_ID || process.env.VITE_GITHUB_CLIENT_ID;
   const clientSecret = process.env.GITHUB_CLIENT_SECRET;
-  const protocol = request.headers['x-forwarded-proto'] || 'http';
-  const host = request.headers.host;
-  const redirectUri = process.env.VITE_GITHUB_REDIRECT_URI || `${protocol}://${host}/api/github/callback`;
+  const redirectUri = resolveGitHubRedirectUri(request);
 
   if (!clientId || !clientSecret) {
     return response.status(500).json({ error: 'Missing GitHub credentials' });
