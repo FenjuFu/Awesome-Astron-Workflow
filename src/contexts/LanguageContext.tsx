@@ -411,8 +411,13 @@ const translations = {
     'redeem.status.pending': 'Pending',
     'redeem.status.issued': 'Issued',
     'redeem.status.rejected': 'Rejected',
+    'redeem.limitedOne': 'Limited: 1 Ticket',
+    'redeem.stock.remaining': 'Remaining',
+    'redeem.stock.soldOut': 'Sold Out',
     'redeem.prize.astronclaw': 'AstronClaw Membership',
     'redeem.prize.astronclaw.desc': 'Value 16.8 CNY, valid for 1 month.',
+    'redeem.prize.tianjinTicket': 'Tianjin AI Innovation Conference Ticket',
+    'redeem.prize.tianjinTicket.desc': '1 ticket for the 2nd AI Innovation Development Exchange Conference in Tianjin on July 11, 15 points, quantity 1.',
     'redeem.prize.fan': 'Bladeless Charging Fan',
     'redeem.prize.fan.desc': 'One (White/Blue) free shipping, 15 points.',
     'redeem.prize.watch': 'Astron Watch',
@@ -430,6 +435,7 @@ const translations = {
     'redeem.form.remark.placeholder': 'E.g., Yellow or Red',
     'redeem.form.confirm': 'Confirm Redemption',
     'redeem.points.insufficient': 'Insufficient points',
+    'redeem.soldOut': 'Already redeemed out',
 
     // Lucky Draw
     'lucky.title': 'Astron Lucky Draw',
@@ -844,8 +850,13 @@ const translations = {
     'redeem.status.pending': '审核中',
     'redeem.status.issued': '已发放',
     'redeem.status.rejected': '已拒绝',
+    'redeem.limitedOne': '限量 1 张',
+    'redeem.stock.remaining': '剩余',
+    'redeem.stock.soldOut': '已兑换完',
     'redeem.prize.astronclaw': 'AstronClaw 会员',
     'redeem.prize.astronclaw.desc': '价值 16.8 元，有效期 1 个月。',
+    'redeem.prize.tianjinTicket': '7月11日天津第2届人工智能创新发展交流会门票',
+    'redeem.prize.tianjinTicket.desc': '门票 1 张，15 积分，数量 1。',
     'redeem.prize.fan': '无叶充电风扇',
     'redeem.prize.fan.desc': '一台（白色/蓝色）包邮，15积分。',
     'redeem.prize.watch': 'Astron 联名手表',
@@ -863,6 +874,7 @@ const translations = {
     'redeem.form.remark.placeholder': '如：黄/红',
     'redeem.form.confirm': '确认兑换',
     'redeem.points.insufficient': '积分不足',
+    'redeem.soldOut': '已经兑换完',
 
     // Lucky Draw
     'lucky.title': 'Astron 幸运抽奖',

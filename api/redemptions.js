@@ -1,6 +1,33 @@
 import cookie from 'cookie';
 import { supabaseAdmin } from './_lib/supabase-admin.js';
 
+const LIMITED_PRIZE_INVENTORY = {
+  tianjin_ai_innovation_conference_ticket_20250711: 1,
+};
+
+const ACTIVE_REDEMPTION_STATUSES = ['pending', 'issued'];
+
+export const buildPrizeAvailability = (redemptions, inventoryMap = LIMITED_PRIZE_INVENTORY) =>
+  Object.fromEntries(
+    Object.entries(inventoryMap).map(([prizeId, inventory]) => {
+      const redeemed = redemptions.filter((entry) =>
+        entry.prize_id === prizeId && ACTIVE_REDEMPTION_STATUSES.includes(entry.status)
+      ).length;
+
+      return [
+        prizeId,
+        {
+          inventory,
+          redeemed,
+          remaining: Math.max(inventory - redeemed, 0),
+          soldOut: redeemed >= inventory,
+        },
+      ];
+    })
+  );
+
+const getLimitedPrizeIds = () => Object.keys(LIMITED_PRIZE_INVENTORY);
+
 export default async function handler(req, res) {
   const adminPassword = process.env.VITE_ADMIN_PASSWORD;
   const authHeader = req.headers['x-admin-password'];
@@ -92,7 +119,25 @@ async function handleGetRedemptions(githubLogin, res) {
       .order('created_at', { ascending: false });
 
     if (error) throw error;
-    return res.status(200).json(data);
+
+    const limitedPrizeIds = getLimitedPrizeIds();
+    let availability = {};
+
+    if (limitedPrizeIds.length > 0) {
+      const { data: limitedRedemptions, error: availabilityError } = await supabaseAdmin
+        .from('redemptions')
+        .select('prize_id, status')
+        .in('prize_id', limitedPrizeIds)
+        .in('status', ACTIVE_REDEMPTION_STATUSES);
+
+      if (availabilityError) throw availabilityError;
+      availability = buildPrizeAvailability(limitedRedemptions || []);
+    }
+
+    return res.status(200).json({
+      redemptions: data,
+      prizeAvailability: availability,
+    });
   } catch (error) {
     console.error('Error fetching redemptions:', error);
     return res.status(500).json({ error: error.message });
@@ -107,6 +152,21 @@ async function handleCreateRedemption(githubLogin, body, res) {
   }
 
   try {
+    const inventory = LIMITED_PRIZE_INVENTORY[prizeId];
+    if (typeof inventory === 'number') {
+      const { count, error: countError } = await supabaseAdmin
+        .from('redemptions')
+        .select('id', { count: 'exact', head: true })
+        .eq('prize_id', prizeId)
+        .in('status', ACTIVE_REDEMPTION_STATUSES);
+
+      if (countError) throw countError;
+
+      if ((count || 0) >= inventory) {
+        return res.status(409).json({ error: 'Prize sold out' });
+      }
+    }
+
     const { data, error } = await supabaseAdmin
       .from('redemptions')
       .insert([

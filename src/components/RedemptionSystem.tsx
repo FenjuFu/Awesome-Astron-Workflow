@@ -13,6 +13,13 @@ interface Redemption {
   created_at: string;
 }
 
+interface PrizeAvailability {
+  inventory: number;
+  redeemed: number;
+  remaining: number;
+  soldOut: boolean;
+}
+
 interface Prize {
   id: string;
   nameKey: string;
@@ -20,9 +27,18 @@ interface Prize {
   points: number;
   icon: React.ReactNode;
   imageUrl?: string;
+  inventory?: number;
 }
 
 const PRIZES: Prize[] = [
+  {
+    id: 'tianjin_ai_innovation_conference_ticket_20250711',
+    nameKey: 'redeem.prize.tianjinTicket',
+    descKey: 'redeem.prize.tianjinTicket.desc',
+    points: 15,
+    icon: <Gift className="h-6 w-6 text-indigo-600" />,
+    inventory: 1,
+  },
   {
     id: 'astronclaw_membership',
     nameKey: 'redeem.prize.astronclaw',
@@ -63,6 +79,7 @@ interface RedemptionSystemProps {
 const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions }) => {
   const { t } = useLanguage();
   const [redemptions, setRedemptions] = useState<Redemption[]>([]);
+  const [prizeAvailability, setPrizeAvailability] = useState<Record<string, PrizeAvailability>>({});
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [selectedPrize, setSelectedPrize] = useState<Prize | null>(null);
@@ -85,7 +102,13 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
       const res = await fetch('/api/redemptions');
       if (res.ok) {
         const data = await res.json();
-        setRedemptions(data);
+        if (Array.isArray(data)) {
+          setRedemptions(data);
+          setPrizeAvailability({});
+        } else {
+          setRedemptions(data.redemptions || []);
+          setPrizeAvailability(data.prizeAvailability || {});
+        }
       }
     } catch (err) {
       console.error('Failed to fetch redemptions:', err);
@@ -97,7 +120,8 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
   const handleRedeem = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedPrize) return;
-    if (availablePoints < selectedPrize.points) return;
+    const selectedAvailability = prizeAvailability[selectedPrize.id];
+    if (availablePoints < selectedPrize.points || selectedAvailability?.soldOut) return;
 
     try {
       setSubmitting(true);
@@ -117,6 +141,9 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
         setSelectedPrize(null);
         setFormData({ phone: '', email: '', name: '', address: '', remark: '' });
         fetchRedemptions();
+      } else if (res.status === 409) {
+        setMessage({ type: 'error', text: t('redeem.soldOut') });
+        fetchRedemptions();
       } else {
         setMessage({ type: 'error', text: t('redeem.error') });
       }
@@ -135,6 +162,18 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
       </div>
     );
   }
+
+  const getPrizeAvailabilityState = (prize: Prize) =>
+    prizeAvailability[prize.id] || (typeof prize.inventory === 'number'
+      ? {
+          inventory: prize.inventory,
+          redeemed: 0,
+          remaining: prize.inventory,
+          soldOut: false,
+        }
+      : null);
+
+  const selectedPrizeAvailability = selectedPrize ? getPrizeAvailabilityState(selectedPrize) : null;
 
   return (
     <div className="space-y-8">
@@ -160,16 +199,40 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
             {t('redeem.prizes')}
           </h4>
           <div className="grid gap-4">
-            {PRIZES.map((prize) => (
+            {PRIZES.map((prize) => {
+              const availability = getPrizeAvailabilityState(prize);
+              const soldOut = availability?.soldOut ?? false;
+              const disabled = soldOut;
+              const isLimitedPrize = prize.id === 'tianjin_ai_innovation_conference_ticket_20250711';
+
+              return (
               <div 
                 key={prize.id}
-                className={`p-4 rounded-xl border-2 transition-all cursor-pointer ${
+                className={`p-4 rounded-xl border-2 transition-all ${
+                  disabled ? 'cursor-not-allowed opacity-70' : 'cursor-pointer'
+                } ${
                   selectedPrize?.id === prize.id 
                     ? 'border-indigo-600 bg-indigo-50 shadow-md' 
                     : 'border-gray-100 bg-white hover:border-indigo-200'
                 }`}
-                onClick={() => setSelectedPrize(prize)}
+                onClick={() => {
+                  if (!disabled) {
+                    setSelectedPrize(prize);
+                  }
+                }}
               >
+                {isLimitedPrize && (
+                  <div className="mb-3 flex items-center justify-between gap-2">
+                    <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800 border border-amber-200">
+                      {t('redeem.limitedOne')}
+                    </span>
+                    {!soldOut && (
+                      <span className="text-xs font-semibold text-amber-700">
+                        {t('redeem.stock.remaining')}: {availability?.remaining ?? prize.inventory}/{availability?.inventory ?? prize.inventory}
+                      </span>
+                    )}
+                  </div>
+                )}
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-indigo-100 rounded-lg relative group">
                     {prize.icon}
@@ -192,13 +255,23 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
                       <span className="text-indigo-600 font-bold">{prize.points} pts</span>
                     </div>
                     <p className="text-sm text-gray-600 mt-1">{t(prize.descKey)}</p>
+                    {availability && !isLimitedPrize && (
+                      <p className={`text-xs mt-2 font-medium ${soldOut ? 'text-red-600' : 'text-emerald-600'}`}>
+                        {soldOut
+                          ? t('redeem.stock.soldOut')
+                          : `${t('redeem.stock.remaining')}: ${availability.remaining}/${availability.inventory}`}
+                      </p>
+                    )}
                     {availablePoints < prize.points && (
                       <p className="text-xs text-red-500 mt-2">{t('redeem.points.insufficient')}</p>
+                    )}
+                    {soldOut && (
+                      <p className="text-xs text-red-500 mt-1">{t('redeem.soldOut')}</p>
                     )}
                   </div>
                 </div>
               </div>
-            ))}
+            )})}
           </div>
         </div>
 
@@ -268,7 +341,7 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
                 </div>
                 <button
                   type="submit"
-                  disabled={submitting || availablePoints < selectedPrize.points}
+                  disabled={submitting || availablePoints < selectedPrize.points || !!selectedPrizeAvailability?.soldOut}
                   className="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
                 >
                   {submitting ? <Loader2 className="h-5 w-5 animate-spin mx-auto" /> : t('redeem.form.confirm')}
