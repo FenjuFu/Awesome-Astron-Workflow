@@ -22,6 +22,7 @@ import RedemptionManage from './pages/admin/RedemptionManage';
 import AIChat from './pages/AIChat';
 import Privacy from './pages/Privacy';
 import AstronLandscape from './pages/AstronLandscape';
+import DemoHub from './pages/DemoHub';
 
 const routePatterns = [
   '/',
@@ -29,6 +30,7 @@ const routePatterns = [
   '/privacy',
   '/landscape',
   '/astron-landscape',
+  '/demo',
   '/stats',
   '/stats/admin',
   '/activities',
@@ -104,6 +106,7 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/landscape" element={<AstronLandscape />} />
           <Route path="/astron-landscape" element={<AstronLandscape />} />
+          <Route path="/demo" element={<DemoHub />} />
           <Route path="/stats" element={<ContributionStats />} />
           <Route path="/stats/admin" element={<RedemptionManage />} />
           <Route path="/activities" element={<ActivityList />} />

@@ -60,12 +60,28 @@ const Navigation: React.FC = () => {
     },
     { href: '/landscape', label: t('nav.landscape') },
     {
+      href: '/demo',
       label: t('nav.demo'),
       children: [
+        {
+          href: '/demo',
+          label: t('nav.demoOverview'),
+          tip: t('nav.demoOverviewTip'),
+        },
         {
           href: 'https://astron-agent-nginx.zeabur.app',
           label: t('nav.astronAgent'),
           tip: t('nav.astronAgentTip'),
+        },
+        {
+          href: 'https://astron-rpa-gw-fenjufu-20260715.zeabur.app',
+          label: t('nav.astronRpa'),
+          tip: t('nav.astronRpaTip'),
+        },
+        {
+          href: 'https://skillhub-fenjufu-20260701.zeabur.app',
+          label: t('nav.skillHub'),
+          tip: t('nav.skillHubTip'),
         },
       ],
     },
