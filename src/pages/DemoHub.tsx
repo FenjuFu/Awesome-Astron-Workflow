@@ -103,7 +103,7 @@ const DemoHub: React.FC = () => {
           icon: <Rocket className="h-4 w-4" />,
         },
       ],
-      notes: [t('demo.skillhub.note1'), t('demo.skillhub.note2')],
+      notes: [t('demo.skillhub.note0'), t('demo.skillhub.note1'), t('demo.skillhub.note2')],
       repo: 'https://github.com/iflytek/skillhub',
     },
   ];
