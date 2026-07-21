@@ -37,7 +37,7 @@ const PRIZES: Prize[] = [
     descKey: 'redeem.prize.tianjinTicket.desc',
     points: 15,
     icon: <Gift className="h-6 w-6 text-indigo-600" />,
-    inventory: 1,
+    inventory: 0,
   },
   {
     id: 'astronclaw_membership',
@@ -53,6 +53,7 @@ const PRIZES: Prize[] = [
     points: 15,
     icon: <img src="/images/prizes/bladeless-fan.jpg" alt="Bladeless Fan" className="h-10 w-10 object-cover rounded-md" />,
     imageUrl: "/images/prizes/bladeless-fan.jpg",
+    inventory: 0,
   },
   {
     id: 'astron_watch',
@@ -169,7 +170,7 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
           inventory: prize.inventory,
           redeemed: 0,
           remaining: prize.inventory,
-          soldOut: false,
+          soldOut: prize.inventory <= 0,
         }
       : null);
 

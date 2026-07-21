@@ -2,7 +2,8 @@ import cookie from 'cookie';
 import { supabaseAdmin } from './_lib/supabase-admin.js';
 
 const LIMITED_PRIZE_INVENTORY = {
-  tianjin_ai_innovation_conference_ticket_20250711: 1,
+  tianjin_ai_innovation_conference_ticket_20250711: 0,
+  bladeless_fan: 0,
 };
 
 const ACTIVE_REDEMPTION_STATUSES = ['pending', 'issued'];
