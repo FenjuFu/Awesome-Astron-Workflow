@@ -34,6 +34,7 @@ Have a question about Astron Agent or Astron RPA — deployment, model access, t
     - [15. History Knowledge QA Assistant](#15-history-knowledge-qa-assistant)
     - [20. KET Essay Assistant](#20-ket-essay-assistant)
   - [Coding & Programming](#coding--programming)
+    - [34. Astron Agent × MemFlywheel Memory Workflow](#34-astron-agent--memflywheel-memory-workflow)
   - [Leisure & Entertainment](#leisure--entertainment)
     - [11. Travel Companion](#11-travel-companion)
     - [17. Drama Shortage Terminator](#17-drama-shortage-terminator)
@@ -367,7 +368,19 @@ Each case includes:
 
 ### Coding & Programming
 
-(To be added)
+#### 34. Astron Agent × MemFlywheel Memory Workflow
+
+**Description:** An importable Astron DSL v1 workflow that calls the official MemFlywheel SDK through a local HTTP adapter to perform explicit memory saves, prompt-time recall, and filesystem-backed verification in `recall-only` mode. This is not a native Astron integration.
+
+- **User Case:** [Zhihu technical tutorial](https://zhuanlan.zhihu.com/p/2070241293788247106)
+- **Workflow:** [astron-agent-memflywheel.yml](https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-agent-memflywheel.yml)
+
+**Key Features:**
+- Astron code node calls a local HTTP adapter
+- Real integration with the official MemFlywheel SDK
+- Explicit memory save and prompt-time recall
+- Filesystem-backed evidence in `MEMORY.md` and `workflow/*.md`
+- Clear `recall-only` and non-native integration boundaries
 
 ### Finance & Investment
 

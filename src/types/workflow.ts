@@ -429,5 +429,21 @@ export const workflows: Workflow[] = [
     icon: 'box',
     category: 'productivity',
     event: 'Astron Training Camp · Cohort #1'
+  },
+  {
+    id: 'astron-agent-memflywheel',
+    title: 'workflow.astron_agent_memflywheel.title',
+    description: 'workflow.astron_agent_memflywheel.description',
+    userCaseUrl: 'https://zhuanlan.zhihu.com/p/2070241293788247106',
+    workflowUrl: 'https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-agent-memflywheel.yml',
+    features: [
+      'features.astron_agent_memflywheel.1',
+      'features.astron_agent_memflywheel.2',
+      'features.astron_agent_memflywheel.3',
+      'features.astron_agent_memflywheel.4',
+      'features.astron_agent_memflywheel.5'
+    ],
+    icon: 'bot',
+    category: 'coding'
   }
 ];

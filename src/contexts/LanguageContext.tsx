@@ -310,6 +310,15 @@ const translations = {
     'features.teaching_plan_review.3': 'Automatically records teaching plan review history for traceability',
     'features.teaching_plan_review.4': 'Multi-dimensional evaluation combining applicable grades and subjects',
 
+    // Workflows - Astron Agent × MemFlywheel Memory Workflow
+    'workflow.astron_agent_memflywheel.title': 'Astron Agent × MemFlywheel Memory Workflow',
+    'workflow.astron_agent_memflywheel.description': 'An importable Astron DSL v1 workflow that calls the official MemFlywheel SDK through a local HTTP adapter for explicit memory saves, prompt-time recall, and filesystem-backed verification in recall-only mode. This is not a native Astron integration.',
+    'features.astron_agent_memflywheel.1': 'Astron code node calls a local HTTP adapter',
+    'features.astron_agent_memflywheel.2': 'Real integration with the official MemFlywheel SDK',
+    'features.astron_agent_memflywheel.3': 'Explicit memory save and prompt-time recall',
+    'features.astron_agent_memflywheel.4': 'Filesystem-backed evidence in MEMORY.md and workflow/*.md',
+    'features.astron_agent_memflywheel.5': 'Clear recall-only and non-native integration boundaries',
+
     'about.title': 'About Astron Workflows',
     'about.subtitle': 'Learn about the power and flexibility of Astron workflows and how they can transform your automation tasks.',
     'about.whatIs.title': 'What is Astron?',
@@ -781,6 +790,15 @@ const translations = {
     'features.teaching_plan_review.2': '提供针对性的教学设计改进建议',
     'features.teaching_plan_review.3': '自动记录教案评审历史以便追溯',
     'features.teaching_plan_review.4': '结合适用年级与学科进行多维度评估',
+
+    // Workflows - Astron Agent × MemFlywheel 记忆工作流
+    'workflow.astron_agent_memflywheel.title': 'Astron Agent × MemFlywheel 记忆工作流',
+    'workflow.astron_agent_memflywheel.description': '一个可导入的 Astron DSL v1 工作流，通过本地 HTTP 适配层调用 MemFlywheel 官方 SDK，在 recall-only 模式下完成显式记忆保存、提示词阶段召回和文件落盘验证；这不是 Astron 原生集成。',
+    'features.astron_agent_memflywheel.1': 'Astron 代码节点调用本地 HTTP 适配层',
+    'features.astron_agent_memflywheel.2': '真实接入 MemFlywheel 官方 SDK',
+    'features.astron_agent_memflywheel.3': '显式保存记忆与提示词阶段召回',
+    'features.astron_agent_memflywheel.4': '通过 MEMORY.md 和 workflow/*.md 核验真实落盘',
+    'features.astron_agent_memflywheel.5': '明确 recall-only 与非原生集成边界',
 
     'about.title': '关于 Astron 工作流',
     'about.subtitle': '了解 Astron 工作流的强大功能和灵活性，以及它们如何改变您的自动化任务。',

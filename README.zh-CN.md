@@ -44,6 +44,7 @@
     - [历史知识问答小助理](#15-历史知识问答小助理)
     - [KET作文助手](#20-ket作文助手)
   - [代码编程](#代码编程)
+    - [34. Astron Agent × MemFlywheel 记忆工作流](#34-astron-agent--memflywheel-记忆工作流)
   - [金融理财](#金融理财)
   - [休闲娱乐](#休闲娱乐)
     - [旅行搭子](#11-旅行搭子)
@@ -378,7 +379,19 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 ### 代码编程
 
-（待添加）
+#### 34. Astron Agent × MemFlywheel 记忆工作流
+
+**描述：** 一个可导入的 Astron DSL v1 工作流，通过本地 HTTP 适配层调用 MemFlywheel 官方 SDK，在 `recall-only` 模式下完成显式记忆保存、提示词阶段召回和文件落盘验证；这不是 Astron 原生集成。
+
+- **用户案例：** [知乎技术教程](https://zhuanlan.zhihu.com/p/2070241293788247106)
+- **工作流：** [astron-agent-memflywheel.yml](https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-agent-memflywheel.yml)
+
+**主要功能：**
+- Astron 代码节点调用本地 HTTP 适配层
+- 真实接入 MemFlywheel 官方 SDK
+- 显式保存记忆与提示词阶段召回
+- 通过 `MEMORY.md` 和 `workflow/*.md` 核验真实落盘
+- 明确 `recall-only` 与非原生集成边界
 
 ### 金融理财
 
