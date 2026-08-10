@@ -1,6 +1,7 @@
 flowMeta:
   name: Astron-MemFlywheel
-  description: Astron Agent 閫氳繃浠ｇ爜鑺傜偣璋冪敤 MemFlywheel 鏈湴婕旂ず閫傞厤鍣紝瀹屾垚鐪熷疄鐨勮蹇嗗啓鍏ヤ笌鍙洖銆?  avatarIcon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/emojiitem_00_10@2x.png
+  description: Astron Agent 通过代码节点调用 MemFlywheel 本地演示适配器，完成真实的记忆写入与召回。
+  avatarIcon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/emojiitem_00_10@2x.png
   avatarColor: '#E9E5FF'
   advancedConfig: '{"needGuide":false,"prologue":{"enabled":false,"inputExample":[],"prologueText":""},"chatBackground":{"enabled":false}}'
   dslVersion: v1
@@ -17,12 +18,15 @@ flowData:
     positionAbsolute:
       x: 0
       y: 120
-    type: 寮€濮嬭妭鐐?    data:
+    type: 开始节点
+    data:
       allowInputReference: false
       allowOutputReference: true
-      label: 寮€濮?      status: ''
+      label: 开始
+      status: ''
       nodeMeta:
-        aliasName: 寮€濮?        nodeType: 鍩虹鑺傜偣
+        aliasName: 开始
+        nodeType: 基础节点
       inputs: []
       outputs:
       - id: d5aa4b62-4514-497d-88f9-50b9891e894c
@@ -30,12 +34,13 @@ flowData:
         nameErrMsg: ''
         schema:
           type: string
-          default: 鐢ㄦ埛鏈疆瀵硅瘽杈撳叆鍐呭
+          default: 用户本轮对话输入内容
         required: true
         deleteDisabled: true
       nodeParam: {}
       icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/start-node-icon.png
-      description: 宸ヤ綔娴佺殑寮€鍚妭鐐癸紝鐢ㄤ簬瀹氫箟娴佺▼璋冪敤鎵€闇€鐨勪笟鍔″彉閲忎俊鎭€?      updatable: false
+      description: 工作流的开启节点，用于定义流程调用所需的业务变量信息。
+      updatable: false
   - id: node-end::ca324db3-dc26-45b5-badb-eaeec3ecb1e3
     dragging: false
     selected: false
@@ -47,11 +52,11 @@ flowData:
     positionAbsolute:
       x: 1120
       y: 120
-    type: 缁撴潫鑺傜偣
+    type: 结束节点
     data:
       allowInputReference: true
       allowOutputReference: false
-      label: 缁撴潫
+      label: 结束
       references:
       - children:
         - references:
@@ -62,13 +67,13 @@ flowData:
             value: result
           label: ''
           value: ''
-        label: 璋冪敤 MemFlywheel
+        label: 调用 MemFlywheel
         parentNode: true
         value: ifly-code::13c13b38-8d90-4d41-bb51-ce191a010f4a
       status: ''
       nodeMeta:
-        aliasName: 缁撴潫
-        nodeType: 鍩虹鑺傜偣
+        aliasName: 结束
+        nodeType: 基础节点
       inputs:
       - id: 333d6900-846e-459e-ae52-cfcb773162f2
         name: output
@@ -90,7 +95,8 @@ flowData:
         templateErrMsg: ''
         outputMode: 1
       icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/end-node-icon.png
-      description: 宸ヤ綔娴佺殑缁撴潫鑺傜偣锛岀敤浜庤緭鍑哄伐浣滄祦杩愯鍚庣殑鏈€缁堢粨鏋溿€?      updatable: false
+      description: 工作流的结束节点，用于输出工作流运行后的最终结果。
+      updatable: false
   - id: ifly-code::13c13b38-8d90-4d41-bb51-ce191a010f4a
     dragging: false
     selected: false
@@ -102,11 +108,11 @@ flowData:
     positionAbsolute:
       x: 560
       y: 107
-    type: 浠ｇ爜
+    type: 代码
     data:
       allowInputReference: true
       allowOutputReference: true
-      label: 璋冪敤 MemFlywheel
+      label: 调用 MemFlywheel
       labelEdit: false
       references:
       - children:
@@ -118,12 +124,13 @@ flowData:
             value: AGENT_USER_INPUT
           label: ''
           value: ''
-        label: 寮€濮?        parentNode: true
+        label: 开始
+        parentNode: true
         value: node-start::4be1f8d1-79cc-43da-82e8-cb9fb3e55e01
       status: ''
       nodeMeta:
-        aliasName: 璋冪敤 MemFlywheel
-        nodeType: 宸ュ叿
+        aliasName: 调用 MemFlywheel
+        nodeType: 工具
       inputs:
       - id: e3b1b9bf-530d-4165-9fc9-b9b377d10016
         name: input
@@ -219,7 +226,7 @@ flowData:
         apiSecret: YOUR_API_SECRET
         codeErrMsg: ''
       icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/codeIcon.png
-      description: 闈㈠悜寮€鍙戣€呮彁渚涗唬鐮佸紑鍙戣兘鍔涳紝鐩墠浠呮敮鎸乸ython璇█锛屽厑璁镐娇鐢ㄨ鑺傜偣宸插畾涔夌殑鍙橀噺浣滀负鍙傛暟浼犲叆锛岃繑鍥炶鍙ョ敤浜庤緭鍑哄嚱鏁扮殑缁撴灉
+      description: 面向开发者提供代码开发能力，目前仅支持python语言，允许使用该节点已定义的变量作为参数传入，返回语句用于输出函数的结果
       updatable: false
   edges:
   - source: node-start::4be1f8d1-79cc-43da-82e8-cb9fb3e55e01
