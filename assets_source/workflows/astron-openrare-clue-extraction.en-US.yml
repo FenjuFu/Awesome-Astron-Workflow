@@ -1,0 +1,342 @@
+flowMeta:
+  name: Astron-OpenRare-Phenotype-Clue-Extraction (English)
+  description: Runs OpenRare-compatible phenotype extraction and CHPO dictionary-constrained mapping on de-identified or synthetic clinical text, returning auditable HPO clues. It is not a diagnostic tool.
+  avatarIcon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/emojiitem_00_10@2x.png
+  avatarColor: '#E9E5FF'
+  advancedConfig: '{"needGuide":false,"prologue":{"enabled":true,"inputExample":["At birth, the child had left-hand polydactyly, an atrial septal defect, and growth delay."],"prologueText":"Enter only de-identified or synthetic clinical text. This workflow extracts HPO clues and does not diagnose disease."},"chatBackground":{"enabled":false}}'
+  dslVersion: v1
+flowData:
+  nodes:
+    - id: node-start::c6a7fb15-d288-4bba-8917-139be869748c
+      dragging: false
+      selected: false
+      width: 362
+      height: 116
+      position:
+        x: 0
+        y: 120
+      positionAbsolute:
+        x: 0
+        y: 120
+      type: 开始节点
+      data:
+        allowInputReference: false
+        allowOutputReference: true
+        label: Enter de-identified clinical text
+        status: ''
+        nodeMeta:
+          aliasName: Start
+          nodeType: Basic Node
+        inputs: []
+        outputs:
+          - id: 69661825-b56d-480a-84e4-4691797e85fe
+            name: AGENT_USER_INPUT
+            nameErrMsg: ''
+            schema:
+              type: string
+              default: De-identified or synthetic clinical text entered by the user
+            required: true
+            deleteDisabled: true
+        nodeParam: {}
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/start-node-icon.png
+        description: Use only de-identified or synthetic text. Do not enter names, identifiers, phone numbers, addresses, or other direct identifiers.
+        updatable: false
+    - id: ifly-code::e5211bb1-5ce9-4166-bca9-bf8bb0d3a58c
+      dragging: false
+      selected: false
+      width: 362
+      height: 142
+      position:
+        x: 620
+        y: 107
+      positionAbsolute:
+        x: 620
+        y: 107
+      type: 代码
+      data:
+        allowInputReference: true
+        allowOutputReference: true
+        label: Extract phenotypes and map HPO terms
+        labelEdit: false
+        references:
+          - children:
+              - references:
+                  - originId: node-start::c6a7fb15-d288-4bba-8917-139be869748c
+                    id: 69661825-b56d-480a-84e4-4691797e85fe
+                    label: AGENT_USER_INPUT
+                    type: string
+                    value: AGENT_USER_INPUT
+                label: ''
+                value: ''
+            label: Enter de-identified clinical text
+            parentNode: true
+            value: node-start::c6a7fb15-d288-4bba-8917-139be869748c
+        status: ''
+        nodeMeta:
+          aliasName: Extract phenotypes and map HPO terms
+          nodeType: Tool
+        inputs:
+          - id: 822192e6-874f-43be-b117-caa7f3ef7428
+            name: input
+            nameErrMsg: ''
+            schema:
+              type: string
+              value:
+                type: ref
+                content:
+                  name: AGENT_USER_INPUT
+                  id: 69661825-b56d-480a-84e4-4691797e85fe
+                  nodeId: node-start::c6a7fb15-d288-4bba-8917-139be869748c
+                contentErrMsg: ''
+        outputs:
+          - id: 7637da52-627c-4761-aed3-d30f419c1ff4
+            name: result
+            nameErrMsg: ''
+            schema:
+              type: string
+              default: ''
+        nodeParam:
+          uid: '0'
+          code: |-
+            import json
+            import os
+            import urllib.error
+            import urllib.request
+
+            def main(input):
+                clinical_note = (input or "").strip()
+                if not clinical_note:
+                    raise RuntimeError("Please enter a de-identified or synthetic clinical note")
+                if len(clinical_note) > 5000:
+                    raise RuntimeError("Clinical note is longer than the 5000-character demo limit")
+                payload = {
+                    "patient_id": "ASTRON-DEMO-001",
+                    "clinical_note": clinical_note,
+                }
+                bridge_base_url = os.getenv(
+                    "OPENRARE_BRIDGE_BASE_URL",
+                    "http://host.docker.internal:18083",
+                ).rstrip("/")
+                request = urllib.request.Request(
+                    bridge_base_url + "/api/v1/extract",
+                    data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+                    headers={
+                        "Content-Type": "application/json; charset=utf-8",
+                        "Accept": "application/json",
+                    },
+                    method="POST",
+                )
+                try:
+                    with urllib.request.urlopen(request, timeout=120) as response:
+                        result = json.loads(response.read().decode("utf-8"))
+                except urllib.error.HTTPError as error:
+                    detail = error.read().decode("utf-8", errors="replace")
+                    raise RuntimeError(f"OpenRare bridge HTTP {error.code}: {detail}")
+                except urllib.error.URLError as error:
+                    raise RuntimeError(f"OpenRare bridge unavailable: {error.reason}")
+                if result.get("status") not in ("completed", "success"):
+                    raise RuntimeError("OpenRare compatibility extraction did not complete")
+                if result.get("mode") != "openrare-compat-dictionary":
+                    raise RuntimeError("Unexpected OpenRare execution mode")
+                result["workflow_boundary"] = {
+                    "purpose": "phenotype-clue extraction only",
+                    "diagnosis": False,
+                    "requires_professional_review": True,
+                }
+                return {"result": json.dumps(result, ensure_ascii=False)}
+          apiKey: YOUR_API_KEY
+          appId: YOUR_APP_ID
+          apiSecret: YOUR_API_SECRET
+          codeErrMsg: ''
+        retryConfig:
+          maxRetries: 0
+          shouldRetry: true
+          customOutput: {}
+          errorStrategy: 0
+          timeout: 120
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/codeIcon.png
+        description: 'Calls the real bridge: Spark Ultra extracts abnormal phenotypes using the OpenRare system_message_I prompt, then the repository CHPO dictionary constrains candidate mapping. The compatibility mode remains explicit.'
+        updatable: false
+    - id: ifly-code::fd80cab5-60f0-47a2-be5b-15bbb9c3c960
+      dragging: false
+      selected: false
+      width: 362
+      height: 142
+      position:
+        x: 1240
+        y: 107
+      positionAbsolute:
+        x: 1240
+        y: 107
+      type: 代码
+      data:
+        allowInputReference: true
+        allowOutputReference: true
+        label: Format auditable HPO clues
+        labelEdit: false
+        references:
+          - children:
+              - references:
+                  - originId: ifly-code::e5211bb1-5ce9-4166-bca9-bf8bb0d3a58c
+                    id: 7637da52-627c-4761-aed3-d30f419c1ff4
+                    label: result
+                    type: string
+                    value: result
+                label: ''
+                value: ''
+            label: Extract phenotypes and map HPO terms
+            parentNode: true
+            value: ifly-code::e5211bb1-5ce9-4166-bca9-bf8bb0d3a58c
+        status: ''
+        nodeMeta:
+          aliasName: Format auditable HPO clues
+          nodeType: Tool
+        inputs:
+          - id: 20fe0058-844f-4f9e-bcc4-45f408ec36a9
+            name: input
+            nameErrMsg: ''
+            schema:
+              type: string
+              value:
+                type: ref
+                content:
+                  name: result
+                  id: 7637da52-627c-4761-aed3-d30f419c1ff4
+                  nodeId: ifly-code::e5211bb1-5ce9-4166-bca9-bf8bb0d3a58c
+                contentErrMsg: ''
+        outputs:
+          - id: 669979cb-99d5-4833-a9b8-f0f0a93329f9
+            name: output
+            nameErrMsg: ''
+            schema:
+              type: string
+              default: ''
+        nodeParam:
+          uid: '0'
+          code: |-
+            import json
+
+            def main(input):
+                data = json.loads(input)
+                phenotypes = data.get("phenotypes") or []
+                lines = [
+                    "# OpenRare Phenotype Clue Extraction Result",
+                    "",
+                    "- Run ID: `" + str(data.get("run_id", "")) + "`",
+                    "- Execution mode: `" + str(data.get("mode", "")) + "`",
+                    "- Input digest: only the SHA-256 digest and character count are retained; the clinical note is not echoed",
+                    "- Source commit: `" + str((data.get("source") or {}).get("commit", "")) + "`",
+                    "",
+                    "## Extracted abnormal phenotypes and candidate HPO terms",
+                    "",
+                ]
+                if not phenotypes:
+                    lines.append("No mappable abnormal phenotype was extracted in this run.")
+                for index, item in enumerate(phenotypes, 1):
+                    lines.extend([
+                        str(index) + ". **" + str(item.get("phrase", "")) + "**",
+                        "   - Category: " + str(item.get("category", "")),
+                        "   - HPO: `" + str(item.get("hpo_id", "")) + "` " + str(item.get("hpo_term", "")),
+                        "   - Match method: " + str(item.get("match_method", "")),
+                    ])
+                warnings = data.get("warnings") or []
+                lines.extend(["", "## Execution boundaries", ""])
+                for warning in warnings:
+                    lines.append("- " + str(warning))
+                lines.extend([
+                    "- This run uses `openrare-compat-dictionary` mode. It does not claim to run the full OpenRare FAISS RAG, VCF annotation, variant-ranking, or reporting pipeline.",
+                    "- The output is a phenotype clue for professional review, not a diagnosis, treatment recommendation, or patient-triage decision.",
+                ])
+                return {"output": "\n".join(lines)}
+          apiKey: YOUR_API_KEY
+          appId: YOUR_APP_ID
+          apiSecret: YOUR_API_SECRET
+          codeErrMsg: ''
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/codeIcon.png
+        description: Turns the real execution result into recordable English Markdown while preserving the run ID, execution mode, source commit, HPO terms, and mapping methods.
+        updatable: false
+    - id: node-end::45d52ce1-fc93-4cb1-b99a-015a7a8c7284
+      dragging: false
+      selected: false
+      width: 362
+      height: 116
+      position:
+        x: 1860
+        y: 120
+      positionAbsolute:
+        x: 1860
+        y: 120
+      type: 结束节点
+      data:
+        allowInputReference: true
+        allowOutputReference: false
+        label: Return HPO clues
+        references:
+          - children:
+              - references:
+                  - originId: ifly-code::fd80cab5-60f0-47a2-be5b-15bbb9c3c960
+                    id: 669979cb-99d5-4833-a9b8-f0f0a93329f9
+                    label: output
+                    type: string
+                    value: output
+                label: ''
+                value: ''
+            label: Format auditable HPO clues
+            parentNode: true
+            value: ifly-code::fd80cab5-60f0-47a2-be5b-15bbb9c3c960
+        status: ''
+        nodeMeta:
+          aliasName: End
+          nodeType: Basic Node
+        inputs:
+          - id: e36c297b-24f5-4fb0-8196-89147bfac85d
+            name: output
+            nameErrMsg: ''
+            schema:
+              type: string
+              value:
+                type: ref
+                content:
+                  name: output
+                  id: 669979cb-99d5-4833-a9b8-f0f0a93329f9
+                  nodeId: ifly-code::fd80cab5-60f0-47a2-be5b-15bbb9c3c960
+                contentErrMsg: ''
+            fileType: ''
+        outputs: []
+        nodeParam:
+          template: '{{output}}'
+          streamOutput: false
+          templateErrMsg: ''
+          outputMode: 1
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/end-node-icon.png
+        description: Returns HPO phenotype clues for professional review and does not output a diagnosis.
+        updatable: false
+  edges:
+    - source: node-start::c6a7fb15-d288-4bba-8917-139be869748c
+      target: ifly-code::e5211bb1-5ce9-4166-bca9-bf8bb0d3a58c
+      type: customEdge
+      id: reactflow__edge-openrare-start-extract
+      markerEnd:
+        color: '#275EFF'
+        type: arrow
+      data:
+        edgeType: curve
+    - source: ifly-code::e5211bb1-5ce9-4166-bca9-bf8bb0d3a58c
+      target: ifly-code::fd80cab5-60f0-47a2-be5b-15bbb9c3c960
+      type: customEdge
+      id: reactflow__edge-openrare-extract-format
+      markerEnd:
+        color: '#275EFF'
+        type: arrow
+      data:
+        edgeType: curve
+    - source: ifly-code::fd80cab5-60f0-47a2-be5b-15bbb9c3c960
+      target: node-end::45d52ce1-fc93-4cb1-b99a-015a7a8c7284
+      targetHandle: node-end::45d52ce1-fc93-4cb1-b99a-015a7a8c7284
+      type: customEdge
+      id: reactflow__edge-openrare-format-end
+      markerEnd:
+        color: '#275EFF'
+        type: arrow
+      data:
+        edgeType: curve

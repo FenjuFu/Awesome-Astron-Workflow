@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "check": "tsc -b --noEmit",
+    "check-medical-workflows": "node scripts/check-medical-workflows.mjs",
     "check-registrations": "node --env-file=.env scripts/check-registrations.js",
     "sync-workflows": "node scripts/sync-workflows.js",
     "kb:build": "node scripts/build-kb-index.js",

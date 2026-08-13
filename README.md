@@ -41,6 +41,8 @@ Have a question about Astron Agent or Astron RPA — deployment, model access, t
     - [19. Network Novel Finder](#19-network-novel-finder)
   - [Health Partner](#health-partner)
     - [18. Dog Nutritionist](#18-dog-nutritionist)
+    - [35. Astron for Good: OpenRare Clue Assistant](#35-astron-for-good-openrare-clue-assistant-application-concept)
+    - [36. Astron for Good: PubMed Evidence Card](#36-astron-for-good-pubmed-evidence-card-application-concept)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -456,6 +458,36 @@ Each case includes:
 - Professional dietary advice via LLM
 - Web search for nutritional knowledge
 - Visual aids with Text-to-Image generation
+
+#### 35. Astron for Good: OpenRare Clue Assistant (Application Concept)
+
+**Description:** A complete Astron workflow that accepts synthetic or de-identified clinical text, calls an OpenRare-compatible local bridge, maps phenotype descriptions to auditable HPO clues, and returns a structured result for professional review.
+
+- **User Case:** [English video demo](https://youtube.com/shorts/n-_oQ_yB0nk)
+- **Chinese Workflow:** [astron-openrare-clue-extraction.zh-CN.yml](https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-openrare-clue-extraction.zh-CN.yml)
+- **English Workflow:** [astron-openrare-clue-extraction.en-US.yml](https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-openrare-clue-extraction.en-US.yml)
+
+**Key Features:**
+- Complete input, extraction, HPO formatting, and result-return workflow
+- OpenRare-compatible extraction with CHPO dictionary-constrained mapping
+- Auditable HPO identifiers, source commit, provider model, and run trace
+- Configurable local bridge through `OPENRARE_BRIDGE_BASE_URL`
+- Designed for clue organization and professional review, not diagnosis
+
+#### 36. Astron for Good: PubMed Evidence Card (Application Concept)
+
+**Description:** A complete Astron workflow that runs a real PubMed MCP search and detail lookup, asks Spark Ultra to create a readable evidence card, and verifies that every PMID and source URL came from the same run.
+
+- **User Case:** [English video demo](https://youtube.com/shorts/AufiSbOj4Kg)
+- **Chinese Workflow:** [astron-pubmed-evidence-card.zh-CN.yml](https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-pubmed-evidence-card.zh-CN.yml)
+- **English Workflow:** [astron-pubmed-evidence-card.en-US.yml](https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-pubmed-evidence-card.en-US.yml)
+
+**Key Features:**
+- Real PubMed MCP search and article-detail retrieval
+- Spark Ultra evidence-card generation
+- PMID and source-URL consistency checks
+- Bridge credentials read from runtime environment variables
+- Research-reading output with a medical-safety boundary
 
 ## Development Configuration
 

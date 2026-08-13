@@ -52,6 +52,8 @@
     - [网络小说查找器](#19-网络小说查找器)
   - [健康搭档](#健康搭档)
     - [狗狗营养师](#18-狗狗营养师)
+    - [35. Astron for Good：OpenRare 罕见病线索助手](#35-astron-for-goodopenrare-罕见病线索助手应用设想)
+    - [36. Astron for Good：PubMed 医学证据卡](#36-astron-for-goodpubmed-医学证据卡应用设想)
 - [贡献指南](#贡献指南)
 - [许可证](#许可证)
 
@@ -467,6 +469,36 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 - 专业饮食建议（大模型角色扮演）
 - 联网搜索营养知识
 - 文生图生成视觉辅助
+
+#### 35. Astron for Good：OpenRare 罕见病线索助手（应用设想）
+
+**描述：** 一个完整的 Astron 工作流：接收合成或脱敏临床文本，调用 OpenRare 兼容本地适配服务，将症状描述映射为可审计的 HPO 表型线索，并把结构化结果交给专业人员复核。
+
+- **用户案例：** [中文视频演示](https://youtube.com/shorts/7QxpK6pvSNU)
+- **中文工作流：** [astron-openrare-clue-extraction.zh-CN.yml](https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-openrare-clue-extraction.zh-CN.yml)
+- **英文工作流：** [astron-openrare-clue-extraction.en-US.yml](https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-openrare-clue-extraction.en-US.yml)
+
+**主要功能：**
+- 完整呈现输入、抽取、HPO 整理和结果返回
+- OpenRare 兼容抽取与 CHPO 词典约束映射
+- 保留 HPO 编号、源码提交、模型和运行轨迹
+- 通过 `OPENRARE_BRIDGE_BASE_URL` 配置本地适配服务
+- 用于线索整理和专业复核，不替代诊断
+
+#### 36. Astron for Good：PubMed 医学证据卡（应用设想）
+
+**描述：** 一个完整的 Astron 工作流：真实执行 PubMed MCP 检索与文献详情获取，调用 Spark Ultra 生成易读证据卡，并校验每个 PMID 与来源链接都来自同一次运行。
+
+- **用户案例：** [中文视频演示](https://youtube.com/shorts/-QLyO8W5DgA)
+- **中文工作流：** [astron-pubmed-evidence-card.zh-CN.yml](https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-pubmed-evidence-card.zh-CN.yml)
+- **英文工作流：** [astron-pubmed-evidence-card.en-US.yml](https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-pubmed-evidence-card.en-US.yml)
+
+**主要功能：**
+- 真实执行 PubMed MCP 检索与详情获取
+- 调用 Spark Ultra 生成医学证据卡
+- 校验 PMID 与来源链接的一致性
+- 从运行环境读取本地适配服务地址和令牌
+- 输出用于研究阅读，并保留医疗安全边界
 
 
 ## 开发配置

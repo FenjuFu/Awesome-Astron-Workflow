@@ -1,0 +1,342 @@
+flowMeta:
+  name: Astron-OpenRare-罕见病表型线索提取（中文）
+  description: 对脱敏或合成的临床文本执行 OpenRare 兼容表型抽取与 CHPO 词典约束映射，返回可审计 HPO 线索；不是诊断工具。
+  avatarIcon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/emojiitem_00_10@2x.png
+  avatarColor: '#E9E5FF'
+  advancedConfig: '{"needGuide":false,"prologue":{"enabled":true,"inputExample":["患儿出生时发现左手多指，伴先天性心脏病房间隔缺损及生长发育迟缓。"],"prologueText":"请只输入脱敏或合成的临床文本。本工作流提取 HPO 线索，不进行诊断。"},"chatBackground":{"enabled":false}}'
+  dslVersion: v1
+flowData:
+  nodes:
+    - id: node-start::c6a7fb15-d288-4bba-8917-139be869748c
+      dragging: false
+      selected: false
+      width: 362
+      height: 116
+      position:
+        x: 0
+        y: 120
+      positionAbsolute:
+        x: 0
+        y: 120
+      type: 开始节点
+      data:
+        allowInputReference: false
+        allowOutputReference: true
+        label: 输入脱敏临床文本
+        status: ''
+        nodeMeta:
+          aliasName: 开始
+          nodeType: 基础节点
+        inputs: []
+        outputs:
+          - id: 69661825-b56d-480a-84e4-4691797e85fe
+            name: AGENT_USER_INPUT
+            nameErrMsg: ''
+            schema:
+              type: string
+              default: 用户本轮输入的脱敏或合成临床文本
+            required: true
+            deleteDisabled: true
+        nodeParam: {}
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/start-node-icon.png
+        description: 只允许使用脱敏或合成文本，禁止输入姓名、证件号、电话、住址等直接身份信息。
+        updatable: false
+    - id: ifly-code::e5211bb1-5ce9-4166-bca9-bf8bb0d3a58c
+      dragging: false
+      selected: false
+      width: 362
+      height: 142
+      position:
+        x: 620
+        y: 107
+      positionAbsolute:
+        x: 620
+        y: 107
+      type: 代码
+      data:
+        allowInputReference: true
+        allowOutputReference: true
+        label: OpenRare 表型抽取与 HPO 映射
+        labelEdit: false
+        references:
+          - children:
+              - references:
+                  - originId: node-start::c6a7fb15-d288-4bba-8917-139be869748c
+                    id: 69661825-b56d-480a-84e4-4691797e85fe
+                    label: AGENT_USER_INPUT
+                    type: string
+                    value: AGENT_USER_INPUT
+                label: ''
+                value: ''
+            label: 输入脱敏临床文本
+            parentNode: true
+            value: node-start::c6a7fb15-d288-4bba-8917-139be869748c
+        status: ''
+        nodeMeta:
+          aliasName: OpenRare 表型抽取与 HPO 映射
+          nodeType: 工具
+        inputs:
+          - id: 822192e6-874f-43be-b117-caa7f3ef7428
+            name: input
+            nameErrMsg: ''
+            schema:
+              type: string
+              value:
+                type: ref
+                content:
+                  name: AGENT_USER_INPUT
+                  id: 69661825-b56d-480a-84e4-4691797e85fe
+                  nodeId: node-start::c6a7fb15-d288-4bba-8917-139be869748c
+                contentErrMsg: ''
+        outputs:
+          - id: 7637da52-627c-4761-aed3-d30f419c1ff4
+            name: result
+            nameErrMsg: ''
+            schema:
+              type: string
+              default: ''
+        nodeParam:
+          uid: '0'
+          code: |-
+            import json
+            import os
+            import urllib.error
+            import urllib.request
+
+            def main(input):
+                clinical_note = (input or "").strip()
+                if not clinical_note:
+                    raise RuntimeError("Please enter a de-identified or synthetic clinical note")
+                if len(clinical_note) > 5000:
+                    raise RuntimeError("Clinical note is longer than the 5000-character demo limit")
+                payload = {
+                    "patient_id": "ASTRON-DEMO-001",
+                    "clinical_note": clinical_note,
+                }
+                bridge_base_url = os.getenv(
+                    "OPENRARE_BRIDGE_BASE_URL",
+                    "http://host.docker.internal:18083",
+                ).rstrip("/")
+                request = urllib.request.Request(
+                    bridge_base_url + "/api/v1/extract",
+                    data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+                    headers={
+                        "Content-Type": "application/json; charset=utf-8",
+                        "Accept": "application/json",
+                    },
+                    method="POST",
+                )
+                try:
+                    with urllib.request.urlopen(request, timeout=120) as response:
+                        result = json.loads(response.read().decode("utf-8"))
+                except urllib.error.HTTPError as error:
+                    detail = error.read().decode("utf-8", errors="replace")
+                    raise RuntimeError(f"OpenRare bridge HTTP {error.code}: {detail}")
+                except urllib.error.URLError as error:
+                    raise RuntimeError(f"OpenRare bridge unavailable: {error.reason}")
+                if result.get("status") not in ("completed", "success"):
+                    raise RuntimeError("OpenRare compatibility extraction did not complete")
+                if result.get("mode") != "openrare-compat-dictionary":
+                    raise RuntimeError("Unexpected OpenRare execution mode")
+                result["workflow_boundary"] = {
+                    "purpose": "phenotype-clue extraction only",
+                    "diagnosis": False,
+                    "requires_professional_review": True,
+                }
+                return {"result": json.dumps(result, ensure_ascii=False)}
+          apiKey: YOUR_API_KEY
+          appId: YOUR_APP_ID
+          apiSecret: YOUR_API_SECRET
+          codeErrMsg: ''
+        retryConfig:
+          maxRetries: 0
+          shouldRetry: true
+          customOutput: {}
+          errorStrategy: 0
+          timeout: 120
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/codeIcon.png
+        description: 调用真实 bridge：复用 OpenRare system_message_I 经 Spark Ultra 抽取异常表型，再以仓库随附 CHPO 词典做候选约束映射；明确标注兼容模式。
+        updatable: false
+    - id: ifly-code::fd80cab5-60f0-47a2-be5b-15bbb9c3c960
+      dragging: false
+      selected: false
+      width: 362
+      height: 142
+      position:
+        x: 1240
+        y: 107
+      positionAbsolute:
+        x: 1240
+        y: 107
+      type: 代码
+      data:
+        allowInputReference: true
+        allowOutputReference: true
+        label: 整理可审计 HPO 线索
+        labelEdit: false
+        references:
+          - children:
+              - references:
+                  - originId: ifly-code::e5211bb1-5ce9-4166-bca9-bf8bb0d3a58c
+                    id: 7637da52-627c-4761-aed3-d30f419c1ff4
+                    label: result
+                    type: string
+                    value: result
+                label: ''
+                value: ''
+            label: OpenRare 表型抽取与 HPO 映射
+            parentNode: true
+            value: ifly-code::e5211bb1-5ce9-4166-bca9-bf8bb0d3a58c
+        status: ''
+        nodeMeta:
+          aliasName: 整理可审计 HPO 线索
+          nodeType: 工具
+        inputs:
+          - id: 20fe0058-844f-4f9e-bcc4-45f408ec36a9
+            name: input
+            nameErrMsg: ''
+            schema:
+              type: string
+              value:
+                type: ref
+                content:
+                  name: result
+                  id: 7637da52-627c-4761-aed3-d30f419c1ff4
+                  nodeId: ifly-code::e5211bb1-5ce9-4166-bca9-bf8bb0d3a58c
+                contentErrMsg: ''
+        outputs:
+          - id: 669979cb-99d5-4833-a9b8-f0f0a93329f9
+            name: output
+            nameErrMsg: ''
+            schema:
+              type: string
+              default: ''
+        nodeParam:
+          uid: '0'
+          code: |-
+            import json
+
+            def main(input):
+                data = json.loads(input)
+                phenotypes = data.get("phenotypes") or []
+                lines = [
+                    "# OpenRare 表型线索提取结果",
+                    "",
+                    "- 运行编号：`" + str(data.get("run_id", "")) + "`",
+                    "- 执行模式：`" + str(data.get("mode", "")) + "`",
+                    "- 输入摘要：仅保存 SHA-256 与字符数，不回显临床原文",
+                    "- 源码提交：`" + str((data.get("source") or {}).get("commit", "")) + "`",
+                    "",
+                    "## 提取到的异常表型与候选 HPO",
+                    "",
+                ]
+                if not phenotypes:
+                    lines.append("本次未提取到可映射的异常表型。")
+                for index, item in enumerate(phenotypes, 1):
+                    lines.extend([
+                        str(index) + ". **" + str(item.get("phrase", "")) + "**",
+                        "   - 分类：" + str(item.get("category", "")),
+                        "   - HPO：`" + str(item.get("hpo_id", "")) + "` " + str(item.get("hpo_term", "")),
+                        "   - 匹配方法：" + str(item.get("match_method", "")),
+                    ])
+                warnings = data.get("warnings") or []
+                lines.extend(["", "## 运行边界", ""])
+                for warning in warnings:
+                    lines.append("- " + str(warning))
+                lines.extend([
+                    "- 当前为 `openrare-compat-dictionary` 兼容模式，不冒充 OpenRare 完整 FAISS RAG、VCF 注释、变异排序或报告管线。",
+                    "- 结果仅是供专业人员复核的表型线索，不构成诊断、治疗建议或患者分诊依据。",
+                ])
+                return {"output": "\n".join(lines)}
+          apiKey: YOUR_API_KEY
+          appId: YOUR_APP_ID
+          apiSecret: YOUR_API_SECRET
+          codeErrMsg: ''
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/codeIcon.png
+        description: 将真实运行结果转为可录屏、可审计的 Markdown，保留运行编号、模式、源码提交、HPO 与匹配方法。
+        updatable: false
+    - id: node-end::45d52ce1-fc93-4cb1-b99a-015a7a8c7284
+      dragging: false
+      selected: false
+      width: 362
+      height: 116
+      position:
+        x: 1860
+        y: 120
+      positionAbsolute:
+        x: 1860
+        y: 120
+      type: 结束节点
+      data:
+        allowInputReference: true
+        allowOutputReference: false
+        label: 返回 HPO 线索
+        references:
+          - children:
+              - references:
+                  - originId: ifly-code::fd80cab5-60f0-47a2-be5b-15bbb9c3c960
+                    id: 669979cb-99d5-4833-a9b8-f0f0a93329f9
+                    label: output
+                    type: string
+                    value: output
+                label: ''
+                value: ''
+            label: 整理可审计 HPO 线索
+            parentNode: true
+            value: ifly-code::fd80cab5-60f0-47a2-be5b-15bbb9c3c960
+        status: ''
+        nodeMeta:
+          aliasName: 结束
+          nodeType: 基础节点
+        inputs:
+          - id: e36c297b-24f5-4fb0-8196-89147bfac85d
+            name: output
+            nameErrMsg: ''
+            schema:
+              type: string
+              value:
+                type: ref
+                content:
+                  name: output
+                  id: 669979cb-99d5-4833-a9b8-f0f0a93329f9
+                  nodeId: ifly-code::fd80cab5-60f0-47a2-be5b-15bbb9c3c960
+                contentErrMsg: ''
+            fileType: ''
+        outputs: []
+        nodeParam:
+          template: '{{output}}'
+          streamOutput: false
+          templateErrMsg: ''
+          outputMode: 1
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/end-node-icon.png
+        description: 返回需由专业人员复核的 HPO 表型线索；不输出诊断结论。
+        updatable: false
+  edges:
+    - source: node-start::c6a7fb15-d288-4bba-8917-139be869748c
+      target: ifly-code::e5211bb1-5ce9-4166-bca9-bf8bb0d3a58c
+      type: customEdge
+      id: reactflow__edge-openrare-start-extract
+      markerEnd:
+        color: '#275EFF'
+        type: arrow
+      data:
+        edgeType: curve
+    - source: ifly-code::e5211bb1-5ce9-4166-bca9-bf8bb0d3a58c
+      target: ifly-code::fd80cab5-60f0-47a2-be5b-15bbb9c3c960
+      type: customEdge
+      id: reactflow__edge-openrare-extract-format
+      markerEnd:
+        color: '#275EFF'
+        type: arrow
+      data:
+        edgeType: curve
+    - source: ifly-code::fd80cab5-60f0-47a2-be5b-15bbb9c3c960
+      target: node-end::45d52ce1-fc93-4cb1-b99a-015a7a8c7284
+      targetHandle: node-end::45d52ce1-fc93-4cb1-b99a-015a7a8c7284
+      type: customEdge
+      id: reactflow__edge-openrare-format-end
+      markerEnd:
+        color: '#275EFF'
+        type: arrow
+      data:
+        edgeType: curve

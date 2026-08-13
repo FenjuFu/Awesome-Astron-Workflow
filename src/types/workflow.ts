@@ -445,5 +445,37 @@ export const workflows: Workflow[] = [
     ],
     icon: 'bot',
     category: 'coding'
+  },
+  {
+    id: 'astron-for-good-openrare',
+    title: 'workflow.astron_for_good_openrare.title',
+    description: 'workflow.astron_for_good_openrare.description',
+    userCaseUrl: 'https://youtube.com/shorts/7QxpK6pvSNU',
+    workflowUrl: 'https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-openrare-clue-extraction.zh-CN.yml',
+    features: [
+      'features.astron_for_good_openrare.1',
+      'features.astron_for_good_openrare.2',
+      'features.astron_for_good_openrare.3',
+      'features.astron_for_good_openrare.4',
+      'features.astron_for_good_openrare.5'
+    ],
+    icon: 'heart',
+    category: 'health'
+  },
+  {
+    id: 'astron-for-good-pubmed',
+    title: 'workflow.astron_for_good_pubmed.title',
+    description: 'workflow.astron_for_good_pubmed.description',
+    userCaseUrl: 'https://youtube.com/shorts/-QLyO8W5DgA',
+    workflowUrl: 'https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-pubmed-evidence-card.zh-CN.yml',
+    features: [
+      'features.astron_for_good_pubmed.1',
+      'features.astron_for_good_pubmed.2',
+      'features.astron_for_good_pubmed.3',
+      'features.astron_for_good_pubmed.4',
+      'features.astron_for_good_pubmed.5'
+    ],
+    icon: 'book-open',
+    category: 'health'
   }
 ];

@@ -319,6 +319,24 @@ const translations = {
     'features.astron_agent_memflywheel.4': 'Filesystem-backed evidence in MEMORY.md and workflow/*.md',
     'features.astron_agent_memflywheel.5': 'Clear recall-only and non-native integration boundaries',
 
+    // Workflows - Astron for Good: OpenRare phenotype clues
+    'workflow.astron_for_good_openrare.title': 'Astron for Good: OpenRare Clue Assistant (Concept)',
+    'workflow.astron_for_good_openrare.description': 'An importable, bilingual Astron workflow that sends synthetic or de-identified clinical text to an OpenRare-compatible local bridge, maps phenotype descriptions to auditable HPO clues, and returns the executed result for professional review.',
+    'features.astron_for_good_openrare.1': 'Complete input-to-result Astron workflow',
+    'features.astron_for_good_openrare.2': 'OpenRare-compatible extraction with CHPO-constrained mapping',
+    'features.astron_for_good_openrare.3': 'Auditable HPO identifiers, source commit, and run trace',
+    'features.astron_for_good_openrare.4': 'Chinese and English importable DSL files',
+    'features.astron_for_good_openrare.5': 'Synthetic or de-identified input with professional review',
+
+    // Workflows - Astron for Good: PubMed evidence cards
+    'workflow.astron_for_good_pubmed.title': 'Astron for Good: PubMed Evidence Card (Concept)',
+    'workflow.astron_for_good_pubmed.description': 'An importable, bilingual Astron workflow that runs a real PubMed MCP search and detail lookup, asks Spark Ultra to assemble a readable evidence card, and verifies that every cited PMID and source URL came from the same run.',
+    'features.astron_for_good_pubmed.1': 'Real PubMed MCP search and article-detail retrieval',
+    'features.astron_for_good_pubmed.2': 'Spark Ultra evidence-card generation',
+    'features.astron_for_good_pubmed.3': 'PMID and source-URL consistency checks',
+    'features.astron_for_good_pubmed.4': 'Chinese and English importable DSL files',
+    'features.astron_for_good_pubmed.5': 'Research-reading output with a medical-safety boundary',
+
     'about.title': 'About Astron Workflows',
     'about.subtitle': 'Learn about the power and flexibility of Astron workflows and how they can transform your automation tasks.',
     'about.whatIs.title': 'What is Astron?',
@@ -799,6 +817,24 @@ const translations = {
     'features.astron_agent_memflywheel.3': '显式保存记忆与提示词阶段召回',
     'features.astron_agent_memflywheel.4': '通过 MEMORY.md 和 workflow/*.md 核验真实落盘',
     'features.astron_agent_memflywheel.5': '明确 recall-only 与非原生集成边界',
+
+    // Workflows - Astron for Good：OpenRare 罕见病表型线索
+    'workflow.astron_for_good_openrare.title': 'Astron for Good：OpenRare 罕见病线索助手（应用设想）',
+    'workflow.astron_for_good_openrare.description': '一个可导入的双语 Astron 工作流：把合成或脱敏临床文本发送给 OpenRare 兼容本地适配服务，将症状描述映射为可审计的 HPO 表型线索，并把真实执行结果交给专业人员复核。',
+    'features.astron_for_good_openrare.1': '从输入到结果的完整 Astron 工作流',
+    'features.astron_for_good_openrare.2': 'OpenRare 兼容抽取与 CHPO 词典约束映射',
+    'features.astron_for_good_openrare.3': '保留 HPO 编号、源码提交和运行轨迹',
+    'features.astron_for_good_openrare.4': '提供中英文可导入 DSL 文件',
+    'features.astron_for_good_openrare.5': '仅接收合成或脱敏文本，并要求专业复核',
+
+    // Workflows - Astron for Good：PubMed 医学证据卡
+    'workflow.astron_for_good_pubmed.title': 'Astron for Good：PubMed 医学证据卡（应用设想）',
+    'workflow.astron_for_good_pubmed.description': '一个可导入的双语 Astron 工作流：真实执行 PubMed MCP 检索与文献详情获取，调用 Spark Ultra 生成易读证据卡，并校验每个 PMID 与来源链接均来自同一次运行。',
+    'features.astron_for_good_pubmed.1': '真实执行 PubMed MCP 检索与详情获取',
+    'features.astron_for_good_pubmed.2': '调用 Spark Ultra 生成医学证据卡',
+    'features.astron_for_good_pubmed.3': '校验 PMID 与来源链接的一致性',
+    'features.astron_for_good_pubmed.4': '提供中英文可导入 DSL 文件',
+    'features.astron_for_good_pubmed.5': '用于研究阅读，并保留医疗安全边界',
 
     'about.title': '关于 Astron 工作流',
     'about.subtitle': '了解 Astron 工作流的强大功能和灵活性，以及它们如何改变您的自动化任务。',

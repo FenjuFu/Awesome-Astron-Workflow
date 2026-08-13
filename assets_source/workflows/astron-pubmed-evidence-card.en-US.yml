@@ -1,0 +1,473 @@
+flowMeta:
+  name: Astron-PubMed-Public-Interest-Evidence-Card (English)
+  description: Runs a real PubMed MCP search and detail lookup, then asks Spark Ultra to create a PMID-traceable English evidence card. The output organizes information and is not medical advice.
+  avatarIcon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/emojiitem_00_10@2x.png
+  avatarColor: '#E9E5FF'
+  advancedConfig: '{"needGuide":false,"prologue":{"enabled":true,"inputExample":["What recent systematic reviews or guidelines address screening and surveillance for people at high risk of pancreatic cancer?"],"prologueText":"Enter a medical literature question. This workflow searches PubMed in real time and returns a traceable English evidence card."},"chatBackground":{"enabled":false}}'
+  dslVersion: v1
+flowData:
+  nodes:
+    - id: node-start::b7ecb0f8-5d47-4c82-a35c-61d2d5f77951
+      dragging: false
+      selected: false
+      width: 362
+      height: 116
+      position:
+        x: 0
+        y: 120
+      positionAbsolute:
+        x: 0
+        y: 120
+      type: 开始节点
+      data:
+        allowInputReference: false
+        allowOutputReference: true
+        label: Enter a medical literature question
+        status: ''
+        nodeMeta:
+          aliasName: Start
+          nodeType: Basic Node
+        inputs: []
+        outputs:
+          - id: a1a65793-56e9-47fb-8df8-62ff12912968
+            name: AGENT_USER_INPUT
+            nameErrMsg: ''
+            schema:
+              type: string
+              default: Medical literature question entered by the user
+            required: true
+            deleteDisabled: true
+        nodeParam: {}
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/start-node-icon.png
+        description: Enter a medical literature question. Do not provide personal health information.
+        updatable: false
+    - id: ifly-code::bd2d1962-a014-4e39-9a9a-5596ae79fc3f
+      dragging: false
+      selected: false
+      width: 362
+      height: 142
+      position:
+        x: 520
+        y: 107
+      positionAbsolute:
+        x: 520
+        y: 107
+      type: 代码
+      data:
+        allowInputReference: true
+        allowOutputReference: true
+        label: Run real PubMed MCP search
+        labelEdit: false
+        references:
+          - children:
+              - references:
+                  - originId: node-start::b7ecb0f8-5d47-4c82-a35c-61d2d5f77951
+                    id: a1a65793-56e9-47fb-8df8-62ff12912968
+                    label: AGENT_USER_INPUT
+                    type: string
+                    value: AGENT_USER_INPUT
+                label: ''
+                value: ''
+            label: Enter a medical literature question
+            parentNode: true
+            value: node-start::b7ecb0f8-5d47-4c82-a35c-61d2d5f77951
+        status: ''
+        nodeMeta:
+          aliasName: Run real PubMed MCP search
+          nodeType: Tool
+        inputs:
+          - id: 2fe441e5-dc3e-4678-8de7-bf4c2aa8b501
+            name: input
+            nameErrMsg: ''
+            schema:
+              type: string
+              value:
+                type: ref
+                content:
+                  name: AGENT_USER_INPUT
+                  id: a1a65793-56e9-47fb-8df8-62ff12912968
+                  nodeId: node-start::b7ecb0f8-5d47-4c82-a35c-61d2d5f77951
+                contentErrMsg: ''
+        outputs:
+          - id: 440258ec-d9c1-476e-830d-f4cb6443f78d
+            name: result
+            nameErrMsg: ''
+            schema:
+              type: string
+              default: ''
+        nodeParam:
+          uid: '0'
+          code: |-
+            import json
+            import os
+            import urllib.error
+            import urllib.request
+
+            def main(input):
+                question = (input or "").strip()
+                if not question:
+                    raise RuntimeError("Please enter a medical literature question in English")
+                bridge_base_url = os.getenv("PUBMED_BRIDGE_BASE_URL", "http://host.docker.internal:8791").rstrip("/")
+                token = os.getenv("PUBMED_BRIDGE_TOKEN", "").strip()
+                if not token:
+                    raise RuntimeError("Set PUBMED_BRIDGE_TOKEN in the workflow runtime environment")
+                body = json.dumps(
+                    {"question": question, "max_results": 3},
+                    ensure_ascii=False,
+                ).encode("utf-8")
+                request = urllib.request.Request(
+                    bridge_base_url + "/v1/pubmed-search",
+                    data=body,
+                    headers={
+                        "Content-Type": "application/json; charset=utf-8",
+                        "Accept": "application/json",
+                        "X-Bridge-Token": token,
+                    },
+                    method="POST",
+                )
+                try:
+                    with urllib.request.urlopen(request, timeout=120) as response:
+                        status = response.getcode()
+                        text = response.read().decode("utf-8")
+                except urllib.error.HTTPError as error:
+                    detail = error.read().decode("utf-8", errors="replace")
+                    raise RuntimeError(f"PubMed bridge HTTP {error.code}: {detail}")
+                except urllib.error.URLError as error:
+                    raise RuntimeError(f"PubMed bridge unavailable: {error.reason}")
+                try:
+                    result = json.loads(text)
+                except json.JSONDecodeError:
+                    raise RuntimeError(f"PubMed bridge returned non-JSON HTTP {status}")
+                if not result.get("ok"):
+                    raise RuntimeError("PubMed MCP search did not complete successfully")
+                articles = result.get("articles") or []
+                if not articles:
+                    raise RuntimeError("PubMed MCP returned no articles; broaden the question")
+                return {"result": json.dumps(result, ensure_ascii=False)}
+          apiKey: YOUR_API_KEY
+          appId: YOUR_APP_ID
+          apiSecret: YOUR_API_SECRET
+          codeErrMsg: ''
+        retryConfig:
+          maxRetries: 0
+          shouldRetry: true
+          customOutput: {}
+          errorStrategy: 0
+          timeout: 120
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/codeIcon.png
+        description: Calls the real PubMed MCP through the host bridge, runs pubmed_search and pubmed_get_details, and preserves PMIDs, citations, and the execution trace.
+        updatable: false
+    - id: ifly-code::43b8ddfe-b60e-4183-bc38-d0d27382ecea
+      dragging: false
+      selected: false
+      width: 362
+      height: 142
+      position:
+        x: 1040
+        y: 107
+      positionAbsolute:
+        x: 1040
+        y: 107
+      type: 代码
+      data:
+        allowInputReference: true
+        allowOutputReference: true
+        label: Synthesize evidence with Spark
+        labelEdit: false
+        references:
+          - children:
+              - references:
+                  - originId: ifly-code::bd2d1962-a014-4e39-9a9a-5596ae79fc3f
+                    id: 440258ec-d9c1-476e-830d-f4cb6443f78d
+                    label: result
+                    type: string
+                    value: result
+                label: ''
+                value: ''
+            label: Run real PubMed MCP search
+            parentNode: true
+            value: ifly-code::bd2d1962-a014-4e39-9a9a-5596ae79fc3f
+        status: ''
+        nodeMeta:
+          aliasName: Synthesize evidence with Spark
+          nodeType: Tool
+        inputs:
+          - id: ee0da2f3-849d-4916-adf7-27fe2310394b
+            name: input
+            nameErrMsg: ''
+            schema:
+              type: string
+              value:
+                type: ref
+                content:
+                  name: result
+                  id: 440258ec-d9c1-476e-830d-f4cb6443f78d
+                  nodeId: ifly-code::bd2d1962-a014-4e39-9a9a-5596ae79fc3f
+                contentErrMsg: ''
+        outputs:
+          - id: 32bbdb74-9d41-490d-bc17-0abf8093c034
+            name: result
+            nameErrMsg: ''
+            schema:
+              type: string
+              default: ''
+        nodeParam:
+          uid: '0'
+          code: |-
+            import json
+            import os
+            import urllib.error
+            import urllib.request
+
+            def main(input):
+                search = json.loads(input)
+                articles = search.get("articles") or []
+                payload = {
+                    "question": search.get("question", ""),
+                    "query": search.get("query", ""),
+                    "articles": articles,
+                              "language": "en-US",
+                }
+                token = os.getenv("PUBMED_BRIDGE_TOKEN", "").strip()
+                if not token:
+                    raise RuntimeError("Set PUBMED_BRIDGE_TOKEN in the workflow runtime environment")
+                bridge_base_url = os.getenv("PUBMED_BRIDGE_BASE_URL", "http://host.docker.internal:8791").rstrip("/")
+                request = urllib.request.Request(
+                    bridge_base_url + "/v1/spark-evidence-card",
+                    data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+                    headers={
+                        "Content-Type": "application/json; charset=utf-8",
+                        "Accept": "application/json",
+                        "X-Bridge-Token": token,
+                    },
+                    method="POST",
+                )
+                try:
+                    with urllib.request.urlopen(request, timeout=120) as response:
+                        parsed = json.loads(response.read().decode("utf-8"))
+                except urllib.error.HTTPError as error:
+                    detail = error.read().decode("utf-8", errors="replace")
+                    raise RuntimeError(f"Spark evidence bridge HTTP {error.code}: {detail}")
+                except urllib.error.URLError as error:
+                    raise RuntimeError(f"Spark evidence bridge unavailable: {error.reason}")
+                if not parsed.get("ok"):
+                    raise RuntimeError("Spark evidence-card step did not complete successfully")
+                source_pmids = {str(item.get("pmid", "")) for item in articles}
+                card = parsed.get("evidence_card") or {}
+                card_pmids = {str(item.get("pmid", "")) for item in card.get("articles", [])}
+                unknown = sorted(card_pmids - source_pmids)
+                if unknown:
+                    raise RuntimeError("Evidence card introduced unknown PMID: " + ", ".join(unknown))
+                parsed["citation_audit"] = {
+                    "passed": True,
+                    "source_pmids": sorted(source_pmids),
+                    "card_pmids": sorted(card_pmids),
+                }
+                return {"result": json.dumps(parsed, ensure_ascii=False)}
+          apiKey: YOUR_API_KEY
+          appId: YOUR_APP_ID
+          apiSecret: YOUR_API_SECRET
+          codeErrMsg: ''
+        retryConfig:
+          maxRetries: 0
+          shouldRetry: true
+          customOutput: {}
+          errorStrategy: 0
+          timeout: 120
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/codeIcon.png
+        description: Sends only the retrieved PubMed records to Spark Ultra for English synthesis and rejects any PMID that was not present in the search result.
+        updatable: false
+    - id: ifly-code::c535b566-980d-4316-8631-8de033f5093e
+      dragging: false
+      selected: false
+      width: 362
+      height: 142
+      position:
+        x: 1560
+        y: 107
+      positionAbsolute:
+        x: 1560
+        y: 107
+      type: 代码
+      data:
+        allowInputReference: true
+        allowOutputReference: true
+        label: Render the evidence card
+        labelEdit: false
+        references:
+          - children:
+              - references:
+                  - originId: ifly-code::43b8ddfe-b60e-4183-bc38-d0d27382ecea
+                    id: 32bbdb74-9d41-490d-bc17-0abf8093c034
+                    label: result
+                    type: string
+                    value: result
+                label: ''
+                value: ''
+            label: Synthesize evidence with Spark
+            parentNode: true
+            value: ifly-code::43b8ddfe-b60e-4183-bc38-d0d27382ecea
+        status: ''
+        nodeMeta:
+          aliasName: Render the evidence card
+          nodeType: Tool
+        inputs:
+          - id: a214701f-9bad-4ff2-a48e-19588cccd0ba
+            name: input
+            nameErrMsg: ''
+            schema:
+              type: string
+              value:
+                type: ref
+                content:
+                  name: result
+                  id: 32bbdb74-9d41-490d-bc17-0abf8093c034
+                  nodeId: ifly-code::43b8ddfe-b60e-4183-bc38-d0d27382ecea
+                contentErrMsg: ''
+        outputs:
+          - id: 080361ec-9491-4c16-8b7a-29a4e8f4fc19
+            name: output
+            nameErrMsg: ''
+            schema:
+              type: string
+              default: ''
+        nodeParam:
+          uid: '0'
+          code: |-
+            import json
+
+            def main(input):
+                data = json.loads(input)
+                markdown = (data.get("markdown") or "").strip()
+                if not markdown:
+                    card = data.get("evidence_card") or {}
+                    lines = [
+                        "# PubMed Evidence Card",
+                        "",
+                        "**Question:** " + card.get("question", ""),
+                        "",
+                        "## Evidence summary",
+                        "",
+                        card.get("evidence_summary", ""),
+                        "",
+                        "## Source articles",
+                    ]
+                    for article in card.get("articles", []):
+                        title = article.get("title") or article.get("title_en") or article.get("title_zh", "")
+                        finding = article.get("main_finding") or article.get("main_finding_en") or article.get("main_finding_zh", "")
+                        limitations = article.get("limitations") or article.get("limitations_en") or article.get("limitations_zh", "")
+                        lines.extend([
+                            "",
+                            "### PMID " + str(article.get("pmid", "")) + ": " + title,
+                            "- Citation: " + article.get("citation", ""),
+                            "- Main finding: " + finding,
+                            "- Limitations: " + limitations,
+                            "- Source: " + article.get("pubmed_url", ""),
+                        ])
+                    lines.extend(["", "## Safety note", "", card.get("safety_note", "")])
+                    markdown = "\n".join(lines)
+                audit = data.get("citation_audit") or {}
+                if not audit.get("passed"):
+                    raise RuntimeError("Citation audit was not passed")
+                return {"output": markdown}
+          apiKey: YOUR_API_KEY
+          appId: YOUR_APP_ID
+          apiSecret: YOUR_API_SECRET
+          codeErrMsg: ''
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/codeIcon.png
+        description: Renders the audited evidence card as English Markdown with PubMed links, limitations, and a medical safety note.
+        updatable: false
+    - id: node-end::7f63c15f-7234-43e4-a403-45296ab2f8c1
+      dragging: false
+      selected: false
+      width: 362
+      height: 116
+      position:
+        x: 2080
+        y: 120
+      positionAbsolute:
+        x: 2080
+        y: 120
+      type: 结束节点
+      data:
+        allowInputReference: true
+        allowOutputReference: false
+        label: Return the evidence card
+        references:
+          - children:
+              - references:
+                  - originId: ifly-code::c535b566-980d-4316-8631-8de033f5093e
+                    id: 080361ec-9491-4c16-8b7a-29a4e8f4fc19
+                    label: output
+                    type: string
+                    value: output
+                label: ''
+                value: ''
+            label: Render the evidence card
+            parentNode: true
+            value: ifly-code::c535b566-980d-4316-8631-8de033f5093e
+        status: ''
+        nodeMeta:
+          aliasName: End
+          nodeType: Basic Node
+        inputs:
+          - id: f436ed27-38ea-42e3-9457-cb4c3371e67b
+            name: output
+            nameErrMsg: ''
+            schema:
+              type: string
+              value:
+                type: ref
+                content:
+                  name: output
+                  id: 080361ec-9491-4c16-8b7a-29a4e8f4fc19
+                  nodeId: ifly-code::c535b566-980d-4316-8631-8de033f5093e
+                contentErrMsg: ''
+            fileType: ''
+        outputs: []
+        nodeParam:
+          template: '{{output}}'
+          streamOutput: false
+          templateErrMsg: ''
+          outputMode: 1
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/end-node-icon.png
+        description: Returns the evidence card after real retrieval and citation auditing. It does not replace professional medical judgment.
+        updatable: false
+  edges:
+    - source: node-start::b7ecb0f8-5d47-4c82-a35c-61d2d5f77951
+      target: ifly-code::bd2d1962-a014-4e39-9a9a-5596ae79fc3f
+      type: customEdge
+      id: reactflow__edge-pubmed-start-search
+      markerEnd:
+        color: '#275EFF'
+        type: arrow
+      data:
+        edgeType: curve
+    - source: ifly-code::bd2d1962-a014-4e39-9a9a-5596ae79fc3f
+      target: ifly-code::43b8ddfe-b60e-4183-bc38-d0d27382ecea
+      type: customEdge
+      id: reactflow__edge-pubmed-search-spark
+      markerEnd:
+        color: '#275EFF'
+        type: arrow
+      data:
+        edgeType: curve
+    - source: ifly-code::43b8ddfe-b60e-4183-bc38-d0d27382ecea
+      target: ifly-code::c535b566-980d-4316-8631-8de033f5093e
+      type: customEdge
+      id: reactflow__edge-pubmed-spark-format
+      markerEnd:
+        color: '#275EFF'
+        type: arrow
+      data:
+        edgeType: curve
+    - source: ifly-code::c535b566-980d-4316-8631-8de033f5093e
+      target: node-end::7f63c15f-7234-43e4-a403-45296ab2f8c1
+      targetHandle: node-end::7f63c15f-7234-43e4-a403-45296ab2f8c1
+      type: customEdge
+      id: reactflow__edge-pubmed-format-end
+      markerEnd:
+        color: '#275EFF'
+        type: arrow
+      data:
+        edgeType: curve
