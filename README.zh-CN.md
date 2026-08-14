@@ -387,6 +387,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 
 - **用户案例：** [知乎技术教程](https://zhuanlan.zhihu.com/p/2070241293788247106)
 - **工作流：** [astron-agent-memflywheel.yml](https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-agent-memflywheel.yml)
+- **DSH × Spark Ultra 复现实例：** [配置、便携启动器与脱敏 SKILL](docs/examples/astron-agent-memflywheel-dsh/README.md)
 
 **主要功能：**
 - Astron 代码节点调用本地 HTTP 适配层
@@ -394,6 +395,7 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 - 显式保存记忆与提示词阶段召回
 - 通过 `MEMORY.md` 和 `workflow/*.md` 核验真实落盘
 - 明确 `recall-only` 与非原生集成边界
+- 已验证目标式提示下由 Spark Ultra 自主选择 `skill → pwsh → pwsh`
 
 ### 金融理财
 

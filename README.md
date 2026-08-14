@@ -376,6 +376,7 @@ Each case includes:
 
 - **User Case:** [Zhihu technical tutorial](https://zhuanlan.zhihu.com/p/2070241293788247106)
 - **Workflow:** [astron-agent-memflywheel.yml](https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-agent-memflywheel.yml)
+- **DSH × Spark Ultra example:** [configuration, portable runner, and sanitized SKILL](docs/examples/astron-agent-memflywheel-dsh/README.md)
 
 **Key Features:**
 - Astron code node calls a local HTTP adapter
@@ -383,6 +384,7 @@ Each case includes:
 - Explicit memory save and prompt-time recall
 - Filesystem-backed evidence in `MEMORY.md` and `workflow/*.md`
 - Clear `recall-only` and non-native integration boundaries
+- Verified goal-only DSH turn in which Spark Ultra selected `skill → pwsh → pwsh`
 
 ### Finance & Investment
 
