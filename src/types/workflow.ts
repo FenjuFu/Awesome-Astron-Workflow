@@ -477,5 +477,21 @@ export const workflows: Workflow[] = [
     ],
     icon: 'book-open',
     category: 'health'
+  },
+  {
+    id: 'astron-landscape-dual-photo-skills',
+    title: 'workflow.astron_landscape_dual_photo_skills.title',
+    description: 'workflow.astron_landscape_dual_photo_skills.description',
+    userCaseUrl: 'https://github.com/FenjuFu/astron-images/tree/main/astron-photo-skills-2026-08-18',
+    workflowUrl: 'https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-landscape-dual-photo-skills.zh-CN.yml',
+    features: [
+      'features.astron_landscape_dual_photo_skills.1',
+      'features.astron_landscape_dual_photo_skills.2',
+      'features.astron_landscape_dual_photo_skills.3',
+      'features.astron_landscape_dual_photo_skills.4',
+      'features.astron_landscape_dual_photo_skills.5'
+    ],
+    icon: 'bot',
+    category: 'creative'
   }
 ];
