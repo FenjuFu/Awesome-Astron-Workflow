@@ -480,16 +480,16 @@ export const workflows: Workflow[] = [
   },
   {
     id: 'astron-landscape-dual-photo-skills',
-    title: 'workflow.astron_landscape_dual_photo_skills.title',
-    description: 'workflow.astron_landscape_dual_photo_skills.description',
+    title: 'Astron 风景文件夹双 Skill 路由 / Landscape Dual-Skill Router',
+    description: '真实调试验证：读取九张风景照片清单，调用两套已挂载 Skill，并合并返回保护提示词与 QA。 Verified with a real nine-photo Astron Agent run.',
     userCaseUrl: 'https://github.com/FenjuFu/astron-images/tree/main/astron-photo-skills-2026-08-18',
     workflowUrl: 'https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-landscape-dual-photo-skills.zh-CN.yml',
     features: [
-      'features.astron_landscape_dual_photo_skills.1',
-      'features.astron_landscape_dual_photo_skills.2',
-      'features.astron_landscape_dual_photo_skills.3',
-      'features.astron_landscape_dual_photo_skills.4',
-      'features.astron_landscape_dual_photo_skills.5'
+      '两份 SKILL.md 已挂载 / Two attached skills',
+      '开始 → Agent 智能决策 → 结束 / Start → Agent → End',
+      '九张照片清单路由 / Nine-photo manifest routing',
+      '提示词与 QA 合并输出 / Merged prompts and QA',
+      '87.184 秒、4,605 Tokens 实跑 / Verified live run'
     ],
     icon: 'bot',
     category: 'creative'
