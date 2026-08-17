@@ -1,0 +1,224 @@
+flowMeta:
+  name: 风景文件夹双Skill编排
+  description: 读取风景文件夹清单，由 Agent 节点真实调用 Paper Signal 与 GC Minimal Zine 两个 Skill，输出路由、生成提示词和
+    QA 结果。
+  avatarIcon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/emojiitem_00_10@2x.png
+  avatarColor: '#FFEAD5'
+  advancedConfig: '{"prologue":{"enabled":true,"inputExample":["","",""]},"textToSpeech":{"enabled":true,"vcn_cn":"x5_lingxiaotang_flow","vcn_en":""}}'
+  category: 10
+  dslVersion: v1
+flowData:
+  nodes:
+  - id: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+    dragging: false
+    selected: false
+    width: 362
+    height: 122
+    position:
+      x: -25.109019607843152
+      y: 521.7086666666667
+    positionAbsolute:
+      x: -25.109019607843152
+      y: 521.7086666666667
+    type: custom
+    data:
+      allowInputReference: false
+      allowOutputReference: true
+      label: 开始
+      status: ''
+      nodeMeta:
+        aliasName: 开始节点
+        nodeType: 基础节点
+      inputs: [
+        ]
+      outputs:
+      - id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+        name: AGENT_USER_INPUT
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 用户本轮对话输入内容
+        required: true
+        deleteDisabled: true
+      nodeParam: {
+        }
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/start-node-icon.png
+      description: 工作流的开启节点，用于定义流程调用所需的业务变量信息。
+      updatable: false
+  - id: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    dragging: false
+    selected: false
+    width: 362
+    height: 82
+    position:
+      x: 886.8833333333332
+      y: 343.91588235294114
+    positionAbsolute:
+      x: 886.8833333333332
+      y: 343.91588235294114
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: false
+      label: 结束
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 结束节点
+        nodeType: 基础节点
+      inputs:
+      - id: 82de2b42-a059-4c98-bffb-b6b4800fcac9
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 3acca189-359d-4c2a-897b-190afa20896b
+              nodeId: agent::dede1d93-aad2-4939-a9aa-8ef82de3d959
+              name: output
+            contentErrMsg: ''
+        fileType: ''
+      outputs: [
+        ]
+      nodeParam:
+        template: '{{output}}'
+        streamOutput: true
+        outputMode: 1
+        templateErrMsg: ''
+        reasoningTemplate: 双 Skill 路由完成
+      icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/end-node-icon.png
+      description: 工作流的结束节点，用于输出工作流运行后的最终结果。
+      updatable: false
+  - id: agent::dede1d93-aad2-4939-a9aa-8ef82de3d959
+    selected: true
+    width: 362
+    height: 156
+    position:
+      x: 652.6198127535496
+      y: 437.0162681499324
+    type: custom
+    data:
+      allowInputReference: true
+      allowOutputReference: true
+      label: Agent智能决策_1
+      labelEdit: false
+      references: [
+        ]
+      status: ''
+      nodeMeta:
+        aliasName: 智能体节点
+        nodeType: Agent节点
+      inputs:
+      - id: 6fb78ad8-244d-430d-98a6-4a5faa6896ea
+        name: input
+        nameErrMsg: ''
+        schema:
+          type: string
+          value:
+            type: ref
+            content:
+              id: 0918514b-72a8-4646-8dd9-ff4a8fc26d44
+              nodeId: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+              name: AGENT_USER_INPUT
+            contentErrMsg: ''
+        fileType: ''
+      outputs:
+      - id: 15d81c36-fe5b-4502-8517-7848cbd1a53d
+        name: REASONING_CONTENT
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 模型思考过程
+        customParameterType: deepseekr1
+      - id: 3acca189-359d-4c2a-897b-190afa20896b
+        name: output
+        nameErrMsg: ''
+        schema:
+          type: string
+          default: 两个 Skill 合并后的路由、生成提示词与 QA 结果
+      nodeParam:
+        appId: 680ab54f
+        enableChatHistoryV2:
+          isEnabled: false
+          rounds: 1
+        modelConfig:
+          agentStrategy: 1
+          domain: 4.0Ultra
+          api: https://spark-api-open.xf-yun.com/v1/chat/completions
+        instruction:
+          reasoning: 1. 解析 BATCH_MANIFEST。2. 仅调用 paper-signal-art-director 对应的 read_skill_
+            工具，Action Input 必须严格为 {}。3. 仅调用 gc-minimal-zine-poster-v0-3 对应的 read_skill_
+            工具，Action Input 必须严格为 {}。4. 根据两个 Skill 返回的 SKILL.md：Paper Signal 处理 1、3、4、7；GC
+            Minimal Zine 处理 2、5、6、8、9。5. 合并输出 selected_files、protected_details、generation_prompt、qa_gate、render_status。6.
+            直接给出 Final Answer；不得调用 run_skill_，不得输出命令。
+          answer: 你是风景照片批处理编排智能体。必须真实调用已挂载的 paper-signal-art-director 与 gc-minimal-zine-poster-v0-3
+            两个 Skill。严格工具规则：先调用 paper-signal 对应、名称以 read_skill_ 开头的工具一次，再调用 gc-minimal-zine
+            对应、名称以 read_skill_ 开头的工具一次；两次 Action Input 都必须是单行空 JSON：{}。禁止调用任何 run_skill_
+            工具，禁止生成 command、stdin 或脚本参数。读完两个 SKILL.md 后，依据输入清单直接生成可审计的路由、提示词和 QA 结果；不得声称已生成图片。
+          query: '{{input}}'
+          queryErrMsg: ''
+        plugin:
+          tools: [
+            ]
+          toolsList:
+          - toolId: '4'
+            name: gc-minimal-zine-poster-v0-3
+            type: skill
+          - toolId: '2'
+            name: paper-signal-art-director
+            type: skill
+          mcpServerIds: [
+            ]
+          mcpServerUrls: [
+            ]
+          workflowIds: [
+            ]
+          skills:
+          - skillId: '4'
+            name: gc-minimal-zine-poster-v0-3
+            description: Turn supplied photo or folder manifests into sparse vertical
+              paper-poster prompts with large negative space, one small source-faithful
+              visual event, restrained print texture, and one colour accent. Use when
+              a poetic minimal-zine treatment is preferred over a generous editorial
+              photo window.
+          - skillId: '2'
+            name: paper-signal-art-director
+            description: Inspect supplied photo or folder manifests and produce high-preservation
+              Paper Signal art direction, exact four-paragraph image prompts, and
+              QA criteria for landscapes, architecture, portraits, and objects. Use
+              for faithful photo-to-zine editorial treatment where the subject must
+              remain recognisable.
+        maxLoopCount: 10
+        uid: 7d5db8b7-73c2-4ae1-a293-9001ea29bec6
+        llmId: 454665064
+        serviceId: 4.0Ultra
+        modelId: 3
+        domain: 4.0Ultra
+        url: https://spark-api-open.xf-yun.com/v1/chat/completions
+        source: openai
+        llmIdErrMsg: ''
+      icon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/agent.png
+      description: 依据任务需求，通过选择合适的工具列表，实现大 模型的智能调度
+      updatable: false
+  edges:
+  - source: node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783
+    target: agent::dede1d93-aad2-4939-a9aa-8ef82de3d959
+    type: customEdge
+    id: reactflow__edge-node-start::d61b0f71-87ee-475e-93ba-f1607f0ce783-agent::dede1d93-aad2-4939-a9aa-8ef82de3d959
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
+  - source: agent::dede1d93-aad2-4939-a9aa-8ef82de3d959
+    target: node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    type: customEdge
+    id: reactflow__edge-agent::dede1d93-aad2-4939-a9aa-8ef82de3d959-node-end::cda617af-551e-462e-b3b8-3bb9a041bf88
+    markerEnd:
+      type: arrow
+      color: '#6356EA'
+    data:
+      edgeType: curve
