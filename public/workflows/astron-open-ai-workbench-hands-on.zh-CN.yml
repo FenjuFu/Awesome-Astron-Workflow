@@ -1,0 +1,359 @@
+{
+  "flowMeta": {
+    "name": "Astron · 开源 AI 工作台 · UI 实操",
+    "description": "AI 生成草案，经人工确认后由本地 UI 适配层写入并读取 Astron 原生数据表；付款、外发和公开发布始终保留人工确认。",
+    "avatarIcon": "https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/emojiitem_00_10@2x.png",
+    "avatarColor": "#E9E5FF",
+    "advancedConfig": "{\"needGuide\":false,\"prologue\":{\"enabled\":false,\"inputExample\":[],\"prologueText\":\"\"},\"chatBackground\":{\"enabled\":false}}",
+    "category": 10,
+    "dslVersion": "v1"
+  },
+  "flowData": {
+    "nodes": [
+      {
+        "id": "node-start::a8200821-0000-4000-8000-000000000001",
+        "dragging": false,
+        "selected": false,
+        "width": 350,
+        "height": 116,
+        "position": {
+          "x": 0,
+          "y": 220
+        },
+        "positionAbsolute": {
+          "x": 0,
+          "y": 220
+        },
+        "type": "开始节点",
+        "data": {
+          "allowInputReference": false,
+          "allowOutputReference": true,
+          "label": "开始",
+          "status": "",
+          "nodeMeta": {
+            "aliasName": "开始",
+            "nodeType": "基础节点"
+          },
+          "inputs": [],
+          "outputs": [
+            {
+              "id": "a8200821-0000-4000-8000-000000000101",
+              "name": "AGENT_USER_INPUT",
+              "nameErrMsg": "",
+              "schema": {
+                "type": "string",
+                "default": "同步开源 AI 工作台，并返回当前页面数据。"
+              },
+              "required": true,
+              "deleteDisabled": true
+            }
+          ],
+          "nodeParam": {},
+          "icon": "https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/start-node-icon.png",
+          "description": "从真实 Astron 调试页启动。",
+          "updatable": false
+        }
+      },
+      {
+        "id": "ifly-code::a8200821-0000-4000-8000-000000000011",
+        "dragging": false,
+        "selected": false,
+        "width": 350,
+        "height": 190,
+        "position": {
+          "x": 450,
+          "y": 180
+        },
+        "positionAbsolute": {
+          "x": 450,
+          "y": 180
+        },
+        "type": "代码",
+        "data": {
+          "allowInputReference": true,
+          "allowOutputReference": true,
+          "label": "AI辅助草案落表",
+          "labelEdit": false,
+          "references": [
+            {
+              "children": [
+                {
+                  "references": [
+                    {
+                      "originId": "node-start::a8200821-0000-4000-8000-000000000001",
+                      "id": "a8200821-0000-4000-8000-000000000101",
+                      "label": "AGENT_USER_INPUT",
+                      "type": "string",
+                      "value": "AGENT_USER_INPUT"
+                    }
+                  ],
+                  "label": "",
+                  "value": ""
+                }
+              ],
+              "label": "开始",
+              "parentNode": true,
+              "value": "node-start::a8200821-0000-4000-8000-000000000001"
+            }
+          ],
+          "status": "",
+          "nodeMeta": {
+            "aliasName": "AI辅助草案落表",
+            "nodeType": "工具"
+          },
+          "inputs": [
+            {
+              "id": "a8200821-0000-4000-8000-000000000111",
+              "name": "input",
+              "nameErrMsg": "",
+              "schema": {
+                "type": "string",
+                "value": {
+                  "type": "ref",
+                  "content": {
+                    "name": "AGENT_USER_INPUT",
+                    "id": "a8200821-0000-4000-8000-000000000101",
+                    "nodeId": "node-start::a8200821-0000-4000-8000-000000000001"
+                  },
+                  "contentErrMsg": ""
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "a8200821-0000-4000-8000-000000000112",
+              "name": "result",
+              "nameErrMsg": "",
+              "schema": {
+                "type": "string",
+                "default": ""
+              }
+            }
+          ],
+          "nodeParam": {
+            "uid": "0",
+            "code": "import json\nimport urllib.request\n\ndef main(input):\n    request = urllib.request.Request(\n        \"http://host.docker.internal:8801/v1/workbench/sync\",\n        data=json.dumps({\"input\": input}, ensure_ascii=False).encode(\"utf-8\"),\n        headers={\"Content-Type\": \"application/json; charset=utf-8\"},\n        method=\"POST\"\n    )\n    with urllib.request.urlopen(request, timeout=90) as response:\n        body = response.read().decode(\"utf-8\")\n    return {\"result\": json.dumps(json.loads(body), ensure_ascii=False, indent=2)}\n",
+            "apiKey": "LOCAL_DEMO",
+            "appId": "LOCAL_DEMO",
+            "apiSecret": "LOCAL_DEMO",
+            "codeErrMsg": ""
+          },
+          "icon": "https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/codeIcon.png",
+          "description": "调用本地 UI 适配层，把本次 AI 生成并由人确认的草案写入 Astron 原生表格；不会付款或发布。",
+          "updatable": false
+        }
+      },
+      {
+        "id": "ifly-code::a8200821-0000-4000-8000-000000000012",
+        "dragging": false,
+        "selected": false,
+        "width": 350,
+        "height": 190,
+        "position": {
+          "x": 900,
+          "y": 180
+        },
+        "positionAbsolute": {
+          "x": 900,
+          "y": 180
+        },
+        "type": "代码",
+        "data": {
+          "allowInputReference": true,
+          "allowOutputReference": true,
+          "label": "生成工作台页面数据",
+          "labelEdit": false,
+          "references": [
+            {
+              "children": [
+                {
+                  "references": [
+                    {
+                      "originId": "ifly-code::a8200821-0000-4000-8000-000000000011",
+                      "id": "a8200821-0000-4000-8000-000000000112",
+                      "label": "result",
+                      "type": "string",
+                      "value": "result"
+                    }
+                  ],
+                  "label": "",
+                  "value": ""
+                }
+              ],
+              "label": "AI辅助草案落表",
+              "parentNode": true,
+              "value": "ifly-code::a8200821-0000-4000-8000-000000000011"
+            }
+          ],
+          "status": "",
+          "nodeMeta": {
+            "aliasName": "生成工作台页面数据",
+            "nodeType": "工具"
+          },
+          "inputs": [
+            {
+              "id": "a8200821-0000-4000-8000-000000000121",
+              "name": "input",
+              "nameErrMsg": "",
+              "schema": {
+                "type": "string",
+                "value": {
+                  "type": "ref",
+                  "content": {
+                    "name": "result",
+                    "id": "a8200821-0000-4000-8000-000000000112",
+                    "nodeId": "ifly-code::a8200821-0000-4000-8000-000000000011"
+                  },
+                  "contentErrMsg": ""
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "a8200821-0000-4000-8000-000000000122",
+              "name": "result",
+              "nameErrMsg": "",
+              "schema": {
+                "type": "string",
+                "default": ""
+              }
+            }
+          ],
+          "nodeParam": {
+            "uid": "0",
+            "code": "import json\n\ndef main(input):\n    data = json.loads(input)\n    page = {\n        \"page\": \"开源 AI 工作台\",\n        \"source\": \"Astron database / local UI adapter\",\n        \"record_count\": data.get(\"record_count\", 0),\n        \"items\": data.get(\"items\", []),\n        \"human_approval\": data.get(\"human_approval\", [])\n    }\n    return {\"result\": json.dumps(page, ensure_ascii=False, indent=2)}\n",
+            "apiKey": "LOCAL_DEMO",
+            "appId": "LOCAL_DEMO",
+            "apiSecret": "LOCAL_DEMO",
+            "codeErrMsg": ""
+          },
+          "icon": "https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/codeIcon.png",
+          "description": "把实时表格记录整理成可供页面使用的 JSON。",
+          "updatable": false
+        }
+      },
+      {
+        "id": "node-end::a8200821-0000-4000-8000-000000000013",
+        "dragging": false,
+        "selected": false,
+        "width": 350,
+        "height": 150,
+        "position": {
+          "x": 1350,
+          "y": 200
+        },
+        "positionAbsolute": {
+          "x": 1350,
+          "y": 200
+        },
+        "type": "结束节点",
+        "data": {
+          "allowInputReference": true,
+          "allowOutputReference": false,
+          "label": "结束",
+          "references": [
+            {
+              "children": [
+                {
+                  "references": [
+                    {
+                      "originId": "ifly-code::a8200821-0000-4000-8000-000000000012",
+                      "id": "a8200821-0000-4000-8000-000000000122",
+                      "label": "result",
+                      "type": "string",
+                      "value": "result"
+                    }
+                  ],
+                  "label": "",
+                  "value": ""
+                }
+              ],
+              "label": "生成工作台页面数据",
+              "parentNode": true,
+              "value": "ifly-code::a8200821-0000-4000-8000-000000000012"
+            }
+          ],
+          "status": "",
+          "nodeMeta": {
+            "aliasName": "结束",
+            "nodeType": "基础节点"
+          },
+          "inputs": [
+            {
+              "id": "a8200821-0000-4000-8000-000000000131",
+              "name": "output",
+              "nameErrMsg": "",
+              "schema": {
+                "type": "string",
+                "value": {
+                  "type": "ref",
+                  "content": {
+                    "name": "result",
+                    "id": "a8200821-0000-4000-8000-000000000122",
+                    "nodeId": "ifly-code::a8200821-0000-4000-8000-000000000012"
+                  },
+                  "contentErrMsg": ""
+                },
+                "fileType": ""
+              }
+            }
+          ],
+          "outputs": [],
+          "nodeParam": {
+            "template": "{{output}}",
+            "streamOutput": false,
+            "templateErrMsg": "",
+            "outputMode": 1
+          },
+          "icon": "https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/end-node-icon.png",
+          "description": "返回实际 Astron 表格生成的页面数据。",
+          "updatable": false
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "node-start::a8200821-0000-4000-8000-000000000001",
+        "target": "ifly-code::a8200821-0000-4000-8000-000000000011",
+        "type": "customEdge",
+        "id": "reactflow__edge-node-start::a8200821-0000-4000-8000-000000000001-ifly-code::a8200821-0000-4000-8000-000000000011",
+        "markerEnd": {
+          "color": "#6356EA",
+          "type": "arrow"
+        },
+        "data": {
+          "edgeType": "curve"
+        }
+      },
+      {
+        "source": "ifly-code::a8200821-0000-4000-8000-000000000011",
+        "target": "ifly-code::a8200821-0000-4000-8000-000000000012",
+        "type": "customEdge",
+        "id": "reactflow__edge-ifly-code::a8200821-0000-4000-8000-000000000011-ifly-code::a8200821-0000-4000-8000-000000000012",
+        "markerEnd": {
+          "color": "#6356EA",
+          "type": "arrow"
+        },
+        "data": {
+          "edgeType": "curve"
+        }
+      },
+      {
+        "source": "ifly-code::a8200821-0000-4000-8000-000000000012",
+        "target": "node-end::a8200821-0000-4000-8000-000000000013",
+        "targetHandle": "node-end::a8200821-0000-4000-8000-000000000013",
+        "type": "customEdge",
+        "id": "reactflow__edge-ifly-code::a8200821-0000-4000-8000-000000000012-node-end::a8200821-0000-4000-8000-000000000013node-end::a8200821-0000-4000-8000-000000000013",
+        "markerEnd": {
+          "color": "#6356EA",
+          "type": "arrow"
+        },
+        "data": {
+          "edgeType": "curve"
+        }
+      }
+    ]
+  }
+}

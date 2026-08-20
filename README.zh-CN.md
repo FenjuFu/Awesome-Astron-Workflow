@@ -503,6 +503,20 @@ Astron 是一个强大的工作流引擎，专为构建 AI 驱动的应用程序
 - 输出用于研究阅读，并保留医疗安全边界
 
 
+#### 37. 开源 AI 工作台：真实 UI 集成
+
+**简介：** 一个经过实测的 Astron 工作流，通过明确标注的本地 UI 适配层同步共享工作台，返回 5 条可审计页面记录，并将付款、外发消息和公开发布保留为人工审批。
+
+- **案例说明：** [实测集成说明](docs/astron-open-ai-workbench-hands-on.md)
+- **工作流：** [astron-open-ai-workbench-hands-on.zh-CN.yml](assets_source/workflows/astron-open-ai-workbench-hands-on.zh-CN.yml)
+
+**核心能力：**
+- 四节点 Astron 工作流实测 6.94 秒完成，模型 Tokens 为 0
+- 本地适配层幂等同步真实 Astron 数据表
+- 稳定 JSON 页面契约与 5 条虚构沙箱记录
+- 真实数据库、调试、用户预览和发布申请 UI 证据
+- 明确非原生集成与人工审批边界
+
 ## 开发配置
 
 本项目包含一个简单的管理后台 `/activities/admin`，用于管理活动和报名信息。

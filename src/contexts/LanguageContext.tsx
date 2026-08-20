@@ -337,6 +337,15 @@ const translations = {
     'features.astron_for_good_pubmed.4': 'Chinese and English importable DSL files',
     'features.astron_for_good_pubmed.5': 'Research-reading output with a medical-safety boundary',
 
+    // Workflow - Open AI Workbench real UI integration
+    'workflow.astron_open_ai_workbench.title': 'Open AI Workbench — Real UI Integration',
+    'workflow.astron_open_ai_workbench.description': 'An importable Astron workflow that uses a clearly labeled local UI adapter to idempotently sync a shared workbench table, prepare stable page data, and preserve human approval for payment, messaging, and public publishing.',
+    'features.astron_open_ai_workbench.1': 'Tested four-node workflow: 6.94 seconds and zero model tokens',
+    'features.astron_open_ai_workbench.2': 'Idempotent write and read through a deployment-specific local adapter',
+    'features.astron_open_ai_workbench.3': 'Stable JSON page contract with five audited sandbox records',
+    'features.astron_open_ai_workbench.4': 'Real Astron database, debugger, preview, and publishing UI evidence',
+    'features.astron_open_ai_workbench.5': 'No embedded credentials; explicit non-native integration and human-approval boundaries',
+
     'about.title': 'About Astron Workflows',
     'about.subtitle': 'Learn about the power and flexibility of Astron workflows and how they can transform your automation tasks.',
     'about.whatIs.title': 'What is Astron?',
@@ -835,6 +844,15 @@ const translations = {
     'features.astron_for_good_pubmed.3': '校验 PMID 与来源链接的一致性',
     'features.astron_for_good_pubmed.4': '提供中英文可导入 DSL 文件',
     'features.astron_for_good_pubmed.5': '用于研究阅读，并保留医疗安全边界',
+
+    // 工作流 - 开源 AI 工作台真实 UI 集成
+    'workflow.astron_open_ai_workbench.title': '开源 AI 工作台：真实 UI 集成',
+    'workflow.astron_open_ai_workbench.description': '一个可导入的 Astron 工作流：通过明确标注的本地 UI 适配层幂等同步共享工作台数据表，生成稳定页面数据，并将付款、外发消息和公开发布保留为人工审批。',
+    'features.astron_open_ai_workbench.1': '四节点工作流实测 6.94 秒完成，模型 Tokens 为 0',
+    'features.astron_open_ai_workbench.2': '通过部署专属本地适配层幂等写入并读取数据',
+    'features.astron_open_ai_workbench.3': '稳定 JSON 页面契约与 5 条可审计沙箱记录',
+    'features.astron_open_ai_workbench.4': '真实 Astron 数据库、调试、预览和发布申请界面证据',
+    'features.astron_open_ai_workbench.5': '不内嵌凭据，明确非原生集成与人工审批边界',
 
     'about.title': '关于 Astron 工作流',
     'about.subtitle': '了解 Astron 工作流的强大功能和灵活性，以及它们如何改变您的自动化任务。',

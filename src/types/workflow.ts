@@ -493,5 +493,22 @@ export const workflows: Workflow[] = [
     ],
     icon: 'bot',
     category: 'creative'
-  }
+  },
+  {
+    id: 'astron-open-ai-workbench-hands-on',
+    title: 'workflow.astron_open_ai_workbench.title',
+    description: 'workflow.astron_open_ai_workbench.description',
+    userCaseUrl: 'https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/docs/astron-open-ai-workbench-hands-on.md',
+    workflowUrl: 'https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/master/assets_source/workflows/astron-open-ai-workbench-hands-on.zh-CN.yml',
+    features: [
+      'features.astron_open_ai_workbench.1',
+      'features.astron_open_ai_workbench.2',
+      'features.astron_open_ai_workbench.3',
+      'features.astron_open_ai_workbench.4',
+      'features.astron_open_ai_workbench.5'
+    ],
+    icon: 'box',
+    category: 'productivity'
+  },
+
 ];

@@ -491,6 +491,20 @@ Each case includes:
 - Bridge credentials read from runtime environment variables
 - Research-reading output with a medical-safety boundary
 
+#### 37. Open AI Workbench — Real UI Integration
+
+**Description:** A tested Astron workflow that synchronizes a shared workbench through a clearly labeled local UI adapter, returns five auditable page records, and keeps payment, messaging, and public publishing under human approval.
+
+- **User Case:** [Tested integration notes](docs/astron-open-ai-workbench-hands-on.md)
+- **Workflow:** [astron-open-ai-workbench-hands-on.zh-CN.yml](assets_source/workflows/astron-open-ai-workbench-hands-on.zh-CN.yml)
+
+**Key Features:**
+- Four-node Astron workflow completed in 6.94 seconds with zero model tokens
+- Idempotent local-adapter synchronization with a real Astron table
+- Stable JSON page contract and five fictional sandbox records
+- Real database, debugger, user-preview, and publishing-request UI evidence
+- Explicit non-native integration and human-approval boundaries
+
 ## Development Configuration
 
 The `/activities/admin` page uses an admin password configured in `.env`:
