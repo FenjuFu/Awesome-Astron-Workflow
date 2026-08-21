@@ -337,6 +337,15 @@ const translations = {
     'features.astron_for_good_pubmed.4': 'Chinese and English importable DSL files',
     'features.astron_for_good_pubmed.5': 'Research-reading output with a medical-safety boundary',
 
+    // Workflows - OpenAI Codex local test-fix flow
+    'workflow.astron_openai_codex_fix.title': 'OpenAI Codex Local Fix Workflow',
+    'workflow.astron_openai_codex_fix.description': 'An importable Astron workflow that calls open-source Codex through MCP in a local sandbox, targets concrete repository test failures, and returns a fix summary with execution evidence.',
+    'features.astron_openai_codex_fix.1': 'End-to-end local failure triage workflow',
+    'features.astron_openai_codex_fix.2': 'Calls openai/codex through a local SSE MCP adapter',
+    'features.astron_openai_codex_fix.3': 'Writes fixes directly into a writable workspace',
+    'features.astron_openai_codex_fix.4': 'Returns structured execution artifacts for traceability',
+    'features.astron_openai_codex_fix.5': 'Suitable for CI rehearsal and reproducible code-debug tasks',
+
     'about.title': 'About Astron Workflows',
     'about.subtitle': 'Learn about the power and flexibility of Astron workflows and how they can transform your automation tasks.',
     'about.whatIs.title': 'What is Astron?',
@@ -835,6 +844,15 @@ const translations = {
     'features.astron_for_good_pubmed.3': '校验 PMID 与来源链接的一致性',
     'features.astron_for_good_pubmed.4': '提供中英文可导入 DSL 文件',
     'features.astron_for_good_pubmed.5': '用于研究阅读，并保留医疗安全边界',
+
+    // Workflows - OpenAI Codex 本地修复工作流
+    'workflow.astron_openai_codex_fix.title': 'OpenAI Codex 本地失败测试修复工作流',
+    'workflow.astron_openai_codex_fix.description': '一个可导入的 Astron 工作流，通过 MCP 在本地沙箱调用开源 Codex，定位仓库测试失败场景并自动尝试修复，返回可追溯的执行结果与修复摘要。',
+    'features.astron_openai_codex_fix.1': '端到端本地失败测试复现与修复',
+    'features.astron_openai_codex_fix.2': '通过本地 SSE 适配层安全调用 openai/codex',
+    'features.astron_openai_codex_fix.3': '直接在可写工作区落盘代码变更',
+    'features.astron_openai_codex_fix.4': '输出结构化修复证据，便于复核',
+    'features.astron_openai_codex_fix.5': '适用于 CI 演练、脚手架复用与代码质量协作',
 
     'about.title': '关于 Astron 工作流',
     'about.subtitle': '了解 Astron 工作流的强大功能和灵活性，以及它们如何改变您的自动化任务。',

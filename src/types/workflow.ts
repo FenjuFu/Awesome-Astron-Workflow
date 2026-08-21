@@ -477,5 +477,21 @@ export const workflows: Workflow[] = [
     ],
     icon: 'book-open',
     category: 'health'
+  },
+  {
+    id: 'astron-openai-codex-fix-tests',
+    title: 'workflow.astron_openai_codex_fix.title',
+    description: 'workflow.astron_openai_codex_fix.description',
+    userCaseUrl: 'https://github.com/openai/codex',
+    workflowUrl: 'https://github.com/FenjuFu/Awesome-Astron-Workflow/blob/main/public/workflows/astron-openai-codex-fix-tests-cn.yml',
+    features: [
+      'features.astron_openai_codex_fix.1',
+      'features.astron_openai_codex_fix.2',
+      'features.astron_openai_codex_fix.3',
+      'features.astron_openai_codex_fix.4',
+      'features.astron_openai_codex_fix.5'
+    ],
+    icon: 'bot',
+    category: 'coding'
   }
 ];

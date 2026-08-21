@@ -1,0 +1,178 @@
+flowMeta:
+  name: Astron · Codex Test Fix
+  description: Call open-source Codex from a real Astron workflow to fix failing tests in a local sandbox repository and return evidence.
+  avatarColor: '#EAFBF3'
+  category: 10
+  advancedConfig: '{}'
+  dslVersion: v1
+flowData:
+  nodes:
+    - id: node-start::b1111111-1111-4111-8111-111111111111
+      dragging: false
+      selected: false
+      width: 362
+      height: 116
+      position: {x: 0, y: 0}
+      positionAbsolute: {x: 0, y: 0}
+      type: Start
+      data:
+        allowInputReference: false
+        allowOutputReference: true
+        label: Enter fix task
+        labelEdit: false
+        references: []
+        status: ''
+        nodeMeta: {aliasName: Start, nodeType: Basic node}
+        inputs: []
+        outputs:
+          - id: b1222222-2222-4222-8222-222222222222
+            name: AGENT_USER_INPUT
+            nameErrMsg: ''
+            schema: {type: string, default: Codex repair task}
+            required: true
+            deleteDisabled: true
+        nodeParam: {}
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/start-node-icon.png
+        description: A task scoped to the fictional local demo repository.
+        updatable: false
+    - id: mcp::b2333333-3333-4333-8333-333333333333
+      dragging: false
+      selected: false
+      width: 440
+      height: 300
+      position: {x: 520, y: 0}
+      positionAbsolute: {x: 520, y: 0}
+      type: MCP
+      data:
+        allowInputReference: true
+        allowOutputReference: true
+        label: Call open-source Codex
+        labelEdit: false
+        references: []
+        status: ''
+        nodeMeta: {aliasName: MCP, nodeType: Tool node}
+        inputs:
+          - id: b2444444-4444-4444-8444-444444444444
+            name: prompt
+            nameErrMsg: ''
+            schema:
+              type: string
+              value:
+                type: ref
+                content:
+                  name: AGENT_USER_INPUT
+                  id: b1222222-2222-4222-8222-222222222222
+                  nodeId: node-start::b1111111-1111-4111-8111-111111111111
+            description: The real repair request sent to Codex.
+            required: true
+          - id: b2555555-5555-4555-8555-555555555555
+            name: cwd
+            nameErrMsg: ''
+            schema:
+              type: string
+              value: {type: literal, content: 'C:\astron-agent\demo-video\short\astron-open-codex-mcp-hands-on-20260821\target-repo'}
+            description: Local sandbox repository for Codex.
+            required: true
+          - id: b2666666-6666-4666-8666-666666666666
+            name: sandbox
+            nameErrMsg: ''
+            schema:
+              type: string
+              value: {type: literal, content: workspace-write}
+            description: Allow writes only inside the workspace.
+            required: true
+          - id: b2777777-7777-4777-8777-777777777777
+            name: approval-policy
+            nameErrMsg: ''
+            schema:
+              type: string
+              value: {type: literal, content: never}
+            description: Non-interactive only inside the demo repo; external actions remain forbidden.
+            required: true
+          - id: b2888888-8888-4888-8888-888888888888
+            name: developer-instructions
+            nameErrMsg: ''
+            schema:
+              type: string
+              value: {type: literal, content: 'Work only inside the provided cwd. Follow AGENTS.md. Do not commit, push, publish, or access secrets.'}
+            description: Hard boundary for the Codex run.
+            required: true
+        outputs:
+          - id: b2999999-9999-4999-8999-999999999999
+            name: result
+            nameErrMsg: ''
+            schema:
+              type: object
+              properties:
+                - id: b2aaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa
+                  name: isError
+                  required: false
+                  type: boolean
+                  properties: []
+                  default: ''
+                - id: b2bbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb
+                  name: content
+                  required: false
+                  type: array-object
+                  default: ''
+              default: ''
+            required: false
+        nodeParam:
+          toolDescription: Run the open-source OpenAI Codex coding agent in a restricted local workspace.
+          mcpServerId: ''
+          mcpServerUrl: http://host.docker.internal:8787/sse
+          toolName: codex
+        icon: https://oss-beijing-m8.openstorage.cn/SparkBotProd/icon/common/mcp-new.png
+        description: Calls the codex MCP tool from openai/codex through a local SSE adapter.
+        updatable: false
+    - id: node-end::b3cccccc-cccc-4ccc-8ccc-cccccccccccc
+      dragging: false
+      selected: false
+      width: 362
+      height: 116
+      position: {x: 1060, y: 0}
+      positionAbsolute: {x: 1060, y: 0}
+      type: End
+      data:
+        allowInputReference: true
+        allowOutputReference: false
+        label: Return repair evidence
+        labelEdit: false
+        references: []
+        status: ''
+        nodeMeta: {aliasName: End, nodeType: Basic node}
+        inputs:
+          - id: b3dddddd-dddd-4ddd-8ddd-dddddddddddd
+            name: result
+            nameErrMsg: ''
+            schema:
+              type: object
+              value:
+                type: ref
+                content:
+                  name: result
+                  id: b2999999-9999-4999-8999-999999999999
+                  nodeId: mcp::b2333333-3333-4333-8333-333333333333
+            fileType: ''
+        outputs: []
+        nodeParam:
+          template: '{{result}}'
+          streamOutput: false
+          templateErrMsg: ''
+          outputMode: 1
+        icon: https://oss-beijing-m8.openstorage.cn/pro-bucket/sparkBot/common/workflow/icon/end-node-icon.png
+        description: Return the Codex tool result and repair summary.
+        updatable: false
+  edges:
+    - source: node-start::b1111111-1111-4111-8111-111111111111
+      target: mcp::b2333333-3333-4333-8333-333333333333
+      type: customEdge
+      id: reactflow__edge-start-codex-en
+      markerEnd: {color: '#275EFF', type: arrow}
+      data: {edgeType: curve}
+    - source: mcp::b2333333-3333-4333-8333-333333333333
+      target: node-end::b3cccccc-cccc-4ccc-8ccc-cccccccccccc
+      type: customEdge
+      id: reactflow__edge-codex-end-en
+      markerEnd: {color: '#275EFF', type: arrow}
+      data: {edgeType: curve}
