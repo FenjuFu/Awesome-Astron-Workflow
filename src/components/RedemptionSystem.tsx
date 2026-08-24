@@ -37,7 +37,7 @@ const PRIZES: Prize[] = [
     descKey: 'redeem.prize.kubeconChina2026.desc',
     points: 15,
     icon: <Gift className="h-6 w-6 text-indigo-600" />,
-    inventory: 4,
+    inventory: 5,
   },
   {
     id: 'tianjin_ai_innovation_conference_ticket_20250711',
