@@ -2,6 +2,7 @@ import cookie from 'cookie';
 import { supabaseAdmin } from './_lib/supabase-admin.js';
 
 const LIMITED_PRIZE_INVENTORY = {
+  kubecon_openinfra_pytorch_china_20260907: 4,
   tianjin_ai_innovation_conference_ticket_20250711: 0,
   bladeless_fan: 0,
 };

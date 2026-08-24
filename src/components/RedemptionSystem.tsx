@@ -32,6 +32,14 @@ interface Prize {
 
 const PRIZES: Prize[] = [
   {
+    id: 'kubecon_openinfra_pytorch_china_20260907',
+    nameKey: 'redeem.prize.kubeconChina2026',
+    descKey: 'redeem.prize.kubeconChina2026.desc',
+    points: 15,
+    icon: <Gift className="h-6 w-6 text-indigo-600" />,
+    inventory: 4,
+  },
+  {
     id: 'tianjin_ai_innovation_conference_ticket_20250711',
     nameKey: 'redeem.prize.tianjinTicket',
     descKey: 'redeem.prize.tianjinTicket.desc',
