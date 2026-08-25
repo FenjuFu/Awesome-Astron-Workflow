@@ -9,12 +9,23 @@ const LIMITED_PRIZE_INVENTORY = {
 
 const ACTIVE_REDEMPTION_STATUSES = ['pending', 'issued'];
 
-export const buildPrizeAvailability = (redemptions, inventoryMap = LIMITED_PRIZE_INVENTORY) =>
+// Codes/tickets already handed out offline that aren't backed by a redemption row.
+const BASELINE_REDEEMED = {
+  kubecon_openinfra_pytorch_china_20260907: 1,
+};
+
+export const buildPrizeAvailability = (
+  redemptions,
+  inventoryMap = LIMITED_PRIZE_INVENTORY,
+  baselineMap = BASELINE_REDEEMED
+) =>
   Object.fromEntries(
     Object.entries(inventoryMap).map(([prizeId, inventory]) => {
-      const redeemed = redemptions.filter((entry) =>
-        entry.prize_id === prizeId && ACTIVE_REDEMPTION_STATUSES.includes(entry.status)
-      ).length;
+      const redeemed =
+        (baselineMap[prizeId] || 0) +
+        redemptions.filter((entry) =>
+          entry.prize_id === prizeId && ACTIVE_REDEMPTION_STATUSES.includes(entry.status)
+        ).length;
 
       return [
         prizeId,
@@ -164,7 +175,8 @@ async function handleCreateRedemption(githubLogin, body, res) {
 
       if (countError) throw countError;
 
-      if ((count || 0) >= inventory) {
+      const redeemed = (BASELINE_REDEEMED[prizeId] || 0) + (count || 0);
+      if (redeemed >= inventory) {
         return res.status(409).json({ error: 'Prize sold out' });
       }
     }
