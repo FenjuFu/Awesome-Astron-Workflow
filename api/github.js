@@ -1194,6 +1194,11 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
     return { items: data.items.map((repo) => repo.full_name), hasNext: hasNextPage(res.headers.get('link')) };
   });
 
+  // Pin every known Astron repo as a hardcoded baseline. The topic search above
+  // only *adds* repos on top of this set, so a failed/rate-limited topic query
+  // (which returns []) can never silently drop a repo from a user's snapshot and
+  // undercount their totals — it just misses repos tagged after this list was
+  // last updated.
   const baseTargetRepos = Array.from(new Set([
     ...topicRepos,
     'iflytek/astron-agent',
@@ -1201,6 +1206,11 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
     'iflytek/skillhub',
     'iflytek/iFly-Skills',
     'iflytek/astronclaw-tutorial',
+    'iflytek/memflywheel',
+    'iflytek/domux',
+    'iflytek/dolphin-mcp-pilot',
+    'harnessclaw/harnessclaw',
+    'harnessclaw/harnessclaw-engine',
   ]));
   const targetRepoAliases = createTargetRepoAliases(baseTargetRepos, targetLogin);
   const targetReposMap = baseTargetRepos.reduce((acc, repo) => {
