@@ -946,7 +946,7 @@ const buildExpiredCookie = (name) => `${name}=; Path=/; HttpOnly; SameSite=Lax; 
 const getDefaultContributionWindow = (referenceDate = new Date()) => {
   const toDate = new Date(referenceDate);
   const fromDate = new Date(toDate);
-  fromDate.setFullYear(toDate.getFullYear() - 1);
+  fromDate.setFullYear(toDate.getFullYear() - 2);
   return { fromDate, toDate };
 };
 
