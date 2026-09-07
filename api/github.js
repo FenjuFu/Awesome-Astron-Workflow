@@ -652,6 +652,11 @@ const CONTRIBUTION_FIELDS = {
 
 const DATE_FIELD_KEYS = Object.values(CONTRIBUTION_FIELDS).flat();
 const CACHE_REFRESH_INTERVAL_MS = 6 * 60 * 60 * 1000;
+// Soft threshold for stale-while-revalidate: a cached snapshot is still served
+// instantly until CACHE_REFRESH_INTERVAL_MS, but once it is older than this we
+// kick a real background refresh so the entry is renewed before it goes stale
+// (and so code/window changes propagate without waiting the full hard TTL).
+const CACHE_SOFT_REFRESH_INTERVAL_MS = 3 * 60 * 60 * 1000;
 
 // /repos/:owner/:name/issues/events returns 100 events/page sorted newest-first.
 // 5 pages = 500 events per (repo × alias) which is plenty to cover a year of
@@ -1105,7 +1110,7 @@ const persistContributionSnapshot = async (db, snapshot) => {
   );
 };
 
-const queueContributionCacheRefresh = ({ token, login, force = false }) => {
+const queueContributionCacheRefresh = ({ token, login, force = false, maxAgeMs = CACHE_REFRESH_INTERVAL_MS }) => {
   if (!token || !login) return;
 
   Promise.resolve()
@@ -1120,7 +1125,7 @@ const queueContributionCacheRefresh = ({ token, login, force = false }) => {
 
       const hasDetailedSnapshot = existingCache?.repos && existingCache?.contribution_dates;
       const isFresh = existingCache?.updated_at
-        ? Date.now() - new Date(existingCache.updated_at).getTime() < CACHE_REFRESH_INTERVAL_MS
+        ? Date.now() - new Date(existingCache.updated_at).getTime() < maxAgeMs
         : false;
 
       if (!force && hasDetailedSnapshot && isFresh) {
@@ -1776,10 +1781,13 @@ async function handleContributions(request, response) {
     const cachedSnapshot = buildCachedContributionResponse(existingCacheEntry);
     if (cachedSnapshot) {
       // Fire-and-forget background refresh so the cache stays warm even when
-      // /stats is the only thing the user opens.
+      // /stats is the only thing the user opens. Uses the soft threshold so it
+      // actually recomputes once the entry is past its prime (rather than
+      // no-opping until the hard TTL), without re-fetching on every page load.
       queueContributionCacheRefresh({
         token: effectiveToken,
         login: cacheLookupLogin,
+        maxAgeMs: CACHE_SOFT_REFRESH_INTERVAL_MS,
       });
       response.setHeader('Cache-Control', 'no-store');
       return response.status(200).json(cachedSnapshot);
