@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Github, Loader2, ShieldCheck, LogOut, GitPullRequest, GitMerge, AlertCircle, Coins, Trophy, Medal, RefreshCcw } from 'lucide-react';
+import { Github, Loader2, ShieldCheck, LogOut, GitPullRequest, GitMerge, AlertCircle, Coins, Trophy, Medal, RefreshCcw, CalendarRange } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import RedemptionSystem from './RedemptionSystem';
 
@@ -47,6 +47,15 @@ interface ContributionsData {
   contribution_dates?: Record<string, Record<string, string[]>>;
   astron?: AstronStats;
   total_contributions?: number;
+}
+
+interface StatsScope {
+  range: {
+    from: string;
+    to: string;
+  };
+  repos: string[];
+  topic: string;
 }
 
 interface LeaderboardEntry {
@@ -189,6 +198,18 @@ const GitHubConnect: React.FC = () => {
   const [leaderboardLoading, setLeaderboardLoading] = useState(true);
   const [leaderboardRefreshing, setLeaderboardRefreshing] = useState(false);
   const [activeTab, setActiveTab] = useState<'leaderboard' | 'stats' | 'redeem'>('leaderboard');
+  const [scope, setScope] = useState<StatsScope | null>(null);
+
+  useEffect(() => {
+    fetchWithTimeout('/api/github/scope', {}, 10000)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json) => {
+        if (json) setScope(json);
+      })
+      .catch(() => {
+        // Scope card is informational; the page works without it.
+      });
+  }, []);
 
   const fetchLeaderboard = useCallback(async ({ silent = false }: { silent?: boolean } = {}) => {
     if (silent) {
@@ -332,6 +353,15 @@ const GitHubConnect: React.FC = () => {
   } : null;
   const displayLeaderboard = mergeCurrentUserIntoLeaderboard(leaderboard, currentUserEntry);
 
+  // Prefer the logged-in user's own snapshot (its window and the repos it was
+  // actually computed over, including topic-tagged ones); fall back to the
+  // public scope for visitors.
+  const scopeRange = data?.range ?? scope?.range;
+  const scopeRepos = Array.from(new Set([
+    ...(scope?.repos ?? []),
+    ...Object.keys(data?.repos ?? {}),
+  ]));
+
   return (
     <div className="space-y-6">
       {/* User bar - show when logged in */}
@@ -362,6 +392,46 @@ const GitHubConnect: React.FC = () => {
             <LogOut className="h-4 w-4" />
             Sign out
           </button>
+        </div>
+      )}
+
+      {(scopeRange || scopeRepos.length > 0) && (
+        <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+          <div className="flex items-center gap-2 text-sm font-semibold text-gray-900">
+            <CalendarRange className="h-4 w-4 text-indigo-600" />
+            {t('contribute.github.scope.title')}
+          </div>
+          {scopeRange && (
+            <div className="mt-2 text-sm text-gray-700">
+              <span className="text-gray-500 mr-2">{t('contribute.github.scope.period')}</span>
+              {new Date(scopeRange.from).toLocaleDateString()} – {new Date(scopeRange.to).toLocaleDateString()}
+            </div>
+          )}
+          {scopeRepos.length > 0 && (
+            <div className="mt-2">
+              <div className="text-sm text-gray-500">
+                {t('contribute.github.scope.repos')} · {scopeRepos.length}
+              </div>
+              <div className="mt-1.5 flex flex-wrap gap-1.5">
+                {scopeRepos.map((repo) => (
+                  <a
+                    key={repo}
+                    href={`https://github.com/${repo}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200 text-gray-700 hover:border-indigo-300 hover:text-indigo-600 transition-colors"
+                  >
+                    {repo}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+          {scope?.topic && (
+            <div className="mt-2 text-xs text-gray-400">
+              {t('contribute.github.scope.topicNote').replace('{topic}', scope.topic)}
+            </div>
+          )}
         </div>
       )}
 

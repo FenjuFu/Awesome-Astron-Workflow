@@ -26,6 +26,8 @@ export default async function handler(req, res) {
         return await handleDiagnoseSnapshot(req, res);
       case 'leaderboard':
         return await handleLeaderboard(req, res);
+      case 'scope':
+        return handleScope(req, res);
       default:
         return res.status(404).json({ error: 'Not Found' });
     }
@@ -651,6 +653,25 @@ const CONTRIBUTION_FIELDS = {
 };
 
 const DATE_FIELD_KEYS = Object.values(CONTRIBUTION_FIELDS).flat();
+// Repos always counted in a snapshot, on top of anything tagged with
+// CONTRIBUTION_TOPIC. Also served by /api/github/scope so the stats page can
+// show visitors exactly what is being counted.
+const CONTRIBUTION_TOPIC = 'iflytek-astron';
+const PINNED_TARGET_REPOS = [
+  'iflytek/astron-agent',
+  'iflytek/astron-rpa',
+  'iflytek/skillhub',
+  'iflytek/iFly-Skills',
+  'iflytek/astronclaw-tutorial',
+  'iflytek/memflywheel',
+  'iflytek/domux',
+  'iflytek/dolphin-mcp-pilot',
+  'iflytek/community',
+  'iflytek/website',
+  'harnessclaw/harnessclaw',
+  'harnessclaw/harnessclaw-engine',
+  'XHToken/Spark-X2.5',
+];
 const CACHE_REFRESH_INTERVAL_MS = 6 * 60 * 60 * 1000;
 // Soft threshold for stale-while-revalidate: a cached snapshot is still served
 // instantly until CACHE_REFRESH_INTERVAL_MS, but once it is older than this we
@@ -1191,7 +1212,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   const fromStr = fromDate.toISOString().split('T')[0];
   const toStr = toDate.toISOString().split('T')[0];
   const topicRepos = await fetchAllPages(async (page) => {
-    const res = await gatedFetch(`https://api.github.com/search/repositories?q=topic:iflytek-astron&per_page=100&page=${page}`, {
+    const res = await gatedFetch(`https://api.github.com/search/repositories?q=topic:${CONTRIBUTION_TOPIC}&per_page=100&page=${page}`, {
       headers: authHeaders,
     });
     if (!res.ok) return { items: [], hasNext: false };
@@ -1206,16 +1227,7 @@ async function fetchContributionSnapshot({ token, login, fromDate, toDate }) {
   // last updated.
   const baseTargetRepos = Array.from(new Set([
     ...topicRepos,
-    'iflytek/astron-agent',
-    'iflytek/astron-rpa',
-    'iflytek/skillhub',
-    'iflytek/iFly-Skills',
-    'iflytek/astronclaw-tutorial',
-    'iflytek/memflywheel',
-    'iflytek/domux',
-    'iflytek/dolphin-mcp-pilot',
-    'harnessclaw/harnessclaw',
-    'harnessclaw/harnessclaw-engine',
+    ...PINNED_TARGET_REPOS,
   ]));
   const targetRepoAliases = createTargetRepoAliases(baseTargetRepos, targetLogin);
   const targetReposMap = baseTargetRepos.reduce((acc, repo) => {
@@ -2210,6 +2222,16 @@ async function handleDiagnoseSnapshot(request, response) {
     console.error('Diagnose snapshot error', error);
     return response.status(500).json({ error: error.message || 'diagnose_failed' });
   }
+}
+
+function handleScope(request, response) {
+  const { fromDate, toDate } = getDefaultContributionWindow();
+  response.setHeader('Cache-Control', 'public, s-maxage=3600');
+  return response.status(200).json({
+    range: { from: fromDate, to: toDate },
+    repos: PINNED_TARGET_REPOS,
+    topic: CONTRIBUTION_TOPIC,
+  });
 }
 
 async function handleLeaderboard(request, response) {
