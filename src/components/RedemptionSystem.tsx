@@ -32,52 +32,12 @@ interface Prize {
 
 const PRIZES: Prize[] = [
   {
-    id: 'kubecon_openinfra_pytorch_china_20260907',
-    nameKey: 'redeem.prize.kubeconChina2026',
-    descKey: 'redeem.prize.kubeconChina2026.desc',
+    id: 'linkedin_premium_business_2m_trial_20261130',
+    nameKey: 'redeem.prize.linkedinPremiumBusiness',
+    descKey: 'redeem.prize.linkedinPremiumBusiness.desc',
     points: 15,
     icon: <Gift className="h-6 w-6 text-indigo-600" />,
-    inventory: 5,
-  },
-  {
-    id: 'tianjin_ai_innovation_conference_ticket_20250711',
-    nameKey: 'redeem.prize.tianjinTicket',
-    descKey: 'redeem.prize.tianjinTicket.desc',
-    points: 15,
-    icon: <Gift className="h-6 w-6 text-indigo-600" />,
-    inventory: 0,
-  },
-  {
-    id: 'astronclaw_membership',
-    nameKey: 'redeem.prize.astronclaw',
-    descKey: 'redeem.prize.astronclaw.desc',
-    points: 15,
-    icon: <Gift className="h-6 w-6 text-indigo-600" />,
-  },
-  {
-    id: 'bladeless_fan',
-    nameKey: 'redeem.prize.fan',
-    descKey: 'redeem.prize.fan.desc',
-    points: 15,
-    icon: <img src="/images/prizes/bladeless-fan.jpg" alt="Bladeless Fan" className="h-10 w-10 object-cover rounded-md" />,
-    imageUrl: "/images/prizes/bladeless-fan.jpg",
-    inventory: 0,
-  },
-  {
-    id: 'astron_watch',
-    nameKey: 'redeem.prize.watch',
-    descKey: 'redeem.prize.watch.desc',
-    points: 30,
-    icon: <img src="/images/prizes/watch.jpg" alt="Astron Watch" className="h-10 w-10 object-cover rounded-md" />,
-    imageUrl: "/images/prizes/watch.jpg",
-  },
-  {
-    id: 'bag',
-    nameKey: 'redeem.prize.bag',
-    descKey: 'redeem.prize.bag.desc',
-    points: 15,
-    icon: <img src="/images/prizes/bag.jpg" alt="Waterproof Nylon Tote Bag" className="h-10 w-10 object-cover rounded-md" />,
-    imageUrl: "/images/prizes/bag.jpg",
+    inventory: 10,
   },
 ];
 

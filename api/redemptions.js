@@ -1,18 +1,16 @@
 import cookie from 'cookie';
 import { supabaseAdmin } from './_lib/supabase-admin.js';
 
+// Prizes currently on the shelf. Anything not listed here has been delisted and
+// can no longer be redeemed.
 const LIMITED_PRIZE_INVENTORY = {
-  kubecon_openinfra_pytorch_china_20260907: 5,
-  tianjin_ai_innovation_conference_ticket_20250711: 0,
-  bladeless_fan: 0,
+  linkedin_premium_business_2m_trial_20261130: 10,
 };
 
 const ACTIVE_REDEMPTION_STATUSES = ['pending', 'issued'];
 
 // Codes/tickets already handed out offline that aren't backed by a redemption row.
-const BASELINE_REDEEMED = {
-  kubecon_openinfra_pytorch_china_20260907: 1,
-};
+const BASELINE_REDEEMED = {};
 
 export const buildPrizeAvailability = (
   redemptions,
@@ -166,19 +164,21 @@ async function handleCreateRedemption(githubLogin, body, res) {
 
   try {
     const inventory = LIMITED_PRIZE_INVENTORY[prizeId];
-    if (typeof inventory === 'number') {
-      const { count, error: countError } = await supabaseAdmin
-        .from('redemptions')
-        .select('id', { count: 'exact', head: true })
-        .eq('prize_id', prizeId)
-        .in('status', ACTIVE_REDEMPTION_STATUSES);
+    if (typeof inventory !== 'number') {
+      return res.status(400).json({ error: 'Prize not available' });
+    }
 
-      if (countError) throw countError;
+    const { count, error: countError } = await supabaseAdmin
+      .from('redemptions')
+      .select('id', { count: 'exact', head: true })
+      .eq('prize_id', prizeId)
+      .in('status', ACTIVE_REDEMPTION_STATUSES);
 
-      const redeemed = (BASELINE_REDEEMED[prizeId] || 0) + (count || 0);
-      if (redeemed >= inventory) {
-        return res.status(409).json({ error: 'Prize sold out' });
-      }
+    if (countError) throw countError;
+
+    const redeemed = (BASELINE_REDEEMED[prizeId] || 0) + (count || 0);
+    if (redeemed >= inventory) {
+      return res.status(409).json({ error: 'Prize sold out' });
     }
 
     const { data, error } = await supabaseAdmin
