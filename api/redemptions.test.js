@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildPrizeAvailability } from './redemptions.js';
+import { buildPrizeAvailability, isPrizeExpired } from './redemptions.js';
 
 test('buildPrizeAvailability marks limited prize as sold out after one active redemption', () => {
   const availability = buildPrizeAvailability(
@@ -39,4 +39,12 @@ test('buildPrizeAvailability adds baseline redeemed to active redemptions', () =
     remaining: 3,
     soldOut: false,
   });
+});
+
+test('isPrizeExpired flips after the deadline', () => {
+  const deadlines = { prize: '2026-11-30T23:59:59.999+08:00' };
+
+  assert.equal(isPrizeExpired('prize', new Date('2026-11-30T23:59:59+08:00'), deadlines), false);
+  assert.equal(isPrizeExpired('prize', new Date('2026-12-01T00:00:00+08:00'), deadlines), true);
+  assert.equal(isPrizeExpired('no_deadline', new Date('2099-01-01T00:00:00Z'), deadlines), false);
 });

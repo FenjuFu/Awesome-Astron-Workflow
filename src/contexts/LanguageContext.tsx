@@ -507,12 +507,13 @@ const translations = {
     'redeem.form.phone': 'Phone Number',
     'redeem.form.email': 'Email Address',
     'redeem.form.name': 'Recipient Name',
-    'redeem.form.address': 'Shipping Address',
+    'redeem.form.address': 'Shipping Address (optional)',
     'redeem.form.remark': 'Remark',
     'redeem.form.remark.placeholder': 'E.g., Yellow or Red',
     'redeem.form.confirm': 'Confirm Redemption',
     'redeem.points.insufficient': 'Insufficient points',
     'redeem.soldOut': 'Already redeemed out',
+    'redeem.expired': 'Redemption period has ended',
 
     // Lucky Draw
     'lucky.title': 'Astron Lucky Draw',
@@ -1023,12 +1024,13 @@ const translations = {
     'redeem.form.phone': '手机号',
     'redeem.form.email': '邮箱',
     'redeem.form.name': '收件昵称',
-    'redeem.form.address': '地址',
+    'redeem.form.address': '地址（选填）',
     'redeem.form.remark': '备注',
     'redeem.form.remark.placeholder': '如：黄/红',
     'redeem.form.confirm': '确认兑换',
     'redeem.points.insufficient': '积分不足',
     'redeem.soldOut': '已经兑换完',
+    'redeem.expired': '已过兑换截止日期',
 
     // Lucky Draw
     'lucky.title': 'Astron 幸运抽奖',

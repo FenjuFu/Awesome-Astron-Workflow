@@ -28,6 +28,7 @@ interface Prize {
   icon: React.ReactNode;
   imageUrl?: string;
   inventory?: number;
+  deadline?: string;
 }
 
 const PRIZES: Prize[] = [
@@ -38,6 +39,7 @@ const PRIZES: Prize[] = [
     points: 15,
     icon: <Gift className="h-6 w-6 text-indigo-600" />,
     inventory: 10,
+    deadline: '2026-11-30T23:59:59.999+08:00',
   },
 ];
 
@@ -86,11 +88,14 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
     }
   };
 
+  const isExpired = (prize: Prize) =>
+    !!prize.deadline && Date.now() > Date.parse(prize.deadline);
+
   const handleRedeem = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedPrize) return;
     const selectedAvailability = prizeAvailability[selectedPrize.id];
-    if (availablePoints < selectedPrize.points || selectedAvailability?.soldOut) return;
+    if (availablePoints < selectedPrize.points || selectedAvailability?.soldOut || isExpired(selectedPrize)) return;
 
     try {
       setSubmitting(true);
@@ -113,6 +118,8 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
       } else if (res.status === 409) {
         setMessage({ type: 'error', text: t('redeem.soldOut') });
         fetchRedemptions();
+      } else if (res.status === 410) {
+        setMessage({ type: 'error', text: t('redeem.expired') });
       } else {
         setMessage({ type: 'error', text: t('redeem.error') });
       }
@@ -171,7 +178,8 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
             {PRIZES.map((prize) => {
               const availability = getPrizeAvailabilityState(prize);
               const soldOut = availability?.soldOut ?? false;
-              const disabled = soldOut;
+              const expired = isExpired(prize);
+              const disabled = soldOut || expired;
               const isLimitedPrize = prize.id === 'tianjin_ai_innovation_conference_ticket_20250711';
 
               return (
@@ -224,7 +232,7 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
                       <span className="text-indigo-600 font-bold">{prize.points} pts</span>
                     </div>
                     <p className="text-sm text-gray-600 mt-1">{t(prize.descKey)}</p>
-                    {availability && !isLimitedPrize && (
+                    {availability && !isLimitedPrize && !expired && (
                       <p className={`text-xs mt-2 font-medium ${soldOut ? 'text-red-600' : 'text-emerald-600'}`}>
                         {soldOut
                           ? t('redeem.stock.soldOut')
@@ -234,7 +242,9 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
                     {availablePoints < prize.points && (
                       <p className="text-xs text-red-500 mt-2">{t('redeem.points.insufficient')}</p>
                     )}
-                    {soldOut && (
+                    {expired ? (
+                      <p className="text-xs text-red-500 mt-1">{t('redeem.expired')}</p>
+                    ) : soldOut && (
                       <p className="text-xs text-red-500 mt-1">{t('redeem.soldOut')}</p>
                     )}
                   </div>
@@ -291,7 +301,6 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">{t('redeem.form.address')}</label>
                   <textarea 
-                    required
                     rows={2}
                     className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none resize-none"
                     value={formData.address}
@@ -310,7 +319,7 @@ const RedemptionSystem: React.FC<RedemptionSystemProps> = ({ totalContributions 
                 </div>
                 <button
                   type="submit"
-                  disabled={submitting || availablePoints < selectedPrize.points || !!selectedPrizeAvailability?.soldOut}
+                  disabled={submitting || availablePoints < selectedPrize.points || !!selectedPrizeAvailability?.soldOut || isExpired(selectedPrize)}
                   className="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
                 >
                   {submitting ? <Loader2 className="h-5 w-5 animate-spin mx-auto" /> : t('redeem.form.confirm')}

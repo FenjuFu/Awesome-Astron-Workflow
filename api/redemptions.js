@@ -7,6 +7,14 @@ const LIMITED_PRIZE_INVENTORY = {
   linkedin_premium_business_2m_trial_20261130: 10,
 };
 
+// Last moment (Beijing time) each prize can be redeemed.
+const PRIZE_DEADLINES = {
+  linkedin_premium_business_2m_trial_20261130: '2026-11-30T23:59:59.999+08:00',
+};
+
+export const isPrizeExpired = (prizeId, now = new Date(), deadlineMap = PRIZE_DEADLINES) =>
+  Boolean(deadlineMap[prizeId]) && now.getTime() > Date.parse(deadlineMap[prizeId]);
+
 const ACTIVE_REDEMPTION_STATUSES = ['pending', 'issued'];
 
 // Codes/tickets already handed out offline that aren't backed by a redemption row.
@@ -166,6 +174,10 @@ async function handleCreateRedemption(githubLogin, body, res) {
     const inventory = LIMITED_PRIZE_INVENTORY[prizeId];
     if (typeof inventory !== 'number') {
       return res.status(400).json({ error: 'Prize not available' });
+    }
+
+    if (isPrizeExpired(prizeId)) {
+      return res.status(410).json({ error: 'Prize expired' });
     }
 
     const { count, error: countError } = await supabaseAdmin
