@@ -15,8 +15,24 @@
 
 > 📚 **知识库来源：** [`knowledge-base/`](knowledge-base) 是支撑两者的脱敏语料，目录结构与索引构建方式见 [knowledge-base/README.md](knowledge-base/README.md)。DeepWiki 会随仓库自动索引该目录——无需额外配置即可根据这些文档作答。
 
+## 🚀 在线体验与一键部署
+
+先在 **[awesome-astron-workflow.dev/demo](https://awesome-astron-workflow.dev/demo)** 在线体验三套讯飞 Astron 开源栈，再部署一套属于你自己的：
+
+| 项目 | Zeabur | RepoCloud | Railway |
+| --- | --- | --- | --- |
+| [Astron Agent](https://github.com/iflytek/astron-agent) | [模板](https://zeabur.com/templates/H6KENX) | [应用市场页](https://repocloud.io/details/Astron%20Agent/) | — |
+| [Astron RPA](https://github.com/iflytek/astron-rpa)（服务端） | [模板](https://zeabur.com/templates/CDW03E) | [AI 部署](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=astron-rpa) | — |
+| [SkillHub](https://github.com/iflytek/skillhub) | [模板](https://zeabur.com/templates/KG76EW) | [AI 部署](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=skillhub) | [skillhub-registry](https://railway.com/deploy/skillhub-registry)（v0.2.22）· [skillhub](https://railway.com/deploy/skillhub)（v0.1.0） |
+
+- **Zeabur：** 由本项目维护，与在线体验使用同一套配置。Astron Agent 最低约需 8 GB 内存，并需绑定应用与 Casdoor 两个域名。
+- **RepoCloud：** 由 AI 代理把 GitHub 仓库部署到一台 VPS，约 5–15 分钟完成。Astron Agent 有应用市场页；Astron RPA 与 SkillHub 走 RepoCloud 的通用 AI 部署。
+- **Railway：** SkillHub 的社区模板。v0.2.22 版含安全扫描器，需 Hobby 及以上套餐。
+- 以上均为第三方 / 社区部署入口，并非讯飞官方发布。正式使用前请修改所有默认密码与密钥。Astron RPA 模板只部署服务端，桌面客户端需另行安装。
+
 ## 目录
 
+- [在线体验与一键部署](#-在线体验与一键部署)
 - [概述](#概述)
 - [用户案例与工作流](#用户案例与工作流)
   - [办公提效](#办公提效)

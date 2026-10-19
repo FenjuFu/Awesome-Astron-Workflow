@@ -29,6 +29,14 @@ interface DemoProduct {
   repo: string;
 }
 
+interface DeployPlatform {
+  key: string;
+  name: string;
+  href: string;
+  covers: string;
+  desc: string;
+}
+
 const DemoHub: React.FC = () => {
   const { t } = useLanguage();
 
@@ -53,6 +61,11 @@ const DemoHub: React.FC = () => {
         {
           href: 'https://zeabur.com/templates/H6KENX',
           label: t('demo.deployTemplate'),
+          icon: <Rocket className="h-4 w-4" />,
+        },
+        {
+          href: 'https://repocloud.io/details/Astron%20Agent/',
+          label: t('demo.deployRepoCloud'),
           icon: <Rocket className="h-4 w-4" />,
         },
       ],
@@ -81,6 +94,11 @@ const DemoHub: React.FC = () => {
           label: t('demo.deployTemplate'),
           icon: <Rocket className="h-4 w-4" />,
         },
+        {
+          href: 'https://repocloud.io/ai-deploy-template?owner=iflytek&repo=astron-rpa',
+          label: t('demo.deployRepoCloudAi'),
+          icon: <Rocket className="h-4 w-4" />,
+        },
       ],
       notes: [t('demo.rpa.note1'), t('demo.rpa.note2'), t('demo.rpa.note3')],
       repo: 'https://github.com/iflytek/astron-rpa',
@@ -102,9 +120,43 @@ const DemoHub: React.FC = () => {
           label: t('demo.deployTemplate'),
           icon: <Rocket className="h-4 w-4" />,
         },
+        {
+          href: 'https://railway.com/deploy/skillhub-registry',
+          label: t('demo.deployRailway'),
+          icon: <Rocket className="h-4 w-4" />,
+        },
+        {
+          href: 'https://repocloud.io/ai-deploy-template?owner=iflytek&repo=skillhub',
+          label: t('demo.deployRepoCloudAi'),
+          icon: <Rocket className="h-4 w-4" />,
+        },
       ],
       notes: [t('demo.skillhub.note0'), t('demo.skillhub.note1'), t('demo.skillhub.note2')],
       repo: 'https://github.com/iflytek/skillhub',
+    },
+  ];
+
+  const platforms: DeployPlatform[] = [
+    {
+      key: 'zeabur',
+      name: 'Zeabur',
+      href: 'https://zeabur.com/templates',
+      covers: 'Astron Agent · Astron RPA Server · SkillHub',
+      desc: t('demo.platform.zeabur'),
+    },
+    {
+      key: 'repocloud',
+      name: 'RepoCloud',
+      href: 'https://repocloud.io/details/Astron%20Agent/',
+      covers: 'Astron Agent · Astron RPA · SkillHub',
+      desc: t('demo.platform.repocloud'),
+    },
+    {
+      key: 'railway',
+      name: 'Railway',
+      href: 'https://railway.com/deploy/skillhub-registry',
+      covers: 'SkillHub',
+      desc: t('demo.platform.railway'),
     },
   ];
 
@@ -193,6 +245,24 @@ const DemoHub: React.FC = () => {
             <h2 className="text-lg font-semibold text-gray-900">{t('demo.deploy.title')}</h2>
           </div>
           <p className="text-sm text-gray-600 leading-relaxed">{t('demo.deploy.desc')}</p>
+          <ul className="mt-5 grid gap-4 md:grid-cols-3">
+            {platforms.map((platform) => (
+              <li key={platform.key} className="rounded-xl bg-gray-50 border border-gray-100 p-4">
+                <a
+                  href={platform.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-semibold text-gray-900 hover:text-indigo-600 transition-colors"
+                >
+                  {platform.name}
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+                <p className="mt-1 text-xs font-medium text-indigo-600">{platform.covers}</p>
+                <p className="mt-2 text-xs text-gray-600 leading-relaxed">{platform.desc}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-xs text-gray-500 leading-relaxed">{t('demo.deploy.thirdParty')}</p>
         </section>
       </main>
     </div>
