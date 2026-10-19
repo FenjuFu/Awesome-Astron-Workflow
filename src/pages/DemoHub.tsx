@@ -4,6 +4,7 @@ import {
   ArrowUpRight,
   Bot,
   Boxes,
+  Cloud,
   ExternalLink,
   KeyRound,
   Rocket,
@@ -59,6 +60,11 @@ const DemoHub: React.FC = () => {
           icon: <KeyRound className="h-4 w-4" />,
         },
         {
+          href: 'https://agent.xfyun.cn/agentbuilder/home',
+          label: t('demo.officialSaas'),
+          icon: <Cloud className="h-4 w-4" />,
+        },
+        {
           href: 'https://zeabur.com/templates/H6KENX',
           label: t('demo.deployTemplate'),
           icon: <Rocket className="h-4 w-4" />,
@@ -90,6 +96,11 @@ const DemoHub: React.FC = () => {
           icon: <KeyRound className="h-4 w-4" />,
         },
         {
+          href: 'https://www.iflyrpa.com',
+          label: t('demo.officialSaas'),
+          icon: <Cloud className="h-4 w-4" />,
+        },
+        {
           href: 'https://zeabur.com/templates/CDW03E',
           label: t('demo.deployTemplate'),
           icon: <Rocket className="h-4 w-4" />,
@@ -100,7 +111,7 @@ const DemoHub: React.FC = () => {
           icon: <Rocket className="h-4 w-4" />,
         },
       ],
-      notes: [t('demo.rpa.note1'), t('demo.rpa.note2'), t('demo.rpa.note3')],
+      notes: [t('demo.rpa.note1'), t('demo.rpa.note2'), t('demo.rpa.note3'), t('demo.rpa.note4')],
       repo: 'https://github.com/iflytek/astron-rpa',
     },
     {
@@ -114,6 +125,11 @@ const DemoHub: React.FC = () => {
           label: t('demo.tryLive'),
           icon: <ExternalLink className="h-4 w-4" />,
           primary: true,
+        },
+        {
+          href: 'https://skill.xfyun.cn/',
+          label: t('demo.officialSaas'),
+          icon: <Cloud className="h-4 w-4" />,
         },
         {
           href: 'https://zeabur.com/templates/KG76EW',
@@ -179,6 +195,7 @@ const DemoHub: React.FC = () => {
             <li>{t('demo.shared.2')}</li>
             <li>{t('demo.shared.3')}</li>
             <li>{t('demo.shared.4')}</li>
+            <li>{t('demo.shared.5')}</li>
           </ul>
         </section>
 

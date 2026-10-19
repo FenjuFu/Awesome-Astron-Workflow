@@ -17,18 +17,19 @@ Have a question about Astron Agent or Astron RPA — deployment, model access, t
 
 ## 🚀 Live Demos & One-Click Deploy
 
-Try the three iFLYTEK Astron open-source stacks online at **[awesome-astron-workflow.dev/demo](https://awesome-astron-workflow.dev/demo)**, then deploy your own copy:
+Try the three iFLYTEK Astron open-source stacks online at **[awesome-astron-workflow.dev/demo](https://awesome-astron-workflow.dev/demo)**, use iFLYTEK's official SaaS, or deploy your own copy:
 
-| Project | Zeabur | RepoCloud | Railway |
-| --- | --- | --- | --- |
-| [Astron Agent](https://github.com/iflytek/astron-agent) | [Template](https://zeabur.com/templates/H6KENX) | [Marketplace listing](https://repocloud.io/details/Astron%20Agent/) | — |
-| [Astron RPA](https://github.com/iflytek/astron-rpa) (server stack) | [Template](https://zeabur.com/templates/CDW03E) | [AI deploy](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=astron-rpa) | — |
-| [SkillHub](https://github.com/iflytek/skillhub) | [Template](https://zeabur.com/templates/KG76EW) | [AI deploy](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=skillhub) | [skillhub-registry](https://railway.com/deploy/skillhub-registry) (v0.2.22) · [skillhub](https://railway.com/deploy/skillhub) (v0.1.0) |
+| Project | Official SaaS | Zeabur | RepoCloud | Railway |
+| --- | --- | --- | --- | --- |
+| [Astron Agent](https://github.com/iflytek/astron-agent) | [agent.xfyun.cn](https://agent.xfyun.cn/agentbuilder/home) | [Template](https://zeabur.com/templates/H6KENX) | [Marketplace listing](https://repocloud.io/details/Astron%20Agent/) | — |
+| [Astron RPA](https://github.com/iflytek/astron-rpa) (server stack) | [iflyrpa.com](https://www.iflyrpa.com) | [Template](https://zeabur.com/templates/CDW03E) | [AI deploy](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=astron-rpa) | — |
+| [SkillHub](https://github.com/iflytek/skillhub) | [skill.xfyun.cn](https://skill.xfyun.cn/) | [Template](https://zeabur.com/templates/KG76EW) | [AI deploy](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=skillhub) | [skillhub-registry](https://railway.com/deploy/skillhub-registry) (v0.2.22) · [skillhub](https://railway.com/deploy/skillhub) (v0.1.0) |
 
+- **Official SaaS:** iFLYTEK's hosted service. Sign in with your own iFLYTEK account. Accounts and data are separate from the open-source demos, and features may differ from the open-source version. The RPA SaaS (Xingchen RPA) is built around a desktop client and has been upgraded to Xingchen Cowork.
 - **Zeabur:** this project maintains these templates. They use the same setup as the live demos. Astron Agent needs about 8 GB RAM minimum and two domains: the app and Casdoor.
 - **RepoCloud:** an AI agent deploys the GitHub repo to a VPS in about 5–15 minutes. Astron Agent has a marketplace listing. Astron RPA and SkillHub go through RepoCloud's generic AI deploy.
 - **Railway:** community SkillHub templates. The v0.2.22 one includes the security scanner and needs the Hobby plan or higher.
-- All of these are third-party or community deploy entries, not official iFLYTEK releases. Change every default password and secret before real use. The Astron RPA templates deploy the server only. Install the desktop client separately.
+- The Zeabur, RepoCloud and Railway entries are third-party or community deploy entries, not official iFLYTEK releases. Change every default password and secret before real use. The Astron RPA templates deploy the server only. Install the desktop client separately.
 
 ## Table of Contents
 
