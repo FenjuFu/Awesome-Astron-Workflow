@@ -17,19 +17,23 @@ Have a question about Astron Agent or Astron RPA — deployment, model access, t
 
 ## 🚀 Live Demos & One-Click Deploy
 
-Try the three iFLYTEK Astron open-source stacks online at **[awesome-astron-workflow.dev/demo](https://awesome-astron-workflow.dev/demo)**, use iFLYTEK's official SaaS, or deploy your own copy:
+> [!WARNING]
+> **Zeabur will shut down completely by 2026-12-31** ([announcement](https://zeabur.com/blogs/zeabur-is-shutting-down)). Dedicated server renewals stop on 2026-12-01, and servers shut down on their individual expiration dates. Our community demos may go offline earlier when their server expires. Use the official SaaS, RepoCloud / Railway or the official Docker Compose files instead.
 
-| Project | Official SaaS | Zeabur | RepoCloud | Railway |
-| --- | --- | --- | --- | --- |
-| [Astron Agent](https://github.com/iflytek/astron-agent) | [agent.xfyun.cn](https://agent.xfyun.cn/agentbuilder/home) | [Template](https://zeabur.com/templates/H6KENX) | [Marketplace listing](https://repocloud.io/details/Astron%20Agent/) | — |
-| [Astron RPA](https://github.com/iflytek/astron-rpa) (server stack) | [iflyrpa.com](https://www.iflyrpa.com) | [Template](https://zeabur.com/templates/CDW03E) | [AI deploy](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=astron-rpa) | — |
-| [SkillHub](https://github.com/iflytek/skillhub) | [skill.xfyun.cn](https://skill.xfyun.cn/) | [Template](https://zeabur.com/templates/KG76EW) | [AI deploy](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=skillhub) | [skillhub-registry](https://railway.com/deploy/skillhub-registry) (v0.2.22) · [skillhub](https://railway.com/deploy/skillhub) (v0.1.0) |
+Use iFLYTEK's official SaaS for a stable environment, or deploy your own copy of the three iFLYTEK Astron open-source stacks. Existing Zeabur demo links remain at **[awesome-astron-workflow.dev/demo](https://awesome-astron-workflow.dev/demo)** while the demos are available; availability through the platform's final shutdown date is not guaranteed.
+
+| Project | Official SaaS | RepoCloud | Railway | Docker Compose | Zeabur ⚠️ shutting down |
+| --- | --- | --- | --- | --- | --- |
+| [Astron Agent](https://github.com/iflytek/astron-agent) | [agent.xfyun.cn](https://agent.xfyun.cn/agentbuilder/home) | [Marketplace listing](https://repocloud.io/details/Astron%20Agent/) | — | [docker/astronAgent](https://github.com/iflytek/astron-agent/tree/main/docker/astronAgent) | [Template](https://zeabur.com/templates/H6KENX) |
+| [Astron RPA](https://github.com/iflytek/astron-rpa) (server stack) | [iflyrpa.com](https://www.iflyrpa.com) → [Cowork](https://cowork.iflydigital.com/) | [AI deploy](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=astron-rpa) | — | [docker](https://github.com/iflytek/astron-rpa/tree/main/docker) | [Template](https://zeabur.com/templates/CDW03E) |
+| [SkillHub](https://github.com/iflytek/skillhub) | [skill.xfyun.cn](https://skill.xfyun.cn/) | [AI deploy](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=skillhub) | [skillhub-registry](https://railway.com/deploy/skillhub-registry) (v0.2.22) · [skillhub](https://railway.com/deploy/skillhub) (v0.1.0) | [compose.release.yml](https://github.com/iflytek/skillhub#container-runtime) | [Template](https://zeabur.com/templates/KG76EW) |
 
 - **Official SaaS:** iFLYTEK's hosted service. Sign in with your own iFLYTEK account. Accounts and data are separate from the open-source demos, and features may differ from the open-source version. The RPA SaaS (Xingchen RPA) is built around a desktop client and has been upgraded to Xingchen Cowork.
-- **Zeabur:** this project maintains these templates. They use the same setup as the live demos. Astron Agent needs about 8 GB RAM minimum and two domains: the app and Casdoor.
 - **RepoCloud:** an AI agent deploys the GitHub repo to a VPS in about 5–15 minutes. Astron Agent has a marketplace listing. Astron RPA and SkillHub go through RepoCloud's generic AI deploy.
 - **Railway:** community SkillHub templates. The v0.2.22 one includes the security scanner and needs the Hobby plan or higher.
-- The Zeabur, RepoCloud and Railway entries are third-party or community deploy entries, not official iFLYTEK releases. Change every default password and secret before real use. The Astron RPA templates deploy the server only. Install the desktop client separately.
+- **Docker Compose:** the Compose files in each official repository. Run them on any server you control. Astron Agent needs about 8 GB RAM minimum.
+- **Zeabur (shutting down):** legacy template links are retained for reference and may already be unavailable. If you deployed with them, back up your data and migrate before your server expires. Zeabur also disclosed a security incident on 2026-10-14, so rotate the passwords and API keys used in that deployment.
+- The RepoCloud, Railway and Zeabur entries are third-party or community deploy entries, not official iFLYTEK releases. Change every default password and secret before real use. The Astron RPA stacks deploy the server only. Install the desktop client separately.
 
 ## Table of Contents
 

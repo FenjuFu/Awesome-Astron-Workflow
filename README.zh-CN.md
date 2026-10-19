@@ -17,19 +17,23 @@
 
 ## 🚀 在线体验与一键部署
 
-先在 **[awesome-astron-workflow.dev/demo](https://awesome-astron-workflow.dev/demo)** 在线体验三套讯飞 Astron 开源栈，也可以使用讯飞官方 SaaS 版，或部署一套属于你自己的：
+> [!WARNING]
+> **Zeabur 最迟于 2026-12-31 全面关停**（[关停公告](https://zeabur.com/blogs/zeabur-is-shutting-down)）。2026-12-01 起独享服务器停止续费，并在各自到期日停机；本站社区演示也可能随服务器到期提前下线。请改用官方 SaaS 版、RepoCloud / Railway 或官方 Docker Compose。
 
-| 项目 | 官方 SaaS 版 | Zeabur | RepoCloud | Railway |
-| --- | --- | --- | --- | --- |
-| [Astron Agent](https://github.com/iflytek/astron-agent) | [agent.xfyun.cn](https://agent.xfyun.cn/agentbuilder/home) | [模板](https://zeabur.com/templates/H6KENX) | [应用市场页](https://repocloud.io/details/Astron%20Agent/) | — |
-| [Astron RPA](https://github.com/iflytek/astron-rpa)（服务端） | [iflyrpa.com](https://www.iflyrpa.com) | [模板](https://zeabur.com/templates/CDW03E) | [AI 部署](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=astron-rpa) | — |
-| [SkillHub](https://github.com/iflytek/skillhub) | [skill.xfyun.cn](https://skill.xfyun.cn/) | [模板](https://zeabur.com/templates/KG76EW) | [AI 部署](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=skillhub) | [skillhub-registry](https://railway.com/deploy/skillhub-registry)（v0.2.22）· [skillhub](https://railway.com/deploy/skillhub)（v0.1.0） |
+需要稳定环境请使用讯飞官方 SaaS 版，也可以自行部署三套讯飞 Astron 开源栈。现有 Zeabur 演示仍可用期间，入口保留在 **[awesome-astron-workflow.dev/demo](https://awesome-astron-workflow.dev/demo)**；不保证持续运行至平台最终关停日。
+
+| 项目 | 官方 SaaS 版 | RepoCloud | Railway | Docker Compose | Zeabur ⚠️ 即将停止服务 |
+| --- | --- | --- | --- | --- | --- |
+| [Astron Agent](https://github.com/iflytek/astron-agent) | [agent.xfyun.cn](https://agent.xfyun.cn/agentbuilder/home) | [应用市场页](https://repocloud.io/details/Astron%20Agent/) | — | [docker/astronAgent](https://github.com/iflytek/astron-agent/tree/main/docker/astronAgent) | [模板](https://zeabur.com/templates/H6KENX) |
+| [Astron RPA](https://github.com/iflytek/astron-rpa)（服务端） | [iflyrpa.com](https://www.iflyrpa.com) → [星辰 Cowork](https://cowork.iflydigital.com/) | [AI 部署](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=astron-rpa) | — | [docker](https://github.com/iflytek/astron-rpa/tree/main/docker) | [模板](https://zeabur.com/templates/CDW03E) |
+| [SkillHub](https://github.com/iflytek/skillhub) | [skill.xfyun.cn](https://skill.xfyun.cn/) | [AI 部署](https://repocloud.io/ai-deploy-template?owner=iflytek&repo=skillhub) | [skillhub-registry](https://railway.com/deploy/skillhub-registry)（v0.2.22）· [skillhub](https://railway.com/deploy/skillhub)（v0.1.0） | [compose.release.yml](https://github.com/iflytek/skillhub#container-runtime) | [模板](https://zeabur.com/templates/KG76EW) |
 
 - **官方 SaaS 版：** 讯飞官方托管服务，用自己的讯飞账号登录。账号与数据和开源版演示环境相互独立，功能也可能与开源版有差异。RPA 的官方 SaaS（星辰RPA）以桌面客户端为主，现已升级为星辰 Cowork。
-- **Zeabur：** 由本项目维护，与在线体验使用同一套配置。Astron Agent 最低约需 8 GB 内存，并需绑定应用与 Casdoor 两个域名。
 - **RepoCloud：** 由 AI 代理把 GitHub 仓库部署到一台 VPS，约 5–15 分钟完成。Astron Agent 有应用市场页；Astron RPA 与 SkillHub 走 RepoCloud 的通用 AI 部署。
 - **Railway：** SkillHub 的社区模板。v0.2.22 版含安全扫描器，需 Hobby 及以上套餐。
-- Zeabur、RepoCloud、Railway 均为第三方 / 社区部署入口，并非讯飞官方发布。正式使用前请修改所有默认密码与密钥。Astron RPA 模板只部署服务端，桌面客户端需另行安装。
+- **Docker Compose：** 各官方仓库自带的 Compose 配置，可在任意自有服务器上运行。Astron Agent 最低约需 8 GB 内存。
+- **Zeabur（即将停止服务）：** 历史模板链接保留供参考，可能已不可用。已通过这些模板自部署的用户，请在服务器到期前备份数据并迁移；Zeabur 还披露了 2026-10-14 的安全事件，建议轮换该部署中使用的密码与 API Key。
+- RepoCloud、Railway、Zeabur 均为第三方 / 社区部署入口，并非讯飞官方发布。正式使用前请修改所有默认密码与密钥。Astron RPA 只部署服务端，桌面客户端需另行安装。
 
 ## 目录
 

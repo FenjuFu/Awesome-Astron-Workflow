@@ -7,6 +7,7 @@ interface NavChild {
   href: string;
   label: string;
   tip?: string;
+  shuttingDown?: boolean;
 }
 
 interface NavItem {
@@ -69,19 +70,38 @@ const Navigation: React.FC = () => {
           tip: t('nav.demoOverviewTip'),
         },
         {
+          href: 'https://agent.xfyun.cn/agentbuilder/home',
+          label: `${t('nav.astronAgent')} · ${t('demo.officialSaas')}`,
+        },
+        {
+          href: 'https://cowork.iflydigital.com/',
+          label: `${t('demo.cowork')} · ${t('demo.officialSaas')}`,
+        },
+        {
+          href: 'https://skill.xfyun.cn/',
+          label: `${t('nav.skillHub')} · ${t('demo.officialSaas')}`,
+        },
+        {
           href: 'https://astron-agent-nginx.zeabur.app',
           label: t('nav.astronAgent'),
           tip: t('nav.astronAgentTip'),
+          shuttingDown: true,
         },
         {
           href: 'https://astron-rpa-gw-fenjufu-20260715.zeabur.app',
           label: t('nav.astronRpa'),
           tip: t('nav.astronRpaTip'),
+          shuttingDown: true,
         },
         {
           href: 'https://skillhub-fenjufu-20260701.zeabur.app',
           label: t('nav.skillHub'),
           tip: t('nav.skillHubTip'),
+          shuttingDown: true,
+        },
+        {
+          href: 'https://zeabur.com/blogs/zeabur-is-shutting-down',
+          label: t('demo.zeabur.link'),
         },
       ],
     },
@@ -137,6 +157,11 @@ const Navigation: React.FC = () => {
                             onClick={() => setOpenDropdown(null)}
                           >
                             {child.label}
+                            {child.shuttingDown && (
+                              <span className="ml-2 inline-flex rounded-full bg-rose-100 px-2 py-0.5 text-[11px] font-medium text-rose-700">
+                                {t('nav.shuttingDown')}
+                              </span>
+                            )}
                           </NavLink>
                           {child.tip && (
                             <div className="pointer-events-none absolute top-0 left-full ml-2 w-60 rounded-lg bg-gray-900 px-3 py-2 text-xs leading-relaxed text-white shadow-xl opacity-0 translate-x-1 transition-all duration-200 group-hover/child:opacity-100 group-hover/child:translate-x-0 z-50">
@@ -185,7 +210,7 @@ const Navigation: React.FC = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
+        <div className="md:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto bg-white border-t border-gray-200">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) =>
               item.children ? (
@@ -222,6 +247,11 @@ const Navigation: React.FC = () => {
                             onClick={() => setIsOpen(false)}
                           >
                             {child.label}
+                            {child.shuttingDown && (
+                              <span className="ml-2 inline-flex rounded-full bg-rose-100 px-2 py-0.5 text-[11px] font-medium text-rose-700">
+                                {t('nav.shuttingDown')}
+                              </span>
+                            )}
                           </NavLink>
                           {child.tip && (
                             <p className="px-3 pb-2 text-xs leading-relaxed text-gray-400">{child.tip}</p>
