@@ -4,7 +4,9 @@ import {
   ArrowUpRight,
   Bot,
   Boxes,
+  Clock,
   Cloud,
+  Container,
   ExternalLink,
   KeyRound,
   Rocket,
@@ -18,6 +20,7 @@ interface DemoLink {
   label: string;
   icon: React.ReactNode;
   primary?: boolean;
+  zeabur?: boolean;
 }
 
 interface DemoProduct {
@@ -36,7 +39,10 @@ interface DeployPlatform {
   href: string;
   covers: string;
   desc: string;
+  shuttingDown?: boolean;
 }
+
+const ZEABUR_SHUTDOWN_URL = 'https://zeabur.com/blogs/zeabur-is-shutting-down';
 
 const DemoHub: React.FC = () => {
   const { t } = useLanguage();
@@ -49,30 +55,38 @@ const DemoHub: React.FC = () => {
       desc: t('demo.agent.desc'),
       links: [
         {
-          href: 'https://astron-agent-nginx.zeabur.app',
-          label: t('demo.tryLive'),
-          icon: <ExternalLink className="h-4 w-4" />,
-          primary: true,
-        },
-        {
-          href: 'https://astron-agent-casdoor.zeabur.app',
-          label: t('demo.loginEntry'),
-          icon: <KeyRound className="h-4 w-4" />,
-        },
-        {
           href: 'https://agent.xfyun.cn/agentbuilder/home',
           label: t('demo.officialSaas'),
           icon: <Cloud className="h-4 w-4" />,
-        },
-        {
-          href: 'https://zeabur.com/templates/H6KENX',
-          label: t('demo.deployTemplate'),
-          icon: <Rocket className="h-4 w-4" />,
+          primary: true,
         },
         {
           href: 'https://repocloud.io/details/Astron%20Agent/',
           label: t('demo.deployRepoCloud'),
           icon: <Rocket className="h-4 w-4" />,
+        },
+        {
+          href: 'https://github.com/iflytek/astron-agent/tree/main/docker/astronAgent',
+          label: t('demo.dockerCompose'),
+          icon: <Container className="h-4 w-4" />,
+        },
+        {
+          href: 'https://astron-agent-nginx.zeabur.app',
+          label: t('demo.tryLive'),
+          icon: <ExternalLink className="h-4 w-4" />,
+          zeabur: true,
+        },
+        {
+          href: 'https://astron-agent-casdoor.zeabur.app',
+          label: t('demo.loginEntry'),
+          icon: <KeyRound className="h-4 w-4" />,
+          zeabur: true,
+        },
+        {
+          href: 'https://zeabur.com/templates/H6KENX',
+          label: t('demo.deployTemplate'),
+          icon: <Rocket className="h-4 w-4" />,
+          zeabur: true,
         },
       ],
       notes: [t('demo.agent.note1'), t('demo.agent.note2'), t('demo.agent.note3')],
@@ -85,30 +99,43 @@ const DemoHub: React.FC = () => {
       desc: t('demo.rpa.desc'),
       links: [
         {
-          href: 'https://astron-rpa-gw-fenjufu-20260715.zeabur.app',
-          label: t('demo.tryLive'),
-          icon: <ExternalLink className="h-4 w-4" />,
-          primary: true,
-        },
-        {
-          href: 'https://astron-rpa-auth-fenjufu-20260715.zeabur.app',
-          label: t('demo.loginEntry'),
-          icon: <KeyRound className="h-4 w-4" />,
-        },
-        {
           href: 'https://www.iflyrpa.com',
           label: t('demo.officialSaas'),
           icon: <Cloud className="h-4 w-4" />,
+          primary: true,
         },
         {
-          href: 'https://zeabur.com/templates/CDW03E',
-          label: t('demo.deployTemplate'),
-          icon: <Rocket className="h-4 w-4" />,
+          href: 'https://cowork.iflydigital.com/',
+          label: t('demo.cowork'),
+          icon: <Cloud className="h-4 w-4" />,
         },
         {
           href: 'https://repocloud.io/ai-deploy-template?owner=iflytek&repo=astron-rpa',
           label: t('demo.deployRepoCloudAi'),
           icon: <Rocket className="h-4 w-4" />,
+        },
+        {
+          href: 'https://github.com/iflytek/astron-rpa/tree/main/docker',
+          label: t('demo.dockerCompose'),
+          icon: <Container className="h-4 w-4" />,
+        },
+        {
+          href: 'https://astron-rpa-gw-fenjufu-20260715.zeabur.app',
+          label: t('demo.tryLive'),
+          icon: <ExternalLink className="h-4 w-4" />,
+          zeabur: true,
+        },
+        {
+          href: 'https://astron-rpa-auth-fenjufu-20260715.zeabur.app',
+          label: t('demo.loginEntry'),
+          icon: <KeyRound className="h-4 w-4" />,
+          zeabur: true,
+        },
+        {
+          href: 'https://zeabur.com/templates/CDW03E',
+          label: t('demo.deployTemplate'),
+          icon: <Rocket className="h-4 w-4" />,
+          zeabur: true,
         },
       ],
       notes: [t('demo.rpa.note1'), t('demo.rpa.note2'), t('demo.rpa.note3'), t('demo.rpa.note4')],
@@ -121,20 +148,10 @@ const DemoHub: React.FC = () => {
       desc: t('demo.skillhub.desc'),
       links: [
         {
-          href: 'https://skillhub-fenjufu-20260701.zeabur.app',
-          label: t('demo.tryLive'),
-          icon: <ExternalLink className="h-4 w-4" />,
-          primary: true,
-        },
-        {
           href: 'https://skill.xfyun.cn/',
           label: t('demo.officialSaas'),
           icon: <Cloud className="h-4 w-4" />,
-        },
-        {
-          href: 'https://zeabur.com/templates/KG76EW',
-          label: t('demo.deployTemplate'),
-          icon: <Rocket className="h-4 w-4" />,
+          primary: true,
         },
         {
           href: 'https://railway.com/deploy/skillhub-registry',
@@ -146,6 +163,23 @@ const DemoHub: React.FC = () => {
           label: t('demo.deployRepoCloudAi'),
           icon: <Rocket className="h-4 w-4" />,
         },
+        {
+          href: 'https://github.com/iflytek/skillhub#container-runtime',
+          label: t('demo.dockerCompose'),
+          icon: <Container className="h-4 w-4" />,
+        },
+        {
+          href: 'https://skillhub-fenjufu-20260701.zeabur.app',
+          label: t('demo.tryLive'),
+          icon: <ExternalLink className="h-4 w-4" />,
+          zeabur: true,
+        },
+        {
+          href: 'https://zeabur.com/templates/KG76EW',
+          label: t('demo.deployTemplate'),
+          icon: <Rocket className="h-4 w-4" />,
+          zeabur: true,
+        },
       ],
       notes: [t('demo.skillhub.note0'), t('demo.skillhub.note1'), t('demo.skillhub.note2')],
       repo: 'https://github.com/iflytek/skillhub',
@@ -153,13 +187,6 @@ const DemoHub: React.FC = () => {
   ];
 
   const platforms: DeployPlatform[] = [
-    {
-      key: 'zeabur',
-      name: 'Zeabur',
-      href: 'https://zeabur.com/templates',
-      covers: 'Astron Agent · Astron RPA Server · SkillHub',
-      desc: t('demo.platform.zeabur'),
-    },
     {
       key: 'repocloud',
       name: 'RepoCloud',
@@ -174,7 +201,27 @@ const DemoHub: React.FC = () => {
       covers: 'SkillHub',
       desc: t('demo.platform.railway'),
     },
+    {
+      key: 'compose',
+      name: 'Docker Compose',
+      href: 'https://github.com/iflytek/astron-agent/tree/main/docker/astronAgent',
+      covers: 'Astron Agent · Astron RPA Server · SkillHub',
+      desc: t('demo.platform.compose'),
+    },
+    {
+      key: 'zeabur',
+      name: 'Zeabur',
+      href: 'https://zeabur.com/templates',
+      covers: 'Astron Agent · Astron RPA Server · SkillHub',
+      desc: t('demo.platform.zeabur'),
+      shuttingDown: true,
+    },
   ];
+
+  const linkClass = (link: DemoLink) =>
+    link.primary
+      ? 'inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3.5 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors'
+      : 'inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3.5 py-2 text-sm font-medium text-gray-700 hover:border-indigo-300 hover:text-indigo-600 transition-colors';
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -185,17 +232,38 @@ const DemoHub: React.FC = () => {
           <p className="mt-3 text-gray-600 max-w-2xl mx-auto">{t('demo.subtitle')}</p>
         </header>
 
+        <section className="mb-6 rounded-2xl border border-rose-200 bg-rose-50 p-6">
+          <div className="flex items-center gap-2 mb-3">
+            <Clock className="h-5 w-5 text-rose-600 flex-shrink-0" />
+            <h2 className="text-lg font-semibold text-rose-800">{t('demo.zeabur.title')}</h2>
+          </div>
+          <ul className="space-y-2 text-sm text-rose-900 list-disc pl-5">
+            <li>{t('demo.zeabur.1')}</li>
+            <li>{t('demo.zeabur.2')}</li>
+            <li>{t('demo.zeabur.3')}</li>
+          </ul>
+          <a
+            href={ZEABUR_SHUTDOWN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-rose-700 hover:text-rose-900 hover:underline"
+          >
+            {t('demo.zeabur.link')}
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </section>
+
         <section className="mb-10 rounded-2xl border border-amber-200 bg-amber-50 p-6">
           <div className="flex items-center gap-2 mb-3">
             <AlertTriangle className="h-5 w-5 text-amber-600 flex-shrink-0" />
             <h2 className="text-lg font-semibold text-amber-800">{t('demo.shared.title')}</h2>
           </div>
           <ul className="space-y-2 text-sm text-amber-900 list-disc pl-5">
+            <li>{t('demo.shared.5')}</li>
+            <li>{t('demo.shared.4')}</li>
             <li>{t('demo.shared.1')}</li>
             <li>{t('demo.shared.2')}</li>
             <li>{t('demo.shared.3')}</li>
-            <li>{t('demo.shared.4')}</li>
-            <li>{t('demo.shared.5')}</li>
           </ul>
         </section>
 
@@ -214,22 +282,48 @@ const DemoHub: React.FC = () => {
               <p className="text-sm text-gray-600 leading-relaxed">{product.desc}</p>
 
               <div className="mt-5 flex flex-wrap gap-2">
-                {product.links.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={
-                      link.primary
-                        ? 'inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3.5 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors'
-                        : 'inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3.5 py-2 text-sm font-medium text-gray-700 hover:border-indigo-300 hover:text-indigo-600 transition-colors'
-                    }
-                  >
-                    {link.icon}
-                    {link.label}
-                  </a>
-                ))}
+                {product.links
+                  .filter((link) => !link.zeabur)
+                  .map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={linkClass(link)}
+                    >
+                      {link.icon}
+                      {link.label}
+                    </a>
+                  ))}
+              </div>
+
+              <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-3">
+                <a
+                  href={ZEABUR_SHUTDOWN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-700 hover:underline"
+                >
+                  <Clock className="h-3.5 w-3.5 flex-shrink-0" />
+                  {t('demo.zeabur.groupTitle')}
+                </a>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {product.links
+                    .filter((link) => link.zeabur)
+                    .map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={linkClass(link)}
+                      >
+                        {link.icon}
+                        {link.label}
+                      </a>
+                    ))}
+                </div>
               </div>
 
               <div className="mt-5 rounded-xl bg-gray-50 border border-gray-100 p-4 flex-1">
@@ -262,7 +356,7 @@ const DemoHub: React.FC = () => {
             <h2 className="text-lg font-semibold text-gray-900">{t('demo.deploy.title')}</h2>
           </div>
           <p className="text-sm text-gray-600 leading-relaxed">{t('demo.deploy.desc')}</p>
-          <ul className="mt-5 grid gap-4 md:grid-cols-3">
+          <ul className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {platforms.map((platform) => (
               <li key={platform.key} className="rounded-xl bg-gray-50 border border-gray-100 p-4">
                 <a
@@ -274,6 +368,16 @@ const DemoHub: React.FC = () => {
                   {platform.name}
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
+                {platform.shuttingDown && (
+                  <a
+                    href={ZEABUR_SHUTDOWN_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-2 inline-flex items-center rounded-full bg-rose-100 px-2 py-0.5 text-[11px] font-medium text-rose-700 hover:bg-rose-200"
+                  >
+                    {t('nav.shuttingDown')}
+                  </a>
+                )}
                 <p className="mt-1 text-xs font-medium text-indigo-600">{platform.covers}</p>
                 <p className="mt-2 text-xs text-gray-600 leading-relaxed">{platform.desc}</p>
               </li>
