@@ -210,7 +210,7 @@ const Navigation: React.FC = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
+        <div className="md:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto bg-white border-t border-gray-200">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) =>
               item.children ? (
