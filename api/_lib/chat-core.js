@@ -53,7 +53,17 @@ async function logChatTurn(env, record) {
   }
 }
 
-function systemPrompt(knowledgeBlock) {
+function systemPrompt(knowledgeBlock, language) {
+  if (language === 'en') {
+    const base =
+      'You are the technical support assistant for the Astron AI agent platform and Astron RPA. ' +
+      'Prioritize the knowledge-base excerpts below and provide practical steps, commands, and configuration guidance. ' +
+      'If the excerpts do not cover the question, you may offer general advice, but clearly identify it as general advice. ' +
+      'Respond in English, even when earlier messages or knowledge-base excerpts are in Chinese. ' +
+      'Keep code, commands, URLs, and product names unchanged. Be concise and actionable.';
+    if (!knowledgeBlock) return base + '\n\n(No relevant knowledge-base excerpts were found.)';
+    return `${base}\n\n===== Knowledge-base excerpts =====\n${knowledgeBlock}\n===== End of knowledge-base excerpts =====`;
+  }
   const base =
     '你是 Astron（讯飞星辰）智能体平台与 Astron RPA 的官方技术支持助手。' +
     '请优先依据下方“知识库片段”回答用户问题，尽量给出可操作的步骤、命令和配置项。' +
@@ -65,7 +75,7 @@ function systemPrompt(knowledgeBlock) {
 
 /**
  * Run a chat completion with KB augmentation.
- * @param {object} body  request body ({ messages, max_tokens?, temperature? })
+ * @param {object} body  request body ({ messages, language?: 'en' | 'zh-CN', max_tokens?, temperature? })
  * @param {object} env   process.env
  * @returns {Promise<{status:number, json:object}>}
  */
@@ -95,7 +105,7 @@ export async function runChat(body = {}, env = {}) {
     hits = [];
   }
   const augmented = [
-    { role: 'system', content: systemPrompt(buildKnowledgeBlock(hits)) },
+    { role: 'system', content: systemPrompt(buildKnowledgeBlock(hits), body.language) },
     ...messages,
   ];
 

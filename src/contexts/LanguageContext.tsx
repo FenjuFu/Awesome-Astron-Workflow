@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { chatTranslations } from '../locales/chat';
 
 export type Language = 'en' | 'zh-CN';
 
@@ -12,6 +13,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 const translations = {
   en: {
+    ...chatTranslations.en,
     // Navigation
     'nav.home': 'Home',
     'nav.workflows': 'Workflows',
@@ -551,6 +553,7 @@ const translations = {
     'lucky.prize.thanks': 'Thanks for participating'
   },
   'zh-CN': {
+    ...chatTranslations['zh-CN'],
     // Navigation
     'nav.home': '首页',
     'nav.workflows': '工作流',
