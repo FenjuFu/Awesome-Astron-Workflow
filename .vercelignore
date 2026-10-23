@@ -5,3 +5,6 @@ dist
 .trae
 .log
 .figma
+.env
+.env.*
+api/_lib/kb-index.json

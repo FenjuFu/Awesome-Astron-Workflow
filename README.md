@@ -538,13 +538,17 @@ AI Chat also requires server-side environment variables. Before local developmen
 
 ```env
 ASTRON_MAAS_API_KEY=your_astron_maas_api_key
-ASTRON_MAAS_MODEL=astron-code-latest
-ASTRON_MAAS_BASE_URL=https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions
+ASTRON_MAAS_MODEL=spark-x2.6-4b
+ASTRON_MAAS_BASE_URL=https://maas-api.cn-huabei-1.xf-yun.com/v2/chat/completions
 ASTRON_MAAS_MAX_TOKENS=32768
 ASTRON_MAAS_TEMPERATURE=0.7
 ```
 
 If `ASTRON_MAAS_API_KEY` is missing, the `/chat` page returns an "AI Chat is temporarily unavailable" message. When deploying to Vercel or another hosting platform, set the same environment variables there as well.
+
+The chat uses [Spark-X2.6-4B](https://huggingface.co/collections/XHToken/spark-x26). Enable access and quota for this model on your MaaS API key before deploying; a Coding Plan key may not have access to the general MaaS endpoint. Update both `ASTRON_MAAS_MODEL` and `ASTRON_MAAS_BASE_URL` in existing deployments, then redeploy. Model selection is controlled by the server, so cached clients cannot override it with the old model name.
+
+For a self-hosted OpenAI-compatible Spark-X2.6 service, set `ASTRON_MAAS_BASE_URL` to its full chat completions endpoint and `ASTRON_MAAS_MODEL` to its served model ID (for example, `spark2.6` in the official SGLang example). The Hugging Face collection URL is a download page, not an inference endpoint. Update the chat consent notice and privacy policy if you change the inference provider.
 
 ## Contributing
 

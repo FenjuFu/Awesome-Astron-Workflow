@@ -4,7 +4,8 @@
 
 import { retrieve } from './kb-retriever.js';
 
-const DEFAULT_UPSTREAM = 'https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions';
+const DEFAULT_UPSTREAM = 'https://maas-api.cn-huabei-1.xf-yun.com/v2/chat/completions';
+const DEFAULT_MODEL = 'spark-x2.6-4b';
 const TOP_K = 4;
 
 function lastUserMessage(messages) {
@@ -64,7 +65,7 @@ function systemPrompt(knowledgeBlock) {
 
 /**
  * Run a chat completion with KB augmentation.
- * @param {object} body  request body ({ messages, model?, max_tokens?, temperature? })
+ * @param {object} body  request body ({ messages, max_tokens?, temperature? })
  * @param {object} env   process.env
  * @returns {Promise<{status:number, json:object}>}
  */
@@ -79,7 +80,9 @@ export async function runChat(body = {}, env = {}) {
     return { status: 500, json: { error: 'Missing server configuration: ASTRON_MAAS_API_KEY' } };
   }
   const upstreamUrl = env.ASTRON_MAAS_BASE_URL || DEFAULT_UPSTREAM;
-  const model = body.model || env.ASTRON_MAAS_MODEL || 'astron-code-latest';
+  // Keep model selection server-side, including for cached clients that still
+  // send the previous model in their request body.
+  const model = env.ASTRON_MAAS_MODEL || DEFAULT_MODEL;
 
   const maxTokensEnv = Number.parseInt(env.ASTRON_MAAS_MAX_TOKENS || '', 10);
   const tempEnv = Number.parseFloat(env.ASTRON_MAAS_TEMPERATURE || '');
