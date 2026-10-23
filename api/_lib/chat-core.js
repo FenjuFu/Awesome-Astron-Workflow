@@ -6,6 +6,8 @@ import { retrieve } from './kb-retriever.js';
 
 const DEFAULT_UPSTREAM = 'https://maas-api.cn-huabei-1.xf-yun.com/v2/chat/completions';
 const DEFAULT_MODEL = 'spark-x2.6-4b';
+const REASONING_EFFORTS = new Set(['none', 'low', 'high']);
+const DEFAULT_REASONING_EFFORT = 'low';
 const TOP_K = 4;
 
 function lastUserMessage(messages) {
@@ -75,7 +77,7 @@ function systemPrompt(knowledgeBlock, language) {
 
 /**
  * Run a chat completion with KB augmentation.
- * @param {object} body  request body ({ messages, language?: 'en' | 'zh-CN', max_tokens?, temperature? })
+ * @param {object} body  request body ({ messages, language?: 'en' | 'zh-CN', reasoning_effort?: 'none' | 'low' | 'high', max_tokens?, temperature? })
  * @param {object} env   process.env
  * @returns {Promise<{status:number, json:object}>}
  */
@@ -83,6 +85,11 @@ export async function runChat(body = {}, env = {}) {
   const messages = body.messages;
   if (!Array.isArray(messages) || messages.length === 0) {
     return { status: 400, json: { error: 'Invalid request: messages must be a non-empty array' } };
+  }
+
+  const reasoningEffort = body.reasoning_effort === undefined ? DEFAULT_REASONING_EFFORT : body.reasoning_effort;
+  if (!REASONING_EFFORTS.has(reasoningEffort)) {
+    return { status: 400, json: { error: 'Invalid request: reasoning_effort must be none, low, or high' } };
   }
 
   const apiKey = env.ASTRON_MAAS_API_KEY;
@@ -112,6 +119,10 @@ export async function runChat(body = {}, env = {}) {
   const payload = {
     model,
     messages: augmented,
+    // MaaS uses thinking.type for the off switch and reasoning_effort for
+    // enabled reasoning. Do not truncate the answer to simulate a lower level.
+    thinking: { type: reasoningEffort === 'none' ? 'disabled' : 'enabled' },
+    ...(reasoningEffort === 'none' ? {} : { reasoning_effort: reasoningEffort }),
     max_tokens: typeof body.max_tokens === 'number' ? body.max_tokens : (Number.isFinite(maxTokensEnv) ? maxTokensEnv : 32768),
     temperature: typeof body.temperature === 'number' ? body.temperature : (Number.isFinite(tempEnv) ? tempEnv : 0.7),
   };

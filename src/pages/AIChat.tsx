@@ -6,6 +6,19 @@ import ReactMarkdown from 'react-markdown';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const CONSENT_KEY = 'astron_chat_consent';
+const THINKING_KEY = 'astron_chat_thinking_level';
+const THINKING_LEVELS = ['none', 'low', 'high'] as const;
+type ThinkingLevel = typeof THINKING_LEVELS[number];
+
+function savedThinkingLevel(): ThinkingLevel {
+  try {
+    const saved = localStorage.getItem(THINKING_KEY);
+    if (THINKING_LEVELS.includes(saved as ThinkingLevel)) return saved as ThinkingLevel;
+  } catch {
+    // The preference is optional when browser storage is unavailable.
+  }
+  return 'low';
+}
 
 interface Message {
   role: 'user' | 'assistant';
@@ -57,12 +70,21 @@ const AIChat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [thinkingLevel, setThinkingLevel] = useState<ThinkingLevel>(savedThinkingLevel);
   const [consent, setConsent] = useState<boolean>(false);
   const [showConsentModal, setShowConsentModal] = useState<boolean>(false);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const previousMessageCountRef = useRef(0);
 
   const BASE_URL = '/api/chat';
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(THINKING_KEY, thinkingLevel);
+    } catch {
+      // Keep the current selection usable even if it cannot be persisted.
+    }
+  }, [thinkingLevel]);
 
   // Load chat history + consent state from localStorage on mount
   useEffect(() => {
@@ -145,6 +167,7 @@ const AIChat: React.FC = () => {
         },
         body: JSON.stringify({
           language,
+          reasoning_effort: thinkingLevel,
           messages: newMessages,
           max_tokens: 32768,
           temperature: 0.7,
@@ -307,7 +330,7 @@ const AIChat: React.FC = () => {
                   </div>
                   <div className="bg-gray-50 p-4 rounded-2xl rounded-tl-none border border-gray-100 flex items-center space-x-2">
                     <Loader2 className="w-4 h-4 animate-spin text-indigo-600" />
-                    <span className="text-gray-500 text-sm">{t('chat.thinking')}</span>
+                    <span className="text-gray-500 text-sm">{t(thinkingLevel === 'none' ? 'chat.responding' : 'chat.thinking')}</span>
                   </div>
                 </div>
               </div>
@@ -316,6 +339,25 @@ const AIChat: React.FC = () => {
 
           {/* Input Area */}
           <div className="p-4 bg-gray-50 border-t border-gray-100 shrink-0">
+            <fieldset disabled={isLoading} aria-describedby="thinking-level-description" className="mb-3">
+              <legend className="mb-1.5 text-xs font-medium text-gray-600">{t('chat.thinkingLevel')}</legend>
+              <div className="inline-flex gap-1 rounded-lg bg-gray-100 p-1">
+                {THINKING_LEVELS.map(level => (
+                  <button
+                    key={level}
+                    type="button"
+                    aria-pressed={thinkingLevel === level}
+                    onClick={() => setThinkingLevel(level)}
+                    className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 disabled:cursor-wait ${thinkingLevel === level ? 'bg-indigo-600 text-white shadow-sm' : 'text-gray-600 hover:bg-white'}`}
+                  >
+                    {t(`chat.thinkingLevel.${level}`)}
+                  </button>
+                ))}
+              </div>
+              <p id="thinking-level-description" className="mt-1.5 text-xs text-gray-500" aria-live="polite">
+                {t(`chat.thinkingLevel.${thinkingLevel}.description`)}
+              </p>
+            </fieldset>
             <div className="relative flex items-end space-x-2">
               <textarea
                 value={input}
