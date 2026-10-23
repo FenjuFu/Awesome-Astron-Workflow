@@ -72,7 +72,6 @@ const AIChat: React.FC = () => {
   const previousMessageCountRef = useRef(0);
 
   const BASE_URL = '/api/chat';
-  const MODEL = 'astron-code-latest';
 
   // Load chat history + consent state from localStorage on mount
   useEffect(() => {
@@ -154,7 +153,6 @@ const AIChat: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: MODEL,
           messages: newMessages,
           max_tokens: 32768,
           temperature: 0.7,
@@ -351,12 +349,12 @@ const AIChat: React.FC = () => {
             <p className="mt-2 text-[10px] text-gray-400 text-center">
               Powered by{' '}
               <a
-                href="https://maas.xfyun.cn/modelSquare"
+                href="https://huggingface.co/collections/XHToken/spark-x26"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-indigo-600"
               >
-                讯飞星辰 MaaS
+                Spark-X2.6-4B
               </a>
               {' · '}
               <Link to="/privacy" className="underline hover:text-indigo-600">

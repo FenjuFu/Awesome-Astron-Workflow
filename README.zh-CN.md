@@ -551,13 +551,17 @@ AI Chat 依赖服务端环境变量。首次本地运行前，建议先将 `.env
 
 ```env
 ASTRON_MAAS_API_KEY=your_astron_maas_api_key
-ASTRON_MAAS_MODEL=astron-code-latest
-ASTRON_MAAS_BASE_URL=https://maas-coding-api.cn-huabei-1.xf-yun.com/v2/chat/completions
+ASTRON_MAAS_MODEL=spark-x2.6-4b
+ASTRON_MAAS_BASE_URL=https://maas-api.cn-huabei-1.xf-yun.com/v2/chat/completions
 ASTRON_MAAS_MAX_TOKENS=32768
 ASTRON_MAAS_TEMPERATURE=0.7
 ```
 
 如果缺少 `ASTRON_MAAS_API_KEY`，`/chat` 页面会返回“AI Chat 暂时不可用”。部署到 Vercel 等平台时，也需要同步配置同名环境变量。
+
+聊天使用 [Spark-X2.6-4B](https://huggingface.co/collections/XHToken/spark-x26)。部署前请为 MaaS API Key 开通该模型的权限和额度；Coding Plan 的密钥不一定具有通用 MaaS 接口的调用权限。已有部署需同时更新 `ASTRON_MAAS_MODEL` 和 `ASTRON_MAAS_BASE_URL`，再重新部署。模型由服务端决定，缓存中的旧客户端不能再覆盖为旧模型。
+
+如果使用自行部署的 OpenAI 兼容 Spark-X2.6 服务，将 `ASTRON_MAAS_BASE_URL` 设为完整的聊天补全接口地址，将 `ASTRON_MAAS_MODEL` 设为服务实际提供的模型 ID（例如官方 SGLang 示例中的 `spark2.6`）。Hugging Face 集合链接是下载页面，不能作为推理接口。更换推理服务提供方时，也需同步更新聊天同意提示与隐私政策。
 
 ## 贡献指南
 
