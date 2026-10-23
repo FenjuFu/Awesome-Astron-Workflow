@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Send, Trash2, Bot, User, Loader2, ShieldCheck } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import ReactMarkdown from 'react-markdown';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const CONSENT_KEY = 'astron_chat_consent';
 
@@ -21,39 +22,28 @@ interface ChatApiResponse {
   details?: string;
 }
 
-function formatChatError(error: unknown) {
+function formatChatError(error: unknown, t: (key: string) => string) {
   if (!(error instanceof Error)) {
-    return '抱歉，我现在无法处理您的请求。请稍后再试。';
+    return t('chat.error.generic');
   }
 
   if (error.message.includes('Missing server configuration: ASTRON_MAAS_API_KEY')) {
-    return '抱歉，AI Chat 尚未完成配置。请在项目根目录的 `.env` 中设置 `ASTRON_MAAS_API_KEY`，或在部署平台补充同名环境变量后重试。';
+    return t('chat.error.configuration');
   }
 
   if (
     error.message.includes('Upstream API error: 401')
     || error.message.includes('Upstream API error: 403')
   ) {
-    return '抱歉，AI Chat 的服务凭证无效或权限不足，请检查 `ASTRON_MAAS_API_KEY` 是否填写正确。';
+    return t('chat.error.credentials');
   }
 
   if (error.message.includes('Upstream request timed out')) {
-    return '抱歉，AI Chat 响应超时，请稍后再试。';
+    return t('chat.error.timeout');
   }
 
-  return `抱歉，AI Chat 暂时不可用：${error.message}`;
+  return t('chat.error.generic');
 }
-
-// Default greeting shown (as an assistant bubble) before the first message.
-const WELCOME_MARKDOWN = `你好！我是 **Astron 学习助手（Learning Assistant）** 🤖
-
-欢迎来到 **iFLYTEK Astron 智能体开源项目**！🚀 Astron 是企业级 AI Agent 开源项目矩阵，涵盖 Agent 工作流编排、RPA 自动化、MCP 工具生态、企业级技能管理、多智能体协同等核心能力，助力打造可规模化落地的 SuperAgents。
-
-请问你有什么需求？希望先体验哪款工具？告诉我，我会为你推荐并引导下一步操作。
-
-- 🌐 项目全景图：[awesome-astron-workflow.dev/landscape](https://awesome-astron-workflow.dev/landscape)
-- 💻 参与项目贡献：[github.com/topics/iflytek-astron](https://github.com/topics/iflytek-astron) —— ⭐ Star ｜ 🍴 Fork ｜ 🐞 Issue ｜ 🔧 PR，参与社区共建即可攒积分换好礼
-- 🎁 社区积分商城：[awesome-astron-workflow.dev/stats](https://awesome-astron-workflow.dev/stats)`;
 
 // Render markdown links as new-tab anchors (used in the greeting and replies).
 const markdownComponents = {
@@ -63,6 +53,7 @@ const markdownComponents = {
 };
 
 const AIChat: React.FC = () => {
+  const { language, t } = useLanguage();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -153,6 +144,7 @@ const AIChat: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          language,
           messages: newMessages,
           max_tokens: 32768,
           temperature: 0.7,
@@ -179,7 +171,7 @@ const AIChat: React.FC = () => {
       console.error('Failed to get AI response', error);
       const errorMessage: Message = {
         role: 'assistant',
-        content: formatChatError(error),
+        content: formatChatError(error, t),
       };
       setMessages([...newMessages, errorMessage]);
     } finally {
@@ -188,7 +180,7 @@ const AIChat: React.FC = () => {
   };
 
   const clearHistory = () => {
-    if (window.confirm('确定要清空所有聊天记录吗？')) {
+    if (window.confirm(t('chat.clearConfirm'))) {
       setMessages([]);
       localStorage.removeItem('astron_chat_history');
     }
@@ -206,42 +198,42 @@ const AIChat: React.FC = () => {
               <div className="bg-indigo-100 text-indigo-600 p-2 rounded-lg">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h3 className="font-bold text-lg text-gray-900">使用前须知</h3>
+              <h3 className="font-bold text-lg text-gray-900">{t('chat.consent.title')}</h3>
             </div>
             <div className="text-sm text-gray-600 space-y-3">
               <p>
-                为了向你返回回答，你的提问会发送至{' '}
+                {t('chat.consent.providerPrefix')}{' '}
                 <a
                   href="https://maas.xfyun.cn/modelSquare"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-indigo-600 underline hover:opacity-80"
                 >
-                  讯飞星辰 MaaS
+                  {t('chat.consent.provider')}
                 </a>{' '}
-                进行大模型推理。
+                {t('chat.consent.providerSuffix')}
               </p>
               <p>
-                在你同意后，我们会将<strong>问答内容</strong>保存到受控的后端数据库，仅用于分析高频问题、改进知识库与产品体验，不会出售你的数据。详情见{' '}
+                {t('chat.consent.logPrefix')}<strong>{t('chat.consent.logContent')}</strong>{t('chat.consent.logSuffix')}{' '}
                 <Link to="/privacy" className="text-indigo-600 underline hover:opacity-80">
-                  《隐私政策》
+                  {t('chat.consent.policy')}
                 </Link>
-                。
+                {t('chat.consent.period')}
               </p>
-              <p className="text-gray-500">点击“同意并开始”即表示你已阅读并同意上述说明。</p>
+              <p className="text-gray-500">{t('chat.consent.agreement')}</p>
             </div>
             <div className="mt-6 flex flex-col gap-2">
               <button
                 onClick={acceptConsent}
                 className="w-full py-2.5 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-colors"
               >
-                同意并开始
+                {t('chat.consent.accept')}
               </button>
               <Link
                 to="/"
                 className="w-full py-2.5 text-center text-gray-500 rounded-xl font-medium hover:bg-gray-50 transition-colors"
               >
-                暂不使用
+                {t('chat.consent.decline')}
               </Link>
             </div>
           </div>
@@ -257,13 +249,14 @@ const AIChat: React.FC = () => {
                 <Bot className="w-6 h-6" />
               </div>
               <div>
-                <h2 className="font-bold text-lg">Astron AI Assistant</h2>
+                <h2 className="font-bold text-lg">{t('chat.title')}</h2>
               </div>
             </div>
             <button 
               onClick={clearHistory}
               className="p-2 hover:bg-white/10 rounded-full transition-colors"
-              title="Clear History"
+              title={t('chat.clearHistory')}
+              aria-label={t('chat.clearHistory')}
             >
               <Trash2 className="w-5 h-5" />
             </button>
@@ -281,7 +274,7 @@ const AIChat: React.FC = () => {
                     <Bot className="w-6 h-6" />
                   </div>
                   <div className="p-4 rounded-2xl shadow-sm prose prose-sm max-w-none bg-gray-50 text-gray-800 rounded-tl-none border border-gray-100">
-                    <ReactMarkdown components={markdownComponents}>{WELCOME_MARKDOWN}</ReactMarkdown>
+                    <ReactMarkdown components={markdownComponents}>{t('chat.welcome')}</ReactMarkdown>
                   </div>
                 </div>
               </div>
@@ -314,7 +307,7 @@ const AIChat: React.FC = () => {
                   </div>
                   <div className="bg-gray-50 p-4 rounded-2xl rounded-tl-none border border-gray-100 flex items-center space-x-2">
                     <Loader2 className="w-4 h-4 animate-spin text-indigo-600" />
-                    <span className="text-gray-500 text-sm">AI 正在思考...</span>
+                    <span className="text-gray-500 text-sm">{t('chat.thinking')}</span>
                   </div>
                 </div>
               </div>
@@ -333,13 +326,15 @@ const AIChat: React.FC = () => {
                     handleSend();
                   }
                 }}
-                placeholder={consent ? '输入您的问题...' : '请先阅读并同意隐私政策后开始对话'}
+                aria-label={t('chat.inputLabel')}
+                placeholder={t(consent ? 'chat.inputPlaceholder' : 'chat.consentPlaceholder')}
                 disabled={!consent}
                 className="flex-grow p-3 pr-12 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none resize-none max-h-32 transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed"
                 rows={1}
               />
               <button
                 onClick={handleSend}
+                aria-label={t('chat.send')}
                 disabled={!input.trim() || isLoading || !consent}
                 className="p-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 disabled:opacity-50 disabled:hover:bg-indigo-600 transition-colors shadow-lg shadow-indigo-200"
               >
@@ -347,7 +342,7 @@ const AIChat: React.FC = () => {
               </button>
             </div>
             <p className="mt-2 text-[10px] text-gray-400 text-center">
-              Powered by{' '}
+              {t('chat.poweredBy')}{' '}
               <a
                 href="https://huggingface.co/collections/XHToken/spark-x26"
                 target="_blank"
@@ -358,7 +353,7 @@ const AIChat: React.FC = () => {
               </a>
               {' · '}
               <Link to="/privacy" className="underline hover:text-indigo-600">
-                隐私政策
+                {t('chat.privacy')}
               </Link>
             </p>
           </div>
