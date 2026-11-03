@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Quiz</title>
+<style>
+  :root {
+    --purple: #6d28d9;
+    --purple-light: #8b5cf6;
+    --purple-dark: #4c1d95;
+    --bg: #f3f0ff;
+    --card: #ffffff;
+    --text: #1f1147;
+    --muted: #6b5c99;
+    --accent: #7c3aed;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  body {
+    width: 350px;
+    min-height: 470px;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .quiz-container {
+    width: 100%;
+    max-width: 350px;
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(76, 29, 149, 0.15);
+    padding: 28px 24px;
+  }
+  h1 {
+    color: var(--purple);
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  #question {
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  #options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  button {
+    background: var(--purple-light);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  button:hover:not(:disabled) {
+    background: var(--purple);
+  }
+  button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  button:disabled {
+    background: #d1c8e8;
+    color: #9b8bb8;
+    cursor: not-allowed;
+  }
+  #feedback {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    min-height: 28px;
+    color: var(--purple-dark);
+  }
+  #next, #restart {
+    width: 100%;
+    background: var(--accent);
+  }
+  #restart {
+    background: var(--purple-dark);
+    margin-top: 8px;
+  }
+  #summary {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--purple);
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--purple-light);
+  }
+</style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Mini Quiz</h1>
+    <div id="question">1 / 3 - Which planet is known as the Red Planet?</div>
+    <div id="options"></div>
+    <div id="feedback"></div>
+    <button id="next">Next</button>
+    <button id="restart">Restart</button>
+    <div id="summary"></div>
+  </div>
+<script>
+const qs=[{q:'Which planet is known as the Red Planet?',a:['Earth','Mars','Venus'],correct:1},{q:'How many sides does a triangle have?',a:['3','4','5'],correct:0},{q:'Which language styles web pages?',a:['HTML','CSS','SQL'],correct:1}];
+let index=0,score=0,answered=false;
+const question=document.getElementById('question'),options=document.getElementById('options'),feedback=document.getElementById('feedback'),summary=document.getElementById('summary'),next=document.getElementById('next');
+function render(){answered=false;feedback.textContent='';options.replaceChildren();next.disabled=true;summary.textContent='';if(index===qs.length){question.textContent='Quiz complete';summary.textContent='Score: '+score+' / 3';return;}question.textContent=(index+1)+' / 3 - '+qs[index].q;qs[index].a.forEach((label,i)=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.onclick=()=>answer(i);options.appendChild(b);});}
+function answer(i){if(answered||index>=qs.length)return;answered=true;const ok=i===qs[index].correct;if(ok)score++;feedback.textContent=ok?'Correct!':'Not quite. Correct answer: '+qs[index].a[qs[index].correct];options.querySelectorAll('button').forEach(b=>b.disabled=true);next.disabled=false;}
+next.onclick=()=>{if(!answered)return;index++;render();};document.getElementById('restart').onclick=()=>{index=0;score=0;render();};render();
+</script>
+</body>
+</html>

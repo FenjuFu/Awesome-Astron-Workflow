@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gradient Studio</title>
+  <style>
+    :root {
+      --panel-bg: #f8fafc;
+      --panel-border: #1e293b;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --input-bg: #ffffff;
+      --input-border: #cbd5e1;
+      --button-bg: #1e293b;
+      --button-text: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #e2e8f0;
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .studio {
+      width: 350px;
+      height: 470px;
+      background: var(--panel-bg);
+      border: 3px solid var(--panel-border);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      font-size: 15px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .control-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .input-wrapper {
+      flex: 1;
+      min-width: 110px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .native-input {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 15px;
+      color: var(--text-primary);
+      background: var(--input-bg);
+      border: 2px solid var(--input-border);
+      border-radius: 10px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .native-input:focus {
+      border-color: var(--text-primary);
+    }
+
+    .range-container {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .range-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .angle-value {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .native-range {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 15px;
+      color: var(--text-primary);
+      background: var(--input-bg);
+      border: 2px solid var(--input-border);
+      border-radius: 10px;
+      font-family: inherit;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 8px;
+      cursor: pointer;
+    }
+
+    .native-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--button-bg);
+      border: 3px solid #f1f5f9;
+      cursor: pointer;
+      margin-top: -7px;
+    }
+
+    .native-range::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--button-bg);
+      border: 3px solid #f1f5f9;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .preview-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 14px;
+    }
+
+    .preview {
+      width: 220px;
+      height: 160px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #7c3aed, #06b6d4);
+      border: 3px solid var(--panel-border);
+      transition: background 0.2s ease;
+    }
+
+    .value-display {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: center;
+    }
+
+    .value-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .css-value {
+      font-family: "SF Mono", "Fira Code", Consolas, monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 10px 14px;
+      border-radius: 10px;
+      max-width: 100%;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    .reset-button {
+      align-self: center;
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--button-text);
+      background: var(--button-bg);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    .reset-button:hover {
+      background: #334155;
+    }
+
+    .reset-button:active {
+      transform: scale(0.97);
+    }
+
+    @media (max-width: 400px) {
+      .studio {
+        width: 100%;
+        height: auto;
+        max-height: 470px;
+        padding: 16px;
+        gap: 16px;
+      }
+      .preview {
+        width: 180px;
+        height: 130px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="studio">
+    <div class="controls">
+      <div class="section-title">Color Controls</div>
+      <div class="control-row">
+        <div class="input-wrapper">
+          <span class="input-label">Color A</span>
+          <input type="color" class="native-input" id="colorA" value="#7c3aed" aria-label="Color A input">
+        </div>
+        <div class="input-wrapper">
+          <span class="input-label">Color B</span>
+          <input type="color" class="native-input" id="colorB" value="#06b6d4" aria-label="Color B input">
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="range-container">
+        <div class="range-label">
+          <span>Angle</span>
+          <span class="angle-value" id="angleDisplay">135°</span>
+        </div>
+        <input type="range" class="native-range" id="angleRange" min="0" max="360" step="1" value="135" aria-label="Gradient angle range">
+      </div>
+    </div>
+
+    <div class="preview-section">
+      <div class="preview" id="preview"></div>
+      <div class="value-display">
+        <span class="value-label">Exact CSS Linear Gradient Value</span>
+        <span class="css-value" id="cssValue">linear-gradient(135deg, #7c3aed, #06b6d4)</span>
+      </div>
+    </div>
+
+    <button class="reset-button" id="resetButton" aria-label="Reset all controls to default values">Reset</button>
+  </div>
+
+  <script>
+    const colorAInput = document.getElementById("colorA");
+    const colorBInput = document.getElementById("colorB");
+    const angleRange = document.getElementById("angleRange");
+    const angleDisplay = document.getElementById("angleDisplay");
+    const preview = document.getElementById("preview");
+    const cssValue = document.getElementById("cssValue");
+    const resetButton = document.getElementById("resetButton");
+
+    const DEFAULT_COLOR_A = "#7c3aed";
+    const DEFAULT_COLOR_B = "#06b6d4";
+    const DEFAULT_ANGLE = 135;
+
+    function update() {
+      const angle = angleRange.value;
+      const colorA = colorAInput.value;
+      const colorB = colorBInput.value;
+      const gradientValue = `linear-gradient(${angle}deg, ${colorA}, ${colorB})`;
+
+      preview.style.background = gradientValue;
+      angleDisplay.textContent = `${angle}°`;
+      cssValue.textContent = gradientValue;
+    }
+
+    colorAInput.addEventListener("input", update);
+    colorBInput.addEventListener("input", update);
+    angleRange.addEventListener("input", update);
+
+    resetButton.addEventListener("click", () => {
+      colorAInput.value = DEFAULT_COLOR_A;
+      colorBInput.value = DEFAULT_COLOR_B;
+      angleRange.value = DEFAULT_ANGLE;
+      update();
+    });
+
+    update();
+  </script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Checklist</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f7f2e9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .checklist-container {
+    width: 350px;
+    height: 470px;
+    background: #fff8ee;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(139, 90, 43, 0.15);
+    padding: 32px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+
+  .title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #3d2f1f;
+  }
+
+  .counter {
+    font-size: 14px;
+    font-weight: 600;
+    color: #5b4a32;
+    background: #f0e6d2;
+    padding: 6px 14px;
+    border-radius: 12px;
+  }
+
+  .progress-container {
+    width: 100%;
+    height: 14px;
+    background: #ece0cd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 26px;
+  }
+
+  .progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #6b9e6b;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+  }
+
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 14px 16px;
+    border-radius: 14px;
+    transition: background 0.2s ease;
+  }
+
+  .check-item:hover {
+    background: #f6efe0;
+  }
+
+  .custom-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #b8a68f;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .custom-checkbox:hover {
+    border-color: #6b9e6b;
+  }
+
+  .custom-checkbox:checked {
+    background: #6b9e6b;
+    border-color: #6b9e6b;
+  }
+
+  .custom-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 6px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .check-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #3d2f1f;
+  }
+
+  .check-item:has(.custom-checkbox:checked) .check-label {
+    color: #4a7c4a;
+    text-decoration: line-through;
+    text-decoration-color: #b8d4b8;
+  }
+
+  .reset-button {
+    margin-top: 18px;
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #3d2f1f;
+    background: #f0e6d2;
+    border: 2px solid #d8c9b0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+  .reset-button:hover {
+    background: #e8dcc2;
+  }
+
+  .reset-button:active {
+    transform: scale(0.98);
+  }
+
+  .done-message {
+    display: none;
+    text-align: center;
+    margin-top: 16px;
+    padding: 12px;
+    background: #e8f5e8;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4a7c4a;
+  }
+
+  .done-message.active {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="checklist-container">
+  <div class="header">
+    <h1 class="title">Daily Checklist</h1>
+    <div class="counter" id="counter">Completed: 0 / 5</div>
+  </div>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <ul class="checklist" id="checklist">
+    <li class="check-item">
+      <input type="checkbox" class="custom-checkbox" id="item1" />
+      <label for="item1" class="check-label">Drink water</label>
+    </li>
+    <li class="check-item">
+      <input type="checkbox" class="custom-checkbox" id="item2" />
+      <label for="item2" class="check-label">Stretch</label>
+    </li>
+    <li class="check-item">
+      <input type="checkbox" class="custom-checkbox" id="item3" />
+      <label for="item3" class="check-label">Read 10 pages</label>
+    </li>
+    <li class="check-item">
+      <input type="checkbox" class="custom-checkbox" id="item4" />
+      <label for="item4" class="check-label">Take a walk</label>
+    </li>
+    <li class="check-item">
+      <input type="checkbox" class="custom-checkbox" id="item5" />
+      <label for="item5" class="check-label">Plan tomorrow</label>
+    </li>
+  </ul>
+
+  <div class="done-message" id="doneMessage">All done!</div>
+
+  <button class="reset-button" id="resetButton">Reset</button>
+</div>
+
+<script>
+(function () {
+  const checklist = document.getElementById('checklist');
+  const counter = document.getElementById('counter');
+  const progressBar = document.getElementById('progressBar');
+  const doneMessage = document.getElementById('doneMessage');
+  const resetButton = document.getElementById('resetButton');
+  const checkboxes = Array.from(checklist.querySelectorAll('.custom-checkbox'));
+
+  function updateDisplay() {
+    const checkedCount = checkboxes.filter(cb => cb.checked).length;
+    const total = checkboxes.length;
+    counter.textContent = `Completed: ${checkedCount} / ${total}`;
+    progressBar.style.width = `${(checkedCount / total) * 100}%`;
+
+    if (checkedCount === total) {
+      doneMessage.classList.add('active');
+    } else {
+      doneMessage.classList.remove('active');
+    }
+  }
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', updateDisplay);
+  });
+
+  resetButton.addEventListener('click', () => {
+    checkboxes.forEach(cb => {
+      cb.checked = false;
+    });
+    updateDisplay();
+  });
+
+  updateDisplay();
+})();
+</script>
+
+</body>
+</html>
