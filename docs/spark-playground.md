@@ -1,6 +1,6 @@
-﻿# Spark HTML Playground
+# Spark HTML Playground
 
-The `/demo#spark-playground` section generates standalone HTML using the fixed `spark-x2.6-4b` model. It reuses the server-only `ASTRON_MAAS_API_KEY`. The dedicated endpoint intentionally uses the standard MaaS URL, independently of the knowledge-base chat model overrides. Enable access to this model for the key.
+The `/playground` page (replacing Landscape in the main navigation; `/landscape` and `/astron-landscape` redirect here) generates standalone HTML using the fixed `spark-x2.6-4b` model. It reuses the server-only `ASTRON_MAAS_API_KEY`. The dedicated endpoint intentionally uses the standard MaaS URL, independently of the knowledge-base chat model overrides. Enable access to this model for the key.
 
 Users can select bilingual examples, generate a page, revise the current source, edit and run HTML, switch preview width, copy and download. Requests and generated source are not persisted by this feature. Generation failures preserve the previous result. Stop cancels the browser wait; an upstream call already running may continue until its server timeout.
 

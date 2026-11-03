@@ -1,4 +1,3 @@
-import SparkPlayground from '../components/SparkPlayground';
 import React from 'react';
 import {
   AlertTriangle,
@@ -232,8 +231,6 @@ const DemoHub: React.FC = () => {
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">{t('demo.title')}</h1>
           <p className="mt-3 text-gray-600 max-w-2xl mx-auto">{t('demo.subtitle')}</p>
         </header>
-
-        <SparkPlayground />
 
         <section className="mb-6 rounded-2xl border border-rose-200 bg-rose-50 p-6">
           <div className="flex items-center gap-2 mb-3">
