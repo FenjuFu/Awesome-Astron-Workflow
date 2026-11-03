@@ -59,7 +59,7 @@ const Navigation: React.FC = () => {
         { href: '/#about', label: t('nav.about') },
       ],
     },
-    { href: '/landscape', label: t('nav.landscape') },
+    { href: '/playground', label: t('nav.playground') },
     {
       href: '/demo',
       label: t('nav.demo'),
