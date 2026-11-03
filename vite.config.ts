@@ -12,6 +12,26 @@ function devChatApi(env: Record<string, string>): Plugin {
   return {
     name: 'dev-chat-api',
     configureServer(server) {
+      server.middlewares.use('/api/playground', (req, res) => {
+        if (req.method !== 'POST') { res.statusCode = 405; res.end(); return; }
+        let raw = '';
+        let oversized = false;
+        req.on('data', (chunk) => {
+          if (oversized) return;
+          raw += chunk;
+          if (raw.length > 110000) { oversized = true; res.statusCode = 413; res.end(JSON.stringify({ error: 'Request too large' })); }
+        });
+        req.on('end', async () => {
+          if (oversized) return;
+          res.setHeader('Content-Type', 'application/json');
+          res.setHeader('Cache-Control', 'no-store');
+          try {
+            const { runPlayground } = await import(pathToFileURL(path.resolve(process.cwd(), 'api/_lib/playground-core.js')).href);
+            const { status, json } = await runPlayground(JSON.parse(raw || '{}'), env);
+            res.statusCode = status; res.end(JSON.stringify(json));
+          } catch { res.statusCode = 400; res.end(JSON.stringify({ error: 'Invalid request' })); }
+        });
+      });
       server.middlewares.use('/api/chat', (req, res, next) => {
         if (req.method !== 'POST') return next();
         let raw = '';

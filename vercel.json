@@ -1,5 +1,6 @@
 {
   "functions": {
+    "api/playground.js": { "maxDuration": 100 },
     "api/og/activity.js": {
       "includeFiles": "dist/index.html"
     },
