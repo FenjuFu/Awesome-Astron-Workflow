@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Chen — Product Designer</title>
+<style>
+  :root {
+    --accent: #8b5cf6;
+    --accent-soft: #ede9fe;
+    --bg: #f8f7ff;
+    --card-bg: #ffffff;
+    --text: #1e1b2e;
+    --text-soft: #5b5670;
+    --shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
+  }
+  .dark {
+    --accent: #a78bfa;
+    --accent-soft: #312b4e;
+    --bg: #14121f;
+    --card-bg: #1f1c30;
+    --text: #f5f3ff;
+    --text-soft: #b8b4d4;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  body {
+    min-height: 100vh;
+    background: var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+  .card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 2rem;
+    width: 350px;
+    max-height: 470px;
+    box-shadow: var(--shadow);
+    color: var(--text);
+  }
+  .avatar {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--accent), #6366f1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 18px rgba(139, 92, 246, 0.3);
+  }
+  .avatar span {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .role {
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .bio {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-soft);
+    margin-bottom: 1.5rem;
+  }
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .skill {
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .toggle {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .toggle:hover {
+    background: var(--accent-soft);
+  }
+  .toggle:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="avatar">
+    <span>A</span>
+  </div>
+  <h1 class="name">Alex Chen</h1>
+  <p class="role">Product Designer</p>
+  <p class="bio">A creative product designer focused on building intuitive, accessible experiences that connect people with technology.</p>
+  <div class="skills">
+    <span class="skill">Prototyping</span>
+    <span class="skill">Design systems</span>
+    <span class="skill">Accessibility</span>
+  </div>
+  <button type="button" class="toggle" aria-pressed="false">Toggle theme</button>
+</div>
+<script>
+  const themeToggle = document.querySelector(".toggle");
+  let isDark = false;
+  themeToggle.addEventListener("click", () => {
+    isDark = !isDark;
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    document.body.classList.toggle("dark", isDark);
+  });
+</script>
+</body>
+</html>

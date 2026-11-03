@@ -1,4 +1,5 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import PlaygroundIdeas from './PlaygroundIdeas';
+import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const policy = "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; font-src 'none'; connect-src 'none'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'";
@@ -20,17 +21,6 @@ export default function SparkPlayground() {
   const [copied, setCopied] = useState(false);
   const abort = useRef<AbortController | null>(null);
   useEffect(() => () => abort.current?.abort(), []);
-  const samples = zh ? [
-    ['信息卡片', '制作一张精美的 Spark X2.6 4B 模型介绍卡片，突出轻量、开源、本地部署。使用紫色渐变和清晰的排版，不编造性能数据。'],
-    ['小游戏', '制作一个贪吃蛇小游戏，有分数、重新开始按钮、键盘方向键和手机触摸方向按钮，采用复古像素风。'],
-    ['交互 Demo', '制作一个交互式太阳系演示，可以暂停动画、调整速度，点击行星查看简短介绍，注明大小和距离非真实比例。'],
-    ['实用工具', '制作一个番茄钟，支持工作和休息时间设置、开始暂停重置，用圆形进度展示剩余时间。'],
-  ] : [
-    ['Info card', 'Create a polished Spark X2.6 4B introduction card about its compact size, open weights and local deployment. Use purple gradients. Do not invent benchmark results.'],
-    ['Mini game', 'Build a snake game with score, restart, arrow keys and mobile direction buttons. Use a retro pixel style.'],
-    ['Interactive demo', 'Build an animated solar system with pause, speed controls and clickable planet descriptions. Label size and distances as not to scale.'],
-    ['Useful tool', 'Build a Pomodoro timer with configurable work and break durations, start, pause, reset and a circular progress indicator.'],
-  ];
   async function generate() {
     if (busy || !prompt.trim()) return;
     const controller = new AbortController(); abort.current = controller;
@@ -58,7 +48,7 @@ export default function SparkPlayground() {
     </div>
     <div className="grid lg:grid-cols-[320px_minmax(0,1fr)]">
       <div className="space-y-4 border-b border-gray-100 p-5 lg:border-b-0 lg:border-r">
-        <div className="flex flex-wrap gap-2">{samples.map(([label, value]) => <button type="button" key={label} disabled={busy} className={button} onClick={() => { setPrompt(value); setEdit(false); }}>{label}</button>)}</div>
+        <PlaygroundIdeas zh={zh} disabled={busy} onUse={(value) => { setPrompt(value); setEdit(false); setError(''); document.getElementById('spark-prompt')?.focus(); }} />
         <label className="block text-sm font-medium" htmlFor="spark-prompt">{zh ? '你想做什么？' : 'What would you like to build?'}</label>
         <textarea id="spark-prompt" value={prompt} disabled={busy} maxLength={3000} onChange={e => setPrompt(e.target.value)} className="min-h-40 w-full resize-y rounded-xl border border-gray-300 p-3 text-sm focus:ring-2 focus:ring-indigo-400" placeholder={zh ? '描述外观、内容和交互方式…' : 'Describe the look, content and interactions…'} />
         {code && <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={edit} disabled={busy} onChange={e => setEdit(e.target.checked)} />{zh ? '在当前作品上修改' : 'Edit the current result'}</label>}

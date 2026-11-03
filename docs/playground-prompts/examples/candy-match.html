@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candy Match Game</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+  }
+
+  .game-container {
+    width: min(300px, 100%);
+    height: 470px;
+    background: rgba(30, 27, 75, 0.85);
+    border: 1px solid rgba(167, 139, 250, 0.4);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  .game-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .game-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fef3c7;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .stats {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .stat {
+    flex: 1;
+    background: rgba(167, 139, 250, 0.2);
+    border: 1px solid rgba(167, 139, 250, 0.5);
+    border-radius: 12px;
+    padding: 8px 10px;
+    text-align: center;
+    color: #e0e7ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #c4b5fd;
+  }
+
+  .stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+
+  .board {
+    width: 100%;
+    aspect-ratio: 1;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 4px;
+    margin-top: 12px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px;
+  }
+
+  .tile {
+    background: #a78bfa;
+    border: 1px solid rgba(167, 139, 250, 0.6);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    font-size: clamp(18px, 45%, 32px);
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .tile:hover:not(:disabled) {
+    transform: scale(1.08);
+    background: #b79cf0;
+    box-shadow: 0 6px 14px rgba(167, 139, 250, 0.5);
+  }
+
+  .tile:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+  }
+
+  .tile:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .message {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #fca5a5;
+    text-align: center;
+    min-height: 20px;
+  }
+
+  .restart-btn {
+    margin-top: 12px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border: 1px solid rgba(251, 191, 36, 0.6);
+    border-radius: 12px;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    font-family: inherit;
+    min-width: 140px;
+    justify-content: center;
+  }
+
+  .restart-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(217, 119, 6, 0.5);
+  }
+
+  .restart-btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-header">
+      <h1 class="game-title">Candy Match</h1>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-label">Score</span>
+          <span class="stat-value" id="score">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Moves</span>
+          <span class="stat-value" id="moves">20</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="board" id="board"></div>
+
+    <div class="message" id="message"></div>
+
+    <button class="restart-btn" id="restart-btn" type="button" onclick="reset()">Restart</button>
+  </div>
+
+<script>
+const icons=['🍇','🍓','🍋','🍩'], colors=['#a78bfa','#fb7185','#facc15','#38bdf8'];
+let board=[],score=0,moves=20;
+const rand=()=>Math.floor(Math.random()*4);
+function hasMatch(){return board.some((v,i)=>(i%6<5&&board[i+1]===v)||(i<30&&board[i+6]===v));}
+function fresh(){do{board=Array.from({length:36},rand);}while(!hasMatch());}
+function render(){
+ document.getElementById('score').textContent=score;
+ document.getElementById('moves').textContent=moves;
+ document.getElementById('message').textContent=moves===0?'Game over — restart to play again':'';
+ const grid=document.getElementById('board');grid.replaceChildren();
+ board.forEach((v,i)=>{const b=document.createElement('button');b.type='button';b.textContent=icons[v];b.style.background=colors[v];b.dataset.row=Math.floor(i/6);b.dataset.col=i%6;b.setAttribute('aria-label',icons[v]+' candy');b.disabled=moves===0;b.onclick=()=>pop(i);grid.appendChild(b);});
+}
+function pop(start){
+ if(moves===0)return;
+ const target=board[start],seen=new Set(),stack=[start],group=[];
+ while(stack.length){const i=stack.pop();if(seen.has(i)||board[i]!==target)continue;seen.add(i);group.push(i);if(i%6>0)stack.push(i-1);if(i%6<5)stack.push(i+1);if(i>=6)stack.push(i-6);if(i<30)stack.push(i+6);}
+ if(group.length<2)return;
+ score+=group.length*10;moves--;group.forEach(i=>{board[i]=rand();});
+ if(moves>0&&!hasMatch())fresh();render();
+}
+function reset(){score=0;moves=20;fresh();render();}
+reset();
+</script>
+</body>
+</html>

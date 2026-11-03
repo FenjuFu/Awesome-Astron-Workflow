@@ -1,0 +1,114 @@
+{
+  "date": "2026-11-03",
+  "scope": "One final generated output per prompt, tested in Chromium with the Playground iframe sandbox and CSP. This is not a success-rate benchmark.",
+  "examples": [
+    {
+      "id": "candy-match",
+      "model": "spark-x2.6-4b",
+      "recorded_at": "2026-11-03T09:56:06.948Z",
+      "prompt_sha256": "7dd1381573bbe4204bb10f173939d7ce2c3eba7e4362020c54f46964de7879c4",
+      "output_sha256": "68a0ce6c394ac24028e538a8fcb5aca4c1140aef4c993a64ea03000361d851dd",
+      "browser": {
+        "id": "candy-match",
+        "status": "passed",
+        "dimensions": {
+          "width": 350,
+          "scrollWidth": 350,
+          "height": 500,
+          "scrollHeight": 500
+        },
+        "errors": []
+      }
+    },
+    {
+      "id": "profile-card",
+      "model": "spark-x2.6-4b",
+      "recorded_at": "2026-11-03T09:55:56.306Z",
+      "prompt_sha256": "163f02e77ce094dbcfcbe62ac040698e0a3e0d294752f2946910cc995b7dd443",
+      "output_sha256": "62a37e41aa49544691ced4b75527cf245ed9a48e577d40140925714b16d67e6f",
+      "browser": {
+        "id": "profile-card",
+        "status": "passed",
+        "dimensions": {
+          "width": 350,
+          "scrollWidth": 350,
+          "height": 500,
+          "scrollHeight": 534
+        },
+        "errors": []
+      }
+    },
+    {
+      "id": "focus-timer",
+      "model": "spark-x2.6-4b",
+      "recorded_at": "2026-11-03T09:56:24.903Z",
+      "prompt_sha256": "ec84ed60db98e2f809f6213201d1e59ff270dae89bdd9ac8b792e6f04acb850a",
+      "output_sha256": "c9aacfcb93a6728168cf4c93560f54fadd409402caf708225ac48db1fff2bd88",
+      "browser": {
+        "id": "focus-timer",
+        "status": "passed",
+        "dimensions": {
+          "width": 350,
+          "scrollWidth": 350,
+          "height": 500,
+          "scrollHeight": 500
+        },
+        "errors": []
+      }
+    },
+    {
+      "id": "gradient-studio",
+      "model": "spark-x2.6-4b",
+      "recorded_at": "2026-11-03T09:53:57.060Z",
+      "prompt_sha256": "ddd99b476792d35778db44c4e6b634519c43fcd4d2dc48202e9c9d937b5db85d",
+      "output_sha256": "cd3e3ece57db08310c93f0d196034a20330f07b415719e42dee7824248f52d11",
+      "browser": {
+        "id": "gradient-studio",
+        "status": "passed",
+        "dimensions": {
+          "width": 350,
+          "scrollWidth": 350,
+          "height": 500,
+          "scrollHeight": 510
+        },
+        "errors": []
+      }
+    },
+    {
+      "id": "mini-quiz",
+      "model": "spark-x2.6-4b",
+      "recorded_at": "2026-11-03T09:56:24.503Z",
+      "prompt_sha256": "750ae383f681a1dcbe766df1dc76c59a3af6d61bf735fa6bbd252b92d8ff29cd",
+      "output_sha256": "80806aaefac96c29c023cb58d3123d91342300a89aede4f19ae0abe80524a2cb",
+      "browser": {
+        "id": "mini-quiz",
+        "status": "passed",
+        "dimensions": {
+          "width": 350,
+          "scrollWidth": 350,
+          "height": 500,
+          "scrollHeight": 552
+        },
+        "errors": []
+      }
+    },
+    {
+      "id": "daily-checklist",
+      "model": "spark-x2.6-4b",
+      "recorded_at": "2026-11-03T09:54:24.716Z",
+      "prompt_sha256": "1d6e120162c15b130b76dc9950cbc5873d4ec3ddbd3b892f13fcb9b340778314",
+      "output_sha256": "8e38fdc8b18ba3ef1643a0a96695ea1acab656bf9cbc4cd622a5e60999f0a8bf",
+      "browser": {
+        "id": "daily-checklist",
+        "status": "passed",
+        "dimensions": {
+          "width": 350,
+          "scrollWidth": 350,
+          "height": 500,
+          "scrollHeight": 500
+        },
+        "errors": []
+      }
+    }
+  ]
+}
