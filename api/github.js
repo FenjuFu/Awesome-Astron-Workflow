@@ -670,7 +670,13 @@ const PINNED_TARGET_REPOS = [
   'iflytek/website',
   'harnessclaw/harnessclaw',
   'harnessclaw/harnessclaw-engine',
-  'XHToken/Spark-X2.5',
+  // XHToken repositories tagged sparkllm (verified 2026-11-05).
+  // Spark-X2.5 redirects to Spark-X2.6; count the canonical repository once.
+  'XHToken/Spark-X2.6',
+  'XHToken/Spark-MLX-LLM',
+  'XHToken/opencode-XCoSpan',
+  'XHToken/dsh-intelligent-router',
+  'XHToken/codex-XCoSpan',
 ];
 const CACHE_REFRESH_INTERVAL_MS = 6 * 60 * 60 * 1000;
 // Soft threshold for stale-while-revalidate: a cached snapshot is still served
