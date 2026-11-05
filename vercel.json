@@ -19,6 +19,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/activities/quiz", "destination": "/index.html" },
     {
       "source": "/api/activities/create",
       "destination": "/api/activities"

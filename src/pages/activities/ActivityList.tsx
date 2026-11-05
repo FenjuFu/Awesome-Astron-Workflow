@@ -62,6 +62,9 @@ const ActivityList: React.FC = () => {
           </p>
         </div>
 
+        <Link to="/activities/quiz" className="mb-8 flex flex-col gap-4 rounded-2xl bg-slate-900 p-8 text-white shadow-lg sm:flex-row sm:items-center sm:justify-between">
+          <div><p className="mb-2 text-sm font-bold tracking-widest text-violet-300">ASTRON LIVE QUIZ</p><h2 className="text-2xl font-bold">{language === 'zh-CN' ? '多人答题 · 实时排行榜' : 'Live quiz · Multiplayer leaderboard'}</h2><p className="mt-2 text-slate-300">{language === 'zh-CN' ? '主持人出题，全场同时挑战。输入房间码，看看谁能冲上榜首！' : 'Host a quiz, share a room code, and race to the top together.'}</p></div><span className="shrink-0 rounded-xl bg-violet-500 px-6 py-3 font-bold">{language === 'zh-CN' ? '进入答题 →' : 'Play now →'}</span>
+        </Link>
         {/* Lucky Draw Banner */}
         <div className="mb-12">
           <Link 
