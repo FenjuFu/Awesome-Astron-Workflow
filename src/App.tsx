@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import ContributionStats from './pages/ContributionStats';
 import { LanguageProvider } from './contexts/LanguageContext';
 import ActivityList from './pages/activities/ActivityList';
+import LiveQuiz from './pages/activities/LiveQuiz';
 import ActivityDetail from './pages/activities/ActivityDetail';
 import LuckyDraw from './pages/activities/LuckyDraw';
 import LuckyDrawAdmin from './pages/activities/LuckyDrawAdmin';
@@ -35,6 +36,7 @@ const routePatterns = [
   '/stats',
   '/stats/admin',
   '/activities',
+  '/activities/quiz',
   '/activities/lucky_draw',
   '/activities/lucky_draw/admin',
   '/activities/admin',
@@ -112,6 +114,7 @@ function App() {
           <Route path="/stats" element={<ContributionStats />} />
           <Route path="/stats/admin" element={<RedemptionManage />} />
           <Route path="/activities" element={<ActivityList />} />
+          <Route path="/activities/quiz" element={<LiveQuiz />} />
           <Route path="/activities/lucky_draw" element={<LuckyDraw />} />
           <Route path="/activities/lucky_draw/admin" element={<LuckyDrawAdmin />} />
           <Route path="/activities/admin" element={<AdminDashboard />} />
