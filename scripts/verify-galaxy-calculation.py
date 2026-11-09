@@ -3,6 +3,7 @@ import gzip
 import importlib.util
 import json
 from pathlib import Path
+from galaxy_automation import automation_reason
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('calc',Path(__file__).with_name('compute-galaxy-openrank.py'))
 calc=importlib.util.module_from_spec(spec);spec.loader.exec_module(calc)
@@ -22,7 +23,12 @@ for project in snapshot['projects']:
     assert residual<1e-10
     for c in project['contributors']:
         assert abs(values[graph['nodes'].index('user:'+c['login'])]-c['openrank'])<1e-8
-    code_names={c['login'].casefold().removesuffix('[bot]') for c in raw['codeContributors']}
+    code_names={c['login'].casefold().removesuffix('[bot]') for c in raw['codeContributors'] if not automation_reason(c)}
     ranked_names={c['login'].casefold().removesuffix('[bot]') for c in project['contributors']}
     assert code_names <= ranked_names
+    assert all(not automation_reason(c) for c in project['contributors'])
+    assert all(not automation_reason({'login':e['login']}) for e in published['eventLedger'])
+    excluded_names={c['login'].casefold() for c in published['automationExclusions']['accounts']}
+    assert not excluded_names.intersection(c['login'].casefold() for c in project['contributors'])
+    assert not any(n[5:].casefold() in excluded_names for n in graph['nodes'] if n.startswith('user:'))
     print(name, 'PASS',len(project['contributors']),'accounts',published['events'],'observed relations', 'residual',residual)
