@@ -9,10 +9,12 @@ import hashlib
 import gzip
 import json
 from pathlib import Path
+from galaxy_automation import automation_reason, POLICY
 
 ROOT = Path(__file__).resolve().parents[1]
 PARAMETERS = {
- 'model': 'astron-community-all-history-v1',
+ 'model': 'astron-community-all-history-no-automation-v2',
+ 'automationExclusion': POLICY,
  'formula': 'x_i(next) = r_i * b_i + (1-r_i) * sum_j(w_ji * x_j)',
  'initial': {'developer':1, 'repository':1, 'issue':2, 'pr':3, 'merged_pr':5, 'direct_commit':1, 'code_summary':1, 'unavailable_item':1},
  'retention': {'developer':.15, 'repository':.15, 'work_item':.8},
@@ -46,9 +48,20 @@ def digest(value):
 
 def calculate(raw):
     name=raw['repo']; people={}; units={}; events=[]; seen=set(); gaps=Counter(); code_counts={}; canonical_names={}
+    excluded_accounts={};excluded_events={}
+    def excluded(person):
+        reason=automation_reason(person)
+        if not reason:return None
+        login=person['login']
+        if person.get('__typename')=='Bot' and not login.endswith('[bot]'):login+='[bot]'
+        key=login.casefold()
+        entry=excluded_accounts.setdefault(key,{'login':login,'type':person.get('__typename','User'),'url':person.get('url') or 'https://github.com/'+login,'reason':reason,'aliases':[]})
+        if person['login'] not in entry['aliases']:entry['aliases'].append(person['login'])
+        return entry
     def actor(person):
         if not person or not person.get('login'):
             gaps['unlinkedActorOccurrences']+=1; return None
+        if excluded(person):return None
         login=person['login']
         if person.get('__typename')=='Bot' and not login.endswith('[bot]'):login+='[bot]'
         login=canonical_names.setdefault(login.casefold(),login)
@@ -56,6 +69,11 @@ def calculate(raw):
             'avatar':person['avatarUrl'],'type':person.get('__typename','User'),'stats':Counter(),'dates':[]})
         return login
     def event(unit, person, kind, date, identifier, weight=None):
+        blocked=excluded(person)
+        if blocked:
+            excluded_events[(kind,identifier,blocked['login'].casefold())]={'id':identifier,'unit':unit,'login':blocked['login'],'kind':kind,'at':date,'reason':blocked['reason']}
+            if unit in units:units[unit]['hadAutomation']=True
+            return
         login=actor(person)
         if not login:return
         # The same close/merge or commit is never credited twice to an account.
@@ -67,7 +85,8 @@ def calculate(raw):
         if date:people[login]['dates'].append(date)
         events.append({'id':identifier,'unit':unit,'login':login,'kind':kind,'at':date})
     for c in raw.get('codeContributors',[]):
-        login=actor(c);code_counts[login]=c['contributions']
+        login=actor(c)
+        if login:code_counts[login]=c['contributions']
     all_work=sorted(raw['issues']+raw['pullRequests'],key=lambda u:(u['createdAt'],u['number']))
     associated_commits={edge['commit']['oid'] for p in raw['pullRequests'] for edge in p['commits']}
     for u in all_work:
@@ -85,6 +104,9 @@ def calculate(raw):
             for edge in u['commits']:
                 commit=edge['commit'];authors=[a['user'] for a in commit['authors']['nodes'] if a['user']]
                 gaps['unlinkedCommitAuthorOccurrences']+=sum(a['user'] is None for a in commit['authors']['nodes'])
+                for person in authors:
+                    if automation_reason(person):event(uid,person,'commit',commit['committedDate'],commit['oid'])
+                authors=[p for p in authors if not automation_reason(p)]
                 for person in authors:event(uid,person,'commit',commit['committedDate'],commit['oid'],1/len(authors))
     for group,kind in [('comments','comment'),('reviewComments','review_comment')]:
         for c in raw[group]:
@@ -101,19 +123,29 @@ def calculate(raw):
         gaps['unlinkedCommitAuthorOccurrences']+=sum(a['user'] is None for a in commit['authors']['nodes'])
         if not authors:gaps['directCommitsWithoutLinkedAccount']+=1;continue
         uid='commit:'+commit['oid']
+        for person in authors:
+            if automation_reason(person):event(uid,person,'commit',commit['committedDate'],commit['oid'])
+        authors=[p for p in authors if not automation_reason(p)]
+        if not authors:continue
         units[uid]={'id':uid,'kind':'direct_commit','url':f'https://github.com/iflytek/{name}/commit/{commit["oid"]}',
                     'base':1,'authors':[actor(p) for p in authors],'weights':Counter()}
         if commit['committedDate']<raw['meta']['created_at']:gaps['importedCommitsPredatingRepository']+=1
         for person in authors:event(uid,person,'commit',commit['committedDate'],commit['oid'],1/len(authors))
     for c in raw.get('codeContributors',[]):
         login=actor(c)
+        if not login:continue
         if not people[login]['stats']:
             uid='summary:'+login
             units[uid]={'id':uid,'kind':'code_summary','url':f'https://github.com/iflytek/{name}/graphs/contributors',
                         'base':1,'authors':[login],'weights':Counter()}
             event(uid,c,'code_summary',None,uid)
             gaps['codeContributorSummaryFallbacks']+=1
-    # Repository, work item and account nodes, with independently constructed edges.
+    removed_units=[uid for uid,u in units.items() if u.get('hadAutomation') and not u['weights']]
+    for uid in removed_units:del units[uid]
+    exclusions={'policy':POLICY,'accounts':sorted(excluded_accounts.values(),key=lambda p:p['login'].casefold()),
+                'accountCount':len(excluded_accounts),'eventCount':len(excluded_events),
+                'removedAutomationOnlyWorkItems':removed_units,'eventLedger':list(excluded_events.values())}
+    # Repository, work item and eligible account nodes, after automation exclusion.
     logins=sorted(people,key=str.lower);unit_ids=sorted(units)
     ids=['repo:'+name]+['item:'+u for u in unit_ids]+['user:'+p for p in logins]
     index={key:i for i,key in enumerate(ids)}
@@ -161,7 +193,7 @@ def calculate(raw):
     report={'repository':'iflytek/'+name,'parameters':PARAMETERS,'inputSha256':digest(raw),'graphSha256':digest(graph),
         'capture':{'startedAt':raw['startedAt'],'completedAt':raw['completedAt'],'defaultHead':raw['defaultHead']},
         'coverage':{k:len(raw[k]) for k in ['issues','pullRequests','comments','reviewComments','defaultCommits','codeContributors']},
-        'participants':len(contributors),'events':len(events),'workItems':len(unit_ids),'gaps':dict(gaps),
+        'participants':len(contributors),'events':len(events),'workItems':len(unit_ids),'gaps':dict(gaps),'automationExclusions':exclusions,
         'iterations':iterations,'residual':residual,'repositoryOpenRank':values[0],
         'scores':{p['login']:p['openrank'] for p in contributors},'graph':graph,'eventLedger':events}
     meta=raw['meta']
@@ -171,6 +203,7 @@ def calculate(raw):
           'openrankCoverage':{'firstMonth':meta['created_at'][:7],'lastMonth':raw['completedAt'][:7],'months':0,'gapMonths':0,'monthsSinceLast':0},
           'historyStart':meta['created_at'][:10],'historyEnd':raw['completedAt'][:10],
           'calculation':{k:report[k] for k in ['coverage','participants','events','workItems','gaps','iterations','residual','graphSha256']},
+          'automationExclusions':{k:exclusions[k] for k in ['accounts','accountCount','eventCount','removedAutomationOnlyWorkItems']},
           'contributors':contributors}
     return repo,report
 

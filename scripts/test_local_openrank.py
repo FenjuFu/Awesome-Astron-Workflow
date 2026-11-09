@@ -1,6 +1,8 @@
 import importlib.util
 from pathlib import Path
 import unittest
+import copy
+from galaxy_automation import automation_reason
 
 spec=importlib.util.spec_from_file_location('local_openrank',Path(__file__).with_name('compute-galaxy-openrank.py'))
 calc=importlib.util.module_from_spec(spec);spec.loader.exec_module(calc)
@@ -18,17 +20,37 @@ class LocalOpenRankTest(unittest.TestCase):
         self.assertGreater(project['contributors'][0]['openrank'],0)
         self.assertEqual(report['gaps']['unavailableParentItems'],1)
         self.assertEqual(report['gaps']['commentsWithUnavailableParent'],1)
-    def test_graphql_rest_bot_aliases_are_one_account(self):
+    def test_graphql_rest_bot_aliases_are_excluded_once(self):
         bot={**person('review-app'),'__typename':'Bot'}
         rest_bot={**person('review-app[bot]'),'__typename':'Bot'}
         raw={'repo':'test','meta':{'created_at':'2019-01-01','html_url':'https://github.com/test','stargazers_count':0,'forks_count':0},
              'issues':[{'id':'I1','number':1,'url':'https://github.com/test/issues/1','kind':'issue','createdAt':'2020-01-01','author':bot,'closings':[]}],
              'pullRequests':[],'comments':[{'id':'C1','unitNumber':1,'createdAt':'2020-01-02','author':rest_bot}],
              'reviewComments':[],'defaultCommits':[],'codeContributors':[],'startedAt':'2026-11-09','completedAt':'2026-11-09','defaultHead':None}
-        project,_=calc.calculate(raw)
-        self.assertEqual(len(project['contributors']),1)
-        self.assertEqual(project['contributors'][0]['login'],'review-app[bot]')
-        self.assertEqual(project['contributors'][0]['observedEvents'],2)
+        project,report=calc.calculate(raw)
+        self.assertEqual(project['contributors'],[])
+        self.assertEqual(report['automationExclusions']['accountCount'],1)
+        self.assertEqual(report['automationExclusions']['eventCount'],2)
+        self.assertEqual(report['graph']['nodes'],['repo:test'])
+    def test_explicit_ai_services_not_similarly_named_people(self):
+        for name in ['claude','Copilot','CLAassistant','chatgpt','gemini-code-assist','github-actions','github-advanced-security[bot]']:
+            self.assertIsNotNone(automation_reason(person(name)))
+        for name in ['claudechen','claudette','copilotto','roboticsfan','alice']:
+            self.assertIsNone(automation_reason(person(name)))
+    def test_bot_activity_does_not_change_remaining_network(self):
+        raw={'repo':'test','meta':{'created_at':'2019-01-01','html_url':'https://github.com/test','stargazers_count':0,'forks_count':0},
+             'issues':[{'id':'I1','number':1,'url':'https://github.com/test/issues/1','kind':'issue','createdAt':'2020-01-01','author':person('alice'),'closings':[]}],
+             'pullRequests':[],'comments':[],'reviewComments':[],'defaultCommits':[commit('aaa','alice')],
+             'codeContributors':[],'startedAt':'2026-11-09','completedAt':'2026-11-09','defaultHead':'aaa'}
+        _,baseline=calc.calculate(raw)
+        with_bots=copy.deepcopy(raw);bot={**person('github-actions'),'__typename':'Bot'}
+        with_bots['comments']=[{'id':f'B{i}','unitNumber':1,'createdAt':'2020-01-02','author':bot} for i in range(100)]
+        with_bots['issues'].append({'id':'I2','number':2,'url':'https://github.com/test/issues/2','kind':'issue','createdAt':'2020-01-02','author':bot,'closings':[]})
+        with_bots['defaultCommits'][0]['authors']['nodes'].append({'user':bot})
+        with_bots['codeContributors']=[{**bot,'contributions':999}]
+        _,filtered=calc.calculate(with_bots)
+        self.assertEqual(filtered['scores'],baseline['scores'])
+        self.assertEqual(filtered['graphSha256'],baseline['graphSha256'])
     def test_symmetric_fixed_point(self):
         values,iterations,residual=calc.solve([1,1],[.15,.15],[[(1,1)],[(0,1)]])
         self.assertEqual(values,[1,1]);self.assertLess(residual,1e-10)
