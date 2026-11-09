@@ -8,6 +8,8 @@ import datetime
 import hashlib
 import gzip
 import json
+import subprocess
+import sys
 from pathlib import Path
 from galaxy_automation import automation_reason, POLICY
 
@@ -223,5 +225,6 @@ def main():
       'method':'Independently collect public GitHub history and solve a full-history repository collaboration network with the OpenRank equation. No externally published scores are used.',
       'parameters':PARAMETERS,'projects':projects}
     (ROOT/'src/data/galaxy.json').write_text(json.dumps(result,indent=2),encoding='utf8')
+    subprocess.run([sys.executable,str(Path(__file__).with_name('build-openrank-examples.py'))],check=True)
 
 if __name__=='__main__':main()
