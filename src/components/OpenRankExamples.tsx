@@ -12,6 +12,19 @@ export default function OpenRankExamples({ zh }: { zh: boolean }) {
     {!valid ? <p>{zh ? '当前榜单的数值示例待更新，请查看最新计算账本。' : 'Examples for this leaderboard version are pending; consult the current calculation ledger.'}</p> : <>
       <p>{zh ? '以下代入当前榜单实际收敛图，初始值 b、保留系数 r 和每一项网络输入均来自计算账本。' : 'These examples use the current leaderboard’s converged graph. Initial value b, retention r and every network input come from the calculation ledger.'}</p>
       <code>R = r × b + (1 − r) × Σ(w × R_item)</code>
+      <div className="galaxy-formula-explanation">
+        <p><strong>{zh ? 'OpenRank 分值 = 保留系数 × 初始值 +（1 − 保留系数）× 所有相关协作事项的加权输入之和' : 'OpenRank score = retention factor × initial value + (1 − retention factor) × the sum of weighted inputs from all related work items'}</strong></p>
+        <p>{zh ? '其中：' : 'Where:'}</p>
+        <ul className="list-disc pl-4">
+          <li><strong>{zh ? 'r（保留系数）' : 'r (retention factor)'}</strong>{zh ? '：初始值在最终得分中的权重。' : ': the weight of the initial value in the final score.'}</li>
+          <li><strong>{zh ? 'b（初始值）' : 'b (initial value)'}</strong>{zh ? '：该账号在计算开始时设定的基础值。' : ': the baseline assigned to the account at the start of the calculation.'}</li>
+          <li><strong>{zh ? 'w（边权重）' : 'w (edge weight)'}</strong>{zh ? '：某个协作事项向该账号分配影响力的比例。' : ': the proportion of influence a work item allocates to the account.'}</li>
+          <li><strong>{zh ? 'R_item（协作事项分值）' : 'R_item (work-item score)'}</strong>{zh ? '：该事项经过整张协作网络迭代计算后的分值。' : ': the item’s score after iterative calculation across the entire collaboration network.'}</li>
+          <li><strong>{zh ? 'Σ（求和）' : 'Σ (summation)'}</strong>{zh ? '：将每个相关事项的“边权重 × 事项分值”相加。' : ': add “edge weight × item score” for every related item.'}</li>
+        </ul>
+        <p>{zh ? '在本站当前模型中，开发者的 ' : 'In this site’s current model, developers use '}<strong>{zh ? 'r = 0.15、b = 1' : 'r = 0.15, b = 1'}</strong>{zh ? '，因此可以读成：' : ', so this reads as:'}</p>
+        <p><strong>{zh ? '最终分值 = 0.15 + 0.85 × 协作网络传入的加权分值总和。' : 'Final score = 0.15 + 0.85 × the total weighted score received from the collaboration network.'}</strong></p>
+      </div>
       {examples.examples.map(example => <section key={example.login} className="galaxy-score-example" data-example-login={example.login}>
         <h3>#{example.rank} <a href={example.profileUrl} target="_blank" rel="noopener noreferrer">{example.login} ↗</a></h3>
         <p>{zh ? `来自 ${example.termCount} 个协作事项的加权输入合计：` : `Weighted input from ${example.termCount} work items:`} <strong>{decimal(example.incomingTotal, 9)}</strong></p>
