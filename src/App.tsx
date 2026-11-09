@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import {
   BrowserRouter,
   Routes,
@@ -25,6 +25,8 @@ import Privacy from './pages/Privacy';
 import Playground from './pages/Playground';
 import DemoHub from './pages/DemoHub';
 
+const AstronGalaxy = lazy(() => import('./pages/AstronGalaxy'));
+
 const routePatterns = [
   '/',
   '/chat',
@@ -33,6 +35,7 @@ const routePatterns = [
   '/landscape',
   '/astron-landscape',
   '/demo',
+  '/galaxy',
   '/stats',
   '/stats/admin',
   '/activities',
@@ -111,6 +114,7 @@ function App() {
           <Route path="/landscape" element={<Navigate to="/playground" replace />} />
           <Route path="/astron-landscape" element={<Navigate to="/playground" replace />} />
           <Route path="/demo" element={<DemoHub />} />
+          <Route path="/galaxy" element={<Suspense fallback={<div className="min-h-screen bg-slate-950 text-white p-8" role="status">Loading Astron Galaxy…</div>}><AstronGalaxy /></Suspense>} />
           <Route path="/stats" element={<ContributionStats />} />
           <Route path="/stats/admin" element={<RedemptionManage />} />
           <Route path="/activities" element={<ActivityList />} />

@@ -60,6 +60,7 @@ const Navigation: React.FC = () => {
       ],
     },
     { href: '/playground', label: t('nav.playground') },
+    { href: '/galaxy', label: language === 'en' ? 'Galaxy' : '星系' },
     {
       href: '/demo',
       label: t('nav.demo'),

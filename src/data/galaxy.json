@@ -1,0 +1,561 @@
+{
+  "capturedAt": "2026-11-09T09:53:55.154251+00:00",
+  "method": "GitHub repository counters and first 30 contributors per repository, ordered by contributions. Not a full contributor census or OpenRank.",
+  "projects": [
+    {
+      "id": "astron-agent",
+      "url": "https://github.com/iflytek/astron-agent",
+      "stars": 8919,
+      "forks": 911,
+      "archived": false,
+      "source": "https://api.github.com/repos/iflytek/astron-agent",
+      "contributorsSource": "https://api.github.com/repos/iflytek/astron-agent/contributors?per_page=30&anon=false",
+      "contributors": [
+        {
+          "login": "yjlu666",
+          "url": "https://github.com/yjlu666",
+          "contributions": 881,
+          "type": "User"
+        },
+        {
+          "login": "BillorBear",
+          "url": "https://github.com/BillorBear",
+          "contributions": 209,
+          "type": "User"
+        },
+        {
+          "login": "vsxd",
+          "url": "https://github.com/vsxd",
+          "contributions": 185,
+          "type": "User"
+        },
+        {
+          "login": "mingsuiyongheng",
+          "url": "https://github.com/mingsuiyongheng",
+          "contributions": 154,
+          "type": "User"
+        },
+        {
+          "login": "Alex-Smith-1234",
+          "url": "https://github.com/Alex-Smith-1234",
+          "contributions": 145,
+          "type": "User"
+        },
+        {
+          "login": "hygao1024",
+          "url": "https://github.com/hygao1024",
+          "contributions": 136,
+          "type": "User"
+        },
+        {
+          "login": "sharphu",
+          "url": "https://github.com/sharphu",
+          "contributions": 129,
+          "type": "User"
+        },
+        {
+          "login": "yun-zhi-ztl",
+          "url": "https://github.com/yun-zhi-ztl",
+          "contributions": 119,
+          "type": "User"
+        },
+        {
+          "login": "slqcode",
+          "url": "https://github.com/slqcode",
+          "contributions": 113,
+          "type": "User"
+        },
+        {
+          "login": "Kexinist",
+          "url": "https://github.com/Kexinist",
+          "contributions": 93,
+          "type": "User"
+        },
+        {
+          "login": "FenjuFu",
+          "url": "https://github.com/FenjuFu",
+          "contributions": 80,
+          "type": "User"
+        },
+        {
+          "login": "zyzy0116",
+          "url": "https://github.com/zyzy0116",
+          "contributions": 72,
+          "type": "User"
+        },
+        {
+          "login": "woicw",
+          "url": "https://github.com/woicw",
+          "contributions": 65,
+          "type": "User"
+        },
+        {
+          "login": "byliu",
+          "url": "https://github.com/byliu",
+          "contributions": 58,
+          "type": "User"
+        },
+        {
+          "login": "lantianhemao",
+          "url": "https://github.com/lantianhemao",
+          "contributions": 42,
+          "type": "User"
+        },
+        {
+          "login": "zhubin4615",
+          "url": "https://github.com/zhubin4615",
+          "contributions": 37,
+          "type": "User"
+        },
+        {
+          "login": "Thomas1024-Astron",
+          "url": "https://github.com/Thomas1024-Astron",
+          "contributions": 37,
+          "type": "User"
+        },
+        {
+          "login": "scguoi",
+          "url": "https://github.com/scguoi",
+          "contributions": 35,
+          "type": "User"
+        },
+        {
+          "login": "yixinmeng",
+          "url": "https://github.com/yixinmeng",
+          "contributions": 34,
+          "type": "User"
+        },
+        {
+          "login": "hant1",
+          "url": "https://github.com/hant1",
+          "contributions": 32,
+          "type": "User"
+        },
+        {
+          "login": "jinhao",
+          "url": "https://github.com/jinhao",
+          "contributions": 27,
+          "type": "User"
+        },
+        {
+          "login": "mixiangsiyi",
+          "url": "https://github.com/mixiangsiyi",
+          "contributions": 25,
+          "type": "User"
+        },
+        {
+          "login": "likes1234-bro",
+          "url": "https://github.com/likes1234-bro",
+          "contributions": 24,
+          "type": "User"
+        },
+        {
+          "login": "cumthxy",
+          "url": "https://github.com/cumthxy",
+          "contributions": 22,
+          "type": "User"
+        },
+        {
+          "login": "dm57",
+          "url": "https://github.com/dm57",
+          "contributions": 19,
+          "type": "User"
+        },
+        {
+          "login": "Laevata1n",
+          "url": "https://github.com/Laevata1n",
+          "contributions": 19,
+          "type": "User"
+        },
+        {
+          "login": "wq457",
+          "url": "https://github.com/wq457",
+          "contributions": 18,
+          "type": "User"
+        },
+        {
+          "login": "ssyamv",
+          "url": "https://github.com/ssyamv",
+          "contributions": 15,
+          "type": "User"
+        },
+        {
+          "login": "MacGe",
+          "url": "https://github.com/MacGe",
+          "contributions": 15,
+          "type": "User"
+        },
+        {
+          "login": "dongjiang1989",
+          "url": "https://github.com/dongjiang1989",
+          "contributions": 14,
+          "type": "User"
+        }
+      ]
+    },
+    {
+      "id": "skillhub",
+      "url": "https://github.com/iflytek/skillhub",
+      "stars": 5376,
+      "forks": 818,
+      "archived": false,
+      "source": "https://api.github.com/repos/iflytek/skillhub",
+      "contributorsSource": "https://api.github.com/repos/iflytek/skillhub/contributors?per_page=30&anon=false",
+      "contributors": [
+        {
+          "login": "XiaoSeS",
+          "url": "https://github.com/XiaoSeS",
+          "contributions": 780,
+          "type": "User"
+        },
+        {
+          "login": "dongmucat",
+          "url": "https://github.com/dongmucat",
+          "contributions": 371,
+          "type": "User"
+        },
+        {
+          "login": "vsxd",
+          "url": "https://github.com/vsxd",
+          "contributions": 236,
+          "type": "User"
+        },
+        {
+          "login": "yun-zhi-ztl",
+          "url": "https://github.com/yun-zhi-ztl",
+          "contributions": 190,
+          "type": "User"
+        },
+        {
+          "login": "wowo-zZ",
+          "url": "https://github.com/wowo-zZ",
+          "contributions": 66,
+          "type": "User"
+        },
+        {
+          "login": "FenjuFu",
+          "url": "https://github.com/FenjuFu",
+          "contributions": 65,
+          "type": "User"
+        },
+        {
+          "login": "xiaoyaner0201",
+          "url": "https://github.com/xiaoyaner0201",
+          "contributions": 55,
+          "type": "User"
+        },
+        {
+          "login": "Pipreola",
+          "url": "https://github.com/Pipreola",
+          "contributions": 19,
+          "type": "User"
+        },
+        {
+          "login": "tap-top",
+          "url": "https://github.com/tap-top",
+          "contributions": 13,
+          "type": "User"
+        },
+        {
+          "login": "jangrui",
+          "url": "https://github.com/jangrui",
+          "contributions": 11,
+          "type": "User"
+        },
+        {
+          "login": "Vast-Stars",
+          "url": "https://github.com/Vast-Stars",
+          "contributions": 7,
+          "type": "User"
+        },
+        {
+          "login": "myml",
+          "url": "https://github.com/myml",
+          "contributions": 7,
+          "type": "User"
+        },
+        {
+          "login": "likes1234-bro",
+          "url": "https://github.com/likes1234-bro",
+          "contributions": 6,
+          "type": "User"
+        },
+        {
+          "login": "LHB6540",
+          "url": "https://github.com/LHB6540",
+          "contributions": 4,
+          "type": "User"
+        },
+        {
+          "login": "zjncs",
+          "url": "https://github.com/zjncs",
+          "contributions": 4,
+          "type": "User"
+        },
+        {
+          "login": "Danny5487401",
+          "url": "https://github.com/Danny5487401",
+          "contributions": 4,
+          "type": "User"
+        },
+        {
+          "login": "michael-xiii",
+          "url": "https://github.com/michael-xiii",
+          "contributions": 4,
+          "type": "User"
+        },
+        {
+          "login": "gale-popai",
+          "url": "https://github.com/gale-popai",
+          "contributions": 3,
+          "type": "User"
+        },
+        {
+          "login": "mosesyu95",
+          "url": "https://github.com/mosesyu95",
+          "contributions": 3,
+          "type": "User"
+        },
+        {
+          "login": "strawberryOJam",
+          "url": "https://github.com/strawberryOJam",
+          "contributions": 3,
+          "type": "User"
+        },
+        {
+          "login": "thiagonogueira",
+          "url": "https://github.com/thiagonogueira",
+          "contributions": 2,
+          "type": "User"
+        },
+        {
+          "login": "tenten-shih",
+          "url": "https://github.com/tenten-shih",
+          "contributions": 2,
+          "type": "User"
+        },
+        {
+          "login": "shychee",
+          "url": "https://github.com/shychee",
+          "contributions": 2,
+          "type": "User"
+        },
+        {
+          "login": "dongjiang1989",
+          "url": "https://github.com/dongjiang1989",
+          "contributions": 2,
+          "type": "User"
+        },
+        {
+          "login": "betterlmy",
+          "url": "https://github.com/betterlmy",
+          "contributions": 2,
+          "type": "User"
+        },
+        {
+          "login": "Rsweater",
+          "url": "https://github.com/Rsweater",
+          "contributions": 2,
+          "type": "User"
+        },
+        {
+          "login": "Jyoung706",
+          "url": "https://github.com/Jyoung706",
+          "contributions": 2,
+          "type": "User"
+        },
+        {
+          "login": "CaffreySun",
+          "url": "https://github.com/CaffreySun",
+          "contributions": 1,
+          "type": "User"
+        },
+        {
+          "login": "yaffir",
+          "url": "https://github.com/yaffir",
+          "contributions": 1,
+          "type": "User"
+        },
+        {
+          "login": "xring",
+          "url": "https://github.com/xring",
+          "contributions": 1,
+          "type": "User"
+        }
+      ]
+    },
+    {
+      "id": "astron-rpa",
+      "url": "https://github.com/iflytek/astron-rpa",
+      "stars": 5252,
+      "forks": 484,
+      "archived": false,
+      "source": "https://api.github.com/repos/iflytek/astron-rpa",
+      "contributorsSource": "https://api.github.com/repos/iflytek/astron-rpa/contributors?per_page=30&anon=false",
+      "contributors": [
+        {
+          "login": "doctorbruce",
+          "url": "https://github.com/doctorbruce",
+          "contributions": 93,
+          "type": "User"
+        },
+        {
+          "login": "bijinfeng",
+          "url": "https://github.com/bijinfeng",
+          "contributions": 79,
+          "type": "User"
+        },
+        {
+          "login": "horizon220222",
+          "url": "https://github.com/horizon220222",
+          "contributions": 76,
+          "type": "User"
+        },
+        {
+          "login": "blessleon",
+          "url": "https://github.com/blessleon",
+          "contributions": 51,
+          "type": "User"
+        },
+        {
+          "login": "chunhuitang",
+          "url": "https://github.com/chunhuitang",
+          "contributions": 31,
+          "type": "User"
+        },
+        {
+          "login": "kuangruike",
+          "url": "https://github.com/kuangruike",
+          "contributions": 26,
+          "type": "User"
+        },
+        {
+          "login": "LC-doc",
+          "url": "https://github.com/LC-doc",
+          "contributions": 24,
+          "type": "User"
+        },
+        {
+          "login": "bbdu3",
+          "url": "https://github.com/bbdu3",
+          "contributions": 19,
+          "type": "User"
+        },
+        {
+          "login": "FenjuFu",
+          "url": "https://github.com/FenjuFu",
+          "contributions": 16,
+          "type": "User"
+        },
+        {
+          "login": "sjuartwey",
+          "url": "https://github.com/sjuartwey",
+          "contributions": 15,
+          "type": "User"
+        },
+        {
+          "login": "Cloudx-xiao",
+          "url": "https://github.com/Cloudx-xiao",
+          "contributions": 14,
+          "type": "User"
+        },
+        {
+          "login": "maomeideliu",
+          "url": "https://github.com/maomeideliu",
+          "contributions": 11,
+          "type": "User"
+        },
+        {
+          "login": "hlxmg",
+          "url": "https://github.com/hlxmg",
+          "contributions": 7,
+          "type": "User"
+        },
+        {
+          "login": "laiwei3",
+          "url": "https://github.com/laiwei3",
+          "contributions": 4,
+          "type": "User"
+        },
+        {
+          "login": "hi-neason",
+          "url": "https://github.com/hi-neason",
+          "contributions": 4,
+          "type": "User"
+        },
+        {
+          "login": "OrangeChengcc",
+          "url": "https://github.com/OrangeChengcc",
+          "contributions": 3,
+          "type": "User"
+        },
+        {
+          "login": "jinjin123456",
+          "url": "https://github.com/jinjin123456",
+          "contributions": 2,
+          "type": "User"
+        },
+        {
+          "login": "fangdudu",
+          "url": "https://github.com/fangdudu",
+          "contributions": 2,
+          "type": "User"
+        },
+        {
+          "login": "haosenwang1018",
+          "url": "https://github.com/haosenwang1018",
+          "contributions": 1,
+          "type": "User"
+        },
+        {
+          "login": "TechQuery",
+          "url": "https://github.com/TechQuery",
+          "contributions": 1,
+          "type": "User"
+        },
+        {
+          "login": "jshuaishuai",
+          "url": "https://github.com/jshuaishuai",
+          "contributions": 1,
+          "type": "User"
+        },
+        {
+          "login": "MichaelYONGHENG",
+          "url": "https://github.com/MichaelYONGHENG",
+          "contributions": 1,
+          "type": "User"
+        },
+        {
+          "login": "carfeii",
+          "url": "https://github.com/carfeii",
+          "contributions": 1,
+          "type": "User"
+        },
+        {
+          "login": "danielmeiy",
+          "url": "https://github.com/danielmeiy",
+          "contributions": 1,
+          "type": "User"
+        },
+        {
+          "login": "kober-basket",
+          "url": "https://github.com/kober-basket",
+          "contributions": 1,
+          "type": "User"
+        },
+        {
+          "login": "jonymei",
+          "url": "https://github.com/jonymei",
+          "contributions": 1,
+          "type": "User"
+        },
+        {
+          "login": "binyangzhu000-sudo",
+          "url": "https://github.com/binyangzhu000-sudo",
+          "contributions": 1,
+          "type": "User"
+        }
+      ]
+    }
+  ]
+}
