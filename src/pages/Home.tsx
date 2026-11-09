@@ -6,6 +6,7 @@ import About from '../components/About';
 import CommunityVibeVault from '../components/CommunityVibeVault';
 import WayToSuperAgent from '../components/WayToSuperAgent';
 import Footer from '../components/Footer';
+import GalaxyEntry from '../components/GalaxyEntry';
 
 const Home: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const Home: React.FC = () => {
       <Navigation />
       <main>
         <Hero />
+        <GalaxyEntry />
         <WorkflowShowcase />
         <WayToSuperAgent />
         <CommunityVibeVault />
