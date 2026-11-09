@@ -33,3 +33,7 @@ Validate graph replay against reported scores, user identity deduplication, full
 The superseded external-score snapshot remains in Git history (PR #62 / bf14d52346e7220eb0a2394f2743d6134f1d8ce4). It is not an input to this pipeline.
 
 The bilingual introduction includes the six owner-specified annotated links: the OpenRank family introduction, algorithm documentation, project-level contribution article, Open Source Guides metrics guide, Linux Foundation program-success guide and Chinese Global OpenRank documentation. It distinguishes general monthly/global properties from the site’s current all-history repository model.
+
+## Worked score examples
+
+`python scripts/build-openrank-examples.py` derives Astron Agent’s current top two directly from the converged graph and verifies their scores. It writes a compact UI artifact and a public full-precision breakdown of every incoming edge. `compute-galaxy-openrank.py` invokes it after each refresh. The frontend checks the graph hash, names and scores against the active leaderboard and suppresses stale examples. Displayed values are rounded; the full-precision ledger is authoritative.
