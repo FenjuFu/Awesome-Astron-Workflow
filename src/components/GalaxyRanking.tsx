@@ -1,17 +1,22 @@
-import { ContributorAvatar, contributorRank } from './GalaxyContributors';
+import { useState } from 'react';
+import { ContributorAvatar, contributorRank, historyRange } from './GalaxyContributors';
 import type { GalaxyContributor } from './GalaxyContributors';
 
 export default function GalaxyRanking({ name, people, selected, month, zh, onSelect }: {
   name: string; people: GalaxyContributor[]; selected: string | null; month: string; zh: boolean;
   onSelect: (person: GalaxyContributor) => void;
 }) {
-  const ranked = people.filter(p => p.openrank !== null);
-  const missing = people.filter(p => p.openrank === null);
+  const [query, setQuery] = useState('');
+  const [limit, setLimit] = useState(100);
+  const filtered = people.filter(p => p.login.toLowerCase().includes(query.trim().toLowerCase()));
   return <section className="galaxy-ranking" aria-labelledby="contributor-ranking-title">
-    <div className="galaxy-ranking-heading"><h2 id="contributor-ranking-title">{zh ? '贡献者 OpenRank 榜' : 'Contributor OpenRank'}</h2><span>{month}</span></div>
-    <p className="galaxy-ranking-scope">{name} · {zh ? '全域影响力' : 'Global influence'}</p>
-    <p className="galaxy-coverage">{zh ? `${ranked.length} / ${people.length} 个代码贡献者账号有该月分值` : `${ranked.length} / ${people.length} code contributor accounts have a score this month`}</p>
-    {ranked.length ? <ol className="galaxy-ranking-list">{ranked.map(c => <li key={c.login}><button className={selected === c.login ? 'is-selected' : ''} onClick={() => onSelect(c)} aria-pressed={selected === c.login}><span className="galaxy-rank-position">{contributorRank(people, c)}</span><ContributorAvatar person={c} /><span className="galaxy-rank-login">{c.login}{c.type === 'Bot' && <small>BOT</small>}</span><strong>{c.openrank!.toFixed(2)}</strong></button></li>)}</ol> : <p className="galaxy-ranking-empty">{zh ? '该月尚无可用分值，暂不生成名次。贡献者头像仍显示在轨道中。' : 'No published scores for this month. Contributors remain visible in orbit, without assigned ranks.'}</p>}
-    {!!missing.length && <details className="galaxy-missing"><summary>{zh ? `暂无数据 · ${missing.length} 个账号` : `No data · ${missing.length} accounts`}</summary><p>{zh ? '未导出或该月缺值；不记作 0，不参与排名。' : 'Not exported or no value for this month; not scored as zero or ranked.'}</p><ul>{missing.map(c => <li key={c.login}><button onClick={() => onSelect(c)}><ContributorAvatar person={c} /><span>{c.login}</span><small>{c.openrankStatus === 'not-exported' ? (zh ? '未导出' : 'Not exported') : c.openrankStatus === 'month-missing' ? (zh ? '本月缺值' : 'Month missing') : (zh ? '请求失败' : 'Request failed')}</small></button></li>)}</ul></details>}
+    <div className="galaxy-ranking-heading"><h2 id="contributor-ranking-title">{zh ? '贡献者 OpenRank 榜' : 'Contributor OpenRank'}</h2><span>ALL TIME</span></div>
+    <p className="galaxy-ranking-scope">{name} · {zh ? '本站独立计算 · 仓库内贡献度' : 'Locally calculated · repository contribution'}</p>
+    <p className="galaxy-ranking-cutoff">{zh ? '全部已采历史，截至' : 'All collected history through'} {month} (UTC)</p>
+    <p className="galaxy-coverage">{zh ? `${people.length} 个公开参与者账号已计算，含代码、Issue、PR、评论与审阅参与者` : `${people.length} public participant accounts scored: code, Issues, PRs, comments and reviews`}</p>
+    <input className="galaxy-contributor-search" value={query} onChange={e => {setQuery(e.target.value);setLimit(100);}} aria-label={zh ? '搜索贡献者' : 'Search contributors'} placeholder={zh ? '搜索全部贡献者…' : 'Search all contributors…'} />
+    <ol className="galaxy-ranking-list">{filtered.slice(0,limit).map(c => <li key={c.login}><button className={selected === c.login ? 'is-selected' : ''} onClick={() => onSelect(c)} aria-pressed={selected === c.login}><span className="galaxy-rank-position">{contributorRank(people,c)}</span><ContributorAvatar person={c}/><span className="galaxy-rank-login">{c.login}{c.type === 'Bot' && <small>BOT</small>}<span className="galaxy-history-range">{historyRange(c.openrankCoverage,zh)}</span></span><strong>{c.openrank?.toFixed(2)}</strong></button></li>)}</ol>
+    {!filtered.length && <p className="galaxy-ranking-empty">{zh ? '没有匹配的账号。' : 'No matching accounts.'}</p>}
+    {filtered.length>limit && <button className="galaxy-load-more" onClick={() => setLimit(n=>n+100)}>{zh ? `继续显示 · ${limit}/${filtered.length}` : `Show more · ${limit}/${filtered.length}`}</button>}
   </section>;
 }

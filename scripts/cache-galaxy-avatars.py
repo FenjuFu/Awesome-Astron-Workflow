@@ -7,11 +7,17 @@ import time
 import urllib.request
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
+existing_path=ROOT/'src/data/galaxy-avatars.json'
+existing=json.loads(existing_path.read_text(encoding='utf8')) if existing_path.exists() else {}
+manifest_path=ROOT/'docs/galaxy-data/avatars.json'
+previous=json.loads(manifest_path.read_text(encoding='utf8')) if manifest_path.exists() else {}
 snapshot = json.loads((ROOT / 'src/data/galaxy.json').read_text(encoding='utf8'))
 people = {c['login']: c for p in snapshot['projects'] for c in p['contributors']}
 def get(item):
     login, person = item
     url = person['avatar'] + ('&' if '?' in person['avatar'] else '?') + 's=64'
+    if login in existing and previous.get(login,{}).get('source')==url:
+        return login,existing[login],previous[login]
     for attempt in range(3):
         try:
             with urllib.request.urlopen(url, timeout=20) as r:
