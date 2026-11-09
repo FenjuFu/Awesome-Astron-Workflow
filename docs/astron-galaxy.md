@@ -1,6 +1,6 @@
 # Astron Galaxy: independently calculated all-history OpenRank
 
-`/galaxy` shows Astron Agent, SkillHub and Astron RPA with contributor avatar orbits and linked leaderboards. Homepage/navigation entries are preserved. No OpenDigger scores, user lists or data endpoints are used by the current refresh/calculation pipeline.
+`/galaxy` shows the eight projects declared in `src/data/galaxy-projects.json`, with contributor avatar orbits and linked leaderboards. The registry contains stable artifact IDs plus canonical GitHub owner/repository names, including `XHToken/Spark-MLX-LLM`; it is shared by collection, calculation and display. Homepage/navigation entries are preserved. No OpenDigger scores, user lists or data endpoints are used by the current refresh/calculation pipeline.
 
 ## Reproduce
 
@@ -26,7 +26,7 @@ Deleted, private, inaccessible and unlinked-identity activity cannot be reconstr
 
 ## Display and validation
 
-All eligible identified participants receive a recalculated score after the automation filter. The full leaderboard supports search and incremental display. Orbits show 60 accounts per page; selecting any leaderboard row navigates to the correct orbit page and highlights the account. Orbital geometry is illustrative. Original public avatars are cached, with external URLs and initials as fallbacks.
+All eligible identified participants receive a recalculated score after the automation filter. The full leaderboard supports search and incremental display. Overview orbits show up to 12 accounts per project; focused orbits show 60 accounts per page; selecting any leaderboard row navigates to the correct orbit page and highlights the account. Orbital geometry is illustrative. Original public avatars are cached, with external URLs and initials as fallbacks.
 
 Validate graph replay against reported scores, user identity deduplication, full-history dates, all three leaderboard orders, row-to-orbit pagination, search, formula disclosure, direct evidence links, keyboard activation and desktop/mobile rendering. GitHub writes use only the user's authenticated `gh`; PR merging still requires explicit owner confirmation.
 
@@ -37,3 +37,9 @@ The bilingual introduction includes the six owner-specified annotated links: the
 ## Worked score examples
 
 `python scripts/build-openrank-examples.py` derives Astron Agent’s current top two directly from the converged graph and verifies their scores. It writes a compact UI artifact and a public full-precision breakdown of every incoming edge. `compute-galaxy-openrank.py` invokes it after each refresh. The frontend checks the graph hash, names and scores against the active leaderboard and suppresses stale examples. Displayed values are rounded; the full-precision ledger is authoritative.
+
+## Project expansion and capture dates
+
+The catalog includes Astron Agent, SkillHub, Astron RPA, Astron Harness Tutorial, iFly-Skills, Domux, Dolphin MCP Pilot and Spark MLX LLM. All are checked for public/non-archived status before collection. `collect-galaxy-github.py --repos <id> ...` supports targeted additions; the normal refresh collects every configured project. REST paths, GraphQL owner/name variables, commit links and evidence metadata use each project’s actual organization.
+
+When adding the five projects, the original three verified history archives are retained. Each leaderboard uses its own repository capture cutoff; the footer labels the date range as snapshot dates, not as the OpenRank activity window. The Astron Agent worked examples use that repository’s own capture timestamp. Existing scores are checked for unchanged graph hashes.

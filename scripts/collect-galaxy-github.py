@@ -4,6 +4,8 @@ Resumable request cache; every connection is paginated and checked against total
 No OpenDigger data endpoints are called. No issue/comment bodies or email addresses are collected.
 """
 import concurrent.futures
+import argparse
+from galaxy_projects import PROJECTS, BY_ID, full_name
 import datetime
 import hashlib
 import gzip
@@ -68,6 +70,9 @@ def request(args, identity):
         time.sleep(min(2 ** attempt * 2, 20))
 
 def graphql(query, variables):
+    if 'name' in variables and variables['name'] in BY_ID:
+        config=BY_ID[variables['name']]
+        variables={**variables,'name':config['repo'],'owner':config['owner']}
     payload = {'query': query, 'variables': variables}
     key = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
     path = CACHE / (key + '-request.json')
@@ -78,7 +83,7 @@ def rest(path): return request([path], {'kind': 'rest', 'path': path})
 
 def complete_authors(name, commit):
     conn=commit['authors'];nodes=list(conn['nodes']);page=conn['pageInfo'];expected=conn['totalCount']
-    query=f'''query($name:String!,$oid:GitObjectID!,$after:String) {{ repository(owner:"iflytek",name:$name) {{object(oid:$oid) {{... on Commit {{authors(first:100,after:$after) {{{PAGE} nodes {{user {{{ACTOR}}}}}}}}}}}}}}}'''
+    query=f'''query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String) {{ repository(owner:$owner,name:$name) {{object(oid:$oid) {{... on Commit {{authors(first:100,after:$after) {{{PAGE} nodes {{user {{{ACTOR}}}}}}}}}}}}}}}'''
     while page['hasNextPage']:
         conn=graphql(query,{'name':name,'oid':commit['oid'],'after':page['endCursor']})['repository']['object']['authors']
         if conn['totalCount']!=expected:raise RuntimeError('Commit authors changed during pagination')
@@ -106,7 +111,7 @@ def all_pr_commits(name,unit,expected):
     refs=graphql('query($id:ID!){node(id:$id){... on PullRequest {baseRefOid headRefOid}}}',{'id':unit['id']})['node']
     ids=[]
     for page in range(1,1001):
-        try:result=rest(f'repos/iflytek/{name}/compare/{refs["baseRefOid"]}...{refs["headRefOid"]}?per_page=100&page={page}')
+        try:result=rest(f'repos/{full_name(name)}/compare/{refs["baseRefOid"]}...{refs["headRefOid"]}?per_page=100&page={page}')
         except RuntimeError as error:
             if 'No common ancestor' not in str(error):raise
             return recover_pr_history(name,unit,expected,refs)
@@ -126,7 +131,7 @@ def all_pr_commits(name,unit,expected):
     return nodes
 
 def history_at(name,oid):
-    query=f'''query($name:String!,$oid:GitObjectID!,$after:String){{repository(owner:"iflytek",name:$name){{object(oid:$oid){{... on Commit{{history(first:100,after:$after){{{PAGE} nodes{{{COMMIT} parents(first:100){{{PAGE} nodes{{oid}}}}}}}}}}}}}}}}'''
+    query=f'''query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){{repository(owner:$owner,name:$name){{object(oid:$oid){{... on Commit{{history(first:100,after:$after){{{PAGE} nodes{{{COMMIT} parents(first:100){{{PAGE} nodes{{oid}}}}}}}}}}}}}}}}'''
     nodes=[];after=None
     while True:
         result=graphql(query,{'name':name,'oid':oid,'after':after})['repository']['object']['history']
@@ -165,7 +170,7 @@ def collect_units(name, kind):
     result=[];after=None;expected=None
     field='issues' if kind=='issue' else 'pullRequests'
     typename='Issue' if kind=='issue' else 'PullRequest'
-    query=f'''query($name:String!,$after:String) {{ repository(owner:"iflytek",name:$name) {{ {field}(first:30,after:$after,orderBy:{{field:CREATED_AT,direction:ASC}}) {{ {PAGE} nodes {{ {UNIT} {PR_EXTRA if kind=='pr' else ''} }} }} }} rateLimit {{ remaining resetAt cost }} }}'''
+    query=f'''query($name:String!,$owner:String!,$after:String) {{ repository(owner:$owner,name:$name) {{ {field}(first:30,after:$after,orderBy:{{field:CREATED_AT,direction:ASC}}) {{ {PAGE} nodes {{ {UNIT} {PR_EXTRA if kind=='pr' else ''} }} }} }} rateLimit {{ remaining resetAt cost }} }}'''
     while True:
         response=graphql(query,{'name':name,'after':after}); conn=response['repository'][field]
         if expected is None: expected=conn['totalCount']
@@ -193,7 +198,7 @@ def collect_units(name, kind):
 def bulk_comments(name, path):
     result=[]
     for page in range(1,1001):
-        rows=rest(f'repos/iflytek/{name}/{path}?per_page=100&page={page}')
+        rows=rest(f'repos/{full_name(name)}/{path}?per_page=100&page={page}')
         if not isinstance(rows,list):raise RuntimeError('Unexpected comment response')
         for c in rows:
             unit_url=c.get('issue_url') or c.get('pull_request_url')
@@ -203,7 +208,7 @@ def bulk_comments(name, path):
     raise RuntimeError('Comment page cap exceeded')
 
 def branch_commits(name):
-    ref=graphql('query($name:String!){repository(owner:"iflytek",name:$name){defaultBranchRef{name target{... on Commit{oid}}}}}',{'name':name})['repository']['defaultBranchRef']
+    ref=graphql('query($name:String!,$owner:String!){repository(owner:$owner,name:$name){defaultBranchRef{name target{... on Commit{oid}}}}}',{'name':name})['repository']['defaultBranchRef']
     if not ref:return [],None
     head=ref['target']['oid']
     commits=history_at(name,head)
@@ -213,9 +218,11 @@ def branch_commits(name):
 
 def collect(name):
     CONTEXT.repo=name;CONTEXT.times=[]
-    meta=rest('repos/iflytek/'+name)
+    meta=rest('repos/'+full_name(name))
     if meta['archived']:raise RuntimeError(name+' archived')
-    result={'repo':name,'meta':{k:meta[k] for k in ['full_name','created_at','html_url','stargazers_count','forks_count','archived']},'startedAt':datetime.datetime.now(datetime.timezone.utc).isoformat()}
+    if meta['private']:raise RuntimeError(name+' is private; public history export is not allowed')
+    if meta['full_name'].casefold()!=full_name(name).casefold():raise RuntimeError('Repository moved: review registry '+meta['full_name'])
+    result={'repo':name,'meta':{k:meta[k] for k in ['full_name','created_at','html_url','stargazers_count','forks_count','archived','description']},'startedAt':datetime.datetime.now(datetime.timezone.utc).isoformat()}
     result['issues']=collect_units(name,'issue')
     result['pullRequests']=collect_units(name,'pr')
     result['comments']=bulk_comments(name,'issues/comments')
@@ -224,7 +231,7 @@ def collect(name):
     known={u['number'] for u in result['issues']+result['pullRequests']}
     missing={c['unitNumber'] for c in result['comments']+result['reviewComments']}-known
     for number in sorted(missing):
-        path=f'repos/iflytek/{name}/issues/{number}'
+        path=f'repos/{full_name(name)}/issues/{number}'
         try:metadata=rest(path)
         except RuntimeError as error:
             if 'HTTP 404' not in str(error):raise
@@ -245,7 +252,7 @@ def collect(name):
     result['defaultCommits'],result['defaultHead']=branch_commits(name)
     result['codeContributors']=[]
     for page in range(1,101):
-        batch=rest(f'repos/iflytek/{name}/contributors?per_page=100&anon=false&page={page}')
+        batch=rest(f'repos/{full_name(name)}/contributors?per_page=100&anon=false&page={page}')
         result['codeContributors'].extend({'login':c['login'],'avatarUrl':c['avatar_url'],'url':c['html_url'],'__typename':c['type'],'contributions':c['contributions']} for c in batch)
         if len(batch)<100:break
     else:raise RuntimeError('Code contributor pagination cap exceeded')
@@ -260,7 +267,12 @@ def collect(name):
     return result
 
 if __name__=='__main__':
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--repos',nargs='+',choices=list(BY_ID))
+    args=parser.parse_args()
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-        results=list(pool.map(collect,['astron-agent','skillhub','astron-rpa']))
+        results=list(pool.map(collect,args.repos or list(BY_ID)))
     out=ROOT/'docs/galaxy-data/github-history'
-    (out/'manifest.json').write_text(json.dumps({'capturedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'requests':MANIFEST},indent=2),encoding='utf8')
+    for result in results:
+        relevant={key:value for key,value in MANIFEST.items() if value.get('repository')==result['repo']}
+        (out/(result['repo']+'-manifest.json')).write_text(json.dumps({'capturedAt':result['completedAt'],'repository':full_name(result['repo']),'requests':relevant},indent=2),encoding='utf8')

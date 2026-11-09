@@ -12,6 +12,7 @@ import subprocess
 import sys
 from pathlib import Path
 from galaxy_automation import automation_reason, POLICY
+from galaxy_projects import PROJECTS
 
 ROOT = Path(__file__).resolve().parents[1]
 PARAMETERS = {
@@ -49,7 +50,7 @@ def digest(value):
     return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 
 def calculate(raw):
-    name=raw['repo']; people={}; units={}; events=[]; seen=set(); gaps=Counter(); code_counts={}; canonical_names={}
+    name=raw['repo']; full_name=raw['meta'].get('full_name','iflytek/'+name); people={}; units={}; events=[]; seen=set(); gaps=Counter(); code_counts={}; canonical_names={}
     excluded_accounts={};excluded_events={}
     def excluded(person):
         reason=automation_reason(person)
@@ -114,7 +115,7 @@ def calculate(raw):
         for c in raw[group]:
             uid=str(c['unitNumber'])
             if uid not in units:
-                units[uid]={'id':uid,'kind':'unavailable_item','url':f'https://github.com/iflytek/{name}/issues/{uid}',
+                units[uid]={'id':uid,'kind':'unavailable_item','url':f'https://github.com/{full_name}/issues/{uid}',
                             'base':1,'authors':[],'weights':Counter()}
                 gaps['unavailableParentItems']+=1
             if units[uid]['kind']=='unavailable_item':gaps['commentsWithUnavailableParent']+=1
@@ -129,7 +130,7 @@ def calculate(raw):
             if automation_reason(person):event(uid,person,'commit',commit['committedDate'],commit['oid'])
         authors=[p for p in authors if not automation_reason(p)]
         if not authors:continue
-        units[uid]={'id':uid,'kind':'direct_commit','url':f'https://github.com/iflytek/{name}/commit/{commit["oid"]}',
+        units[uid]={'id':uid,'kind':'direct_commit','url':f'https://github.com/{full_name}/commit/{commit["oid"]}',
                     'base':1,'authors':[actor(p) for p in authors],'weights':Counter()}
         if commit['committedDate']<raw['meta']['created_at']:gaps['importedCommitsPredatingRepository']+=1
         for person in authors:event(uid,person,'commit',commit['committedDate'],commit['oid'],1/len(authors))
@@ -138,7 +139,7 @@ def calculate(raw):
         if not login:continue
         if not people[login]['stats']:
             uid='summary:'+login
-            units[uid]={'id':uid,'kind':'code_summary','url':f'https://github.com/iflytek/{name}/graphs/contributors',
+            units[uid]={'id':uid,'kind':'code_summary','url':f'https://github.com/{full_name}/graphs/contributors',
                         'base':1,'authors':[login],'weights':Counter()}
             event(uid,c,'code_summary',None,uid)
             gaps['codeContributorSummaryFallbacks']+=1
@@ -192,7 +193,7 @@ def calculate(raw):
     for i,p in enumerate(contributors):
         p['rank']=contributors[i-1]['rank'] if i and p['openrank']==contributors[i-1]['openrank'] else i+1
     graph={'nodes':ids,'initial':initial,'retention':retention,'outgoing':edges}
-    report={'repository':'iflytek/'+name,'parameters':PARAMETERS,'inputSha256':digest(raw),'graphSha256':digest(graph),
+    report={'repository':full_name,'parameters':PARAMETERS,'inputSha256':digest(raw),'graphSha256':digest(graph),
         'capture':{'startedAt':raw['startedAt'],'completedAt':raw['completedAt'],'defaultHead':raw['defaultHead']},
         'coverage':{k:len(raw[k]) for k in ['issues','pullRequests','comments','reviewComments','defaultCommits','codeContributors']},
         'participants':len(contributors),'events':len(events),'workItems':len(unit_ids),'gaps':dict(gaps),'automationExclusions':exclusions,
@@ -200,7 +201,7 @@ def calculate(raw):
         'scores':{p['login']:p['openrank'] for p in contributors},'graph':graph,'eventLedger':events}
     meta=raw['meta']
     repo={'id':name,'url':meta['html_url'],'stars':meta['stargazers_count'],'forks':meta['forks_count'],'archived':False,
-          'source':'https://api.github.com/repos/iflytek/'+name,'contributorsSource':'/galaxy-data/'+name+'-calculation.json',
+          'source':'https://api.github.com/repos/'+full_name,'contributorsSource':'/galaxy-data/'+name+'-calculation.json',
           'openrankSource':'/galaxy-data/'+name+'-calculation.json','openrank':round(values[0],10),
           'openrankCoverage':{'firstMonth':meta['created_at'][:7],'lastMonth':raw['completedAt'][:7],'months':0,'gapMonths':0,'monthsSinceLast':0},
           'historyStart':meta['created_at'][:10],'historyEnd':raw['completedAt'][:10],
@@ -211,7 +212,8 @@ def calculate(raw):
 
 def main():
     projects=[];capture_times=[];out=ROOT/'public/galaxy-data';out.mkdir(exist_ok=True)
-    for name in ['astron-agent','skillhub','astron-rpa']:
+    for config in PROJECTS:
+        name=config['id']
         source=ROOT/'docs/galaxy-data/github-history'/f'{name}.json'
         payload=source.read_bytes() if source.exists() else gzip.decompress(source.with_suffix('.json.gz').read_bytes())
         raw=json.loads(payload)
@@ -220,8 +222,9 @@ def main():
         (out/(name+'-calculation.json')).write_text(json.dumps(report,separators=(',',':')),encoding='utf8')
         print(name,'participants',report['participants'],'events',report['events'],'gaps',report['gaps'],'top',[(p['login'],round(p['openrank'],2)) for p in project['contributors'][:3]])
     captured=max(p['historyEnd'] for p in projects)
+    capture_range={'from':min(p['historyEnd'] for p in projects),'through':captured}
     result={'capturedAt':max(capture_times),'calculatedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'calculatedThrough':captured,
-      'openrankMonth':captured,'openrankPeriod':'all-history-graph','openrankMetric':'Locally calculated Community OpenRank',
+      'captureRange':capture_range,'openrankMonth':captured,'openrankPeriod':'all-history-graph','openrankMetric':'Locally calculated Community OpenRank',
       'method':'Independently collect public GitHub history and solve a full-history repository collaboration network with the OpenRank equation. No externally published scores are used.',
       'parameters':PARAMETERS,'projects':projects}
     (ROOT/'src/data/galaxy.json').write_text(json.dumps(result,indent=2),encoding='utf8')

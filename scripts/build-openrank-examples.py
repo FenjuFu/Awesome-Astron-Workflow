@@ -49,7 +49,7 @@ def build():
             'recomputedScore':value,'termCount':len(terms),'topTerms':terms[:3],
             'otherTermCount':max(0,len(terms)-3),'otherInputTotal':sum(t['weightedInput'] for t in terms[3:]),
             'allTerms':terms})
-    common={'project':'astron-agent','capturedAt':snapshot['capturedAt'],'graphSha256':report['graphSha256'],
+    common={'project':'astron-agent','capturedAt':report['capture']['completedAt'],'graphSha256':report['graphSha256'],
         'model':report['parameters']['model'],'formula':report['parameters']['formula'],
         'iterations':iterations,'residual':residual,'source':'/galaxy-data/astron-agent-calculation.json',
         'fullBreakdown':'/galaxy-data/astron-agent-examples.json'}

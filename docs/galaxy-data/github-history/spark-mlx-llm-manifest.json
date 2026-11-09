@@ -1,0 +1,106 @@
+{
+  "capturedAt": "2026-11-09T16:16:31.057904+00:00",
+  "repository": "XHToken/Spark-MLX-LLM",
+  "requests": {
+    "5002dcb6a8159a33815f71f7e1f784444c75aaa97c5ae5514d32bed0801ceeb4": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/XHToken/Spark-MLX-LLM"
+      },
+      "sha256": "85078372c6ff1433a41b5271e342dac2a2ed58d22c678a4c72c863eabee43380",
+      "cache": "5002dcb6a8159a33815f71f7e1f784444c75aaa97c5ae5514d32bed0801ceeb4.json",
+      "checkedAt": "2026-11-09T16:15:47.251225+00:00",
+      "repository": "spark-mlx-llm"
+    },
+    "170eb1c0a69d31ea7ad98eb8bfb3de5c341ef109ae0253283818ef7074fc56ab": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "Spark-MLX-LLM",
+          "after": null,
+          "owner": "XHToken"
+        }
+      },
+      "sha256": "fc05d0c93ce44739123c484cbc1b2af53424ca9c5baacb3eedd85a7ae9929653",
+      "cache": "170eb1c0a69d31ea7ad98eb8bfb3de5c341ef109ae0253283818ef7074fc56ab.json",
+      "checkedAt": "2026-11-09T16:15:50.199031+00:00",
+      "repository": "spark-mlx-llm"
+    },
+    "998cef53a3d4b3437a5309ce0e5beefe2c0368eec6b07db8c27ba47a2dc4d009": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "Spark-MLX-LLM",
+          "after": null,
+          "owner": "XHToken"
+        }
+      },
+      "sha256": "0f7579de13b592a8175c22a1f748996d12159081c8401facaa3a5d941275d8ec",
+      "cache": "998cef53a3d4b3437a5309ce0e5beefe2c0368eec6b07db8c27ba47a2dc4d009.json",
+      "checkedAt": "2026-11-09T16:15:54.206001+00:00",
+      "repository": "spark-mlx-llm"
+    },
+    "bfebb74998dab82643310ce073eb66bd51504e5e56ca188f59219273f73724b9": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/XHToken/Spark-MLX-LLM/issues/comments?per_page=100&page=1"
+      },
+      "sha256": "47115ced93bdb7666aadba7bf0021cbbd9b5552590da34c5ddf61a2e62aef99c",
+      "cache": "bfebb74998dab82643310ce073eb66bd51504e5e56ca188f59219273f73724b9.json",
+      "checkedAt": "2026-11-09T16:15:59.015142+00:00",
+      "repository": "spark-mlx-llm"
+    },
+    "70a4be1bccdf4256acdd46fbc203b34adc3de70778e709ab3661c673ece5d148": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/XHToken/Spark-MLX-LLM/pulls/comments?per_page=100&page=1"
+      },
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "cache": "70a4be1bccdf4256acdd46fbc203b34adc3de70778e709ab3661c673ece5d148.json",
+      "checkedAt": "2026-11-09T16:16:04.893892+00:00",
+      "repository": "spark-mlx-llm"
+    },
+    "06c91d0f1d654463355a43cee47e9a1607a16351accb0408bdad4974ea0c1318": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!){repository(owner:$owner,name:$name){defaultBranchRef{name target{... on Commit{oid}}}}}",
+        "variables": {
+          "name": "Spark-MLX-LLM",
+          "owner": "XHToken"
+        }
+      },
+      "sha256": "3d82a92fec654c5020b7de2d15848e7fa879589b6d214b6e2c5e47f602aecdd3",
+      "cache": "06c91d0f1d654463355a43cee47e9a1607a16351accb0408bdad4974ea0c1318.json",
+      "checkedAt": "2026-11-09T16:16:09.159857+00:00",
+      "repository": "spark-mlx-llm"
+    },
+    "e02abb50e12aee15a5627ea8f302a66c3682105d7a69443f1e1bf8e11eed6941": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "Spark-MLX-LLM",
+          "oid": "92c6f154b752d588ad2837c742fe823aa45236c3",
+          "after": null,
+          "owner": "XHToken"
+        }
+      },
+      "sha256": "0dbe26f3069e3bc53ef028904309a4cb908f8f345a5e25cd71f860b79fc5f3b6",
+      "cache": "e02abb50e12aee15a5627ea8f302a66c3682105d7a69443f1e1bf8e11eed6941.json",
+      "checkedAt": "2026-11-09T16:16:23.385921+00:00",
+      "repository": "spark-mlx-llm"
+    },
+    "c1c6a978db62b77fa4a7f10a08bb94ab46fe42df81e870158e4a36600a04427c": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/XHToken/Spark-MLX-LLM/contributors?per_page=100&anon=false&page=1"
+      },
+      "sha256": "ef7368eeb8881294481d5dd6c1d57cfb8867f8b92984bdf2b3989da167f74b9a",
+      "cache": "c1c6a978db62b77fa4a7f10a08bb94ab46fe42df81e870158e4a36600a04427c.json",
+      "checkedAt": "2026-11-09T16:16:31.057904+00:00",
+      "repository": "spark-mlx-llm"
+    }
+  }
+}
