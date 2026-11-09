@@ -12,10 +12,22 @@ export interface GalaxyContributor {
   openrank: number | null;
   openrankSource: string;
   openrankStatus: string;
+  openrankCoverage: OpenRankCoverage | null;
+  rank: number;
+  observedEvents: number;
+  stats: Record<string, number | undefined>;
 }
 
+export interface OpenRankCoverage {
+  firstMonth: string; lastMonth: string; months: number; gapMonths: number; monthsSinceLast: number;
+}
+
+export const historyRange = (coverage: OpenRankCoverage | null, zh: boolean) => coverage
+  ? `${coverage.firstMonth}–${coverage.lastMonth} · ${coverage.months} ${zh ? '个参与月份' : 'active months'}`
+  : (zh ? '代码贡献汇总关系（无逐条日期）' : 'Verified code summary; individual dates unavailable');
+
 export function contributorRank(people: GalaxyContributor[], person: GalaxyContributor) {
-  return person.openrank === null ? null : 1 + people.filter(p => p.openrank !== null && p.openrank > person.openrank!).length;
+  return person.rank ?? (person.openrank === null ? null : 1 + people.filter(p => p.openrank !== null && p.openrank > person.openrank!).length);
 }
 
 export function ContributorAvatar({ person }: { person: GalaxyContributor }) {
@@ -47,7 +59,7 @@ export default function GalaxyContributors({ people, color, x, y, selected, focu
       const radius = person.openrank !== null && i < 3 ? 11 : 7;
       const rank = contributorRank(people, person);
       const clip = `avatar-${projectName.replace(/ /g, '-')}-${i}`;
-      const score = person.openrank === null ? (zh ? '暂无 OpenRank 数据' : 'OpenRank unavailable') : `OpenRank ${person.openrank.toFixed(2)}`;
+      const score = person.openrank === null ? (zh ? '暂无 OpenRank 数据' : 'OpenRank unavailable') : `${zh ? '累计 OpenRank' : 'All-time OpenRank'} ${person.openrank.toFixed(2)}`;
       return <g key={person.login} data-node="contributor" data-login={person.login} className={`galaxy-node galaxy-contributor-node ${active ? 'is-active' : ''}`} role="button" tabIndex={0} aria-pressed={active} aria-label={`${rank === null ? '' : '#' + rank} ${person.login} · ${projectName} · ${score}`} onClick={() => onSelect(person)} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(person); } }}>
         <title>{`${rank === null ? '' : '#' + rank} ${person.login} · ${score}`}</title>
         <defs><clipPath id={clip}><circle cx={cx} cy={cy} r={radius} /></clipPath></defs>

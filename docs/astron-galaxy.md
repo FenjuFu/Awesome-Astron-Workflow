@@ -1,28 +1,33 @@
-# Astron Galaxy
+# Astron Galaxy: independently calculated all-history OpenRank
 
-`/galaxy` visualizes Astron Agent, SkillHub and Astron RPA as project planets in the Astron ecosystem. The homepage and navigation link to it. The route loads separately from the homepage bundle.
+`/galaxy` shows Astron Agent, SkillHub and Astron RPA with contributor avatar orbits and linked leaderboards. Homepage/navigation entries are preserved. No OpenDigger scores, user lists or data endpoints are used by the current refresh/calculation pipeline.
 
-The interaction concept references https://openatom-galaxy.x-lab.info/ (organization → projects → developers). The SVG artwork and UI are original; no reference-site assets or code are redistributed.
+## Reproduce
 
-## Data
+1. Authenticate the user's local `gh` CLI. Run `python scripts/update-galaxy.py` to collect GitHub history, calculate scores and cache public avatars. A new cache directory is created for each refresh. To resume, set `GALAXY_HISTORY_CACHE` to the prior run directory.
+2. `python scripts/compute-galaxy-openrank.py` recalculates from the checked-in lossless `docs/galaxy-data/github-history/*.json.gz` archives, without contacting GitHub or a score service.
+3. Run `python scripts/test_local_openrank.py` and `npm run build`.
 
-`src/data/galaxy.json` combines GitHub metadata and OpenDigger Global OpenRank. Refresh with `python scripts/update-galaxy.py` (delegates to `update-galaxy-openrank.py`), then `python scripts/cache-galaxy-avatars.py`; inspect the diff, build and deploy through the normal review process. Repository or contributor-list failures and archived projects stop the refresh. Individual OpenRank failures are recorded as missing, never zero. `docs/galaxy-data/sources.json` retains response content, raw-response SHA-256 and check time. Public avatar responses are cached unmodified in `src/data/galaxy-avatars.json`, with source and hash records in `docs/galaxy-data/avatars.json`. No visitor-side token is required; external image URLs and initials remain fallbacks for uncached images.
+Collection uses GraphQL and REST through `gh`, including full Issue/PR pagination, all reviews, closed/merge actors, issue comments, review comments, PR commit authors/coauthors and immutable default-branch commit history. GitHub's 250-commit PR limit is handled by complete paginated comparisons or verified commit ancestry, checked against the PR count and known commit set. Filtered timeline `totalCount` is not mistaken for the filtered item count. The request manifest retains actual fetch times and response hashes. Original comment bodies and email addresses are not published.
 
-Repository Star and fork counters are recorded at UTC collection time. Every page of the GitHub contributors endpoint is read, excluding anonymous accounts. This code-contributor list is not a census of Issue participants, reviewers or community users; bots can be included. Accounts shared across projects appear once per project in the map; the overview deduplicates logins.
+The public `galaxy-data/<repo>-calculation.json` files contain the full graph, event ledger, input hashes, parameters, scores, iterations and residual. The frontend does not need to download these ledgers to render the graph.
 
-Project and contributor leaderboards use the latest completed month shared by all three repository OpenRank exports. Developer values are Global OpenRank, not contribution to the selected repository. Sort by the original value descending, use competition ranks for ties and alphabetical order within ties. Missing accounts remain visible in orbit and in a separate unranked list. No cross-month fallback or inferred scores are used.
+## Model
 
-The 2026-10 snapshot has 1/61 scored accounts for Astron Agent, 3/49 for SkillHub and 0/27 for Astron RPA. The three `community_openrank.json` endpoints returned HTTP 404; the page therefore explicitly identifies global influence and does not claim community-specific contribution scores. Case-normalized developer paths were also checked and did not fill the gaps.
+The independently implemented equation is `R_i(next) = r_i*b_i + (1-r_i)*sum_j(w_ji*R_j)`. Reference: https://github.com/X-lab2017/openrank-neo4j-gds/blob/83ec0da7352440e391726323bb5eed43c4aa3d76/src/main/java/gds/openrank/OpenRankPregel.java . The implementation uses the mathematical equation, not copied Java library code. Project collaboration modeling reference: https://blog.frankzhao.cn/openrank_in_project/ .
 
-Avatar orbit positions, planet sizes and background stars are illustrative. Larger avatars highlight leading entries, not a calibrated score scale. Clicking a rank, project or avatar focuses its project and shows the corresponding account; profiles and published score sources are linked.
+Each repository is calculated separately using all collected history in a single graph. There is no single-month restriction, no summation of externally published monthly values, and no claim that this is global OpenRank or reproduces a third-party leaderboard.
 
-## OpenRank explanation
+Initial values: developer/repository 1, Issue 2, unmerged PR 3, merged PR 5, standalone code work item 1. Retention: developer/repository 0.15, work item 0.8. Opening/closing weigh 2; comments/reviews/code authorship weigh 1, with each commit's credit split across linked coauthors. An item sends 10% to the repository and 90% to participants. With other participants present, authors receive half the participant share and others split the rest by action weight. Developers send value to their work items by normalized action weights; repositories split value across work items. Convergence requires a residual below 1e-10, with at most 1,000 iterations.
 
-The page reads the published monthly values without recomputing the global network. Its explanation is based on the pinned official implementation:
-https://github.com/X-lab2017/open-digger/blob/5c2ffc4f5b3dd37ebcb20514c7abfee6853bd830/src/cron/tasks/globalOpenrank.ts
+PR and default-branch commits are deduplicated. Default-branch commits not covered by a PR form standalone base-1 work items. If GitHub reports a code contributor but no individual event is linkable, one verified contributor-summary relation is included without inventing event dates. Bots remain included and labelled; REST/GraphQL `[bot]` naming variants and case variants are unified. Reaction multipliers are not used.
 
-The implementation builds activity-weighted developer/repository relationships with repository dependencies, injects sigmoid-transformed activity, decays history, and iterates value transfer. The page shows exact activity weights, sigmoid parameters, retention factors and iteration settings from that source. Public monthly exports do not include a calculation-code version; the explanation does not assert that this source reproduces historical exports. Values are not Star/commit sums, percentages or measures of a person's technical ability.
+Deleted, private, inaccessible and unlinked-identity activity cannot be reconstructed and is not invented. Imported Git history can predate repository creation. Per-repository ledgers enumerate these limitations and the recorded fetch interval; this is a paginated capture of a changing public repository, not an atomic GitHub database dump. Scores are a consequence of the stated model and observed data, not proof of product usage or technical ability.
 
-## Validation
+## Display and validation
 
-Run `npm run build`. Check `/galaxy` at desktop, tablet and mobile sizes; project selection, contributor click/keyboard activation, external links, search/empty state, drag, zoom/reset, language toggle and homepage links. The map has no continuous animation. Keyboard users can select the project cards and contributor nodes without dragging.
+All identified participants receive a calculated score. The full leaderboard supports search and incremental display. Orbits show 60 accounts per page; selecting any leaderboard row navigates to the correct orbit page and highlights the account. Orbital geometry is illustrative. Original public avatars are cached, with external URLs and initials as fallbacks.
+
+Validate graph replay against reported scores, user identity deduplication, full-history dates, all three leaderboard orders, row-to-orbit pagination, search, formula disclosure, direct evidence links, keyboard activation and desktop/mobile rendering. GitHub writes use only the user's authenticated `gh`; PR merging still requires explicit owner confirmation.
+
+The superseded external-score snapshot remains in Git history (PR #62 / bf14d52346e7220eb0a2394f2743d6134f1d8ce4). It is not an input to this pipeline.

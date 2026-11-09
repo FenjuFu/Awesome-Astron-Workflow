@@ -42,3 +42,8 @@ api/_lib/kb-index.json
 
 # Claude Code local lock file
 .claude/scheduled_tasks.lock
+
+# Resumable API cache and expanded copies of losslessly archived history
+.cache/galaxy-history/
+docs/galaxy-data/github-history/*.json
+!docs/galaxy-data/github-history/manifest.json
