@@ -1,197 +1,632 @@
 {
-  "capturedAt": "2026-11-09T09:53:55.154251+00:00",
-  "method": "GitHub repository counters and first 30 contributors per repository, ordered by contributions. Not a full contributor census or OpenRank.",
+  "capturedAt": "2026-11-09T10:19:10.581206+00:00",
+  "openrankMonth": "2026-10",
+  "openrankMetric": "Global OpenRank",
+  "method": "Paginated GitHub contributors endpoint, anonymous accounts excluded; sorted by OpenDigger monthly Global OpenRank. Global influence is not repository-specific contribution. Missing data is null, never zero.",
   "projects": [
     {
       "id": "astron-agent",
       "url": "https://github.com/iflytek/astron-agent",
-      "stars": 8919,
+      "stars": 8920,
       "forks": 911,
       "archived": false,
       "source": "https://api.github.com/repos/iflytek/astron-agent",
-      "contributorsSource": "https://api.github.com/repos/iflytek/astron-agent/contributors?per_page=30&anon=false",
+      "contributorsSource": "https://api.github.com/repos/iflytek/astron-agent/contributors?per_page=100&anon=false",
+      "contributorsPages": 1,
+      "openrankSource": "https://oss.open-digger.cn/github/iflytek/astron-agent/openrank.json",
       "contributors": [
         {
-          "login": "yjlu666",
-          "url": "https://github.com/yjlu666",
-          "contributions": 881,
-          "type": "User"
+          "login": "dongjiang1989",
+          "url": "https://github.com/dongjiang1989",
+          "avatar": "https://avatars.githubusercontent.com/u/5010507?v=4",
+          "contributions": 14,
+          "type": "User",
+          "openrank": 7.74,
+          "openrankSource": "https://oss.open-digger.cn/github/dongjiang1989/openrank.json",
+          "openrankStatus": "available"
         },
         {
-          "login": "BillorBear",
-          "url": "https://github.com/BillorBear",
-          "contributions": 209,
-          "type": "User"
-        },
-        {
-          "login": "vsxd",
-          "url": "https://github.com/vsxd",
-          "contributions": 185,
-          "type": "User"
-        },
-        {
-          "login": "mingsuiyongheng",
-          "url": "https://github.com/mingsuiyongheng",
-          "contributions": 154,
-          "type": "User"
+          "login": "abelzha",
+          "url": "https://github.com/abelzha",
+          "avatar": "https://avatars.githubusercontent.com/u/32270905?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/abelzha/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
           "login": "Alex-Smith-1234",
           "url": "https://github.com/Alex-Smith-1234",
+          "avatar": "https://avatars.githubusercontent.com/u/115215410?v=4",
           "contributions": 145,
-          "type": "User"
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Alex-Smith-1234/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
-          "login": "hygao1024",
-          "url": "https://github.com/hygao1024",
-          "contributions": 136,
-          "type": "User"
-        },
-        {
-          "login": "sharphu",
-          "url": "https://github.com/sharphu",
-          "contributions": 129,
-          "type": "User"
-        },
-        {
-          "login": "yun-zhi-ztl",
-          "url": "https://github.com/yun-zhi-ztl",
-          "contributions": 119,
-          "type": "User"
-        },
-        {
-          "login": "slqcode",
-          "url": "https://github.com/slqcode",
-          "contributions": 113,
-          "type": "User"
-        },
-        {
-          "login": "Kexinist",
-          "url": "https://github.com/Kexinist",
-          "contributions": 93,
-          "type": "User"
-        },
-        {
-          "login": "FenjuFu",
-          "url": "https://github.com/FenjuFu",
-          "contributions": 80,
-          "type": "User"
-        },
-        {
-          "login": "zyzy0116",
-          "url": "https://github.com/zyzy0116",
-          "contributions": 72,
-          "type": "User"
-        },
-        {
-          "login": "woicw",
-          "url": "https://github.com/woicw",
-          "contributions": 65,
-          "type": "User"
+          "login": "BillorBear",
+          "url": "https://github.com/BillorBear",
+          "avatar": "https://avatars.githubusercontent.com/u/128047331?v=4",
+          "contributions": 209,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/BillorBear/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
           "login": "byliu",
           "url": "https://github.com/byliu",
+          "avatar": "https://avatars.githubusercontent.com/u/8497831?v=4",
           "contributions": 58,
-          "type": "User"
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/byliu/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
-          "login": "lantianhemao",
-          "url": "https://github.com/lantianhemao",
-          "contributions": 42,
-          "type": "User"
+          "login": "chenglongxie",
+          "url": "https://github.com/chenglongxie",
+          "avatar": "https://avatars.githubusercontent.com/u/17818295?v=4",
+          "contributions": 4,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/chenglongxie/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
-          "login": "zhubin4615",
-          "url": "https://github.com/zhubin4615",
-          "contributions": 37,
-          "type": "User"
+          "login": "chyax98",
+          "url": "https://github.com/chyax98",
+          "avatar": "https://avatars.githubusercontent.com/u/108393263?v=4",
+          "contributions": 9,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/chyax98/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
-          "login": "Thomas1024-Astron",
-          "url": "https://github.com/Thomas1024-Astron",
-          "contributions": 37,
-          "type": "User"
+          "login": "Cloudx-xiao",
+          "url": "https://github.com/Cloudx-xiao",
+          "avatar": "https://avatars.githubusercontent.com/u/33547231?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Cloudx-xiao/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
-          "login": "scguoi",
-          "url": "https://github.com/scguoi",
-          "contributions": 35,
-          "type": "User"
-        },
-        {
-          "login": "yixinmeng",
-          "url": "https://github.com/yixinmeng",
-          "contributions": 34,
-          "type": "User"
-        },
-        {
-          "login": "hant1",
-          "url": "https://github.com/hant1",
-          "contributions": 32,
-          "type": "User"
-        },
-        {
-          "login": "jinhao",
-          "url": "https://github.com/jinhao",
-          "contributions": 27,
-          "type": "User"
-        },
-        {
-          "login": "mixiangsiyi",
-          "url": "https://github.com/mixiangsiyi",
-          "contributions": 25,
-          "type": "User"
-        },
-        {
-          "login": "likes1234-bro",
-          "url": "https://github.com/likes1234-bro",
-          "contributions": 24,
-          "type": "User"
+          "login": "Copilot",
+          "url": "https://github.com/apps/copilot-swe-agent",
+          "avatar": "https://avatars.githubusercontent.com/in/1143301?v=4",
+          "contributions": 4,
+          "type": "Bot",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Copilot/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
           "login": "cumthxy",
           "url": "https://github.com/cumthxy",
+          "avatar": "https://avatars.githubusercontent.com/u/22782047?v=4",
           "contributions": 22,
-          "type": "User"
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/cumthxy/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "ding727272zzz",
+          "url": "https://github.com/ding727272zzz",
+          "avatar": "https://avatars.githubusercontent.com/u/14340297?v=4",
+          "contributions": 9,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/ding727272zzz/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
           "login": "dm57",
           "url": "https://github.com/dm57",
+          "avatar": "https://avatars.githubusercontent.com/u/102356141?v=4",
           "contributions": 19,
-          "type": "User"
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/dm57/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "doctorbruce",
+          "url": "https://github.com/doctorbruce",
+          "avatar": "https://avatars.githubusercontent.com/u/114830331?v=4",
+          "contributions": 6,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/doctorbruce/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "eltociear",
+          "url": "https://github.com/eltociear",
+          "avatar": "https://avatars.githubusercontent.com/u/22633385?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/eltociear/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "fengyue-xve",
+          "url": "https://github.com/fengyue-xve",
+          "avatar": "https://avatars.githubusercontent.com/u/207049211?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/fengyue-xve/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "FenjuFu",
+          "url": "https://github.com/FenjuFu",
+          "avatar": "https://avatars.githubusercontent.com/u/92919259?v=4",
+          "contributions": 80,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/FenjuFu/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "ggfgtonyquan",
+          "url": "https://github.com/ggfgtonyquan",
+          "avatar": "https://avatars.githubusercontent.com/u/136245549?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/ggfgtonyquan/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "hant1",
+          "url": "https://github.com/hant1",
+          "avatar": "https://avatars.githubusercontent.com/u/80155819?v=4",
+          "contributions": 32,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/hant1/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "haosenwang1018",
+          "url": "https://github.com/haosenwang1018",
+          "avatar": "https://avatars.githubusercontent.com/u/167664334?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/haosenwang1018/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "Harbor404",
+          "url": "https://github.com/Harbor404",
+          "avatar": "https://avatars.githubusercontent.com/u/200719166?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Harbor404/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "hygao1024",
+          "url": "https://github.com/hygao1024",
+          "avatar": "https://avatars.githubusercontent.com/u/36291803?v=4",
+          "contributions": 136,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/hygao1024/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "jinhao",
+          "url": "https://github.com/jinhao",
+          "avatar": "https://avatars.githubusercontent.com/u/668708?v=4",
+          "contributions": 27,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/jinhao/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "junzhang-jun",
+          "url": "https://github.com/junzhang-jun",
+          "avatar": "https://avatars.githubusercontent.com/u/154956399?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/junzhang-jun/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "Kexinist",
+          "url": "https://github.com/Kexinist",
+          "avatar": "https://avatars.githubusercontent.com/u/108705088?v=4",
+          "contributions": 93,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Kexinist/openrank.json",
+          "openrankStatus": "month-missing"
         },
         {
           "login": "Laevata1n",
           "url": "https://github.com/Laevata1n",
+          "avatar": "https://avatars.githubusercontent.com/u/233687807?v=4",
           "contributions": 19,
-          "type": "User"
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Laevata1n/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
-          "login": "wq457",
-          "url": "https://github.com/wq457",
-          "contributions": 18,
-          "type": "User"
+          "login": "lantianhemao",
+          "url": "https://github.com/lantianhemao",
+          "avatar": "https://avatars.githubusercontent.com/u/106608685?v=4",
+          "contributions": 42,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/lantianhemao/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
-          "login": "ssyamv",
-          "url": "https://github.com/ssyamv",
-          "contributions": 15,
-          "type": "User"
+          "login": "likes1234-bro",
+          "url": "https://github.com/likes1234-bro",
+          "avatar": "https://avatars.githubusercontent.com/u/93520596?v=4",
+          "contributions": 24,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/likes1234-bro/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
           "login": "MacGe",
           "url": "https://github.com/MacGe",
+          "avatar": "https://avatars.githubusercontent.com/u/25633087?v=4",
           "contributions": 15,
-          "type": "User"
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/MacGe/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
-          "login": "dongjiang1989",
-          "url": "https://github.com/dongjiang1989",
-          "contributions": 14,
-          "type": "User"
+          "login": "mikasa-code",
+          "url": "https://github.com/mikasa-code",
+          "avatar": "https://avatars.githubusercontent.com/u/72306376?v=4",
+          "contributions": 10,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/mikasa-code/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "mingsuiyongheng",
+          "url": "https://github.com/mingsuiyongheng",
+          "avatar": "https://avatars.githubusercontent.com/u/47276246?v=4",
+          "contributions": 154,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/mingsuiyongheng/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "mixiangsiyi",
+          "url": "https://github.com/mixiangsiyi",
+          "avatar": "https://avatars.githubusercontent.com/u/101969274?v=4",
+          "contributions": 25,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/mixiangsiyi/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "mmmlll0708",
+          "url": "https://github.com/mmmlll0708",
+          "avatar": "https://avatars.githubusercontent.com/u/156432051?v=4",
+          "contributions": 8,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/mmmlll0708/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "OLDyade",
+          "url": "https://github.com/OLDyade",
+          "avatar": "https://avatars.githubusercontent.com/u/75075125?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/OLDyade/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "Omuigix",
+          "url": "https://github.com/Omuigix",
+          "avatar": "https://avatars.githubusercontent.com/u/33213087?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Omuigix/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "onatozmenn",
+          "url": "https://github.com/onatozmenn",
+          "avatar": "https://avatars.githubusercontent.com/u/212128834?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/onatozmenn/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "pxc1130",
+          "url": "https://github.com/pxc1130",
+          "avatar": "https://avatars.githubusercontent.com/u/82522729?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/pxc1130/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "SashaMIT",
+          "url": "https://github.com/SashaMIT",
+          "avatar": "https://avatars.githubusercontent.com/u/33847880?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/SashaMIT/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "scguoi",
+          "url": "https://github.com/scguoi",
+          "avatar": "https://avatars.githubusercontent.com/u/19951594?v=4",
+          "contributions": 35,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/scguoi/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "scw919",
+          "url": "https://github.com/scw919",
+          "avatar": "https://avatars.githubusercontent.com/u/26585886?v=4",
+          "contributions": 7,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/scw919/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "sharphu",
+          "url": "https://github.com/sharphu",
+          "avatar": "https://avatars.githubusercontent.com/u/39578471?v=4",
+          "contributions": 129,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/sharphu/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "slqcode",
+          "url": "https://github.com/slqcode",
+          "avatar": "https://avatars.githubusercontent.com/u/7392466?v=4",
+          "contributions": 113,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/slqcode/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "snoopyYang",
+          "url": "https://github.com/snoopyYang",
+          "avatar": "https://avatars.githubusercontent.com/u/8241659?v=4",
+          "contributions": 11,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/snoopyYang/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "ssyamv",
+          "url": "https://github.com/ssyamv",
+          "avatar": "https://avatars.githubusercontent.com/u/80450249?v=4",
+          "contributions": 15,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/ssyamv/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "TechQuery",
+          "url": "https://github.com/TechQuery",
+          "avatar": "https://avatars.githubusercontent.com/u/19969570?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/TechQuery/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "Thomas1024-Astron",
+          "url": "https://github.com/Thomas1024-Astron",
+          "avatar": "https://avatars.githubusercontent.com/u/138456210?v=4",
+          "contributions": 37,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Thomas1024-Astron/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "Tinywan",
+          "url": "https://github.com/Tinywan",
+          "avatar": "https://avatars.githubusercontent.com/u/14959876?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Tinywan/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "vsxd",
+          "url": "https://github.com/vsxd",
+          "avatar": "https://avatars.githubusercontent.com/u/28803103?v=4",
+          "contributions": 185,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/vsxd/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "whyiug",
+          "url": "https://github.com/whyiug",
+          "avatar": "https://avatars.githubusercontent.com/u/6668626?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/whyiug/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "woicw",
+          "url": "https://github.com/woicw",
+          "avatar": "https://avatars.githubusercontent.com/u/42168689?v=4",
+          "contributions": 65,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/woicw/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "wowo-zZ",
+          "url": "https://github.com/wowo-zZ",
+          "avatar": "https://avatars.githubusercontent.com/u/9653978?v=4",
+          "contributions": 7,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/wowo-zZ/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "wq457",
+          "url": "https://github.com/wq457",
+          "avatar": "https://avatars.githubusercontent.com/u/74534298?v=4",
+          "contributions": 18,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/wq457/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "xiaodangjia105",
+          "url": "https://github.com/xiaodangjia105",
+          "avatar": "https://avatars.githubusercontent.com/u/148837900?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/xiaodangjia105/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "Xxbys752521",
+          "url": "https://github.com/Xxbys752521",
+          "avatar": "https://avatars.githubusercontent.com/u/59569075?v=4",
+          "contributions": 7,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Xxbys752521/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "XZQ173",
+          "url": "https://github.com/XZQ173",
+          "avatar": "https://avatars.githubusercontent.com/u/281333818?v=4",
+          "contributions": 6,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/XZQ173/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "yixinmeng",
+          "url": "https://github.com/yixinmeng",
+          "avatar": "https://avatars.githubusercontent.com/u/42209328?v=4",
+          "contributions": 34,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/yixinmeng/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "yjlu666",
+          "url": "https://github.com/yjlu666",
+          "avatar": "https://avatars.githubusercontent.com/u/124077501?v=4",
+          "contributions": 881,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/yjlu666/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "yun-zhi-ztl",
+          "url": "https://github.com/yun-zhi-ztl",
+          "avatar": "https://avatars.githubusercontent.com/u/66589705?v=4",
+          "contributions": 119,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/yun-zhi-ztl/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "zhubin4615",
+          "url": "https://github.com/zhubin4615",
+          "avatar": "https://avatars.githubusercontent.com/u/31718425?v=4",
+          "contributions": 37,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/zhubin4615/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "zhuxinghan01",
+          "url": "https://github.com/zhuxinghan01",
+          "avatar": "https://avatars.githubusercontent.com/u/183343375?v=4",
+          "contributions": 7,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/zhuxinghan01/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "zijian2",
+          "url": "https://github.com/zijian2",
+          "avatar": "https://avatars.githubusercontent.com/u/88070718?v=4",
+          "contributions": 12,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/zijian2/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "zyzy0116",
+          "url": "https://github.com/zyzy0116",
+          "avatar": "https://avatars.githubusercontent.com/u/82006438?v=4",
+          "contributions": 72,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/zyzy0116/openrank.json",
+          "openrankStatus": "not-exported"
         }
-      ]
+      ],
+      "openrank": 10.07
     },
     {
       "id": "skillhub",
@@ -200,189 +635,502 @@
       "forks": 818,
       "archived": false,
       "source": "https://api.github.com/repos/iflytek/skillhub",
-      "contributorsSource": "https://api.github.com/repos/iflytek/skillhub/contributors?per_page=30&anon=false",
+      "contributorsSource": "https://api.github.com/repos/iflytek/skillhub/contributors?per_page=100&anon=false",
+      "contributorsPages": 1,
+      "openrankSource": "https://oss.open-digger.cn/github/iflytek/skillhub/openrank.json",
       "contributors": [
         {
-          "login": "XiaoSeS",
-          "url": "https://github.com/XiaoSeS",
-          "contributions": 780,
-          "type": "User"
+          "login": "dongjiang1989",
+          "url": "https://github.com/dongjiang1989",
+          "avatar": "https://avatars.githubusercontent.com/u/5010507?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": 7.74,
+          "openrankSource": "https://oss.open-digger.cn/github/dongjiang1989/openrank.json",
+          "openrankStatus": "available"
         },
         {
-          "login": "dongmucat",
-          "url": "https://github.com/dongmucat",
-          "contributions": 371,
-          "type": "User"
-        },
-        {
-          "login": "vsxd",
-          "url": "https://github.com/vsxd",
-          "contributions": 236,
-          "type": "User"
-        },
-        {
-          "login": "yun-zhi-ztl",
-          "url": "https://github.com/yun-zhi-ztl",
-          "contributions": 190,
-          "type": "User"
-        },
-        {
-          "login": "wowo-zZ",
-          "url": "https://github.com/wowo-zZ",
-          "contributions": 66,
-          "type": "User"
-        },
-        {
-          "login": "FenjuFu",
-          "url": "https://github.com/FenjuFu",
-          "contributions": 65,
-          "type": "User"
-        },
-        {
-          "login": "xiaoyaner0201",
-          "url": "https://github.com/xiaoyaner0201",
-          "contributions": 55,
-          "type": "User"
-        },
-        {
-          "login": "Pipreola",
-          "url": "https://github.com/Pipreola",
-          "contributions": 19,
-          "type": "User"
-        },
-        {
-          "login": "tap-top",
-          "url": "https://github.com/tap-top",
-          "contributions": 13,
-          "type": "User"
-        },
-        {
-          "login": "jangrui",
-          "url": "https://github.com/jangrui",
-          "contributions": 11,
-          "type": "User"
-        },
-        {
-          "login": "Vast-Stars",
-          "url": "https://github.com/Vast-Stars",
-          "contributions": 7,
-          "type": "User"
+          "login": "utafrali",
+          "url": "https://github.com/utafrali",
+          "avatar": "https://avatars.githubusercontent.com/u/8383373?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": 5.36,
+          "openrankSource": "https://oss.open-digger.cn/github/utafrali/openrank.json",
+          "openrankStatus": "available"
         },
         {
           "login": "myml",
           "url": "https://github.com/myml",
+          "avatar": "https://avatars.githubusercontent.com/u/13045857?v=4",
           "contributions": 7,
-          "type": "User"
+          "type": "User",
+          "openrank": 2.76,
+          "openrankSource": "https://oss.open-digger.cn/github/myml/openrank.json",
+          "openrankStatus": "available"
         },
         {
-          "login": "likes1234-bro",
-          "url": "https://github.com/likes1234-bro",
-          "contributions": 6,
-          "type": "User"
+          "login": "15258725278",
+          "url": "https://github.com/15258725278",
+          "avatar": "https://avatars.githubusercontent.com/u/50289372?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/15258725278/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
-          "login": "LHB6540",
-          "url": "https://github.com/LHB6540",
-          "contributions": 4,
-          "type": "User"
-        },
-        {
-          "login": "zjncs",
-          "url": "https://github.com/zjncs",
-          "contributions": 4,
-          "type": "User"
-        },
-        {
-          "login": "Danny5487401",
-          "url": "https://github.com/Danny5487401",
-          "contributions": 4,
-          "type": "User"
-        },
-        {
-          "login": "michael-xiii",
-          "url": "https://github.com/michael-xiii",
-          "contributions": 4,
-          "type": "User"
-        },
-        {
-          "login": "gale-popai",
-          "url": "https://github.com/gale-popai",
-          "contributions": 3,
-          "type": "User"
-        },
-        {
-          "login": "mosesyu95",
-          "url": "https://github.com/mosesyu95",
-          "contributions": 3,
-          "type": "User"
-        },
-        {
-          "login": "strawberryOJam",
-          "url": "https://github.com/strawberryOJam",
-          "contributions": 3,
-          "type": "User"
-        },
-        {
-          "login": "thiagonogueira",
-          "url": "https://github.com/thiagonogueira",
-          "contributions": 2,
-          "type": "User"
-        },
-        {
-          "login": "tenten-shih",
-          "url": "https://github.com/tenten-shih",
-          "contributions": 2,
-          "type": "User"
-        },
-        {
-          "login": "shychee",
-          "url": "https://github.com/shychee",
-          "contributions": 2,
-          "type": "User"
-        },
-        {
-          "login": "dongjiang1989",
-          "url": "https://github.com/dongjiang1989",
-          "contributions": 2,
-          "type": "User"
+          "login": "bbdu3",
+          "url": "https://github.com/bbdu3",
+          "avatar": "https://avatars.githubusercontent.com/u/313232278?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/bbdu3/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
           "login": "betterlmy",
           "url": "https://github.com/betterlmy",
+          "avatar": "https://avatars.githubusercontent.com/u/44780287?v=4",
           "contributions": 2,
-          "type": "User"
-        },
-        {
-          "login": "Rsweater",
-          "url": "https://github.com/Rsweater",
-          "contributions": 2,
-          "type": "User"
-        },
-        {
-          "login": "Jyoung706",
-          "url": "https://github.com/Jyoung706",
-          "contributions": 2,
-          "type": "User"
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/betterlmy/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
           "login": "CaffreySun",
           "url": "https://github.com/CaffreySun",
+          "avatar": "https://avatars.githubusercontent.com/u/15625350?v=4",
           "contributions": 1,
-          "type": "User"
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/CaffreySun/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
-          "login": "yaffir",
-          "url": "https://github.com/yaffir",
+          "login": "Danny5487401",
+          "url": "https://github.com/Danny5487401",
+          "avatar": "https://avatars.githubusercontent.com/u/64348131?v=4",
+          "contributions": 4,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Danny5487401/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "dongmucat",
+          "url": "https://github.com/dongmucat",
+          "avatar": "https://avatars.githubusercontent.com/u/70678707?v=4",
+          "contributions": 371,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/dongmucat/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "FenjuFu",
+          "url": "https://github.com/FenjuFu",
+          "avatar": "https://avatars.githubusercontent.com/u/92919259?v=4",
+          "contributions": 65,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/FenjuFu/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "gale-popai",
+          "url": "https://github.com/gale-popai",
+          "avatar": "https://avatars.githubusercontent.com/u/259040597?v=4",
+          "contributions": 3,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/gale-popai/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "jangrui",
+          "url": "https://github.com/jangrui",
+          "avatar": "https://avatars.githubusercontent.com/u/5895682?v=4",
+          "contributions": 11,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/jangrui/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "Jyoung706",
+          "url": "https://github.com/Jyoung706",
+          "avatar": "https://avatars.githubusercontent.com/u/108918591?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Jyoung706/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "LHB6540",
+          "url": "https://github.com/LHB6540",
+          "avatar": "https://avatars.githubusercontent.com/u/41095303?v=4",
+          "contributions": 4,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/LHB6540/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "likes1234-bro",
+          "url": "https://github.com/likes1234-bro",
+          "avatar": "https://avatars.githubusercontent.com/u/93520596?v=4",
+          "contributions": 6,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/likes1234-bro/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "lys1313013",
+          "url": "https://github.com/lys1313013",
+          "avatar": "https://avatars.githubusercontent.com/u/64422807?v=4",
           "contributions": 1,
-          "type": "User"
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/lys1313013/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "martindissingmadsen",
+          "url": "https://github.com/martindissingmadsen",
+          "avatar": "https://avatars.githubusercontent.com/u/179458371?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/martindissingmadsen/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "michael-xiii",
+          "url": "https://github.com/michael-xiii",
+          "avatar": "https://avatars.githubusercontent.com/u/1186790?v=4",
+          "contributions": 4,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/michael-xiii/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "mosesyu95",
+          "url": "https://github.com/mosesyu95",
+          "avatar": "https://avatars.githubusercontent.com/u/22955185?v=4",
+          "contributions": 3,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/mosesyu95/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "PerryLink",
+          "url": "https://github.com/PerryLink",
+          "avatar": "https://avatars.githubusercontent.com/u/255665900?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/PerryLink/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "Phil-OSophy-42",
+          "url": "https://github.com/Phil-OSophy-42",
+          "avatar": "https://avatars.githubusercontent.com/u/215625218?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Phil-OSophy-42/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "Pipreola",
+          "url": "https://github.com/Pipreola",
+          "avatar": "https://avatars.githubusercontent.com/u/30210874?v=4",
+          "contributions": 19,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Pipreola/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "qwn3213",
+          "url": "https://github.com/qwn3213",
+          "avatar": "https://avatars.githubusercontent.com/u/15106813?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/qwn3213/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "raymondtc",
+          "url": "https://github.com/raymondtc",
+          "avatar": "https://avatars.githubusercontent.com/u/21071287?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/raymondtc/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "Rsweater",
+          "url": "https://github.com/Rsweater",
+          "avatar": "https://avatars.githubusercontent.com/u/49091147?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Rsweater/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "SenLinLeo",
+          "url": "https://github.com/SenLinLeo",
+          "avatar": "https://avatars.githubusercontent.com/u/45943833?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/SenLinLeo/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "ShinyHero666",
+          "url": "https://github.com/ShinyHero666",
+          "avatar": "https://avatars.githubusercontent.com/u/160204855?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/ShinyHero666/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "shychee",
+          "url": "https://github.com/shychee",
+          "avatar": "https://avatars.githubusercontent.com/u/161040868?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/shychee/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "strawberryOJam",
+          "url": "https://github.com/strawberryOJam",
+          "avatar": "https://avatars.githubusercontent.com/u/163994150?v=4",
+          "contributions": 3,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/strawberryOJam/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "tap-top",
+          "url": "https://github.com/tap-top",
+          "avatar": "https://avatars.githubusercontent.com/u/9601223?v=4",
+          "contributions": 13,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/tap-top/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "TechQuery",
+          "url": "https://github.com/TechQuery",
+          "avatar": "https://avatars.githubusercontent.com/u/19969570?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/TechQuery/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "tenten-shih",
+          "url": "https://github.com/tenten-shih",
+          "avatar": "https://avatars.githubusercontent.com/u/267879717?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/tenten-shih/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "thiagonogueira",
+          "url": "https://github.com/thiagonogueira",
+          "avatar": "https://avatars.githubusercontent.com/u/755318?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/thiagonogueira/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "Tivonsico",
+          "url": "https://github.com/Tivonsico",
+          "avatar": "https://avatars.githubusercontent.com/u/173276029?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Tivonsico/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "twodogegg",
+          "url": "https://github.com/twodogegg",
+          "avatar": "https://avatars.githubusercontent.com/u/29424625?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/twodogegg/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "Vast-Stars",
+          "url": "https://github.com/Vast-Stars",
+          "avatar": "https://avatars.githubusercontent.com/u/18486331?v=4",
+          "contributions": 7,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Vast-Stars/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "vsxd",
+          "url": "https://github.com/vsxd",
+          "avatar": "https://avatars.githubusercontent.com/u/28803103?v=4",
+          "contributions": 236,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/vsxd/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "vzpd",
+          "url": "https://github.com/vzpd",
+          "avatar": "https://avatars.githubusercontent.com/u/28712045?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/vzpd/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "wanting12345",
+          "url": "https://github.com/wanting12345",
+          "avatar": "https://avatars.githubusercontent.com/u/58336151?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/wanting12345/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "wowo-zZ",
+          "url": "https://github.com/wowo-zZ",
+          "avatar": "https://avatars.githubusercontent.com/u/9653978?v=4",
+          "contributions": 66,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/wowo-zZ/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "X77seven",
+          "url": "https://github.com/X77seven",
+          "avatar": "https://avatars.githubusercontent.com/u/171017641?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/X77seven/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "XiaoSeS",
+          "url": "https://github.com/XiaoSeS",
+          "avatar": "https://avatars.githubusercontent.com/u/87064762?v=4",
+          "contributions": 780,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/XiaoSeS/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "xiaoyaner0201",
+          "url": "https://github.com/xiaoyaner0201",
+          "avatar": "https://avatars.githubusercontent.com/u/258399167?v=4",
+          "contributions": 55,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/xiaoyaner0201/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
           "login": "xring",
           "url": "https://github.com/xring",
+          "avatar": "https://avatars.githubusercontent.com/u/7193733?v=4",
           "contributions": 1,
-          "type": "User"
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/xring/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "yaffir",
+          "url": "https://github.com/yaffir",
+          "avatar": "https://avatars.githubusercontent.com/u/97219715?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/yaffir/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "yun-zhi-ztl",
+          "url": "https://github.com/yun-zhi-ztl",
+          "avatar": "https://avatars.githubusercontent.com/u/66589705?v=4",
+          "contributions": 190,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/yun-zhi-ztl/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "zhaieryuan",
+          "url": "https://github.com/zhaieryuan",
+          "avatar": "https://avatars.githubusercontent.com/u/127175435?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/zhaieryuan/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "zhukai9527",
+          "url": "https://github.com/zhukai9527",
+          "avatar": "https://avatars.githubusercontent.com/u/22883012?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/zhukai9527/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "zjncs",
+          "url": "https://github.com/zjncs",
+          "avatar": "https://avatars.githubusercontent.com/u/162333583?v=4",
+          "contributions": 4,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/zjncs/openrank.json",
+          "openrankStatus": "not-exported"
         }
-      ]
+      ],
+      "openrank": 15.01
     },
     {
       "id": "astron-rpa",
@@ -391,171 +1139,282 @@
       "forks": 484,
       "archived": false,
       "source": "https://api.github.com/repos/iflytek/astron-rpa",
-      "contributorsSource": "https://api.github.com/repos/iflytek/astron-rpa/contributors?per_page=30&anon=false",
+      "contributorsSource": "https://api.github.com/repos/iflytek/astron-rpa/contributors?per_page=100&anon=false",
+      "contributorsPages": 1,
+      "openrankSource": "https://oss.open-digger.cn/github/iflytek/astron-rpa/openrank.json",
       "contributors": [
         {
-          "login": "doctorbruce",
-          "url": "https://github.com/doctorbruce",
-          "contributions": 93,
-          "type": "User"
+          "login": "bbdu3",
+          "url": "https://github.com/bbdu3",
+          "avatar": "https://avatars.githubusercontent.com/u/313232278?v=4",
+          "contributions": 19,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/bbdu3/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
           "login": "bijinfeng",
           "url": "https://github.com/bijinfeng",
+          "avatar": "https://avatars.githubusercontent.com/u/29982703?v=4",
           "contributions": 79,
-          "type": "User"
-        },
-        {
-          "login": "horizon220222",
-          "url": "https://github.com/horizon220222",
-          "contributions": 76,
-          "type": "User"
-        },
-        {
-          "login": "blessleon",
-          "url": "https://github.com/blessleon",
-          "contributions": 51,
-          "type": "User"
-        },
-        {
-          "login": "chunhuitang",
-          "url": "https://github.com/chunhuitang",
-          "contributions": 31,
-          "type": "User"
-        },
-        {
-          "login": "kuangruike",
-          "url": "https://github.com/kuangruike",
-          "contributions": 26,
-          "type": "User"
-        },
-        {
-          "login": "LC-doc",
-          "url": "https://github.com/LC-doc",
-          "contributions": 24,
-          "type": "User"
-        },
-        {
-          "login": "bbdu3",
-          "url": "https://github.com/bbdu3",
-          "contributions": 19,
-          "type": "User"
-        },
-        {
-          "login": "FenjuFu",
-          "url": "https://github.com/FenjuFu",
-          "contributions": 16,
-          "type": "User"
-        },
-        {
-          "login": "sjuartwey",
-          "url": "https://github.com/sjuartwey",
-          "contributions": 15,
-          "type": "User"
-        },
-        {
-          "login": "Cloudx-xiao",
-          "url": "https://github.com/Cloudx-xiao",
-          "contributions": 14,
-          "type": "User"
-        },
-        {
-          "login": "maomeideliu",
-          "url": "https://github.com/maomeideliu",
-          "contributions": 11,
-          "type": "User"
-        },
-        {
-          "login": "hlxmg",
-          "url": "https://github.com/hlxmg",
-          "contributions": 7,
-          "type": "User"
-        },
-        {
-          "login": "laiwei3",
-          "url": "https://github.com/laiwei3",
-          "contributions": 4,
-          "type": "User"
-        },
-        {
-          "login": "hi-neason",
-          "url": "https://github.com/hi-neason",
-          "contributions": 4,
-          "type": "User"
-        },
-        {
-          "login": "OrangeChengcc",
-          "url": "https://github.com/OrangeChengcc",
-          "contributions": 3,
-          "type": "User"
-        },
-        {
-          "login": "jinjin123456",
-          "url": "https://github.com/jinjin123456",
-          "contributions": 2,
-          "type": "User"
-        },
-        {
-          "login": "fangdudu",
-          "url": "https://github.com/fangdudu",
-          "contributions": 2,
-          "type": "User"
-        },
-        {
-          "login": "haosenwang1018",
-          "url": "https://github.com/haosenwang1018",
-          "contributions": 1,
-          "type": "User"
-        },
-        {
-          "login": "TechQuery",
-          "url": "https://github.com/TechQuery",
-          "contributions": 1,
-          "type": "User"
-        },
-        {
-          "login": "jshuaishuai",
-          "url": "https://github.com/jshuaishuai",
-          "contributions": 1,
-          "type": "User"
-        },
-        {
-          "login": "MichaelYONGHENG",
-          "url": "https://github.com/MichaelYONGHENG",
-          "contributions": 1,
-          "type": "User"
-        },
-        {
-          "login": "carfeii",
-          "url": "https://github.com/carfeii",
-          "contributions": 1,
-          "type": "User"
-        },
-        {
-          "login": "danielmeiy",
-          "url": "https://github.com/danielmeiy",
-          "contributions": 1,
-          "type": "User"
-        },
-        {
-          "login": "kober-basket",
-          "url": "https://github.com/kober-basket",
-          "contributions": 1,
-          "type": "User"
-        },
-        {
-          "login": "jonymei",
-          "url": "https://github.com/jonymei",
-          "contributions": 1,
-          "type": "User"
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/bijinfeng/openrank.json",
+          "openrankStatus": "not-exported"
         },
         {
           "login": "binyangzhu000-sudo",
           "url": "https://github.com/binyangzhu000-sudo",
+          "avatar": "https://avatars.githubusercontent.com/u/224954946?v=4",
           "contributions": 1,
-          "type": "User"
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/binyangzhu000-sudo/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "blessleon",
+          "url": "https://github.com/blessleon",
+          "avatar": "https://avatars.githubusercontent.com/u/51091113?v=4",
+          "contributions": 51,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/blessleon/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "carfeii",
+          "url": "https://github.com/carfeii",
+          "avatar": "https://avatars.githubusercontent.com/u/277509339?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/carfeii/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "chunhuitang",
+          "url": "https://github.com/chunhuitang",
+          "avatar": "https://avatars.githubusercontent.com/u/233944770?v=4",
+          "contributions": 31,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/chunhuitang/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "Cloudx-xiao",
+          "url": "https://github.com/Cloudx-xiao",
+          "avatar": "https://avatars.githubusercontent.com/u/33547231?v=4",
+          "contributions": 14,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/Cloudx-xiao/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "danielmeiy",
+          "url": "https://github.com/danielmeiy",
+          "avatar": "https://avatars.githubusercontent.com/u/20473683?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/danielmeiy/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "doctorbruce",
+          "url": "https://github.com/doctorbruce",
+          "avatar": "https://avatars.githubusercontent.com/u/114830331?v=4",
+          "contributions": 93,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/doctorbruce/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "fangdudu",
+          "url": "https://github.com/fangdudu",
+          "avatar": "https://avatars.githubusercontent.com/u/39378457?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/fangdudu/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "FenjuFu",
+          "url": "https://github.com/FenjuFu",
+          "avatar": "https://avatars.githubusercontent.com/u/92919259?v=4",
+          "contributions": 16,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/FenjuFu/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "haosenwang1018",
+          "url": "https://github.com/haosenwang1018",
+          "avatar": "https://avatars.githubusercontent.com/u/167664334?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/haosenwang1018/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "hi-neason",
+          "url": "https://github.com/hi-neason",
+          "avatar": "https://avatars.githubusercontent.com/u/69571456?v=4",
+          "contributions": 4,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/hi-neason/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "hlxmg",
+          "url": "https://github.com/hlxmg",
+          "avatar": "https://avatars.githubusercontent.com/u/51639669?v=4",
+          "contributions": 7,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/hlxmg/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "horizon220222",
+          "url": "https://github.com/horizon220222",
+          "avatar": "https://avatars.githubusercontent.com/u/23274077?v=4",
+          "contributions": 76,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/horizon220222/openrank.json",
+          "openrankStatus": "month-missing"
+        },
+        {
+          "login": "jinjin123456",
+          "url": "https://github.com/jinjin123456",
+          "avatar": "https://avatars.githubusercontent.com/u/40254407?v=4",
+          "contributions": 2,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/jinjin123456/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "jonymei",
+          "url": "https://github.com/jonymei",
+          "avatar": "https://avatars.githubusercontent.com/u/11402738?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/jonymei/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "jshuaishuai",
+          "url": "https://github.com/jshuaishuai",
+          "avatar": "https://avatars.githubusercontent.com/u/54925775?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/jshuaishuai/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "kober-basket",
+          "url": "https://github.com/kober-basket",
+          "avatar": "https://avatars.githubusercontent.com/u/52108005?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/kober-basket/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "kuangruike",
+          "url": "https://github.com/kuangruike",
+          "avatar": "https://avatars.githubusercontent.com/u/22744231?v=4",
+          "contributions": 26,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/kuangruike/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "laiwei3",
+          "url": "https://github.com/laiwei3",
+          "avatar": "https://avatars.githubusercontent.com/u/233965105?v=4",
+          "contributions": 4,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/laiwei3/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "LC-doc",
+          "url": "https://github.com/LC-doc",
+          "avatar": "https://avatars.githubusercontent.com/u/192952201?v=4",
+          "contributions": 24,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/LC-doc/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "maomeideliu",
+          "url": "https://github.com/maomeideliu",
+          "avatar": "https://avatars.githubusercontent.com/u/52411262?v=4",
+          "contributions": 11,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/maomeideliu/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "MichaelYONGHENG",
+          "url": "https://github.com/MichaelYONGHENG",
+          "avatar": "https://avatars.githubusercontent.com/u/46621406?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/MichaelYONGHENG/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "OrangeChengcc",
+          "url": "https://github.com/OrangeChengcc",
+          "avatar": "https://avatars.githubusercontent.com/u/158296326?v=4",
+          "contributions": 3,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/OrangeChengcc/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "sjuartwey",
+          "url": "https://github.com/sjuartwey",
+          "avatar": "https://avatars.githubusercontent.com/u/233876565?v=4",
+          "contributions": 15,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/sjuartwey/openrank.json",
+          "openrankStatus": "not-exported"
+        },
+        {
+          "login": "TechQuery",
+          "url": "https://github.com/TechQuery",
+          "avatar": "https://avatars.githubusercontent.com/u/19969570?v=4",
+          "contributions": 1,
+          "type": "User",
+          "openrank": null,
+          "openrankSource": "https://oss.open-digger.cn/github/TechQuery/openrank.json",
+          "openrankStatus": "month-missing"
         }
-      ]
+      ],
+      "openrank": 4.4
     }
   ]
 }
