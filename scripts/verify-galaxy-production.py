@@ -11,12 +11,16 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://www.awesome-astron-workflow.dev'
 
 
+def json_hash(raw):
+    return hashlib.sha256(json.dumps(json.loads(raw), sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--timeout', type=int, default=1200)
     args = parser.parse_args()
     files = sorted((ROOT / 'public/galaxy-data').glob('*.json'))
-    expected = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
+    expected = {p.name: json_hash(p.read_bytes()) for p in files}
     snapshot = json.loads((ROOT / 'src/data/galaxy.json').read_text(encoding='utf-8'))
     assert expected
     receipts = ROOT / '.cache/galaxy-receipts'
@@ -40,12 +44,12 @@ def main():
             for chunk in galaxy_chunks:
                 with urllib.request.urlopen(BASE + '/assets/' + chunk.decode(), timeout=60) as response:
                     bundle += response.read()
-            frontend_matches = snapshot['capturedAt'].encode() in bundle and all(
+            frontend_matches = all(date.encode() in bundle for date in snapshot['captureRange'].values()) and all(
                 p['calculation']['graphSha256'].encode() in bundle for p in snapshot['projects'])
             actual = {}
             for name in expected:
                 with urllib.request.urlopen(BASE + '/galaxy-data/' + name, timeout=60) as response:
-                    actual[name] = hashlib.sha256(response.read()).hexdigest()
+                    actual[name] = json_hash(response.read())
             result = {'url': BASE + '/galaxy', 'expected': expected, 'actual': actual,
                       'verifiedAtEpoch': time.time(), 'frontendMatches': frontend_matches,
                       'matches': actual == expected and frontend_matches}
