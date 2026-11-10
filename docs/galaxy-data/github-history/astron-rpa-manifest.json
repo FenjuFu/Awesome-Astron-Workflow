@@ -1,0 +1,844 @@
+{
+  "capturedAt": "2026-11-10T10:52:58.887078+00:00",
+  "repository": "iflytek/astron-rpa",
+  "requests": {
+    "fa699b707c11eb2a951229ea0098eefc84788f84c92b789803f541f6bf184cb4": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa"
+      },
+      "sha256": "55b4f8d2ee19840ca7cb70fb2d330433bc45441e73924a82cea95f989c665281",
+      "cache": "fa699b707c11eb2a951229ea0098eefc84788f84c92b789803f541f6bf184cb4.json",
+      "checkedAt": "2026-11-10T09:41:17.531894+00:00",
+      "repository": "astron-rpa"
+    },
+    "b8ace4b0486288dc8359e51c1b398fd8cf2d47f3976658d52f5ff0e555705089": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "21a24bb6c1d6120d386c7829fb213c21f2efb42e8b4e078f57e87cf0c436503b",
+      "cache": "b8ace4b0486288dc8359e51c1b398fd8cf2d47f3976658d52f5ff0e555705089.json",
+      "checkedAt": "2026-11-10T09:41:18.665073+00:00",
+      "repository": "astron-rpa"
+    },
+    "50e301769228a1b005b8646ac69506d3763821d22d36d38c93d4d2eb149b8b98": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNS0xMi0yNlQwNzoyNjowM1rO4EmtNQ==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "108b556874458658e41ce997c76b970753ecda794bf62fc5821588e52fad4728",
+      "cache": "50e301769228a1b005b8646ac69506d3763821d22d36d38c93d4d2eb149b8b98.json",
+      "checkedAt": "2026-11-10T09:41:19.669269+00:00",
+      "repository": "astron-rpa"
+    },
+    "02819998f282415b208ebe31d41694d3f16d120ef67f129b00afc4650a66f4d3": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNC0xOFQxMDowNDo1NFrO_49aCA==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "a0ff2ee52dc4720148dbd2d17e4065bb0655fbd3bcbaabcf976e7ed0a4f89abc",
+      "cache": "02819998f282415b208ebe31d41694d3f16d120ef67f129b00afc4650a66f4d3.json",
+      "checkedAt": "2026-11-10T09:41:20.708746+00:00",
+      "repository": "astron-rpa"
+    },
+    "b1aaf06255dc4742de455c8181eee82b86da36023aa7b6ab002b794f472a55da": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0xMC0wNVQxMzoyODo0MVrPAAAAAVSDido=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "32bb139c557ccc5b75b7dd8d5ff2e2c2b6270cc9212c1ca5f307079d27ed8086",
+      "cache": "b1aaf06255dc4742de455c8181eee82b86da36023aa7b6ab002b794f472a55da.json",
+      "checkedAt": "2026-11-10T09:41:21.785815+00:00",
+      "repository": "astron-rpa"
+    },
+    "1a597a35ddee127a3107fa72cd8d71c8c796d15484450afe14de30254f0f009d": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "cae9a77a9f335b6b6412f6f5f73ac65f49b0e12e3669b5eaec1851a770ccca78",
+      "cache": "1a597a35ddee127a3107fa72cd8d71c8c796d15484450afe14de30254f0f009d.json",
+      "checkedAt": "2026-11-10T09:41:26.198166+00:00",
+      "repository": "astron-rpa"
+    },
+    "c9064ed4ebfca16c23dcb99b3146bbd05b0a9cb2d09e1e1b218a0465dfc6542b": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNS0wOS0yOVQwNjozODo0MVrOqwVTKA==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "f35f65c0275718a0bbb7ee498603a5f291d6a9725e9875cbaab903120af5e41f",
+      "cache": "c9064ed4ebfca16c23dcb99b3146bbd05b0a9cb2d09e1e1b218a0465dfc6542b.json",
+      "checkedAt": "2026-11-10T10:50:47.150933+00:00",
+      "repository": "astron-rpa"
+    },
+    "e36faf3f25776546aa88a951ec1019aa4ce60d4767beb7343bbe22aaa5f44cd2": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNS0xMC0xMVQwNjo1OTo1MFrOrThbHw==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "b479a3ee6d460b6a5922cbe0625b4938af818bf12dd92b0a72dcbf8da757d9c6",
+      "cache": "e36faf3f25776546aa88a951ec1019aa4ce60d4767beb7343bbe22aaa5f44cd2.json",
+      "checkedAt": "2026-11-10T10:50:50.311483+00:00",
+      "repository": "astron-rpa"
+    },
+    "bf8deb8857b1bc96e0ceeac10bd3942a452c525f833a497980f597749f6ad62e": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNS0xMC0xNVQwMjozMTozOFrOrciLTg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "626b4c5b3a8c6e2af9ce0eeb9cebabe17c0a459f23abed6a5df554d46388268f",
+      "cache": "bf8deb8857b1bc96e0ceeac10bd3942a452c525f833a497980f597749f6ad62e.json",
+      "checkedAt": "2026-11-10T10:50:54.272119+00:00",
+      "repository": "astron-rpa"
+    },
+    "8e93baf4dae03a92fdf3c2e06cd7097785500382b59bc0b42960be4204a8f6db": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNS0xMC0yOFQwNzozNTo0NlrOsBNiZg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "f7a8bdee8b25f9c14a333d9c8b715728fe7465de572da752869e0c3d84f55da9",
+      "cache": "8e93baf4dae03a92fdf3c2e06cd7097785500382b59bc0b42960be4204a8f6db.json",
+      "checkedAt": "2026-11-10T10:50:57.422730+00:00",
+      "repository": "astron-rpa"
+    },
+    "bab82a5f4356b13821ee20d6999c5720078775887e6cebfb2cf1cc3aa9c93648": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNS0xMS0yNVQwODowNDo1NlrOtVwA0Q==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "c89a945fc0fa737b411548aae892f22ed08d0268161cac72737c581b597c1b14",
+      "cache": "bab82a5f4356b13821ee20d6999c5720078775887e6cebfb2cf1cc3aa9c93648.json",
+      "checkedAt": "2026-11-10T10:51:01.887378+00:00",
+      "repository": "astron-rpa"
+    },
+    "41a4d2da3b829d0e485f2ed825d399a447ce221eda976f86245a10ab34531d12": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNS0xMi0wOFQwMjo0MTo0NFrOt5NCUQ==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "32a1a28cc9feb8b6293f88daf1df1d1f25ae27c1031e8bfff010133117b92dca",
+      "cache": "41a4d2da3b829d0e485f2ed825d399a447ce221eda976f86245a10ab34531d12.json",
+      "checkedAt": "2026-11-10T10:51:06.716597+00:00",
+      "repository": "astron-rpa"
+    },
+    "8e2e6b0415fe55e1c480d2e402e868e3a222dc53313106de0352f281999dcab4": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNS0xMi0yOVQwNzowOToyMlrOusjzCQ==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "5fc46d638c8b01412b92a9094237ed1c23545a1ca074ed03a84de83a1008bb5a",
+      "cache": "8e2e6b0415fe55e1c480d2e402e868e3a222dc53313106de0352f281999dcab4.json",
+      "checkedAt": "2026-11-10T10:51:11.411469+00:00",
+      "repository": "astron-rpa"
+    },
+    "786fdb38562e8de9ef38145951f2906f0494cb94d5755f88b59219e9b983c9b6": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMS0wNFQwNzo1NTo0NlrOu2kSCg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "ca906219a49302227bc6ecd4c1643e9a32b39b645416d2b6fea4276ccc99d644",
+      "cache": "786fdb38562e8de9ef38145951f2906f0494cb94d5755f88b59219e9b983c9b6.json",
+      "checkedAt": "2026-11-10T10:51:15.181622+00:00",
+      "repository": "astron-rpa"
+    },
+    "3a6f43f460b6abe4e649719f8cbf829d61ebd4639f44e89a5568eed77bfcee14": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMS0wN1QwNzoxMDozM1rOu9lrmQ==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "ae894ddd8d0d1ac100c748391659ce4aa660ba32ee1672446cd1c0acfb745db2",
+      "cache": "3a6f43f460b6abe4e649719f8cbf829d61ebd4639f44e89a5568eed77bfcee14.json",
+      "checkedAt": "2026-11-10T10:51:21.101384+00:00",
+      "repository": "astron-rpa"
+    },
+    "90dd3e2bcdf1bcb091d97302cc90328a6d99996ed3d871092f169912f23f01db": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMS0wOVQxMTozODoyOVrOvFBkXg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "51a84631c177f04933e330207d86627d0ce404352d976b364de947382e613d89",
+      "cache": "90dd3e2bcdf1bcb091d97302cc90328a6d99996ed3d871092f169912f23f01db.json",
+      "checkedAt": "2026-11-10T10:51:24.430449+00:00",
+      "repository": "astron-rpa"
+    },
+    "8e878e8d480766c3907f59e0b00fd357c774ab3224eeeb2ba2313146b95be657": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMS0xNFQwMjoyODo0MlrOvQ5Mdg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "b87408976ac6882da39fc721997db251fd9a256754041a1c50a079e07741a7a1",
+      "cache": "8e878e8d480766c3907f59e0b00fd357c774ab3224eeeb2ba2313146b95be657.json",
+      "checkedAt": "2026-11-10T10:51:28.689130+00:00",
+      "repository": "astron-rpa"
+    },
+    "b177e51231b54762bc13cd30db93c6194229f3b3f55731bb428ea94df43f98d8": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMS0xNlQwNTo0NDowM1rOvYmcUQ==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "265870e48f5f35d63c1ea361c12837b365bf181e22432e18aa97f29333f958cf",
+      "cache": "b177e51231b54762bc13cd30db93c6194229f3b3f55731bb428ea94df43f98d8.json",
+      "checkedAt": "2026-11-10T10:51:32.768914+00:00",
+      "repository": "astron-rpa"
+    },
+    "ca541c12e50eda690c9631f5780dd2085a94ca5d8f0054b00d9b99636d3e2a0e": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMS0yMVQwNzoyMDowMFrOvmHehw==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "a99eb6e99345e063578e006f3aa8376455df455adb54faf4e3efc2945736f745",
+      "cache": "ca541c12e50eda690c9631f5780dd2085a94ca5d8f0054b00d9b99636d3e2a0e.json",
+      "checkedAt": "2026-11-10T10:51:37.304921+00:00",
+      "repository": "astron-rpa"
+    },
+    "0bdb00dcdb16043504314307cf0289debc3ef2137eb26bf1a2f670f1a08c5cb9": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMS0yOFQwMjo0MjoxOVrOv76E6Q==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "5f699f600b7e5c6c8a816237baadc3cb853c1a3257e82ea981cadb3799669247",
+      "cache": "0bdb00dcdb16043504314307cf0289debc3ef2137eb26bf1a2f670f1a08c5cb9.json",
+      "checkedAt": "2026-11-10T10:51:41.814963+00:00",
+      "repository": "astron-rpa"
+    },
+    "249256574db10bd8dfcd575a128b9938a9c5d82030696262bcbb3fb94cd69829": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMi0wNVQxMjoxNjozNFrOwbZ4vg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "b61a29c84489e05b4b968a344c9f7dc22d400b144d7883ece87cdb7b80e43a9c",
+      "cache": "249256574db10bd8dfcd575a128b9938a9c5d82030696262bcbb3fb94cd69829.json",
+      "checkedAt": "2026-11-10T10:51:45.083433+00:00",
+      "repository": "astron-rpa"
+    },
+    "e77e32b2a143d2864275bcc7aab76ff9630ce3bcf4949de90ec687d6535e14c0": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMi0xMlQwMzowNDoxN1rOwynkkw==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "9da485436246590d973ec794d2169d02d8071b4654351ebff99343a98cee2b8a",
+      "cache": "e77e32b2a143d2864275bcc7aab76ff9630ce3bcf4949de90ec687d6535e14c0.json",
+      "checkedAt": "2026-11-10T10:51:49.545984+00:00",
+      "repository": "astron-rpa"
+    },
+    "7ad259259c4acc44fd44fa0c682994e0de837f12d51880276fce42c0f294e236": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMi0yN1QwOToyNjowNFrOxsZDRg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "c9f60d2502e0cb6ca3a08ed8abda0973eff78d18193fb7f0c049b3abacb0cf93",
+      "cache": "7ad259259c4acc44fd44fa0c682994e0de837f12d51880276fce42c0f294e236.json",
+      "checkedAt": "2026-11-10T10:51:53.143379+00:00",
+      "repository": "astron-rpa"
+    },
+    "09d6e13eaf4771a69aa76a886bd297bba7dbf862dd27526315133ba0a804d9f5": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMy0wNlQwOTowNjowMVrOyHGUag==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "48a916250ffa1d3c9a72f77e593fe1708ec00aedf63c43778e2b35719e80757b",
+      "cache": "09d6e13eaf4771a69aa76a886bd297bba7dbf862dd27526315133ba0a804d9f5.json",
+      "checkedAt": "2026-11-10T10:51:56.778045+00:00",
+      "repository": "astron-rpa"
+    },
+    "6fb3c72cc776269a439533fbb68df4a970aabaf7550c32d9894704f228ea4732": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMy0xNlQwNzo1MTo0N1rOytZJNA==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "4beafd8f7452c8f1618c8207d143d460522cfb2115ee430aacbb869f263ad1d5",
+      "cache": "6fb3c72cc776269a439533fbb68df4a970aabaf7550c32d9894704f228ea4732.json",
+      "checkedAt": "2026-11-10T10:52:00.380457+00:00",
+      "repository": "astron-rpa"
+    },
+    "16dc08f9f1a640bea97cd3f4b9b8b030b8a68cd9b0c52d48c9a882347678095a": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMy0yNFQxMjo0MDozNVrOzP6JUA==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "8c7b9799562e937a9a1b924a0a6344165eac9a8297121ea27407032fd44c31b8",
+      "cache": "16dc08f9f1a640bea97cd3f4b9b8b030b8a68cd9b0c52d48c9a882347678095a.json",
+      "checkedAt": "2026-11-10T10:52:03.888162+00:00",
+      "repository": "astron-rpa"
+    },
+    "fd93234a720c3638d97608f8c06d071dda333554d9e53dfc94646819b8be3dee": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNC0wMVQwNzoxNjo0NFrOzyqmVg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "bb3808e760ba48e6539c301c6326be18bc078b04f6b3e230b9e1a5d5627e5232",
+      "cache": "fd93234a720c3638d97608f8c06d071dda333554d9e53dfc94646819b8be3dee.json",
+      "checkedAt": "2026-11-10T10:52:09.343718+00:00",
+      "repository": "astron-rpa"
+    },
+    "59636e628ada04465a64158a64bd0e0d27506b78e61d90a6fee6fb4cc3fbac33": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDOPzfEjM7QXvIr",
+          "after": "MTAw"
+        }
+      },
+      "sha256": "e74ee27f22fd1e3ebd2392e78c2efba93157d008b3a2b93afd7b93cd0db2968e",
+      "cache": "59636e628ada04465a64158a64bd0e0d27506b78e61d90a6fee6fb4cc3fbac33.json",
+      "checkedAt": "2026-11-10T10:52:10.080235+00:00",
+      "repository": "astron-rpa"
+    },
+    "6c7f3dc2e5b0d1e14215274bde6708dc1e9c7b70372758c8360e1503693860a8": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNC0wOVQwMTo1Mjo1NVrO0P02Gg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "08df607660c8a8ff0db0e7983928907de33320c6fefa9bbae957ad341efe1e2a",
+      "cache": "6c7f3dc2e5b0d1e14215274bde6708dc1e9c7b70372758c8360e1503693860a8.json",
+      "checkedAt": "2026-11-10T10:52:14.410426+00:00",
+      "repository": "astron-rpa"
+    },
+    "9e089cf23634b6daa41e1f53c0a03dad4387b7e46295791c25147900aac2af67": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNS0xOFQwOTo0NDoxNFrO3Jfsiw==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "d52c89f7fd1c3d7efd1e7810c8d2504d529f2ff154a4d3392de283e8abbfdc64",
+      "cache": "9e089cf23634b6daa41e1f53c0a03dad4387b7e46295791c25147900aac2af67.json",
+      "checkedAt": "2026-11-10T10:52:17.517055+00:00",
+      "repository": "astron-rpa"
+    },
+    "45d80aa6e9fd8d3dd827a5a62610f857633547d1ebcc4cba82fbb533dc505b7c": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wOC0xN1QwMzo0MDoyOVrO_-HaBg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "6d733670de0e31a2585d05e27cd9536f82f66283ac45991f2f9f726d65bc3697",
+      "cache": "45d80aa6e9fd8d3dd827a5a62610f857633547d1ebcc4cba82fbb533dc505b7c.json",
+      "checkedAt": "2026-11-10T10:52:21.365857+00:00",
+      "repository": "astron-rpa"
+    },
+    "8ad610a42394d90faf675b4409c9629b1c184cd196f64ad860b105eadf97f00c": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "astron-rpa",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wOS0yMFQwMzoxMzoxM1rPAAAAAREc98s=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "a4635be76e7acad52250d34271345005f883f059719688b0bc004e88bdc92257",
+      "cache": "8ad610a42394d90faf675b4409c9629b1c184cd196f64ad860b105eadf97f00c.json",
+      "checkedAt": "2026-11-10T10:52:24.021315+00:00",
+      "repository": "astron-rpa"
+    },
+    "b956addda6266d9efc2b54bc70b08f997e6bdb8bf892e4dfc53e420ea5a9fabe": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/issues/comments?per_page=100&page=1"
+      },
+      "sha256": "2b6a1abceab8e0f441431ee7976a50d5e7be0a360ddcc26fcd360bbe253ec6ba",
+      "cache": "b956addda6266d9efc2b54bc70b08f997e6bdb8bf892e4dfc53e420ea5a9fabe.json",
+      "checkedAt": "2026-11-10T10:52:24.626028+00:00",
+      "repository": "astron-rpa"
+    },
+    "dbfe3fea233415381ce1a1931cf1f8b942ec250e1e406eb01069a5ccd04ae814": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/issues/comments?per_page=100&page=2"
+      },
+      "sha256": "f6751528adbfcde997901b3bc6ada1cc7abd6c370790e7cf6e4fd224a8394fd7",
+      "cache": "dbfe3fea233415381ce1a1931cf1f8b942ec250e1e406eb01069a5ccd04ae814.json",
+      "checkedAt": "2026-11-10T10:52:25.319599+00:00",
+      "repository": "astron-rpa"
+    },
+    "8b80cda7d57ff82c06857294e7f573df9f67257877c4a3c8772f1e57e04e6f08": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/issues/comments?per_page=100&page=3"
+      },
+      "sha256": "1da79e37fdcf4c17c1a67d60199bfe42d1198a1a38948ad26a530ed3bc62aaeb",
+      "cache": "8b80cda7d57ff82c06857294e7f573df9f67257877c4a3c8772f1e57e04e6f08.json",
+      "checkedAt": "2026-11-10T10:52:25.979048+00:00",
+      "repository": "astron-rpa"
+    },
+    "f9ede9f51382fbf924579ee7bcb4caeb577407b884d56a1cb0ee94b98d719f85": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/issues/comments?per_page=100&page=4"
+      },
+      "sha256": "e4c665c0439726123a811ad97dff78a475040f585260eb9ad5721b63747dc132",
+      "cache": "f9ede9f51382fbf924579ee7bcb4caeb577407b884d56a1cb0ee94b98d719f85.json",
+      "checkedAt": "2026-11-10T10:52:26.716236+00:00",
+      "repository": "astron-rpa"
+    },
+    "6cdb29420b4df11b4fa9214b8ada6ddfad60c8a0be3235a2e276f790b3eeb566": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/issues/comments?per_page=100&page=5"
+      },
+      "sha256": "25ff2ee9e8f862c513b80883cd12e318a5b6a8996b1dd3a92a9a83c732965331",
+      "cache": "6cdb29420b4df11b4fa9214b8ada6ddfad60c8a0be3235a2e276f790b3eeb566.json",
+      "checkedAt": "2026-11-10T10:52:27.472678+00:00",
+      "repository": "astron-rpa"
+    },
+    "9bc1b3e7d9fb01ae76bccf49811b771804fc5f278fd9d2dca2b78b137ac2b788": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/issues/comments?per_page=100&page=6"
+      },
+      "sha256": "64505a0385cbe582eeb5c9f3e192bedaaa05616aa738c129d371debaceb207a9",
+      "cache": "9bc1b3e7d9fb01ae76bccf49811b771804fc5f278fd9d2dca2b78b137ac2b788.json",
+      "checkedAt": "2026-11-10T10:52:28.218477+00:00",
+      "repository": "astron-rpa"
+    },
+    "944b9cd1c7e0d945fd56726f3aa5531370aac8598154aee09f2d9d696a5d4b52": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/issues/comments?per_page=100&page=7"
+      },
+      "sha256": "e66b973040e9f3cfa6640d498c6d90b399653f4853bff375e94d0ecb6591759b",
+      "cache": "944b9cd1c7e0d945fd56726f3aa5531370aac8598154aee09f2d9d696a5d4b52.json",
+      "checkedAt": "2026-11-10T10:52:28.997414+00:00",
+      "repository": "astron-rpa"
+    },
+    "e1e6bc12cfde20abdf57f8a5504ba3ec215097e829357e77e3cddcf7a6122cdb": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/issues/comments?per_page=100&page=8"
+      },
+      "sha256": "bb3a2b2cbe379f9fa8eda40c34e23439fa18b63a264e6344839d55f18ce302fc",
+      "cache": "e1e6bc12cfde20abdf57f8a5504ba3ec215097e829357e77e3cddcf7a6122cdb.json",
+      "checkedAt": "2026-11-10T10:52:29.608809+00:00",
+      "repository": "astron-rpa"
+    },
+    "e23ea5f80d854e96aee6d21e7cc916e5ca48f293e58ca9981dbd3a013936bc8b": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/issues/comments?per_page=100&page=9"
+      },
+      "sha256": "1466981bb761a20ed0a194c8f3b28267f5f82bead82c90fb9136177bb204841b",
+      "cache": "e23ea5f80d854e96aee6d21e7cc916e5ca48f293e58ca9981dbd3a013936bc8b.json",
+      "checkedAt": "2026-11-10T10:52:30.141366+00:00",
+      "repository": "astron-rpa"
+    },
+    "e4e3a42641d578bba80627759429bbe73c7b3305997105363d8c67ce263a2cef": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=1"
+      },
+      "sha256": "8aa672a33ce9bda7f766e0b6f03b73dba60c3501dc1d21abd50768b6a7bade6a",
+      "cache": "e4e3a42641d578bba80627759429bbe73c7b3305997105363d8c67ce263a2cef.json",
+      "checkedAt": "2026-11-10T10:52:35.283606+00:00",
+      "repository": "astron-rpa"
+    },
+    "472344a8d657f761a6c7013e3585df0bacf393a79ed4c8cdce8e10a68802fed2": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=2"
+      },
+      "sha256": "76caab9d296e373f70ed8bea163d39d10ac9bff155a8c931d2b862d01d100f1e",
+      "cache": "472344a8d657f761a6c7013e3585df0bacf393a79ed4c8cdce8e10a68802fed2.json",
+      "checkedAt": "2026-11-10T10:52:36.370348+00:00",
+      "repository": "astron-rpa"
+    },
+    "17cbf33c3642a432538a68f50893ad69572cb0b74777ffb5208fff04b7f689a4": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=3"
+      },
+      "sha256": "8465ce04568c2946fb43094c532d04fa5d3cc19a97f6be39665c690f6727c042",
+      "cache": "17cbf33c3642a432538a68f50893ad69572cb0b74777ffb5208fff04b7f689a4.json",
+      "checkedAt": "2026-11-10T10:52:37.349963+00:00",
+      "repository": "astron-rpa"
+    },
+    "57f85c59195ef0c9316492d27fd1b81d85572b9dbd1c2d9efee2428dbf6a5caf": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=4"
+      },
+      "sha256": "4d6e27a15617a522e65d99fc399067778336ac93f7b2356207e7c4548a786330",
+      "cache": "57f85c59195ef0c9316492d27fd1b81d85572b9dbd1c2d9efee2428dbf6a5caf.json",
+      "checkedAt": "2026-11-10T10:52:38.477145+00:00",
+      "repository": "astron-rpa"
+    },
+    "b76a39f8728bdecca4265cba79d487b0a65af3dd02e8b0363d2f2c3b9a37b63b": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=5"
+      },
+      "sha256": "3a19467804a311af3625e43d7fc727e4b9a20a2c705ce692b3a0471a3ab70da5",
+      "cache": "b76a39f8728bdecca4265cba79d487b0a65af3dd02e8b0363d2f2c3b9a37b63b.json",
+      "checkedAt": "2026-11-10T10:52:39.597861+00:00",
+      "repository": "astron-rpa"
+    },
+    "b3d5b55c9e1354e809a5c48f90d00df7786ab6220748bfdbe7fe6d80b614e4ff": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=6"
+      },
+      "sha256": "2cddc619c7c154e7f2000a01fab1c11be843ec0f9b65a44c82bf3c4020d056d8",
+      "cache": "b3d5b55c9e1354e809a5c48f90d00df7786ab6220748bfdbe7fe6d80b614e4ff.json",
+      "checkedAt": "2026-11-10T10:52:40.597928+00:00",
+      "repository": "astron-rpa"
+    },
+    "bb4ae2c8aaad02b38a9a5aa8b8f9ac9eafa22286e921599b2eefadb8699fd7e7": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=7"
+      },
+      "sha256": "f6c26f39d7be8dcea3bafc8405f913421c47222eea4b1ed9dbb09488348c2116",
+      "cache": "bb4ae2c8aaad02b38a9a5aa8b8f9ac9eafa22286e921599b2eefadb8699fd7e7.json",
+      "checkedAt": "2026-11-10T10:52:41.744134+00:00",
+      "repository": "astron-rpa"
+    },
+    "ed527d7b132188bef001a17e570b89a2418987081c992217d43b20cdb797a5fd": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=8"
+      },
+      "sha256": "c4b8288f68f82ab028aa400456f62a01ca2029395fe1a48d647fd3e0a5e57a34",
+      "cache": "ed527d7b132188bef001a17e570b89a2418987081c992217d43b20cdb797a5fd.json",
+      "checkedAt": "2026-11-10T10:52:42.702406+00:00",
+      "repository": "astron-rpa"
+    },
+    "e25e3faed5db1f280ba05ed588565f0cd2a53e505c0751f93c36bebad4482a06": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=9"
+      },
+      "sha256": "9641ade9f0acc32d45e0929308a413df9d2377bedf702215d81842b3c5b6fb0c",
+      "cache": "e25e3faed5db1f280ba05ed588565f0cd2a53e505c0751f93c36bebad4482a06.json",
+      "checkedAt": "2026-11-10T10:52:43.743532+00:00",
+      "repository": "astron-rpa"
+    },
+    "69103739c662e8d01201877ab1770668ae7734a41760b4a4bf1ed135e77353c7": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=10"
+      },
+      "sha256": "3f1ff52b199fcc12d47602e362cb0f3cad91a5d0a11c958f309315f8cf87ee2d",
+      "cache": "69103739c662e8d01201877ab1770668ae7734a41760b4a4bf1ed135e77353c7.json",
+      "checkedAt": "2026-11-10T10:52:46.114752+00:00",
+      "repository": "astron-rpa"
+    },
+    "296778658323377d854857ec01786a3b7dcddbb8973efc5ffc4cefbb6dbacc0e": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=11"
+      },
+      "sha256": "202a0b3c95d64e05c48c7c53a999cb2a533fd4cac7fb58951900e21d587b7ead",
+      "cache": "296778658323377d854857ec01786a3b7dcddbb8973efc5ffc4cefbb6dbacc0e.json",
+      "checkedAt": "2026-11-10T10:52:47.315445+00:00",
+      "repository": "astron-rpa"
+    },
+    "76657679c6ba9752fdc162d88e75ac18ca2a998b77a77d117da8a5c834cccd81": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=12"
+      },
+      "sha256": "3cbdfc09dcec8266dc792fb8b61c72e9ac0f57de07e42d8c8334ea5a1082dd71",
+      "cache": "76657679c6ba9752fdc162d88e75ac18ca2a998b77a77d117da8a5c834cccd81.json",
+      "checkedAt": "2026-11-10T10:52:48.191735+00:00",
+      "repository": "astron-rpa"
+    },
+    "8748b482604fc0acc796c40a59c3a3b45960c39dd1dad0ef1c4d9338c24caba1": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=13"
+      },
+      "sha256": "1c9ad6a50aa0eb39aaf731d6f574e652b4d3456da136bc187b07345930f852cd",
+      "cache": "8748b482604fc0acc796c40a59c3a3b45960c39dd1dad0ef1c4d9338c24caba1.json",
+      "checkedAt": "2026-11-10T10:52:49.207753+00:00",
+      "repository": "astron-rpa"
+    },
+    "7da42be62d763e10a4c6243e39fef160b17eaa3e84160c496d575b872cb2ef22": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=14"
+      },
+      "sha256": "778baa2cdec501b1089cb9f9c18fe89119af515e92ab4cb6f39b8be66a9f1adc",
+      "cache": "7da42be62d763e10a4c6243e39fef160b17eaa3e84160c496d575b872cb2ef22.json",
+      "checkedAt": "2026-11-10T10:52:50.239998+00:00",
+      "repository": "astron-rpa"
+    },
+    "3fa967486a72ac80fc0ed0d308655fe2f4518e50b1ade581526d648cf591e59e": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=15"
+      },
+      "sha256": "308e7e7e09c3325f9576e3624ca4cda1a6ce094c13656a1e66de85827d7ba6f6",
+      "cache": "3fa967486a72ac80fc0ed0d308655fe2f4518e50b1ade581526d648cf591e59e.json",
+      "checkedAt": "2026-11-10T10:52:51.209967+00:00",
+      "repository": "astron-rpa"
+    },
+    "00928732515fb773021c2aff38e58a11f40ff64dcfd6930246b73cbae2aaf87c": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=16"
+      },
+      "sha256": "e0ad73f02b9feb249b9399cf8902640857c9a7b767bbd54c1a487968f1e848c3",
+      "cache": "00928732515fb773021c2aff38e58a11f40ff64dcfd6930246b73cbae2aaf87c.json",
+      "checkedAt": "2026-11-10T10:52:52.247639+00:00",
+      "repository": "astron-rpa"
+    },
+    "ac6b7666121f2a0295b1c6eb75a9d9184fda8b0c4fca21af3063699d24e868d6": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/pulls/comments?per_page=100&page=17"
+      },
+      "sha256": "ab317d2ad2e30a5c78a0a1e835c0226667cb94c8f6f1625ce24c98146638f815",
+      "cache": "ac6b7666121f2a0295b1c6eb75a9d9184fda8b0c4fca21af3063699d24e868d6.json",
+      "checkedAt": "2026-11-10T10:52:52.997026+00:00",
+      "repository": "astron-rpa"
+    },
+    "424813421cd0d403106b452703b3d5aaf2097fee2853606b53cad33d51f7cbe5": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!){repository(owner:$owner,name:$name){defaultBranchRef{name target{... on Commit{oid}}}}}",
+        "variables": {
+          "name": "astron-rpa",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "b04ff327f3e9879f7331ea53b0d15ce486bd3c82ddfd365c596a7e17fbf465e3",
+      "cache": "424813421cd0d403106b452703b3d5aaf2097fee2853606b53cad33d51f7cbe5.json",
+      "checkedAt": "2026-11-10T10:52:53.392430+00:00",
+      "repository": "astron-rpa"
+    },
+    "47c68b60034b779dfdc9bb536d16e8d2378b17e20c1eb2e07100bb401fca9d3c": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "astron-rpa",
+          "oid": "ee92be781c1488797524ed31f8f2738e30f02c61",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "0e9873c104c42931227249a3e89f1ffb04b230eaa5d7e53115fea02fd0e955bf",
+      "cache": "47c68b60034b779dfdc9bb536d16e8d2378b17e20c1eb2e07100bb401fca9d3c.json",
+      "checkedAt": "2026-11-10T10:52:54.513072+00:00",
+      "repository": "astron-rpa"
+    },
+    "fe878b293e53aa9e488b3e0e8c24cd7a49c1cf794b1916e89e4f5b0259fb9cb6": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "astron-rpa",
+          "oid": "ee92be781c1488797524ed31f8f2738e30f02c61",
+          "after": "ee92be781c1488797524ed31f8f2738e30f02c61 99",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "115d07d17fd1634bf39f4fc0c0de5d11893fe4332059df71c42ad3f1e2db3013",
+      "cache": "fe878b293e53aa9e488b3e0e8c24cd7a49c1cf794b1916e89e4f5b0259fb9cb6.json",
+      "checkedAt": "2026-11-10T10:52:55.518149+00:00",
+      "repository": "astron-rpa"
+    },
+    "eb2a5e18b2e7635c3dbfbd7a894aa66a788b0e421669f2a7bc08fbf541b739ec": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "astron-rpa",
+          "oid": "ee92be781c1488797524ed31f8f2738e30f02c61",
+          "after": "ee92be781c1488797524ed31f8f2738e30f02c61 199",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "34cd1820963b33368506ec407e8e6cbe5061f9002378c4bbfb07cca33f138d78",
+      "cache": "eb2a5e18b2e7635c3dbfbd7a894aa66a788b0e421669f2a7bc08fbf541b739ec.json",
+      "checkedAt": "2026-11-10T10:52:56.511479+00:00",
+      "repository": "astron-rpa"
+    },
+    "a7031aa719ebfb6da1674e750e5eef9149d52526cd4f12cbbabc3242694a9fb4": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "astron-rpa",
+          "oid": "ee92be781c1488797524ed31f8f2738e30f02c61",
+          "after": "ee92be781c1488797524ed31f8f2738e30f02c61 299",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "8a361b2cfefb0d28442f4a7a281385d45447799ecd42f2dc7335f7aa0892cd54",
+      "cache": "a7031aa719ebfb6da1674e750e5eef9149d52526cd4f12cbbabc3242694a9fb4.json",
+      "checkedAt": "2026-11-10T10:52:57.681457+00:00",
+      "repository": "astron-rpa"
+    },
+    "d2045afa6d11d449daade9589f5fb0bbcd54b5aae5f45d5d33bfdc8c89b0d601": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "astron-rpa",
+          "oid": "ee92be781c1488797524ed31f8f2738e30f02c61",
+          "after": "ee92be781c1488797524ed31f8f2738e30f02c61 399",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "b3a0dc7b8bd1822fa986fe5e65f66262f8f459febec8c63cc6b06c18692d165d",
+      "cache": "d2045afa6d11d449daade9589f5fb0bbcd54b5aae5f45d5d33bfdc8c89b0d601.json",
+      "checkedAt": "2026-11-10T10:52:58.512550+00:00",
+      "repository": "astron-rpa"
+    },
+    "3cbc3a5158db0f890b29447f838d068f507583a51bc3a832a8acc137a9be124b": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/astron-rpa/contributors?per_page=100&anon=false&page=1"
+      },
+      "sha256": "a100f7fbf7f634100c6bc6243fad248d1af553814e0e8bcdbc56f5d4317c4912",
+      "cache": "3cbc3a5158db0f890b29447f838d068f507583a51bc3a832a8acc137a9be124b.json",
+      "checkedAt": "2026-11-10T10:52:58.887078+00:00",
+      "repository": "astron-rpa"
+    }
+  }
+}

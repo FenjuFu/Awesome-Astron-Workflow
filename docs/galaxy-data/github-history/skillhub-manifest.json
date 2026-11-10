@@ -1,0 +1,2372 @@
+{
+  "capturedAt": "2026-11-10T10:53:20.426283+00:00",
+  "repository": "iflytek/skillhub",
+  "requests": {
+    "c9a37732547e006f53532370759c3655e75dc99be84d05adced0c92bdd4d410a": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub"
+      },
+      "sha256": "455f4d8fdf5c483cd1b56f55b7e32a15b639ec0876e50174b448b9ebac6067a2",
+      "cache": "c9a37732547e006f53532370759c3655e75dc99be84d05adced0c92bdd4d410a.json",
+      "checkedAt": "2026-11-10T09:41:17.540146+00:00",
+      "repository": "skillhub"
+    },
+    "714034bc74204bf44a20efd375c1320db2911c93770c79d88998c81f1ff48d0e": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "40a3f9dff51b9389d5333b2c9b4cf3d9fc425072621bc7846b43c4dcc81657a7",
+      "cache": "714034bc74204bf44a20efd375c1320db2911c93770c79d88998c81f1ff48d0e.json",
+      "checkedAt": "2026-11-10T09:41:18.509158+00:00",
+      "repository": "skillhub"
+    },
+    "1b34719c0e7b0628c84f0bad53500bf852cf4501164ea47a9e772ec9e00daf2e": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNC0wMlQwMzo0OTo0M1rO-dKlow==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "6f26d73b3c019b7e08f1e9f6f150dc1d8699eee5e53b1f88d4c8d521d95e35b2",
+      "cache": "1b34719c0e7b0628c84f0bad53500bf852cf4501164ea47a9e772ec9e00daf2e.json",
+      "checkedAt": "2026-11-10T09:41:19.470616+00:00",
+      "repository": "skillhub"
+    },
+    "47452792fe16669a9327e0f80d251d8862d4dfc3ae8fd304d0292e028c517c59": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNC0xMFQwMjoyODo0MlrO_H5CRA==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "32168dc259b315ced58309fd43223087f0e1c4ecf7d0b9e69a3555b45d787856",
+      "cache": "47452792fe16669a9327e0f80d251d8862d4dfc3ae8fd304d0292e028c517c59.json",
+      "checkedAt": "2026-11-10T09:41:20.326354+00:00",
+      "repository": "skillhub"
+    },
+    "e1a25ac75f35998d145bb104f9de4cdad7e075f812029b51535e06f77dbdbf3d": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNC0yNFQwNjoyNToxNVrPAAAAAQGNK4M=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "e2a69ed8e0df77e76f153d1699cc299c65ce97db12d1cf97fec8b1df4f25c2e6",
+      "cache": "e1a25ac75f35998d145bb104f9de4cdad7e075f812029b51535e06f77dbdbf3d.json",
+      "checkedAt": "2026-11-10T09:41:21.488971+00:00",
+      "repository": "skillhub"
+    },
+    "d2816cd10dcb3c217a9adedc959d959f109a2f568cf699c88fbfdc29d7f88655": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNS0yN1QwODoyMDo0NlrPAAAAAQ4OAmU=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "5358f9243aa4ebbbfb9b8810a4fc4b88a88abb6ce63bee467ad841f7ee0c9ce9",
+      "cache": "d2816cd10dcb3c217a9adedc959d959f109a2f568cf699c88fbfdc29d7f88655.json",
+      "checkedAt": "2026-11-10T09:41:22.579937+00:00",
+      "repository": "skillhub"
+    },
+    "09ea74c139e11da0b9f3fe3b0378e6aef0b4bdfb194baf6f42e75c3c49145170": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNi0xOVQwMjowNzozMFrPAAAAARf7n5U=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "00f0773eb4058a88ab1ce75a63c5c832174215caf3f99ec889e46f969b118f95",
+      "cache": "09ea74c139e11da0b9f3fe3b0378e6aef0b4bdfb194baf6f42e75c3c49145170.json",
+      "checkedAt": "2026-11-10T09:41:23.760188+00:00",
+      "repository": "skillhub"
+    },
+    "c8c887ec200f960c02fbf08093b3571b70d876b7ae81471d87484e9fb28e7bf8": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNy0yOVQwMjowMTo0N1rPAAAAASpMrNM=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "d1170e41d602a0505ed80c7de81cc3764556b73baf649afb49f881678c74065f",
+      "cache": "c8c887ec200f960c02fbf08093b3571b70d876b7ae81471d87484e9fb28e7bf8.json",
+      "checkedAt": "2026-11-10T09:41:24.796185+00:00",
+      "repository": "skillhub"
+    },
+    "d496eb0376196c26948f9b981fd9dc712a5ba776b8f0d9b964f19b4d2cb1f133": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wOC0xMVQxMDoxNzoyM1rPAAAAATEev_g=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "a2e53d4309e690629b315c156886f8b7e01525d2a6e87b5d5fa0bd9f5ceb51e8",
+      "cache": "d496eb0376196c26948f9b981fd9dc712a5ba776b8f0d9b964f19b4d2cb1f133.json",
+      "checkedAt": "2026-11-10T09:41:25.644088+00:00",
+      "repository": "skillhub"
+    },
+    "b4abc9782656f23f57de88eb7d16b9748d41164b9f5932ff0bdbd941f748ebd6": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wOS0wMVQxMDoyMDoxMVrPAAAAATyJ71I=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "2018475dc74762d57be76bb89805d48fffea5d8e1fa33080651be00ff8ef3519",
+      "cache": "b4abc9782656f23f57de88eb7d16b9748d41164b9f5932ff0bdbd941f748ebd6.json",
+      "checkedAt": "2026-11-10T09:41:26.625214+00:00",
+      "repository": "skillhub"
+    },
+    "515005ac968eda751f30f2a824871b9d680920cc298d50bf4f3ec2bf75820746": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wOS0yMFQwMTo1OTozNFrPAAAAAUi5sHU=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "2f8f62e065b09320ca479007c7accaca35d4221e4473257210b9e1adbba2e26b",
+      "cache": "515005ac968eda751f30f2a824871b9d680920cc298d50bf4f3ec2bf75820746.json",
+      "checkedAt": "2026-11-10T09:41:27.399544+00:00",
+      "repository": "skillhub"
+    },
+    "06d15c116e9a72ae8edf756a67d6b865dbc9cc211119f15d34b791b744467323": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0xMC0yMVQwNTo1NjoxNFrPAAAAAWL054Q=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "aebebbcac620c226e27af617b13d83d9a64fd3d6c26958407ae5acd8814eebec",
+      "cache": "06d15c116e9a72ae8edf756a67d6b865dbc9cc211119f15d34b791b744467323.json",
+      "checkedAt": "2026-11-10T09:41:28.214756+00:00",
+      "repository": "skillhub"
+    },
+    "1d0a4ccefc3da2ceb7e85654db9cf942193636753c4156e760ff4990293c7000": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "3fcb77b7d2259f96ae278c144e11ce7a306420a98b76099558d10bf83a0c6417",
+      "cache": "1d0a4ccefc3da2ceb7e85654db9cf942193636753c4156e760ff4990293c7000.json",
+      "checkedAt": "2026-11-10T10:50:47.345375+00:00",
+      "repository": "skillhub"
+    },
+    "edff501ac201088fb1468b1f0187a4ebb06067777dcaf54bef2894bbe6568abc": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7Klz87",
+          "after": "MTAw"
+        }
+      },
+      "sha256": "f535d4e057beb826d90597f4babdaf8fded35332541aac250815e8e491a92091",
+      "cache": "edff501ac201088fb1468b1f0187a4ebb06067777dcaf54bef2894bbe6568abc.json",
+      "checkedAt": "2026-11-10T10:50:48.534270+00:00",
+      "repository": "skillhub"
+    },
+    "8f441aa261d49d696070dd2f4a862b662f53489b4af22a905d7969ea6d574ee9": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7Klz87",
+          "after": "MjAw"
+        }
+      },
+      "sha256": "eb9c5f580ff1b9381cc2770b248763f275b194d87e68b4099a9f7b0901f1fda8",
+      "cache": "8f441aa261d49d696070dd2f4a862b662f53489b4af22a905d7969ea6d574ee9.json",
+      "checkedAt": "2026-11-10T10:50:49.147988+00:00",
+      "repository": "skillhub"
+    },
+    "81e4359323b8380326ea4cfd529b724597ce26f4cb58e1e765dd2a970ea535a9": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7KmSvU",
+          "after": "MTAw"
+        }
+      },
+      "sha256": "2634ba1a4c2720b7221a77f3da91d44c4dbcf89c018ea095f1ccb2125f32928f",
+      "cache": "81e4359323b8380326ea4cfd529b724597ce26f4cb58e1e765dd2a970ea535a9.json",
+      "checkedAt": "2026-11-10T10:50:49.976655+00:00",
+      "repository": "skillhub"
+    },
+    "d4ef9d7ffbde7434d935f21d868d0f9b5f5bad9cdbf97463f6ab2782bd93245e": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7KmSvU",
+          "after": "MjAw"
+        }
+      },
+      "sha256": "c6fbdf36ab613b5a4c298137f9612e99194657cb127fe458abd279fbc666016e",
+      "cache": "d4ef9d7ffbde7434d935f21d868d0f9b5f5bad9cdbf97463f6ab2782bd93245e.json",
+      "checkedAt": "2026-11-10T10:50:50.609006+00:00",
+      "repository": "skillhub"
+    },
+    "1051194e89d6aec642ec4045b0b00438275a6b9d1853e0ba25c9a727b32788f2": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!){node(id:$id){... on PullRequest {baseRefOid headRefOid}}}",
+        "variables": {
+          "id": "PR_kwDORkOSsc7KmSvU"
+        }
+      },
+      "sha256": "1fe1d228293434f8b4294e23f50840e5cbc43b7b31164a511d25647067d8705e",
+      "cache": "1051194e89d6aec642ec4045b0b00438275a6b9d1853e0ba25c9a727b32788f2.json",
+      "checkedAt": "2026-11-10T10:50:50.965746+00:00",
+      "repository": "skillhub"
+    },
+    "f5d2c997bd35d61030d416ea2867771e9831586fc635dae3efdd45e66953798e": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "2e6d9db2021148112f6b65bcf791971a74e03b5d",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "bc9637fddf67cd62e89850befe94de772e832c82112c0f1290c5d97050c16d8b",
+      "cache": "f5d2c997bd35d61030d416ea2867771e9831586fc635dae3efdd45e66953798e.json",
+      "checkedAt": "2026-11-10T10:50:52.345672+00:00",
+      "repository": "skillhub"
+    },
+    "c95f9803310c552455be79ceb867b3d2f946f99a074fca6649ecd01f1717a107": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "2e6d9db2021148112f6b65bcf791971a74e03b5d",
+          "after": "2e6d9db2021148112f6b65bcf791971a74e03b5d 99",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "07457a1de7bb92e2482c61e02e75177a543a25f3dfa0d6ba1e36da2bb6040784",
+      "cache": "c95f9803310c552455be79ceb867b3d2f946f99a074fca6649ecd01f1717a107.json",
+      "checkedAt": "2026-11-10T10:50:53.125339+00:00",
+      "repository": "skillhub"
+    },
+    "bf5b905e18549164e5fc70f5cf08197a9f957eb58f762a72a75329ac14014843": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "2e6d9db2021148112f6b65bcf791971a74e03b5d",
+          "after": "2e6d9db2021148112f6b65bcf791971a74e03b5d 199",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "eae667ae29949d8a401ae744e067ae9285001f03c684d15b341b6e5130dcd2c1",
+      "cache": "bf5b905e18549164e5fc70f5cf08197a9f957eb58f762a72a75329ac14014843.json",
+      "checkedAt": "2026-11-10T10:50:53.998260+00:00",
+      "repository": "skillhub"
+    },
+    "a23a44dd0bfbdbefe8c08ebe8f7eec150ff22fe6409bc47e59280d8ee337bf2a": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMy0xNFQxMzoxMTo0MVrOypo7Mw==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "c9780a006fb907241f153700a4f2e15a038918389a8d2528601aa9f14b1ac175",
+      "cache": "a23a44dd0bfbdbefe8c08ebe8f7eec150ff22fe6409bc47e59280d8ee337bf2a.json",
+      "checkedAt": "2026-11-10T10:50:57.161340+00:00",
+      "repository": "skillhub"
+    },
+    "3d7fe6ad059581c9e3f9ebcdc4e7e18a2981af63acea7672be277358e4275aac": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMy0xN1QwNjozMDozN1rOyx-jHg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "1c7a2c79df9478405a80dbebbd7084a931d9805bdb26c476e3d9e0b3bc5e2b78",
+      "cache": "3d7fe6ad059581c9e3f9ebcdc4e7e18a2981af63acea7672be277358e4275aac.json",
+      "checkedAt": "2026-11-10T10:51:00.735267+00:00",
+      "repository": "skillhub"
+    },
+    "df0d5fde22189926edf2b5babde70fb168219f55dac73f4445d946a685788dce": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7LpHh5",
+          "after": "MTAw"
+        }
+      },
+      "sha256": "7c89c57f1805c1566919368a1322fa8e8b2b5c494416e1d3b7cc6014237f7cbf",
+      "cache": "df0d5fde22189926edf2b5babde70fb168219f55dac73f4445d946a685788dce.json",
+      "checkedAt": "2026-11-10T10:51:01.483569+00:00",
+      "repository": "skillhub"
+    },
+    "9a7d5a464c48b2b863de614b8638c1f4c1b7150dcab594355f9c09ca30a4606c": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7LpHh5",
+          "after": "MjAw"
+        }
+      },
+      "sha256": "ce57eb978d4514f2a2c5212f6c197c9b5579e5187d1a678a81d8323d385ba0a8",
+      "cache": "9a7d5a464c48b2b863de614b8638c1f4c1b7150dcab594355f9c09ca30a4606c.json",
+      "checkedAt": "2026-11-10T10:51:02.184405+00:00",
+      "repository": "skillhub"
+    },
+    "d6f9d04103efe02e59ad5f222924980d14541abace2a4b32e0ece96b7f863cb1": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!){node(id:$id){... on PullRequest {baseRefOid headRefOid}}}",
+        "variables": {
+          "id": "PR_kwDORkOSsc7LpHh5"
+        }
+      },
+      "sha256": "1e3a9a7db8c7f09d3f7286c38d3dd73fcf8740afe31334e4b8f268b59a141214",
+      "cache": "d6f9d04103efe02e59ad5f222924980d14541abace2a4b32e0ece96b7f863cb1.json",
+      "checkedAt": "2026-11-10T10:51:02.598741+00:00",
+      "repository": "skillhub"
+    },
+    "9dde80102c68d966053be84c3495eccafc2031680827689aef3f5b9158e39e44": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...aeb21db8be0913f27eedfcd37f1e2bbcafac7bfc?per_page=100&page=1"
+      },
+      "sha256": "2fdbc84b4a34bcdf28a89746e0824022c33e9ef2c607ab9d52028880f49241f5",
+      "cache": "9dde80102c68d966053be84c3495eccafc2031680827689aef3f5b9158e39e44.json",
+      "checkedAt": "2026-11-10T10:51:03.697426+00:00",
+      "repository": "skillhub"
+    },
+    "48b26326c65ba2b3d8f74c15db31cdf156e62a9aab6e44ebd73471cbdc1ef017": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...aeb21db8be0913f27eedfcd37f1e2bbcafac7bfc?per_page=100&page=2"
+      },
+      "sha256": "af0652cdca52af73a9e5fc5010546353d1613b9d42f2fb82f1447728b6436121",
+      "cache": "48b26326c65ba2b3d8f74c15db31cdf156e62a9aab6e44ebd73471cbdc1ef017.json",
+      "checkedAt": "2026-11-10T10:51:04.390521+00:00",
+      "repository": "skillhub"
+    },
+    "a4b37057de17fa832d486c42b0970cd051bd741301b8848fd75cb29fa00a9453": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...aeb21db8be0913f27eedfcd37f1e2bbcafac7bfc?per_page=100&page=3"
+      },
+      "sha256": "9c03a7cd8d18cc014e24bc63d91ff8c4b5b52cc41b3299bb27ae0562db4285ad",
+      "cache": "a4b37057de17fa832d486c42b0970cd051bd741301b8848fd75cb29fa00a9453.json",
+      "checkedAt": "2026-11-10T10:51:05.095925+00:00",
+      "repository": "skillhub"
+    },
+    "95450cad230ba18c0891fe723c0f8bdd2c2e5c91eb2051b858fda353d0352a4f": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...aeb21db8be0913f27eedfcd37f1e2bbcafac7bfc?per_page=100&page=4"
+      },
+      "sha256": "cf4414c8acfd7b3c0f86b17310541ba58d042ae2aa7ea925f616881bc6b682f7",
+      "cache": "95450cad230ba18c0891fe723c0f8bdd2c2e5c91eb2051b858fda353d0352a4f.json",
+      "checkedAt": "2026-11-10T10:51:05.712166+00:00",
+      "repository": "skillhub"
+    },
+    "a5a4f91672366b5bd81d56541abc44f3c8d5342b7538813611ec1f5fd46d9cde": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKGY5MWE0YjhhODZmYjBlOWE2ZjVlODc4NzU5NGViZjdmN2M4ZGE0M2M",
+            "C_kwDORkOSsdoAKGI2ZjNmMmIwNDllMGUyNTc3ZGJjZDRmNTRkYWExZWYwNGE5ZTg3ODE",
+            "C_kwDORkOSsdoAKGM5ZjE5YTJhM2IzYjI1YmIxMjM2ZWE4MWNiZWZmOWIyZGRiZWQ1N2M",
+            "C_kwDORkOSsdoAKGY3MGJmZTJhOTk0NGQ2MTNiYmY2YjIwYzU3NDhjNmZiNGY3NDVmNDA",
+            "C_kwDORkOSsdoAKDZlMDc4MWQ1MDllNDRkNWNiYmM1YzkxODBkYmJiODNiNWNhMWFlYTE",
+            "C_kwDORkOSsdoAKDBlZTM3ZWQ2N2UyZjc5NzM2Njc5ZGQ4M2Q0OTI5MTQyNGYyMGFjZDc",
+            "C_kwDORkOSsdoAKGM1ZjVlMmM0Nzg4YTY5MDM2ZjgxNzAyY2YxMTcwMjJkODVlNWExZDI",
+            "C_kwDORkOSsdoAKDA5YTg1YzRkM2M0NjJmM2I1ZDk1Y2ZlNWY2ZjI2ZGEzYTRjMGYzYTQ",
+            "C_kwDORkOSsdoAKDY2YTM1YzAxOTU3MDJkYTBlNGE5M2JiNGM0NjIzMTg1OWY1NzU2MTY",
+            "C_kwDORkOSsdoAKDBlNjI0NmQ2NzlkOTc0NmMzZjA5OGE4ZTZmZGZkNTBlZjNjNjkyYjU",
+            "C_kwDORkOSsdoAKDAzOTg5NWM2OGQ0MTEzMDg2NmFlZTQ3ZWVkNjcyZjM2MTA1MjI1NTE",
+            "C_kwDORkOSsdoAKGY3YzY4NDg2MzVkOTRmNjllNDZmZWZjMDYyZWRhYTgyNDljMWM2ZWQ",
+            "C_kwDORkOSsdoAKDUyMTBiMjk4ZGEzYjhhZjE3ZDQ4NTJkNTE5YjYzZWJiZTlmOGY4ODQ",
+            "C_kwDORkOSsdoAKDJiMmFiNTI0MjM4ODdlZTk0OTIxNjI1OTE2MTFhMGQ5NzcwN2U1MzE",
+            "C_kwDORkOSsdoAKDg1NDk4MTY3NTRmODk4Nzc2MTg0MDZhOTA0OWEwNjRiMGQ2MGM1YzE",
+            "C_kwDORkOSsdoAKDkzYzY2YmM3MzI1YWYwMjE2NWExMjhhNTA0ZDBjYTY5YzQ4YzllMDM",
+            "C_kwDORkOSsdoAKDU3MzM4OGZiNDhiYmMxN2UzOGMyMTNiNDI2ZGNkY2VkOTVjNTUwZmU",
+            "C_kwDORkOSsdoAKDZhMTkzZTlmOTk4YjJkMjdjODZmMTJmNThiMzkwNTVjYjAwNzczZGY",
+            "C_kwDORkOSsdoAKDM4ZDU4YjBjNmNlZjMwYjQxNzJjMWJkNTJhZTZjOTRkMzIwZDUyOTA",
+            "C_kwDORkOSsdoAKDBlOTA5YWEyMWE2YTY0MjdlMTQ0ZWU5ODQyODFkYTg3MGUxOTJhZTc",
+            "C_kwDORkOSsdoAKGI2MzJhOWMwYjQxZGZjYjc4MGI3ZmIxMmYyMTI5YjMxNjY0ODkyMTM",
+            "C_kwDORkOSsdoAKDcwYmQxNzFlMzFkNTdkOTI4YjY0ODE0MWUwYzliZmMyYzRmNGJiMTQ",
+            "C_kwDORkOSsdoAKDNjMzZmMmRjOGMzMDg4NDRmYmU2NmRkZWEwMjJlYmE2ZDY1ZTY1ZTQ",
+            "C_kwDORkOSsdoAKGRhMTY0ZDYzZDgwMGQyN2UxNWNlZGIzZGQ4NjQzNGVhNjg1MzMzZWI",
+            "C_kwDORkOSsdoAKDIzZTdkZTRmOGRhN2ZlNzAxNTQ4MDRiNTE2NGI3NGFjMTg0OWIwNzU",
+            "C_kwDORkOSsdoAKDEwMTNhYmZlZDU5YWFjYThiNzk1MmJmZDM0ODUzMzhlNTRhOGNiZTM",
+            "C_kwDORkOSsdoAKGM0MDQwNjllYTlmZDRmNjMyMTQ1OTI4YjJjMDhhYWVjZDQ2YzdlODA",
+            "C_kwDORkOSsdoAKDI2YTQ3YTY3MmJiMzE1YTg5MTA2YTI4MTE2ODRkM2Y3ZTkyODc2OGI",
+            "C_kwDORkOSsdoAKDRkOTYwMmZjMzNjMGIyMWYzOWZmNDZjYTY4MGRjNDk0ODBkMDM2ZjI",
+            "C_kwDORkOSsdoAKDM2OWY5ZGQ1ODZjZmVmNzE4NmJiMjMyYmFkZmVjZjA0YWVkYmNiMmU",
+            "C_kwDORkOSsdoAKGNiYWQxODkxYjZhZDdiMjdjYjNmNDE4YjZkYzM4NTA1ODk2N2QzNGE",
+            "C_kwDORkOSsdoAKDE5ZWE2NGUzYTVhNWE0ZGRkMDUxZGIxYjkwMDEwMjcwMjRlN2UyZjg",
+            "C_kwDORkOSsdoAKDZkOWVjYTZhYjY2ZGQ2MWYwZGRmYTFjYzcyNDA5MzcyM2EyYmE2YTE",
+            "C_kwDORkOSsdoAKDZmOGJkMmY3ZmViNTcxNWVkOTU2MDk4YTljODg1MTU1MzYxZWIyNzU",
+            "C_kwDORkOSsdoAKDQ0YWY1MDBmMWM2ZTA3NDQzZmJmODA1YjQ1ZTU4Yzc3ZTQxMGM1ZGU",
+            "C_kwDORkOSsdoAKDgzNmQ5NzJkZDI5YTBmNzEyOWI2ODk3YjE2YjM4ZThkZWNmMTg2ZjA",
+            "C_kwDORkOSsdoAKDcyODBmMDdjYmNiNTM3NGQxOTUyNzA4MTMyMDgwYTBhOWFhZWE5MDA",
+            "C_kwDORkOSsdoAKGZlNDI3ZjMwMTRlYjA3ZjRjNTNhOGFkYjc4YTlmNWZhMmM0NGUxZmM",
+            "C_kwDORkOSsdoAKDBjZmJkZjYyOTZlN2NjNzQxYTI3NmZmMzRhMzRkYWNlZDkyNjlmODg",
+            "C_kwDORkOSsdoAKDc3M2FlN2FkNTU2YWNiMjU3ZDhkMjBmNTlmZjYxNTRiYzk3ZTdiZDc",
+            "C_kwDORkOSsdoAKGY5M2U2ODZiMGIzZjEyYTgxN2Y2YjQxYzBjMTMzNDdmZmY3ZGE1YjM",
+            "C_kwDORkOSsdoAKDNlOWE2NTdlYjE4NjljODE0OTU5YzQ4YjA2NzU4NTQzNmU3Y2IwNzI",
+            "C_kwDORkOSsdoAKDZmNTU0MDVlZTRkN2E0NDYwZTQ1MDU0NDRjN2IyMDg0MjA3MzY4NjE",
+            "C_kwDORkOSsdoAKDg3Nzc3NWE4MmU1ZDc1MDcyYWYxMTcwZGYxNGE5OTZhODcwZGM5YzA",
+            "C_kwDORkOSsdoAKDYyYzM2M2UxZTI2N2YyZDZlNWUzOWE3NjQ4ZjdmOWM3YzBhN2I5MGU",
+            "C_kwDORkOSsdoAKDg4NWQ1NzIwOTVmMDU1ODMwYWE3ODA5ODQ0MTJiMTMyMjljNTJkN2Y",
+            "C_kwDORkOSsdoAKDZmMDZlN2MwMmJmZDhlYjNhMmRjYzkxNDE5NGM5OTk4ODNiNTAwMmY",
+            "C_kwDORkOSsdoAKGFkOGJjMDk1MjUzNzAwZDBhYTgzNTA5MDE4ODZkMTY3YjBmNWRmYTg",
+            "C_kwDORkOSsdoAKDhmYTc0MGRhOTc1OWNjMWJmMjAyNmE2MTc5ZDQ0MzQ4Njg0YTlmOTA",
+            "C_kwDORkOSsdoAKDcwMjY3MjRiYzY5MGQzYWE2NDcxNmJmMGIyMjRmZDBhNWVhMTYxNGQ"
+          ]
+        }
+      },
+      "sha256": "f5a68dc234b3c3de095fbb63c10add8712375a3d590b78201a46e3db7c99ee63",
+      "cache": "a5a4f91672366b5bd81d56541abc44f3c8d5342b7538813611ec1f5fd46d9cde.json",
+      "checkedAt": "2026-11-10T10:51:06.270481+00:00",
+      "repository": "skillhub"
+    },
+    "174a306be46af45c07fb96377fbf3b0941af973594d5c245f7f43655002dbe1a": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKDQwZjc2MmExZDlkOWU5NzkzZDc1OGFhODBjMTZiMmIxNmQyNDg5ZjE",
+            "C_kwDORkOSsdoAKDljNWI1YzU1NzY0ZWI1Y2I2NzU3ZGM3MmE1OWE2NWFkNzY5MDk2OGU",
+            "C_kwDORkOSsdoAKDZlMzQyNmJlODIwZGZhMTNhOWEzMGI5NjFkZGIxY2ZlNzg3ODM5ZmQ",
+            "C_kwDORkOSsdoAKDllZGI0NGRhZmZiZjkwOGM5ZTIzN2IwODA4YzE1ZmUzNmJjZmM3Y2U",
+            "C_kwDORkOSsdoAKDYyZTliMTA5YTVkZmMyMTA1YTFiOWNmNTdlMzcxMDhmMzUwNWJiYWM",
+            "C_kwDORkOSsdoAKGE3ZDgyMmE5NmMxNTVlNDU1ZjE3NTg4MDc2ODkyZGM4ZjlmMmJjODM",
+            "C_kwDORkOSsdoAKDhjOTcxMWI0MDU3ZjA4MTMzYTgyOTc3ZTQ0MzdlNGY2MTljMzM0NTg",
+            "C_kwDORkOSsdoAKDU4MDc2NzIyMTc0ZjgwZjZmNTJjNGI4MWQ4ZTI1YWQ2YTk2MjM4Y2I",
+            "C_kwDORkOSsdoAKDQwMTYwZDdlMjRmODA0NjY4MmI4MThiNjFkNmM5Nzk1YzhlYmEyNTk",
+            "C_kwDORkOSsdoAKDJiZTVkODlmNzdiNDQwODI0NmZhZjZiMjA5NzM4MWI5MmNjZjNmMmY",
+            "C_kwDORkOSsdoAKDdmNmY0NmEzM2Q3OGIyMTdjYjM0ZWQ3N2M1MzZmZmZmMmIxYThlNTY",
+            "C_kwDORkOSsdoAKGIyMTIwOTg4NjljNzhjODJlZjVkYjE5N2FmNWFlNTgyZWI4MWJmNmE",
+            "C_kwDORkOSsdoAKDc5MmZiZDc1YzY1MGY3OTk2ZGQzMjJjZmU4OWUxNmViYjQwZTRlNjU",
+            "C_kwDORkOSsdoAKDkxNDFhMjA4YjU4NGExYmNjZDEzMTZiYmQ3MjIwZGRmMzFlMDFkZDY",
+            "C_kwDORkOSsdoAKGE1MWUxYmMxOWM2M2U1YWYyNTAwZTQ1NWE0YmQ0NWQxODIxNTk5MTg",
+            "C_kwDORkOSsdoAKGNjZTkwNzI3NjdlOGM5MmY4OGVkYzcwY2IwNzlhYTIwYTYwMmJmNTI",
+            "C_kwDORkOSsdoAKDlmODc2ZGUyNDA1YmI0MDhhYzBhN2QwYjI3YzQ0NDI4ZmE4NmU1Y2I",
+            "C_kwDORkOSsdoAKDc3YmQ2YjliMzQzZWY5ZDUzNjc2MmIwOTc5NGIxOTIxMzVhMzI0NzY",
+            "C_kwDORkOSsdoAKGY3OTlhODg0ZmQ5M2M2ZmFjNjliNjFlYjA0OWE1ZDBlNWFkZGMzM2Q",
+            "C_kwDORkOSsdoAKDgzMGEzYzMyNDM1NzQ5YWQ3OWRmMjFkNGQyYzZlZTE2ZDhlOWEzM2Y",
+            "C_kwDORkOSsdoAKDkzOGVhNGJlMGQ5Y2U5NzE3ODMwN2RiODAyNjg4Y2Y5NDczOTIyMjQ",
+            "C_kwDORkOSsdoAKGRjZmMzYjJmMjVkZWU5NmI4MDMyYTgzNDRhYWQyMTQxOTZmOWFkZWU",
+            "C_kwDORkOSsdoAKDk0MTBmMWRlMWY2ZjAwODI0ODY0M2I2NTFhNzhlZjc3MTVjZmZkNjE",
+            "C_kwDORkOSsdoAKGQ2OGRlMzdkN2NiMThkZmNmMzU5MzUyMDE1MmQ4NGU4OGQ0NjJlMTc",
+            "C_kwDORkOSsdoAKDcyYmY2YjZhYWM0ZGQwMmFjM2M5YzY1MjBhYTUxZjE5ZjBhMWM5MjM",
+            "C_kwDORkOSsdoAKGEwYWU3MjliYjY0YmY4MzVjODI5ZjNiNDBmNjkxMmZhOGRhODk4NTQ",
+            "C_kwDORkOSsdoAKDEwNmJjMzZhZWRmNTM0YmY0MGU5OWU0ZTgyOTRjMDg2Yjk1MTM5YmE",
+            "C_kwDORkOSsdoAKDVkMTdiYmVmMmYyYzAzM2JhODdhNjE2YzRlYjhiYmIxYjA4Mzk0ZmI",
+            "C_kwDORkOSsdoAKGNlZDgwNzk2MjExNzAzZGE3NDliNmMwZGYyNTAyOTg4OTIyMmRkMzQ",
+            "C_kwDORkOSsdoAKGNiMjQ5MWM1MDZiMGE0Mjg5MWRmZmY3ZDc3M2M5ZGFlODI3OTAyMjc",
+            "C_kwDORkOSsdoAKDg4MjhjM2M3M2MyNGJmYjg1ODI3ODU2ZjFjYmVhYjM0MTM5MGZhNjc",
+            "C_kwDORkOSsdoAKDVjOWZkNzEwODAzOGMxZDY1YTNlNjIzYWE0MWE0YmQ5MTg2MWMxODk",
+            "C_kwDORkOSsdoAKDBmODQyZTE4YTIxNDUzYWI3OTNiOWIwZDQxNTIzNzgxOTNlYzZkNzE",
+            "C_kwDORkOSsdoAKDczZjkzOGU3MjI1ZTc1YWU5M2JkZjA2ZmU3MmEwMmQyOWI5MWQwNDI",
+            "C_kwDORkOSsdoAKDA4ZTA5Yjg3MjU5YzFjOGZlMDEyODZlMWI0OWM2MmUwMjYxMmY2NmI",
+            "C_kwDORkOSsdoAKDFmZTVmN2FkNGE5ZWM0NWE0OTA0MmVlMmM0N2IxNmJmY2I2YjZkZWU",
+            "C_kwDORkOSsdoAKGMxMjVmMjc2MTliMDFjZGY4MjhhNTUwMGMxNjFkNTZjYzkyMTg1NTM",
+            "C_kwDORkOSsdoAKDY3YTg4ZGE1ODYyMzExMmYwM2FmODI0MGUzODY0NDA0ZjBhMmUyMDg",
+            "C_kwDORkOSsdoAKDNiZmMxNGI5MWVjYzJmNDA0ODZkYzllYTFkMjQ0MWUxMGFjNjNiZjQ",
+            "C_kwDORkOSsdoAKDE5YjcyNzI0M2VhNmJkOTZhOGM4YTJjMmJkNTc5MDI0MTU2NjM4MGY",
+            "C_kwDORkOSsdoAKDQ1NTBhYzc1OGYxMmEzOTY1MjJjNWJlNGE1ZGQ0NzJjNWI2NGM1YWE",
+            "C_kwDORkOSsdoAKGJmNGZlZWY1MDAzY2U0ZTY0MjAzOWIyMjY3MGZkMmMxZTFmZmJjNDE",
+            "C_kwDORkOSsdoAKDNlNjJlN2Y5ZjE5NDc2YTFlYTA2MzExNTg4MjgwNTc0MjgxMzMzYTQ",
+            "C_kwDORkOSsdoAKDEzYWZjYjAxODE4NmNkZDg5NmUzMjM1NWRkZjg2NmFjY2Y1NzBmZTQ",
+            "C_kwDORkOSsdoAKDViYjg4YzkwZTU0MjU2MzYwYjU0ZjMyMjEzNDU0NWZkMTE1ZjMwM2M",
+            "C_kwDORkOSsdoAKDNiY2JhMTFjNzRhZDZlNmZkODY0MmNkYzc5OGJlY2M3ZmMyMWQyYTE",
+            "C_kwDORkOSsdoAKDI0MTAyYTkwMjRmODVhMjQ0YzU5OWUzMDAwMjIzODkzOTUyM2NiODY",
+            "C_kwDORkOSsdoAKGU0MmE1YWNkZmI0YzIxMGM0MDBkZGE3ZmVhZWIxMmIzNTdjMWQ4MWY",
+            "C_kwDORkOSsdoAKGFiOWU3YzMyYzNhOGZkMGI0OTI0ZTMzMWQ5ODM4NTc2YmMwMjc3Yzg",
+            "C_kwDORkOSsdoAKGE4MjFlODQ5ZTJhMzRkMzFmYzczZjBkZjNlZjYyOTAzYmRjNWNjNWQ"
+          ]
+        }
+      },
+      "sha256": "0dbb420fd2a17fbd2e2f944f2a03898b4bc67518fdcf868233b3d75b341f8148",
+      "cache": "174a306be46af45c07fb96377fbf3b0941af973594d5c245f7f43655002dbe1a.json",
+      "checkedAt": "2026-11-10T10:51:07.039201+00:00",
+      "repository": "skillhub"
+    },
+    "f9d344b3379dded4062cbb34fda48730d40bee6e2051743b25be5892e69d89e9": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKDMyMDI0MmJlMmE2NTliMDUwNTkxNTYyZDgwMThmOGFjOWVkYThmOTQ",
+            "C_kwDORkOSsdoAKDYxNzE0MzE4ZmMyNGIxYWM3ZWJhMmJmYTA2Y2Y3ZDMwNDVjNTc5ODU",
+            "C_kwDORkOSsdoAKGJhMTE5NTAyYWU1NTFhNjI2ODZkY2ZjYmQ0MGZmMTczYjk0Njc3ODY",
+            "C_kwDORkOSsdoAKGE5ZDkzZGM2MWNhMzM4MzJkYjgyMmViOGMyYzA5Njg3YTVhYWFiYzc",
+            "C_kwDORkOSsdoAKDdlOWE0MDk1MDMwYjJkN2E3YTRlMmY2Nzk4ZmM2OGUxMTRlODgxZjA",
+            "C_kwDORkOSsdoAKDI5OWRlNGFhY2U2NDIzOGRhYjA1NmU3ZDg2MjFiMDU5MWFhNTg4YzY",
+            "C_kwDORkOSsdoAKDU1OWY1MjQwNDgwNjYzYjA2YWZjMzM5YjNkYTllYjRjYTIxODY3OGE",
+            "C_kwDORkOSsdoAKDVlOGJiYmJjZTVmMTMyMzc2NTlmMzFlN2ZjNTU4NDZjNTBiMzkyM2U",
+            "C_kwDORkOSsdoAKGE3NTRhMDc3ZTg1NTg0ODlkNTc2MGRmZmRjODNkNzgzZWM4NDFjOTI",
+            "C_kwDORkOSsdoAKDk5M2I4OGQ3Mjg1NDc1YjNiNWQyZWYyZDM4NmZjNzE4ODhjYTAwOTY",
+            "C_kwDORkOSsdoAKGQxY2VlMTQwZmU5NjY0MzM4YmMyY2Y3Y2MyY2E3YzM0YzYxZTY5NDk",
+            "C_kwDORkOSsdoAKDlhYzMxMWJmZjI4ZmEwYmVmNjRjNjhhODA5ZDEwMTFlMjI0NTkxYTg",
+            "C_kwDORkOSsdoAKDQxMTRlMGVhNmI5OTZiNjU4OGJmMjQ4YzcxYzU5NTk5ODQ0ZjVmMTc",
+            "C_kwDORkOSsdoAKGNlZjMxNjg2NjFiNGNjMjA5YzNjODJlYmI3OGI4YTg4OWVkYjIzYWY",
+            "C_kwDORkOSsdoAKDFiZjc1NzBhNjljY2M2MDI0Yjk3ODRjYWVhNjZlOWQ5NzFjYTRkNmE",
+            "C_kwDORkOSsdoAKDk4ODdjYjQ3ZDkwNjQ0OTA2NmViMDM5OTI5NmZiMzQxY2U0ZGQzYWU",
+            "C_kwDORkOSsdoAKGNjZWU3MmRmZWM1ODIwOWRhMzc3MmMzOTkwZThmZjk4NDgyZDI0MTE",
+            "C_kwDORkOSsdoAKDc2YzYwZDE5Y2NiYzFmODMxODRlNzgwODE0ZTMyOGZjYWMxZjU5NTY",
+            "C_kwDORkOSsdoAKGQ1ZDYyY2VkYjUyNDc4ZmQ2ZDgzZTlhOGQ3YTk2ZTdlMmRlYmUzNmI",
+            "C_kwDORkOSsdoAKGY0OWJlNmUwZWEwZGY2NzVmOGM0ZDNjYWI2ZTE5NTY4YzYzNTE2Mjk",
+            "C_kwDORkOSsdoAKDFkZWYzMzNmY2Q2NGRhY2QyMmE5NzYxYmE2ZTExNDVkMmU3NTU3MmY",
+            "C_kwDORkOSsdoAKDhiNzc1NDQwM2VkNjg5ZDllODUxMmUzYWUyN2YyOWViZGNhYWNiYzE",
+            "C_kwDORkOSsdoAKDJkMjMxNGM0NTA5MjllNTRmYjNiNGE0MTU3ZTY0ZTEyZjRhZGE1ODI",
+            "C_kwDORkOSsdoAKDE3ZjZiNmQ3NzU1N2IzZGUyN2U4NjNmNTYzZjA0NWY2YTNmNDYxZmE",
+            "C_kwDORkOSsdoAKDhkNDhlYmFjZDE2NmQxNDgwYmE3MmIyOTM3MWIwZDUyZmZjMmMxYzM",
+            "C_kwDORkOSsdoAKGZiZmM4OWFhNmRjMzM1Mjk5Yzk5N2ZkN2E3M2M5NGUyZDgxMWJkN2E",
+            "C_kwDORkOSsdoAKDQ1NDdhOWE4NWMwYmUzODBlYmFiMTMzNzI3MTlkYTAwYWZlY2Q0ODg",
+            "C_kwDORkOSsdoAKGRhYjU4OTllYzVmZmVhM2I0Y2Q4OTBlMzlkM2EwOGQ5MDBmOTBhYTA",
+            "C_kwDORkOSsdoAKGEyZmY1ZDQ0MDAyM2I3YTZhNTk3NmIyODlhNDllMTQ5MTg2YWEzZTU",
+            "C_kwDORkOSsdoAKDgyYTExMWQ4ODcyZDA5OGViOGQ3MjY2ZDU1ZTI4NDk1ZDQxM2FhMDk",
+            "C_kwDORkOSsdoAKDdiYmE0MDE5MzZiYTMwYWI5MjhiOTk3ODk5MzQ4NWY5OTBiMGY4ZDA",
+            "C_kwDORkOSsdoAKDdmN2I2ZDBiZDFkMGFkNDBhZWYwZDVjODgxOWY0OGQ1NWZiNjNiZmM",
+            "C_kwDORkOSsdoAKGJjNWJjNWEwMjUwNWNmNzM1ODU2ZTBjZDc1ZmRhYTQwNjUzMDc5MGY",
+            "C_kwDORkOSsdoAKDNkZjllMjIwMDNkZDI3NDIwOTNkMDVmYmFlZTQ4MWU0MjY4ZGVmYzk",
+            "C_kwDORkOSsdoAKGZhYjRlNTEwNjEyNjRkM2IzODg1ZTNkYTY5ZmU4MGNiMGJhZWIxYjc",
+            "C_kwDORkOSsdoAKDc5NTk1MmM3ODFmNTg1YTVjYzUxOTg3NGJhNDhiNDk0MDVhM2E0NWM",
+            "C_kwDORkOSsdoAKDRhOTVhNzRiOTdlMDE3ZjMyZjk3NGU1Zjg5MDk4NmEyZGUwYzQ2Zjc",
+            "C_kwDORkOSsdoAKGJjOTRiMTVlZDI2YTRiZGI1YmZhOTc3MDRkY2VlZjdhMjQxYjNhMWI",
+            "C_kwDORkOSsdoAKGM1NzQzNGZkNzNlNjdkZDlkMmU4OTYzMGI2ZWNjZTI5NWZlZjVkOTg",
+            "C_kwDORkOSsdoAKDE2NjVmMmEzNzM2ZTlmNzRlYjRkNDdjYTc4NDIxYjBkYTY3MGI4ZWQ",
+            "C_kwDORkOSsdoAKDVkYjhkMzM1MjFlN2E5ZTI1ZjkyODZkN2JkNWI1NjU5YWJlMzA2OGE",
+            "C_kwDORkOSsdoAKDcxMzNiOTMxN2U5MWUzZjAxNTk2ZWI2NjMzOWFkNjQ3NWJjOTU1ODg",
+            "C_kwDORkOSsdoAKGUxNjdhN2NhNmQ3MTE3MTk4MDBlNmZhMjNjM2U4Y2I4YjcyZTlhOWU",
+            "C_kwDORkOSsdoAKGRmYWY0N2EyMmViYTQ0MTk3ZTg4ZTFkNGQ5NmViNTcwODYwNjY0MWY",
+            "C_kwDORkOSsdoAKDkwZmUwYzIzNDljMGQzYTg5ZGVkMWM3YzA2Y2U5ZTc1ZDZjZjcwODc",
+            "C_kwDORkOSsdoAKDQ0ZTA2NjVlMDc5NWI2MzZkZGVlMzQ3MzA1MTI5MWIxYTIwZGM4N2E",
+            "C_kwDORkOSsdoAKDYzNmYwMzkyMmRkZTliNzNiZThmYTQwYzQxOTVkOTE3OTFjNDJiYjU",
+            "C_kwDORkOSsdoAKDc0YTcyZTI2YTM0OTM0ZjhiZWQxOTU3MTBlNzg2ODA1ZWY5ZWFiNTU",
+            "C_kwDORkOSsdoAKDM0OTc5NzI3M2E1NTU4NTJiNjNjMzhiMWRiYWJhZGMxM2Y1OTA3ZWQ",
+            "C_kwDORkOSsdoAKDM5YTMxZmJiZjcwN2JhY2JhN2YyOWU2N2Y2MmFjNzE3YjZkOWEzYWQ"
+          ]
+        }
+      },
+      "sha256": "82317d35704967297eef06906db0b5a87b4d10f7d0854c9b83d24d8d7be22ce7",
+      "cache": "f9d344b3379dded4062cbb34fda48730d40bee6e2051743b25be5892e69d89e9.json",
+      "checkedAt": "2026-11-10T10:51:07.525726+00:00",
+      "repository": "skillhub"
+    },
+    "761361059ae407e070d553947aeb978cbe8da1fc5a12384bab83e4a02d4068e8": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKGY5OTRlYWIxYmRmYTk5MTM2NjNmM2M1Mjg1MDJlY2E3MGRkY2RhNzY",
+            "C_kwDORkOSsdoAKDE4YmY5NmNjNzQ1Y2JkNjdmNTFmY2VmOTc5YmZlOTI5OGI3ZjNiZWM",
+            "C_kwDORkOSsdoAKGQyNTRlOTZlYTRiZjdlZDlmZTQ4ODI5MjRlMDg4YzFjMjJmMzcxZTE",
+            "C_kwDORkOSsdoAKDc0NjQ2ZjVmNTA3MTYwMTBhODdlMTViNzM5NzdkMzc2OGNjODNhY2M",
+            "C_kwDORkOSsdoAKDcxNjE2YzRkYzlkMjQ5OTViMWQ0NGM1OGRlYTE0OGE3MDdhYWVlNzA",
+            "C_kwDORkOSsdoAKDc1MzE2NGQ5NjBmNmViMjZhMjRiOTA3NGZhM2Y2OGI3YWZmYzU5NGE",
+            "C_kwDORkOSsdoAKGE2Zjg3ZWZlY2NmOGMwYzk4Y2NjOGViZTg4YWY5MTE5MmQ0YTBiMWY",
+            "C_kwDORkOSsdoAKDgwNjFhNGQ4YzIzNzdlM2QzMjU2ZWI0M2Y1Zjg2MzgzOWQzYTM1ZTk",
+            "C_kwDORkOSsdoAKDljYTJmNmU2MTI2YTdiYWViMmZjZmYwMjgzODRiOGNhMmM2NmYxNzY",
+            "C_kwDORkOSsdoAKGI0ZWNmYjhiZmQ1YTg0YzgzMzczMTI5NTUwODY4MDIxYTdkMjJlOTA",
+            "C_kwDORkOSsdoAKGE2NmRjYWVhZDQxYTBkYmY4YWMwYjBkMTk2MmJhNmZkOWMwNmQ5OGY",
+            "C_kwDORkOSsdoAKGNiZjE4YzliYzZjODA0Njg1ZDY2N2Y0OTE2NWU0ZDU2MjU5NzYzZDE",
+            "C_kwDORkOSsdoAKDExMzgwMmNjYjdhNjg0MzFjMDhmMTMyMTc3ZWMxZTA0MTdjNWVjYjc",
+            "C_kwDORkOSsdoAKDRhZjI4MjM2NGNmMzhmNjFiMWZjNDQzYWVmNTIwMTlkZDk2NDViYWE",
+            "C_kwDORkOSsdoAKGU2NDczNGQ2M2RmMmRkNjA3MjYwYmJlYzBmMmUyNDUxYmQ1MDc4ZDc",
+            "C_kwDORkOSsdoAKGYwZTgyM2I5YWI2ODllY2I2MjBkMWQ5NDdmMDQyZWMzZDczY2MzZGQ",
+            "C_kwDORkOSsdoAKGQ1YWQ4OTZmMWY0NTMxY2M1MGQ3MjkzNDc4NzBhZWIxMTg4MjE3MzY",
+            "C_kwDORkOSsdoAKDMzYWM0OTdmYjU4NGVlYjIzNjVlODIzNDFmMDhhOGYwMGZlNWZlMDM",
+            "C_kwDORkOSsdoAKDNlM2U1MjUwM2JkOGRhMjQ3YzU4NTg1MmIxMGYxZDU2MDI5OWJlY2Q",
+            "C_kwDORkOSsdoAKGUyY2I2ZWQzOWMyNDY0NDJjYWI4ZjJkZmE0ODk3NDcyMzBkNmQ1Nzk",
+            "C_kwDORkOSsdoAKGNjN2Y1YjZmZjgzMDYwMmMyYTVhYjYyZGU5ZWQxODI1YThhMWI5OTY",
+            "C_kwDORkOSsdoAKDExMzk4NDJmYzhlYmY0OWUwOTYzZGE3ZDMzMWVmZTVhMTQyYzViNzM",
+            "C_kwDORkOSsdoAKGIxYTljZWZhZmNkMDlmNWE2NTJkMTg1YTZkYTNiMWU5YjZhYzM3Nzc",
+            "C_kwDORkOSsdoAKDU5NjBmOWViOTI1OTAzYWI1OTI0OGQ4NDM0OGM1OWUzZGI5YmUyZWQ",
+            "C_kwDORkOSsdoAKGZiZDExNzQyYjkwMjRlY2VlZDc2YmQ4ZTA2Y2E3NjZhYzg4Nzk3MWY",
+            "C_kwDORkOSsdoAKDMwMGU2YzQ5ZjlmZmJjMDU0N2U1NDk0ZjRmMzM2YmU4NzkxNjVmNjE",
+            "C_kwDORkOSsdoAKDI3OTNjOGIzOTU2YzE5MTM0ZTUxNjVlNTU1ZWQwYjNlMjAxMWU3ZTY",
+            "C_kwDORkOSsdoAKDI1ODU5OWVmMDlmMTk2ZDQ3YWMwMzE0OWIzZWIxMzJjZGJmMTllM2U",
+            "C_kwDORkOSsdoAKGU0NGEwMDE1YzcyZGQ3NGEyZmNkZjk5MmIxMjljZjBhZTJlYzI3N2Q",
+            "C_kwDORkOSsdoAKDQxNzhkODFlMjZhMWE2ZjNjNGJiZGQ5OTYzN2EyMTcxOGRkZjlhYjE",
+            "C_kwDORkOSsdoAKGU3ZWNkZGVjNTkxNTcxMTcxZDlmZDA0MmIzMWIwNzE1MmQ0NmQ4MWU",
+            "C_kwDORkOSsdoAKGNkYmQxYjQzMDA0NWE1YzQ2MTNkNTMxMGU2M2ZiYzYyZWNlNmQyZjc",
+            "C_kwDORkOSsdoAKDM0OGI3OWZkNGY1ZGU5MDBkNGVlY2U4NWIxMzc3YmNlOWI3ZmNiOTA",
+            "C_kwDORkOSsdoAKDU0NzBlZjFmZWQ4ZGQ0Mjc0ZjRlOTA2YmUzMzhlZjBlNjIzYzMzMTc",
+            "C_kwDORkOSsdoAKDJhY2Y2ZmUxNmU5M2Q5ZTJkM2NhMGExNGU1NGRhM2QzOGFiMzllNzQ",
+            "C_kwDORkOSsdoAKDk0MjYyMzE3NzRiNjE2ZTk3ZGM2MmJkNmNkODU2ZWQ4Y2EwYWQzMmI",
+            "C_kwDORkOSsdoAKDZmNTRlYmU2NGYzNjY2OTM0MzMxMDA4YzU3N2NhNGY2NzkxZDY0YjQ",
+            "C_kwDORkOSsdoAKDJiMTI0YzYyZDdmYjUyZmJjYzExOWVhMjc0ZGI2ZGY3OWZkMDNlMzQ",
+            "C_kwDORkOSsdoAKGNhZjY1ZTA2M2U2YjVkMWI4YjM2YmRmYTczZTFjNTEyMTM1NjQ0MjY",
+            "C_kwDORkOSsdoAKDhlOGQxMDJmMzI0MzYyYTM2Yzc2YzlkYTA2NTY2MTY5MmMxYjM1ODk",
+            "C_kwDORkOSsdoAKGQzYzljZWJkZDU4NjRlOWQ4MWVkYzc3MzhhM2JlOTFjNzQ5YmE5OWY",
+            "C_kwDORkOSsdoAKDdlNDEyYmNiZTVkNmIzNzQwZmRjMzYxMzI0NDk1MGIxMmQwMGRhMjc",
+            "C_kwDORkOSsdoAKGRkNjM1MTY5MWIwZWY0ZjI5NTU4MGUyOWJhZmRhZmY2NmY2ZmY3Njg",
+            "C_kwDORkOSsdoAKDczNmNhYjBhM2ZiMTkxZGJkZTBjYmM1OTIzOWYxZGFjMTg1ZDQ4ZjE",
+            "C_kwDORkOSsdoAKDNiNzdjY2M4MjY2Nzk2NjljODliMTM1OGEzM2EyY2I1ZDAxOTg3NmI",
+            "C_kwDORkOSsdoAKDNlNDgwMDFhN2ZjYTY0ZTE4NTdhNTljMjY3MTQ5MDg0MmVlMDczZDI",
+            "C_kwDORkOSsdoAKDgxYjIyOGJkYmM0ZDVhMTczNGYwYThjMDc5YTRjNDJmZjQ0NjIwN2Y",
+            "C_kwDORkOSsdoAKDFiYTJjZGY1ZGFjMTYzNmI3MzViZWZkZWM0MDhlNzZlMmZhNzlmZTY",
+            "C_kwDORkOSsdoAKDkxZmMyMzhmODAzODExZTMzZDY1ZDc4MzNiZDY5Yzc0YTQwMzQzY2Q",
+            "C_kwDORkOSsdoAKGI4YzgyMDJmNzdmMGQ4YzE0MWE2NDQ4OTI1ZGZhZmM0YzBmOTY4OTY"
+          ]
+        }
+      },
+      "sha256": "b2ffa799aee62fbe6fca0a38a8e6fe5ed93e0ef071985712cae84ebf29dc46a2",
+      "cache": "761361059ae407e070d553947aeb978cbe8da1fc5a12384bab83e4a02d4068e8.json",
+      "checkedAt": "2026-11-10T10:51:08.097790+00:00",
+      "repository": "skillhub"
+    },
+    "e870a61d8b4293efd903b8c13cfdd52f482fd0215028e50f9abcb7a2550da72f": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKDFiOWVhMGIyOTg3NDc3OWY1NDllYjRmZmQzM2ZjOTAzOTljZGExMGE",
+            "C_kwDORkOSsdoAKDYwYzQ5MWYxNTZlN2Y3NGYyZjE3MTlmZTJiMjBmOWUxNTI5YjVlNzk",
+            "C_kwDORkOSsdoAKDhjNTVkYjIxZDdlMjJkODE0ZmU5MmZlYWZkZmZiNTg1OTYxOGQ4Y2U",
+            "C_kwDORkOSsdoAKDliZDA4Yjk2ZDYxNzgwYmI0Nzc3NjliZGM5MGNiZTg2ZDUyOGVmNjg",
+            "C_kwDORkOSsdoAKGM3MDlhOTEwMmZhYWI2NjFlYjU0YjhhODIxYTY1ZTY4Zjg3MGYwOWE",
+            "C_kwDORkOSsdoAKGMyMTAzMTA1MDdiMjMzNzYzNmU2MzNlMDM0MmY3YTVjMjdhMjgwMDI",
+            "C_kwDORkOSsdoAKDFmN2JjZjIzNjkzMGRiYTNjODcwNDQwMzViYTBhZDBiMDU0ZTdiZTI",
+            "C_kwDORkOSsdoAKDVlOTUyOTZlNGU2OWQ2NDg2YmNjZGVjMGNkYjQ4ZWRhMTFlY2NlMDE",
+            "C_kwDORkOSsdoAKGJhZWQ4MjhhMjE3OGMxN2UwN2QxZTUzOGNmNDkxMzAzMDQ4YzZlOGY",
+            "C_kwDORkOSsdoAKGU5NmFhMWQ1OGYyMDM5ZWNlNzg5OTQ5MjIwNzU1Y2RmMWY2ZWFhNmM",
+            "C_kwDORkOSsdoAKGM4MDUyZDhlMDk4MTEyMzdmZDc5Yzg5ODgwNDk4NmIxNWMxZjJlMzA",
+            "C_kwDORkOSsdoAKGM3OThiNmYyMTE4NDFmNDQzY2E4NzUxYzAyNGVlNTA5MmZmZTIwMzI",
+            "C_kwDORkOSsdoAKDJlZTQzYTM5YmVkNzNhYzc4MGZhOWVkNDI3OWE2ZjM0ZmJlNmQzNTI",
+            "C_kwDORkOSsdoAKGRmNTMzNmQ5MWY5ZjU1NDBkNzAwOTMwZTU0NmZhNDQxYzU2ZTIyZTk",
+            "C_kwDORkOSsdoAKGM3MTEyOGM1ZDdhM2QzZDJiZmM1ZGRiNjA5YTBmNTkwMGZlMmU4Zjc",
+            "C_kwDORkOSsdoAKDZlMGU3YWQyMGViMjU3YjFmZmZkNjJlMzUxMTJiMjlhNjIzMTBlZDI",
+            "C_kwDORkOSsdoAKDA2MjVhZTI1YTYyODRjNjgzN2VmZGI3ZDY4ZjU3OTcyMjRhMmJlNDA",
+            "C_kwDORkOSsdoAKDEwNWMyZTNhNTJlYjI3OGU3NzI4ZjhjYjE0YTViMTQxZjQzMGRlOGU",
+            "C_kwDORkOSsdoAKDBmN2IzZmE5MzFiMGFmNmRjZjY1MDFkNzFjNjkxMTUzZDEyNWI3NzI",
+            "C_kwDORkOSsdoAKGMyYThiODc0NGNmNzA1MmQ0MTNhYjU0ZGUxMTM1N2JlNjhkMTM0ZTI",
+            "C_kwDORkOSsdoAKDY4MjY2MTk1MjBmZjQwNzE0OTgzZDQ0NjA4OWNhODlkNzViNDdmZTc",
+            "C_kwDORkOSsdoAKDI5NmQyYTliZGExNzM1NzJiMjVkNzZkZjgzMzU4YjBjZDdmYWRkNDg",
+            "C_kwDORkOSsdoAKDkyNzRjOWExNDgzNzg2NTQ0ZGU1MjZhN2VmNjFkNzViNTQ3MmU3ZWQ",
+            "C_kwDORkOSsdoAKDZmNGQ4NjkyNGE5MzJlZDBiYzMzZTE3ZDk0NzIxNjFkMjU0Nzg4MGQ",
+            "C_kwDORkOSsdoAKDVjZTFmYWMwYjRhNTMwYzNhZGQ1MGNhMjZhMTdmN2I5ZWIwYjdkZDQ",
+            "C_kwDORkOSsdoAKGEyNTlkNTM4NWQyM2NiMmEyNjZhMDkxZmRjNDA4M2MxYTQwM2U1YmU",
+            "C_kwDORkOSsdoAKDNiZjA3MzE1OTE0NDMzZDY0NjE2MzEzOWYxZWE1OTRjZTIzM2U3M2E",
+            "C_kwDORkOSsdoAKDllOGMwNGEyN2Y2ODQ3YThkZGRmY2RjYmM0MjFhNTVkMmI2MGU4YTY",
+            "C_kwDORkOSsdoAKDZiZTA2Yjk3NzAyMzBkNDM5Y2VkNjk0ZmVhYmFiMWVhNWU5M2ZhYWE",
+            "C_kwDORkOSsdoAKGQyMGYxYmYxOGY4NjU1N2U0NGI2YjlkZjVkMTk0ZDM0NTZjYmNjYzM",
+            "C_kwDORkOSsdoAKGM5NGE2OTgwODg3YTMyMjk4MjQwY2JiY2UzOTlkMjVkZGFiOTIwY2Q",
+            "C_kwDORkOSsdoAKDA5YzQxNzMxM2U2N2E4YmNjMDNiODNiOWFhZjMzY2M5ZmRlYjg1OTg",
+            "C_kwDORkOSsdoAKGIyZjdiMWI3MGMyOWYyNWI2MzdkOTlhNmZmNmViYTc3NzJiNmJiZDY",
+            "C_kwDORkOSsdoAKGRiY2FlZWE5NjVhMDdkNDE3ZjQ1MzY1M2E2NWMyNTBlZGZmNDAzOWU",
+            "C_kwDORkOSsdoAKGQ2YjczM2QwZDk5N2EyNTIyZmZlNDYyYTllOWEyNGFhYzliZjVkOGQ",
+            "C_kwDORkOSsdoAKDUxY2ZkM2I5YjJjYTdkZjE3NTYzZWFkNjE5MGFhM2M0MGRjYTYxNzM",
+            "C_kwDORkOSsdoAKGQ2MDQ5YTlmNzFjYTMyODZhNWQ3NTJjOGQwZjEyNzJjNDlhZTA4NjU",
+            "C_kwDORkOSsdoAKGYzYzczYWI0ZjE1NmYyYzY0YzhjMTI5ZGUxOTZhMTk0NjdlOTI1OTE",
+            "C_kwDORkOSsdoAKDRmMWRkMTRhMDM4ZWQ2ZDY1MmM1ZTZmZmMwN2RjYjg3YzI2MTQ4NWQ",
+            "C_kwDORkOSsdoAKGNlMGZkMzc2NzIxOGQwZjI3OTg2NWM3NWJiMzM5NzY1MmY3ZTlmYjI",
+            "C_kwDORkOSsdoAKDU0OTM2ODI1ZjI5Nzc4YjhjYTY5MzU1ZDJiYmFhYWE0YmI4NjA0YWY",
+            "C_kwDORkOSsdoAKDk1MzlmYjM1MmVmZDE2MTEwYWQ5YzM1ZmEyNmQ0N2M1MDBmY2RiYzQ",
+            "C_kwDORkOSsdoAKDhmMzJhMjdhY2ZlZDlhMjMzYzhhZDQxMTY3MTA5MGQ3NjliZTU4MjM",
+            "C_kwDORkOSsdoAKDYwOWE3NmNmZjVjZDM3MWM5ODVlNzVlYzc0YTUzM2U1ZjY0ODJiOGY",
+            "C_kwDORkOSsdoAKDRlOGJiNzk0ZDZjZDcwMWNjMmM3MDY5ZGU3ZDBlMzNkNjQ2ZTIwMDQ",
+            "C_kwDORkOSsdoAKGJmZWNlNTZjYjJhODg0MmYzMTZlYjczYzJhZGMzZGJkMzY1ZWQ0MmQ",
+            "C_kwDORkOSsdoAKGMyN2UyODZjZTVhMGJhYjgxMjk3OTZmYzgwYzBmMWRhY2MzNjFiMGU",
+            "C_kwDORkOSsdoAKDZjYmZlNTk1NDIwNzE2Y2YwMDQ0NzRhNjRjZTI2ZTJjYmE2NmIzNGY",
+            "C_kwDORkOSsdoAKGExNTczMTAwNTNmYmMyYTVjNzNiN2YyYTZlMzI2NWI5NjVmNmQ1ZWU",
+            "C_kwDORkOSsdoAKGExNDYxYjA5NTkxODI1MzUxZDgyYmZiZjFjNGJiZTE5Yjg3NzU1MDM"
+          ]
+        }
+      },
+      "sha256": "c8876a003143c9d3b6fa60fa29a68a08ba36544c2caa74d7da3129db1a169810",
+      "cache": "e870a61d8b4293efd903b8c13cfdd52f482fd0215028e50f9abcb7a2550da72f.json",
+      "checkedAt": "2026-11-10T10:51:08.709959+00:00",
+      "repository": "skillhub"
+    },
+    "4d9006f950d9e422bc378f46b01fb35f1baea2cfd99b57b9be1fb552bf3fc317": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKGJjOGIyMDRkMzljNjZmNjlhMzJmOWRlZDA5ODEwNWU5YTUxZTk1MzM",
+            "C_kwDORkOSsdoAKDlmOTkxOWU4ZmQwOTEyODljYzZhNzU4YzYyOTVkOGNmODUwOGY0MjM",
+            "C_kwDORkOSsdoAKGRmZGY4MzNkYmQ2YWFlY2JhMTQzNjdkNzAzYWQ4NWJmNWQwNTA5ZTQ",
+            "C_kwDORkOSsdoAKDg0MDdlOTcwODgyYzc0OTEwNTUxNTM4NDMyMzFmOTE4YmQzM2QyZDc",
+            "C_kwDORkOSsdoAKGY5MjUyNDE0NjJkNDA0Yjc1MmE4ODMzYjkzOTZlODljMjI0YzAwYTU",
+            "C_kwDORkOSsdoAKGE0YTNmM2I5NDA5NDcwMWI4ZDMwZGM5YzExMjQyNTRmMTQzY2QzYjQ",
+            "C_kwDORkOSsdoAKDU5Yjg4NjE2NmFkOTM5ZDlkOGY1ZWI0OWYxN2E2YWM4NzRhMjRjYzc",
+            "C_kwDORkOSsdoAKDliNGY5MjdkMzFlZjM4ZTgyNjM4MDAxOGU2YjU5YTFjNjA2ZGRjN2Q",
+            "C_kwDORkOSsdoAKDU1NTgyYmRhZDc5YTZjZDJiMTA2ZDgyZDk4NWM2OTgwNmZiNGM0NDM",
+            "C_kwDORkOSsdoAKGZmMTQ2NDI2NGE5MmQwNTM5ZGM5N2QxMDQ4ZDQzYjdlN2EyN2JhODA",
+            "C_kwDORkOSsdoAKGIzZTFhMjEyZTFlZWNiNzc1ODNlMzdlZGRjY2JmNjg4MmRmZGJkOGM",
+            "C_kwDORkOSsdoAKGE0NmNhMWU5ZGUxYzcwY2E0NGQ2YzIzNmRlOGNlMWRhZGM4M2JmMjA",
+            "C_kwDORkOSsdoAKGZkYTgyYzk0MzM3M2Y1OTM3YTg1YWQ4ZDVkMzA1MGVlNzRiNjlhMGE",
+            "C_kwDORkOSsdoAKDIyNDk2MmY4OTUzNTIyNjg3NTU4MjRiYmY1NWM1MGE1NmEwNmVkMzI",
+            "C_kwDORkOSsdoAKDY5MmFlYTNiZmI5NzFiODA4NDVjNGJhN2JhOWY4OTBhNjBhMWRhZjc",
+            "C_kwDORkOSsdoAKDAwMWExYjFkYzRiZWIxZmE2ZjdjMjUyNWU1OWIwOTNhNWU1Njk1NzY",
+            "C_kwDORkOSsdoAKDM2N2QzMDVlMTY1NmI2ZjZkNjQ0MjgyODdjOTVjOTkzMWJlMTBiNWY",
+            "C_kwDORkOSsdoAKDAyNGE4NzI1YTBiYTk1ZDNlZGIxMTc2YjEzODAwM2U1MjA4ZGRjZGI",
+            "C_kwDORkOSsdoAKDQwY2UxM2RhNmM3YTlhYTc4MDEyZGVhZjcwNjQzNWFiY2QwYzNkODA",
+            "C_kwDORkOSsdoAKGJiZDRhZDIxN2E4N2E3YTgwMWE5NmZmZTg0YmE2YWEzZTZhNDI5YzY",
+            "C_kwDORkOSsdoAKDgwNjg1OTA4NmE1MGFmMjgyMTdiNWJlZTBlYzdhNDJiYjNiOWRlNWQ",
+            "C_kwDORkOSsdoAKDQzYjcxZTkwZDVjYWM4YjY5NjIyNWRmMDhjMDc4MzhhMGZkMTE4MjQ",
+            "C_kwDORkOSsdoAKDQ4NGVlYzQ5NjMxMTkwMDIyNjU0ZjdhMjIyMmQyNDdmMzM2YmQ0YmE",
+            "C_kwDORkOSsdoAKDMzNWE3Mjk4OWQyYjY0MjBjOGU3Yjc2YzBhOTJkODViMzNiN2Q2Nzg",
+            "C_kwDORkOSsdoAKDQ5M2MwMTU2MmE3MmU5NDY4YTBlNzgyZTdjMTA5NTIwNDk5YWUzNzk",
+            "C_kwDORkOSsdoAKGRkMjkxNDUzMTg5ODg3NDdmM2MyZDRiYjM3Njk1ODU1YzUzYWI2NmM",
+            "C_kwDORkOSsdoAKGQyYmI3Y2NmNDNlMzhhMTM0M2FkYTlmNzMxODI2OWZhYWY3YTNkZmM",
+            "C_kwDORkOSsdoAKGI3ZjY2ZmY2MTcxOTQ4YTNmOTRiYTY5YjhlOGVkYWMwZmY5ZDJkNmM",
+            "C_kwDORkOSsdoAKDJlYTMzMmJhMWYxYjc0MzZjYjU5MGQ5MmQ3NGE4NTZiNGNmYWJlZmE",
+            "C_kwDORkOSsdoAKDI3Zjc2MDAxZmU2YTZmNDE4MDc2ZDU1YjI2MmExYWUzY2EwMTdiZTE",
+            "C_kwDORkOSsdoAKDdmMTM4NmQyOGIwYzgwYWUxZGI3YjhlMDEwYzYwNmFjYTQ1Y2Q3MjA",
+            "C_kwDORkOSsdoAKDU5ZmFiNDA4MWY4OGY0YWQ0N2ZhYjIxYmVmYjQ1OTljMjQxNTNkNDE",
+            "C_kwDORkOSsdoAKDI2MmJkMTBiYzAzYTQ5NWY0OGJkMzYwMWIxMDY5Mzg5MTczMmExNjg",
+            "C_kwDORkOSsdoAKDNlZGMxOWI2MTk2MzU1MzYwMzdkN2ZhNjk0MmYyYTQzNWMyYWJjYTU",
+            "C_kwDORkOSsdoAKDk5ZTg3YmQ0ZjVmMzk5OWNhNDlkMTNlMjVjNDRjMGZiMzk5YzExNjk",
+            "C_kwDORkOSsdoAKDg3OWE1YjIwNDM1OWJkY2MzYjk0YzNmZGIyZjgwOWNhZTBiYjY2ZDI",
+            "C_kwDORkOSsdoAKDYyYjAxMWMwN2EzNDQzZmJhMmYzMDdiMjNhYWNhMDAwMmQ2ZjZjZTc",
+            "C_kwDORkOSsdoAKDMzMDgzNmY2OTI0NjUxOGM3NzQzOWY1OWZjNDM4MzkwN2UxMjExN2M",
+            "C_kwDORkOSsdoAKDg5ODg1ZTgxNzg5NDMwZjg0NDRkYjk3NGY1NGMyZDE2YmVhMTJmNzA",
+            "C_kwDORkOSsdoAKDA0OGY2MDk0N2Q1YWQ5MGI1ZDM2YjNhMzQ4MDIxNmRjMjE0ZTA5YTc",
+            "C_kwDORkOSsdoAKDM2NzM1ZTcxNGU3MzU1ODY0ZjVhODk1MjMzZDc2MDExODkwNTM4YjA",
+            "C_kwDORkOSsdoAKDE3NTM5ZjFmZTBmZmYwM2NlNzM3NzA3YWQ2NjMyNDk3MjY1ZGU2ZmU",
+            "C_kwDORkOSsdoAKDM0NDY3YTJiNmIxYTMzYjkxMWZkNzI5OTE4OTMyNjZiZDBiY2VkOWY",
+            "C_kwDORkOSsdoAKDU3OTA0MWJjZWU3ZmEyZDU5ZTIyMzk0ZDZiNWNlNzY4YjcxOTcyYzI",
+            "C_kwDORkOSsdoAKDdkMjE3YmRlYmYwODE2NWMyYTVmNjBmYTFhNzFhYzgzM2NhNTI2OTE",
+            "C_kwDORkOSsdoAKDJhYmNmYjQ2NjRhODI4YzliZTE4ODFhMDNiOWVkZDdlMDI5YjliOGE",
+            "C_kwDORkOSsdoAKDYzYWJiN2RiMWVjOTQ1ZDhkZDhkNTY3YjZjYzA3YzBjOThjYWFmMjg",
+            "C_kwDORkOSsdoAKDMxYzcxOWU2YzlmYjU3MmY3NGY3YWNkN2I2NjBmMjY4OGJhMDA1NjQ",
+            "C_kwDORkOSsdoAKDVhMDVmZTU4MTlmZjhjMjZkYTRkNjE5M2IyMGQwZTFkYjMyYzdkZDU",
+            "C_kwDORkOSsdoAKGE0ZmEyM2I3Y2I1OTY5ZTU1M2JhNzY1MTcwNmM5ZDc5MDIwNmZjN2I"
+          ]
+        }
+      },
+      "sha256": "030d973203b76bb7572615e3f2228135b4d3d6a18faa71dba32c07825e1ce20b",
+      "cache": "4d9006f950d9e422bc378f46b01fb35f1baea2cfd99b57b9be1fb552bf3fc317.json",
+      "checkedAt": "2026-11-10T10:51:09.259582+00:00",
+      "repository": "skillhub"
+    },
+    "834bc65fecfca25e412ea7e97d8792373c93d485bb1a148ff3a652e49d55a783": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKDc1YWY0N2YxZTRlMGRhYWMzNjBjOThmNmYxOWMzZGJmNzVkOTAzNDA",
+            "C_kwDORkOSsdoAKDhjMzE5ZmQwODBhNzU1M2MxYWM0Y2I2ZTc0NzZmMDY5MWNhNzgzZTM",
+            "C_kwDORkOSsdoAKDVlNGI2M2I3Mjg4MGMxNGFkZDJlN2ExYzY3Zjg3OTBkNTczM2FhNWQ",
+            "C_kwDORkOSsdoAKGI5ZTU1YTBlYzUwOTIzZjk2ZWM3NzdkMDY1YzUyOWZjN2QzYjlmMWQ",
+            "C_kwDORkOSsdoAKDI0NTg4MzJlNTlkYmNiODczNWQxMTdhOTNjZjdmYTRhOTVmOGI0MjE",
+            "C_kwDORkOSsdoAKDRkZGRkMmI2MDA2YjQyZTU4ODdhMjE2ODZiOTdiMThiYjNhYTk3ZjY",
+            "C_kwDORkOSsdoAKGJmOWNlZDE5NGJiMTQxYWJiYzdkOWE3NTBmZDQ1YWY5MWEzNzExY2Q",
+            "C_kwDORkOSsdoAKGFmMTE3ODQ2ZmM1ZGI3MmJjZTFiOTE1MGFhODVmNDcyYjEzNzk0ODM",
+            "C_kwDORkOSsdoAKGY2Zjk2NGUxNzc1YTAxNmVlOWZhMzJhOGE4OGIwZDcwNWE3ZjYwZmU",
+            "C_kwDORkOSsdoAKDgyOWU0Y2ViMjcwZjk4NWQ3YmQ1ZTdjMmY5YTRjNTllYzYxZmVjNjM",
+            "C_kwDORkOSsdoAKDc0ZDE2NGIyNWViZWJmMDM4NjI2MzQ4NjdiNGQ1MTVkMjI3OWM5ZWM",
+            "C_kwDORkOSsdoAKDI3YWM5NmU2YzQ0NTAwMTZiODQzZjliYmY2YTk5ODZkNGM4ZjQ2ZjI",
+            "C_kwDORkOSsdoAKDMxNWM1YjJiZDQ0ZDRhZWU0MGY5OGEzOTAwYzc3MjRjYjk1YWNkMmM",
+            "C_kwDORkOSsdoAKDVlMzgzOGQ1NDJhMzQ0ZWQxYWZjNTJkYWFlMmVlOWMxMjUwYjVhYWY",
+            "C_kwDORkOSsdoAKGUxOWMwYjQ3ZWUxYmEzZmU4Yzc0YTFiNDkzZDlhMzg1ZjIzNGI2MDM",
+            "C_kwDORkOSsdoAKDk0N2NjNTkzNWVkNGI1YmI2YzZkOGM2MDFkMGY2ODE5ZmYyOTU4NjU",
+            "C_kwDORkOSsdoAKDQxNmFlOTQxZTAwMzRjMzFhZGNhYzZiOTAxNGRkMmY1NDcxZjVmZmY",
+            "C_kwDORkOSsdoAKGEzODU2ZDIxNWZlYThjZDIzNTAyN2ViZmY1NDlkZmFiOTM0M2IyNmY",
+            "C_kwDORkOSsdoAKDE0YjNjNTkxZjE0NTJiY2M3ZmY2NmRmZDVmN2QxOTBiOTc0YWY4N2I",
+            "C_kwDORkOSsdoAKGVjZGViMTIwNmVmY2YyMWJhMTAxNWY5ZTFmYmQzZGRiYWEzYzM3MjQ",
+            "C_kwDORkOSsdoAKGEwMGRkZjQ3NzIzZmI4OTMyY2NmYzEwOGQ5NzNmYWFkYzRiNjdhZDc",
+            "C_kwDORkOSsdoAKDYwYmZmODc3YjE1ZDZlMTEzY2VlMTEwMWYzNDU0Y2NiNTAzMTAwNjg",
+            "C_kwDORkOSsdoAKGZiMWYzMzM4ZDczY2E0YjFiZTAyZTFkZmNmN2E4ZTAyZDAyNGMxNzE",
+            "C_kwDORkOSsdoAKGI4OGNlMGFjYjJkNDdkNjdjZDgxODE3M2RmNDAyZmQ3N2MwN2UxZmM",
+            "C_kwDORkOSsdoAKDY5MzliMTg2MGEwMjEzNzJmZDc2YWU0ZjJiY2JhYTdiNmQyOTg0ODE",
+            "C_kwDORkOSsdoAKDU3OWE0NzQ1NTI1YWQyZmVkNDA1NmFlZTNhZjViNWE4OTU0MTRjNmM",
+            "C_kwDORkOSsdoAKGRmMjY4ZTlhMWYxZTVhYmNkOGViZmU0YzI1ZmMwYmMxN2Y2YzUyMjQ",
+            "C_kwDORkOSsdoAKDJiMDFmNjQ3NjFhZDA5ZTljZjAzODc2ZDVhZmU4NjQyN2Y2OGY3NGY",
+            "C_kwDORkOSsdoAKDM4NTY1NGU1OWZhMTZmMGU1ZTg3NWJhYjk1ZmE4NWJkNTIyN2Y2OWU",
+            "C_kwDORkOSsdoAKGRkODAyMjg3Yjg4YWI4MDkwY2Y3ZTc3Y2Q1ZjY0YjhkOTE4Yjk1NzA",
+            "C_kwDORkOSsdoAKGI2ZjZlNGEyMWNjNmQ3NTc0NWQ0NjkxMmMzMzM0MGIwMGU3ZTViZjk",
+            "C_kwDORkOSsdoAKDk3MTY4YTgwOTc0OTJmOGUyMmUyNWU3MGY2YWUzOGE2ZjQyNTBmOTc",
+            "C_kwDORkOSsdoAKDU0NTg3NmExZTcyYjk3MWMyYTg4N2UxODJmZDEwZjFjM2EzMmIzZGI",
+            "C_kwDORkOSsdoAKGUwNmY1MmNhM2I2ODFjNDg3ZDhmYzQ2MzIxMDNmMWViMGY0NGZjMmM",
+            "C_kwDORkOSsdoAKDJkNmMyYzhhNDYwNmNkNDY3NGFhYmM0ZWVlODg4NzFjODUyZDUyMGI",
+            "C_kwDORkOSsdoAKDYxYmJlZTQ3NjEzYjZlYjlmMGYyNTY2NmVkNmJkYTBlMmYzN2RkMTE",
+            "C_kwDORkOSsdoAKDg3Y2I3MmY5NTFiYWM2ZGIzMTk1NGZlNDliNzJiNDdjN2NiZmNkMTc",
+            "C_kwDORkOSsdoAKGY2NzRkOTM1MDI5ODFjMDMzYjRjMmUxZTdmOWYzYmJiMDM1NGE1ZTM",
+            "C_kwDORkOSsdoAKDg3ZDAyMDQyZThhODE4MWQzOTcyMjRhODQ1ZWVmMzc3NmFmYTRkZjI",
+            "C_kwDORkOSsdoAKDIwNjgzNWViMWIzM2NkM2Y5NDJmNzQ3NDk1NzVmMTI5OTc3ZjRmMzI",
+            "C_kwDORkOSsdoAKDM1MGM2MjI4MTljMDVkZjFhOTM2YTZhMzVhNmIyYTVhYjBiZTcyMWY",
+            "C_kwDORkOSsdoAKGMwZTJjN2ViNTFmMWM4ZTFlYzY0OWViZTE5Yjg0YWMxZDBkYTBhOTI",
+            "C_kwDORkOSsdoAKDY2MzFjNTE5MjFiOWY2YWI3NGVjNGY4ZTViOGNlYTdkMDRhZjIxMGM",
+            "C_kwDORkOSsdoAKDdhYmUxNjRhZTZkMjExYWU3YWFmOWRmZmEyMTZjNzFjOWQ5Mjk2MzQ",
+            "C_kwDORkOSsdoAKDE2Nzg5Y2IxN2U5ZGJkNDM0YmNiNDA4M2RlY2VjYmJkMjQ3YmU0Mjk",
+            "C_kwDORkOSsdoAKGJhNjFiODcwOTkxZTc2YWU4Mzk3OWQxNGQ4ODk2MTUxMjY0ZTA1ZjY",
+            "C_kwDORkOSsdoAKGE3MmRkZmJmMDUxMjVmZTA0MjI2NDRhYjM0NDhmYjQyNmQyMWIyOWI",
+            "C_kwDORkOSsdoAKDJiOTc1N2IzZjQ0YThhNDA3ZjIwZDgzZDkwOGZjZWU0MTI5MDM4MjE",
+            "C_kwDORkOSsdoAKDEyMDg5N2QxNThhYzg3OTdiN2NhYTQwODFiNzkzYmYwYjkyNTVkMzI",
+            "C_kwDORkOSsdoAKDJkMDUxNGE4ZTA2ZTg1NDcyN2Q0YjhkMjc2ZTA4YjJmMDY5YTVjNjc"
+          ]
+        }
+      },
+      "sha256": "293b9c319f2358f2829e6073c6a98f8f9b0cd081219028b542a96bdce47e8a9c",
+      "cache": "834bc65fecfca25e412ea7e97d8792373c93d485bb1a148ff3a652e49d55a783.json",
+      "checkedAt": "2026-11-10T10:51:09.935600+00:00",
+      "repository": "skillhub"
+    },
+    "59132c305b46bdb4ca708b6ed9486551d1c8568a6c64ce8d2e3ee77e5b048ef4": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKDkyMGVjZjJiZjg0YjBhOWI4NDM4YzY1ZTM5MGVhNTQxMDhhYTI3YWU",
+            "C_kwDORkOSsdoAKGNjNWJiNTM5OGQyNjM5ZDA2MDVjZWRmNjI4ZTg3OTliYmJhNmE1ZjI",
+            "C_kwDORkOSsdoAKDY1YzhjNWZlODEwMzRjNTE3M2E4M2I3ZDY2MTFlZmI3NjIxZWYxNGQ",
+            "C_kwDORkOSsdoAKGY3MTViMjY3ZmMyYzRmMjA5ZWEwODE2OTI4OWFiYzM5NGE5NjkzZTg",
+            "C_kwDORkOSsdoAKGRjMTk4NzRlOGU2N2JlNzYzMjM1ZWI2NjNmOGI4MmRkOGRlMDcxODY",
+            "C_kwDORkOSsdoAKGQ5M2EyOTdhZTk1ODk2YzZhOTA2M2EzOGQ0ZWEyYzk4MDBlZjNhMTQ",
+            "C_kwDORkOSsdoAKDA3ZjJiOGE3NTBmYmMwYjA5ODljOTcwNTNiNjBmNGViYWFjODJmNTc",
+            "C_kwDORkOSsdoAKDYwNWYzNmUzYTEzMDFhMTllMzIyMmFlYTY4NGVkZDYwNjQxYWJmYzQ",
+            "C_kwDORkOSsdoAKDk0NzllNzdmMDg4ODBmMWI0YzFhMmNlNmM4ZTFmYmU5ZDk4MDA4NDc",
+            "C_kwDORkOSsdoAKDRiYjAxZDljMmNkM2NiM2QwN2YzODJjMzM4NzQ2MTg1YzhjNjU5MGM",
+            "C_kwDORkOSsdoAKDNhNTRhMGJhOGUzODU1ZGQ3ODZmZGZjMTI5MWIyM2EyZWYxMTYxYWU",
+            "C_kwDORkOSsdoAKGYzZGJiZjhkN2MyZTdiZTNjNjRjY2IyNDJiMGMzNWIxZDgwOGIxZWI",
+            "C_kwDORkOSsdoAKDA0ZTU4OGQ5NzAwMTE5ZTg3MTcxZWRmNWQ1MDY3NWFhNGRjMjFmZTc",
+            "C_kwDORkOSsdoAKDBlNzY0ZDhiYWFlY2ZkZjkzMWEzZWFiYzhiMzkzYmNkMTQyNTE1MTk",
+            "C_kwDORkOSsdoAKDk4YmM0M2NmMDhjOTVlOGM1YjY5ZWUzYWQzNDUzZjg5ZDEzZGNmYmU",
+            "C_kwDORkOSsdoAKGFjYmRiODI0YTk4ZWI3ZTc1NThjNTAxMmM0ZGQ1MzkyNjQyNDhhM2Y",
+            "C_kwDORkOSsdoAKDY2NDkxOTE2ZDBmOTAwMjQ2MDE2MjE0ZjdkNGZiYmMwYjM3ZTE1YTk",
+            "C_kwDORkOSsdoAKDU3OGVhMWZiNDQxM2U0ZThiNDYwODgxYThkMGU3ZTI3MDI3Yzk1ZmQ",
+            "C_kwDORkOSsdoAKGVjOWU4MTQyYjRmNTExNGJhZjI2NTUyMzMwZmMxZjdiODJjZDZhN2E",
+            "C_kwDORkOSsdoAKDkyZjdjN2RlNzY4YWMyOWUxMTM4YjAxNDUxZGM1ODhkZTM1ODEwZDY",
+            "C_kwDORkOSsdoAKGI0YWY5NTI0ZmEzZTNhMjM5OGQ2ZGQ2N2I2MmVhNmI3NThiN2UyNGU",
+            "C_kwDORkOSsdoAKDMwNzViMzRhMGJjNjg5ZGNjYWU2ODU3MzkxZDhkZmZlZDY4Mjk1ZDE",
+            "C_kwDORkOSsdoAKGZmZjdkNDdkMGQyYzJiODRlMjRlZTQ0MjAzZWZlNjZmZGZjMDc1OGM",
+            "C_kwDORkOSsdoAKDQ3YTg4ZmExYTQ1NjFlNmY0NjAwNmRmNDQyMWZhZGJjZGE5ZmY1ZGM",
+            "C_kwDORkOSsdoAKGM4MWExNzQxNzg5NGI1YzBiMjQxNTBmNmMyNjM1ZjczOWViYzlmNGM",
+            "C_kwDORkOSsdoAKDE3OWQ4NjBjZmY3ODJjMzhlN2Y2NTkzYjg5NzFjMTFhZDY2ZjllYTU",
+            "C_kwDORkOSsdoAKDc5NDQ4OTZhNzE3MTEwYWUwZTZiYWJmNjJjOGU1MjliMjY1YTkyMzY",
+            "C_kwDORkOSsdoAKGFlYjIxZGI4YmUwOTEzZjI3ZWVkZmNkMzdmMWUyYmJjYWZhYzdiZmM"
+          ]
+        }
+      },
+      "sha256": "7a2d4b36ae72b0f357816c566fb872cb42176df62c4fb3be8a084191862ba6dd",
+      "cache": "59132c305b46bdb4ca708b6ed9486551d1c8568a6c64ce8d2e3ee77e5b048ef4.json",
+      "checkedAt": "2026-11-10T10:51:10.465958+00:00",
+      "repository": "skillhub"
+    },
+    "6537b1ca8ba9f32037aef462af09943148c431d54350e41846a4e7a90ae9bf5d": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMy0xOVQwMToyODoxOFrOy7bS-w==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "000521242dbd77ea3af9e499a9b1110dc5f2de37cfd83f54eed9a4b2b1ec9fb2",
+      "cache": "6537b1ca8ba9f32037aef462af09943148c431d54350e41846a4e7a90ae9bf5d.json",
+      "checkedAt": "2026-11-10T10:51:13.977676+00:00",
+      "repository": "skillhub"
+    },
+    "0bacf7a4383ce720a7f5e58e27288ca56a243becbe40e5fe05fc4dc8c3857d56": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMy0xOVQxMjoyNDozMVrOy9W_tg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "f5c32719496504c59dc45d1dbb000039aaed95a62171024900307e74f3629302",
+      "cache": "0bacf7a4383ce720a7f5e58e27288ca56a243becbe40e5fe05fc4dc8c3857d56.json",
+      "checkedAt": "2026-11-10T10:51:18.066395+00:00",
+      "repository": "skillhub"
+    },
+    "e6571717dd387dadb3c9533cc9aa5f5b24a426ccf50b6f0f5b73bbfe0d7066ce": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wMy0yNlQwNzowNzozOFrOzZtBbw==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "412dd202c1de0075344494c57fa9a1af971ba35e053c3e81002f1edb85e83d7d",
+      "cache": "e6571717dd387dadb3c9533cc9aa5f5b24a426ccf50b6f0f5b73bbfe0d7066ce.json",
+      "checkedAt": "2026-11-10T10:51:22.419222+00:00",
+      "repository": "skillhub"
+    },
+    "d112426e4dd8521479bb722a2cc2226a70e449a360b9b422d89dae104bff60df": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7OWw_h",
+          "after": "MTAw"
+        }
+      },
+      "sha256": "acb349d792c85a53c934c628cea4e7cdaf115f640318a91cbe359dc2189c4939",
+      "cache": "d112426e4dd8521479bb722a2cc2226a70e449a360b9b422d89dae104bff60df.json",
+      "checkedAt": "2026-11-10T10:51:23.135827+00:00",
+      "repository": "skillhub"
+    },
+    "0ad283ce05f6572805ede34333832dad64966651af1cdd21a768bbd240506278": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7OWw_h",
+          "after": "MjAw"
+        }
+      },
+      "sha256": "aa850f9ef57b283de6b014a7b136f9b3282333f2bc56a160f8582693dbbe266e",
+      "cache": "0ad283ce05f6572805ede34333832dad64966651af1cdd21a768bbd240506278.json",
+      "checkedAt": "2026-11-10T10:51:23.942676+00:00",
+      "repository": "skillhub"
+    },
+    "ce5a3787c471e4e73ae0c308895d8c8a0a35cfeaf5a2428ac6c276b8420ef49a": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!){node(id:$id){... on PullRequest {baseRefOid headRefOid}}}",
+        "variables": {
+          "id": "PR_kwDORkOSsc7OWw_h"
+        }
+      },
+      "sha256": "fb129a7cb891211263e36763bceb3c65f89e7ed43db0fcbda863bbfc711c9085",
+      "cache": "ce5a3787c471e4e73ae0c308895d8c8a0a35cfeaf5a2428ac6c276b8420ef49a.json",
+      "checkedAt": "2026-11-10T10:51:24.379632+00:00",
+      "repository": "skillhub"
+    },
+    "6396917faab18134382a5157f26829f546acdf5460c0937c83dad5c888f842fa": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...ba8b9dfa7ede826c33631b2eb1593019fbf700db?per_page=100&page=1"
+      },
+      "sha256": "be8ffd3475a552c857d9a42ab31466386a9cf6011326d200c29b197a6bd2c8c5",
+      "cache": "6396917faab18134382a5157f26829f546acdf5460c0937c83dad5c888f842fa.json",
+      "checkedAt": "2026-11-10T10:51:25.510184+00:00",
+      "repository": "skillhub"
+    },
+    "9fbe6bfb2a9a9130c72e8ca2e99ba31274dc57fc3b79248fa2159e9041e33f82": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...ba8b9dfa7ede826c33631b2eb1593019fbf700db?per_page=100&page=2"
+      },
+      "sha256": "2b8bbde6a727c93cf116529d28c830f2f841f521d3d00e02c1e8252fc447cfc1",
+      "cache": "9fbe6bfb2a9a9130c72e8ca2e99ba31274dc57fc3b79248fa2159e9041e33f82.json",
+      "checkedAt": "2026-11-10T10:51:26.174487+00:00",
+      "repository": "skillhub"
+    },
+    "2eb87de24e197238053986630766955662d32c715c008d8d5b1b07309e191cb3": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...ba8b9dfa7ede826c33631b2eb1593019fbf700db?per_page=100&page=3"
+      },
+      "sha256": "a61e983d806d26896a6749aec8cd5e5da8745cb81e84d86db89bb1072131ae77",
+      "cache": "2eb87de24e197238053986630766955662d32c715c008d8d5b1b07309e191cb3.json",
+      "checkedAt": "2026-11-10T10:51:26.842473+00:00",
+      "repository": "skillhub"
+    },
+    "adb078ff3f4254f5f948b0ee0675a3b21d64b7dcde2f629021a2f003e8630bcd": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...ba8b9dfa7ede826c33631b2eb1593019fbf700db?per_page=100&page=4"
+      },
+      "sha256": "3e0820ff7405a84e15540f8dbec05524eb793e3021d17d21a4291f1b3c213574",
+      "cache": "adb078ff3f4254f5f948b0ee0675a3b21d64b7dcde2f629021a2f003e8630bcd.json",
+      "checkedAt": "2026-11-10T10:51:27.454133+00:00",
+      "repository": "skillhub"
+    },
+    "acd626400accf3c4f26da9dea272521e0bf9bac5e9cfca08f8f284a66997dded": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...ba8b9dfa7ede826c33631b2eb1593019fbf700db?per_page=100&page=5"
+      },
+      "sha256": "047d580e5200f68f097e34aa82cff99b918cbf4376f14cdb57f3194c9eb79140",
+      "cache": "acd626400accf3c4f26da9dea272521e0bf9bac5e9cfca08f8f284a66997dded.json",
+      "checkedAt": "2026-11-10T10:51:28.116071+00:00",
+      "repository": "skillhub"
+    },
+    "34ffd96adb316ed4214b565fd556a3b0b9e638a1ca600449efca45f1485538f8": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...ba8b9dfa7ede826c33631b2eb1593019fbf700db?per_page=100&page=6"
+      },
+      "sha256": "4b8e74b9b06e01384cede678989c97ca1a26ffa1eb5cfc6bbf0e04394078af8b",
+      "cache": "34ffd96adb316ed4214b565fd556a3b0b9e638a1ca600449efca45f1485538f8.json",
+      "checkedAt": "2026-11-10T10:51:28.762173+00:00",
+      "repository": "skillhub"
+    },
+    "31f49df834f9445bd62916904879093545cfb9c1e0b3765e3f7438b6c8e7d798": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKDkyMGVjZjJiZjg0YjBhOWI4NDM4YzY1ZTM5MGVhNTQxMDhhYTI3YWU",
+            "C_kwDORkOSsdoAKGNjNWJiNTM5OGQyNjM5ZDA2MDVjZWRmNjI4ZTg3OTliYmJhNmE1ZjI",
+            "C_kwDORkOSsdoAKDY1YzhjNWZlODEwMzRjNTE3M2E4M2I3ZDY2MTFlZmI3NjIxZWYxNGQ",
+            "C_kwDORkOSsdoAKGY3MTViMjY3ZmMyYzRmMjA5ZWEwODE2OTI4OWFiYzM5NGE5NjkzZTg",
+            "C_kwDORkOSsdoAKGRjMTk4NzRlOGU2N2JlNzYzMjM1ZWI2NjNmOGI4MmRkOGRlMDcxODY",
+            "C_kwDORkOSsdoAKGQ5M2EyOTdhZTk1ODk2YzZhOTA2M2EzOGQ0ZWEyYzk4MDBlZjNhMTQ",
+            "C_kwDORkOSsdoAKDA3ZjJiOGE3NTBmYmMwYjA5ODljOTcwNTNiNjBmNGViYWFjODJmNTc",
+            "C_kwDORkOSsdoAKDYwNWYzNmUzYTEzMDFhMTllMzIyMmFlYTY4NGVkZDYwNjQxYWJmYzQ",
+            "C_kwDORkOSsdoAKDk0NzllNzdmMDg4ODBmMWI0YzFhMmNlNmM4ZTFmYmU5ZDk4MDA4NDc",
+            "C_kwDORkOSsdoAKDRiYjAxZDljMmNkM2NiM2QwN2YzODJjMzM4NzQ2MTg1YzhjNjU5MGM",
+            "C_kwDORkOSsdoAKDNhNTRhMGJhOGUzODU1ZGQ3ODZmZGZjMTI5MWIyM2EyZWYxMTYxYWU",
+            "C_kwDORkOSsdoAKGYzZGJiZjhkN2MyZTdiZTNjNjRjY2IyNDJiMGMzNWIxZDgwOGIxZWI",
+            "C_kwDORkOSsdoAKDA0ZTU4OGQ5NzAwMTE5ZTg3MTcxZWRmNWQ1MDY3NWFhNGRjMjFmZTc",
+            "C_kwDORkOSsdoAKDBlNzY0ZDhiYWFlY2ZkZjkzMWEzZWFiYzhiMzkzYmNkMTQyNTE1MTk",
+            "C_kwDORkOSsdoAKDk4YmM0M2NmMDhjOTVlOGM1YjY5ZWUzYWQzNDUzZjg5ZDEzZGNmYmU",
+            "C_kwDORkOSsdoAKGFjYmRiODI0YTk4ZWI3ZTc1NThjNTAxMmM0ZGQ1MzkyNjQyNDhhM2Y",
+            "C_kwDORkOSsdoAKDY2NDkxOTE2ZDBmOTAwMjQ2MDE2MjE0ZjdkNGZiYmMwYjM3ZTE1YTk",
+            "C_kwDORkOSsdoAKDU3OGVhMWZiNDQxM2U0ZThiNDYwODgxYThkMGU3ZTI3MDI3Yzk1ZmQ",
+            "C_kwDORkOSsdoAKGVjOWU4MTQyYjRmNTExNGJhZjI2NTUyMzMwZmMxZjdiODJjZDZhN2E",
+            "C_kwDORkOSsdoAKDkyZjdjN2RlNzY4YWMyOWUxMTM4YjAxNDUxZGM1ODhkZTM1ODEwZDY",
+            "C_kwDORkOSsdoAKGI0YWY5NTI0ZmEzZTNhMjM5OGQ2ZGQ2N2I2MmVhNmI3NThiN2UyNGU",
+            "C_kwDORkOSsdoAKDMwNzViMzRhMGJjNjg5ZGNjYWU2ODU3MzkxZDhkZmZlZDY4Mjk1ZDE",
+            "C_kwDORkOSsdoAKGZmZjdkNDdkMGQyYzJiODRlMjRlZTQ0MjAzZWZlNjZmZGZjMDc1OGM",
+            "C_kwDORkOSsdoAKDQ3YTg4ZmExYTQ1NjFlNmY0NjAwNmRmNDQyMWZhZGJjZGE5ZmY1ZGM",
+            "C_kwDORkOSsdoAKDcxZTYxMDYzNzJmMDJhNmRjNTM5MGMzYjc3YzE1MGUzNzhhYWJhMjM",
+            "C_kwDORkOSsdoAKDM0NWQyNDI0ZDRmZDg4Y2M0NGNkMzNmZDE3YmZmYWZmNDk2MzEyOGU",
+            "C_kwDORkOSsdoAKDZkMzc0MThhYTUwMjE1NTRiYzIxYzBhZDhlODU2ZjJiODcxODlmOWQ",
+            "C_kwDORkOSsdoAKDhiOTEyOGU5NDlmZTk2ODljMGRlYWIyYmVmNzNhNzg3NGYyOTYyN2Y",
+            "C_kwDORkOSsdoAKGMxM2Y4ODc5ZWYyYjllZjM0M2RmODQzYzc4NjUwNDZjNDMzYzM4OTQ",
+            "C_kwDORkOSsdoAKDUzYTJhN2EzYzk1ZDczNmM5YmMwMmI0NjI0YWVmZjQxNjY4NWRiM2M",
+            "C_kwDORkOSsdoAKDFjMWE3YzYyMjgwMWJhZDEzOTFhMDRlMWY2YmViNTY1MWQzZWRjNjU",
+            "C_kwDORkOSsdoAKDNkMmZiMjgzYTRkNjMxNWU3MDYwYzJiZTQyZmY3ZTg4OTkzNzg2MzQ",
+            "C_kwDORkOSsdoAKDFiOTgzYWRmNWNmNjk0ZjY5MmY3NDExY2EyOWY2YWVlMTZmOTRmODM",
+            "C_kwDORkOSsdoAKDFiMjBkNjgyODViZTY5OTU2MjA4MGZlMWNjMzVhODZlN2FkMmQ5OTk",
+            "C_kwDORkOSsdoAKDM5YjIzNTMyNDk0MWZiZWUwZmM1Yjc5Njg0ZjVjNGE5ODU0YTE2Y2U",
+            "C_kwDORkOSsdoAKDk0OWU1YTcxY2VhYTBjZDBmNWZjYzBkZjdlOTFkYjNhZTVkNTdjZjA",
+            "C_kwDORkOSsdoAKDU1YTM1YTllNTIwZjlkYjU3N2UyMjdkY2QxY2RmMjIxMzA0YzMyM2Q",
+            "C_kwDORkOSsdoAKGUyYzg5MzhmYWNlMDg3OGFkN2I0ZDMzZDEzNzMzN2E0ZjM0YTgxMjk",
+            "C_kwDORkOSsdoAKGE1NDRlMDY2ZWQ1MzBmOTdjYmFiZDA5NTBmMzdjMTRjNGZhMmM5ODE",
+            "C_kwDORkOSsdoAKDA4ZGRhZTg4YTUzYzY4NTk0NDc1NjhiZGZiNWZhZmY0MGJkY2UzNWQ",
+            "C_kwDORkOSsdoAKDVhMTI0YTY3Nzc3NmVmOWNhYTc2Y2IzOGVjMjNjNTc3NDczMzE5MTI",
+            "C_kwDORkOSsdoAKDJmOTU5ZDhjODQ1YzA0NjgzNjcwZTE1NWRhOTljMTYzOTJiMGY2NTQ",
+            "C_kwDORkOSsdoAKDY2YjFlNTc1ZjZmN2VjY2UxNDdiN2JkNWIzNWUxOGRkYTFiZWE1ZGY",
+            "C_kwDORkOSsdoAKGIzNjliZDUwZjM0MzNhOGY5ZTVhMDVkNTlmZWE5MDgxZWVjZjRmZDg",
+            "C_kwDORkOSsdoAKDdhOTk1ZWRiZWJiZDhmNmZhNTkyOTBiMDUyM2IyYmE3YzkyZmUwYWM",
+            "C_kwDORkOSsdoAKDliYzk0NzZkZDlhMzI3MTQ2NGRmOWFiN2NjYzA4MDdiNGRmMmU5M2Y",
+            "C_kwDORkOSsdoAKGNiOWU3OGQ4ZTQ4NWZiZDBhNTcyNmM2OWUyMTQxNzNlY2UxNjhmNGE",
+            "C_kwDORkOSsdoAKDU1ZjJkODAyMmE2MjQ2NTFlMmMxMWNhYThmYTNkMmZjMDNjNWI4ODk",
+            "C_kwDORkOSsdoAKGIyMDhiNjlkZjRiMzMxOGVmNTAzZmI3YmZiNzg5ZmI5ODEyNjE5MTc",
+            "C_kwDORkOSsdoAKDMzZWUxNDAwYTE4MDE2ZGI1Y2IxZmY1NzUxMmZkNWI4ZDE3OWVkOWE"
+          ]
+        }
+      },
+      "sha256": "037188a9a2ed7fc9f8e34e1bebd9070c36675857db0db4ebde1a177aa89d527b",
+      "cache": "31f49df834f9445bd62916904879093545cfb9c1e0b3765e3f7438b6c8e7d798.json",
+      "checkedAt": "2026-11-10T10:51:29.360141+00:00",
+      "repository": "skillhub"
+    },
+    "03bdba2a0f1cab486ed091e19f3af331f124694c48915744622f91148fb6cd7f": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKDdiMTBhMjg1YTI0MzFiODIwOTdkZTU5MzJhYjg5NDQ5YjU4MGIyNmM",
+            "C_kwDORkOSsdoAKDE0ZjYyNDFlMjUzYjc4ODcwNWIxZTExYjY3NzIxNWU4Mzk4M2NkOGU",
+            "C_kwDORkOSsdoAKDUxMjI3MWY0ZGFiOGUxODgxNzMyN2EzZTM0YWFhYmU3ZjA3ZDkxOWI",
+            "C_kwDORkOSsdoAKGFkZjAwMjk3ZGNmMjc4NjE4ZjJiMGI5ZjU4MmU2MzE2ZDJkZGQ3Mjk",
+            "C_kwDORkOSsdoAKDljZDdiMjViZGQ4ZjgzOTllMDZmNzdhMzU4NWFlZDBhNzZjYjQ1NTU",
+            "C_kwDORkOSsdoAKDY4YTExMTk3YWY3Yzc1OWJhZTU0MjkxZDk5YmQzY2JiODUyMzlmODA",
+            "C_kwDORkOSsdoAKDE4NGRmNTY2NWM5N2Y2ODIyOGUzOGYwMTdkY2NmYjIwYmZjMTcwNGY",
+            "C_kwDORkOSsdoAKGRjNzFlNTFkMDNjZGVmYTFmMzJkMGI4NmM2NmJjZDliOWE5NWI1YjY",
+            "C_kwDORkOSsdoAKGI0MDNiYmJhZTFmMDdiOTI1NWZkZGMxOWU2OWY5OWEzNzVmYjQ0NWU",
+            "C_kwDORkOSsdoAKDg2NTEwZTdkMmY0NDZhODc1ZmU4ZDNiMzc2NDhlYjExZmEwMWNkYjY",
+            "C_kwDORkOSsdoAKGE1MDg1ZjI0YWNjMTYzMjQzYzA2MDIwZDUxOGU2MTI0MmYyMjVhZWI",
+            "C_kwDORkOSsdoAKDc2YTg3ZTZhYTY3ZmJlZGViMjg0MWU0MThkYTI5MGIyZTRmMTkxMjI",
+            "C_kwDORkOSsdoAKGQ0MDZkOTdiNThiNjhmNTlhMWZkN2E2ZDJmZjU5Yzk3MWQ5YmIwZTk",
+            "C_kwDORkOSsdoAKDEyMTljYTlmMGY5Y2E4YjI0NTZjNDg1MDQ1OGM3NjJlMmI3OTgxZmI",
+            "C_kwDORkOSsdoAKDQwNzU0ZjhiM2MwMzIwYTI3Y2RkMzY3OWU3M2M2ODQ5MDA3ZjdjOGI",
+            "C_kwDORkOSsdoAKDcxYmQ2YjI4M2IzMWExNWQ4MzM5MTYzMjk4YmE1NWMxY2Y3NTYyNmY",
+            "C_kwDORkOSsdoAKDQ5OTU5MzQ0OTM3NGE2ODU4ZTNiOTg5ZjRmODU1NGU5NzJkOGM3YzU",
+            "C_kwDORkOSsdoAKDdiMDYyZWMxZGQ1NjBiNTlkMWE2MTc1OTY5ZWFkZTk3N2I5NTZkZDU",
+            "C_kwDORkOSsdoAKGNhNjBmMWUwNDIzZDJkMjYxZGY1YTVmNzkyZGM2ZmU0MWM4MDQ5Yjc",
+            "C_kwDORkOSsdoAKDZkODFkMjQyMWY0ZDM2NWI1YjYyMGNlNzAwNDczM2NhMjBkZThjN2E",
+            "C_kwDORkOSsdoAKDg2MTcxODU1OTYzOTM2MzEyNWYxMTM0Y2VmNGU1MWMxMTIyZTNhZjQ",
+            "C_kwDORkOSsdoAKDRmNDFkNjVlMzI0MGQxYjM4MzQxODAzNWZmYjZhMzU0MTI3N2IyYzQ",
+            "C_kwDORkOSsdoAKDMzZjU0MWIxZDQyNGZkYTk4ZjM1OTZhZWE4ODFjYTEwZjU4MWQ5YTc",
+            "C_kwDORkOSsdoAKDA3OGI3MjEwYTA5NjBhOTRlMzFlYzQyNmUxMTliMGFkYjBlNzJhMjQ",
+            "C_kwDORkOSsdoAKDZiZmY5ZmEyOGQ1NTk1NDMxN2Y0ZjQxNGJiYTczNTRmNzNmZTcxYzg",
+            "C_kwDORkOSsdoAKGIxNmVhY2I5OGFkOWNkYjM3ZTQwNTI2MTJhMTQzMDUyZTJlMTgwMWY",
+            "C_kwDORkOSsdoAKDZjOWQ0ZWIwOTVkMDFiNjEwYTIwZjAxNDg0ODc4ZmVlNWY2Yjg5Zjk",
+            "C_kwDORkOSsdoAKDc3ZmE4MTMyMjQ2NjQ0M2UzMjdkYTdkOWI2ZjZhODRlNmQ2YjEyZjA",
+            "C_kwDORkOSsdoAKGZmZTUwNGIzNjkyZmJhMjhjOTA1Nzk2MmQ5ODc5NjZiMmEyZTU3MWQ",
+            "C_kwDORkOSsdoAKGQ3MGI2MGE2ZGRiYTBlZjgwY2QzNGJjY2Q5NDZlY2I3YjVhZTJkYjU",
+            "C_kwDORkOSsdoAKGJjZDM1NzA1ZWNjZDY5ZWQ1YmI5MmZiYTgzMmVmZTI4MzY3MjI0OTA",
+            "C_kwDORkOSsdoAKDRlNmY3MDkwNDE1ODA0MTUyZjBjYTY1ZDc2MDhhM2Q3Y2ZjYTZhNzk",
+            "C_kwDORkOSsdoAKDdlNDk4NmM3MzJlYWUyZjJhZDFkOTgyOTdjM2NjMjM1NjUyYjI5MTQ",
+            "C_kwDORkOSsdoAKDU1MGI3ZTdjZDM0MmM5MGJhYzg3YjUyYjZiZWEzMWFhOWMyYzkzMzE",
+            "C_kwDORkOSsdoAKDNhNmUwNTU0Nzg0YmFkNTFlYTU5YjM0NjhiYjk4M2RmMzhkYmJmOTY",
+            "C_kwDORkOSsdoAKDhkOGNjYjEwMjdmZDdlYjVhNmRhNjM0OGViNDQyMjM3ZmI1NTdmZGY",
+            "C_kwDORkOSsdoAKDU3NGMzOTc2MzUxMGY2MTViYWQwZDZhNTBlMjExNzUzMjBiZTlmYjQ",
+            "C_kwDORkOSsdoAKDA2NzUzNWVhMDU0NGM0NDBlOGE1YjYwNmQzYzVlN2I2ODI3ZDRkNTc",
+            "C_kwDORkOSsdoAKGEzYjU1ZjJkYTc4MTdlMmNmZjgwMzhhZjJlZjIxMGI4ZTJlZjYzYmY",
+            "C_kwDORkOSsdoAKDUyNjQ0NWY5ODllZWMyODQwNTNmZWVhN2NmM2QwMjgyY2ZhZGZkMjQ",
+            "C_kwDORkOSsdoAKDA2ODVlZTAzYTZhOGRmMWUyMzcxMzMyY2E3YTJkNWYxN2M2YjQyZWY",
+            "C_kwDORkOSsdoAKDc0MjM2YzgwYjIzNzIyMjJjOTI1ZDkyOGJiYzUxMzU4MGE1ZWMzNzM",
+            "C_kwDORkOSsdoAKDU1MjVkY2MwYmNkMzNiNWYxMGUyZmQ3MGIyYWIxODIyMDdmYTc3ZjE",
+            "C_kwDORkOSsdoAKGM1MjhmOGM4MjBhZTc3Nzc1MjJmNmFjNmJhYWVhZjg3MjI0MDVjOWI",
+            "C_kwDORkOSsdoAKGUzOGM1MGViZmM2NGUyY2E1MDM4YzI3ODdjYjUyNGRkMWI4ZWVjZDc",
+            "C_kwDORkOSsdoAKGE3NjU3MmI4YWRiZmY4MWNmNGNhMzdkZGQ2ZjBkMzMwMTI2YTUyMTg",
+            "C_kwDORkOSsdoAKGU3NjQ1NDcxMmNmNjRiYTI0MDE0NTYxNjYzY2ZhZWMzZDM1ZjJjMTc",
+            "C_kwDORkOSsdoAKDA2OTE0Yzg2MzI3NGY4MmYyMjdiNzRlN2NlNmY3ZWU4MDc2YzQwOTM",
+            "C_kwDORkOSsdoAKDJiNmI3MmMxZmM1NzkzMmIxMWQ4YWYyNjg0ZWExNjlhODllMWZlYWY",
+            "C_kwDORkOSsdoAKDAyMTcxYTI4NmZhZjAxYWQ1ZWMxNjNlNGYzOTk4NzgzZjlkMDUwZjY"
+          ]
+        }
+      },
+      "sha256": "9f34f401285cd674c9c32d9c5c71fd5cf52de06be6656f5a7c4711c55968c5b1",
+      "cache": "03bdba2a0f1cab486ed091e19f3af331f124694c48915744622f91148fb6cd7f.json",
+      "checkedAt": "2026-11-10T10:51:30.009502+00:00",
+      "repository": "skillhub"
+    },
+    "7d8f938a5aed13c8d58ac2800f40eac548decbec70b61a6a0ec9495240f60e58": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKGQxNGQ5YjEyYmVjNzE3YTNkNThhNmJmNjhmZDcyZjU0ZGNjZjUwNDI",
+            "C_kwDORkOSsdoAKGEyNDg2NmNiYTk4NmI5Mjk1YTY5ZGJhYjBjMzVmNmE4MDllNzk4NjY",
+            "C_kwDORkOSsdoAKGNlNzI0ZGI0MTM4MTQ5Yzc5OWQwNWFhNGUyNGUxYTUyMzI1MzQ3NzM",
+            "C_kwDORkOSsdoAKGIyMjgwMDkzMzkyNmQ4ZTYzMjQ2OWZhNWE0YTJjMDMwNWMxOWM3NGU",
+            "C_kwDORkOSsdoAKDY0Y2QyZTk5OTZmNTc0NDgzNmMyZjkyMGEzZmU0YmJjM2ZlNmI2MDc",
+            "C_kwDORkOSsdoAKDA2MGE0OTc0ODRhMmE1MGMyZDRkODUyNmQ0YmJlMTBkMTI3OTY5ZjM",
+            "C_kwDORkOSsdoAKGRmNWM2ZTk0ZDNlYmIxMmEyMTc5NzdmNTIxODBiOGU1OGY5MTBlY2I",
+            "C_kwDORkOSsdoAKDNmYjBmMDljOWUwMjllM2ViY2QwNmM3MDJiZTk5NjhmZjA5Y2U4Zjk",
+            "C_kwDORkOSsdoAKDViODdmNjEzNTQ1M2RmMjQxZTUxZDJiMjIwMzdlYWU1NTFlMDc0NTk",
+            "C_kwDORkOSsdoAKGYzOWFhNzQzZTgxNzZiZWVmYTAwY2Q5MWU0ZGQ0MWVjNzhlZWM1YzI",
+            "C_kwDORkOSsdoAKGYyZWRiOTZmMmQ3Y2I1ODAxYmIzZDliYzgwN2Q5NmNmOTlmYWIxZTk",
+            "C_kwDORkOSsdoAKDYyNjRmMTBjMWNmNGUyYTkwYjA5MzFmZTUzMzJjYjQ5YzExMTYxZTQ",
+            "C_kwDORkOSsdoAKGY1MTgzYzNmYmE1YTdiMDA5MTFmMjQ2Y2QwOGMyNjRiOTExZmUxZTc",
+            "C_kwDORkOSsdoAKDdlZTM1NjYzMDFhNTllYjhjZjUzZmQwMjI4OGM4ODQzZDQwZTU0ZGU",
+            "C_kwDORkOSsdoAKGQzNDZlZTM1YTRkNTRkYTBlYjEzMzBkZGYwYWFiODFiMjA5NjBjZGE",
+            "C_kwDORkOSsdoAKGE0NWRlZjRiMjg1ZGYyOWY3M2FiNjNlMTJlMjRmNjBkNjUyODI4Yjk",
+            "C_kwDORkOSsdoAKGIyYjA5NzgzZmYyYmNkMTIxNjNmMTBhZjk1ZmU1NWIzZmJkMzQyNWM",
+            "C_kwDORkOSsdoAKDNjOTI0YzcwYzkzOWRmOWJmNDE1YjlkNDY5MzEzYWNmZjBhNTZkYzA",
+            "C_kwDORkOSsdoAKGUxNTM4NGM0ZjcyYjZiNDk3MmQ4YWU1NDk1NDBlYTcwOTRkN2I1YTE",
+            "C_kwDORkOSsdoAKDZmNGFkNDRlMWU4Y2MzNzc4YzRiYmIyNWU3NTY0Y2Y1ZmMzMjg2MDk",
+            "C_kwDORkOSsdoAKDU1Yzg1OWNlZDkwOThkYzNlYTdkOTJlM2M3OGQ0YzA1NTQ0ODQwY2Q",
+            "C_kwDORkOSsdoAKDA1Yjk5MzA0Mjc5MGJjNjU1OTQ4MjdmMWI4MTk1NDUzZjdmZjQ3ZmM",
+            "C_kwDORkOSsdoAKGE0N2EyNDAyNjI4NzI3MmM4YzIxODZmNjY2ZjU3OWU2OThmNzQ5ZmI",
+            "C_kwDORkOSsdoAKDA0MDMwNjNkNDU1MmMzMjNkMjdiZjE2MDJiMjUxMTMzZTY0NzI0YjI",
+            "C_kwDORkOSsdoAKDlmZTRjN2Q4NmI2YTE2MGExZDE4ZWU2MTVhNmE4Y2FhMTk4NTgwOTc",
+            "C_kwDORkOSsdoAKDIwMTcxZTM5MmI1M2Q5Y2QyMTJjMzE2ZjJiZWEwZGViMmY0Nzc3ODg",
+            "C_kwDORkOSsdoAKDE2MzhkYzE1OTdmOTY4ZDUxMWZiY2RmY2FiZDRkYjdjNGYwOGM1MDY",
+            "C_kwDORkOSsdoAKGUyZTRjZjg4ODBkODJkNDdjOTdhOTlmYTEwOGVhOTdhZjQ1Y2NiYmI",
+            "C_kwDORkOSsdoAKDg0ZmQ0ZWFiZGUxOTYwZWU5OTBjZDkzMDc0YWUwYTIxMzZhOWNkOWQ",
+            "C_kwDORkOSsdoAKGFkMzY5NDY3OTFlODJlODg2YTI4NjdjOTUxZjk3ZDg5MjZkMWNhOWM",
+            "C_kwDORkOSsdoAKDI2YTU3MjNkYzRmZjFkM2I3OTAwM2JlODE3YmIwYTNiYzc2MzYyNTc",
+            "C_kwDORkOSsdoAKDdlN2ZmMWFiY2JmMmI1ODUyYmJjMGZmZmM4YjJmNGQxZjZlYWY3ZDE",
+            "C_kwDORkOSsdoAKGZhODRhMmQ4NmQyODZiZjQwNzQ4NTViYjVkOWFmNTQ5YjU0Y2M4ZmI",
+            "C_kwDORkOSsdoAKDZjNjliOTY2N2RmZjI2YWMzMGRhMWU3ODQwYTViOTU0MmNmODJjNDM",
+            "C_kwDORkOSsdoAKDQ0OGY4NWVlYTI3N2I5MWJlOTI4Nzk1MDk3NTk4MTVkNWRkM2U5MmU",
+            "C_kwDORkOSsdoAKGVhMTVhOTkzMzU5ZWZhYWEwNjQ3YWFmZWYyYzM4NTBiYTZiOTM1Zjc",
+            "C_kwDORkOSsdoAKGZhNjI3MzdmMjg2MjYxMTUxNTZiZjFmNWEwNTI2MDE2NTMwZDMzZWU",
+            "C_kwDORkOSsdoAKDdjODQ5NjY5MGYxY2IwMTUwOTYzMWU5ODk5OTllNzAzNTFkM2QyNWI",
+            "C_kwDORkOSsdoAKDJhNWU5ZDNhZTg3NTQ3ZjZhOTgyMjJmMjYwZjc2NTMzMmY1N2ZiMzI",
+            "C_kwDORkOSsdoAKGIwYjgzZDc1NjhmNGNkZjJjZWUwOTNhOGFhMTkxZmQ1OTUzNDAyOGM",
+            "C_kwDORkOSsdoAKGE0MGUyZjlkODM3MDBmMDMxMTM3N2YzYzE0NTllOWQ2YjZmMWYxYmU",
+            "C_kwDORkOSsdoAKDIyYjkxNTFjYjE3NGVmMDlkNGQ2OGZmM2Y5NzliYTY5MjM2Zjc2MGE",
+            "C_kwDORkOSsdoAKGZiNGI2NTQ0NWE3YWUwNjdmNTNkN2Y0OGRlNzNjYmRlZjljZDdjOTU",
+            "C_kwDORkOSsdoAKGY1ODJjM2Q2ODY3ODE4OGE5YWJlZGM2NTZlNzYxODE1Yjk3NTVmMGE",
+            "C_kwDORkOSsdoAKDY5NmM4ZjE3NzAyMjdmNTlhOTRjZWU1ZDFiNmJmMjU1OWQzMDc5ZWQ",
+            "C_kwDORkOSsdoAKDQxMDAwODcyMjQ5MTA3N2JmM2I1MDNmNTAzMjIxZmNlYzczYmY5ZDI",
+            "C_kwDORkOSsdoAKDVjNGFmNzQ4MTc3MjUzNTdjYmRhMjM0NTQ2N2YzMjE5MGYwMGViM2Q",
+            "C_kwDORkOSsdoAKGE1NmQzZTE5MjAxNTY2MzYyZDJiMzc5YmE3OTYyNzUzNzFiYTgwNTc",
+            "C_kwDORkOSsdoAKGRkZGRlNmQ5ZmU4YTA4Nzg1MDc4NDk5OWM4YmU4ZTgwNDE0ZDQ0ODM",
+            "C_kwDORkOSsdoAKGFjNjM0YjU5ODgzNGUyYjJhYzhkN2FmMTVlZmNiZmI0YzZiY2ZkZTQ"
+          ]
+        }
+      },
+      "sha256": "7c888dcfa9860dc989fdeff2d5adf9226fe5f928a6df968ee3b662c2b8e04da2",
+      "cache": "7d8f938a5aed13c8d58ac2800f40eac548decbec70b61a6a0ec9495240f60e58.json",
+      "checkedAt": "2026-11-10T10:51:30.638894+00:00",
+      "repository": "skillhub"
+    },
+    "d980c8244bd5c2e64b86a9549561c039189428dc11be0faa897f7fe13e8d0b2d": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKGQ3ZjE0N2JmOWNkNWQwNjdjMzc0ODcwNTcwODQ4NDBmZjYxODRjNzI",
+            "C_kwDORkOSsdoAKGU3YzE3MzRkNjYyYjBjZmEyOWMwNzU3NzU5NWEyODhmNmY2OTZkYjg",
+            "C_kwDORkOSsdoAKDg2ZjI1N2MwNjZkNmZjNGY1OTc2MjRmYTliYWY5Yjc3NDA1ODk5NzE",
+            "C_kwDORkOSsdoAKDk3M2IwYWI4ZGMzZTAwZDNmOTNjYjYwZGVhYTI0NGU2NTRiODVkOGQ",
+            "C_kwDORkOSsdoAKGQ2YTc0ZTgxNTAwZjQ1MWQ2YmMxNzdmMmU0NmI4NDk3MDcxY2M4NTE",
+            "C_kwDORkOSsdoAKDYyMTg0NTAzODA3NGFhNTgxZjdkYzFkN2NiOGFhMTg1MmIzZTQ1NTM",
+            "C_kwDORkOSsdoAKDRiMGM2YTIyZmJhNGY1OGMyNzA1ZjI3NTQ3MTNkNzg1NzgwMjMyMDE",
+            "C_kwDORkOSsdoAKGFmZWY3ZTVmNWU4MzMwOWQxMDVkMWM5NDRhM2EwZGNkZDY4YzE3Mjg",
+            "C_kwDORkOSsdoAKGZmNmQ1NDUyM2QzNGU5OWIxOWI1ODM3YWJlMDFkMzZiY2JmMTIwNGM",
+            "C_kwDORkOSsdoAKDQ0ZTM4ZTEzNmNmZWU2NTUwNTVlMTIyNThhNjVlNzliMTg3ZmU2NDc",
+            "C_kwDORkOSsdoAKDQ0NzYyMDZiMGM0OGJkZDRmOWIzMGY0MDg5NGVlMzU2NDIxNDg0NTU",
+            "C_kwDORkOSsdoAKDVlNGFkMTJmMDA3YTdhMTkxOTA4YWQzZDIzZjRkNGQzZDU1MzY1ZDc",
+            "C_kwDORkOSsdoAKGI1ZTE1ZTQwZWFjOTg4MWEwOTFhMzIxZTUwZjcyZWRlMmY0YTI1NDI",
+            "C_kwDORkOSsdoAKGRiZGJiYjk5ZTg5NDE4NzFiODhiYjhhZjQ2ZTg3MGMzNTNkN2E4OWE",
+            "C_kwDORkOSsdoAKGFkZjQ4MmRjNmNkOTcxMjRiNTIxN2FjOTA5MGY3ZjNkZDI2MmU3OWM",
+            "C_kwDORkOSsdoAKDViN2RhMjJkMGMzZmU1MTM0ZTdjZGEyMTU0ZWZjM2YzZDkyYjI0OWM",
+            "C_kwDORkOSsdoAKGFlMmQzM2IyMDgyZGQ0YTc0ZTY1ODk5MWI5YWZiMjI4YTc0YTdkMzk",
+            "C_kwDORkOSsdoAKDc1ZTBjZmVlYjlkNTg1NjY3N2I5MjM0NGIyMmRlNjVhN2U4ZWE4YTA",
+            "C_kwDORkOSsdoAKGJhOGI5ZGZhN2VkZTgyNmMzMzYzMWIyZWIxNTkzMDE5ZmJmNzAwZGI"
+          ]
+        }
+      },
+      "sha256": "86855ffc98d37c35edbc7a89577bd4bd1f3a77b317f06a834adddf0eaa3359ad",
+      "cache": "d980c8244bd5c2e64b86a9549561c039189428dc11be0faa897f7fe13e8d0b2d.json",
+      "checkedAt": "2026-11-10T10:51:31.090491+00:00",
+      "repository": "skillhub"
+    },
+    "b45a2340b9fbdaa541d18d2f6aed6e13d74b51cb542307cf216af2b0fc8ea429": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7OdhP9",
+          "after": "MTAw"
+        }
+      },
+      "sha256": "acb349d792c85a53c934c628cea4e7cdaf115f640318a91cbe359dc2189c4939",
+      "cache": "b45a2340b9fbdaa541d18d2f6aed6e13d74b51cb542307cf216af2b0fc8ea429.json",
+      "checkedAt": "2026-11-10T10:51:32.196571+00:00",
+      "repository": "skillhub"
+    },
+    "022c7c996a983bfd579009fc0d288ba62334bf2657e634a6b4b9d0623a4061a3": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7OdhP9",
+          "after": "MjAw"
+        }
+      },
+      "sha256": "a66e26068d526bb2deaebe87cd69c08dba5066613aba66455c993cf1b9385db1",
+      "cache": "022c7c996a983bfd579009fc0d288ba62334bf2657e634a6b4b9d0623a4061a3.json",
+      "checkedAt": "2026-11-10T10:51:32.924774+00:00",
+      "repository": "skillhub"
+    },
+    "76e2513b571444d44d31d2477f37417d0fa4714d7fb3e0d4911dc262390310d1": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!){node(id:$id){... on PullRequest {baseRefOid headRefOid}}}",
+        "variables": {
+          "id": "PR_kwDORkOSsc7OdhP9"
+        }
+      },
+      "sha256": "0a8f9376ebfbda2fb22c84b71d101e6f71c9cab05c8ae17a5889edbbef9fb70e",
+      "cache": "76e2513b571444d44d31d2477f37417d0fa4714d7fb3e0d4911dc262390310d1.json",
+      "checkedAt": "2026-11-10T10:51:33.350175+00:00",
+      "repository": "skillhub"
+    },
+    "fbf84e4fc75acc1764035461282bb06ac45bf259ce07689a8f23fb9488a79ba9": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...5722ca7b7346e2ab400ecfcf4c4d9a65220de8cc?per_page=100&page=1"
+      },
+      "sha256": "8530a82507f0c645495087832897f09b46ed2b97412c47500ac6b660cf1ce52b",
+      "cache": "fbf84e4fc75acc1764035461282bb06ac45bf259ce07689a8f23fb9488a79ba9.json",
+      "checkedAt": "2026-11-10T10:51:34.427996+00:00",
+      "repository": "skillhub"
+    },
+    "350c4a3520e1ea216e34f6d0274ef6ce5fde19ea2548f2996ee7501ef1efb891": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...5722ca7b7346e2ab400ecfcf4c4d9a65220de8cc?per_page=100&page=2"
+      },
+      "sha256": "4404d6e6bca5bdf29e6e6865df5f19bfc85aae00f1002fe10f778efa57f98c8c",
+      "cache": "350c4a3520e1ea216e34f6d0274ef6ce5fde19ea2548f2996ee7501ef1efb891.json",
+      "checkedAt": "2026-11-10T10:51:35.139720+00:00",
+      "repository": "skillhub"
+    },
+    "0e996711d1c61ea2faaf9882a687fb4fd2c83a5f2d00345c2aca685f47755f89": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...5722ca7b7346e2ab400ecfcf4c4d9a65220de8cc?per_page=100&page=3"
+      },
+      "sha256": "4b7f84cab141d489b3fe9ca00c414df459f539c9ed8ec4319484480db956229c",
+      "cache": "0e996711d1c61ea2faaf9882a687fb4fd2c83a5f2d00345c2aca685f47755f89.json",
+      "checkedAt": "2026-11-10T10:51:35.771201+00:00",
+      "repository": "skillhub"
+    },
+    "68a75d0a5a01ddc90a8ae7a784b88f7e5e32af0625f18e8b97e6dce876eeb8be": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...5722ca7b7346e2ab400ecfcf4c4d9a65220de8cc?per_page=100&page=4"
+      },
+      "sha256": "5f7294cde98594955b18af47ff8f0af2238986271b0fc66d9baad1c6a62fc13e",
+      "cache": "68a75d0a5a01ddc90a8ae7a784b88f7e5e32af0625f18e8b97e6dce876eeb8be.json",
+      "checkedAt": "2026-11-10T10:51:36.429683+00:00",
+      "repository": "skillhub"
+    },
+    "8385a5b6a680cbe6156e1e45fe1ec261b4fa9e2cfed407733e7794f3cf86baf1": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...5722ca7b7346e2ab400ecfcf4c4d9a65220de8cc?per_page=100&page=5"
+      },
+      "sha256": "ec524881c1a1c3e94cbb3b142142cda6a09c1410b93c9b5a7b63a1f9e4e185b3",
+      "cache": "8385a5b6a680cbe6156e1e45fe1ec261b4fa9e2cfed407733e7794f3cf86baf1.json",
+      "checkedAt": "2026-11-10T10:51:37.115424+00:00",
+      "repository": "skillhub"
+    },
+    "d427f03d4cbe51a8fc5d1e49bbefe2bc89cd05f25f57ae9e1fde8ad705042b7d": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...5722ca7b7346e2ab400ecfcf4c4d9a65220de8cc?per_page=100&page=6"
+      },
+      "sha256": "d497876639f683ba4c1cf01637c95b3f1435e14437d32b62951d2b6d1feda3b0",
+      "cache": "d427f03d4cbe51a8fc5d1e49bbefe2bc89cd05f25f57ae9e1fde8ad705042b7d.json",
+      "checkedAt": "2026-11-10T10:51:37.665582+00:00",
+      "repository": "skillhub"
+    },
+    "845ca7874028ca9d035f2c993bd0acb09bc8cb4e38fe149bf1387976ea54b355": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKGQ3ZjE0N2JmOWNkNWQwNjdjMzc0ODcwNTcwODQ4NDBmZjYxODRjNzI",
+            "C_kwDORkOSsdoAKGU3YzE3MzRkNjYyYjBjZmEyOWMwNzU3NzU5NWEyODhmNmY2OTZkYjg",
+            "C_kwDORkOSsdoAKDg2ZjI1N2MwNjZkNmZjNGY1OTc2MjRmYTliYWY5Yjc3NDA1ODk5NzE",
+            "C_kwDORkOSsdoAKDk3M2IwYWI4ZGMzZTAwZDNmOTNjYjYwZGVhYTI0NGU2NTRiODVkOGQ",
+            "C_kwDORkOSsdoAKGQ2YTc0ZTgxNTAwZjQ1MWQ2YmMxNzdmMmU0NmI4NDk3MDcxY2M4NTE",
+            "C_kwDORkOSsdoAKDYyMTg0NTAzODA3NGFhNTgxZjdkYzFkN2NiOGFhMTg1MmIzZTQ1NTM",
+            "C_kwDORkOSsdoAKDRiMGM2YTIyZmJhNGY1OGMyNzA1ZjI3NTQ3MTNkNzg1NzgwMjMyMDE",
+            "C_kwDORkOSsdoAKGFmZWY3ZTVmNWU4MzMwOWQxMDVkMWM5NDRhM2EwZGNkZDY4YzE3Mjg",
+            "C_kwDORkOSsdoAKGZmNmQ1NDUyM2QzNGU5OWIxOWI1ODM3YWJlMDFkMzZiY2JmMTIwNGM",
+            "C_kwDORkOSsdoAKDQ0ZTM4ZTEzNmNmZWU2NTUwNTVlMTIyNThhNjVlNzliMTg3ZmU2NDc",
+            "C_kwDORkOSsdoAKDQ0NzYyMDZiMGM0OGJkZDRmOWIzMGY0MDg5NGVlMzU2NDIxNDg0NTU",
+            "C_kwDORkOSsdoAKDVlNGFkMTJmMDA3YTdhMTkxOTA4YWQzZDIzZjRkNGQzZDU1MzY1ZDc",
+            "C_kwDORkOSsdoAKGI1ZTE1ZTQwZWFjOTg4MWEwOTFhMzIxZTUwZjcyZWRlMmY0YTI1NDI",
+            "C_kwDORkOSsdoAKGRiZGJiYjk5ZTg5NDE4NzFiODhiYjhhZjQ2ZTg3MGMzNTNkN2E4OWE",
+            "C_kwDORkOSsdoAKGFkZjQ4MmRjNmNkOTcxMjRiNTIxN2FjOTA5MGY3ZjNkZDI2MmU3OWM",
+            "C_kwDORkOSsdoAKDViN2RhMjJkMGMzZmU1MTM0ZTdjZGEyMTU0ZWZjM2YzZDkyYjI0OWM",
+            "C_kwDORkOSsdoAKGFlMmQzM2IyMDgyZGQ0YTc0ZTY1ODk5MWI5YWZiMjI4YTc0YTdkMzk",
+            "C_kwDORkOSsdoAKDc1ZTBjZmVlYjlkNTg1NjY3N2I5MjM0NGIyMmRlNjVhN2U4ZWE4YTA",
+            "C_kwDORkOSsdoAKDU3MjJjYTdiNzM0NmUyYWI0MDBlY2ZjZjRjNGQ5YTY1MjIwZGU4Y2M"
+          ]
+        }
+      },
+      "sha256": "c13faeaa994effac36d652f0d5fe3c20bbd9d414adb810a56b674a1e354f2b0c",
+      "cache": "845ca7874028ca9d035f2c993bd0acb09bc8cb4e38fe149bf1387976ea54b355.json",
+      "checkedAt": "2026-11-10T10:51:38.063339+00:00",
+      "repository": "skillhub"
+    },
+    "ab761e6c5eb0257713aa13aecfaf1715d6121300619fe6ed3e308ab8754d589c": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7PNVbM",
+          "after": "MTAw"
+        }
+      },
+      "sha256": "ef49b588950293e21e92251173c4a6653b236feba533c337b81d7efff7af45a1",
+      "cache": "ab761e6c5eb0257713aa13aecfaf1715d6121300619fe6ed3e308ab8754d589c.json",
+      "checkedAt": "2026-11-10T10:51:39.072455+00:00",
+      "repository": "skillhub"
+    },
+    "6199631b45cd98aee09bedecead85f9090a47addf2f5a084c332cc1f6b5b4b27": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7PNVbM",
+          "after": "MjAw"
+        }
+      },
+      "sha256": "2b22922ba137cd3d64e189a5a4056c105f1ab2bec588e58786e244589b639ae3",
+      "cache": "6199631b45cd98aee09bedecead85f9090a47addf2f5a084c332cc1f6b5b4b27.json",
+      "checkedAt": "2026-11-10T10:51:39.857329+00:00",
+      "repository": "skillhub"
+    },
+    "beeb68e7fee680dcf99b7c908678974482df650d4d7daf1ede57abd03ff49e5b": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!){node(id:$id){... on PullRequest {baseRefOid headRefOid}}}",
+        "variables": {
+          "id": "PR_kwDORkOSsc7PNVbM"
+        }
+      },
+      "sha256": "3c50a6dc581c9da0750bbe07f2617d7e4ecb191483bfeda75732cdedc3da427a",
+      "cache": "beeb68e7fee680dcf99b7c908678974482df650d4d7daf1ede57abd03ff49e5b.json",
+      "checkedAt": "2026-11-10T10:51:40.264360+00:00",
+      "repository": "skillhub"
+    },
+    "ddc5f3d96976e28bd8bb5ea6a267b8b832f8b6bdec920ece93cb73d5588dd0ed": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...bcbe2b5eaad960205b673c1b8a8b2f3d6e96abe1?per_page=100&page=1"
+      },
+      "sha256": "d1c0fb2bb2fd23dda89ad0223690a563fe379bd36595bd06920d9c3fa28c68a1",
+      "cache": "ddc5f3d96976e28bd8bb5ea6a267b8b832f8b6bdec920ece93cb73d5588dd0ed.json",
+      "checkedAt": "2026-11-10T10:51:41.336325+00:00",
+      "repository": "skillhub"
+    },
+    "ac6b9adc30213a96f1cc7b3b8477a1f9a2ae5d1fdb105882e1517134a94a0b8f": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...bcbe2b5eaad960205b673c1b8a8b2f3d6e96abe1?per_page=100&page=2"
+      },
+      "sha256": "5e7c35599692532cd6c32611295a7de55d4fd6be0a5e9b536fb00993deb7f16b",
+      "cache": "ac6b9adc30213a96f1cc7b3b8477a1f9a2ae5d1fdb105882e1517134a94a0b8f.json",
+      "checkedAt": "2026-11-10T10:51:41.957955+00:00",
+      "repository": "skillhub"
+    },
+    "100edc9ce930dea2ad1aea63439dc603bae77d0d88dc022ab80472d140ed5339": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...bcbe2b5eaad960205b673c1b8a8b2f3d6e96abe1?per_page=100&page=3"
+      },
+      "sha256": "a80c896eca4d0cb77e41d0c5116c35fd60b6a2b5658ecedfe3614c5d70c87e55",
+      "cache": "100edc9ce930dea2ad1aea63439dc603bae77d0d88dc022ab80472d140ed5339.json",
+      "checkedAt": "2026-11-10T10:51:42.579385+00:00",
+      "repository": "skillhub"
+    },
+    "43527d256e83e762b1399debdb67199a4c2687d18cadbbe0d3b6d98fab435ae5": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...bcbe2b5eaad960205b673c1b8a8b2f3d6e96abe1?per_page=100&page=4"
+      },
+      "sha256": "546ca43a35297454c554424452ffc354f68a1e67499de7ffd5620cb41106b17b",
+      "cache": "43527d256e83e762b1399debdb67199a4c2687d18cadbbe0d3b6d98fab435ae5.json",
+      "checkedAt": "2026-11-10T10:51:43.210997+00:00",
+      "repository": "skillhub"
+    },
+    "6c9e644ca3b3b7dc18de58f4aaf68a65572bc2b0f2deb2c847f501541fcfa24c": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...bcbe2b5eaad960205b673c1b8a8b2f3d6e96abe1?per_page=100&page=5"
+      },
+      "sha256": "c3be0c750ea5eae31ebc5742e02dffc006d2b0b20f8048373554d62059f4835c",
+      "cache": "6c9e644ca3b3b7dc18de58f4aaf68a65572bc2b0f2deb2c847f501541fcfa24c.json",
+      "checkedAt": "2026-11-10T10:51:43.904152+00:00",
+      "repository": "skillhub"
+    },
+    "5b5b8f1b31b249e54b47c22963557b6d41dd350f57b94c67d064fd6995e73a8e": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/compare/3e4a4bc4639625486a799033b2805d5485b0c988...bcbe2b5eaad960205b673c1b8a8b2f3d6e96abe1?per_page=100&page=6"
+      },
+      "sha256": "9a035f0eb002d687b48dda2060adb7e5b63491785d1d7241ff4eb0df6a3ef97a",
+      "cache": "5b5b8f1b31b249e54b47c22963557b6d41dd350f57b94c67d064fd6995e73a8e.json",
+      "checkedAt": "2026-11-10T10:51:44.574942+00:00",
+      "repository": "skillhub"
+    },
+    "a43eb9a6948a1c458bc34ceb72c23258f142128930beb066818255b445065fb1": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($ids:[ID!]!){nodes(ids:$ids){... on Commit {oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } }}}}",
+        "variables": {
+          "ids": [
+            "C_kwDORkOSsdoAKGQ3ZjE0N2JmOWNkNWQwNjdjMzc0ODcwNTcwODQ4NDBmZjYxODRjNzI",
+            "C_kwDORkOSsdoAKGU3YzE3MzRkNjYyYjBjZmEyOWMwNzU3NzU5NWEyODhmNmY2OTZkYjg",
+            "C_kwDORkOSsdoAKDg2ZjI1N2MwNjZkNmZjNGY1OTc2MjRmYTliYWY5Yjc3NDA1ODk5NzE",
+            "C_kwDORkOSsdoAKDk3M2IwYWI4ZGMzZTAwZDNmOTNjYjYwZGVhYTI0NGU2NTRiODVkOGQ",
+            "C_kwDORkOSsdoAKGQ2YTc0ZTgxNTAwZjQ1MWQ2YmMxNzdmMmU0NmI4NDk3MDcxY2M4NTE",
+            "C_kwDORkOSsdoAKDYyMTg0NTAzODA3NGFhNTgxZjdkYzFkN2NiOGFhMTg1MmIzZTQ1NTM",
+            "C_kwDORkOSsdoAKDRiMGM2YTIyZmJhNGY1OGMyNzA1ZjI3NTQ3MTNkNzg1NzgwMjMyMDE",
+            "C_kwDORkOSsdoAKGFmZWY3ZTVmNWU4MzMwOWQxMDVkMWM5NDRhM2EwZGNkZDY4YzE3Mjg",
+            "C_kwDORkOSsdoAKGZmNmQ1NDUyM2QzNGU5OWIxOWI1ODM3YWJlMDFkMzZiY2JmMTIwNGM",
+            "C_kwDORkOSsdoAKDQ0ZTM4ZTEzNmNmZWU2NTUwNTVlMTIyNThhNjVlNzliMTg3ZmU2NDc",
+            "C_kwDORkOSsdoAKDQ0NzYyMDZiMGM0OGJkZDRmOWIzMGY0MDg5NGVlMzU2NDIxNDg0NTU",
+            "C_kwDORkOSsdoAKDVlNGFkMTJmMDA3YTdhMTkxOTA4YWQzZDIzZjRkNGQzZDU1MzY1ZDc",
+            "C_kwDORkOSsdoAKGI1ZTE1ZTQwZWFjOTg4MWEwOTFhMzIxZTUwZjcyZWRlMmY0YTI1NDI",
+            "C_kwDORkOSsdoAKGRiZGJiYjk5ZTg5NDE4NzFiODhiYjhhZjQ2ZTg3MGMzNTNkN2E4OWE",
+            "C_kwDORkOSsdoAKGFkZjQ4MmRjNmNkOTcxMjRiNTIxN2FjOTA5MGY3ZjNkZDI2MmU3OWM",
+            "C_kwDORkOSsdoAKDViN2RhMjJkMGMzZmU1MTM0ZTdjZGEyMTU0ZWZjM2YzZDkyYjI0OWM",
+            "C_kwDORkOSsdoAKGFlMmQzM2IyMDgyZGQ0YTc0ZTY1ODk5MWI5YWZiMjI4YTc0YTdkMzk",
+            "C_kwDORkOSsdoAKDc1ZTBjZmVlYjlkNTg1NjY3N2I5MjM0NGIyMmRlNjVhN2U4ZWE4YTA",
+            "C_kwDORkOSsdoAKGM0ZmM5MmUyYzZjN2RjNmJhYzA0MDllYTUwMGQ1ZGZlMTEyMjllNmU",
+            "C_kwDORkOSsdoAKGQ4ZWE1OTQ0NjJjMTA3YmViMmFmMWYzMTlhOWExMmI3OTQ4NWYzOGE",
+            "C_kwDORkOSsdoAKGMwZDJkZjM5YmM4ZGMzMWQ3NmU5MGI5MjkyN2FjNmQzNmJiNmM0ZmI",
+            "C_kwDORkOSsdoAKDQ3OWY2OWEyOGYwNmE5NzE5NGE3NzkwODY2NTE2NzdmYTRlOGQ0OWI",
+            "C_kwDORkOSsdoAKDAzYzhkNTc1ZWZlZjU1NzlkY2Y2MDMwYmM2ZmExOTE4ZjI1Zjg1Y2Q",
+            "C_kwDORkOSsdoAKDc1Y2JjYTdhMmIyNTdjZGFlMzM1YTExMmEwYjAzM2JmZjY2YmJjMjg",
+            "C_kwDORkOSsdoAKDZmZWJkMjc4ZWEzMTIzODFlMWZiNDMzYzAwMTc3ZTE4MTA3ZmMxM2M",
+            "C_kwDORkOSsdoAKDFjM2M0Yzg4MDkyYTMzYTNkOWVjOWZlYzMyNmRjNDc0MDU0Mjg1ZTc",
+            "C_kwDORkOSsdoAKDFjNDMyZTkzYjQxOTEyNWU4ZDFkNWVlNmUyNjFkZjdhNTY4NmQwNjM",
+            "C_kwDORkOSsdoAKGJjYmUyYjVlYWFkOTYwMjA1YjY3M2MxYjhhOGIyZjNkNmU5NmFiZTE"
+          ]
+        }
+      },
+      "sha256": "2ba7247ebca98432f4166c88a0bbefccc5268f9167c62639aeb025368ec991a1",
+      "cache": "a43eb9a6948a1c458bc34ceb72c23258f142128930beb066818255b445065fb1.json",
+      "checkedAt": "2026-11-10T10:51:45.062303+00:00",
+      "repository": "skillhub"
+    },
+    "bfa44b0a533aa09ffb7d4374be7f8447f0750240c04d67ff91f548648476b2ad": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNC0wMlQwODowNToyOFrOz3uWSg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "1345ebd553483ebb71fdbb72dbd6b29a65a044116a9174ad8cacceb9811ab2bf",
+      "cache": "bfa44b0a533aa09ffb7d4374be7f8447f0750240c04d67ff91f548648476b2ad.json",
+      "checkedAt": "2026-11-10T10:51:47.966311+00:00",
+      "repository": "skillhub"
+    },
+    "4ebbf6a5a35bdf1e3df0d8e98fcfb8ac977f1af8e8cd21c685165b01fc4b59f1": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNC0wOVQwMjoyMTo0OVrO0P4zKQ==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "6908e9db7021382b1d498f44d0d72ef2c15ece917d8bc526fa6b89353082c083",
+      "cache": "4ebbf6a5a35bdf1e3df0d8e98fcfb8ac977f1af8e8cd21c685165b01fc4b59f1.json",
+      "checkedAt": "2026-11-10T10:51:53.187176+00:00",
+      "repository": "skillhub"
+    },
+    "e0b399cdb5ebf88133b3ccfc89b5744ef2c3de91a1b9253071037a4e74e04ad3": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNC0xNlQwMjozMjo1M1rO0tWqGg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "3dc14ed119f623067fb503e738dfd9796c146b4b281da71933ac9969175b6f73",
+      "cache": "e0b399cdb5ebf88133b3ccfc89b5744ef2c3de91a1b9253071037a4e74e04ad3.json",
+      "checkedAt": "2026-11-10T10:51:56.747814+00:00",
+      "repository": "skillhub"
+    },
+    "da11de376ae6825e94b60bfa7ce0ab2243e6d995ff74103999e7af61ccbe75f0": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7TtYk_",
+          "after": "MTAw"
+        }
+      },
+      "sha256": "4e7dc0a29bdfb6c451f35ee78acf63bf9cceb58abf770306e25837863ec48870",
+      "cache": "da11de376ae6825e94b60bfa7ce0ab2243e6d995ff74103999e7af61ccbe75f0.json",
+      "checkedAt": "2026-11-10T10:51:57.508007+00:00",
+      "repository": "skillhub"
+    },
+    "8f5286a5ebe78cbd026fd7a804969b87d571e3c93e19d0759186ce0aacf9a5e2": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7YmQa4",
+          "after": "MTAw"
+        }
+      },
+      "sha256": "87a3ca10f20c68bc67db101c5f4836901a2e0eef69a1e8af075012947cc3e07d",
+      "cache": "8f5286a5ebe78cbd026fd7a804969b87d571e3c93e19d0759186ce0aacf9a5e2.json",
+      "checkedAt": "2026-11-10T10:51:58.412439+00:00",
+      "repository": "skillhub"
+    },
+    "4a0d3401c869378374a484efda54ec2a8c62673e8a6e546a1f79a47f476e3823": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNS0wNlQwNjo0MTowOFrO2KjPwQ==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "74680e148a52c5ed4aab0e2e350ee2181808e6a4872050780191d05f08b0257f",
+      "cache": "4a0d3401c869378374a484efda54ec2a8c62673e8a6e546a1f79a47f476e3823.json",
+      "checkedAt": "2026-11-10T10:52:02.377848+00:00",
+      "repository": "skillhub"
+    },
+    "bc70b4c6126d7b6d4f7fcfc9570dbcc56a37c52737ec67bbda29ab7e2a745876": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7YtbcH",
+          "after": "MTAw"
+        }
+      },
+      "sha256": "60d9778549c5c67cbf26d136897fbd61e4b48cf9e3e05af6f58db12aebab075b",
+      "cache": "bc70b4c6126d7b6d4f7fcfc9570dbcc56a37c52737ec67bbda29ab7e2a745876.json",
+      "checkedAt": "2026-11-10T10:52:03.067933+00:00",
+      "repository": "skillhub"
+    },
+    "0ae5c4ca350ea1c85243ced74728bda57c6dbbb918475d1a617185d550396b66": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNS0xNlQwNjoyMjoyOFrO3Cn90A==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "077ac7cac01e3427a5ce65f60b7fcc6b3d0c73bbdd2044a423f5f42e789d5595",
+      "cache": "0ae5c4ca350ea1c85243ced74728bda57c6dbbb918475d1a617185d550396b66.json",
+      "checkedAt": "2026-11-10T10:52:08.137278+00:00",
+      "repository": "skillhub"
+    },
+    "a4d6cf64f2116d36f6aa88b604bfa079a97e3e83f8b79032d6ec07a32e7ba116": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNi0wNVQwNjowMjowNlrO4vr9Og==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "c99a5a260698a25f069b16b9e6069a1937e2e2b216553d74a5cd40de9e1fd508",
+      "cache": "a4d6cf64f2116d36f6aa88b604bfa079a97e3e83f8b79032d6ec07a32e7ba116.json",
+      "checkedAt": "2026-11-10T10:52:11.275564+00:00",
+      "repository": "skillhub"
+    },
+    "4c25b4753cb603472afd35ba6287d18917401e72a366aa018858c2808d81ef1e": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNi0xOFQwNzo1MzoxOFrO59XfJg==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "a319ea132f822df31fadc3d1f99ad297aa99bc42da179f41aedaa18a92c909d3",
+      "cache": "4c25b4753cb603472afd35ba6287d18917401e72a366aa018858c2808d81ef1e.json",
+      "checkedAt": "2026-11-10T10:52:14.919518+00:00",
+      "repository": "skillhub"
+    },
+    "2e6ea28b1a7541533053982d2780409e421c1a1898587355b8e587f3a57b304a": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($id:ID!,$after:String) { node(id:$id) { ... on PullRequest { commits(first:100,after:$after) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } }",
+        "variables": {
+          "id": "PR_kwDORkOSsc7x004B",
+          "after": "MTAw"
+        }
+      },
+      "sha256": "3ec9a154a3ea772d67b348bd221c74746de09b9e4da909df7ee6694126c4e94c",
+      "cache": "2e6ea28b1a7541533053982d2780409e421c1a1898587355b8e587f3a57b304a.json",
+      "checkedAt": "2026-11-10T10:52:15.586207+00:00",
+      "repository": "skillhub"
+    },
+    "5dc250c77e0ab4534713439eed86f3ee43c6bae72d912b134798dc7e7446478b": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNy0yNFQxMzo1MDoxMVrO9eG_hw==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "2d5e67a83ee3d6992d9a21dfc1f941b428765a6a2bdd807e82126bd1e2e8ea31",
+      "cache": "5dc250c77e0ab4534713439eed86f3ee43c6bae72d912b134798dc7e7446478b.json",
+      "checkedAt": "2026-11-10T10:52:18.840241+00:00",
+      "repository": "skillhub"
+    },
+    "62cbbf84eabf7abc07d37c74a87efbe52436ef8b92c1edc0887e798d8cf5963e": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wNy0zMVQwMzoxOToxOFrO-NXUlA==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "610e75dcc74c85291f1e85ab694c8f307f45af19634ea8d3a3df65b3cf6b68c6",
+      "cache": "62cbbf84eabf7abc07d37c74a87efbe52436ef8b92c1edc0887e798d8cf5963e.json",
+      "checkedAt": "2026-11-10T10:52:22.489625+00:00",
+      "repository": "skillhub"
+    },
+    "7d0495a1661bc34e3969aca5cb76bea0c995a5481ebde5a92da7ed2b622feaab": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wOC0xMVQwMjo0Mzo0OVrO_U5BEA==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "ccf6c1c6c422f9a4a999d2de80c452cd6759e57317b41c64d9a1e789a9347666",
+      "cache": "7d0495a1661bc34e3969aca5cb76bea0c995a5481ebde5a92da7ed2b622feaab.json",
+      "checkedAt": "2026-11-10T10:52:25.455610+00:00",
+      "repository": "skillhub"
+    },
+    "c3c1626a667326f8bd54aee23f10fe19ccc7047c0d8cb71eb627b3e4a2962fe1": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wOC0yNVQxMToyNzo1NFrPAAAAAQO2RH4=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "c99cca6cfacd79c0818c8cd5a7e3b07d63eaf2492bb5805d54d03c7475d8db8b",
+      "cache": "c3c1626a667326f8bd54aee23f10fe19ccc7047c0d8cb71eb627b3e4a2962fe1.json",
+      "checkedAt": "2026-11-10T10:52:29.003412+00:00",
+      "repository": "skillhub"
+    },
+    "0231e64dc789520df9fb43da077d80f308dec0ed2375dae2d62144c96a83fe32": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wOS0wMVQxMjowMDowNlrPAAAAAQb3wWk=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "0c83fd020fb25879b2495849c2670c992d10a886979035447053f82031ac40f9",
+      "cache": "0231e64dc789520df9fb43da077d80f308dec0ed2375dae2d62144c96a83fe32.json",
+      "checkedAt": "2026-11-10T10:52:32.546017+00:00",
+      "repository": "skillhub"
+    },
+    "7ded6c1aab313fc22b2a26ee9e60c10389b8a8747c666dde1abca627fe0ed779": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wOS0wOVQwMTo0Mzo0M1rPAAAAAQsKvCE=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "5a0c1a2f5e09234b2c165791f6e00f10578ee54f4eb3126db94b3722403d8bfb",
+      "cache": "7ded6c1aab313fc22b2a26ee9e60c10389b8a8747c666dde1abca627fe0ed779.json",
+      "checkedAt": "2026-11-10T10:52:36.560888+00:00",
+      "repository": "skillhub"
+    },
+    "68eb4375e0bb2b340ee06161bc23d146b405364db4f317f27877321394d2436a": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wOS0xOVQxMTo1ODowNVrPAAAAARDXvRc=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "f974b5c64a1b0e0bc61e977101f3362f643518b90473f3c9c6532ddbd6ae9aea",
+      "cache": "68eb4375e0bb2b340ee06161bc23d146b405364db4f317f27877321394d2436a.json",
+      "checkedAt": "2026-11-10T10:52:39.417547+00:00",
+      "repository": "skillhub"
+    },
+    "38958d132e7fa19c83d9c77e842aca5ec8845ed778e40f556a707b117e6dd5b6": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0xMC0wOVQxMDoxNjowMFrPAAAAAR4L7wI=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "3e2bad456ccc2a44adfcf89f20b8fb0733d3f70166d200502c24669b1255a5b9",
+      "cache": "38958d132e7fa19c83d9c77e842aca5ec8845ed778e40f556a707b117e6dd5b6.json",
+      "checkedAt": "2026-11-10T10:52:42.860856+00:00",
+      "repository": "skillhub"
+    },
+    "a07879cb5a6f6ceb68d4c830f6096d1e23083dbaf189c4481dc26aedd64b06ce": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0xMC0xOVQwNjoxMToyOVrPAAAAASUOhJM=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "e57a9374d2cbcf5eec5a6c27ac3b05142c020b4a63b43f5160e4d7648b255ff1",
+      "cache": "a07879cb5a6f6ceb68d4c830f6096d1e23083dbaf189c4481dc26aedd64b06ce.json",
+      "checkedAt": "2026-11-10T10:52:45.408321+00:00",
+      "repository": "skillhub"
+    },
+    "7a3e060215b9e34ff1cb01e30bdc48f92583c7026586e71a865a256db38130b7": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0xMC0yNVQxMDoyODo1NFrPAAAAASpBoZw=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "5841545dbc9b27d4f1c4339ffa78c69b8a330d983d40b8fb65fd8d9c19215ea0",
+      "cache": "7a3e060215b9e34ff1cb01e30bdc48f92583c7026586e71a865a256db38130b7.json",
+      "checkedAt": "2026-11-10T10:52:49.524946+00:00",
+      "repository": "skillhub"
+    },
+    "d339c4cf22437b338bc540194a2f26f906c9086fe45155d894ee58131b568e84": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0xMS0wM1QwNDo0MjoyMlrPAAAAATHkS2Q=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "cbef8d907657f8357f98fa83cdae6ebc373e52264370b78eaed718c6e081d968",
+      "cache": "d339c4cf22437b338bc540194a2f26f906c9086fe45155d894ee58131b568e84.json",
+      "checkedAt": "2026-11-10T10:52:52.191494+00:00",
+      "repository": "skillhub"
+    },
+    "88acd373190b9e4a39f630cdd6e6ce3b4b45b770353b670c6c943e7a8924a00f": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=1"
+      },
+      "sha256": "7e3f525165bedb694e02ab35b9d1170e030700ea7bd91755d76455569fce0b9f",
+      "cache": "88acd373190b9e4a39f630cdd6e6ce3b4b45b770353b670c6c943e7a8924a00f.json",
+      "checkedAt": "2026-11-10T10:52:52.789628+00:00",
+      "repository": "skillhub"
+    },
+    "a61a6951ab86a24d240399fd59fff7707940a4b7525531285a84a7d8d8dd4cd4": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=2"
+      },
+      "sha256": "d911ef73ed2778981be762e9ce5a5f8645ec8e4d5a12b02ce07882ceed64c1fb",
+      "cache": "a61a6951ab86a24d240399fd59fff7707940a4b7525531285a84a7d8d8dd4cd4.json",
+      "checkedAt": "2026-11-10T10:52:53.609780+00:00",
+      "repository": "skillhub"
+    },
+    "c60241bf889a337b8abffcee2bdd783648100bc34ca660c3e4da3725af20af52": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=3"
+      },
+      "sha256": "d08b6cc69f54c3bfac540f7088356788657771ff11dde2e4ab9d3816eeff3056",
+      "cache": "c60241bf889a337b8abffcee2bdd783648100bc34ca660c3e4da3725af20af52.json",
+      "checkedAt": "2026-11-10T10:52:54.384807+00:00",
+      "repository": "skillhub"
+    },
+    "d3ea3ece7eb3d9a404dbab4145cb3588e23bf2336adffc50a699fd815195bf3f": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=4"
+      },
+      "sha256": "9ec16faf71cb6da3d5cc419f00db881ab77edfa3cffd755d9c2ab081a01007f1",
+      "cache": "d3ea3ece7eb3d9a404dbab4145cb3588e23bf2336adffc50a699fd815195bf3f.json",
+      "checkedAt": "2026-11-10T10:52:55.052881+00:00",
+      "repository": "skillhub"
+    },
+    "964aeb77811c23a4eae23eb26ade71c3e05bc4e9b7a1597edb3fb01445c0280e": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=5"
+      },
+      "sha256": "d0a089750186d15722fdf5df65db4d777f19278520152cd379186b99e75a9ad1",
+      "cache": "964aeb77811c23a4eae23eb26ade71c3e05bc4e9b7a1597edb3fb01445c0280e.json",
+      "checkedAt": "2026-11-10T10:52:55.720551+00:00",
+      "repository": "skillhub"
+    },
+    "48f58a1a1bdd9fa5d501f5d4578174dfd31dfebaad947db7d37d77e7d7789075": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=6"
+      },
+      "sha256": "2a5b3536a173f747d0de26cac9d7c8bdd70de404fe918698391a4b8357d31395",
+      "cache": "48f58a1a1bdd9fa5d501f5d4578174dfd31dfebaad947db7d37d77e7d7789075.json",
+      "checkedAt": "2026-11-10T10:52:56.404100+00:00",
+      "repository": "skillhub"
+    },
+    "19fc4c9f8db60eac69c82282370e55981aeac0d246a6f3dc6ed33af853075445": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=7"
+      },
+      "sha256": "d76b00703adb3b67bc50a92d832d72fad75f7b3621f37404aaf2062ddc459f79",
+      "cache": "19fc4c9f8db60eac69c82282370e55981aeac0d246a6f3dc6ed33af853075445.json",
+      "checkedAt": "2026-11-10T10:52:57.069369+00:00",
+      "repository": "skillhub"
+    },
+    "e4a0c6a5c1c662d5d1dddceba434d98327addd11ce589d1161e166e59612be5d": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=8"
+      },
+      "sha256": "c715e3f81a63df13060ff5f66a4113a5ca5c0f9c28fff75a4f37c29980230d19",
+      "cache": "e4a0c6a5c1c662d5d1dddceba434d98327addd11ce589d1161e166e59612be5d.json",
+      "checkedAt": "2026-11-10T10:52:57.790473+00:00",
+      "repository": "skillhub"
+    },
+    "7c8b95a08aeadc8bf048c9ea3ede70609c3c1b2bbb0cd36a8ac415b6443a7431": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=9"
+      },
+      "sha256": "51fd03ab61710c6740c5548e9f918230aa8b2ff1d86360e2b56779078899a39a",
+      "cache": "7c8b95a08aeadc8bf048c9ea3ede70609c3c1b2bbb0cd36a8ac415b6443a7431.json",
+      "checkedAt": "2026-11-10T10:52:58.449979+00:00",
+      "repository": "skillhub"
+    },
+    "a7d050a08a822985af28d00f5b751a997454fe5fa039376830f0835d57ff4b8a": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=10"
+      },
+      "sha256": "e5e4f0366869c60c0cf86b275419e35a5560d4f741830f99070c0d4aab802320",
+      "cache": "a7d050a08a822985af28d00f5b751a997454fe5fa039376830f0835d57ff4b8a.json",
+      "checkedAt": "2026-11-10T10:52:59.187694+00:00",
+      "repository": "skillhub"
+    },
+    "a3cc418a0ec7c633e0f52e5e6d44c7a5617f46be752c2ad8e390d069eb214359": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=11"
+      },
+      "sha256": "623c3d6b5d23c6ade048e010e333995629a8efd6e9cef700403b8f4d63bec1f6",
+      "cache": "a3cc418a0ec7c633e0f52e5e6d44c7a5617f46be752c2ad8e390d069eb214359.json",
+      "checkedAt": "2026-11-10T10:52:59.784486+00:00",
+      "repository": "skillhub"
+    },
+    "816cf742f1ae6032156b61a66e2dcd7ace9ee67f33e0ffc01237a0e668ccfa21": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=12"
+      },
+      "sha256": "cb0917690cf4e73d88be55dc8f0e267be33375529653fb35d4b1d3a63014c4fb",
+      "cache": "816cf742f1ae6032156b61a66e2dcd7ace9ee67f33e0ffc01237a0e668ccfa21.json",
+      "checkedAt": "2026-11-10T10:53:00.355202+00:00",
+      "repository": "skillhub"
+    },
+    "c39844e12197be914026c7d7391ebbd33fcbec9520b73f00cbfc52e7ecace2a0": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/pulls/comments?per_page=100&page=1"
+      },
+      "sha256": "cf8b2da9727ab9688c0ecefb603ce0ae97e6a169660aedc8ec1b0b1748fa8d3c",
+      "cache": "c39844e12197be914026c7d7391ebbd33fcbec9520b73f00cbfc52e7ecace2a0.json",
+      "checkedAt": "2026-11-10T10:53:01.356919+00:00",
+      "repository": "skillhub"
+    },
+    "8fe8690be086de5c0376b4d452fad87c9530219d459a22f253cf2061f939c2d5": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/pulls/comments?per_page=100&page=2"
+      },
+      "sha256": "4a88c0096ffb08b156c77de4d6cd0baa6d118272c7f08bc580e2b6cc2d48579a",
+      "cache": "8fe8690be086de5c0376b4d452fad87c9530219d459a22f253cf2061f939c2d5.json",
+      "checkedAt": "2026-11-10T10:53:02.275250+00:00",
+      "repository": "skillhub"
+    },
+    "0fcf08b599437901e8801793c608f7d4e4231b52ea7769401bf534e1a9c2ef70": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!){repository(owner:$owner,name:$name){defaultBranchRef{name target{... on Commit{oid}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "abbf472039b87e86146085853f9cd1b23cc1a97862ea984385fd46599413a767",
+      "cache": "0fcf08b599437901e8801793c608f7d4e4231b52ea7769401bf534e1a9c2ef70.json",
+      "checkedAt": "2026-11-10T10:53:03.061652+00:00",
+      "repository": "skillhub"
+    },
+    "24f556fff83693f697a8f5f51ff4f9512d2e14a9f31792635439d022ee62a77f": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "12633d0818237a4a870225c583c2ffa83fa6bffa32e48cd9b02a3971ede63822",
+      "cache": "24f556fff83693f697a8f5f51ff4f9512d2e14a9f31792635439d022ee62a77f.json",
+      "checkedAt": "2026-11-10T10:53:03.760343+00:00",
+      "repository": "skillhub"
+    },
+    "89e057c82740c4142fda0dc4f317d3b2137a4d910059fc008232f34327bd37db": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 99",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "1a06656b352a835c050abfd600bfb6da29ca8bd16bcbf5cf0251797b0967e988",
+      "cache": "89e057c82740c4142fda0dc4f317d3b2137a4d910059fc008232f34327bd37db.json",
+      "checkedAt": "2026-11-10T10:53:04.629479+00:00",
+      "repository": "skillhub"
+    },
+    "723143e427d50ee8fff8f9bd4d7a2c8a9a906cbd4c2986a6bbd40701ab5b543d": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 199",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "00b48c9f386a7f70a6fbb5c3093ba09cc625845c25414e47dcd89efd7064c938",
+      "cache": "723143e427d50ee8fff8f9bd4d7a2c8a9a906cbd4c2986a6bbd40701ab5b543d.json",
+      "checkedAt": "2026-11-10T10:53:05.352614+00:00",
+      "repository": "skillhub"
+    },
+    "45e72d1a207c0767ecaad410030bc2b179f1bbf0add5c7aaaeccd926fb9c9fe5": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 299",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "c79605e3b26b6e964f7d2463ca74db66ad1bf356ec2f6802755187463ee17faf",
+      "cache": "45e72d1a207c0767ecaad410030bc2b179f1bbf0add5c7aaaeccd926fb9c9fe5.json",
+      "checkedAt": "2026-11-10T10:53:06.359253+00:00",
+      "repository": "skillhub"
+    },
+    "222f0db0a5049970a0c69c31b4f695e15230d1742c91abedf30f901b8b3fbf0e": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 399",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "7f4c4a207f7bee38b47ed8a8abe9976d60c8118e9811e39bc31959f0d3d69f8d",
+      "cache": "222f0db0a5049970a0c69c31b4f695e15230d1742c91abedf30f901b8b3fbf0e.json",
+      "checkedAt": "2026-11-10T10:53:07.310115+00:00",
+      "repository": "skillhub"
+    },
+    "9d3547485819677f83ab434b9e9f451dee0c4b41c78e059ce68650e29ba93b78": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 499",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "bfc4c2a7ad524626e8b3e8c55c910b90e56d9e44356502409055c20d594e1beb",
+      "cache": "9d3547485819677f83ab434b9e9f451dee0c4b41c78e059ce68650e29ba93b78.json",
+      "checkedAt": "2026-11-10T10:53:08.266962+00:00",
+      "repository": "skillhub"
+    },
+    "2d30bf7fe68df5eeaffc4e4913786fc0765e85b06fcf9c5560b19c0efd62f80c": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 599",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "0301bf75141fd8498d474cfc3355913c62695300022ea5a8b362ea8a234c9570",
+      "cache": "2d30bf7fe68df5eeaffc4e4913786fc0765e85b06fcf9c5560b19c0efd62f80c.json",
+      "checkedAt": "2026-11-10T10:53:08.941964+00:00",
+      "repository": "skillhub"
+    },
+    "c7b96939187a287537a280267fdfea8e7316eaba868bb15dd42fd7467f6addca": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 699",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "3d19f5a29c15e04ebc825e7e281cae2ef3e6da3116f6a11c03dd474300bc0923",
+      "cache": "c7b96939187a287537a280267fdfea8e7316eaba868bb15dd42fd7467f6addca.json",
+      "checkedAt": "2026-11-10T10:53:09.807248+00:00",
+      "repository": "skillhub"
+    },
+    "40eb4cb6c95cbb8ffa565c7cb6448515f3f88bd52a180fa69c68ba27913660e2": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 799",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "554a0678b91a0f013be35c4cb5b25e9d2f5373b41d1615949d6870de0244d689",
+      "cache": "40eb4cb6c95cbb8ffa565c7cb6448515f3f88bd52a180fa69c68ba27913660e2.json",
+      "checkedAt": "2026-11-10T10:53:10.599791+00:00",
+      "repository": "skillhub"
+    },
+    "c9d0d742dcb43853452f5652749955fbdf7263c32515a93356be344fa9974ccf": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 899",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "64ffbe8b00b7e619ea30cf4ea57c11227fd04c86860055e878514138b064fd9a",
+      "cache": "c9d0d742dcb43853452f5652749955fbdf7263c32515a93356be344fa9974ccf.json",
+      "checkedAt": "2026-11-10T10:53:11.809973+00:00",
+      "repository": "skillhub"
+    },
+    "8cd08f00ff7cb4dcbb0181e8fa50ae3379d3a08b5bc3942faa10f38803938604": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 999",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "2e5e0f51b72ebcae5dc5785fe810c16676e9317182cd2025be127a34b22f890c",
+      "cache": "8cd08f00ff7cb4dcbb0181e8fa50ae3379d3a08b5bc3942faa10f38803938604.json",
+      "checkedAt": "2026-11-10T10:53:12.741927+00:00",
+      "repository": "skillhub"
+    },
+    "767f9493ca8683d30907fc44f958dbf1eff903084991c5ea4996aac148250e94": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 1099",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "b9186d0ba6962f0ce690a45cba2707cd2894ec512c5889bbb5dfb8f895068c9c",
+      "cache": "767f9493ca8683d30907fc44f958dbf1eff903084991c5ea4996aac148250e94.json",
+      "checkedAt": "2026-11-10T10:53:13.500438+00:00",
+      "repository": "skillhub"
+    },
+    "c5c3e81b3249cbd7a25af0d45d806dd3a039130fe2b82aaaf9466145ad177bee": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 1199",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "cc8194b4452cdcb147b6d14f22e3af253d44397c9cd73331d054aeffe1fc40c4",
+      "cache": "c5c3e81b3249cbd7a25af0d45d806dd3a039130fe2b82aaaf9466145ad177bee.json",
+      "checkedAt": "2026-11-10T10:53:14.434497+00:00",
+      "repository": "skillhub"
+    },
+    "217b00520a5b61904fd6a300794ac66fa131e42ba83fc98f2f3b593722558319": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 1299",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "976ed5f7f87e6817802c7a33a682260feb1f91e8c339953d9b5ca5e712dd355a",
+      "cache": "217b00520a5b61904fd6a300794ac66fa131e42ba83fc98f2f3b593722558319.json",
+      "checkedAt": "2026-11-10T10:53:15.393514+00:00",
+      "repository": "skillhub"
+    },
+    "c63ee17f588e2a11d45b1658a052b49182283d6c452a48297d8a4fc5aaea1921": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 1399",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "834c87f918ad6c983b1a5410cfa10e35f7e1d5f91de4458c1ae511ebcd75f797",
+      "cache": "c63ee17f588e2a11d45b1658a052b49182283d6c452a48297d8a4fc5aaea1921.json",
+      "checkedAt": "2026-11-10T10:53:16.181134+00:00",
+      "repository": "skillhub"
+    },
+    "875c97fcd1a503ffb1f502c321e2f5f74ee1e9c937bb67f1524b08b750604570": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 1499",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "04c6980c3c3a3833b786307c93a98759f64fe559d2d8d95171225adb1612c5cc",
+      "cache": "875c97fcd1a503ffb1f502c321e2f5f74ee1e9c937bb67f1524b08b750604570.json",
+      "checkedAt": "2026-11-10T10:53:17.238976+00:00",
+      "repository": "skillhub"
+    },
+    "461833a55154a098e0d83e7f301aebc84a63b40624e49cb36a49be8ee7a8d6e8": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 1599",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "728bfc444761804b70344e761e5c8a0a006de106554c27e68f3be98c9fe2b708",
+      "cache": "461833a55154a098e0d83e7f301aebc84a63b40624e49cb36a49be8ee7a8d6e8.json",
+      "checkedAt": "2026-11-10T10:53:17.961363+00:00",
+      "repository": "skillhub"
+    },
+    "40236f8c922a2bc680514a4aac8e2048414ba63a3a631b41abf389fee43460db": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 1699",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "b53d42117052cb9bdc046f5945ba1084c1726978e154f162026f434f200e768b",
+      "cache": "40236f8c922a2bc680514a4aac8e2048414ba63a3a631b41abf389fee43460db.json",
+      "checkedAt": "2026-11-10T10:53:18.687507+00:00",
+      "repository": "skillhub"
+    },
+    "6482d67e10c24f3d3ccb2f353788ce557d1c431376a2956caedcd4ff094e7d17": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 1799",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "2fe432d2c0a95dcf0322b65d076f775d74a6efbeb2c2dbc0a7c066e91ec138cb",
+      "cache": "6482d67e10c24f3d3ccb2f353788ce557d1c431376a2956caedcd4ff094e7d17.json",
+      "checkedAt": "2026-11-10T10:53:19.432649+00:00",
+      "repository": "skillhub"
+    },
+    "60bbf6a98baa0024167937f7edd24fe092dd9c3274220eaa823a7f79447c9952": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "skillhub",
+          "oid": "683decadffbd6c10616b9daa9a62df6423f7b0f0",
+          "after": "683decadffbd6c10616b9daa9a62df6423f7b0f0 1899",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "1b503a917f91ee0808033c95924ee9650828415ac436d159bde92a570007dd52",
+      "cache": "60bbf6a98baa0024167937f7edd24fe092dd9c3274220eaa823a7f79447c9952.json",
+      "checkedAt": "2026-11-10T10:53:20.033545+00:00",
+      "repository": "skillhub"
+    },
+    "c851038888f523a3ce243593e91572e035f8b440a1ac8bf235f3d79e3ab51a28": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/skillhub/contributors?per_page=100&anon=false&page=1"
+      },
+      "sha256": "90eac399aa707264384e1acf3d2bd426a7dcb91dbb41ecc567aa98c261c0adba",
+      "cache": "c851038888f523a3ce243593e91572e035f8b440a1ac8bf235f3d79e3ab51a28.json",
+      "checkedAt": "2026-11-10T10:53:20.426283+00:00",
+      "repository": "skillhub"
+    }
+  }
+}
