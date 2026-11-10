@@ -34,6 +34,13 @@ LOCK = threading.Lock()
 MANIFEST = {}
 CONTEXT = threading.local()
 
+def request_environment(identity):
+    """Keep public REST reads off the owner's shared quota in CI."""
+    env = os.environ.copy()
+    if identity.get('kind') == 'rest' and env.get('GALAXY_REST_TOKEN'):
+        env['GH_TOKEN'] = env['GALAXY_REST_TOKEN']
+    return env
+
 def request(args, identity):
     key = hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()
     cached = CACHE / (key + '.json')
@@ -45,7 +52,8 @@ def request(args, identity):
         with LOCK: MANIFEST[key] = {'request': identity, 'sha256': hashlib.sha256(raw).hexdigest(), 'cache': cached.name, 'checkedAt':checked, 'repository':getattr(CONTEXT,'repo',None)}
         return value
     for attempt in range(5):
-        done = subprocess.run(['gh', 'api', *args], capture_output=True, encoding='utf8')
+        request_env = request_environment(identity)
+        done = subprocess.run(['gh', 'api', *args], capture_output=True, encoding='utf8', env=request_env)
         try: value = json.loads(done.stdout)
         except Exception: value = {}
         if done.returncode == 0 and not (isinstance(value,dict) and value.get('errors')):
@@ -57,7 +65,7 @@ def request(args, identity):
         message = done.stderr + done.stdout[:1200]
         if 'HTTP 404' in message:raise RuntimeError(message)
         if 'rate limit exceeded' in message.lower():
-            limit=subprocess.run(['gh','api','rate_limit'],capture_output=True,encoding='utf8')
+            limit=subprocess.run(['gh','api','rate_limit'],capture_output=True,encoding='utf8',env=request_env)
             if limit.returncode==0:
                 resource=json.loads(limit.stdout)['resources']['graphql' if identity.get('kind')=='graphql' else 'core']
                 delay=max(1,resource['reset']-time.time()+3)
