@@ -49,11 +49,14 @@ jobs:
           test "$(gh api user --jq .login)" = FenjuFu
           gh auth setup-git
       - name: Collect fresh history and calculate scores
+        env:
+          GALAXY_REST_TOKEN: ${{ github.token }}
         run: python scripts/update-galaxy.py
       - name: Validate calculations and production build
         run: |
           python scripts/test_local_openrank.py
           python scripts/test_galaxy_publish.py
+          python scripts/test_galaxy_read_auth.py
           python scripts/verify-galaxy-calculation.py
           npm ci
           npm run build
