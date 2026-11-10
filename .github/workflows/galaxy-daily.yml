@@ -22,10 +22,18 @@ jobs:
       GH_TOKEN: ${{ secrets.GALAXY_GH_TOKEN }}
       PYTHONUNBUFFERED: '1'
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: master
-          persist-credentials: false
+      - name: Check out the immutable workflow commit
+        # The repository contains legacy gitlinks without .gitmodules entries.
+        # Native checkout avoids checkout-action's recursive submodule auth cleanup.
+        run: |
+          test -n "$GH_TOKEN"
+          test "$(gh api user --jq .login)" = FenjuFu
+          gh auth setup-git
+          git init .
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout -b master FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
