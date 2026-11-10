@@ -2,7 +2,19 @@
 
 `/galaxy` shows the eight projects declared in `src/data/galaxy-projects.json`, with contributor avatar orbits and linked leaderboards. The registry contains stable artifact IDs plus canonical GitHub owner/repository names, including `XHToken/Spark-MLX-LLM`; it is shared by collection, calculation and display. Homepage/navigation entries are preserved. Both project and contributor scores are independently calculated from GitHub history using the documented OpenRank equation and community value-flow ratios. No official score API or external score dataset is used.
 
-## Reproduce
+## Daily cloud refresh
+
+`.github/workflows/galaxy-daily.yml` runs at 01:30 UTC / 09:30 Asia/Shanghai daily and supports manual dispatch. GitHub may delay scheduled starts. It uses a fresh history cache, recalculates all registered projects, replays every graph, runs the publishing boundary tests and builds the frontend before publishing.
+
+The repository secret `GALAXY_GH_TOKEN` must authenticate as FenjuFu, with repository contents and pull-request write access and access to public GitHub history. It is never printed. A missing/expired secret fails before collection; no permission or branch-protection settings are changed automatically. Provision credentials through an explicitly authorized secure flow.
+
+On 2026-11-10 the owner authorized automatic merges for this daily update. Each run creates a signed, data-only commit and a PR, requests a non-author collaborator with write access when available, then waits for external checks (including Vercel). If no eligible reviewer exists, the receipt and Actions warning explicitly report the gap; no collaborator is added. No source-code changes are eligible for this automatic merge. Failed/missing checks, changed PR heads or changed master leave the PR open. Branch protection remains enforced; no admin bypass is used.
+
+The existing Vercel Git integration deploys the merged master branch. The job then anonymously checks the production page's lazy-loaded Galaxy bundle for the snapshot dates and every project graph hash, and compares canonical JSON hashes for every public Galaxy artifact (ignoring only serialization whitespace/key order). Publication/production receipts are retained in the run artifact for 30 days, including errors. A green collection step alone does not mean publication succeeded. The run is unsuccessful if production verification times out. Failed runs can be inspected and rerun; previously deployed production remains available if collection or validation fails.
+
+This cloud schedule replaces the proposed local desktop task; no computer or desktop app needs to remain running.
+
+## Manual reproduction
 
 1. Authenticate the user's local `gh` CLI. Run `python scripts/update-galaxy.py` to collect GitHub history, calculate scores and cache public avatars. A new cache directory is created for each refresh. To resume, set `GALAXY_HISTORY_CACHE` to the prior run directory.
 2. `python scripts/compute-galaxy-openrank.py` recalculates from the checked-in lossless `docs/galaxy-data/github-history/*.json.gz` archives, without contacting GitHub or a score service.
