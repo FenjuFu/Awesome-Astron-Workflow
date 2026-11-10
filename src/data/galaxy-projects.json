@@ -1,0 +1,178 @@
+[
+  {
+    "id": "astron-agent",
+    "owner": "iflytek",
+    "repo": "astron-agent",
+    "name": "Astron Agent",
+    "color": "#9da9ff",
+    "x": 300,
+    "y": 230,
+    "role": [
+      "Agent orchestration",
+      "智能体编排"
+    ],
+    "description": [
+      "Build agentic workflows and next-generation SuperAgents on an enterprise-grade platform.",
+      "面向企业构建智能体工作流与新一代 SuperAgent。"
+    ],
+    "tags": [
+      "Agents",
+      "Workflows",
+      "Multi-agent"
+    ]
+  },
+  {
+    "id": "skillhub",
+    "owner": "iflytek",
+    "repo": "skillhub",
+    "name": "SkillHub",
+    "color": "#5ee6c4",
+    "x": 550,
+    "y": 210,
+    "role": [
+      "Reusable agent skills",
+      "技能资产管理"
+    ],
+    "description": [
+      "Publish, version and govern agent skills in a self-hosted, open-source registry.",
+      "在可自托管的开源技能仓库中，发布、版本化管理与治理智能体技能。"
+    ],
+    "tags": [
+      "Skills",
+      "Registry",
+      "Self-hosted"
+    ]
+  },
+  {
+    "id": "astron-rpa",
+    "owner": "iflytek",
+    "repo": "astron-rpa",
+    "name": "Astron RPA",
+    "color": "#ffc17b",
+    "x": 800,
+    "y": 230,
+    "role": [
+      "Desktop automation",
+      "桌面自动化"
+    ],
+    "description": [
+      "Bring automation to everyday work with an agent-ready RPA suite for individuals and enterprises.",
+      "面向个人与企业，以支持智能体调用的 RPA 工具完成日常自动化工作。"
+    ],
+    "tags": [
+      "RPA",
+      "Automation",
+      "Desktop"
+    ]
+  },
+  {
+    "id": "astron-harness-tutorial",
+    "owner": "iflytek",
+    "repo": "astron-harness-tutorial",
+    "name": "Astron Harness Tutorial",
+    "color": "#f69bc1",
+    "x": 210,
+    "y": 450,
+    "role": [
+      "Tutorials & guides",
+      "教程与实践"
+    ],
+    "description": [
+      "Illustrated bilingual guides, official screenshots and upstream monitoring for Astron applications.",
+      "提供 Astron 应用的双语图文教程、官方截图与上游动态跟踪。"
+    ],
+    "tags": [
+      "Tutorials",
+      "Guides",
+      "Bilingual"
+    ]
+  },
+  {
+    "id": "ifly-skills",
+    "owner": "iflytek",
+    "repo": "iFly-Skills",
+    "name": "iFly-Skills",
+    "color": "#68c8ff",
+    "x": 890,
+    "y": 450,
+    "role": [
+      "Speech & multimodal skills",
+      "语音与多模态技能"
+    ],
+    "description": [
+      "Official iFLYTEK skills for speech, OCR, translation, proofreading and multimodal AI.",
+      "讯飞官方技能集合，涵盖语音、OCR、翻译、校对与多模态能力。"
+    ],
+    "tags": [
+      "Speech",
+      "OCR",
+      "Multimodal"
+    ]
+  },
+  {
+    "id": "domux",
+    "owner": "iflytek",
+    "repo": "domux",
+    "name": "Domux",
+    "color": "#f0dc76",
+    "x": 300,
+    "y": 650,
+    "role": [
+      "Home command understanding",
+      "家居指令理解"
+    ],
+    "description": [
+      "A lightweight model turning natural home commands into structured data, fine-tuned with SFT and GRPO.",
+      "将自然语言家居指令转为结构化数据的轻量模型，采用 SFT 与 GRPO 微调。"
+    ],
+    "tags": [
+      "Smart home",
+      "SFT",
+      "GRPO"
+    ]
+  },
+  {
+    "id": "dolphin-mcp-pilot",
+    "owner": "iflytek",
+    "repo": "dolphin-mcp-pilot",
+    "name": "Dolphin MCP Pilot",
+    "color": "#cda5ff",
+    "x": 550,
+    "y": 700,
+    "role": [
+      "Workflow operations via MCP",
+      "MCP 工作流管理"
+    ],
+    "description": [
+      "An MCP server for Apache DolphinScheduler that lets agents build, schedule, run and recover workflows.",
+      "面向 Apache DolphinScheduler 的 MCP 服务，让智能体构建、调度、运行和恢复工作流。"
+    ],
+    "tags": [
+      "MCP",
+      "DolphinScheduler",
+      "Workflows"
+    ]
+  },
+  {
+    "id": "spark-mlx-llm",
+    "owner": "XHToken",
+    "repo": "Spark-MLX-LLM",
+    "name": "Spark MLX LLM",
+    "color": "#5edfe8",
+    "x": 800,
+    "y": 650,
+    "role": [
+      "Apple Silicon inference",
+      "Apple Silicon 本地推理"
+    ],
+    "description": [
+      "Spark-optimized MLX LM for local inference and deployment on Apple Silicon.",
+      "针对 Spark 优化的 MLX LM，支持在 Apple Silicon 上本地推理与部署。"
+    ],
+    "tags": [
+      "Spark",
+      "MLX",
+      "Apple Silicon"
+    ]
+  }
+]

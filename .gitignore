@@ -47,3 +47,5 @@ api/_lib/kb-index.json
 .cache/galaxy-history/
 docs/galaxy-data/github-history/*.json
 !docs/galaxy-data/github-history/manifest.json
+
+!docs/galaxy-data/github-history/*-manifest.json

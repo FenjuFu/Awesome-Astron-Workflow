@@ -1,0 +1,131 @@
+{
+  "capturedAt": "2026-11-09T16:16:31.276179+00:00",
+  "repository": "iflytek/dolphin-mcp-pilot",
+  "requests": {
+    "b3133627cf783de9037aecdade4839d5f427af39b37fc49d62b217624f96fc5d": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/dolphin-mcp-pilot"
+      },
+      "sha256": "d8c406b26a7717bd7be99bdc3106d4f48723d246ca4e659756571cfd677a3544",
+      "cache": "b3133627cf783de9037aecdade4839d5f427af39b37fc49d62b217624f96fc5d.json",
+      "checkedAt": "2026-11-09T16:15:34.185484+00:00",
+      "repository": "dolphin-mcp-pilot"
+    },
+    "fc794dc3460d35cc596bfd75530032c7f235f516c627a1b5f7164d16cec92060": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "dolphin-mcp-pilot",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "8cce7b467ecb794679224a0edf646bbbd0712367529dcbe93ff6b3d1087f751d",
+      "cache": "fc794dc3460d35cc596bfd75530032c7f235f516c627a1b5f7164d16cec92060.json",
+      "checkedAt": "2026-11-09T16:15:37.924116+00:00",
+      "repository": "dolphin-mcp-pilot"
+    },
+    "389320e9fca943709e38dbacaa52ac18529bf223656a7f7bad9ba7aa256ab501": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "dolphin-mcp-pilot",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "4606175e1f2a6502075021e7a6d0fe95dde78293aee05445fe06f39be63e9f10",
+      "cache": "389320e9fca943709e38dbacaa52ac18529bf223656a7f7bad9ba7aa256ab501.json",
+      "checkedAt": "2026-11-09T16:15:45.936024+00:00",
+      "repository": "dolphin-mcp-pilot"
+    },
+    "164a16d740eaaf46715a630ac8a2c62e963cc9122ec66e99222b9de089d2830c": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "dolphin-mcp-pilot",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wOC0xOFQwNzoxODozN1rPAAAAAQBxLv8=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "4401b3a065c982de82edc61bd0fffd6be2cde2079bf2117714d54e83e3a19dfa",
+      "cache": "164a16d740eaaf46715a630ac8a2c62e963cc9122ec66e99222b9de089d2830c.json",
+      "checkedAt": "2026-11-09T16:15:52.583285+00:00",
+      "repository": "dolphin-mcp-pilot"
+    },
+    "d668b24eedd6c0dafd48cfb40bf1022f7dc75131514a68d5f28eb851818c261c": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/dolphin-mcp-pilot/issues/comments?per_page=100&page=1"
+      },
+      "sha256": "0946013fb4ac91b9bb031c641f94941112069c1be5b6fa1f67e11886b6e7356b",
+      "cache": "d668b24eedd6c0dafd48cfb40bf1022f7dc75131514a68d5f28eb851818c261c.json",
+      "checkedAt": "2026-11-09T16:15:55.585703+00:00",
+      "repository": "dolphin-mcp-pilot"
+    },
+    "3c0ebd49ca29357261210b2877ebe0451099b1880bef4b6bf853a75edcb3297d": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/dolphin-mcp-pilot/issues/comments?per_page=100&page=2"
+      },
+      "sha256": "2631844d812a1a1f835c176ba8e5b8a6ad341db186850976cf3a21aae9d9b48e",
+      "cache": "3c0ebd49ca29357261210b2877ebe0451099b1880bef4b6bf853a75edcb3297d.json",
+      "checkedAt": "2026-11-09T16:15:58.780725+00:00",
+      "repository": "dolphin-mcp-pilot"
+    },
+    "80490abc3548d9ad359474bbb2051cb49831567b96888e3acfbe9cf55c59ae82": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/dolphin-mcp-pilot/pulls/comments?per_page=100&page=1"
+      },
+      "sha256": "c5ed56647f6618662dddacea7477ef436142c322b751c701c6d76f5e89020c5a",
+      "cache": "80490abc3548d9ad359474bbb2051cb49831567b96888e3acfbe9cf55c59ae82.json",
+      "checkedAt": "2026-11-09T16:16:04.725102+00:00",
+      "repository": "dolphin-mcp-pilot"
+    },
+    "3a53c49878635f897b40684ee6468031c5c6de9a922a1798d644f92984de5d23": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!){repository(owner:$owner,name:$name){defaultBranchRef{name target{... on Commit{oid}}}}}",
+        "variables": {
+          "name": "dolphin-mcp-pilot",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "50ebb133c7070d0060253f3c2eddf235d55a8c40c4857ccf60021237b854d234",
+      "cache": "3a53c49878635f897b40684ee6468031c5c6de9a922a1798d644f92984de5d23.json",
+      "checkedAt": "2026-11-09T16:16:08.891476+00:00",
+      "repository": "dolphin-mcp-pilot"
+    },
+    "76757b4ba96cd50c81dace08ae5bb75f2a8e4a716fe2502e040bc5a33e284ac0": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "dolphin-mcp-pilot",
+          "oid": "7aeb3ea616d539591307d8246bd38325d4585a4c",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "b6952303ee8dcc2978f71c9757489be915c778cfc698911a9c8e504e81177ccb",
+      "cache": "76757b4ba96cd50c81dace08ae5bb75f2a8e4a716fe2502e040bc5a33e284ac0.json",
+      "checkedAt": "2026-11-09T16:16:23.756881+00:00",
+      "repository": "dolphin-mcp-pilot"
+    },
+    "698875b418f8831994bcef4e3dc6e9daf6f46f74ffc72e096d855c366dc4f9ef": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/dolphin-mcp-pilot/contributors?per_page=100&anon=false&page=1"
+      },
+      "sha256": "b6963089ae69035467670984bc6314409799a8e5aa62cbea5c40247eaf8419aa",
+      "cache": "698875b418f8831994bcef4e3dc6e9daf6f46f74ffc72e096d855c366dc4f9ef.json",
+      "checkedAt": "2026-11-09T16:16:31.276179+00:00",
+      "repository": "dolphin-mcp-pilot"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "astron-agent",
+    "repository": "iflytek/astron-agent",
+    "archived": false,
+    "private": false,
+    "source": "https://api.github.com/repos/iflytek/astron-agent",
+    "verifiedAt": "2026-11-09T16:08:41.458912+00:00",
+    "responseSha256": "9c0d88a7c362d37ddae3640893f39c1f0329260ae0099ce5ecb0192555482e74"
+  },
+  {
+    "id": "skillhub",
+    "repository": "iflytek/skillhub",
+    "archived": false,
+    "private": false,
+    "source": "https://api.github.com/repos/iflytek/skillhub",
+    "verifiedAt": "2026-11-09T16:08:41.462508+00:00",
+    "responseSha256": "2101c466d9b93c5fd5af4f79674a7d7ccd1efb3e5dc3ef281e65a8a96c7a7e68"
+  },
+  {
+    "id": "astron-rpa",
+    "repository": "iflytek/astron-rpa",
+    "archived": false,
+    "private": false,
+    "source": "https://api.github.com/repos/iflytek/astron-rpa",
+    "verifiedAt": "2026-11-09T16:08:42.832651+00:00",
+    "responseSha256": "ff7cbf55e41933512aec905dab7991d78ea131c1d8c3a3d1294bccdad3352eb8"
+  },
+  {
+    "id": "astron-harness-tutorial",
+    "repository": "iflytek/astron-harness-tutorial",
+    "archived": false,
+    "private": false,
+    "source": "https://api.github.com/repos/iflytek/astron-harness-tutorial",
+    "verifiedAt": "2026-11-09T16:08:46.001112+00:00",
+    "responseSha256": "6a070619d4f467d849b1ab88ba13f18d0d346981415fad0e07873a309bd78921"
+  },
+  {
+    "id": "ifly-skills",
+    "repository": "iflytek/iFly-Skills",
+    "archived": false,
+    "private": false,
+    "source": "https://api.github.com/repos/iflytek/iFly-Skills",
+    "verifiedAt": "2026-11-09T16:08:47.233873+00:00",
+    "responseSha256": "065ebd2f38c5daab7709c195d8a0a053fd2f8518c6a1d919dfb6a52db43f262d"
+  },
+  {
+    "id": "domux",
+    "repository": "iflytek/domux",
+    "archived": false,
+    "private": false,
+    "source": "https://api.github.com/repos/iflytek/domux",
+    "verifiedAt": "2026-11-09T16:08:49.332413+00:00",
+    "responseSha256": "b5cc43ee3a0a433b048e08f5de1652e2bb737f4db5d61a5d182440e5c346a16e"
+  },
+  {
+    "id": "dolphin-mcp-pilot",
+    "repository": "iflytek/dolphin-mcp-pilot",
+    "archived": false,
+    "private": false,
+    "source": "https://api.github.com/repos/iflytek/dolphin-mcp-pilot",
+    "verifiedAt": "2026-11-09T16:08:57.055042+00:00",
+    "responseSha256": "d8c406b26a7717bd7be99bdc3106d4f48723d246ca4e659756571cfd677a3544"
+  },
+  {
+    "id": "spark-mlx-llm",
+    "repository": "XHToken/Spark-MLX-LLM",
+    "archived": false,
+    "private": false,
+    "source": "https://api.github.com/repos/XHToken/Spark-MLX-LLM",
+    "verifiedAt": "2026-11-09T16:08:57.331506+00:00",
+    "responseSha256": "85078372c6ff1433a41b5271e342dac2a2ed58d22c678a4c72c863eabee43380"
+  }
+]

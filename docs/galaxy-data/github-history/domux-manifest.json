@@ -1,0 +1,106 @@
+{
+  "capturedAt": "2026-11-09T16:15:25.022872+00:00",
+  "repository": "iflytek/domux",
+  "requests": {
+    "97fc4e0cc94d6a97b68ce196e4ee5e6c88c1545c88119a382d525758e294ed0d": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/domux"
+      },
+      "sha256": "b5cc43ee3a0a433b048e08f5de1652e2bb737f4db5d61a5d182440e5c346a16e",
+      "cache": "97fc4e0cc94d6a97b68ce196e4ee5e6c88c1545c88119a382d525758e294ed0d.json",
+      "checkedAt": "2026-11-09T16:14:20.053954+00:00",
+      "repository": "domux"
+    },
+    "bfed27525d00846ceac600529744b5d207bb8e95d6195744a1983c1db8d5082f": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "domux",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "f4243312114dbedf66b758ebab5b0b9fad8466e05d72b673eab2822a33f2b614",
+      "cache": "bfed27525d00846ceac600529744b5d207bb8e95d6195744a1983c1db8d5082f.json",
+      "checkedAt": "2026-11-09T16:14:29.624540+00:00",
+      "repository": "domux"
+    },
+    "d82a066e1c55b7917edbac8f407b33d102a4b6aa10a404df64fc5c16c6e202d2": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "domux",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "7706e442eebcbc507c3425486e17f0deba9f8b6ad7a4693cd08e8806c8ae74ca",
+      "cache": "d82a066e1c55b7917edbac8f407b33d102a4b6aa10a404df64fc5c16c6e202d2.json",
+      "checkedAt": "2026-11-09T16:14:43.373920+00:00",
+      "repository": "domux"
+    },
+    "4648bcf04c676a19e7dde9f04d345bb711ba8c44e373efd5d8efeccbe816bca6": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/domux/issues/comments?per_page=100&page=1"
+      },
+      "sha256": "459790b8ff608b68ac34d8a01d18b695c9b7cc31626f536802387aa25bc9e12d",
+      "cache": "4648bcf04c676a19e7dde9f04d345bb711ba8c44e373efd5d8efeccbe816bca6.json",
+      "checkedAt": "2026-11-09T16:14:50.853589+00:00",
+      "repository": "domux"
+    },
+    "d7cd84f9b8d2f759aee58a57f521939ed7dca652d1da4092be6bb9073e484c84": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/domux/pulls/comments?per_page=100&page=1"
+      },
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "cache": "d7cd84f9b8d2f759aee58a57f521939ed7dca652d1da4092be6bb9073e484c84.json",
+      "checkedAt": "2026-11-09T16:14:59.102787+00:00",
+      "repository": "domux"
+    },
+    "a199644733cd12758c0db1eec1769380f6f465649f51dc94c0d7445b78a8ff66": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!){repository(owner:$owner,name:$name){defaultBranchRef{name target{... on Commit{oid}}}}}",
+        "variables": {
+          "name": "domux",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "2d1a59401838d149c75a566e6b5f8ba49322234b07031fee014ae5ce815b34f6",
+      "cache": "a199644733cd12758c0db1eec1769380f6f465649f51dc94c0d7445b78a8ff66.json",
+      "checkedAt": "2026-11-09T16:15:09.427480+00:00",
+      "repository": "domux"
+    },
+    "b2b30da23556398e0e465cef4defa39555805c6cefb2734d8022eb58a5e9b2da": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "domux",
+          "oid": "8e965c95deded7389bef1b6a3a627b9b72e1dfcc",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "54339b95ed3315a64cf9949435e9c7d282e74205df620a43be9d76f2f9bc5bba",
+      "cache": "b2b30da23556398e0e465cef4defa39555805c6cefb2734d8022eb58a5e9b2da.json",
+      "checkedAt": "2026-11-09T16:15:12.376369+00:00",
+      "repository": "domux"
+    },
+    "a9dec39610f54605265ff23aa0670f837c3223781919be5fad76c480e8dd6ced": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/domux/contributors?per_page=100&anon=false&page=1"
+      },
+      "sha256": "c04b160c4beb50b889c28d568344fe00fbeca83f29f454a1530df7556bbcf206",
+      "cache": "a9dec39610f54605265ff23aa0670f837c3223781919be5fad76c480e8dd6ced.json",
+      "checkedAt": "2026-11-09T16:15:25.022872+00:00",
+      "repository": "domux"
+    }
+  }
+}

@@ -1,7 +1,11 @@
 {
-  "capturedAt": "2026-11-09T11:32:16.724664+00:00",
-  "calculatedAt": "2026-11-09T12:38:01.806823+00:00",
+  "capturedAt": "2026-11-09T16:16:31.276179+00:00",
+  "calculatedAt": "2026-11-09T16:27:17.903219+00:00",
   "calculatedThrough": "2026-11-09",
+  "captureRange": {
+    "from": "2026-11-09",
+    "through": "2026-11-09"
+  },
   "openrankMonth": "2026-11-09",
   "openrankPeriod": "all-history-graph",
   "openrankMetric": "Locally calculated Community OpenRank",
@@ -15455,6 +15459,2129 @@
             "https://github.com/iflytek/astron-rpa/issues/145"
           ],
           "rank": 92
+        }
+      ]
+    },
+    {
+      "id": "astron-harness-tutorial",
+      "url": "https://github.com/iflytek/astron-harness-tutorial",
+      "stars": 361,
+      "forks": 46,
+      "archived": false,
+      "source": "https://api.github.com/repos/iflytek/astron-harness-tutorial",
+      "contributorsSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+      "openrankSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+      "openrank": 19.7675903614,
+      "openrankCoverage": {
+        "firstMonth": "2026-03",
+        "lastMonth": "2026-11",
+        "months": 0,
+        "gapMonths": 0,
+        "monthsSinceLast": 0
+      },
+      "historyStart": "2026-03-19",
+      "historyEnd": "2026-11-09",
+      "calculation": {
+        "coverage": {
+          "issues": 27,
+          "pullRequests": 38,
+          "comments": 108,
+          "reviewComments": 22,
+          "defaultCommits": 42,
+          "codeContributors": 7
+        },
+        "participants": 11,
+        "events": 221,
+        "workItems": 89,
+        "gaps": {
+          "unlinkedCommitAuthorOccurrences": 0
+        },
+        "iterations": 32,
+        "residual": 8.876099855115172e-11,
+        "graphSha256": "a14b02c811f0a2a8eb4a7b595957d008b263970a7f198cdf404f42ef8f3a26ef"
+      },
+      "automationExclusions": {
+        "accounts": [
+          {
+            "login": "biqibao112212-bot",
+            "type": "User",
+            "url": "https://github.com/biqibao112212-bot",
+            "reason": "explicit-bot-account-handle",
+            "aliases": [
+              "biqibao112212-bot"
+            ]
+          },
+          {
+            "login": "CLAassistant",
+            "type": "User",
+            "url": "https://github.com/CLAassistant",
+            "reason": "cla-automation",
+            "aliases": [
+              "CLAassistant"
+            ]
+          },
+          {
+            "login": "Copilot",
+            "type": "User",
+            "url": "https://github.com/Copilot",
+            "reason": "user-requested-ai-account",
+            "aliases": [
+              "Copilot"
+            ]
+          },
+          {
+            "login": "copilot-pull-request-reviewer[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/copilot-pull-request-reviewer",
+            "reason": "github-bot-type",
+            "aliases": [
+              "copilot-pull-request-reviewer"
+            ]
+          },
+          {
+            "login": "copilot-swe-agent[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/copilot-swe-agent",
+            "reason": "github-bot-type",
+            "aliases": [
+              "copilot-swe-agent"
+            ]
+          },
+          {
+            "login": "Copilot[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/copilot-pull-request-reviewer",
+            "reason": "github-bot-type",
+            "aliases": [
+              "Copilot"
+            ]
+          },
+          {
+            "login": "gemini-code-assist[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/gemini-code-assist",
+            "reason": "github-bot-type",
+            "aliases": [
+              "gemini-code-assist",
+              "gemini-code-assist[bot]"
+            ]
+          },
+          {
+            "login": "github-actions[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/github-actions",
+            "reason": "github-bot-type",
+            "aliases": [
+              "github-actions[bot]",
+              "github-actions"
+            ]
+          },
+          {
+            "login": "vercel[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/vercel",
+            "reason": "github-bot-type",
+            "aliases": [
+              "vercel[bot]"
+            ]
+          }
+        ],
+        "accountCount": 9,
+        "eventCount": 182,
+        "removedAutomationOnlyWorkItems": [
+          "82",
+          "83",
+          "84",
+          "86",
+          "87",
+          "88",
+          "91",
+          "94",
+          "95"
+        ]
+      },
+      "contributors": [
+        {
+          "login": "FenjuFu",
+          "url": "https://github.com/FenjuFu",
+          "avatar": "https://avatars.githubusercontent.com/u/92919259?v=4",
+          "type": "User",
+          "stats": {
+            "close": 45,
+            "commit": 107,
+            "open": 28,
+            "comment": 16
+          },
+          "contributions": 35,
+          "openrank": 160.0481251804,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-03",
+            "lastMonth": "2026-11",
+            "months": 8,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 196,
+          "firstObservedAt": "2026-03-19T02:44:36Z",
+          "lastObservedAt": "2026-11-02T08:58:38Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-harness-tutorial/pull/1",
+            "https://github.com/iflytek/astron-harness-tutorial/pull/10",
+            "https://github.com/iflytek/astron-harness-tutorial/pull/11",
+            "https://github.com/iflytek/astron-harness-tutorial/pull/12",
+            "https://github.com/iflytek/astron-harness-tutorial/pull/13"
+          ],
+          "rank": 1
+        },
+        {
+          "login": "dongjiang1989",
+          "url": "https://github.com/dongjiang1989",
+          "avatar": "https://avatars.githubusercontent.com/u/5010507?v=4",
+          "type": "User",
+          "stats": {
+            "close": 3,
+            "review": 2,
+            "commit": 2
+          },
+          "contributions": 2,
+          "openrank": 6.9522823244,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-06",
+            "lastMonth": "2026-07",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 7,
+          "firstObservedAt": "2026-06-29T06:37:20Z",
+          "lastObservedAt": "2026-07-07T08:51:43Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-harness-tutorial/issues/56",
+            "https://github.com/iflytek/astron-harness-tutorial/pull/60",
+            "https://github.com/iflytek/astron-harness-tutorial/pull/63",
+            "https://github.com/iflytek/astron-harness-tutorial/commit/322335a6964504e86951f6bf6492504c55f351e9",
+            "https://github.com/iflytek/astron-harness-tutorial/commit/b5563edb17c743c750afa879983c335c32813950"
+          ],
+          "rank": 2
+        },
+        {
+          "login": "TechQuery",
+          "url": "https://github.com/TechQuery",
+          "avatar": "https://avatars.githubusercontent.com/u/19969570?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 2
+          },
+          "contributions": 1,
+          "openrank": 2.6913667671,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-04",
+            "lastMonth": "2026-04",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 3,
+          "firstObservedAt": "2026-04-08T10:51:30Z",
+          "lastObservedAt": "2026-04-08T11:32:52Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-harness-tutorial/pull/16",
+            "https://github.com/iflytek/astron-harness-tutorial/commit/e60c211b0c2285d1bf8b54e9fc7790f2bc43e29e"
+          ],
+          "rank": 3
+        },
+        {
+          "login": "bbdu3",
+          "url": "https://github.com/bbdu3",
+          "avatar": "https://avatars.githubusercontent.com/u/313232278?u=6c9ad413b401c68baeea06e3fdda9b2d8398a36e&v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 1
+          },
+          "contributions": 0,
+          "openrank": 2.3848671627,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-08",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 2,
+          "firstObservedAt": "2026-08-20T09:29:40Z",
+          "lastObservedAt": "2026-08-20T09:40:58Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-harness-tutorial/pull/73"
+          ],
+          "rank": 4
+        },
+        {
+          "login": "Tabris-Ayanami",
+          "url": "https://github.com/Tabris-Ayanami",
+          "avatar": "https://avatars.githubusercontent.com/u/108655822?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 1,
+            "comment": 1
+          },
+          "contributions": 1,
+          "openrank": 2.0579129504,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-06",
+            "lastMonth": "2026-06",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 3,
+          "firstObservedAt": "2026-06-15T15:08:23Z",
+          "lastObservedAt": "2026-06-15T15:09:26Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-harness-tutorial/issues/17",
+            "https://github.com/iflytek/astron-harness-tutorial/pull/49"
+          ],
+          "rank": 5
+        },
+        {
+          "login": "q404365631",
+          "url": "https://github.com/q404365631",
+          "avatar": "https://avatars.githubusercontent.com/u/260932909?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 1,
+            "comment": 1
+          },
+          "contributions": 0,
+          "openrank": 1.5052340906,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-04",
+            "lastMonth": "2026-05",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 3,
+          "firstObservedAt": "2026-04-22T16:57:24Z",
+          "lastObservedAt": "2026-05-16T16:32:37Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-harness-tutorial/issues/17",
+            "https://github.com/iflytek/astron-harness-tutorial/pull/46"
+          ],
+          "rank": 6
+        },
+        {
+          "login": "Fenju-need-help",
+          "url": "https://github.com/Fenju-need-help",
+          "avatar": "https://avatars.githubusercontent.com/u/259089905?v=4",
+          "type": "User",
+          "stats": {
+            "commit": 1
+          },
+          "contributions": 1,
+          "openrank": 0.9397668085,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-05",
+            "lastMonth": "2026-05",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-05-29T05:00:10Z",
+          "lastObservedAt": "2026-05-29T05:00:10Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-harness-tutorial/commit/eac581f0cd9607529ffc742cb632fc16936192dc"
+          ],
+          "rank": 7
+        },
+        {
+          "login": "xyaz1313",
+          "url": "https://github.com/xyaz1313",
+          "avatar": "https://avatars.githubusercontent.com/u/197202025?v=4",
+          "type": "User",
+          "stats": {
+            "comment": 3
+          },
+          "contributions": 0,
+          "openrank": 0.6054535852,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-04",
+            "lastMonth": "2026-04",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 3,
+          "firstObservedAt": "2026-04-13T14:24:33Z",
+          "lastObservedAt": "2026-04-13T20:06:18Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-harness-tutorial/issues/17"
+          ],
+          "rank": 8
+        },
+        {
+          "login": "vsxd",
+          "url": "https://github.com/vsxd",
+          "avatar": "https://avatars.githubusercontent.com/u/28803103?u=c0b795ec14b5536f0e757faf1eca1c1900d1ef3c&v=4",
+          "type": "User",
+          "stats": {
+            "close": 1
+          },
+          "contributions": 0,
+          "openrank": 0.4196686602,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-04",
+            "lastMonth": "2026-04",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-04-01T14:47:48Z",
+          "lastObservedAt": "2026-04-01T14:47:48Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-harness-tutorial/pull/11"
+          ],
+          "rank": 9
+        },
+        {
+          "login": "AIZY2025",
+          "url": "https://github.com/AIZY2025",
+          "avatar": "https://avatars.githubusercontent.com/u/207817447?v=4",
+          "type": "User",
+          "stats": {
+            "comment": 1
+          },
+          "contributions": 0,
+          "openrank": 0.3018178617,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-05",
+            "lastMonth": "2026-05",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-05-14T04:56:02Z",
+          "lastObservedAt": "2026-05-14T04:56:02Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-harness-tutorial/issues/17"
+          ],
+          "rank": 10
+        },
+        {
+          "login": "YrworldNo1",
+          "url": "https://github.com/YrworldNo1",
+          "avatar": "https://avatars.githubusercontent.com/u/109509880?v=4",
+          "type": "User",
+          "stats": {
+            "comment": 1
+          },
+          "contributions": 0,
+          "openrank": 0.3018178617,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-harness-tutorial-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-09",
+            "lastMonth": "2026-09",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-09-09T01:45:43Z",
+          "lastObservedAt": "2026-09-09T01:45:43Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-harness-tutorial/issues/17"
+          ],
+          "rank": 10
+        }
+      ]
+    },
+    {
+      "id": "ifly-skills",
+      "url": "https://github.com/iflytek/iFly-Skills",
+      "stars": 214,
+      "forks": 23,
+      "archived": false,
+      "source": "https://api.github.com/repos/iflytek/iFly-Skills",
+      "contributorsSource": "/galaxy-data/ifly-skills-calculation.json",
+      "openrankSource": "/galaxy-data/ifly-skills-calculation.json",
+      "openrank": 28.2030722891,
+      "openrankCoverage": {
+        "firstMonth": "2026-03",
+        "lastMonth": "2026-11",
+        "months": 0,
+        "gapMonths": 0,
+        "monthsSinceLast": 0
+      },
+      "historyStart": "2026-03-30",
+      "historyEnd": "2026-11-09",
+      "calculation": {
+        "coverage": {
+          "issues": 30,
+          "pullRequests": 69,
+          "comments": 90,
+          "reviewComments": 8,
+          "defaultCommits": 76,
+          "codeContributors": 9
+        },
+        "participants": 10,
+        "events": 362,
+        "workItems": 122,
+        "gaps": {
+          "unlinkedCommitAuthorOccurrences": 8,
+          "directCommitsWithoutLinkedAccount": 6
+        },
+        "iterations": 32,
+        "residual": 6.393463536369381e-11,
+        "graphSha256": "72842a0f8dc1a18886c127529754d0554e82e194dd22f503605a844dab50bc62"
+      },
+      "automationExclusions": {
+        "accounts": [
+          {
+            "login": "CLAassistant",
+            "type": "User",
+            "url": "https://github.com/CLAassistant",
+            "reason": "cla-automation",
+            "aliases": [
+              "CLAassistant"
+            ]
+          },
+          {
+            "login": "copilot-pull-request-reviewer[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/copilot-pull-request-reviewer",
+            "reason": "github-bot-type",
+            "aliases": [
+              "copilot-pull-request-reviewer"
+            ]
+          },
+          {
+            "login": "Copilot[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/copilot-pull-request-reviewer",
+            "reason": "github-bot-type",
+            "aliases": [
+              "Copilot"
+            ]
+          },
+          {
+            "login": "dependabot[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/dependabot",
+            "reason": "github-bot-type",
+            "aliases": [
+              "dependabot[bot]",
+              "dependabot"
+            ]
+          },
+          {
+            "login": "github-actions[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/github-actions",
+            "reason": "github-bot-type",
+            "aliases": [
+              "github-actions[bot]"
+            ]
+          },
+          {
+            "login": "github-advanced-security[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/github-advanced-security",
+            "reason": "github-bot-type",
+            "aliases": [
+              "github-advanced-security[bot]"
+            ]
+          }
+        ],
+        "accountCount": 6,
+        "eventCount": 119,
+        "removedAutomationOnlyWorkItems": [
+          "98",
+          "99",
+          "100",
+          "101",
+          "104",
+          "117",
+          "118",
+          "119",
+          "121",
+          "122",
+          "125",
+          "126",
+          "127"
+        ]
+      },
+      "contributors": [
+        {
+          "login": "FenjuFu",
+          "url": "https://github.com/FenjuFu",
+          "avatar": "https://avatars.githubusercontent.com/u/92919259?v=4",
+          "type": "User",
+          "stats": {
+            "close": 34,
+            "open": 25,
+            "commit": 36,
+            "review": 29,
+            "comment": 26
+          },
+          "contributions": 13,
+          "openrank": 121.5554865286,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/ifly-skills-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-04",
+            "lastMonth": "2026-10",
+            "months": 6,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 150,
+          "firstObservedAt": "2026-04-08T11:37:16Z",
+          "lastObservedAt": "2026-10-23T06:39:42Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/iFly-Skills/pull/1",
+            "https://github.com/iflytek/iFly-Skills/pull/102",
+            "https://github.com/iflytek/iFly-Skills/pull/103",
+            "https://github.com/iflytek/iFly-Skills/issues/105",
+            "https://github.com/iflytek/iFly-Skills/pull/106"
+          ],
+          "rank": 1
+        },
+        {
+          "login": "dongjiang1989",
+          "url": "https://github.com/dongjiang1989",
+          "avatar": "https://avatars.githubusercontent.com/u/5010507?v=4",
+          "type": "User",
+          "stats": {
+            "open": 17,
+            "commit": 17,
+            "close": 10,
+            "review": 8,
+            "comment": 15,
+            "review_comment": 1
+          },
+          "contributions": 12,
+          "openrank": 50.1048485726,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/ifly-skills-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-06",
+            "lastMonth": "2026-09",
+            "months": 3,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 68,
+          "firstObservedAt": "2026-06-17T08:37:51Z",
+          "lastObservedAt": "2026-09-22T06:26:39Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/iFly-Skills/issues/29",
+            "https://github.com/iflytek/iFly-Skills/pull/32",
+            "https://github.com/iflytek/iFly-Skills/pull/36",
+            "https://github.com/iflytek/iFly-Skills/pull/37",
+            "https://github.com/iflytek/iFly-Skills/issues/42"
+          ],
+          "rank": 2
+        },
+        {
+          "login": "bbdu3",
+          "url": "https://github.com/bbdu3",
+          "avatar": "https://avatars.githubusercontent.com/u/313232278?v=4",
+          "type": "User",
+          "stats": {
+            "open": 19,
+            "commit": 55,
+            "close": 1,
+            "comment": 8
+          },
+          "contributions": 15,
+          "openrank": 42.7045011608,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/ifly-skills-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-10",
+            "months": 3,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 83,
+          "firstObservedAt": "2026-08-10T02:56:15Z",
+          "lastObservedAt": "2026-10-28T02:02:46Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/iFly-Skills/pull/110",
+            "https://github.com/iflytek/iFly-Skills/pull/112",
+            "https://github.com/iflytek/iFly-Skills/pull/113",
+            "https://github.com/iflytek/iFly-Skills/pull/115",
+            "https://github.com/iflytek/iFly-Skills/pull/116"
+          ],
+          "rank": 3
+        },
+        {
+          "login": "yjlu666",
+          "url": "https://github.com/yjlu666",
+          "avatar": "https://avatars.githubusercontent.com/u/124077501?v=4",
+          "type": "User",
+          "stats": {
+            "close": 12,
+            "review": 9,
+            "commit": 1
+          },
+          "contributions": 1,
+          "openrank": 18.6984240571,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/ifly-skills-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-06",
+            "lastMonth": "2026-10",
+            "months": 3,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 22,
+          "firstObservedAt": "2026-06-22T08:24:04Z",
+          "lastObservedAt": "2026-10-28T02:02:47Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/iFly-Skills/pull/110",
+            "https://github.com/iflytek/iFly-Skills/pull/112",
+            "https://github.com/iflytek/iFly-Skills/pull/113",
+            "https://github.com/iflytek/iFly-Skills/pull/115",
+            "https://github.com/iflytek/iFly-Skills/pull/116"
+          ],
+          "rank": 4
+        },
+        {
+          "login": "luojiyin1987",
+          "url": "https://github.com/luojiyin1987",
+          "avatar": "https://avatars.githubusercontent.com/u/6524977?v=4",
+          "type": "User",
+          "stats": {
+            "open": 8,
+            "commit": 15,
+            "comment": 4
+          },
+          "contributions": 12,
+          "openrank": 12.8429838737,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/ifly-skills-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-06",
+            "lastMonth": "2026-08",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 27,
+          "firstObservedAt": "2026-06-01T10:02:38Z",
+          "lastObservedAt": "2026-08-13T02:08:49Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/iFly-Skills/pull/28",
+            "https://github.com/iflytek/iFly-Skills/issues/29",
+            "https://github.com/iflytek/iFly-Skills/issues/71",
+            "https://github.com/iflytek/iFly-Skills/pull/72",
+            "https://github.com/iflytek/iFly-Skills/pull/73"
+          ],
+          "rank": 5
+        },
+        {
+          "login": "OLDyade",
+          "url": "https://github.com/OLDyade",
+          "avatar": "https://avatars.githubusercontent.com/u/75075125?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "review": 1,
+            "commit": 3,
+            "review_comment": 1
+          },
+          "contributions": 1,
+          "openrank": 2.7907865656,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/ifly-skills-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-07",
+            "lastMonth": "2026-07",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 6,
+          "firstObservedAt": "2026-07-16T02:02:24Z",
+          "lastObservedAt": "2026-07-20T03:23:32Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/iFly-Skills/pull/65",
+            "https://github.com/iflytek/iFly-Skills/commit/c57c7f4a2f6cdb0d03f7217ceeb277abc1b929c8"
+          ],
+          "rank": 6
+        },
+        {
+          "login": "TechQuery",
+          "url": "https://github.com/TechQuery",
+          "avatar": "https://avatars.githubusercontent.com/u/19969570?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 1
+          },
+          "contributions": 1,
+          "openrank": 1.9346727761,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/ifly-skills-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-04",
+            "lastMonth": "2026-04",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 2,
+          "firstObservedAt": "2026-04-08T11:04:24Z",
+          "lastObservedAt": "2026-04-08T11:05:20Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/iFly-Skills/pull/1"
+          ],
+          "rank": 7
+        },
+        {
+          "login": "octo-patch",
+          "url": "https://github.com/octo-patch",
+          "avatar": "https://avatars.githubusercontent.com/u/266937838?u=a3f158f9820f3869e6107980de78a21419ab6ae8&v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 1
+          },
+          "contributions": 0,
+          "openrank": 1.36833341,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/ifly-skills-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-07",
+            "lastMonth": "2026-07",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 2,
+          "firstObservedAt": "2026-07-31T04:18:33Z",
+          "lastObservedAt": "2026-07-31T04:18:53Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/iFly-Skills/pull/69"
+          ],
+          "rank": 8
+        },
+        {
+          "login": "AIZY2025",
+          "url": "https://github.com/AIZY2025",
+          "avatar": "https://avatars.githubusercontent.com/u/207817447?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1
+          },
+          "contributions": 0,
+          "openrank": 0.9888068289,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/ifly-skills-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-05",
+            "lastMonth": "2026-05",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-05-14T03:44:52Z",
+          "lastObservedAt": "2026-05-14T03:44:52Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/iFly-Skills/issues/26"
+          ],
+          "rank": 9
+        },
+        {
+          "login": "fndr-sh",
+          "url": "https://github.com/fndr-sh",
+          "avatar": "https://avatars.githubusercontent.com/u/76929342?v=4",
+          "type": "User",
+          "stats": {
+            "comment": 1
+          },
+          "contributions": 0,
+          "openrank": 0.9888068289,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/ifly-skills-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-06",
+            "lastMonth": "2026-06",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-06-18T14:41:42Z",
+          "lastObservedAt": "2026-06-18T14:41:42Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/iFly-Skills/issues/35"
+          ],
+          "rank": 9
+        }
+      ]
+    },
+    {
+      "id": "domux",
+      "url": "https://github.com/iflytek/domux",
+      "stars": 33,
+      "forks": 13,
+      "archived": false,
+      "source": "https://api.github.com/repos/iflytek/domux",
+      "contributorsSource": "/galaxy-data/domux-calculation.json",
+      "openrankSource": "/galaxy-data/domux-calculation.json",
+      "openrank": 10.4401204819,
+      "openrankCoverage": {
+        "firstMonth": "2026-06",
+        "lastMonth": "2026-11",
+        "months": 0,
+        "gapMonths": 0,
+        "monthsSinceLast": 0
+      },
+      "historyStart": "2026-06-16",
+      "historyEnd": "2026-11-09",
+      "calculation": {
+        "coverage": {
+          "issues": 8,
+          "pullRequests": 26,
+          "comments": 49,
+          "reviewComments": 0,
+          "defaultCommits": 11,
+          "codeContributors": 8
+        },
+        "participants": 15,
+        "events": 204,
+        "workItems": 43,
+        "gaps": {
+          "unlinkedCommitAuthorOccurrences": 1
+        },
+        "iterations": 32,
+        "residual": 2.3582913399877725e-11,
+        "graphSha256": "86f363d3cd3991d0aa68c59aa81be5c57c9c9feaf383fa7da301bccdcae1f78b"
+      },
+      "automationExclusions": {
+        "accounts": [
+          {
+            "login": "CLAassistant",
+            "type": "User",
+            "url": "https://github.com/CLAassistant",
+            "reason": "cla-automation",
+            "aliases": [
+              "CLAassistant"
+            ]
+          },
+          {
+            "login": "claude",
+            "type": "User",
+            "url": "https://github.com/claude",
+            "reason": "user-requested-ai-account",
+            "aliases": [
+              "claude"
+            ]
+          },
+          {
+            "login": "dependabot[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/dependabot",
+            "reason": "github-bot-type",
+            "aliases": [
+              "dependabot",
+              "dependabot[bot]"
+            ]
+          }
+        ],
+        "accountCount": 3,
+        "eventCount": 20,
+        "removedAutomationOnlyWorkItems": [
+          "33",
+          "34"
+        ]
+      },
+      "contributors": [
+        {
+          "login": "FenjuFu",
+          "url": "https://github.com/FenjuFu",
+          "avatar": "https://avatars.githubusercontent.com/u/92919259?v=4",
+          "type": "User",
+          "stats": {
+            "close": 15,
+            "open": 12,
+            "commit": 14,
+            "review": 9,
+            "comment": 29
+          },
+          "contributions": 2,
+          "openrank": 45.6351182929,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-06",
+            "lastMonth": "2026-10",
+            "months": 5,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 79,
+          "firstObservedAt": "2026-06-30T12:00:13Z",
+          "lastObservedAt": "2026-10-18T13:13:13Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/issues/11",
+            "https://github.com/iflytek/domux/pull/12",
+            "https://github.com/iflytek/domux/pull/13",
+            "https://github.com/iflytek/domux/pull/14",
+            "https://github.com/iflytek/domux/pull/15"
+          ],
+          "rank": 1
+        },
+        {
+          "login": "dongjiang1989",
+          "url": "https://github.com/dongjiang1989",
+          "avatar": "https://avatars.githubusercontent.com/u/5010507?v=4",
+          "type": "User",
+          "stats": {
+            "open": 6,
+            "commit": 5,
+            "close": 1,
+            "review": 1,
+            "comment": 1
+          },
+          "contributions": 3,
+          "openrank": 11.2134659727,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-06",
+            "lastMonth": "2026-08",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 14,
+          "firstObservedAt": "2026-06-16T10:10:34Z",
+          "lastObservedAt": "2026-08-24T07:13:09Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/issues/10",
+            "https://github.com/iflytek/domux/pull/15",
+            "https://github.com/iflytek/domux/issues/3",
+            "https://github.com/iflytek/domux/issues/5",
+            "https://github.com/iflytek/domux/issues/6"
+          ],
+          "rank": 2
+        },
+        {
+          "login": "zzzhangstat",
+          "url": "https://github.com/zzzhangstat",
+          "avatar": "https://avatars.githubusercontent.com/u/97277235?u=b7b0e91e2072b1f9469a7ad4bd1154c28d21e8d0&v=4",
+          "type": "User",
+          "stats": {
+            "open": 2,
+            "close": 2,
+            "commit": 4
+          },
+          "contributions": 0,
+          "openrank": 7.4903126457,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-06",
+            "lastMonth": "2026-06",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 8,
+          "firstObservedAt": "2026-06-26T01:07:47Z",
+          "lastObservedAt": "2026-06-29T08:07:46Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/pull/1",
+            "https://github.com/iflytek/domux/pull/4"
+          ],
+          "rank": 3
+        },
+        {
+          "login": "Ankh2454",
+          "url": "https://github.com/Ankh2454",
+          "avatar": "https://avatars.githubusercontent.com/u/86520144?u=8a16a1f1cddf05c9cdf79c5a517756962c62a6ea&v=4",
+          "type": "User",
+          "stats": {
+            "open": 2,
+            "close": 1,
+            "commit": 1
+          },
+          "contributions": 0,
+          "openrank": 5.693380414,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-06",
+            "lastMonth": "2026-06",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 4,
+          "firstObservedAt": "2026-06-26T02:12:06Z",
+          "lastObservedAt": "2026-06-30T07:45:21Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/pull/2",
+            "https://github.com/iflytek/domux/pull/7"
+          ],
+          "rank": 4
+        },
+        {
+          "login": "gebibd00-jpg",
+          "url": "https://github.com/gebibd00-jpg",
+          "avatar": "https://avatars.githubusercontent.com/u/286929081?v=4",
+          "type": "User",
+          "stats": {
+            "open": 2,
+            "close": 1,
+            "commit": 19,
+            "comment": 2
+          },
+          "contributions": 1,
+          "openrank": 4.9048775425,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-09",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 24,
+          "firstObservedAt": "2026-08-23T18:13:19Z",
+          "lastObservedAt": "2026-09-27T16:05:58Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/pull/21",
+            "https://github.com/iflytek/domux/pull/22",
+            "https://github.com/iflytek/domux/commit/8e965c95deded7389bef1b6a3a627b9b72e1dfcc"
+          ],
+          "rank": 5
+        },
+        {
+          "login": "posuizhiyu-maker",
+          "url": "https://github.com/posuizhiyu-maker",
+          "avatar": "https://avatars.githubusercontent.com/u/270531697?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 3
+          },
+          "contributions": 1,
+          "openrank": 2.802609316,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-09",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 4,
+          "firstObservedAt": "2026-08-25T04:26:00Z",
+          "lastObservedAt": "2026-09-02T13:20:13Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/pull/23",
+            "https://github.com/iflytek/domux/commit/81b3318b8a9701b775bd6ab64bbbe15fbec1a38f"
+          ],
+          "rank": 6
+        },
+        {
+          "login": "MittaPei",
+          "url": "https://github.com/MittaPei",
+          "avatar": "https://avatars.githubusercontent.com/u/315415437?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 22,
+            "comment": 1
+          },
+          "contributions": 1,
+          "openrank": 2.7965680889,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-09",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 24,
+          "firstObservedAt": "2026-08-26T15:01:37Z",
+          "lastObservedAt": "2026-09-02T13:22:00Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/pull/26",
+            "https://github.com/iflytek/domux/commit/0121c90d8baa780576ddce9148e7969ebf79a7ee"
+          ],
+          "rank": 7
+        },
+        {
+          "login": "Icecream0507",
+          "url": "https://github.com/Icecream0507",
+          "avatar": "https://avatars.githubusercontent.com/u/161185842?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 2
+          },
+          "contributions": 1,
+          "openrank": 2.7780456138,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-09",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 3,
+          "firstObservedAt": "2026-08-26T14:23:35Z",
+          "lastObservedAt": "2026-09-27T16:04:01Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/pull/25",
+            "https://github.com/iflytek/domux/commit/f2cad4a6fedefba09b3b2e72efe8f7178a4d2efa"
+          ],
+          "rank": 8
+        },
+        {
+          "login": "yangmengze608-afk",
+          "url": "https://github.com/yangmengze608-afk",
+          "avatar": "https://avatars.githubusercontent.com/u/244291450?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 16,
+            "comment": 1
+          },
+          "contributions": 1,
+          "openrank": 2.7682464702,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-09",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 18,
+          "firstObservedAt": "2026-08-25T18:57:27Z",
+          "lastObservedAt": "2026-09-02T13:20:56Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/pull/24",
+            "https://github.com/iflytek/domux/commit/50ba2fa90e64a645304012075b38f2897ee46c42"
+          ],
+          "rank": 9
+        },
+        {
+          "login": "qrx-joe",
+          "url": "https://github.com/qrx-joe",
+          "avatar": "https://avatars.githubusercontent.com/u/174945156?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 10
+          },
+          "contributions": 1,
+          "openrank": 2.7303479988,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-09",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 11,
+          "firstObservedAt": "2026-08-30T11:51:25Z",
+          "lastObservedAt": "2026-09-02T13:23:42Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/pull/29",
+            "https://github.com/iflytek/domux/commit/207ef5708721936ab7b8cec7307670f3e182b780"
+          ],
+          "rank": 10
+        },
+        {
+          "login": "hao-shuai-99",
+          "url": "https://github.com/hao-shuai-99",
+          "avatar": "https://avatars.githubusercontent.com/u/108054121?u=757bae2fe999da783884c1b0e543d41e10791dda&v=4",
+          "type": "User",
+          "stats": {
+            "close": 2
+          },
+          "contributions": 0,
+          "openrank": 1.9740278633,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-06",
+            "lastMonth": "2026-06",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 2,
+          "firstObservedAt": "2026-06-30T07:46:47Z",
+          "lastObservedAt": "2026-06-30T07:46:48Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/pull/7"
+          ],
+          "rank": 11
+        },
+        {
+          "login": "Kencoze",
+          "url": "https://github.com/Kencoze",
+          "avatar": "https://avatars.githubusercontent.com/u/313928297?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 6,
+            "comment": 2
+          },
+          "contributions": 0,
+          "openrank": 1.7779702302,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-09",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 9,
+          "firstObservedAt": "2026-08-25T13:39:22Z",
+          "lastObservedAt": "2026-09-03T15:14:58Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/issues/20",
+            "https://github.com/iflytek/domux/pull/28"
+          ],
+          "rank": 12
+        },
+        {
+          "login": "vagusstoff",
+          "url": "https://github.com/vagusstoff",
+          "avatar": "https://avatars.githubusercontent.com/u/288350297?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 1
+          },
+          "contributions": 0,
+          "openrank": 1.3192342369,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-08",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 2,
+          "firstObservedAt": "2026-08-28T03:32:00Z",
+          "lastObservedAt": "2026-08-28T03:32:04Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/pull/27"
+          ],
+          "rank": 13
+        },
+        {
+          "login": "markorning-design",
+          "url": "https://github.com/markorning-design",
+          "avatar": "https://avatars.githubusercontent.com/u/305719202?v=4",
+          "type": "User",
+          "stats": {
+            "comment": 1
+          },
+          "contributions": 0,
+          "openrank": 0.4884398257,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-08",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-08-23T14:34:53Z",
+          "lastObservedAt": "2026-08-23T14:34:53Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/issues/20"
+          ],
+          "rank": 14
+        },
+        {
+          "login": "yaegerbomb42",
+          "url": "https://github.com/yaegerbomb42",
+          "avatar": "https://avatars.githubusercontent.com/u/203348624?v=4",
+          "type": "User",
+          "stats": {
+            "comment": 1
+          },
+          "contributions": 0,
+          "openrank": 0.4884398257,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/domux-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-08",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-08-28T21:42:52Z",
+          "lastObservedAt": "2026-08-28T21:42:52Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/domux/issues/20"
+          ],
+          "rank": 14
+        }
+      ]
+    },
+    {
+      "id": "dolphin-mcp-pilot",
+      "url": "https://github.com/iflytek/dolphin-mcp-pilot",
+      "stars": 22,
+      "forks": 19,
+      "archived": false,
+      "source": "https://api.github.com/repos/iflytek/dolphin-mcp-pilot",
+      "contributorsSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+      "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+      "openrank": 22.6381325301,
+      "openrankCoverage": {
+        "firstMonth": "2026-08",
+        "lastMonth": "2026-11",
+        "months": 0,
+        "gapMonths": 0,
+        "monthsSinceLast": 0
+      },
+      "historyStart": "2026-08-07",
+      "historyEnd": "2026-11-09",
+      "calculation": {
+        "coverage": {
+          "issues": 12,
+          "pullRequests": 48,
+          "comments": 119,
+          "reviewComments": 5,
+          "defaultCommits": 50,
+          "codeContributors": 9
+        },
+        "participants": 12,
+        "events": 337,
+        "workItems": 88,
+        "gaps": {
+          "unlinkedCommitAuthorOccurrences": 0
+        },
+        "iterations": 32,
+        "residual": 3.8625103115919046e-11,
+        "graphSha256": "84df5c7d383afc15fee91ed54b3676a4ebf0eafed4f1ff4c561ae1318b8681a5"
+      },
+      "automationExclusions": {
+        "accounts": [
+          {
+            "login": "CLAassistant",
+            "type": "User",
+            "url": "https://github.com/CLAassistant",
+            "reason": "cla-automation",
+            "aliases": [
+              "CLAassistant"
+            ]
+          },
+          {
+            "login": "claude",
+            "type": "User",
+            "url": "https://github.com/claude",
+            "reason": "user-requested-ai-account",
+            "aliases": [
+              "claude"
+            ]
+          },
+          {
+            "login": "dependabot[bot]",
+            "type": "Bot",
+            "url": "https://github.com/apps/dependabot",
+            "reason": "github-bot-type",
+            "aliases": [
+              "dependabot[bot]",
+              "dependabot"
+            ]
+          },
+          {
+            "login": "YanDawsonBot",
+            "type": "User",
+            "url": "https://github.com/YanDawsonBot",
+            "reason": "explicit-bot-account-handle",
+            "aliases": [
+              "YanDawsonBot"
+            ]
+          }
+        ],
+        "accountCount": 4,
+        "eventCount": 103,
+        "removedAutomationOnlyWorkItems": []
+      },
+      "contributors": [
+        {
+          "login": "dongjiang1989",
+          "url": "https://github.com/dongjiang1989",
+          "avatar": "https://avatars.githubusercontent.com/u/5010507?v=4",
+          "type": "User",
+          "stats": {
+            "close": 23,
+            "commit": 18,
+            "open": 13,
+            "review": 25,
+            "comment": 9,
+            "review_comment": 4
+          },
+          "contributions": 9,
+          "openrank": 87.9220898717,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-09",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 92,
+          "firstObservedAt": "2026-08-07T02:33:39Z",
+          "lastObservedAt": "2026-09-14T02:43:39Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/1",
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/10",
+            "https://github.com/iflytek/dolphin-mcp-pilot/issues/11",
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/12",
+            "https://github.com/iflytek/dolphin-mcp-pilot/issues/13"
+          ],
+          "rank": 1
+        },
+        {
+          "login": "FenjuFu",
+          "url": "https://github.com/FenjuFu",
+          "avatar": "https://avatars.githubusercontent.com/u/92919259?v=4",
+          "type": "User",
+          "stats": {
+            "open": 15,
+            "commit": 42,
+            "close": 15,
+            "review": 19,
+            "comment": 39,
+            "review_comment": 1
+          },
+          "contributions": 13,
+          "openrank": 59.0959678879,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-10",
+            "months": 3,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 131,
+          "firstObservedAt": "2026-08-07T07:52:52Z",
+          "lastObservedAt": "2026-10-09T06:19:28Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/1",
+            "https://github.com/iflytek/dolphin-mcp-pilot/issues/11",
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/12",
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/15",
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/17"
+          ],
+          "rank": 2
+        },
+        {
+          "login": "Hui-of-limin",
+          "url": "https://github.com/Hui-of-limin",
+          "avatar": "https://avatars.githubusercontent.com/u/52191549?v=4",
+          "type": "User",
+          "stats": {
+            "close": 14,
+            "review": 17,
+            "commit": 29,
+            "open": 6,
+            "comment": 23
+          },
+          "contributions": 8,
+          "openrank": 39.0900487367,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-11",
+            "months": 4,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 89,
+          "firstObservedAt": "2026-08-07T06:14:34Z",
+          "lastObservedAt": "2026-11-02T08:36:05Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/10",
+            "https://github.com/iflytek/dolphin-mcp-pilot/issues/13",
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/14",
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/15",
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/17"
+          ],
+          "rank": 3
+        },
+        {
+          "login": "eason-and-jerrry",
+          "url": "https://github.com/eason-and-jerrry",
+          "avatar": "https://avatars.githubusercontent.com/u/319766215?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 2
+          },
+          "contributions": 1,
+          "openrank": 2.7558430063,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-08",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 3,
+          "firstObservedAt": "2026-08-22T13:40:04Z",
+          "lastObservedAt": "2026-08-25T12:08:53Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/46",
+            "https://github.com/iflytek/dolphin-mcp-pilot/commit/ba86f9b4163dcaa766c6e9d911881cbd8680fe69"
+          ],
+          "rank": 4
+        },
+        {
+          "login": "dj331",
+          "url": "https://github.com/dj331",
+          "avatar": "https://avatars.githubusercontent.com/u/154816521?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 2
+          },
+          "contributions": 1,
+          "openrank": 2.7222977632,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-08",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 3,
+          "firstObservedAt": "2026-08-18T07:18:37Z",
+          "lastObservedAt": "2026-08-21T03:10:21Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/38",
+            "https://github.com/iflytek/dolphin-mcp-pilot/commit/d7681d3effa2f5474670d6e69343c879f8ccac3e"
+          ],
+          "rank": 5
+        },
+        {
+          "login": "whyiug",
+          "url": "https://github.com/whyiug",
+          "avatar": "https://avatars.githubusercontent.com/u/6668626?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 4
+          },
+          "contributions": 1,
+          "openrank": 2.7032424261,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-08",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 5,
+          "firstObservedAt": "2026-08-18T12:26:16Z",
+          "lastObservedAt": "2026-08-24T07:44:22Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/39",
+            "https://github.com/iflytek/dolphin-mcp-pilot/commit/97267b6a21b810e79c4365513bc601b887e99d64"
+          ],
+          "rank": 6
+        },
+        {
+          "login": "jiayigreat1-ops",
+          "url": "https://github.com/jiayigreat1-ops",
+          "avatar": "https://avatars.githubusercontent.com/u/293986565?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 4
+          },
+          "contributions": 1,
+          "openrank": 2.6861494183,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-08",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 5,
+          "firstObservedAt": "2026-08-20T06:40:25Z",
+          "lastObservedAt": "2026-08-24T07:44:26Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/41",
+            "https://github.com/iflytek/dolphin-mcp-pilot/commit/e9b6d33a848c9e569d88ec466e94956b8ccc7a76"
+          ],
+          "rank": 7
+        },
+        {
+          "login": "yjlu666",
+          "url": "https://github.com/yjlu666",
+          "avatar": "https://avatars.githubusercontent.com/u/124077501?v=4",
+          "type": "User",
+          "stats": {
+            "close": 1
+          },
+          "contributions": 0,
+          "openrank": 2.0118456979,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-08",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-08-07T10:13:18Z",
+          "lastObservedAt": "2026-08-07T10:13:18Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/2"
+          ],
+          "rank": 8
+        },
+        {
+          "login": "KulFilip",
+          "url": "https://github.com/KulFilip",
+          "avatar": "https://avatars.githubusercontent.com/u/169548216?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1
+          },
+          "contributions": 0,
+          "openrank": 1.6686652661,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-10",
+            "lastMonth": "2026-10",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-10-27T18:35:44Z",
+          "lastObservedAt": "2026-10-27T18:35:44Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/dolphin-mcp-pilot/issues/60"
+          ],
+          "rank": 9
+        },
+        {
+          "login": "Kencoze",
+          "url": "https://github.com/Kencoze",
+          "avatar": "https://avatars.githubusercontent.com/u/313928297?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 1,
+            "comment": 1
+          },
+          "contributions": 0,
+          "openrank": 1.3911992253,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-08",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 3,
+          "firstObservedAt": "2026-08-16T06:55:33Z",
+          "lastObservedAt": "2026-08-24T13:20:49Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/27"
+          ],
+          "rank": 10
+        },
+        {
+          "login": "ayaeum",
+          "url": "https://github.com/ayaeum",
+          "avatar": "https://avatars.githubusercontent.com/u/74920378?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 1
+          },
+          "contributions": 0,
+          "openrank": 1.2389715858,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-08",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 2,
+          "firstObservedAt": "2026-08-21T09:21:02Z",
+          "lastObservedAt": "2026-08-21T09:21:24Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/dolphin-mcp-pilot/pull/45"
+          ],
+          "rank": 11
+        },
+        {
+          "login": "SamShens",
+          "url": "https://github.com/SamShens",
+          "avatar": "https://avatars.githubusercontent.com/u/141716646?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "comment": 1
+          },
+          "contributions": 0,
+          "openrank": 0.9068718855,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-08",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 2,
+          "firstObservedAt": "2026-08-21T00:55:08Z",
+          "lastObservedAt": "2026-08-21T05:47:04Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/dolphin-mcp-pilot/issues/42"
+          ],
+          "rank": 12
+        }
+      ]
+    },
+    {
+      "id": "spark-mlx-llm",
+      "url": "https://github.com/XHToken/Spark-MLX-LLM",
+      "stars": 16,
+      "forks": 3,
+      "archived": false,
+      "source": "https://api.github.com/repos/XHToken/Spark-MLX-LLM",
+      "contributorsSource": "/galaxy-data/spark-mlx-llm-calculation.json",
+      "openrankSource": "/galaxy-data/spark-mlx-llm-calculation.json",
+      "openrank": 4.7625301205,
+      "openrankCoverage": {
+        "firstMonth": "2026-08",
+        "lastMonth": "2026-11",
+        "months": 0,
+        "gapMonths": 0,
+        "monthsSinceLast": 0
+      },
+      "historyStart": "2026-08-29",
+      "historyEnd": "2026-11-09",
+      "calculation": {
+        "coverage": {
+          "issues": 4,
+          "pullRequests": 8,
+          "comments": 5,
+          "reviewComments": 0,
+          "defaultCommits": 17,
+          "codeContributors": 4
+        },
+        "participants": 7,
+        "events": 46,
+        "workItems": 22,
+        "gaps": {
+          "unlinkedCommitAuthorOccurrences": 1
+        },
+        "iterations": 30,
+        "residual": 4.814992848878319e-11,
+        "graphSha256": "6b6602a75b90fc0fc63a7f9bc64f2d63740f1c65ac4999a3fca9b7a994a5d0d2"
+      },
+      "automationExclusions": {
+        "accounts": [],
+        "accountCount": 0,
+        "eventCount": 0,
+        "removedAutomationOnlyWorkItems": []
+      },
+      "contributors": [
+        {
+          "login": "KnightYao",
+          "url": "https://github.com/KnightYao",
+          "avatar": "https://avatars.githubusercontent.com/u/9350796?v=4",
+          "type": "User",
+          "stats": {
+            "close": 7,
+            "review": 3,
+            "commit": 8
+          },
+          "contributions": 8,
+          "openrank": 16.5190129829,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/spark-mlx-llm-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-10",
+            "months": 3,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 18,
+          "firstObservedAt": "2026-08-29T08:14:00Z",
+          "lastObservedAt": "2026-10-21T01:51:31Z",
+          "evidenceLinks": [
+            "https://github.com/XHToken/Spark-MLX-LLM/pull/1",
+            "https://github.com/XHToken/Spark-MLX-LLM/pull/10",
+            "https://github.com/XHToken/Spark-MLX-LLM/pull/2",
+            "https://github.com/XHToken/Spark-MLX-LLM/issues/3",
+            "https://github.com/XHToken/Spark-MLX-LLM/issues/5"
+          ],
+          "rank": 1
+        },
+        {
+          "login": "hxmmxh",
+          "url": "https://github.com/hxmmxh",
+          "avatar": "https://avatars.githubusercontent.com/u/39046837?v=4",
+          "type": "User",
+          "stats": {
+            "open": 3,
+            "commit": 5,
+            "close": 2
+          },
+          "contributions": 5,
+          "openrank": 10.7551222363,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/spark-mlx-llm-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-10",
+            "lastMonth": "2026-11",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 10,
+          "firstObservedAt": "2026-10-20T16:28:35Z",
+          "lastObservedAt": "2026-11-02T02:44:30Z",
+          "evidenceLinks": [
+            "https://github.com/XHToken/Spark-MLX-LLM/pull/10",
+            "https://github.com/XHToken/Spark-MLX-LLM/pull/11",
+            "https://github.com/XHToken/Spark-MLX-LLM/pull/12",
+            "https://github.com/XHToken/Spark-MLX-LLM/commit/079a6a328ef878ac3cc4884c07e830add0540007",
+            "https://github.com/XHToken/Spark-MLX-LLM/commit/92c6f154b752d588ad2837c742fe823aa45236c3"
+          ],
+          "rank": 2
+        },
+        {
+          "login": "simple-zheng",
+          "url": "https://github.com/simple-zheng",
+          "avatar": "https://avatars.githubusercontent.com/u/129132939?v=4",
+          "type": "User",
+          "stats": {
+            "open": 4,
+            "commit": 3,
+            "comment": 2
+          },
+          "contributions": 2,
+          "openrank": 7.724513697,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/spark-mlx-llm-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-08",
+            "lastMonth": "2026-09",
+            "months": 2,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 9,
+          "firstObservedAt": "2026-08-29T09:34:09Z",
+          "lastObservedAt": "2026-09-02T06:43:11Z",
+          "evidenceLinks": [
+            "https://github.com/XHToken/Spark-MLX-LLM/pull/1",
+            "https://github.com/XHToken/Spark-MLX-LLM/pull/2",
+            "https://github.com/XHToken/Spark-MLX-LLM/issues/4",
+            "https://github.com/XHToken/Spark-MLX-LLM/issues/5",
+            "https://github.com/XHToken/Spark-MLX-LLM/pull/7"
+          ],
+          "rank": 3
+        },
+        {
+          "login": "ttchen8",
+          "url": "https://github.com/ttchen8",
+          "avatar": "https://avatars.githubusercontent.com/u/285558139?v=4",
+          "type": "User",
+          "stats": {
+            "open": 4,
+            "commit": 1
+          },
+          "contributions": 1,
+          "openrank": 4.3605753186,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/spark-mlx-llm-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-09",
+            "lastMonth": "2026-09",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 5,
+          "firstObservedAt": "2026-09-01T14:13:02Z",
+          "lastObservedAt": "2026-09-02T01:35:05Z",
+          "evidenceLinks": [
+            "https://github.com/XHToken/Spark-MLX-LLM/issues/3",
+            "https://github.com/XHToken/Spark-MLX-LLM/issues/4",
+            "https://github.com/XHToken/Spark-MLX-LLM/issues/5",
+            "https://github.com/XHToken/Spark-MLX-LLM/pull/6"
+          ],
+          "rank": 4
+        },
+        {
+          "login": "FenjuFu",
+          "url": "https://github.com/FenjuFu",
+          "avatar": "https://avatars.githubusercontent.com/u/92919259?v=4",
+          "type": "User",
+          "stats": {
+            "comment": 2
+          },
+          "contributions": 0,
+          "openrank": 1.6900664892,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/spark-mlx-llm-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-11",
+            "lastMonth": "2026-11",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 2,
+          "firstObservedAt": "2026-11-04T10:52:42Z",
+          "lastObservedAt": "2026-11-04T10:52:56Z",
+          "evidenceLinks": [
+            "https://github.com/XHToken/Spark-MLX-LLM/pull/8",
+            "https://github.com/XHToken/Spark-MLX-LLM/issues/9"
+          ],
+          "rank": 5
+        },
+        {
+          "login": "chunleiding",
+          "url": "https://github.com/chunleiding",
+          "avatar": "https://avatars.githubusercontent.com/u/128339845?u=8cf8e4c20feb0058561b12be2f026e7b28ed5671&v=4",
+          "type": "User",
+          "stats": {
+            "open": 1
+          },
+          "contributions": 0,
+          "openrank": 0.9589869069,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/spark-mlx-llm-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-09",
+            "lastMonth": "2026-09",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-09-02T07:21:12Z",
+          "lastObservedAt": "2026-09-02T07:21:12Z",
+          "evidenceLinks": [
+            "https://github.com/XHToken/Spark-MLX-LLM/issues/9"
+          ],
+          "rank": 6
+        },
+        {
+          "login": "mattyclaw88",
+          "url": "https://github.com/mattyclaw88",
+          "avatar": "https://avatars.githubusercontent.com/u/258511030?v=4",
+          "type": "User",
+          "stats": {
+            "comment": 1
+          },
+          "contributions": 0,
+          "openrank": 0.5544934534,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/spark-mlx-llm-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-09",
+            "lastMonth": "2026-09",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-09-03T05:18:19Z",
+          "lastObservedAt": "2026-09-03T05:18:19Z",
+          "evidenceLinks": [
+            "https://github.com/XHToken/Spark-MLX-LLM/issues/9"
+          ],
+          "rank": 7
         }
       ]
     }

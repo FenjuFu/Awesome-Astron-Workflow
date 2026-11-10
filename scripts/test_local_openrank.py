@@ -11,6 +11,14 @@ def person(name):return {'login':name,'avatarUrl':'https://avatars.githubusercon
 def commit(oid,who):return {'oid':oid,'committedDate':'2020-01-01T00:00:00Z','authors':{'nodes':[{'user':person(who)}]}}
 
 class LocalOpenRankTest(unittest.TestCase):
+    def test_cross_organization_links_use_actual_repository(self):
+        raw={'repo':'spark-mlx-llm','meta':{'full_name':'XHToken/Spark-MLX-LLM','created_at':'2026-08-29','html_url':'https://github.com/XHToken/Spark-MLX-LLM','stargazers_count':0,'forks_count':0},
+             'issues':[],'pullRequests':[],'comments':[],'reviewComments':[],'defaultCommits':[commit('xyz','alice')],
+             'codeContributors':[],'startedAt':'2026-11-10','completedAt':'2026-11-10','defaultHead':'xyz'}
+        project,report=calc.calculate(raw)
+        self.assertEqual(report['repository'],'XHToken/Spark-MLX-LLM')
+        self.assertEqual(project['source'],'https://api.github.com/repos/XHToken/Spark-MLX-LLM')
+        self.assertEqual(project['contributors'][0]['evidenceLinks'],['https://github.com/XHToken/Spark-MLX-LLM/commit/xyz'])
     def test_public_commenters_survive_unavailable_parent(self):
         raw={'repo':'test','meta':{'created_at':'2019-01-01','html_url':'https://github.com/test','stargazers_count':0,'forks_count':0},
              'issues':[],'pullRequests':[],'comments':[{'id':'C1','unitNumber':99,'createdAt':'2020-01-02','author':person('commenter')}],

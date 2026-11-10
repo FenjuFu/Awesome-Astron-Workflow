@@ -1,0 +1,136 @@
+{
+  "capturedAt": "2026-11-09T16:15:42.458636+00:00",
+  "repository": "iflytek/iFly-Skills",
+  "requests": {
+    "27826b50b7516df4e3c627a66be4da1c6c972fe767b42ab0850ec53df14e77ca": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/iFly-Skills"
+      },
+      "sha256": "065ebd2f38c5daab7709c195d8a0a053fd2f8518c6a1d919dfb6a52db43f262d",
+      "cache": "27826b50b7516df4e3c627a66be4da1c6c972fe767b42ab0850ec53df14e77ca.json",
+      "checkedAt": "2026-11-09T16:14:20.043499+00:00",
+      "repository": "ifly-skills"
+    },
+    "755e1734bbd410e2a321ab8f67f1ba0858aa52167762caaa103a0a86736d7041": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { issues(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } }  } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "iFly-Skills",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "956f65678628e4959f784d71f601882baa430289f7a7cdb2725b386e11763894",
+      "cache": "755e1734bbd410e2a321ab8f67f1ba0858aa52167762caaa103a0a86736d7041.json",
+      "checkedAt": "2026-11-09T16:14:30.458753+00:00",
+      "repository": "ifly-skills"
+    },
+    "be957f3d43aa95aaa99e3326d83bcf9cb40e8be2fbdfd74f9aa916c4430f3c9b": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "iFly-Skills",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "b5e0e869de73d3d79347dc6f389221a1014527ef12713c22e14d836660a3abb9",
+      "cache": "be957f3d43aa95aaa99e3326d83bcf9cb40e8be2fbdfd74f9aa916c4430f3c9b.json",
+      "checkedAt": "2026-11-09T16:14:45.882015+00:00",
+      "repository": "ifly-skills"
+    },
+    "71188bd4ed1366dddcb9f2e4f86c39d4fe63000c519777ca888ebcf39d07cebe": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "iFly-Skills",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0wOC0xMlQwOTo0ODowN1rO_fsymw==",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "b62995989b198cede7246236ea8b614dd4b8a62cb3ec127a14e80819f24dc305",
+      "cache": "71188bd4ed1366dddcb9f2e4f86c39d4fe63000c519777ca888ebcf39d07cebe.json",
+      "checkedAt": "2026-11-09T16:14:58.212151+00:00",
+      "repository": "ifly-skills"
+    },
+    "eb4763592aec5568e2a13f3b1855f3438bc15a9a077fa4ed68186f5890a7a280": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "iFly-Skills",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0xMC0xNFQxOTo0MzoxMlrPAAAAASHjdcI=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "1eaa47ef46119ec2bf766486c451a9410dbc83eb31b1ff4600eeb6475ac9a85f",
+      "cache": "eb4763592aec5568e2a13f3b1855f3438bc15a9a077fa4ed68186f5890a7a280.json",
+      "checkedAt": "2026-11-09T16:15:10.167416+00:00",
+      "repository": "ifly-skills"
+    },
+    "b6fd772cb0ca6fd28b14fd182314ab1f39ee3bcb9d5666a945dfd0797bba9b60": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/iFly-Skills/issues/comments?per_page=100&page=1"
+      },
+      "sha256": "9cd1ab602fe91671ddc3dbf3e041a5983244058a83259bd265405069c269344b",
+      "cache": "b6fd772cb0ca6fd28b14fd182314ab1f39ee3bcb9d5666a945dfd0797bba9b60.json",
+      "checkedAt": "2026-11-09T16:15:12.928771+00:00",
+      "repository": "ifly-skills"
+    },
+    "86bff9d10bc75d76e49f863d7ad759d89297761480d54827da344cf0e8d3e31d": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/iFly-Skills/pulls/comments?per_page=100&page=1"
+      },
+      "sha256": "b1ee625ab37fc130b734f2e7dee5b5df0bcca26e9dcf1729ceb77b0da6c501eb",
+      "cache": "86bff9d10bc75d76e49f863d7ad759d89297761480d54827da344cf0e8d3e31d.json",
+      "checkedAt": "2026-11-09T16:15:25.022872+00:00",
+      "repository": "ifly-skills"
+    },
+    "b7431fb973010984f674a5c5489f75e2760f9fcfc6aeecdad8d27d223c6eb524": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!){repository(owner:$owner,name:$name){defaultBranchRef{name target{... on Commit{oid}}}}}",
+        "variables": {
+          "name": "iFly-Skills",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "d5f5474c78006709767551319bf437e74b145f314a34e475f00cc709e9c9b417",
+      "cache": "b7431fb973010984f674a5c5489f75e2760f9fcfc6aeecdad8d27d223c6eb524.json",
+      "checkedAt": "2026-11-09T16:15:34.259228+00:00",
+      "repository": "ifly-skills"
+    },
+    "7405caf25a670fa0ff2102e1f21b7a83118d314398ec0887892a17805461ea39": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
+        "variables": {
+          "name": "iFly-Skills",
+          "oid": "b8f5d7d0bad672c7b12d161ab11cf1de53461e08",
+          "after": null,
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "b8b114360690ec571a313aeecbaa3c5a17277ce29759cce586d5e2588c015c03",
+      "cache": "7405caf25a670fa0ff2102e1f21b7a83118d314398ec0887892a17805461ea39.json",
+      "checkedAt": "2026-11-09T16:15:38.779814+00:00",
+      "repository": "ifly-skills"
+    },
+    "42fcecf8ddd8ca67b8ed22077d4ffd61dd7d6d7defc28191c00132d55a4c0e40": {
+      "request": {
+        "kind": "rest",
+        "path": "repos/iflytek/iFly-Skills/contributors?per_page=100&anon=false&page=1"
+      },
+      "sha256": "b876c74227c3ce00623c29ffeaa76b55b6b6a5a1e3ea8ba9b7624374d0adece9",
+      "cache": "42fcecf8ddd8ca67b8ed22077d4ffd61dd7d6d7defc28191c00132d55a4c0e40.json",
+      "checkedAt": "2026-11-09T16:15:42.458636+00:00",
+      "repository": "ifly-skills"
+    }
+  }
+}
