@@ -25,6 +25,9 @@ for project in snapshot['projects']:
     assert all(c['openrank'] is not None and c['openrankStatus']=='calculated' for c in project['contributors'])
     graph=published['graph'];values,_,residual=calc.solve(graph['initial'],graph['retention'],graph['outgoing'])
     assert residual<1e-10
+    assert abs(values[0] - project['openrank']) < 1e-8
+    assert abs(published['repositoryOpenRank'] - project['openrank']) < 1e-8
+    assert abs(expected['openrank'] - project['openrank']) < 1e-8
     for c in project['contributors']:
         assert abs(values[graph['nodes'].index('user:'+c['login'])]-c['openrank'])<1e-8
     code_names={c['login'].casefold().removesuffix('[bot]') for c in raw['codeContributors'] if not automation_reason(c)}
