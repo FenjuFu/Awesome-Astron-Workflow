@@ -34,6 +34,12 @@ def main():
             for script in scripts:
                 with urllib.request.urlopen(BASE + script.decode(), timeout=60) as response:
                     bundle += response.read()
+            # Galaxy is lazy-loaded, so its data lives outside the HTML entry bundle.
+            galaxy_chunks = set(re.findall(rb'AstronGalaxy-[A-Za-z0-9_-]+\.js', bundle))
+            assert galaxy_chunks, 'Missing lazy Galaxy chunk reference'
+            for chunk in galaxy_chunks:
+                with urllib.request.urlopen(BASE + '/assets/' + chunk.decode(), timeout=60) as response:
+                    bundle += response.read()
             frontend_matches = snapshot['capturedAt'].encode() in bundle and all(
                 p['calculation']['graphSha256'].encode() in bundle for p in snapshot['projects'])
             actual = {}
