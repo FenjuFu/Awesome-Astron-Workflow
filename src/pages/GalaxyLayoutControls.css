@@ -1,0 +1,24 @@
+.astron-galaxy .galaxy-layout{display:block;max-width:none;position:relative}
+.astron-galaxy .galaxy-universe{position:relative;top:auto;height:calc(100dvh - 80px);min-height:0;width:100%}
+.astron-galaxy .galaxy-map{width:100%;height:100%;position:absolute;inset:0;left:0;top:0;cursor:default}
+.astron-galaxy .galaxy-map.can-drag{cursor:grab}.astron-galaxy .galaxy-map.is-dragging{cursor:grabbing}
+.astron-galaxy .galaxy-map.select-only{cursor:default}
+.astron-galaxy .galaxy-sidebar{position:fixed;right:0;top:80px;bottom:0;width:min(400px,92vw);max-height:none;overflow-y:auto;z-index:30;box-shadow:-20px 0 60px #0008;padding-top:18px;background:#0b101cf7;backdrop-filter:blur(16px)}
+.astron-galaxy .galaxy-sidebar[hidden]{display:none}
+.galaxy-sidebar-toggle{position:absolute;right:28px;top:28px;z-index:10;display:grid;grid-template-columns:22px auto;column-gap:10px;row-gap:5px;text-align:left;background:#111b2de8;border:1px solid #87a4dc60;color:#d4e4ff;border-radius:12px;padding:13px 17px;box-shadow:0 8px 28px #0004;font-size:13px}
+.galaxy-sidebar-toggle>svg{grid-row:1/3;align-self:center;color:#85e2d6}.galaxy-sidebar-toggle small{font-size:10px;color:#91a8c8;grid-column:2}.galaxy-sidebar-toggle:hover{border-color:#85e2d6;background:#17263d}
+.galaxy-sidebar-open .galaxy-sidebar-toggle{right:420px}
+.galaxy-sidebar-close{display:flex;align-items:center;gap:8px;color:#afc2e5;font-size:12px;align-self:flex-start;padding:6px 0}
+.astron-galaxy .galaxy-map-footer{position:absolute;bottom:22px;left:20px;right:20px;z-index:12;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;pointer-events:none}
+.astron-galaxy .galaxy-map-footer>span{max-width:none;font-size:11px;text-align:center;color:#a1b4d3;background:#070b16ba;padding:3px 9px;border-radius:5px}
+.astron-galaxy .galaxy-controls{pointer-events:auto;gap:5px;padding:7px 9px;box-shadow:0 8px 30px #0008;border-color:#7891c74d;flex-wrap:wrap;justify-content:center;backdrop-filter:blur(12px)}
+.astron-galaxy .galaxy-controls button{height:36px;width:36px;flex-shrink:0}.astron-galaxy .galaxy-controls .galaxy-drag-toggle,.astron-galaxy .galaxy-controls .galaxy-fit-view{display:flex;gap:7px;width:auto;padding:0 10px;font-size:11px}
+.galaxy-controls button[aria-pressed=true]{background:#5b9bd52b;color:#97eedf;border:1px solid #74d9c15c}.galaxy-pan-controls{display:flex;border-left:1px solid #ffffff20;border-right:1px solid #ffffff20;padding:0 4px;gap:1px}
+.astron-galaxy .galaxy-controls .galaxy-motion-toggle{width:48px}.astron-galaxy .galaxy-controls>.galaxy-zoom-value{font-size:11px;width:42px;text-align:center}
+.astron-galaxy.galaxy-overview .galaxy-project-label{font-size:22px}
+@media(max-width:900px){.galaxy-sidebar-open .galaxy-sidebar-toggle{right:28px;visibility:hidden}.astron-galaxy .galaxy-intro h1{font-size:28px}.galaxy-sidebar-toggle{font-size:12px;padding:10px 12px}.galaxy-sidebar-toggle small{font-size:9px}}
+@media(max-width:760px){.astron-galaxy .galaxy-universe{height:calc(100dvh - 65px);min-height:0}.astron-galaxy .galaxy-sidebar{top:65px;width:min(380px,94vw);padding:16px 20px}.galaxy-sidebar-toggle{top:125px;left:22px;right:auto;padding:10px 13px}.astron-galaxy .galaxy-intro{top:20px}.astron-galaxy .galaxy-intro h1{font-size:27px;margin:10px 0}.astron-galaxy .galaxy-map-footer{bottom:14px;left:8px;right:8px;gap:7px}.astron-galaxy .galaxy-map-footer>span{font-size:10px;max-width:330px}.astron-galaxy .galaxy-controls{max-width:370px;gap:2px;padding:6px}.galaxy-pan-controls{order:2;flex-basis:100%;border:0;border-top:1px solid #ffffff15;justify-content:center;margin-top:4px;padding-top:3px}.astron-galaxy .galaxy-controls button{height:34px;width:32px}.astron-galaxy .galaxy-controls .galaxy-fit-view{padding:0 7px}.astron-galaxy .galaxy-controls .galaxy-drag-toggle{padding:0 7px}.astron-galaxy.galaxy-overview .galaxy-project-label{font-size:44px}.astron-galaxy .galaxy-orbit-pagination{top:185px;left:22px}.astron-galaxy.galaxy-is-focused .galaxy-map{top:0;height:100%}}
+
+@media(max-width:760px){.astron-galaxy.galaxy-overview .galaxy-orbit-score{display:none}}
+
+.galaxy-back-to-overview{position:absolute;top:125px;left:38px;z-index:11;display:flex;align-items:center;gap:8px;min-height:38px;padding:9px 13px;border:1px solid #85a5d866;border-radius:8px;background:#101b2de8;color:#d7e8ff;font-size:12px}.galaxy-back-to-overview:hover{border-color:#85e2d6;background:#17263d}.astron-galaxy.galaxy-is-focused .galaxy-orbit-pagination{top:178px}@media(max-width:760px){.galaxy-back-to-overview{top:185px;left:22px}.astron-galaxy.galaxy-is-focused .galaxy-orbit-pagination{top:235px}}
