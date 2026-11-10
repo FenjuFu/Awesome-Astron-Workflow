@@ -1,0 +1,10 @@
+.galaxy-global-orbit{fill:none;stroke-opacity:.26;stroke-width:.8;stroke-dasharray:3 7}
+.galaxy-global-score{font-size:11px;paint-order:stroke;stroke:#070b16;stroke-width:4px;pointer-events:none}
+.galaxy-overview .galaxy-project-label{font-size:15px}.galaxy-is-focused .galaxy-project-label{font-size:22px}
+.galaxy-rank-value{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;margin-left:auto}
+.galaxy-score-share{display:flex;align-items:center;gap:5px;color:#b9d5f0;font-size:11px;font-variant-numeric:tabular-nums}
+.galaxy-score-share svg{flex-shrink:0}.galaxy-score-share small{display:block;color:#8e9dba;font-size:8px;line-height:1.5}
+.galaxy-global-note{font-size:11px;line-height:1.8;color:#98adce}.galaxy-global-note a{color:#89daca}
+.galaxy-controls .galaxy-motion-toggle{width:48px;font-size:10px}
+.galaxy-contributor-node:hover>circle,.galaxy-contributor-node:focus-visible>circle{stroke:#fff;stroke-width:2}
+@media(max-width:760px){.galaxy-overview .galaxy-project-label{font-size:23px}.galaxy-global-score{font-size:15px}.galaxy-overview .galaxy-map{height:470px}.galaxy-score-share{font-size:11px}}

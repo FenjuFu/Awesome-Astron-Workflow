@@ -1,0 +1,80 @@
+{
+  "provider": "OpenDigger Global OpenRank",
+  "month": "2026-10",
+  "fetchedAt": "2026-11-10T02:47:31.259927+00:00",
+  "selection": "latest completed month among months with maximum project coverage",
+  "projects": [
+    {
+      "id": "astron-agent",
+      "source": "https://oss.open-digger.cn/github/iflytek/astron-agent/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "sha256": "4aeae633b4a3814a243844b1855900303d821385fb82d451f4c3bfd02bf61e3c",
+      "status": "available",
+      "score": 10.07,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "skillhub",
+      "source": "https://oss.open-digger.cn/github/iflytek/skillhub/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "sha256": "99526852a5196a062dacbdbddfb35ec603e70645bd1c89a897432eaf4f03f5d2",
+      "status": "available",
+      "score": 15.01,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "astron-rpa",
+      "source": "https://oss.open-digger.cn/github/iflytek/astron-rpa/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "sha256": "17862d151b050a473f5b7a0204d90beac4644ebc2b850cc3fcdd40278ce19460",
+      "status": "available",
+      "score": 4.4,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "astron-harness-tutorial",
+      "source": "https://oss.open-digger.cn/github/iflytek/astron-harness-tutorial/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "sha256": "4d8dbc7a658e8075d322d726005df3fa1c3ab06ab30c6f8f5ba6762fc5c81499",
+      "status": "available",
+      "score": 0.6,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "ifly-skills",
+      "source": "https://oss.open-digger.cn/github/iflytek/iFly-Skills/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "sha256": "cc492dcd83dcd9beeecae364afb9bfe2a4b4f71765d3e5b90295f488a7354d1e",
+      "status": "available",
+      "score": 2.23,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "domux",
+      "source": "https://oss.open-digger.cn/github/iflytek/domux/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "sha256": "35f1568366d81471ca3adfd80f55ead43d5594737366116baf2a7cfac5095d15",
+      "status": "available",
+      "score": 0.41,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "dolphin-mcp-pilot",
+      "source": "https://oss.open-digger.cn/github/iflytek/dolphin-mcp-pilot/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "sha256": "5557a587aaa1451e1f46415269caa6e2392eab40e5a7555506730a250a960773",
+      "status": "available",
+      "score": 1.15,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "spark-mlx-llm",
+      "source": "https://oss.open-digger.cn/github/XHToken/Spark-MLX-LLM/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "status": "unavailable",
+      "error": "HTTP Error 404: Not Found",
+      "score": null,
+      "latestMonth": null
+    }
+  ]
+}

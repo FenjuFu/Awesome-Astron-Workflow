@@ -1,0 +1,146 @@
+{
+  "provider": "OpenDigger Global OpenRank",
+  "month": "2026-10",
+  "fetchedAt": "2026-11-10T02:47:31.259927+00:00",
+  "selection": "latest completed month among months with maximum project coverage",
+  "projects": [
+    {
+      "id": "astron-agent",
+      "source": "https://oss.open-digger.cn/github/iflytek/astron-agent/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "values": {
+        "2025-09": 10.93,
+        "2025-10": 25.7,
+        "2025-11": 44.3,
+        "2025-12": 45.2,
+        "2026-01": 45.56,
+        "2026-02": 39.51,
+        "2026-03": 39.07,
+        "2026-04": 27.32,
+        "2026-05": 25.67,
+        "2026-06": 23.43,
+        "2026-07": 27.4,
+        "2026-08": 23.67,
+        "2026-09": 13.75,
+        "2026-10": 10.07
+      },
+      "sha256": "4aeae633b4a3814a243844b1855900303d821385fb82d451f4c3bfd02bf61e3c",
+      "status": "available",
+      "score": 10.07,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "skillhub",
+      "source": "https://oss.open-digger.cn/github/iflytek/skillhub/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "values": {
+        "2026-03": 9.96,
+        "2026-04": 30.19,
+        "2026-05": 27.2,
+        "2026-06": 24.78,
+        "2026-07": 11.66,
+        "2026-08": 11.67,
+        "2026-09": 13.81,
+        "2026-10": 15.01
+      },
+      "sha256": "99526852a5196a062dacbdbddfb35ec603e70645bd1c89a897432eaf4f03f5d2",
+      "status": "available",
+      "score": 15.01,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "astron-rpa",
+      "source": "https://oss.open-digger.cn/github/iflytek/astron-rpa/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "values": {
+        "2025-09": 5.21,
+        "2025-10": 9.62,
+        "2025-11": 17.76,
+        "2025-12": 20.82,
+        "2026-01": 24.23,
+        "2026-02": 23.29,
+        "2026-03": 25.74,
+        "2026-04": 26.48,
+        "2026-05": 11.64,
+        "2026-06": 11.42,
+        "2026-07": 12.74,
+        "2026-08": 7.41,
+        "2026-09": 5.63,
+        "2026-10": 4.4
+      },
+      "sha256": "17862d151b050a473f5b7a0204d90beac4644ebc2b850cc3fcdd40278ce19460",
+      "status": "available",
+      "score": 4.4,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "astron-harness-tutorial",
+      "source": "https://oss.open-digger.cn/github/iflytek/astron-harness-tutorial/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "values": {
+        "2026-03": 0.66,
+        "2026-05": 0.37,
+        "2026-06": 0.55,
+        "2026-09": 0.65,
+        "2026-10": 0.6
+      },
+      "sha256": "4d8dbc7a658e8075d322d726005df3fa1c3ab06ab30c6f8f5ba6762fc5c81499",
+      "status": "available",
+      "score": 0.6,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "ifly-skills",
+      "source": "https://oss.open-digger.cn/github/iflytek/iFly-Skills/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "values": {
+        "2026-05": 0.19,
+        "2026-08": 0.76,
+        "2026-09": 1.11,
+        "2026-10": 2.23
+      },
+      "sha256": "cc492dcd83dcd9beeecae364afb9bfe2a4b4f71765d3e5b90295f488a7354d1e",
+      "status": "available",
+      "score": 2.23,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "domux",
+      "source": "https://oss.open-digger.cn/github/iflytek/domux/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "values": {
+        "2026-08": 2.95,
+        "2026-09": 1,
+        "2026-10": 0.41
+      },
+      "sha256": "35f1568366d81471ca3adfd80f55ead43d5594737366116baf2a7cfac5095d15",
+      "status": "available",
+      "score": 0.41,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "dolphin-mcp-pilot",
+      "source": "https://oss.open-digger.cn/github/iflytek/dolphin-mcp-pilot/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "values": {
+        "2026-08": 3.12,
+        "2026-09": 1.95,
+        "2026-10": 1.15
+      },
+      "sha256": "5557a587aaa1451e1f46415269caa6e2392eab40e5a7555506730a250a960773",
+      "status": "available",
+      "score": 1.15,
+      "latestMonth": "2026-10"
+    },
+    {
+      "id": "spark-mlx-llm",
+      "source": "https://oss.open-digger.cn/github/XHToken/Spark-MLX-LLM/openrank.json",
+      "checkedAt": "2026-11-10T02:47:31.259927+00:00",
+      "values": {},
+      "status": "unavailable",
+      "error": "HTTP Error 404: Not Found",
+      "score": null,
+      "latestMonth": null
+    }
+  ]
+}

@@ -1,6 +1,6 @@
-# Astron Galaxy: independently calculated all-history OpenRank
+# Astron Galaxy: global project influence and local contributor OpenRank
 
-`/galaxy` shows the eight projects declared in `src/data/galaxy-projects.json`, with contributor avatar orbits and linked leaderboards. The registry contains stable artifact IDs plus canonical GitHub owner/repository names, including `XHToken/Spark-MLX-LLM`; it is shared by collection, calculation and display. Homepage/navigation entries are preserved. No OpenDigger scores, user lists or data endpoints are used by the current refresh/calculation pipeline.
+`/galaxy` shows the eight projects declared in `src/data/galaxy-projects.json`, with contributor avatar orbits and linked leaderboards. The registry contains stable artifact IDs plus canonical GitHub owner/repository names, including `XHToken/Spark-MLX-LLM`; it is shared by collection, calculation and display. Homepage/navigation entries are preserved. Contributor scores remain independently calculated from GitHub history. The separate project influence pipeline uses official OpenDigger monthly repository scores.
 
 ## Reproduce
 
@@ -12,7 +12,7 @@ Collection uses GraphQL and REST through `gh`, including full Issue/PR paginatio
 
 The public `galaxy-data/<repo>-calculation.json` files contain the full graph, event ledger, input hashes, parameters, scores, iterations and residual. The frontend does not need to download these ledgers to render the graph.
 
-## Model
+## Local contributor model
 
 The independently implemented equation is `R_i(next) = r_i*b_i + (1-r_i)*sum_j(w_ji*R_j)`. Reference: https://github.com/X-lab2017/openrank-neo4j-gds/blob/83ec0da7352440e391726323bb5eed43c4aa3d76/src/main/java/gds/openrank/OpenRankPregel.java . The implementation uses the mathematical equation, not copied Java library code. Project collaboration modeling reference: https://blog.frankzhao.cn/openrank_in_project/ .
 
@@ -26,7 +26,7 @@ Deleted, private, inaccessible and unlinked-identity activity cannot be reconstr
 
 ## Display and validation
 
-All eligible identified participants receive a recalculated score after the automation filter. The full leaderboard supports search and incremental display. Overview orbits show up to 12 accounts per project; focused orbits show 60 accounts per page; selecting any leaderboard row navigates to the correct orbit page and highlights the account. Orbital geometry is illustrative. Original public avatars are cached, with external URLs and initials as fallbacks.
+All eligible identified participants receive a recalculated score after the automation filter. The full leaderboard supports search and incremental display. Overview orbits show up to 12 accounts per project; focused orbits show 60 accounts per page; selecting any leaderboard row navigates to the correct orbit page and highlights the account. Contributor orbital geometry is illustrative; project orbital radius and size now encode official monthly Global OpenRank (see below). Original public avatars are cached, with external URLs and initials as fallbacks.
 
 Validate graph replay against reported scores, user identity deduplication, full-history dates, all three leaderboard orders, row-to-orbit pagination, search, formula disclosure, direct evidence links, keyboard activation and desktop/mobile rendering. GitHub writes use only the user's authenticated `gh`; PR merging still requires explicit owner confirmation.
 
@@ -43,3 +43,15 @@ The bilingual introduction includes the six owner-specified annotated links: the
 The catalog includes Astron Agent, SkillHub, Astron RPA, Astron Harness Tutorial, iFly-Skills, Domux, Dolphin MCP Pilot and Spark MLX LLM. All are checked for public/non-archived status before collection. `collect-galaxy-github.py --repos <id> ...` supports targeted additions; the normal refresh collects every configured project. REST paths, GraphQL owner/name variables, commit links and evidence metadata use each project’s actual organization.
 
 When adding the five projects, the original three verified history archives are retained. Each leaderboard uses its own repository capture cutoff; the footer labels the date range as snapshot dates, not as the OpenRank activity window. The Astron Agent worked examples use that repository’s own capture timestamp. Existing scores are checked for unchanged graph hashes.
+
+## Global project influence and animated orbits
+
+Run `python scripts/collect-global-openrank.py` to fetch official `https://oss.open-digger.cn/github/{owner}/{repo}/openrank.json` data. Raw successful responses and their SHA-256 hashes, fetch times and explicit gaps are stored in `docs/galaxy-data/global-openrank/`. The frontend artifact is `src/data/galaxy-global-openrank.json`. Select the latest completed month among months with maximum project coverage; never mix months or substitute the local repository-node score.
+
+The 2026-11-10 capture covers 7 of 8 projects for 2026-10. `XHToken/Spark-MLX-LLM` returned HTTP 404 after three attempts; it is unranked and labeled No data, never zero. Dates identify the metric month; retrieval times remain in the manifest. Source: https://open-digger.cn/en/docs/user_docs/metrics/global_openrank .
+
+For score s and display-set maximum M, u = log(1+s)/log(1+max(1,M)). Orbital semi-major radius = 410-235u; planet radius = 17+21u. The projection uses a 0.59 vertical ratio. Missing scores use an explicitly unranked outer track. Values remain visible in labels/tooltips. The center is the Astron ecosystem identity, not a computed aggregate. Motion speeds are decorative. Project orbit wrappers move their contributor systems, while contributor wrappers independently orbit locally; avatars and text never rotate. Hover/focus pauses the relevant orbit, selected contributors remain stable, a pause button stops both layers and reduced-motion preference disables animation. Browser frames update wrapper transforms without React state renders.
+
+Percentages divide each local contributor score by the sum of **all eligible participants in the same repository and all-history period**, after the existing automation exclusions. Search and pagination never change the denominator. Missing/nonfinite/negative scores or zero totals render an unavailable share; positive values below 0.01% display `<0.01%`. The gradient ring arc is exactly the percentage (no artificially enlarged minimum arc). Shares describe this model's score allocation, not actual workload or product usage.
+
+Validation: TypeScript check and production build; browser checks for both motion layers, global pause, reduced motion, project order/missing score, selected contributor, full-denominator calculation and search invariance, English/Chinese, and 390/768/1024/1600px layouts. Screenshots and receipts are retained outside the source checkout in `D:/aaw-galaxy-evidence/global-motion/`.
