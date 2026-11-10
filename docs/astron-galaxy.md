@@ -1,6 +1,6 @@
-# Astron Galaxy: global project influence and local contributor OpenRank
+# Astron Galaxy: independently computed project and contributor OpenRank
 
-`/galaxy` shows the eight projects declared in `src/data/galaxy-projects.json`, with contributor avatar orbits and linked leaderboards. The registry contains stable artifact IDs plus canonical GitHub owner/repository names, including `XHToken/Spark-MLX-LLM`; it is shared by collection, calculation and display. Homepage/navigation entries are preserved. Contributor scores remain independently calculated from GitHub history. The separate project influence pipeline uses official OpenDigger monthly repository scores.
+`/galaxy` shows the eight projects declared in `src/data/galaxy-projects.json`, with contributor avatar orbits and linked leaderboards. The registry contains stable artifact IDs plus canonical GitHub owner/repository names, including `XHToken/Spark-MLX-LLM`; it is shared by collection, calculation and display. Homepage/navigation entries are preserved. Both project and contributor scores are independently calculated from GitHub history using the documented OpenRank equation and community value-flow ratios. No official score API or external score dataset is used.
 
 ## Reproduce
 
@@ -26,7 +26,7 @@ Deleted, private, inaccessible and unlinked-identity activity cannot be reconstr
 
 ## Display and validation
 
-All eligible identified participants receive a recalculated score after the automation filter. The full leaderboard supports search and incremental display. Overview orbits show up to 12 accounts per project; focused orbits show 60 accounts per page; selecting any leaderboard row navigates to the correct orbit page and highlights the account. Contributor orbital geometry is illustrative; project orbital radius and size now encode official monthly Global OpenRank (see below). Original public avatars are cached, with external URLs and initials as fallbacks.
+All eligible identified participants receive a recalculated score after the automation filter. The full leaderboard supports search and incremental display. Overview orbits show up to 12 accounts per project; focused orbits show 60 accounts per page; selecting any leaderboard row navigates to the correct orbit page and highlights the account. Contributor orbital geometry is illustrative; project orbital radius and size encode the local repository-node score (see below). Original public avatars are cached, with external URLs and initials as fallbacks.
 
 Validate graph replay against reported scores, user identity deduplication, full-history dates, all three leaderboard orders, row-to-orbit pagination, search, formula disclosure, direct evidence links, keyboard activation and desktop/mobile rendering. GitHub writes use only the user's authenticated `gh`; PR merging still requires explicit owner confirmation.
 
@@ -44,11 +44,13 @@ The catalog includes Astron Agent, SkillHub, Astron RPA, Astron Harness Tutorial
 
 When adding the five projects, the original three verified history archives are retained. Each leaderboard uses its own repository capture cutoff; the footer labels the date range as snapshot dates, not as the OpenRank activity window. The Astron Agent worked examples use that repository’s own capture timestamp. Existing scores are checked for unchanged graph hashes.
 
-## Global project influence and animated orbits
+## Local project scores and animated orbits
 
-Run `python scripts/collect-global-openrank.py` to fetch official `https://oss.open-digger.cn/github/{owner}/{repo}/openrank.json` data. Raw successful responses and their SHA-256 hashes, fetch times and explicit gaps are stored in `docs/galaxy-data/global-openrank/`. The frontend artifact is `src/data/galaxy-global-openrank.json`. Select the latest completed month among months with maximum project coverage; never mix months or substitute the local repository-node score.
+Both scores come from `scripts/compute-galaxy-openrank.py` using the checked-in GitHub history archives. The project score is the converged repository node (`repositoryOpenRank` in its ledger), not a sum of contributor scores. All eight projects use the same parameters: work items transfer 10% to the repository and 90% to participants; when other participants exist, authors receive 50% of the participant allocation. See the local model above and the linked original article and Community OpenRank documentation in the page.
 
-The 2026-11-10 capture covers 7 of 8 projects for 2026-10. `XHToken/Spark-MLX-LLM` returned HTTP 404 after three attempts; it is unranked and labeled No data, never zero. Dates identify the metric month; retrieval times remain in the manifest. Source: https://open-digger.cn/en/docs/user_docs/metrics/global_openrank .
+This is an all-history adaptation of the community model, not the official monthly global algorithm: no full global collaboration graph, monthly inheritance/decay, or reaction bonuses are claimed. Projects show their individual capture cutoff; historical coverage lengths differ. The map's logarithmic sizing is a separate visualization choice. The repository score is independently replayed and checked against its ledger and frontend value.
+
+The former external-score capture in `docs/galaxy-data/global-openrank/` is retained solely as superseded historical evidence from commit 004aa2ed9fae71390c8118f022695cebbf414f93. Its collection script and frontend artifact have been removed. It is never an input to active calculation or display; Spark MLX LLM now uses its own local graph like every other project.
 
 For score s and display-set maximum M, u = log(1+s)/log(1+max(1,M)). Orbital semi-major radius = 410-235u; planet radius = 17+21u. The projection uses a 0.59 vertical ratio. Missing scores use an explicitly unranked outer track. Values remain visible in labels/tooltips. The center is the Astron ecosystem identity, not a computed aggregate. Motion speeds are decorative. Project orbit wrappers move their contributor systems, while contributor wrappers independently orbit locally; avatars and text never rotate. Hover/focus pauses the relevant orbit, selected contributors remain stable, a pause button stops both layers and reduced-motion preference disables animation. Browser frames update wrapper transforms without React state renders.
 
