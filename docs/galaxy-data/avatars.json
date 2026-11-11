@@ -1637,6 +1637,12 @@
     "bytes": 1880,
     "mime": "image/jpeg"
   },
+  "davidgibbons": {
+    "source": "https://avatars.githubusercontent.com/u/814809?v=4&s=64",
+    "sha256": "1ba03add506d2605476d760cdc6b77f3d201d616acd0620186203038c0f728a9",
+    "bytes": 2584,
+    "mime": "image/jpeg"
+  },
   "Zerorigin": {
     "source": "https://avatars.githubusercontent.com/u/36463444?v=4&s=64",
     "sha256": "2c8184415f0ba86a87698609084a07d53b3b6015da8d11b9da4d998f0aac118f",
@@ -1672,12 +1678,6 @@
     "sha256": "ffa591ea824d408b7248ad240d7606c49d2f87a5e996fc4c1cee475edf556a89",
     "bytes": 10360,
     "mime": "image/png"
-  },
-  "davidgibbons": {
-    "source": "https://avatars.githubusercontent.com/u/814809?v=4&s=64",
-    "sha256": "1ba03add506d2605476d760cdc6b77f3d201d616acd0620186203038c0f728a9",
-    "bytes": 2584,
-    "mime": "image/jpeg"
   },
   "Intelligent-GuoXin": {
     "source": "https://avatars.githubusercontent.com/u/41855798?u=6ab4f1e59e63a6e9c8c8b25dec39afa3c38b67ef&v=4&s=64",

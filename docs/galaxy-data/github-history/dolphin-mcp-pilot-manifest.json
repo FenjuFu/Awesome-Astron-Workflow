@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-10T10:53:32.960759+00:00",
+  "capturedAt": "2026-11-11T03:36:11.185615+00:00",
   "repository": "iflytek/dolphin-mcp-pilot",
   "requests": {
     "b3133627cf783de9037aecdade4839d5f427af39b37fc49d62b217624f96fc5d": {
@@ -9,7 +9,7 @@
       },
       "sha256": "812c5c63e931a247e68f22cf16d6350db6dc92be75bf99f1f8c16d804592e2b2",
       "cache": "b3133627cf783de9037aecdade4839d5f427af39b37fc49d62b217624f96fc5d.json",
-      "checkedAt": "2026-11-10T10:53:23.181441+00:00",
+      "checkedAt": "2026-11-11T03:36:02.104599+00:00",
       "repository": "dolphin-mcp-pilot"
     },
     "fc794dc3460d35cc596bfd75530032c7f235f516c627a1b5f7164d16cec92060": {
@@ -22,9 +22,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "ec747e7dd26846794d557327906dc95172a43f14ec9bac0e617282d53278a573",
+      "sha256": "61b8fa641dd342434cc1f5d4c4f8f9117ffc7cfaed8fb829f42634cec2d56c59",
       "cache": "fc794dc3460d35cc596bfd75530032c7f235f516c627a1b5f7164d16cec92060.json",
-      "checkedAt": "2026-11-10T10:53:23.788493+00:00",
+      "checkedAt": "2026-11-11T03:36:02.634015+00:00",
       "repository": "dolphin-mcp-pilot"
     },
     "389320e9fca943709e38dbacaa52ac18529bf223656a7f7bad9ba7aa256ab501": {
@@ -37,9 +37,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "e9d37ad68f00b8e9d65805e089cf0d166af74e76c0d344e3eefc12f6a584f417",
+      "sha256": "cf5fd1f2a68793751d9bb58cb8c4837c7e0a0d159522a4c7e91cdfea559fc5d3",
       "cache": "389320e9fca943709e38dbacaa52ac18529bf223656a7f7bad9ba7aa256ab501.json",
-      "checkedAt": "2026-11-10T10:53:27.007885+00:00",
+      "checkedAt": "2026-11-11T03:36:05.920680+00:00",
       "repository": "dolphin-mcp-pilot"
     },
     "164a16d740eaaf46715a630ac8a2c62e963cc9122ec66e99222b9de089d2830c": {
@@ -52,9 +52,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "39d938aa7f3d59887c026e9f9234078ce6971e0f2025dc31104c350acd240eca",
+      "sha256": "e46d20e3259ea70027b749f1e329707a326118823896a72eabd5b07993122622",
       "cache": "164a16d740eaaf46715a630ac8a2c62e963cc9122ec66e99222b9de089d2830c.json",
-      "checkedAt": "2026-11-10T10:53:29.679072+00:00",
+      "checkedAt": "2026-11-11T03:36:08.105122+00:00",
       "repository": "dolphin-mcp-pilot"
     },
     "d668b24eedd6c0dafd48cfb40bf1022f7dc75131514a68d5f28eb851818c261c": {
@@ -64,7 +64,7 @@
       },
       "sha256": "e41a030c3d90308bec85f70565a2e56b789971fe6d0c1827c8d70752e3ac00af",
       "cache": "d668b24eedd6c0dafd48cfb40bf1022f7dc75131514a68d5f28eb851818c261c.json",
-      "checkedAt": "2026-11-10T10:53:30.320013+00:00",
+      "checkedAt": "2026-11-11T03:36:08.792479+00:00",
       "repository": "dolphin-mcp-pilot"
     },
     "3c0ebd49ca29357261210b2877ebe0451099b1880bef4b6bf853a75edcb3297d": {
@@ -74,7 +74,7 @@
       },
       "sha256": "2631844d812a1a1f835c176ba8e5b8a6ad341db186850976cf3a21aae9d9b48e",
       "cache": "3c0ebd49ca29357261210b2877ebe0451099b1880bef4b6bf853a75edcb3297d.json",
-      "checkedAt": "2026-11-10T10:53:30.786325+00:00",
+      "checkedAt": "2026-11-11T03:36:09.162940+00:00",
       "repository": "dolphin-mcp-pilot"
     },
     "80490abc3548d9ad359474bbb2051cb49831567b96888e3acfbe9cf55c59ae82": {
@@ -84,7 +84,7 @@
       },
       "sha256": "e38ca679b8b688d6c62e6ac869b5bdcefbaec8a355408921941a20a4489c93c0",
       "cache": "80490abc3548d9ad359474bbb2051cb49831567b96888e3acfbe9cf55c59ae82.json",
-      "checkedAt": "2026-11-10T10:53:31.290234+00:00",
+      "checkedAt": "2026-11-11T03:36:09.651455+00:00",
       "repository": "dolphin-mcp-pilot"
     },
     "3a53c49878635f897b40684ee6468031c5c6de9a922a1798d644f92984de5d23": {
@@ -98,7 +98,7 @@
       },
       "sha256": "50ebb133c7070d0060253f3c2eddf235d55a8c40c4857ccf60021237b854d234",
       "cache": "3a53c49878635f897b40684ee6468031c5c6de9a922a1798d644f92984de5d23.json",
-      "checkedAt": "2026-11-10T10:53:31.724799+00:00",
+      "checkedAt": "2026-11-11T03:36:09.948414+00:00",
       "repository": "dolphin-mcp-pilot"
     },
     "76757b4ba96cd50c81dace08ae5bb75f2a8e4a716fe2502e040bc5a33e284ac0": {
@@ -114,7 +114,7 @@
       },
       "sha256": "b6952303ee8dcc2978f71c9757489be915c778cfc698911a9c8e504e81177ccb",
       "cache": "76757b4ba96cd50c81dace08ae5bb75f2a8e4a716fe2502e040bc5a33e284ac0.json",
-      "checkedAt": "2026-11-10T10:53:32.468045+00:00",
+      "checkedAt": "2026-11-11T03:36:10.825334+00:00",
       "repository": "dolphin-mcp-pilot"
     },
     "698875b418f8831994bcef4e3dc6e9daf6f46f74ffc72e096d855c366dc4f9ef": {
@@ -124,7 +124,7 @@
       },
       "sha256": "b6963089ae69035467670984bc6314409799a8e5aa62cbea5c40247eaf8419aa",
       "cache": "698875b418f8831994bcef4e3dc6e9daf6f46f74ffc72e096d855c366dc4f9ef.json",
-      "checkedAt": "2026-11-10T10:53:32.960759+00:00",
+      "checkedAt": "2026-11-11T03:36:11.185615+00:00",
       "repository": "dolphin-mcp-pilot"
     }
   }
