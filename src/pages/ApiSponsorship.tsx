@@ -70,7 +70,7 @@ export default function ApiSponsorship() {
     catch { setError(zh ? '剪贴板不可用，请显示 Key 后手动复制。' : 'Clipboard unavailable. Reveal the key and copy it manually.'); }
   }
   const selected = protocols[protocol];
-  const curl = `curl ${host}${selected.path} \\\n+  -H "Content-Type: application/json" \\\n+  ${protocol === 2 ? '-H "x-api-key: $SPARK_API_KEY" \\\n+  -H "anthropic-version: 2023-06-01"' : '-H "Authorization: Bearer $SPARK_API_KEY"'} \\\n+  -d '${JSON.stringify(selected.body, null, 2)}'`;
+  const curl = `curl ${host}${selected.path} \\\n  -H "Content-Type: application/json" \\\n  ${protocol === 2 ? '-H "x-api-key: $SPARK_API_KEY" \\\n  -H "anthropic-version: 2023-06-01"' : '-H "Authorization: Bearer $SPARK_API_KEY"'} \\\n  -d '${JSON.stringify(selected.body, null, 2)}'`;
   return <div className="min-h-screen bg-[#f8f7fc] text-slate-900">
     <Helmet><title>{zh ? 'API 赞助' : 'API Sponsorship'} · Astron</title><meta name="referrer" content="no-referrer" /></Helmet>
     <Navigation />
