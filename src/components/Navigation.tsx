@@ -60,6 +60,7 @@ const Navigation: React.FC = () => {
       ],
     },
     { href: '/playground', label: t('nav.playground') },
+    { href: '/api-sponsorship', label: language === 'en' ? 'API Sponsorship' : 'API 赞助' },
     { href: '/galaxy', label: language === 'en' ? 'Galaxy' : '星系' },
     {
       href: '/demo',
@@ -128,7 +129,7 @@ const Navigation: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden xl:flex items-center space-x-1">
             {navItems.map((item) =>
               item.children ? (
                 <div
@@ -192,7 +193,7 @@ const Navigation: React.FC = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="xl:hidden flex items-center space-x-2">
             <button
               onClick={toggleLanguage}
               className="text-gray-700 hover:text-indigo-600 p-2"
@@ -211,7 +212,7 @@ const Navigation: React.FC = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto bg-white border-t border-gray-200">
+        <div className="xl:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto bg-white border-t border-gray-200">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) =>
               item.children ? (

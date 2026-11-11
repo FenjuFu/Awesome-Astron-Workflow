@@ -24,6 +24,7 @@ import AIChat from './pages/AIChat';
 import Privacy from './pages/Privacy';
 import Playground from './pages/Playground';
 import DemoHub from './pages/DemoHub';
+import ApiSponsorship from './pages/ApiSponsorship';
 
 const AstronGalaxy = lazy(() => import('./pages/AstronGalaxy'));
 
@@ -35,6 +36,7 @@ const routePatterns = [
   '/landscape',
   '/astron-landscape',
   '/demo',
+  '/api-sponsorship',
   '/galaxy',
   '/stats',
   '/stats/admin',
@@ -114,6 +116,7 @@ function App() {
           <Route path="/landscape" element={<Navigate to="/playground" replace />} />
           <Route path="/astron-landscape" element={<Navigate to="/playground" replace />} />
           <Route path="/demo" element={<DemoHub />} />
+          <Route path="/api-sponsorship" element={<ApiSponsorship />} />
           <Route path="/galaxy" element={<Suspense fallback={<div className="min-h-screen bg-slate-950 text-white p-8" role="status">Loading Astron Galaxy…</div>}><AstronGalaxy /></Suspense>} />
           <Route path="/stats" element={<ContributionStats />} />
           <Route path="/stats/admin" element={<RedemptionManage />} />
