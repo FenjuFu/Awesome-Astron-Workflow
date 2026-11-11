@@ -4,7 +4,7 @@
 
 ## Daily cloud refresh
 
-`.github/workflows/galaxy-daily.yml` runs at 01:30 UTC / 09:30 Asia/Shanghai daily and supports manual dispatch. GitHub may delay scheduled starts. It uses a fresh history cache, recalculates all registered projects, replays every graph, runs the publishing boundary tests and builds the frontend before publishing.
+`.github/workflows/galaxy-daily.yml` requests a daily start at 01:30 UTC / 09:30 Asia/Shanghai, with retry starts at 10:47, 12:47 and 16:47 Asia/Shanghai. GitHub may delay or omit scheduled starts; these are requested times, not a guaranteed completion time. A retry skips collection only when a same-Beijing-day successful run also passed the production-verification step. Successful no-op runs and collection-only results cannot satisfy that gate. Manual dispatch always runs. The workflow uses a fresh history cache, recalculates all registered projects, replays every graph, runs the publishing boundary tests and builds the frontend before publishing.
 
 The repository secret `GALAXY_GH_TOKEN` must authenticate as FenjuFu, with repository contents and pull-request write access and access to public GitHub history. It is never printed. Public REST collection uses the workflow's separate read-only `github.token` quota, while GraphQL and publishing retain the owner's identity. Each rate-limit wait reads the quota for the same credential that made the request. Local runs retain existing gh authentication. A missing/expired secret fails before collection; no permission or branch-protection settings are changed automatically. Provision credentials through an explicitly authorized secure flow.
 
