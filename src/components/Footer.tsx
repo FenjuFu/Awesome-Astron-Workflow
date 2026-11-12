@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   const { t, language } = useLanguage();
 
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="spark-footer bg-gray-900 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -22,12 +22,12 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://github.com/your-username/Awesome-Astron-Workflow"
+                href="https://github.com/FenjuFu/Awesome-Astron-Workflow"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
-                <Github className="h-6 w-6" />
+                <Github className="h-6 w-6" /><span className="sr-only">GitHub</span>
               </a>
             </div>
           </div>
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="https://github.com/your-username/Awesome-Astron-Workflow"
+                  href="https://github.com/FenjuFu/Awesome-Astron-Workflow"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/your-username/Awesome-Astron-Workflow/issues"
+                  href="https://github.com/FenjuFu/Awesome-Astron-Workflow/issues"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/your-username/Awesome-Astron-Workflow/pulls"
+                  href="https://github.com/FenjuFu/Awesome-Astron-Workflow/pulls"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors duration-200"

@@ -32,13 +32,16 @@ const WorkflowShowcase: React.FC = () => {
     <section id="workflows" className="py-20 bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="spark-section-heading text-center mb-12">
+          <img src="/illustrations/spark-flame-guide.png" alt="" width="100" height="110" loading="lazy" />
+          <div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-4 animate-fade-in-up">
             {t('workflows.title')}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {t('workflows.subtitle')}
           </p>
+          </div>
         </div>
 
         {/* Category Tabs (Gamified) */}
