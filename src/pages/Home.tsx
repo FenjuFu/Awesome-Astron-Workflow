@@ -10,7 +10,7 @@ import GalaxyEntry from '../components/GalaxyEntry';
 
 const Home: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="spark-home min-h-screen bg-white">
       <Navigation />
       <main>
         <Hero />

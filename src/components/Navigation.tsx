@@ -1,284 +1,72 @@
-import React, { useState } from 'react';
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+﻿import React, { useRef, useState } from 'react';
+import { Menu, X, Globe, ChevronDown, Sparkles } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 
-interface NavChild {
-  href: string;
-  label: string;
-  tip?: string;
-  shuttingDown?: boolean;
-}
+interface NavChild { href: string; label: string; tip?: string; shuttingDown?: boolean; }
+interface NavItem { href: string; label: string; children?: NavChild[]; }
+const NavLink: React.FC<{ href: string; className?: string; onClick?: () => void; children: React.ReactNode; current?: boolean }> = ({ href, className, onClick, children, current }) =>
+  /^https?:\/\//.test(href) ? <a href={href} className={className} onClick={onClick} target="_blank" rel="noopener noreferrer">{children}</a>
+  : href.startsWith('/#') ? <a href={href} className={className} onClick={onClick} aria-current={current ? 'page' : undefined}>{children}</a>
+  : <Link to={href} className={className} onClick={onClick} aria-current={current ? 'page' : undefined}>{children}</Link>;
 
-interface NavItem {
-  href?: string;
-  label: string;
-  children?: NavChild[];
-}
-
-const isExternal = (href: string) => /^https?:\/\//.test(href);
-
-const NavLink: React.FC<{ href: string; className: string; onClick?: () => void; children: React.ReactNode }> = ({
-  href,
-  className,
-  onClick,
-  children,
-}) =>
-  isExternal(href) ? (
-    <a href={href} className={className} onClick={onClick} target="_blank" rel="noopener noreferrer">
-      {children}
-    </a>
-  ) : href.startsWith('/#') ? (
-    <a href={href} className={className} onClick={onClick}>
-      {children}
-    </a>
-  ) : (
-    <Link to={href} className={className} onClick={onClick}>
-      {children}
-    </Link>
-  );
-
-const Navigation: React.FC = () => {
+export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const nav = useRef<HTMLElement>(null);
   const { language, setLanguage, t } = useLanguage();
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'zh-CN' : 'en');
-  };
-
+  const location = useLocation();
+  const zh = language === 'zh-CN';
   const navItems: NavItem[] = [
-    {
-      href: '/#home',
-      label: t('nav.home'),
-      children: [
-        { href: '/#workflows', label: t('nav.workflows') },
-        { href: '/#way-to-super-agent', label: t('nav.wayToSuperAgent') },
-        { href: '/#community', label: t('nav.community') },
-        { href: '/#about', label: t('nav.about') },
-      ],
-    },
+    { href: '/#home', label: t('nav.home'), children: [
+      { href: '/#workflows', label: t('nav.workflows') },
+      { href: '/#way-to-super-agent', label: t('nav.wayToSuperAgent') },
+      { href: '/#community', label: t('nav.community') },
+      { href: '/#about', label: t('nav.about') },
+    ] },
     { href: '/playground', label: t('nav.playground') },
-    { href: '/api-sponsorship', label: language === 'en' ? 'API Sponsorship' : 'API 赞助' },
-    { href: '/galaxy', label: language === 'en' ? 'Galaxy' : '星系' },
-    {
-      href: '/demo',
-      label: t('nav.demo'),
-      children: [
-        {
-          href: '/demo',
-          label: t('nav.demoOverview'),
-          tip: t('nav.demoOverviewTip'),
-        },
-        {
-          href: 'https://agent.xfyun.cn/agentbuilder/home',
-          label: `${t('nav.astronAgent')} · ${t('demo.officialSaas')}`,
-        },
-        {
-          href: 'https://cowork.iflydigital.com/',
-          label: `${t('demo.cowork')} · ${t('demo.officialSaas')}`,
-        },
-        {
-          href: 'https://skill.xfyun.cn/',
-          label: `${t('nav.skillHub')} · ${t('demo.officialSaas')}`,
-        },
-        {
-          href: 'https://astron-agent-nginx.zeabur.app',
-          label: t('nav.astronAgent'),
-          tip: t('nav.astronAgentTip'),
-          shuttingDown: true,
-        },
-        {
-          href: 'https://astron-rpa-gw-fenjufu-20260715.zeabur.app',
-          label: t('nav.astronRpa'),
-          tip: t('nav.astronRpaTip'),
-          shuttingDown: true,
-        },
-        {
-          href: 'https://skillhub-fenjufu-20260701.zeabur.app',
-          label: t('nav.skillHub'),
-          tip: t('nav.skillHubTip'),
-          shuttingDown: true,
-        },
-        {
-          href: 'https://zeabur.com/blogs/zeabur-is-shutting-down',
-          label: t('demo.zeabur.link'),
-        },
-      ],
-    },
-    {
-      href: '/activities',
-      label: t('nav.activities'),
-      children: [
-        { href: '/activities/lucky_draw', label: t('nav.luckyDraw') },
-      ],
-    },
+    { href: '/api-sponsorship', label: zh ? 'API 赞助' : 'API Sponsorship' },
+    { href: '/galaxy', label: zh ? '星系' : 'Galaxy' },
+    { href: '/demo', label: t('nav.demo'), children: [
+      { href: '/demo', label: t('nav.demoOverview'), tip: t('nav.demoOverviewTip') },
+      { href: 'https://agent.xfyun.cn/agentbuilder/home', label: `${t('nav.astronAgent')} · ${t('demo.officialSaas')}` },
+      { href: 'https://cowork.iflydigital.com/', label: `${t('demo.cowork')} · ${t('demo.officialSaas')}` },
+      { href: 'https://skill.xfyun.cn/', label: `${t('nav.skillHub')} · ${t('demo.officialSaas')}` },
+      { href: 'https://astron-agent-nginx.zeabur.app', label: t('nav.astronAgent'), tip: t('nav.astronAgentTip'), shuttingDown: true },
+      { href: 'https://astron-rpa-gw-fenjufu-20260715.zeabur.app', label: t('nav.astronRpa'), tip: t('nav.astronRpaTip'), shuttingDown: true },
+      { href: 'https://skillhub-fenjufu-20260701.zeabur.app', label: t('nav.skillHub'), tip: t('nav.skillHubTip'), shuttingDown: true },
+      { href: 'https://zeabur.com/blogs/zeabur-is-shutting-down', label: t('demo.zeabur.link') },
+    ] },
+    { href: '/activities', label: t('nav.activities'), children: [{ href: '/activities/lucky_draw', label: t('nav.luckyDraw') }] },
     { href: '/chat', label: t('nav.chat') },
     { href: '/stats', label: t('nav.stats') },
   ];
-
-  const itemClass = 'whitespace-nowrap text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium transition-colors duration-200';
-
-  return (
-    <nav className="bg-white shadow-lg fixed w-full top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center flex-shrink-0">
-            <h1 className="text-2xl font-bold text-indigo-600">Astron</h1>
+  const close = () => { setIsOpen(false); setOpenDropdown(null); };
+  return <nav className="spark-nav" ref={nav} aria-label={zh ? '主导航' : 'Main navigation'} onKeyDown={event => {
+    if (event.key !== 'Escape') return;
+    const expanded = nav.current?.querySelector<HTMLButtonElement>('.spark-dropdown-toggle[aria-expanded="true"]');
+    close(); (expanded || menuButton.current)?.focus();
+  }}>
+    <div className="spark-nav-inner">
+      <Link to="/" className="spark-wordmark" onClick={close} aria-label="Astron — Home"><Sparkles aria-hidden="true" size={23} /><span>Astron<span className="spark-wordmark-dot">.</span></span></Link>
+      <div className={`spark-nav-links ${isOpen ? 'is-open' : ''}`} id="spark-navigation">
+        {navItems.map((item, index) => <div className="spark-nav-item" key={item.href} onBlur={event => {
+          if (!event.currentTarget.contains(event.relatedTarget as Node)) setOpenDropdown(current => current === item.href ? null : current);
+        }}>
+          <div className="spark-nav-item-row">
+            <NavLink href={item.href} onClick={close} current={item.href === '/#home' ? location.pathname === '/' : location.pathname === item.href}>{item.label}</NavLink>
+            {item.children && <button className="spark-dropdown-toggle" aria-label={`${item.label} ${zh ? '子菜单' : 'submenu'}`} aria-expanded={openDropdown === item.href} aria-controls={`spark-submenu-${index}`} onClick={() => setOpenDropdown(openDropdown === item.href ? null : item.href)}><ChevronDown size={13} aria-hidden="true" /></button>}
           </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center space-x-1">
-            {navItems.map((item) =>
-              item.children ? (
-                <div
-                  key={item.label}
-                  className="relative"
-                  onMouseEnter={() => setOpenDropdown(item.label)}
-                  onMouseLeave={() => setOpenDropdown(null)}
-                >
-                  {item.href ? (
-                    <NavLink href={item.href} className={`${itemClass} inline-flex items-center gap-0.5`}>
-                      {item.label}
-                      <ChevronDown className="h-3 w-3 mt-0.5 flex-shrink-0" />
-                    </NavLink>
-                  ) : (
-                    <button className={`${itemClass} inline-flex items-center gap-0.5`}>
-                      {item.label}
-                      <ChevronDown className="h-3 w-3 mt-0.5 flex-shrink-0" />
-                    </button>
-                  )}
-                  {openDropdown === item.label && (
-                    <div className="absolute top-full left-0 mt-0 w-max min-w-[10rem] bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50">
-                      {item.children.map((child) => (
-                        <div key={child.href} className="relative group/child">
-                          <NavLink
-                            href={child.href}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:text-indigo-600 hover:bg-gray-50 whitespace-nowrap"
-                            onClick={() => setOpenDropdown(null)}
-                          >
-                            {child.label}
-                            {child.shuttingDown && (
-                              <span className="ml-2 inline-flex rounded-full bg-rose-100 px-2 py-0.5 text-[11px] font-medium text-rose-700">
-                                {t('nav.shuttingDown')}
-                              </span>
-                            )}
-                          </NavLink>
-                          {child.tip && (
-                            <div className="pointer-events-none absolute top-0 left-full ml-2 w-60 rounded-lg bg-gray-900 px-3 py-2 text-xs leading-relaxed text-white shadow-xl opacity-0 translate-x-1 transition-all duration-200 group-hover/child:opacity-100 group-hover/child:translate-x-0 z-50">
-                              {child.tip}
-                              <span className="absolute top-3 -left-1 h-2 w-2 rotate-45 bg-gray-900" />
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <NavLink key={item.href} href={item.href!} className={itemClass}>
-                  {item.label}
-                </NavLink>
-              )
-            )}
-
-            <button
-              onClick={toggleLanguage}
-              className={`${itemClass} flex items-center gap-1.5`}
-            >
-              <Globe className="h-4 w-4 flex-shrink-0" />
-              <span>{t('language.toggle')}</span>
-            </button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="xl:hidden flex items-center space-x-2">
-            <button
-              onClick={toggleLanguage}
-              className="text-gray-700 hover:text-indigo-600 p-2"
-            >
-              <Globe className="h-4 w-4" />
-            </button>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-indigo-600 p-2"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
+          {item.children && openDropdown === item.href && <div className="spark-submenu" id={`spark-submenu-${index}`}>
+            {item.children.map(child => <NavLink key={child.href} href={child.href} onClick={close}><span>{child.label}{child.shuttingDown && <small className="spark-shutdown">{t('nav.shuttingDown')}</small>}</span>{child.tip && <small>{child.tip}</small>}</NavLink>)}
+          </div>}
+        </div>)}
       </div>
-
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="xl:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto bg-white border-t border-gray-200">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navItems.map((item) =>
-              item.children ? (
-                <div key={item.label}>
-                  <button
-                    className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
-                    onClick={() =>
-                      setOpenMobileDropdown(openMobileDropdown === item.label ? null : item.label)
-                    }
-                  >
-                    <span>{item.label}</span>
-                    <ChevronDown
-                      className={`h-4 w-4 transition-transform duration-200 ${
-                        openMobileDropdown === item.label ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-                  {openMobileDropdown === item.label && (
-                    <div className="ml-4 mt-0.5 space-y-0.5">
-                      {item.href && (
-                        <NavLink
-                          href={item.href}
-                          className="block px-3 py-2 text-sm font-medium text-gray-500 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {t('nav.viewAll')}
-                        </NavLink>
-                      )}
-                      {item.children.map((child) => (
-                        <div key={child.href}>
-                          <NavLink
-                            href={child.href}
-                            className="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {child.label}
-                            {child.shuttingDown && (
-                              <span className="ml-2 inline-flex rounded-full bg-rose-100 px-2 py-0.5 text-[11px] font-medium text-rose-700">
-                                {t('nav.shuttingDown')}
-                              </span>
-                            )}
-                          </NavLink>
-                          {child.tip && (
-                            <p className="px-3 pb-2 text-xs leading-relaxed text-gray-400">{child.tip}</p>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <NavLink
-                  key={item.href}
-                  href={item.href!}
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </NavLink>
-              )
-            )}
-          </div>
-        </div>
-      )}
-    </nav>
-  );
-};
-
-export default Navigation;
+      <div className="spark-nav-actions">
+        <button className="spark-language" onClick={() => { setLanguage(zh ? 'en' : 'zh-CN'); setOpenDropdown(null); }} aria-label={zh ? 'Switch to English' : '切换到中文'}><Globe size={17} aria-hidden="true" /><span>{zh ? 'EN' : '中文'}</span></button>
+        <button className="spark-menu-toggle" ref={menuButton} onClick={() => { setIsOpen(!isOpen); setOpenDropdown(null); }} aria-label={zh ? (isOpen ? '关闭导航' : '打开导航') : (isOpen ? 'Close navigation' : 'Open navigation')} aria-expanded={isOpen} aria-controls="spark-navigation">{isOpen ? <X size={23} /> : <Menu size={23} />}</button>
+      </div>
+    </div>
+  </nav>;
+}
