@@ -1,6 +1,6 @@
 {
   "project": "astron-agent",
-  "capturedAt": "2026-11-11T03:37:47.639091+00:00",
+  "capturedAt": "2026-11-12T08:42:40.951324+00:00",
   "graphSha256": "b1f1dc058d0d9cd5f06bf4893133222a356e78689398c7ed00c5029f9d234ef3",
   "model": "astron-community-all-history-no-automation-v2",
   "formula": "x_i(next) = r_i * b_i + (1-r_i) * sum_j(w_ji * x_j)",
