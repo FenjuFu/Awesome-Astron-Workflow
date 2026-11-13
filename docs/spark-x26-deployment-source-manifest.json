@@ -1,0 +1,416 @@
+{
+  "research_date_utc": "2026-11-13",
+  "route_count": 19,
+  "source_revision_checks": {
+    "XHToken/Spark-X2.6": "53f00666ad16c53a9eff403c929724c38ff6f25e",
+    "XHToken/Spark-MLX-LLM": "92c6f154b752d588ad2837c742fe823aa45236c3",
+    "mohdmahmodi/Spark-X2.6-4B-onnx-webgpu": "af3a1e803d454dcbda395571d327509b95090b93"
+  },
+  "snapshots": [
+    {
+      "key": "readme",
+      "url": "https://raw.githubusercontent.com/XHToken/Spark-X2.6/X2.6/README.md",
+      "sha256": "9e7c7819ac9dad43ec25ec65f00061720e5c7a517dac1100752d4bbc4673ea19",
+      "checked_at": "2026-11-13T01:05:19.066921+00:00",
+      "bytes": 16507
+    },
+    {
+      "key": "mlx",
+      "url": "https://raw.githubusercontent.com/XHToken/Spark-MLX-LLM/main/README.md",
+      "sha256": "b504e9a7b88980bdffc1d4b5091b98f8a789e97fe2467ca040bd9948ecd23d8d",
+      "checked_at": "2026-11-13T01:05:18.986652+00:00",
+      "bytes": 9934
+    },
+    {
+      "key": "dspark",
+      "url": "https://huggingface.co/XHToken/Spark-X2.6-4B-DSpark-GGUF/raw/main/README.md",
+      "sha256": "96a657d742b888483d1f8aa2ed5ce83c656d4199d964146f2a5a7ca352b80a15",
+      "checked_at": "2026-11-13T01:05:18.845272+00:00",
+      "bytes": 5196
+    },
+    {
+      "key": "gguf",
+      "url": "https://huggingface.co/XHToken/Spark-X2.6-4B-GGUF/raw/main/README.md",
+      "sha256": "2ad5e47e0809d614d9a9f6c961beb3511519e81affdb34ae37d9141108bb1aab",
+      "checked_at": "2026-11-13T01:05:18.829550+00:00",
+      "bytes": 14945
+    },
+    {
+      "key": "hf_discussions",
+      "url": "https://huggingface.co/api/models/XHToken/Spark-X2.6-4B/discussions",
+      "sha256": "b8d10f73ddd9a52c4debc0fc4cf68cebf97a71314e2bbfd3f2350cd22874b8d9",
+      "checked_at": "2026-11-13T01:05:18.979575+00:00",
+      "bytes": 23291
+    },
+    {
+      "key": "hf_gguf_discussions",
+      "url": "https://huggingface.co/api/models/XHToken/Spark-X2.6-4B-GGUF/discussions",
+      "sha256": "89fd25fedfc5149da2ae02fa69f680b359ecc043365ece8f159d4984dea8fc46",
+      "checked_at": "2026-11-13T01:05:18.844489+00:00",
+      "bytes": 5958
+    },
+    {
+      "key": "mobile",
+      "url": "https://raw.githubusercontent.com/wiki/XHToken/Spark-X2.6/Mobile-Apps.md",
+      "sha256": "dbd8469629334e7f746047eae42aaa71dafc809a207158e51cebc323ca8e3451",
+      "checked_at": "2026-11-13T01:05:19.080627+00:00",
+      "bytes": 28284
+    },
+    {
+      "key": "webgpu",
+      "url": "https://raw.githubusercontent.com/mohdmahmodi/Spark-X2.6-4B-onnx-webgpu/af3a1e803d454dcbda395571d327509b95090b93/README.md",
+      "sha256": "2086e6e906be17f5fcf85982349947f965ca38013cfaaf7db279fdc5380f4cf9",
+      "bytes": 15304,
+      "snapshot_written_at": "2026-11-13T01:06:51.080221+00:00"
+    },
+    {
+      "key": "cortiq",
+      "url": "https://huggingface.co/infosave/Spark-X2.6-4B-cmf/raw/main/README.md",
+      "sha256": "f5b6ba19ba3c34523fbf63100210f44e42cf52f05585ea543685e52a48747775",
+      "bytes": 25297,
+      "snapshot_written_at": "2026-11-13T01:06:51.080221+00:00"
+    },
+    {
+      "key": "flashhub-detail",
+      "url": "https://flashhub-api.aodianyun.com/api/v1/repositories/37",
+      "sha256": "71fc53575dbfbbcf13d0f784b3a570657015c3ab8c2cba861d5c87a4c774d75f",
+      "bytes": 53754,
+      "snapshot_written_at": "2026-11-13T01:16:19.666448+00:00"
+    },
+    {
+      "key": "flashhub-files",
+      "url": "https://flashhub-api.aodianyun.com/api/v1/repositories/37/versions/141/files?page=1&page_size=100",
+      "sha256": "3e1037d15ba204ca81ce362137d20640f1af7b270ccde3e8d2fbfcc29d41cf47",
+      "bytes": 14847,
+      "snapshot_written_at": "2026-11-13T01:17:53.470987+00:00"
+    },
+    {
+      "key": "android",
+      "url": "https://raw.githubusercontent.com/Leo00703/Local-LLM/main/README.md",
+      "sha256": "45e3665c7be25cfa3096e1ee76c8beb49d1de4dbb7f58828aecc307149925b3a",
+      "bytes": 10794,
+      "snapshot_written_at": "2026-11-13T01:06:51.091316+00:00"
+    },
+    {
+      "key": "ios",
+      "url": "https://itunes.apple.com/lookup?id=6804004948&country=us",
+      "sha256": "169320274115a5654fe7aea151234862ea6688a92ace0412de12a2f6b841e626",
+      "bytes": 9005,
+      "snapshot_written_at": "2026-11-13T01:06:50.711362+00:00"
+    },
+    {
+      "key": "space",
+      "url": "https://huggingface.co/spaces/mrfakename/spark-x2.6-4b/raw/main/README.md",
+      "sha256": "e732257dd8b5ccc1ffbfe81fdb1b5b4fb6f45cfcf9e3bf3a70eb64e43aac585b",
+      "bytes": 587,
+      "snapshot_written_at": "2026-11-13T01:06:50.938472+00:00"
+    },
+    {
+      "key": "card",
+      "url": "https://huggingface.co/XHToken/Spark-X2.6-4B/raw/main/README.md",
+      "sha256": "02d5009d9d54004c2c86be0e0d221716c46bdeac4917ace3e1939687a021ec45",
+      "bytes": 15824,
+      "snapshot_written_at": "2026-11-13T01:06:50.993651+00:00"
+    },
+    {
+      "key": "hf31",
+      "url": "https://huggingface.co/api/models/XHToken/Spark-X2.6-4B/discussions/31",
+      "sha256": "7d106add2b50b7cdeae9f7c21dcadfd3b0c22b548ea7170d5188050bab33d4e5",
+      "bytes": 6892,
+      "snapshot_written_at": "2026-11-13T01:06:50.979353+00:00"
+    },
+    {
+      "key": "hf34",
+      "url": "https://huggingface.co/api/models/XHToken/Spark-X2.6-4B/discussions/34",
+      "sha256": "0ae40dea479a6d987a8aa133ffd3bb00771716c7b814cc022ac1b86fa7853a4b",
+      "bytes": 8125,
+      "snapshot_written_at": "2026-11-13T01:06:50.964067+00:00"
+    },
+    {
+      "key": "hfgg9",
+      "url": "https://huggingface.co/api/models/XHToken/Spark-X2.6-4B-GGUF/discussions/9",
+      "sha256": "07c279df56d1d2052ec62646cb5959504fe278df199616937b46678505d00ecb",
+      "bytes": 4423,
+      "snapshot_written_at": "2026-11-13T01:06:50.942987+00:00"
+    },
+    {
+      "key": "rapid-report",
+      "url": "https://raw.githubusercontent.com/raullenchai/Rapid-MLX/4d5ac49d9a5f82574db78df48d6965f05b2d1c51/docs/engineering/performance/2026-10-25-trending-models.md",
+      "sha256": "672191eff5a3cc404128eb66557ffcc505e5394b5d7bd5d9d0d5932b2062b2df",
+      "bytes": 7562,
+      "snapshot_written_at": "2026-11-13T01:14:13.424394+00:00"
+    }
+  ],
+  "external_card_link_checks": [
+    {
+      "url": "https://maas.xfyun.cn/",
+      "status": 200,
+      "final_url": "https://maas.xfyun.cn/",
+      "checked_at": "2026-11-13T01:18:16.000063+00:00"
+    },
+    {
+      "url": "https://maas.xfyun.cn/doc/guide/3%E3%80%81API%20%E6%8E%A5%E5%8F%A3/3.1%20%E6%98%9F%E7%81%AB%E6%A8%A1%E5%9E%8B%20API/3.1.1%20Chat.html",
+      "status": 200,
+      "final_url": "https://maas.xfyun.cn/doc/guide/3%E3%80%81API%20%E6%8E%A5%E5%8F%A3/3.1%20%E6%98%9F%E7%81%AB%E6%A8%A1%E5%9E%8B%20API/3.1.1%20Chat.html",
+      "checked_at": "2026-11-13T01:18:16.017398+00:00"
+    },
+    {
+      "url": "https://flashhub.top/repositories/37",
+      "status": 200,
+      "final_url": "https://flashhub.top/repositories/37",
+      "checked_at": "2026-11-13T01:18:16.823636+00:00"
+    },
+    {
+      "url": "https://flashhub.top/",
+      "status": 200,
+      "final_url": "https://flashhub.top/",
+      "checked_at": "2026-11-13T01:18:16.814999+00:00"
+    },
+    {
+      "url": "https://huggingface.co/spaces/mrfakename/spark-x2.6-4b",
+      "status": 200,
+      "final_url": "https://huggingface.co/spaces/mrfakename/spark-x2.6-4b",
+      "checked_at": "2026-11-13T01:18:16.569238+00:00"
+    },
+    {
+      "url": "https://huggingface.co/spaces/mrfakename/spark-x2.6-4b/tree/main",
+      "status": 200,
+      "final_url": "https://huggingface.co/spaces/mrfakename/spark-x2.6-4b/tree/main",
+      "checked_at": "2026-11-13T01:18:16.906316+00:00"
+    },
+    {
+      "url": "https://ollama.com/download",
+      "status": 200,
+      "final_url": "https://ollama.com/download",
+      "checked_at": "2026-11-13T01:18:16.537667+00:00"
+    },
+    {
+      "url": "https://ollama.com/SparkLLM/Spark-X2.6-4B",
+      "status": 200,
+      "final_url": "https://ollama.com/SparkLLM/Spark-X2.6-4B",
+      "checked_at": "2026-11-13T01:18:16.731196+00:00"
+    },
+    {
+      "url": "https://ollama.com/SparkLLM/Spark-X2.6-4B:q4_k_m",
+      "status": 200,
+      "final_url": "https://ollama.com/SparkLLM/Spark-X2.6-4B:q4_k_m",
+      "checked_at": "2026-11-13T01:18:16.687574+00:00"
+    },
+    {
+      "url": "https://lmstudio.ai/download",
+      "status": 200,
+      "final_url": "https://lmstudio.ai/download",
+      "checked_at": "2026-11-13T01:18:17.061474+00:00"
+    },
+    {
+      "url": "https://github.com/XHToken/Spark-X2.6/blob/X2.6/README.md#lm-studio",
+      "status": 200,
+      "final_url": "https://github.com/XHToken/Spark-X2.6/blob/X2.6/README.md",
+      "checked_at": "2026-11-13T01:18:16.937180+00:00"
+    },
+    {
+      "url": "https://huggingface.co/XHToken/Spark-X2.6-4B-GGUF",
+      "status": 200,
+      "final_url": "https://huggingface.co/XHToken/Spark-X2.6-4B-GGUF",
+      "checked_at": "2026-11-13T01:18:16.768442+00:00"
+    },
+    {
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "status": 200,
+      "final_url": "https://github.com/ggml-org/llama.cpp",
+      "checked_at": "2026-11-13T01:18:17.598842+00:00"
+    },
+    {
+      "url": "https://huggingface.co/bartowski/Spark-X2.6-4B-GGUF",
+      "status": 200,
+      "final_url": "https://huggingface.co/bartowski/Spark-X2.6-4B-GGUF",
+      "checked_at": "2026-11-13T01:18:17.292461+00:00"
+    },
+    {
+      "url": "https://unsloth.ai/docs/new/studio",
+      "status": 200,
+      "final_url": "https://unsloth.ai/docs/new/studio",
+      "checked_at": "2026-11-13T01:18:18.474068+00:00"
+    },
+    {
+      "url": "https://github.com/XHToken/Spark-X2.6/blob/X2.6/README.md#unsloth",
+      "status": 200,
+      "final_url": "https://github.com/XHToken/Spark-X2.6/blob/X2.6/README.md",
+      "checked_at": "2026-11-13T01:18:17.375527+00:00"
+    },
+    {
+      "url": "https://github.com/XHToken/Spark-X2.6/blob/X2.6/README.md#transformers",
+      "status": 200,
+      "final_url": "https://github.com/XHToken/Spark-X2.6/blob/X2.6/README.md",
+      "checked_at": "2026-11-13T01:18:17.386280+00:00"
+    },
+    {
+      "url": "https://huggingface.co/XHToken/Spark-X2.6-4B/tree/main",
+      "status": 200,
+      "final_url": "https://huggingface.co/XHToken/Spark-X2.6-4B/tree/main",
+      "checked_at": "2026-11-13T01:18:17.736309+00:00"
+    },
+    {
+      "url": "https://github.com/XHToken/Spark-MLX-LLM",
+      "status": 200,
+      "final_url": "https://github.com/XHToken/Spark-MLX-LLM",
+      "checked_at": "2026-11-13T01:18:18.046355+00:00"
+    },
+    {
+      "url": "https://github.com/XHToken/Spark-MLX-LLM/blob/main/docs/en/environment.md",
+      "status": 200,
+      "final_url": "https://github.com/XHToken/Spark-MLX-LLM/blob/main/docs/en/environment.md",
+      "checked_at": "2026-11-13T01:18:18.610757+00:00"
+    },
+    {
+      "url": "https://huggingface.co/XHToken/Spark-X2.6-4B-INT4",
+      "status": 200,
+      "final_url": "https://huggingface.co/XHToken/Spark-X2.6-4B-INT4",
+      "checked_at": "2026-11-13T01:18:17.766966+00:00"
+    },
+    {
+      "url": "https://github.com/XHToken/Spark-X2.6/blob/X2.6/README.md#sglang",
+      "status": 200,
+      "final_url": "https://github.com/XHToken/Spark-X2.6/blob/X2.6/README.md",
+      "checked_at": "2026-11-13T01:18:17.737463+00:00"
+    },
+    {
+      "url": "https://docs.sglang.ai/get_started/install.html",
+      "status": 200,
+      "final_url": "https://docs.sglang.io/docs/get-started/install",
+      "checked_at": "2026-11-13T01:18:22.025223+00:00"
+    },
+    {
+      "url": "https://github.com/XHToken/Spark-X2.6/blob/X2.6/README.md#vllm",
+      "status": 200,
+      "final_url": "https://github.com/XHToken/Spark-X2.6/blob/X2.6/README.md",
+      "checked_at": "2026-11-13T01:18:18.028171+00:00"
+    },
+    {
+      "url": "https://github.com/XHToken/Spark-plugin",
+      "status": 200,
+      "final_url": "https://github.com/XHToken/Spark-plugin",
+      "checked_at": "2026-11-13T01:18:18.643792+00:00"
+    },
+    {
+      "url": "https://huggingface.co/spaces/mohdmahmodi/Spark-X2.6-WebGPU",
+      "status": 200,
+      "final_url": "https://huggingface.co/spaces/mohdmahmodi/Spark-X2.6-WebGPU",
+      "checked_at": "2026-11-13T01:18:18.338727+00:00"
+    },
+    {
+      "url": "https://github.com/mohdmahmodi/Spark-X2.6-4B-onnx-webgpu",
+      "status": 200,
+      "final_url": "https://github.com/mohdmahmodi/Spark-X2.6-4B-onnx-webgpu",
+      "checked_at": "2026-11-13T01:18:19.060750+00:00"
+    },
+    {
+      "url": "https://huggingface.co/mohdmahmodi/Spark-X2.6-4B-ONNX-WebGPU",
+      "status": 200,
+      "final_url": "https://huggingface.co/mohdmahmodi/Spark-X2.6-4B-ONNX-WebGPU",
+      "checked_at": "2026-11-13T01:18:18.487918+00:00"
+    },
+    {
+      "url": "https://github.com/Leo00703/Local-LLM/releases",
+      "status": 200,
+      "final_url": "https://github.com/Leo00703/Local-LLM/releases",
+      "checked_at": "2026-11-13T01:18:18.869707+00:00"
+    },
+    {
+      "url": "https://github.com/Leo00703/Local-LLM#supported-models",
+      "status": 200,
+      "final_url": "https://github.com/Leo00703/Local-LLM",
+      "checked_at": "2026-11-13T01:18:19.206622+00:00"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/local-llm-on-device/id6804004948",
+      "status": 200,
+      "final_url": "https://apps.apple.com/cn/iphone/today",
+      "checked_at": "2026-11-13T01:18:19.399770+00:00"
+    },
+    {
+      "url": "https://x.com/TonyZ278264/status/2114415748257022091",
+      "status": 200,
+      "final_url": "https://x.com/TonyZ278264/status/2114415748257022091",
+      "checked_at": "2026-11-13T01:18:19.065431+00:00"
+    },
+    {
+      "url": "https://apps.apple.com/jp/app/id6756705802",
+      "status": 200,
+      "final_url": "https://apps.apple.com/cn/iphone/today",
+      "checked_at": "2026-11-13T01:18:19.737497+00:00"
+    },
+    {
+      "url": "https://github.com/XHToken/Spark-X2.6/wiki/Mobile-Apps",
+      "status": 200,
+      "final_url": "https://github.com/XHToken/Spark-X2.6/wiki/Mobile-Apps",
+      "checked_at": "2026-11-13T01:18:19.609119+00:00"
+    },
+    {
+      "url": "https://ai-tier.com/results/raspberry-pi-5/spark-x2-6-4b/",
+      "status": 200,
+      "final_url": "https://ai-tier.com/results/raspberry-pi-5/spark-x2-6-4b/",
+      "checked_at": "2026-11-13T01:18:19.385553+00:00"
+    },
+    {
+      "url": "https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md",
+      "status": 200,
+      "final_url": "https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md",
+      "checked_at": "2026-11-13T01:18:19.625236+00:00"
+    },
+    {
+      "url": "https://huggingface.co/XHToken/Spark-X2.6-4B-DSpark-GGUF",
+      "status": 200,
+      "final_url": "https://huggingface.co/XHToken/Spark-X2.6-4B-DSpark-GGUF",
+      "checked_at": "2026-11-13T01:18:19.619363+00:00"
+    },
+    {
+      "url": "https://github.com/XHToken/Spark-MLX-LLM#dspark-models",
+      "status": 200,
+      "final_url": "https://github.com/XHToken/Spark-MLX-LLM",
+      "checked_at": "2026-11-13T01:18:19.729564+00:00"
+    },
+    {
+      "url": "https://github.com/ggml-org/llama.cpp/issues/31985",
+      "status": 200,
+      "final_url": "https://github.com/ggml-org/llama.cpp/issues/31985",
+      "checked_at": "2026-11-13T01:18:20.272293+00:00"
+    },
+    {
+      "url": "https://github.com/raullenchai/Rapid-MLX",
+      "status": 200,
+      "final_url": "https://github.com/raullenchai/Rapid-MLX",
+      "checked_at": "2026-11-13T01:18:20.302611+00:00"
+    },
+    {
+      "url": "https://rapidmlx.com/docs/models/alias-catalog",
+      "status": 200,
+      "final_url": "https://rapidmlx.com/docs/models/alias-catalog",
+      "checked_at": "2026-11-13T01:18:21.238327+00:00"
+    },
+    {
+      "url": "https://github.com/raullenchai/Rapid-MLX/blob/4d5ac49d9a5f82574db78df48d6965f05b2d1c51/docs/engineering/performance/2026-10-25-trending-models.md",
+      "status": 200,
+      "final_url": "https://github.com/raullenchai/Rapid-MLX/blob/4d5ac49d9a5f82574db78df48d6965f05b2d1c51/docs/engineering/performance/2026-10-25-trending-models.md",
+      "checked_at": "2026-11-13T01:18:20.650274+00:00"
+    },
+    {
+      "url": "https://huggingface.co/infosave/Spark-X2.6-4B-cmf",
+      "status": 200,
+      "final_url": "https://huggingface.co/infosave/Spark-X2.6-4B-cmf",
+      "checked_at": "2026-11-13T01:18:20.323026+00:00"
+    },
+    {
+      "url": "https://huggingface.co/infosave/Spark-X2.6-4B-turbo-CUDA-cmf",
+      "status": 200,
+      "final_url": "https://huggingface.co/infosave/Spark-X2.6-4B-turbo-CUDA-cmf",
+      "checked_at": "2026-11-13T01:18:20.534588+00:00"
+    },
+    {
+      "url": "https://huggingface.co/XHToken/Spark-X2.6-4B/discussions/34",
+      "status": 200,
+      "final_url": "https://huggingface.co/XHToken/Spark-X2.6-4B/discussions/34",
+      "checked_at": "2026-11-13T01:18:20.341556+00:00"
+    }
+  ]
+}
