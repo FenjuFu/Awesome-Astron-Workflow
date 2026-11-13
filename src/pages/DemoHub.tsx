@@ -13,6 +13,7 @@ import {
   Workflow,
 } from 'lucide-react';
 import Navigation from '../components/Navigation';
+import SparkDeploymentHub from '../components/SparkDeploymentHub';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface DemoLink {
@@ -45,7 +46,7 @@ interface DeployPlatform {
 const ZEABUR_SHUTDOWN_URL = 'https://zeabur.com/blogs/zeabur-is-shutting-down';
 
 const DemoHub: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const products: DemoProduct[] = [
     {
@@ -230,6 +231,10 @@ const DemoHub: React.FC = () => {
         <header className="text-center mb-10">
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">{t('demo.title')}</h1>
           <p className="mt-3 text-gray-600 max-w-2xl mx-auto">{t('demo.subtitle')}</p>
+          <a href="#spark-x26-deploy" className="mt-4 inline-flex items-center gap-1 rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-sm font-medium text-violet-800 hover:bg-violet-100">
+            Spark-X2.6-4B · {language === 'zh-CN' ? '安装部署与在线调用' : 'Deployment & online API'}
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </a>
         </header>
 
         <section className="mb-6 rounded-2xl border border-rose-200 bg-rose-50 p-6">
@@ -385,6 +390,7 @@ const DemoHub: React.FC = () => {
           </ul>
           <p className="mt-4 text-xs text-gray-500 leading-relaxed">{t('demo.deploy.thirdParty')}</p>
         </section>
+        <SparkDeploymentHub />
       </main>
     </div>
   );
