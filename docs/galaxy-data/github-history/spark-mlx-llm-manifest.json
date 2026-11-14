@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-13T08:28:17.187563+00:00",
+  "capturedAt": "2026-11-14T07:50:29.479240+00:00",
   "repository": "XHToken/Spark-MLX-LLM",
   "requests": {
     "5002dcb6a8159a33815f71f7e1f784444c75aaa97c5ae5514d32bed0801ceeb4": {
@@ -9,7 +9,7 @@
       },
       "sha256": "2aa058029c5d9654e0f5c076cb96adc48e529c42d784eeb51dc93fcf55241f95",
       "cache": "5002dcb6a8159a33815f71f7e1f784444c75aaa97c5ae5514d32bed0801ceeb4.json",
-      "checkedAt": "2026-11-13T08:28:13.695218+00:00",
+      "checkedAt": "2026-11-14T07:50:25.998962+00:00",
       "repository": "spark-mlx-llm"
     },
     "170eb1c0a69d31ea7ad98eb8bfb3de5c341ef109ae0253283818ef7074fc56ab": {
@@ -22,9 +22,9 @@
           "owner": "XHToken"
         }
       },
-      "sha256": "1c9a5cb71c2875a028279cc0bd06aa27fd997254ffe2e3781e2020cd66e94ae0",
+      "sha256": "379bfec14629716414a9528c91200d07f95bddfcb3e9aebd56954cde9af68be6",
       "cache": "170eb1c0a69d31ea7ad98eb8bfb3de5c341ef109ae0253283818ef7074fc56ab.json",
-      "checkedAt": "2026-11-13T08:28:14.027142+00:00",
+      "checkedAt": "2026-11-14T07:50:26.376025+00:00",
       "repository": "spark-mlx-llm"
     },
     "998cef53a3d4b3437a5309ce0e5beefe2c0368eec6b07db8c27ba47a2dc4d009": {
@@ -37,9 +37,9 @@
           "owner": "XHToken"
         }
       },
-      "sha256": "6c5c8532534da1c40c1e29af40e573d7327fd6491ab71315557025f30f030e7f",
+      "sha256": "fd3e604dec154f1d57cd86ff7159de5acaf76f108e32973a8670c038e224f064",
       "cache": "998cef53a3d4b3437a5309ce0e5beefe2c0368eec6b07db8c27ba47a2dc4d009.json",
-      "checkedAt": "2026-11-13T08:28:15.450402+00:00",
+      "checkedAt": "2026-11-14T07:50:27.644273+00:00",
       "repository": "spark-mlx-llm"
     },
     "bfebb74998dab82643310ce073eb66bd51504e5e56ca188f59219273f73724b9": {
@@ -49,7 +49,7 @@
       },
       "sha256": "0f170ca6d0a564baf2bde2aed43aa9af49b64f5f16c987338bd6fbb53f8ba746",
       "cache": "bfebb74998dab82643310ce073eb66bd51504e5e56ca188f59219273f73724b9.json",
-      "checkedAt": "2026-11-13T08:28:15.746907+00:00",
+      "checkedAt": "2026-11-14T07:50:27.982156+00:00",
       "repository": "spark-mlx-llm"
     },
     "70a4be1bccdf4256acdd46fbc203b34adc3de70778e709ab3661c673ece5d148": {
@@ -59,7 +59,7 @@
       },
       "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
       "cache": "70a4be1bccdf4256acdd46fbc203b34adc3de70778e709ab3661c673ece5d148.json",
-      "checkedAt": "2026-11-13T08:28:15.962722+00:00",
+      "checkedAt": "2026-11-14T07:50:28.274576+00:00",
       "repository": "spark-mlx-llm"
     },
     "06c91d0f1d654463355a43cee47e9a1607a16351accb0408bdad4974ea0c1318": {
@@ -73,7 +73,7 @@
       },
       "sha256": "3d82a92fec654c5020b7de2d15848e7fa879589b6d214b6e2c5e47f602aecdd3",
       "cache": "06c91d0f1d654463355a43cee47e9a1607a16351accb0408bdad4974ea0c1318.json",
-      "checkedAt": "2026-11-13T08:28:16.223424+00:00",
+      "checkedAt": "2026-11-14T07:50:28.579201+00:00",
       "repository": "spark-mlx-llm"
     },
     "e02abb50e12aee15a5627ea8f302a66c3682105d7a69443f1e1bf8e11eed6941": {
@@ -89,7 +89,7 @@
       },
       "sha256": "0dbe26f3069e3bc53ef028904309a4cb908f8f345a5e25cd71f860b79fc5f3b6",
       "cache": "e02abb50e12aee15a5627ea8f302a66c3682105d7a69443f1e1bf8e11eed6941.json",
-      "checkedAt": "2026-11-13T08:28:16.937181+00:00",
+      "checkedAt": "2026-11-14T07:50:29.069449+00:00",
       "repository": "spark-mlx-llm"
     },
     "c1c6a978db62b77fa4a7f10a08bb94ab46fe42df81e870158e4a36600a04427c": {
@@ -99,7 +99,7 @@
       },
       "sha256": "ef7368eeb8881294481d5dd6c1d57cfb8867f8b92984bdf2b3989da167f74b9a",
       "cache": "c1c6a978db62b77fa4a7f10a08bb94ab46fe42df81e870158e4a36600a04427c.json",
-      "checkedAt": "2026-11-13T08:28:17.187563+00:00",
+      "checkedAt": "2026-11-14T07:50:29.479240+00:00",
       "repository": "spark-mlx-llm"
     }
   }
