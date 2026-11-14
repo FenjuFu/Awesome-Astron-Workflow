@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-13T08:27:51.788977+00:00",
+  "capturedAt": "2026-11-14T07:50:07.309339+00:00",
   "repository": "iflytek/astron-harness-tutorial",
   "requests": {
     "a92eb9f7ef40634f7db26832e1c1fd5f67cb10580a50e5fd065615ee55844ed4": {
@@ -9,7 +9,7 @@
       },
       "sha256": "9de75f304bcdca262040f3f82295b1f00825b6b8e2dc83f8b7bd60771eda1c9d",
       "cache": "a92eb9f7ef40634f7db26832e1c1fd5f67cb10580a50e5fd065615ee55844ed4.json",
-      "checkedAt": "2026-11-13T08:27:42.946324+00:00",
+      "checkedAt": "2026-11-14T07:49:59.175015+00:00",
       "repository": "astron-harness-tutorial"
     },
     "d85ad6b45106ad366ba8373bf9e8ab5afd89d5c7bc2510ebcd21d1e5482dbf75": {
@@ -22,9 +22,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "de96913b3c2939cd3e99df4d8450255580634bef67c2a2a3b0e100715e5dec8c",
+      "sha256": "a8d17fe4ff0138a11666acb998cb7d82757447b3cd20fe9992b188ffd45a92dd",
       "cache": "d85ad6b45106ad366ba8373bf9e8ab5afd89d5c7bc2510ebcd21d1e5482dbf75.json",
-      "checkedAt": "2026-11-13T08:27:43.926898+00:00",
+      "checkedAt": "2026-11-14T07:49:59.995445+00:00",
       "repository": "astron-harness-tutorial"
     },
     "117735e43fa5f643ecbc50d2f92c6118a20045e5aabbf91135f39f74f30b5ee0": {
@@ -37,9 +37,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "1d46b4644e715bb85eb6313fc9bb92156270a30aa5d2f3dbceafe67788d06604",
+      "sha256": "3f89120378eb55c9d2c41bd8cb7d802317ba07e6e8e7cdeebd57e9712d94e798",
       "cache": "117735e43fa5f643ecbc50d2f92c6118a20045e5aabbf91135f39f74f30b5ee0.json",
-      "checkedAt": "2026-11-13T08:27:47.821593+00:00",
+      "checkedAt": "2026-11-14T07:50:03.114387+00:00",
       "repository": "astron-harness-tutorial"
     },
     "69d073c08d66fe8268e6764de5f1dfd3dacd8ff873e06f693a0bc1f1fc53a871": {
@@ -52,9 +52,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "869421bcafe81c128167e3206cce49ac20a50bca5c5e41bf86c02f5e6d06f233",
+      "sha256": "5c723d8e019d6c9dbc41e8aca31dad3f3afd0d054813c2bbf7a4f9387e142a7f",
       "cache": "69d073c08d66fe8268e6764de5f1dfd3dacd8ff873e06f693a0bc1f1fc53a871.json",
-      "checkedAt": "2026-11-13T08:27:49.253989+00:00",
+      "checkedAt": "2026-11-14T07:50:04.491207+00:00",
       "repository": "astron-harness-tutorial"
     },
     "f01155a9ffc15c7649fba45db28b1d346cb510a0895c1d19646c6bd3f74f636b": {
@@ -64,7 +64,7 @@
       },
       "sha256": "af0ca24490b01bf648e1e916d33cbecac6b04b176c6df1aaf9ba141696615bcb",
       "cache": "f01155a9ffc15c7649fba45db28b1d346cb510a0895c1d19646c6bd3f74f636b.json",
-      "checkedAt": "2026-11-13T08:27:49.759966+00:00",
+      "checkedAt": "2026-11-14T07:50:05.091158+00:00",
       "repository": "astron-harness-tutorial"
     },
     "9a0514fabd9f5c5d1b61593af9afb3f0d02726b6285f22c39e74d5baec249814": {
@@ -72,9 +72,9 @@
         "kind": "rest",
         "path": "repos/iflytek/astron-harness-tutorial/issues/comments?per_page=100&page=2"
       },
-      "sha256": "29a825379ea2f4e86ed4a0cd68f6d882c3585d15f1bc9ced60d8d02e479629b5",
+      "sha256": "9b1ae3540fc62f76038ceac0d98246d5c326be54a66c8f2f552690ab59bc04d8",
       "cache": "9a0514fabd9f5c5d1b61593af9afb3f0d02726b6285f22c39e74d5baec249814.json",
-      "checkedAt": "2026-11-13T08:27:50.043409+00:00",
+      "checkedAt": "2026-11-14T07:50:05.478522+00:00",
       "repository": "astron-harness-tutorial"
     },
     "2fc7afb9b10dadae7dc2ed38613ea9014c2339fe838e9a602a3b25c41e797016": {
@@ -84,7 +84,7 @@
       },
       "sha256": "bd408cf4778b82877547000c904db742286c34c0a9c0a7df02a72ff156e21ce4",
       "cache": "2fc7afb9b10dadae7dc2ed38613ea9014c2339fe838e9a602a3b25c41e797016.json",
-      "checkedAt": "2026-11-13T08:27:50.661665+00:00",
+      "checkedAt": "2026-11-14T07:50:06.002785+00:00",
       "repository": "astron-harness-tutorial"
     },
     "42a240f9d4e5c28048131edd943f879a575dd11c8d8974dc79eb23d1cad953dc": {
@@ -98,7 +98,7 @@
       },
       "sha256": "7da7dd747524faea804804be32a805ae8fc41c48709fe9402dbf862deb3d6fbe",
       "cache": "42a240f9d4e5c28048131edd943f879a575dd11c8d8974dc79eb23d1cad953dc.json",
-      "checkedAt": "2026-11-13T08:27:50.968747+00:00",
+      "checkedAt": "2026-11-14T07:50:06.339027+00:00",
       "repository": "astron-harness-tutorial"
     },
     "73cfe175a5706e38047084712c0e7b88c4cc0b09275485487a1f26fad686af1d": {
@@ -114,7 +114,7 @@
       },
       "sha256": "56aaf9f9a4d7296b8f8a91caadcb573e56a9e3a174c43f3a6b4fc2a79807706d",
       "cache": "73cfe175a5706e38047084712c0e7b88c4cc0b09275485487a1f26fad686af1d.json",
-      "checkedAt": "2026-11-13T08:27:51.462444+00:00",
+      "checkedAt": "2026-11-14T07:50:06.969210+00:00",
       "repository": "astron-harness-tutorial"
     },
     "3299ce7a5f9fe6d4aad2726f0289f392c9ec9dda60b2ddf8758e994b61da0565": {
@@ -124,7 +124,7 @@
       },
       "sha256": "d9617deaa8b4cb4d84ddf08c02f6f3f279e8c2426c33397c6a0f5a9a1f3c0a7b",
       "cache": "3299ce7a5f9fe6d4aad2726f0289f392c9ec9dda60b2ddf8758e994b61da0565.json",
-      "checkedAt": "2026-11-13T08:27:51.788977+00:00",
+      "checkedAt": "2026-11-14T07:50:07.309339+00:00",
       "repository": "astron-harness-tutorial"
     }
   }

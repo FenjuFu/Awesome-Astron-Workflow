@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-13T08:28:11.897487+00:00",
+  "capturedAt": "2026-11-14T07:50:25.664442+00:00",
   "repository": "iflytek/domux",
   "requests": {
     "97fc4e0cc94d6a97b68ce196e4ee5e6c88c1545c88119a382d525758e294ed0d": {
@@ -9,7 +9,7 @@
       },
       "sha256": "9285b91bc5f5d070e615fe522bb3b92c30ac1ff780c2d6f52e51cf18d07f7548",
       "cache": "97fc4e0cc94d6a97b68ce196e4ee5e6c88c1545c88119a382d525758e294ed0d.json",
-      "checkedAt": "2026-11-13T08:28:05.667227+00:00",
+      "checkedAt": "2026-11-14T07:50:20.040430+00:00",
       "repository": "domux"
     },
     "bfed27525d00846ceac600529744b5d207bb8e95d6195744a1983c1db8d5082f": {
@@ -22,9 +22,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "fc23485bb9d2e039384580bca6e3db4c8fd42c981a58fd52fad849ef844d224c",
+      "sha256": "493b8577047178589059d3c823352ddc8bf974274fc228beaa339f4c2ba245e1",
       "cache": "bfed27525d00846ceac600529744b5d207bb8e95d6195744a1983c1db8d5082f.json",
-      "checkedAt": "2026-11-13T08:28:06.319283+00:00",
+      "checkedAt": "2026-11-14T07:50:20.510448+00:00",
       "repository": "domux"
     },
     "d82a066e1c55b7917edbac8f407b33d102a4b6aa10a404df64fc5c16c6e202d2": {
@@ -37,9 +37,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "1a962abb18cdc816478123f2ade6d1e1674bca5bcafa951d74b373f85febe87e",
+      "sha256": "9a80cc253666c8e0731f52affb403c10479c5b2c7dde6f3e9f772a29c911a5a7",
       "cache": "d82a066e1c55b7917edbac8f407b33d102a4b6aa10a404df64fc5c16c6e202d2.json",
-      "checkedAt": "2026-11-13T08:28:10.144124+00:00",
+      "checkedAt": "2026-11-14T07:50:23.864357+00:00",
       "repository": "domux"
     },
     "4648bcf04c676a19e7dde9f04d345bb711ba8c44e373efd5d8efeccbe816bca6": {
@@ -49,7 +49,7 @@
       },
       "sha256": "7e30b26328ce894dc503c94ac0a8d732783642582c85ef939466e43113717777",
       "cache": "4648bcf04c676a19e7dde9f04d345bb711ba8c44e373efd5d8efeccbe816bca6.json",
-      "checkedAt": "2026-11-13T08:28:10.533221+00:00",
+      "checkedAt": "2026-11-14T07:50:24.279099+00:00",
       "repository": "domux"
     },
     "d7cd84f9b8d2f759aee58a57f521939ed7dca652d1da4092be6bb9073e484c84": {
@@ -59,7 +59,7 @@
       },
       "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
       "cache": "d7cd84f9b8d2f759aee58a57f521939ed7dca652d1da4092be6bb9073e484c84.json",
-      "checkedAt": "2026-11-13T08:28:10.764053+00:00",
+      "checkedAt": "2026-11-14T07:50:24.518100+00:00",
       "repository": "domux"
     },
     "a199644733cd12758c0db1eec1769380f6f465649f51dc94c0d7445b78a8ff66": {
@@ -73,7 +73,7 @@
       },
       "sha256": "2d1a59401838d149c75a566e6b5f8ba49322234b07031fee014ae5ce815b34f6",
       "cache": "a199644733cd12758c0db1eec1769380f6f465649f51dc94c0d7445b78a8ff66.json",
-      "checkedAt": "2026-11-13T08:28:11.011316+00:00",
+      "checkedAt": "2026-11-14T07:50:24.833148+00:00",
       "repository": "domux"
     },
     "b2b30da23556398e0e465cef4defa39555805c6cefb2734d8022eb58a5e9b2da": {
@@ -89,7 +89,7 @@
       },
       "sha256": "54339b95ed3315a64cf9949435e9c7d282e74205df620a43be9d76f2f9bc5bba",
       "cache": "b2b30da23556398e0e465cef4defa39555805c6cefb2734d8022eb58a5e9b2da.json",
-      "checkedAt": "2026-11-13T08:28:11.569365+00:00",
+      "checkedAt": "2026-11-14T07:50:25.357398+00:00",
       "repository": "domux"
     },
     "a9dec39610f54605265ff23aa0670f837c3223781919be5fad76c480e8dd6ced": {
@@ -99,7 +99,7 @@
       },
       "sha256": "c04b160c4beb50b889c28d568344fe00fbeca83f29f454a1530df7556bbcf206",
       "cache": "a9dec39610f54605265ff23aa0670f837c3223781919be5fad76c480e8dd6ced.json",
-      "checkedAt": "2026-11-13T08:28:11.897487+00:00",
+      "checkedAt": "2026-11-14T07:50:25.664442+00:00",
       "repository": "domux"
     }
   }
