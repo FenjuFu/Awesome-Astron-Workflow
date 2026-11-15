@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-11-14T07:52:14.841710+00:00",
-  "calculatedAt": "2026-11-14T07:52:16.104935+00:00",
-  "calculatedThrough": "2026-11-14",
+  "capturedAt": "2026-11-15T08:11:19.745590+00:00",
+  "calculatedAt": "2026-11-15T08:11:21.094710+00:00",
+  "calculatedThrough": "2026-11-15",
   "captureRange": {
-    "from": "2026-11-14",
-    "through": "2026-11-14"
+    "from": "2026-11-15",
+    "through": "2026-11-15"
   },
-  "openrankMonth": "2026-11-14",
+  "openrankMonth": "2026-11-15",
   "openrankPeriod": "all-history-graph",
   "openrankMetric": "Locally calculated Community OpenRank",
   "method": "Independently collect public GitHub history and solve a full-history repository collaboration network with the OpenRank equation. No externally published scores are used.",
@@ -106,7 +106,7 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2025-09-19",
-      "historyEnd": "2026-11-14",
+      "historyEnd": "2026-11-15",
       "calculation": {
         "coverage": {
           "issues": 317,
@@ -6210,7 +6210,7 @@
     {
       "id": "skillhub",
       "url": "https://github.com/iflytek/skillhub",
-      "stars": 5420,
+      "stars": 5424,
       "forks": 814,
       "archived": false,
       "source": "https://api.github.com/repos/iflytek/skillhub",
@@ -6225,7 +6225,7 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2026-03-11",
-      "historyEnd": "2026-11-14",
+      "historyEnd": "2026-11-15",
       "calculation": {
         "coverage": {
           "issues": 328,
@@ -9396,7 +9396,7 @@
         {
           "login": "kantorcodes",
           "url": "https://github.com/kantorcodes",
-          "avatar": "https://avatars.githubusercontent.com/u/6068672?u=304bc9f4512c677786835926a69deb67d75ec7fc&v=4",
+          "avatar": "https://avatars.githubusercontent.com/u/6068672?u=1325b4493d236d6d7099a9439bebb170ab018c89&v=4",
           "type": "User",
           "stats": {
             "open": 2,
@@ -12700,13 +12700,13 @@
     {
       "id": "astron-rpa",
       "url": "https://github.com/iflytek/astron-rpa",
-      "stars": 5258,
+      "stars": 5257,
       "forks": 487,
       "archived": false,
       "source": "https://api.github.com/repos/iflytek/astron-rpa",
       "contributorsSource": "/galaxy-data/astron-rpa-calculation.json",
       "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
-      "openrank": 351.6567469879,
+      "openrank": 352.1513855421,
       "openrankCoverage": {
         "firstMonth": "2025-09",
         "lastMonth": "2026-11",
@@ -12715,26 +12715,26 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2025-09-20",
-      "historyEnd": "2026-11-14",
+      "historyEnd": "2026-11-15",
       "calculation": {
         "coverage": {
-          "issues": 111,
+          "issues": 114,
           "pullRequests": 775,
           "comments": 824,
           "reviewComments": 1639,
           "defaultCommits": 487,
           "codeContributors": 27
         },
-        "participants": 91,
-        "events": 4550,
-        "workItems": 1316,
+        "participants": 92,
+        "events": 4553,
+        "workItems": 1319,
         "gaps": {
           "unlinkedCommitAuthorOccurrences": 132,
           "directCommitsWithoutLinkedAccount": 1
         },
         "iterations": 34,
-        "residual": 7.491962605854496e-11,
-        "graphSha256": "09ecc16f4035e46c6c3db04196b97bfb6c7564f976e368bbebbf1f7458b3b52c"
+        "residual": 7.594280759803951e-11,
+        "graphSha256": "ac6ae6410050241c1fdf3d21ac1db55d743ed2ad2dd9fe8b6b61b098b20ad50b"
       },
       "automationExclusions": {
         "accounts": [
@@ -12802,7 +12802,7 @@
             "comment": 3
           },
           "contributions": 76,
-          "openrank": 908.3858137402,
+          "openrank": 908.3764873692,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -12836,7 +12836,7 @@
             "comment": 96
           },
           "contributions": 93,
-          "openrank": 696.3814364624,
+          "openrank": 696.3714461758,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -12869,7 +12869,7 @@
             "close": 101
           },
           "contributions": 79,
-          "openrank": 400.0902176506,
+          "openrank": 400.0835110305,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -12905,7 +12905,7 @@
             "review_comment": 11
           },
           "contributions": 51,
-          "openrank": 186.0941286366,
+          "openrank": 186.0906588032,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -12934,13 +12934,13 @@
           "type": "User",
           "stats": {
             "close": 26,
-            "open": 50,
+            "open": 51,
             "commit": 56,
             "review": 33,
             "comment": 48
           },
           "contributions": 16,
-          "openrank": 156.2415648042,
+          "openrank": 157.7125795016,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -12950,9 +12950,9 @@
             "gapMonths": 0,
             "monthsSinceLast": 0
           },
-          "observedEvents": 213,
+          "observedEvents": 214,
           "firstObservedAt": "2026-03-25T11:39:11Z",
-          "lastObservedAt": "2026-11-13T03:15:35Z",
+          "lastObservedAt": "2026-11-15T01:23:12Z",
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/161",
             "https://github.com/iflytek/astron-rpa/issues/245",
@@ -12973,7 +12973,7 @@
             "close": 13
           },
           "contributions": 24,
-          "openrank": 155.8404290682,
+          "openrank": 155.8377850498,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13005,7 +13005,7 @@
             "commit": 212
           },
           "contributions": 31,
-          "openrank": 122.1675325112,
+          "openrank": 122.1651750724,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13038,7 +13038,7 @@
             "close": 6
           },
           "contributions": 26,
-          "openrank": 92.270054578,
+          "openrank": 92.268127391,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13072,7 +13072,7 @@
             "comment": 8
           },
           "contributions": 19,
-          "openrank": 57.3516858056,
+          "openrank": 57.3527913634,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13106,7 +13106,7 @@
             "comment": 1
           },
           "contributions": 14,
-          "openrank": 48.7525528565,
+          "openrank": 48.7515017481,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13140,7 +13140,7 @@
             "comment": 9
           },
           "contributions": 15,
-          "openrank": 48.7177171441,
+          "openrank": 48.7166294292,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13173,7 +13173,7 @@
             "close": 5
           },
           "contributions": 11,
-          "openrank": 34.255083965,
+          "openrank": 34.254362874,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13205,7 +13205,7 @@
             "commit": 71
           },
           "contributions": 4,
-          "openrank": 28.9391313592,
+          "openrank": 28.9386113415,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13237,7 +13237,7 @@
             "commit": 45
           },
           "contributions": 7,
-          "openrank": 25.6185276007,
+          "openrank": 25.6180058052,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13269,7 +13269,7 @@
             "commit": 7
           },
           "contributions": 1,
-          "openrank": 16.4231974453,
+          "openrank": 16.4246475247,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13302,7 +13302,7 @@
             "close": 3
           },
           "contributions": 2,
-          "openrank": 15.0622843822,
+          "openrank": 15.062483516,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13334,7 +13334,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 14.684601596,
+          "openrank": 14.6842713505,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13368,7 +13368,7 @@
             "comment": 3
           },
           "contributions": 1,
-          "openrank": 13.6541277595,
+          "openrank": 13.6539131168,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13401,7 +13401,7 @@
             "comment": 6
           },
           "contributions": 4,
-          "openrank": 12.9236170227,
+          "openrank": 12.9256035195,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13435,7 +13435,7 @@
             "comment": 1
           },
           "contributions": 1,
-          "openrank": 9.5720765671,
+          "openrank": 9.571913322,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13467,7 +13467,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 8.4806370819,
+          "openrank": 8.481008477,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13499,7 +13499,7 @@
             "commit": 5
           },
           "contributions": 3,
-          "openrank": 8.0025354966,
+          "openrank": 8.0025782331,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13531,7 +13531,7 @@
             "comment": 18
           },
           "contributions": 0,
-          "openrank": 7.3942522592,
+          "openrank": 7.3941807705,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13563,7 +13563,7 @@
             "commit": 2
           },
           "contributions": 2,
-          "openrank": 6.3917075991,
+          "openrank": 6.3915652495,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13596,7 +13596,7 @@
             "review": 2
           },
           "contributions": 0,
-          "openrank": 5.8180722507,
+          "openrank": 5.8181383302,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13629,7 +13629,7 @@
             "comment": 9
           },
           "contributions": 0,
-          "openrank": 4.1600403696,
+          "openrank": 4.160396138,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13665,7 +13665,7 @@
             "review_comment": 1
           },
           "contributions": 1,
-          "openrank": 3.953392967,
+          "openrank": 3.953328881,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13697,7 +13697,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 3.5588724196,
+          "openrank": 3.5592761109,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13717,6 +13717,34 @@
           "rank": 28
         },
         {
+          "login": "lin12138",
+          "url": "https://github.com/lin12138",
+          "avatar": "https://avatars.githubusercontent.com/u/44135942?v=4",
+          "type": "User",
+          "stats": {
+            "open": 2
+          },
+          "contributions": 0,
+          "openrank": 3.1637508684,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-11",
+            "lastMonth": "2026-11",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 2,
+          "firstObservedAt": "2026-11-14T15:16:29Z",
+          "lastObservedAt": "2026-11-14T15:35:24Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-rpa/issues/931",
+            "https://github.com/iflytek/astron-rpa/issues/932"
+          ],
+          "rank": 29
+        },
+        {
           "login": "yd41",
           "url": "https://github.com/yd41",
           "avatar": "https://avatars.githubusercontent.com/u/93515322?u=87151d33256a32cc3a0a494b2b3512c4fd41940a&v=4",
@@ -13726,7 +13754,7 @@
             "commit": 3
           },
           "contributions": 0,
-          "openrank": 3.0907127804,
+          "openrank": 3.0906715853,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13744,7 +13772,7 @@
             "https://github.com/iflytek/astron-rpa/pull/723",
             "https://github.com/iflytek/astron-rpa/pull/725"
           ],
-          "rank": 29
+          "rank": 30
         },
         {
           "login": "TechQuery",
@@ -13756,7 +13784,7 @@
             "commit": 3
           },
           "contributions": 1,
-          "openrank": 2.800701335,
+          "openrank": 2.8006395115,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13773,7 +13801,7 @@
             "https://github.com/iflytek/astron-rpa/pull/735",
             "https://github.com/iflytek/astron-rpa/commit/7ba1bf11369c6ee69e2e82a39c343ca07d68cae9"
           ],
-          "rank": 30
+          "rank": 31
         },
         {
           "login": "chenzy-design",
@@ -13786,7 +13814,7 @@
             "comment": 7
           },
           "contributions": 0,
-          "openrank": 2.7569236649,
+          "openrank": 2.7573030748,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13804,7 +13832,7 @@
             "https://github.com/iflytek/astron-rpa/issues/245",
             "https://github.com/iflytek/astron-rpa/issues/246"
           ],
-          "rank": 31
+          "rank": 32
         },
         {
           "login": "MichaelYONGHENG",
@@ -13816,7 +13844,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 2.7263746211,
+          "openrank": 2.7263134728,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13833,36 +13861,6 @@
             "https://github.com/iflytek/astron-rpa/pull/1",
             "https://github.com/iflytek/astron-rpa/commit/0527b946e713496c3e92eda82f1cfb6dab44d6b1"
           ],
-          "rank": 32
-        },
-        {
-          "login": "haosenwang1018",
-          "url": "https://github.com/haosenwang1018",
-          "avatar": "https://avatars.githubusercontent.com/u/167664334?v=4",
-          "type": "User",
-          "stats": {
-            "open": 1,
-            "commit": 2
-          },
-          "contributions": 1,
-          "openrank": 2.7153004375,
-          "openrankStatus": "calculated",
-          "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
-          "openrankCoverage": {
-            "firstMonth": "2026-03",
-            "lastMonth": "2026-03",
-            "months": 1,
-            "gapMonths": 0,
-            "monthsSinceLast": 0
-          },
-          "observedEvents": 3,
-          "firstObservedAt": "2026-03-04T04:39:58Z",
-          "lastObservedAt": "2026-03-04T05:52:44Z",
-          "evidenceLinks": [
-            "https://github.com/iflytek/astron-rpa/pull/599",
-            "https://github.com/iflytek/astron-rpa/pull/725",
-            "https://github.com/iflytek/astron-rpa/commit/ba1c6d62f189ac35e1654d80528d4fdf0924e6a8"
-          ],
           "rank": 33
         },
         {
@@ -13875,7 +13873,7 @@
             "commit": 2
           },
           "contributions": 1,
-          "openrank": 2.7149824081,
+          "openrank": 2.7152596651,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13895,6 +13893,36 @@
           "rank": 34
         },
         {
+          "login": "haosenwang1018",
+          "url": "https://github.com/haosenwang1018",
+          "avatar": "https://avatars.githubusercontent.com/u/167664334?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1,
+            "commit": 2
+          },
+          "contributions": 1,
+          "openrank": 2.7152401087,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-03",
+            "lastMonth": "2026-03",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 3,
+          "firstObservedAt": "2026-03-04T04:39:58Z",
+          "lastObservedAt": "2026-03-04T05:52:44Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/astron-rpa/pull/599",
+            "https://github.com/iflytek/astron-rpa/pull/725",
+            "https://github.com/iflytek/astron-rpa/commit/ba1c6d62f189ac35e1654d80528d4fdf0924e6a8"
+          ],
+          "rank": 35
+        },
+        {
           "login": "Andrew-Zhang013",
           "url": "https://github.com/Andrew-Zhang013",
           "avatar": "https://avatars.githubusercontent.com/u/44386163?v=4",
@@ -13904,7 +13932,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 2.4744609108,
+          "openrank": 2.4743993726,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13922,7 +13950,7 @@
             "https://github.com/iflytek/astron-rpa/issues/469",
             "https://github.com/iflytek/astron-rpa/issues/470"
           ],
-          "rank": 35
+          "rank": 36
         },
         {
           "login": "FnTop",
@@ -13935,7 +13963,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 2.4485084187,
+          "openrank": 2.4485634838,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13952,7 +13980,7 @@
             "https://github.com/iflytek/astron-rpa/issues/610",
             "https://github.com/iflytek/astron-rpa/issues/662"
           ],
-          "rank": 36
+          "rank": 37
         },
         {
           "login": "utafrali",
@@ -13966,7 +13994,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 2.3930154724,
+          "openrank": 2.3929734271,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -13982,7 +14010,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/pull/864"
           ],
-          "rank": 37
+          "rank": 38
         },
         {
           "login": "chenglongxie",
@@ -13994,7 +14022,7 @@
             "comment": 12
           },
           "contributions": 0,
-          "openrank": 2.2236730936,
+          "openrank": 2.223624422,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14011,7 +14039,7 @@
             "https://github.com/iflytek/astron-rpa/issues/160",
             "https://github.com/iflytek/astron-rpa/issues/166"
           ],
-          "rank": 38
+          "rank": 39
         },
         {
           "login": "XMQSVIP",
@@ -14024,7 +14052,7 @@
             "comment": 5
           },
           "contributions": 0,
-          "openrank": 2.2147309227,
+          "openrank": 2.2146856666,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14041,7 +14069,7 @@
             "https://github.com/iflytek/astron-rpa/issues/143",
             "https://github.com/iflytek/astron-rpa/issues/145"
           ],
-          "rank": 39
+          "rank": 40
         },
         {
           "login": "CallYoung",
@@ -14054,7 +14082,7 @@
             "comment": 19
           },
           "contributions": 0,
-          "openrank": 2.0342135839,
+          "openrank": 2.0341670155,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14074,7 +14102,7 @@
             "https://github.com/iflytek/astron-rpa/issues/166",
             "https://github.com/iflytek/astron-rpa/issues/203"
           ],
-          "rank": 40
+          "rank": 41
         },
         {
           "login": "hugaochao",
@@ -14087,7 +14115,7 @@
             "commit": 2
           },
           "contributions": 0,
-          "openrank": 2.0316115562,
+          "openrank": 2.0315899809,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14104,7 +14132,7 @@
             "https://github.com/iflytek/astron-rpa/pull/721",
             "https://github.com/iflytek/astron-rpa/pull/725"
           ],
-          "rank": 41
+          "rank": 42
         },
         {
           "login": "naivestruggle",
@@ -14116,7 +14144,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 1.9621686651,
+          "openrank": 1.9621240172,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14133,7 +14161,7 @@
             "https://github.com/iflytek/astron-rpa/issues/135",
             "https://github.com/iflytek/astron-rpa/issues/149"
           ],
-          "rank": 42
+          "rank": 43
         },
         {
           "login": "yuanphoenix",
@@ -14146,7 +14174,7 @@
             "comment": 6
           },
           "contributions": 0,
-          "openrank": 1.9504945043,
+          "openrank": 1.9504475549,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14164,7 +14192,7 @@
             "https://github.com/iflytek/astron-rpa/issues/486",
             "https://github.com/iflytek/astron-rpa/issues/526"
           ],
-          "rank": 43
+          "rank": 44
         },
         {
           "login": "Kin-10",
@@ -14175,7 +14203,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.8411373008,
+          "openrank": 1.8410943048,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14192,7 +14220,7 @@
             "https://github.com/iflytek/astron-rpa/issues/531",
             "https://github.com/iflytek/astron-rpa/issues/561"
           ],
-          "rank": 44
+          "rank": 45
         },
         {
           "login": "supervmac",
@@ -14203,7 +14231,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.8411373008,
+          "openrank": 1.8410943048,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14220,7 +14248,7 @@
             "https://github.com/iflytek/astron-rpa/issues/348",
             "https://github.com/iflytek/astron-rpa/issues/349"
           ],
-          "rank": 44
+          "rank": 45
         },
         {
           "login": "mythic-p",
@@ -14232,7 +14260,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.7512561077,
+          "openrank": 1.7512137466,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14249,7 +14277,7 @@
             "https://github.com/iflytek/astron-rpa/issues/186",
             "https://github.com/iflytek/astron-rpa/issues/187"
           ],
-          "rank": 46
+          "rank": 47
         },
         {
           "login": "kiedeng",
@@ -14262,7 +14290,7 @@
             "comment": 5
           },
           "contributions": 0,
-          "openrank": 1.6907877688,
+          "openrank": 1.6907463912,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14279,7 +14307,7 @@
             "https://github.com/iflytek/astron-rpa/issues/186",
             "https://github.com/iflytek/astron-rpa/issues/203"
           ],
-          "rank": 47
+          "rank": 48
         },
         {
           "login": "chaseWay-collab",
@@ -14291,7 +14319,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 1.6704652953,
+          "openrank": 1.67042325,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14307,7 +14335,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/767"
           ],
-          "rank": 48
+          "rank": 49
         },
         {
           "login": "dongzhuozhuo",
@@ -14318,7 +14346,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.6704652953,
+          "openrank": 1.67042325,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14334,7 +14362,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/667"
           ],
-          "rank": 48
+          "rank": 49
         },
         {
           "login": "wangfutang",
@@ -14346,7 +14374,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 1.6704652953,
+          "openrank": 1.67042325,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14362,7 +14390,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/473"
           ],
-          "rank": 48
+          "rank": 49
         },
         {
           "login": "me93-ghb",
@@ -14374,7 +14402,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.3580519855,
+          "openrank": 1.3584751303,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14390,7 +14418,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/pull/834"
           ],
-          "rank": 51
+          "rank": 52
         },
         {
           "login": "octo-patch",
@@ -14402,7 +14430,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.3580519855,
+          "openrank": 1.3584751303,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14418,7 +14446,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/pull/831"
           ],
-          "rank": 51
+          "rank": 52
         },
         {
           "login": "FaintFlower",
@@ -14430,7 +14458,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.3131903298,
+          "openrank": 1.3135028681,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14446,7 +14474,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/pull/847"
           ],
-          "rank": 53
+          "rank": 54
         },
         {
           "login": "moduvoice",
@@ -14460,7 +14488,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.3131903298,
+          "openrank": 1.3135028681,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14476,7 +14504,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/pull/819"
           ],
-          "rank": 53
+          "rank": 54
         },
         {
           "login": "CBOSSX",
@@ -14488,7 +14516,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.2683286742,
+          "openrank": 1.268530606,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14504,7 +14532,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/pull/842"
           ],
-          "rank": 55
+          "rank": 56
         },
         {
           "login": "susi289068987",
@@ -14516,7 +14544,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.1852243385,
+          "openrank": 1.1853389483,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14533,7 +14561,7 @@
             "https://github.com/iflytek/astron-rpa/issues/796",
             "https://github.com/iflytek/astron-rpa/issues/798"
           ],
-          "rank": 56
+          "rank": 57
         },
         {
           "login": "dubaoquan404",
@@ -14545,7 +14573,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 1.1574834211,
+          "openrank": 1.1574595252,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14561,7 +14589,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/152"
           ],
-          "rank": 57
+          "rank": 58
         },
         {
           "login": "LCRONG",
@@ -14573,7 +14601,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 1.1047975593,
+          "openrank": 1.1047745835,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14589,7 +14617,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/197"
           ],
-          "rank": 58
+          "rank": 59
         },
         {
           "login": "VerSion1312",
@@ -14601,7 +14629,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 1.1047975593,
+          "openrank": 1.1047745835,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14617,7 +14645,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/169"
           ],
-          "rank": 58
+          "rank": 59
         },
         {
           "login": "tianlinzx",
@@ -14629,7 +14657,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.0532894936,
+          "openrank": 1.0532672567,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14645,7 +14673,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/127"
           ],
-          "rank": 60
+          "rank": 61
         },
         {
           "login": "samskeny",
@@ -14656,7 +14684,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.0291816243,
+          "openrank": 1.0292743966,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14672,7 +14700,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/796"
           ],
-          "rank": 61
+          "rank": 62
         },
         {
           "login": "jorrellsuper",
@@ -14684,7 +14712,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.0262760319,
+          "openrank": 1.0262529526,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14701,7 +14729,7 @@
             "https://github.com/iflytek/astron-rpa/issues/152",
             "https://github.com/iflytek/astron-rpa/issues/624"
           ],
-          "rank": 62
+          "rank": 63
         },
         {
           "login": "AAcups",
@@ -14712,7 +14740,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.0017814279,
+          "openrank": 1.0017599299,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14728,7 +14756,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/464"
           ],
-          "rank": 63
+          "rank": 64
         },
         {
           "login": "Dalamud-le",
@@ -14740,7 +14768,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.0017814279,
+          "openrank": 1.0017599299,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14756,7 +14784,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/478"
           ],
-          "rank": 63
+          "rank": 64
         },
         {
           "login": "huangfei99",
@@ -14767,7 +14795,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.0017814279,
+          "openrank": 1.0017599299,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14783,7 +14811,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/238"
           ],
-          "rank": 63
+          "rank": 64
         },
         {
           "login": "jonneydee",
@@ -14794,7 +14822,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.0017814279,
+          "openrank": 1.0017599299,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14810,7 +14838,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/615"
           ],
-          "rank": 63
+          "rank": 64
         },
         {
           "login": "shenyang199567",
@@ -14822,7 +14850,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.0017814279,
+          "openrank": 1.0017599299,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14838,7 +14866,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/191"
           ],
-          "rank": 63
+          "rank": 64
         },
         {
           "login": "neitcouq",
@@ -14849,7 +14877,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9849511176,
+          "openrank": 0.9850435137,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14865,7 +14893,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/589"
           ],
-          "rank": 68
+          "rank": 69
         },
         {
           "login": "Nyugalx",
@@ -14877,7 +14905,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9849511176,
+          "openrank": 0.9850435137,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14893,7 +14921,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/620"
           ],
-          "rank": 68
+          "rank": 69
         },
         {
           "login": "daicx0904",
@@ -14905,7 +14933,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 0.9789415259,
+          "openrank": 0.9790346846,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14921,7 +14949,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/574"
           ],
-          "rank": 70
+          "rank": 71
         },
         {
           "login": "SHaDiaoYU",
@@ -14933,7 +14961,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9739378927,
+          "openrank": 0.9739171116,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14949,7 +14977,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/692"
           ],
-          "rank": 71
+          "rank": 72
         },
         {
           "login": "maidou75293",
@@ -14960,7 +14988,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9530336505,
+          "openrank": 0.9530119905,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -14976,7 +15004,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/910"
           ],
-          "rank": 72
+          "rank": 73
         },
         {
           "login": "danielmeiy",
@@ -14987,7 +15015,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 0.9479151182,
+          "openrank": 0.9478730729,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15003,7 +15031,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/commit/06650e59ba2516dceba0135e0a90f05eecd3ef8c"
           ],
-          "rank": 73
+          "rank": 74
         },
         {
           "login": "maolonchen",
@@ -15014,7 +15042,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9371468981,
+          "openrank": 0.9372421694,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15030,7 +15058,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/716"
           ],
-          "rank": 74
+          "rank": 75
         },
         {
           "login": "FordonZhang",
@@ -15041,7 +15069,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9334430519,
+          "openrank": 0.9335361869,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15057,7 +15085,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/434"
           ],
-          "rank": 75
+          "rank": 76
         },
         {
           "login": "Only-Myth",
@@ -15068,7 +15096,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.8987652964,
+          "openrank": 0.8987452763,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15084,7 +15112,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/607"
           ],
-          "rank": 76
+          "rank": 77
         },
         {
           "login": "Vincent158",
@@ -15095,7 +15123,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.8987652964,
+          "openrank": 0.8987452763,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15111,7 +15139,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/494"
           ],
-          "rank": 76
+          "rank": 77
         },
         {
           "login": "xl2hui",
@@ -15122,7 +15150,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.8987652964,
+          "openrank": 0.8987452763,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15138,7 +15166,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/568"
           ],
-          "rank": 76
+          "rank": 77
         },
         {
           "login": "ye-520AI",
@@ -15150,7 +15178,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 0.8987652964,
+          "openrank": 0.8987452763,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15166,7 +15194,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/209"
           ],
-          "rank": 76
+          "rank": 77
         },
         {
           "login": "Feta-Rider",
@@ -15177,7 +15205,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.8921188864,
+          "openrank": 0.8922102117,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15193,7 +15221,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/787"
           ],
-          "rank": 80
+          "rank": 81
         },
         {
           "login": "luxi233",
@@ -15204,7 +15232,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.8921188864,
+          "openrank": 0.8922102117,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15220,7 +15248,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/840"
           ],
-          "rank": 80
+          "rank": 81
         },
         {
           "login": "shuaiqingm",
@@ -15231,7 +15259,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.8921188864,
+          "openrank": 0.8922102117,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15247,7 +15275,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/495"
           ],
-          "rank": 80
+          "rank": 81
         },
         {
           "login": "kg6r7842nz-debug",
@@ -15258,7 +15286,7 @@
             "review": 1
           },
           "contributions": 0,
-          "openrank": 0.7285970526,
+          "openrank": 0.7286464803,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15274,7 +15302,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/pull/893"
           ],
-          "rank": 83
+          "rank": 84
         },
         {
           "login": "modelpath-dev",
@@ -15285,7 +15313,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 0.6667514578,
+          "openrank": 0.6668137243,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15301,7 +15329,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/812"
           ],
-          "rank": 84
+          "rank": 85
         },
         {
           "login": "wanzitongxue",
@@ -15312,7 +15340,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.5435734491,
+          "openrank": 0.5436210847,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15328,7 +15356,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/716"
           ],
-          "rank": 85
+          "rank": 86
         },
         {
           "login": "lucklisea",
@@ -15339,7 +15367,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.4350734762,
+          "openrank": 0.4351050312,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15355,7 +15383,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/161"
           ],
-          "rank": 86
+          "rank": 87
         },
         {
           "login": "BLOOLYJ",
@@ -15366,7 +15394,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.426313842,
+          "openrank": 0.4263448949,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15382,7 +15410,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/574"
           ],
-          "rank": 87
+          "rank": 88
         },
         {
           "login": "GeXyu",
@@ -15393,7 +15421,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.4218096441,
+          "openrank": 0.4218401164,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15409,7 +15437,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/798"
           ],
-          "rank": 88
+          "rank": 89
         },
         {
           "login": "86jkuncle",
@@ -15420,7 +15448,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.3567848341,
+          "openrank": 0.3567795617,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15436,7 +15464,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/143"
           ],
-          "rank": 89
+          "rank": 90
         },
         {
           "login": "shelok",
@@ -15447,7 +15475,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.293926203,
+          "openrank": 0.2939227893,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15463,7 +15491,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/152"
           ],
-          "rank": 90
+          "rank": 91
         },
         {
           "login": "ZyphrZero",
@@ -15474,7 +15502,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.2325061057,
+          "openrank": 0.2325044947,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-rpa-calculation.json",
           "openrankCoverage": {
@@ -15490,7 +15518,7 @@
           "evidenceLinks": [
             "https://github.com/iflytek/astron-rpa/issues/145"
           ],
-          "rank": 91
+          "rank": 92
         }
       ]
     },
@@ -15512,10 +15540,10 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2026-03-19",
-      "historyEnd": "2026-11-14",
+      "historyEnd": "2026-11-15",
       "calculation": {
         "coverage": {
-          "issues": 27,
+          "issues": 28,
           "pullRequests": 38,
           "comments": 113,
           "reviewComments": 22,
@@ -15619,7 +15647,7 @@
           }
         ],
         "accountCount": 9,
-        "eventCount": 187,
+        "eventCount": 188,
         "removedAutomationOnlyWorkItems": [
           "82",
           "83",
@@ -15629,7 +15657,8 @@
           "88",
           "91",
           "94",
-          "95"
+          "95",
+          "96"
         ]
       },
       "contributors": [
@@ -15972,7 +16001,7 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2026-03-30",
-      "historyEnd": "2026-11-14",
+      "historyEnd": "2026-11-15",
       "calculation": {
         "coverage": {
           "issues": 30,
@@ -16403,7 +16432,7 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2026-06-16",
-      "historyEnd": "2026-11-14",
+      "historyEnd": "2026-11-15",
       "calculation": {
         "coverage": {
           "issues": 8,
@@ -16930,7 +16959,7 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2026-08-07",
-      "historyEnd": "2026-11-14",
+      "historyEnd": "2026-11-15",
       "calculation": {
         "coverage": {
           "issues": 13,
@@ -17406,7 +17435,7 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2026-08-29",
-      "historyEnd": "2026-11-14",
+      "historyEnd": "2026-11-15",
       "calculation": {
         "coverage": {
           "issues": 4,

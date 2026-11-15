@@ -1734,10 +1734,10 @@
     "mime": "image/jpeg"
   },
   "kantorcodes": {
-    "source": "https://avatars.githubusercontent.com/u/6068672?u=304bc9f4512c677786835926a69deb67d75ec7fc&v=4&s=64",
-    "sha256": "57376514fb0ce554d7630d607e9cbaa1b27bd26f24b8884e806b957bc7c23bc8",
-    "bytes": 1516,
-    "mime": "image/jpeg"
+    "source": "https://avatars.githubusercontent.com/u/6068672?u=1325b4493d236d6d7099a9439bebb170ab018c89&v=4&s=64",
+    "sha256": "85df81f26d08b475dbac29dc6c10759a27b4ba1180db17caf6530db69e1d2975",
+    "bytes": 8803,
+    "mime": "image/png"
   },
   "PerfectWong": {
     "source": "https://avatars.githubusercontent.com/u/20842670?v=4&s=64",
@@ -2565,6 +2565,12 @@
     "source": "https://avatars.githubusercontent.com/u/267250277?v=4&s=64",
     "sha256": "3091071412ddf4f34a2db4a54953f280988e3188dc674f01e3e7fb3c11953602",
     "bytes": 3287,
+    "mime": "image/png"
+  },
+  "lin12138": {
+    "source": "https://avatars.githubusercontent.com/u/44135942?v=4&s=64",
+    "sha256": "9497c36494336f706a2152dbd3992fc6c6073cd7dc7dd646a5593f5e2baa3f73",
+    "bytes": 7681,
     "mime": "image/png"
   },
   "yd41": {
