@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-11-15T08:11:19.745590+00:00",
-  "calculatedAt": "2026-11-15T08:11:21.094710+00:00",
-  "calculatedThrough": "2026-11-15",
+  "capturedAt": "2026-11-16T08:20:15.253354+00:00",
+  "calculatedAt": "2026-11-16T08:20:16.628743+00:00",
+  "calculatedThrough": "2026-11-16",
   "captureRange": {
-    "from": "2026-11-15",
-    "through": "2026-11-15"
+    "from": "2026-11-16",
+    "through": "2026-11-16"
   },
-  "openrankMonth": "2026-11-15",
+  "openrankMonth": "2026-11-16",
   "openrankPeriod": "all-history-graph",
   "openrankMetric": "Locally calculated Community OpenRank",
   "method": "Independently collect public GitHub history and solve a full-history repository collaboration network with the OpenRank equation. No externally published scores are used.",
@@ -91,13 +91,13 @@
     {
       "id": "astron-agent",
       "url": "https://github.com/iflytek/astron-agent",
-      "stars": 8930,
+      "stars": 8934,
       "forks": 913,
       "archived": false,
       "source": "https://api.github.com/repos/iflytek/astron-agent",
       "contributorsSource": "/galaxy-data/astron-agent-calculation.json",
       "openrankSource": "/galaxy-data/astron-agent-calculation.json",
-      "openrank": 643.5662048193,
+      "openrank": 644.7951204819,
       "openrankCoverage": {
         "firstMonth": "2025-09",
         "lastMonth": "2026-11",
@@ -106,27 +106,27 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2025-09-19",
-      "historyEnd": "2026-11-15",
+      "historyEnd": "2026-11-16",
       "calculation": {
         "coverage": {
           "issues": 317,
-          "pullRequests": 1345,
+          "pullRequests": 1348,
           "comments": 1212,
           "reviewComments": 1240,
           "defaultCommits": 3265,
           "codeContributors": 61
         },
         "participants": 198,
-        "events": 8466,
-        "workItems": 2451,
+        "events": 8475,
+        "workItems": 2454,
         "gaps": {
           "unlinkedCommitAuthorOccurrences": 1132,
           "unavailableParentItems": 19,
           "commentsWithUnavailableParent": 62
         },
         "iterations": 36,
-        "residual": 2.3646862246096134e-11,
-        "graphSha256": "d2696e70c0b0e2004e0af349c0329c295501dfb557df1a7b075d77b9f23ff189"
+        "residual": 2.2737367544323206e-11,
+        "graphSha256": "8c252d53d9b090a90ba16314a712757dd645438abe0be73c19f3971db93c8800"
       },
       "automationExclusions": {
         "accounts": [
@@ -291,14 +291,14 @@
           "avatar": "https://avatars.githubusercontent.com/u/124077501?v=4",
           "type": "User",
           "stats": {
-            "open": 576,
-            "close": 814,
-            "commit": 1085,
+            "open": 579,
+            "close": 817,
+            "commit": 1088,
             "review": 4,
             "comment": 202
           },
           "contributions": 881,
-          "openrank": 2262.6120289019,
+          "openrank": 2273.5717038028,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -308,9 +308,9 @@
             "gapMonths": 0,
             "monthsSinceLast": 0
           },
-          "observedEvents": 2681,
+          "observedEvents": 2690,
           "firstObservedAt": "2025-09-23T07:49:37Z",
-          "lastObservedAt": "2026-11-10T12:28:47Z",
+          "lastObservedAt": "2026-11-16T04:07:33Z",
           "evidenceLinks": [
             "https://github.com/iflytek/astron-agent/pull/1002",
             "https://github.com/iflytek/astron-agent/pull/1003",
@@ -333,7 +333,7 @@
             "comment": 6
           },
           "contributions": 145,
-          "openrank": 334.6945980259,
+          "openrank": 334.6998516038,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -369,7 +369,7 @@
             "review_comment": 3
           },
           "contributions": 80,
-          "openrank": 304.90765804,
+          "openrank": 304.9198191044,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -405,7 +405,7 @@
             "review_comment": 1
           },
           "contributions": 185,
-          "openrank": 299.5509316863,
+          "openrank": 299.5568931811,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -441,7 +441,7 @@
             "review_comment": 29
           },
           "contributions": 136,
-          "openrank": 295.5062625965,
+          "openrank": 295.5125508486,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -475,7 +475,7 @@
             "comment": 2
           },
           "contributions": 129,
-          "openrank": 166.0755314149,
+          "openrank": 166.0779804374,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -511,7 +511,7 @@
             "review_comment": 1
           },
           "contributions": 35,
-          "openrank": 165.0592402624,
+          "openrank": 165.0627244036,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -547,7 +547,7 @@
             "review_comment": 1
           },
           "contributions": 209,
-          "openrank": 150.1592906746,
+          "openrank": 150.1623807054,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -581,7 +581,7 @@
             "comment": 9
           },
           "contributions": 93,
-          "openrank": 148.2234276698,
+          "openrank": 148.2268657614,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -616,7 +616,7 @@
             "comment": 3
           },
           "contributions": 113,
-          "openrank": 134.1534666039,
+          "openrank": 134.1556087845,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -650,7 +650,7 @@
             "comment": 12
           },
           "contributions": 154,
-          "openrank": 119.0357385823,
+          "openrank": 119.0378417798,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -684,7 +684,7 @@
             "comment": 3
           },
           "contributions": 37,
-          "openrank": 114.9301687598,
+          "openrank": 114.9319402558,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -717,7 +717,7 @@
             "commit": 58
           },
           "contributions": 58,
-          "openrank": 113.7342174722,
+          "openrank": 113.7359317765,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -751,7 +751,7 @@
             "comment": 13
           },
           "contributions": 18,
-          "openrank": 93.4346319452,
+          "openrank": 93.4360985468,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -785,7 +785,7 @@
             "comment": 13
           },
           "contributions": 37,
-          "openrank": 76.0068816897,
+          "openrank": 76.0082215399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -821,7 +821,7 @@
             "review_comment": 9
           },
           "contributions": 14,
-          "openrank": 74.5275985278,
+          "openrank": 74.5329529293,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -854,7 +854,7 @@
             "commit": 15
           },
           "contributions": 15,
-          "openrank": 54.8171284356,
+          "openrank": 54.8179299175,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -888,7 +888,7 @@
             "comment": 6
           },
           "contributions": 32,
-          "openrank": 46.8707570381,
+          "openrank": 46.8715806598,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -923,7 +923,7 @@
             "review_comment": 4
           },
           "contributions": 12,
-          "openrank": 36.2824227122,
+          "openrank": 36.2828407329,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -957,7 +957,7 @@
             "comment": 1
           },
           "contributions": 19,
-          "openrank": 35.209813321,
+          "openrank": 35.2104924907,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -991,7 +991,7 @@
             "comment": 4
           },
           "contributions": 10,
-          "openrank": 34.4558108936,
+          "openrank": 34.4570182861,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1025,7 +1025,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 34.1278268998,
+          "openrank": 34.1284016892,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1059,7 +1059,7 @@
             "comment": 3
           },
           "contributions": 42,
-          "openrank": 32.8958603983,
+          "openrank": 32.8966054474,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1093,7 +1093,7 @@
             "comment": 2
           },
           "contributions": 25,
-          "openrank": 28.1741938041,
+          "openrank": 28.1746642,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1127,7 +1127,7 @@
             "comment": 2
           },
           "contributions": 7,
-          "openrank": 27.314866815,
+          "openrank": 27.315392704,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1161,7 +1161,7 @@
             "comment": 1
           },
           "contributions": 72,
-          "openrank": 26.5578121725,
+          "openrank": 26.5588707278,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1196,7 +1196,7 @@
             "review_comment": 3
           },
           "contributions": 22,
-          "openrank": 26.535990664,
+          "openrank": 26.5366394275,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1230,7 +1230,7 @@
             "comment": 3
           },
           "contributions": 119,
-          "openrank": 25.0574749558,
+          "openrank": 25.0579949021,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1264,7 +1264,7 @@
             "comment": 1
           },
           "contributions": 27,
-          "openrank": 24.8407077249,
+          "openrank": 24.8415340759,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1298,7 +1298,7 @@
             "comment": 1
           },
           "contributions": 6,
-          "openrank": 24.2855042152,
+          "openrank": 24.2858768032,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1331,7 +1331,7 @@
             "comment": 15
           },
           "contributions": 0,
-          "openrank": 22.7823012023,
+          "openrank": 22.7830745133,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1365,7 +1365,7 @@
             "comment": 1
           },
           "contributions": 9,
-          "openrank": 22.696936403,
+          "openrank": 22.6973493794,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1401,7 +1401,7 @@
             "review_comment": 7
           },
           "contributions": 34,
-          "openrank": 20.5563439976,
+          "openrank": 20.5582150454,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1434,7 +1434,7 @@
             "close": 3
           },
           "contributions": 19,
-          "openrank": 18.6860704033,
+          "openrank": 18.6863533029,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1468,7 +1468,7 @@
             "comment": 6
           },
           "contributions": 7,
-          "openrank": 17.0237430571,
+          "openrank": 17.0243108288,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1502,7 +1502,7 @@
             "comment": 2
           },
           "contributions": 6,
-          "openrank": 16.6566197691,
+          "openrank": 16.6569441311,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1534,7 +1534,7 @@
             "comment": 18
           },
           "contributions": 0,
-          "openrank": 15.24248134,
+          "openrank": 15.245694351,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1568,7 +1568,7 @@
             "comment": 17
           },
           "contributions": 4,
-          "openrank": 14.2099233312,
+          "openrank": 14.2107588012,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1601,7 +1601,7 @@
             "commit": 96
           },
           "contributions": 65,
-          "openrank": 12.1530677153,
+          "openrank": 12.1532668276,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1632,7 +1632,7 @@
             "commit": 8
           },
           "contributions": 8,
-          "openrank": 11.0943773851,
+          "openrank": 11.0945309294,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1666,7 +1666,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 9.7313834088,
+          "openrank": 9.7322231296,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1699,7 +1699,7 @@
             "comment": 15
           },
           "contributions": 0,
-          "openrank": 9.445199554,
+          "openrank": 9.4456009733,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1733,7 +1733,7 @@
             "comment": 6
           },
           "contributions": 2,
-          "openrank": 8.1553623445,
+          "openrank": 8.1556218365,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1765,7 +1765,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 7.8428477264,
+          "openrank": 7.8429313639,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1797,7 +1797,7 @@
             "comment": 7
           },
           "contributions": 0,
-          "openrank": 7.7993361563,
+          "openrank": 7.8002144451,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1830,7 +1830,7 @@
             "comment": 2
           },
           "contributions": 24,
-          "openrank": 7.7760444024,
+          "openrank": 7.7762330026,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1864,7 +1864,7 @@
             "comment": 1
           },
           "contributions": 1,
-          "openrank": 7.1904627449,
+          "openrank": 7.1909807998,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1896,7 +1896,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 7.0738970945,
+          "openrank": 7.0745593111,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1930,7 +1930,7 @@
             "commit": 7
           },
           "contributions": 7,
-          "openrank": 7.0223948549,
+          "openrank": 7.0228108702,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1962,7 +1962,7 @@
             "comment": 6
           },
           "contributions": 0,
-          "openrank": 6.9319405681,
+          "openrank": 6.9326959231,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -1994,7 +1994,7 @@
             "commit": 3
           },
           "contributions": 0,
-          "openrank": 6.822338803,
+          "openrank": 6.8224362318,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2025,7 +2025,7 @@
             "commit": 2
           },
           "contributions": 2,
-          "openrank": 6.3950590623,
+          "openrank": 6.3951440305,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2058,7 +2058,7 @@
             "comment": 12
           },
           "contributions": 1,
-          "openrank": 6.1726936279,
+          "openrank": 6.1730554755,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2091,7 +2091,7 @@
             "comment": 1
           },
           "contributions": 2,
-          "openrank": 6.069818405,
+          "openrank": 6.0699385006,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2122,7 +2122,7 @@
             "commit": 32
           },
           "contributions": 15,
-          "openrank": 5.7899926286,
+          "openrank": 5.7901157452,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2157,7 +2157,7 @@
             "review_comment": 2
           },
           "contributions": 2,
-          "openrank": 5.6048056694,
+          "openrank": 5.6052625143,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2190,7 +2190,7 @@
             "commit": 3
           },
           "contributions": 1,
-          "openrank": 4.9497160153,
+          "openrank": 4.949797015,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2221,7 +2221,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 4.3980527035,
+          "openrank": 4.3982998973,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2253,7 +2253,7 @@
             "comment": 18
           },
           "contributions": 0,
-          "openrank": 4.3811801532,
+          "openrank": 4.3817952689,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2285,7 +2285,7 @@
             "commit": 2
           },
           "contributions": 1,
-          "openrank": 4.3620766744,
+          "openrank": 4.3629097663,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2315,7 +2315,7 @@
             "comment": 4
           },
           "contributions": 0,
-          "openrank": 4.1897098628,
+          "openrank": 4.1900401169,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2348,7 +2348,7 @@
             "commit": 3
           },
           "contributions": 2,
-          "openrank": 4.17603671,
+          "openrank": 4.1760853764,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2377,7 +2377,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 3.9839608339,
+          "openrank": 3.9843024045,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2407,7 +2407,7 @@
             "comment": 1
           },
           "contributions": 11,
-          "openrank": 3.7832062565,
+          "openrank": 3.7832792984,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2438,7 +2438,7 @@
             "open": 4
           },
           "contributions": 0,
-          "openrank": 3.4544562634,
+          "openrank": 3.4550493196,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2471,7 +2471,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 3.4311019972,
+          "openrank": 3.431258883,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2500,7 +2500,7 @@
             "comment": 7
           },
           "contributions": 0,
-          "openrank": 3.3102806889,
+          "openrank": 3.3105158731,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2532,7 +2532,7 @@
             "commit": 3
           },
           "contributions": 1,
-          "openrank": 2.9400149818,
+          "openrank": 2.9403352604,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2564,7 +2564,7 @@
             "review_comment": 10
           },
           "contributions": 0,
-          "openrank": 2.9075730021,
+          "openrank": 2.9076356193,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2595,7 +2595,7 @@
             "comment": 5
           },
           "contributions": 0,
-          "openrank": 2.8509661397,
+          "openrank": 2.8510229377,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2626,7 +2626,7 @@
             "comment": 4
           },
           "contributions": 1,
-          "openrank": 2.8364812869,
+          "openrank": 2.8365370318,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2655,7 +2655,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 2.8051124129,
+          "openrank": 2.8055352154,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2685,7 +2685,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 2.7983045571,
+          "openrank": 2.7984742268,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2716,7 +2716,7 @@
             "comment": 1
           },
           "contributions": 1,
-          "openrank": 2.7831311384,
+          "openrank": 2.7831842721,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2746,7 +2746,7 @@
             "comment": 1
           },
           "contributions": 1,
-          "openrank": 2.7753386768,
+          "openrank": 2.7753916617,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2775,7 +2775,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 2.7615151883,
+          "openrank": 2.7617251131,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2804,7 +2804,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 2.7206649911,
+          "openrank": 2.7210321886,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2835,7 +2835,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 2.6736883486,
+          "openrank": 2.6737361255,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2866,7 +2866,7 @@
             "review_comment": 10
           },
           "contributions": 0,
-          "openrank": 2.6279476806,
+          "openrank": 2.6280973999,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2895,7 +2895,7 @@
             "commit": 2
           },
           "contributions": 1,
-          "openrank": 2.6059483946,
+          "openrank": 2.6060929506,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2923,7 +2923,7 @@
             "commit": 35
           },
           "contributions": 7,
-          "openrank": 2.4107948189,
+          "openrank": 2.4108521476,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2956,7 +2956,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 2.3921766888,
+          "openrank": 2.392209165,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -2985,7 +2985,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 2.3921766888,
+          "openrank": 2.392209165,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3012,7 +3012,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 2.1145022594,
+          "openrank": 2.1145217602,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3040,7 +3040,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 2.0570355852,
+          "openrank": 2.0573080019,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3071,7 +3071,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 2.0308173949,
+          "openrank": 2.0308625081,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3099,7 +3099,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 2.0251149998,
+          "openrank": 2.0253424919,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3126,7 +3126,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 2.0251149998,
+          "openrank": 2.0253424919,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3155,7 +3155,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.9978483125,
+          "openrank": 1.9978818545,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3184,7 +3184,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.9822196144,
+          "openrank": 1.9826236903,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3213,7 +3213,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.9523257325,
+          "openrank": 1.9527918065,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3241,7 +3241,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.9523257325,
+          "openrank": 1.9527918065,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3270,7 +3270,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.9330159881,
+          "openrank": 1.9331371806,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3297,7 +3297,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.9307476627,
+          "openrank": 1.9307644673,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3325,7 +3325,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 1.9020535275,
+          "openrank": 1.9020922299,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3355,7 +3355,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.8823772157,
+          "openrank": 1.8827821786,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3385,7 +3385,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 1.880277687,
+          "openrank": 1.8805221879,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3416,7 +3416,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.8375299788,
+          "openrank": 1.8378285434,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3444,7 +3444,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.8076166404,
+          "openrank": 1.8079653249,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3472,7 +3472,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.8076166404,
+          "openrank": 1.8079653249,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3501,7 +3501,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 1.8076166404,
+          "openrank": 1.8079653249,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3529,7 +3529,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.7155176286,
+          "openrank": 1.7157600137,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3559,7 +3559,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.6696265117,
+          "openrank": 1.6696589879,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3586,7 +3586,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.6696265117,
+          "openrank": 1.6696589879,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3614,7 +3614,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 1.6696265117,
+          "openrank": 1.6696589879,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3641,7 +3641,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.6234186169,
+          "openrank": 1.6235547024,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3671,7 +3671,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.6234186169,
+          "openrank": 1.6235547024,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3701,7 +3701,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.5143830886,
+          "openrank": 1.5144085,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3731,7 +3731,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 1.493051091,
+          "openrank": 1.4930863154,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3761,7 +3761,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.4708364865,
+          "openrank": 1.4708711869,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3792,7 +3792,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 1.453985293,
+          "openrank": 1.4540106736,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3821,7 +3821,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.4391531195,
+          "openrank": 1.4393303098,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3850,7 +3850,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 1.4349911626,
+          "openrank": 1.4350321167,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3879,7 +3879,7 @@
             "commit": 2
           },
           "contributions": 0,
-          "openrank": 1.4084682415,
+          "openrank": 1.4087488833,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3906,7 +3906,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 1.4022995763,
+          "openrank": 1.4023318999,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3936,7 +3936,7 @@
             "review_comment": 1
           },
           "contributions": 0,
-          "openrank": 1.3761959067,
+          "openrank": 1.3762700089,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3964,7 +3964,7 @@
             "commit": 2
           },
           "contributions": 0,
-          "openrank": 1.3301464008,
+          "openrank": 1.3301673533,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -3992,7 +3992,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.3163692298,
+          "openrank": 1.3165435721,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4020,7 +4020,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.3002330624,
+          "openrank": 1.3003041349,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4049,7 +4049,7 @@
             "comment": 4
           },
           "contributions": 0,
-          "openrank": 1.3002330624,
+          "openrank": 1.3003041349,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4077,7 +4077,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.2921649787,
+          "openrank": 1.2921844163,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4105,7 +4105,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.2921649787,
+          "openrank": 1.2921844163,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4133,7 +4133,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.2921649787,
+          "openrank": 1.2921844163,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4160,7 +4160,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.2921649787,
+          "openrank": 1.2921844163,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4187,7 +4187,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.2747314165,
+          "openrank": 1.2747590469,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4215,7 +4215,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.2541835565,
+          "openrank": 1.2542014792,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4242,7 +4242,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.234599956,
+          "openrank": 1.2348372063,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4270,7 +4270,7 @@
             "comment": 5
           },
           "contributions": 0,
-          "openrank": 1.1868826802,
+          "openrank": 1.1870773294,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4299,7 +4299,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.1787816263,
+          "openrank": 1.1790173114,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4327,7 +4327,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.1539496254,
+          "openrank": 1.1539704244,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4355,7 +4355,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.1518806847,
+          "openrank": 1.1522176049,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4383,7 +4383,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 1.0771201094,
+          "openrank": 1.0774007512,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4411,7 +4411,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 1.0765003217,
+          "openrank": 1.0765722626,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4439,7 +4439,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.0728965769,
+          "openrank": 1.0729989295,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4467,7 +4467,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.0564397655,
+          "openrank": 1.0565664965,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4494,7 +4494,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.043778136,
+          "openrank": 1.0439011853,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4522,7 +4522,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 1.0421699147,
+          "openrank": 1.0422952617,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4549,7 +4549,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.0367796909,
+          "openrank": 1.0368021582,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4577,7 +4577,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.0310706035,
+          "openrank": 1.0312980956,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4604,7 +4604,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.0300361363,
+          "openrank": 1.0301590257,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4631,7 +4631,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9953126745,
+          "openrank": 0.9953305241,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4659,7 +4659,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9953126745,
+          "openrank": 0.9953305241,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4686,7 +4686,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9850210977,
+          "openrank": 0.9851954399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4713,7 +4713,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9850210977,
+          "openrank": 0.9851954399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4740,7 +4740,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9850210977,
+          "openrank": 0.9851954399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4767,7 +4767,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9850210977,
+          "openrank": 0.9851954399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4795,7 +4795,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9850210977,
+          "openrank": 0.9851954399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4822,7 +4822,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9850210977,
+          "openrank": 0.9851954399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4849,7 +4849,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9850210977,
+          "openrank": 0.9851954399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4876,7 +4876,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9850210977,
+          "openrank": 0.9851954399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4903,7 +4903,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9850210977,
+          "openrank": 0.9851954399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4930,7 +4930,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9850210977,
+          "openrank": 0.9851954399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4957,7 +4957,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9850210977,
+          "openrank": 0.9851954399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -4984,7 +4984,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.983886935,
+          "openrank": 0.9840090833,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5011,7 +5011,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.983886935,
+          "openrank": 0.9840090833,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5038,7 +5038,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9826593817,
+          "openrank": 0.9826764061,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5065,7 +5065,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9816186096,
+          "openrank": 0.98163637,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5092,7 +5092,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9816186096,
+          "openrank": 0.98163637,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5119,7 +5119,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9789418588,
+          "openrank": 0.9789592202,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5147,7 +5147,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.976953014,
+          "openrank": 0.9770757214,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5174,7 +5174,7 @@
             "commit": 9
           },
           "contributions": 9,
-          "openrank": 0.9759425562,
+          "openrank": 0.9759583745,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5202,7 +5202,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9698126785,
+          "openrank": 0.9699367582,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5229,7 +5229,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9696564698,
+          "openrank": 0.9696742108,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5256,7 +5256,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9677391676,
+          "openrank": 0.967756466,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5283,7 +5283,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9677391676,
+          "openrank": 0.967756466,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5310,7 +5310,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9665940869,
+          "openrank": 0.9666110397,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5338,7 +5338,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.962089565,
+          "openrank": 0.9622115286,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5365,7 +5365,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9608168466,
+          "openrank": 0.9608362842,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5392,7 +5392,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9608168466,
+          "openrank": 0.9608362842,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5419,7 +5419,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9608168466,
+          "openrank": 0.9608362842,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5446,7 +5446,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9493495328,
+          "openrank": 0.9493665346,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5473,7 +5473,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9459533976,
+          "openrank": 0.9459720914,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5501,7 +5501,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9389715918,
+          "openrank": 0.9390927843,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5528,7 +5528,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9389715918,
+          "openrank": 0.9390927843,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5555,7 +5555,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9389715918,
+          "openrank": 0.9390927843,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5582,7 +5582,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9389715918,
+          "openrank": 0.9390927843,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5609,7 +5609,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9387765577,
+          "openrank": 0.9387930746,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5636,7 +5636,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9380676744,
+          "openrank": 0.9380841033,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5664,7 +5664,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 0.8957047863,
+          "openrank": 0.89572071,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5693,7 +5693,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.8929220859,
+          "openrank": 0.8929901287,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5722,7 +5722,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.8929220859,
+          "openrank": 0.8929901287,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5750,7 +5750,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.8929220859,
+          "openrank": 0.8929901287,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5778,7 +5778,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.8848540022,
+          "openrank": 0.8848704101,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5807,7 +5807,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.8848540022,
+          "openrank": 0.8848704101,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5834,7 +5834,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.8848540022,
+          "openrank": 0.8848704101,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5861,7 +5861,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 0.8525430032,
+          "openrank": 0.8525610116,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5888,7 +5888,7 @@
             "commit": 2
           },
           "contributions": 0,
-          "openrank": 0.7148702547,
+          "openrank": 0.7148790217,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5915,7 +5915,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 0.6887357378,
+          "openrank": 0.6887483848,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5943,7 +5943,7 @@
             "commit": 2
           },
           "contributions": 0,
-          "openrank": 0.6776374234,
+          "openrank": 0.6776708049,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5971,7 +5971,7 @@
             "comment": 4
           },
           "contributions": 0,
-          "openrank": 0.5115333187,
+          "openrank": 0.5116124021,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -5998,7 +5998,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 0.4493968886,
+          "openrank": 0.4494033642,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -6025,7 +6025,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.4352207269,
+          "openrank": 0.4352604458,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -6052,7 +6052,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 0.4118630194,
+          "openrank": 0.4118696029,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -6079,7 +6079,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.410932271,
+          "openrank": 0.4109383446,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -6106,7 +6106,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 0.3897566629,
+          "openrank": 0.3897617783,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -6133,7 +6133,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.3572354647,
+          "openrank": 0.357239805,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -6160,7 +6160,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.2986949858,
+          "openrank": 0.2987158769,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -6187,7 +6187,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 0.2598148793,
+          "openrank": 0.2598170205,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/astron-agent-calculation.json",
           "openrankCoverage": {
@@ -6210,13 +6210,13 @@
     {
       "id": "skillhub",
       "url": "https://github.com/iflytek/skillhub",
-      "stars": 5424,
-      "forks": 814,
+      "stars": 5431,
+      "forks": 817,
       "archived": false,
       "source": "https://api.github.com/repos/iflytek/skillhub",
       "contributorsSource": "/galaxy-data/skillhub-calculation.json",
       "openrankSource": "/galaxy-data/skillhub-calculation.json",
-      "openrank": 401.5374096385,
+      "openrank": 402.5205421687,
       "openrankCoverage": {
         "firstMonth": "2026-03",
         "lastMonth": "2026-11",
@@ -6225,19 +6225,19 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2026-03-11",
-      "historyEnd": "2026-11-15",
+      "historyEnd": "2026-11-16",
       "calculation": {
         "coverage": {
           "issues": 328,
-          "pullRequests": 720,
-          "comments": 1197,
+          "pullRequests": 721,
+          "comments": 1203,
           "reviewComments": 154,
-          "defaultCommits": 1958,
+          "defaultCommits": 1961,
           "codeContributors": 49
         },
         "participants": 220,
-        "events": 7468,
-        "workItems": 1999,
+        "events": 7498,
+        "workItems": 2003,
         "gaps": {
           "unlinkedCommitAuthorOccurrences": 774,
           "unlinkedActorOccurrences": 1,
@@ -6245,9 +6245,9 @@
           "commentsWithUnavailableParent": 2,
           "directCommitsWithoutLinkedAccount": 48
         },
-        "iterations": 36,
-        "residual": 2.0463630789890885e-11,
-        "graphSha256": "46be98bbaf56cd25d54ba3d69b814f90a5325734fb6670c6147b67c3726c24ec"
+        "iterations": 35,
+        "residual": 8.753886504564434e-11,
+        "graphSha256": "a7cbdf7d8e24a075cd55799567e7d43b6ed85166bc61432edc66457ddaef2ed4"
       },
       "automationExclusions": {
         "accounts": [
@@ -6356,15 +6356,15 @@
           "avatar": "https://avatars.githubusercontent.com/u/87064762?v=4",
           "type": "User",
           "stats": {
-            "open": 308,
-            "commit": 1468,
+            "open": 309,
+            "commit": 1483,
             "review": 61,
-            "close": 554,
-            "comment": 231,
+            "close": 560,
+            "comment": 236,
             "review_comment": 1
           },
-          "contributions": 791,
-          "openrank": 1365.5339345207,
+          "contributions": 792,
+          "openrank": 1373.3450449576,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6374,9 +6374,9 @@
             "gapMonths": 0,
             "monthsSinceLast": 0
           },
-          "observedEvents": 2623,
+          "observedEvents": 2650,
           "firstObservedAt": "2026-03-16T02:38:43Z",
-          "lastObservedAt": "2026-11-13T11:13:34Z",
+          "lastObservedAt": "2026-11-16T07:02:04Z",
           "evidenceLinks": [
             "https://github.com/iflytek/skillhub/pull/1003",
             "https://github.com/iflytek/skillhub/pull/1004",
@@ -6400,7 +6400,7 @@
             "review_comment": 13
           },
           "contributions": 371,
-          "openrank": 589.4746955307,
+          "openrank": 589.4476662637,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6436,7 +6436,7 @@
             "review_comment": 3
           },
           "contributions": 236,
-          "openrank": 422.6209169794,
+          "openrank": 422.6048900944,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6471,7 +6471,7 @@
             "comment": 2
           },
           "contributions": 190,
-          "openrank": 254.6354425211,
+          "openrank": 254.6378789255,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6506,7 +6506,7 @@
             "comment": 94
           },
           "contributions": 65,
-          "openrank": 241.7836854306,
+          "openrank": 240.5781058817,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6542,7 +6542,7 @@
             "review_comment": 4
           },
           "contributions": 66,
-          "openrank": 216.6289152338,
+          "openrank": 216.6152185312,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6572,13 +6572,13 @@
           "stats": {
             "open": 18,
             "close": 2,
-            "commit": 104,
+            "commit": 106,
             "review": 1,
             "comment": 36,
             "review_comment": 1
           },
-          "contributions": 55,
-          "openrank": 26.5825461129,
+          "contributions": 57,
+          "openrank": 28.8195223415,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6588,9 +6588,9 @@
             "gapMonths": 0,
             "monthsSinceLast": 0
           },
-          "observedEvents": 162,
+          "observedEvents": 164,
           "firstObservedAt": "2026-08-17T02:45:23Z",
-          "lastObservedAt": "2026-11-13T13:44:18Z",
+          "lastObservedAt": "2026-11-16T06:08:28Z",
           "evidenceLinks": [
             "https://github.com/iflytek/skillhub/pull/1008",
             "https://github.com/iflytek/skillhub/issues/1009",
@@ -6612,7 +6612,7 @@
             "comment": 25
           },
           "contributions": 4,
-          "openrank": 22.6715379235,
+          "openrank": 22.6692185453,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6645,7 +6645,7 @@
             "commit": 13
           },
           "contributions": 6,
-          "openrank": 22.5233621802,
+          "openrank": 22.5234830537,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6680,7 +6680,7 @@
             "review_comment": 2
           },
           "contributions": 7,
-          "openrank": 17.7497816067,
+          "openrank": 17.7434198429,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6716,7 +6716,7 @@
             "review_comment": 5
           },
           "contributions": 19,
-          "openrank": 16.496743887,
+          "openrank": 16.4962757346,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6748,7 +6748,7 @@
             "comment": 4
           },
           "contributions": 0,
-          "openrank": 15.1744155992,
+          "openrank": 15.1671141606,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6778,28 +6778,28 @@
           "stats": {
             "open": 9,
             "commit": 6,
-            "comment": 1
+            "comment": 2
           },
           "contributions": 4,
-          "openrank": 14.1511914944,
+          "openrank": 14.3786404805,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
             "firstMonth": "2026-09",
-            "lastMonth": "2026-10",
-            "months": 2,
+            "lastMonth": "2026-11",
+            "months": 3,
             "gapMonths": 0,
             "monthsSinceLast": 0
           },
-          "observedEvents": 16,
+          "observedEvents": 17,
           "firstObservedAt": "2026-09-07T10:29:19Z",
-          "lastObservedAt": "2026-10-28T08:13:46Z",
+          "lastObservedAt": "2026-11-15T13:31:07Z",
           "evidenceLinks": [
             "https://github.com/iflytek/skillhub/issues/1026",
             "https://github.com/iflytek/skillhub/pull/1027",
             "https://github.com/iflytek/skillhub/issues/307",
             "https://github.com/iflytek/skillhub/issues/827",
-            "https://github.com/iflytek/skillhub/issues/856"
+            "https://github.com/iflytek/skillhub/issues/854"
           ],
           "rank": 13
         },
@@ -6814,7 +6814,7 @@
             "commit": 26
           },
           "contributions": 13,
-          "openrank": 13.5070803192,
+          "openrank": 13.5066501782,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6848,7 +6848,7 @@
             "comment": 4
           },
           "contributions": 2,
-          "openrank": 12.8951535249,
+          "openrank": 12.8947415587,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6884,7 +6884,7 @@
             "review_comment": 1
           },
           "contributions": 2,
-          "openrank": 12.554161173,
+          "openrank": 12.5538835846,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6918,7 +6918,7 @@
             "comment": 4
           },
           "contributions": 1,
-          "openrank": 12.4795245032,
+          "openrank": 12.4789251069,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6949,7 +6949,7 @@
             "commit": 8
           },
           "contributions": 0,
-          "openrank": 10.857160533,
+          "openrank": 10.8572316105,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -6983,7 +6983,7 @@
             "comment": 4
           },
           "contributions": 1,
-          "openrank": 10.8136400376,
+          "openrank": 10.8094851577,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7015,7 +7015,7 @@
             "commit": 4
           },
           "contributions": 3,
-          "openrank": 8.4707443756,
+          "openrank": 8.4676461863,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7051,7 +7051,7 @@
             "review_comment": 4
           },
           "contributions": 1,
-          "openrank": 7.7474439605,
+          "openrank": 7.746870678,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7082,7 +7082,7 @@
             "open": 5
           },
           "contributions": 0,
-          "openrank": 7.5840199429,
+          "openrank": 7.5841009529,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7115,7 +7115,7 @@
             "comment": 1
           },
           "contributions": 4,
-          "openrank": 7.5116228016,
+          "openrank": 7.5095893655,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7138,39 +7138,6 @@
           "rank": 23
         },
         {
-          "login": "Phil-OSophy-42",
-          "url": "https://github.com/Phil-OSophy-42",
-          "avatar": "https://avatars.githubusercontent.com/u/215625218?v=4",
-          "type": "User",
-          "stats": {
-            "open": 4,
-            "commit": 2,
-            "close": 1,
-            "comment": 6
-          },
-          "contributions": 1,
-          "openrank": 5.9289314702,
-          "openrankStatus": "calculated",
-          "openrankSource": "/galaxy-data/skillhub-calculation.json",
-          "openrankCoverage": {
-            "firstMonth": "2026-07",
-            "lastMonth": "2026-09",
-            "months": 3,
-            "gapMonths": 0,
-            "monthsSinceLast": 0
-          },
-          "observedEvents": 13,
-          "firstObservedAt": "2026-07-09T09:37:38Z",
-          "lastObservedAt": "2026-09-02T08:32:38Z",
-          "evidenceLinks": [
-            "https://github.com/iflytek/skillhub/pull/576",
-            "https://github.com/iflytek/skillhub/issues/596",
-            "https://github.com/iflytek/skillhub/issues/690",
-            "https://github.com/iflytek/skillhub/pull/803"
-          ],
-          "rank": 24
-        },
-        {
           "login": "lironghai",
           "url": "https://github.com/lironghai",
           "avatar": "https://avatars.githubusercontent.com/u/34302941?v=4",
@@ -7180,7 +7147,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 5.893897046,
+          "openrank": 5.9386143681,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7200,6 +7167,39 @@
             "https://github.com/iflytek/skillhub/issues/602",
             "https://github.com/iflytek/skillhub/issues/822"
           ],
+          "rank": 24
+        },
+        {
+          "login": "Phil-OSophy-42",
+          "url": "https://github.com/Phil-OSophy-42",
+          "avatar": "https://avatars.githubusercontent.com/u/215625218?v=4",
+          "type": "User",
+          "stats": {
+            "open": 4,
+            "commit": 2,
+            "close": 1,
+            "comment": 6
+          },
+          "contributions": 1,
+          "openrank": 5.92674875,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/skillhub-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-07",
+            "lastMonth": "2026-09",
+            "months": 3,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 13,
+          "firstObservedAt": "2026-07-09T09:37:38Z",
+          "lastObservedAt": "2026-09-02T08:32:38Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/skillhub/pull/576",
+            "https://github.com/iflytek/skillhub/issues/596",
+            "https://github.com/iflytek/skillhub/issues/690",
+            "https://github.com/iflytek/skillhub/pull/803"
+          ],
           "rank": 25
         },
         {
@@ -7212,7 +7212,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 5.7279218204,
+          "openrank": 5.6056877905,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7245,7 +7245,7 @@
             "commit": 2
           },
           "contributions": 2,
-          "openrank": 5.2847100705,
+          "openrank": 5.2847467744,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7277,7 +7277,7 @@
             "comment": 2
           },
           "contributions": 1,
-          "openrank": 5.2043375511,
+          "openrank": 5.2036631343,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7310,7 +7310,7 @@
             "review_comment": 18
           },
           "contributions": 11,
-          "openrank": 5.0428805331,
+          "openrank": 5.0396331728,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7341,7 +7341,7 @@
             "comment": 4
           },
           "contributions": 0,
-          "openrank": 4.9782194548,
+          "openrank": 4.97798402,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7373,7 +7373,7 @@
             "comment": 4
           },
           "contributions": 0,
-          "openrank": 4.8119548368,
+          "openrank": 4.8118221502,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7405,7 +7405,7 @@
             "commit": 2
           },
           "contributions": 2,
-          "openrank": 4.6934346233,
+          "openrank": 4.6916609733,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7436,7 +7436,7 @@
             "close": 3
           },
           "contributions": 0,
-          "openrank": 4.5319288659,
+          "openrank": 4.531960846,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7467,7 +7467,7 @@
             "comment": 1
           },
           "contributions": 7,
-          "openrank": 4.3554354963,
+          "openrank": 4.3522891176,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7498,7 +7498,7 @@
             "comment": 1
           },
           "contributions": 1,
-          "openrank": 4.3447920276,
+          "openrank": 4.3431265741,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7531,7 +7531,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 3.9902397895,
+          "openrank": 3.98724029,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7562,7 +7562,7 @@
             "comment": 4
           },
           "contributions": 0,
-          "openrank": 3.8599785291,
+          "openrank": 3.8588521308,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7595,7 +7595,7 @@
             "comment": 5
           },
           "contributions": 0,
-          "openrank": 3.7123346926,
+          "openrank": 3.7118990351,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7628,7 +7628,7 @@
             "comment": 12
           },
           "contributions": 0,
-          "openrank": 3.6977076335,
+          "openrank": 3.6975144391,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7661,7 +7661,7 @@
             "comment": 6
           },
           "contributions": 0,
-          "openrank": 3.6514662267,
+          "openrank": 3.6485728091,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7691,7 +7691,7 @@
             "comment": 1
           },
           "contributions": 1,
-          "openrank": 3.5460993867,
+          "openrank": 3.5449858079,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7722,7 +7722,7 @@
             "comment": 1
           },
           "contributions": 1,
-          "openrank": 3.1727127609,
+          "openrank": 3.1724774959,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7753,7 +7753,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 3.1114386995,
+          "openrank": 3.1114592618,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7783,7 +7783,7 @@
             "comment": 2
           },
           "contributions": 1,
-          "openrank": 3.0798730301,
+          "openrank": 3.0788987374,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7814,7 +7814,7 @@
             "commit": 2
           },
           "contributions": 2,
-          "openrank": 2.9708635644,
+          "openrank": 2.9691952792,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7844,7 +7844,7 @@
             "comment": 2
           },
           "contributions": 2,
-          "openrank": 2.92158101,
+          "openrank": 2.9199901219,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7873,7 +7873,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 2.8822171499,
+          "openrank": 2.8817925616,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7905,7 +7905,7 @@
             "comment": 2
           },
           "contributions": 1,
-          "openrank": 2.7098759815,
+          "openrank": 2.7092468757,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7935,7 +7935,7 @@
             "comment": 1
           },
           "contributions": 1,
-          "openrank": 2.7077658817,
+          "openrank": 2.7077719092,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7964,7 +7964,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 2.6453476518,
+          "openrank": 2.6448816131,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -7993,7 +7993,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 2.6416410298,
+          "openrank": 2.6416412825,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8023,7 +8023,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 2.6015049497,
+          "openrank": 2.6018566178,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8054,7 +8054,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 2.5946032333,
+          "openrank": 2.593654725,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8084,7 +8084,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 2.5813660215,
+          "openrank": 2.5808915601,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8113,7 +8113,7 @@
             "open": 3
           },
           "contributions": 0,
-          "openrank": 2.5650678998,
+          "openrank": 2.5640424501,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8142,7 +8142,7 @@
             "commit": 14
           },
           "contributions": 0,
-          "openrank": 2.4340675154,
+          "openrank": 2.4340841414,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8172,7 +8172,7 @@
             "comment": 1
           },
           "contributions": 1,
-          "openrank": 2.4119650297,
+          "openrank": 2.4101803618,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8200,7 +8200,7 @@
             "open": 3
           },
           "contributions": 0,
-          "openrank": 2.3957421058,
+          "openrank": 2.3950430477,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8231,7 +8231,7 @@
             "commit": 6
           },
           "contributions": 0,
-          "openrank": 2.381030671,
+          "openrank": 2.381046873,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8260,7 +8260,7 @@
             "commit": 149
           },
           "contributions": 0,
-          "openrank": 2.381030671,
+          "openrank": 2.381046873,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8290,7 +8290,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 2.381030671,
+          "openrank": 2.381046873,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8319,7 +8319,7 @@
             "commit": 4
           },
           "contributions": 0,
-          "openrank": 2.381030671,
+          "openrank": 2.381046873,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8348,7 +8348,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 2.381030671,
+          "openrank": 2.381046873,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8377,7 +8377,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 2.2430641177,
+          "openrank": 2.2416362818,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8405,7 +8405,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 2.2210548089,
+          "openrank": 2.221044574,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8433,7 +8433,7 @@
             "commit": 3
           },
           "contributions": 3,
-          "openrank": 2.201783437,
+          "openrank": 2.2003868696,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8462,7 +8462,7 @@
             "comment": 2
           },
           "contributions": 1,
-          "openrank": 2.18445412,
+          "openrank": 2.1838948792,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8491,7 +8491,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 2.0715770719,
+          "openrank": 2.0706614032,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8519,7 +8519,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 2.0129655184,
+          "openrank": 2.0129730179,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8548,7 +8548,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 2.0064738894,
+          "openrank": 2.00579867,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8577,7 +8577,7 @@
             "comment": 3
           },
           "contributions": 2,
-          "openrank": 2.004683921,
+          "openrank": 2.0044837119,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8606,7 +8606,7 @@
             "comment": 1
           },
           "contributions": 1,
-          "openrank": 1.9818326122,
+          "openrank": 1.9811960913,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8635,7 +8635,7 @@
             "comment": 2
           },
           "contributions": 3,
-          "openrank": 1.9739222981,
+          "openrank": 1.9733673033,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8663,7 +8663,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.9536703054,
+          "openrank": 1.9536822926,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8692,7 +8692,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 1.9413707069,
+          "openrank": 1.9409359367,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8720,7 +8720,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 1.9413707069,
+          "openrank": 1.9409359367,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8748,7 +8748,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 1.9321179165,
+          "openrank": 1.9321209302,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8776,7 +8776,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 1.9009088015,
+          "openrank": 1.9006757822,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8804,7 +8804,7 @@
             "commit": 1
           },
           "contributions": 1,
-          "openrank": 1.9009088015,
+          "openrank": 1.9006757822,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8832,7 +8832,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 1.8853841544,
+          "openrank": 1.8853804437,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8862,7 +8862,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.8571586203,
+          "openrank": 1.8571648548,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8892,7 +8892,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.8507012353,
+          "openrank": 1.8505074055,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8921,7 +8921,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.7718239887,
+          "openrank": 1.771822996,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8949,7 +8949,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.7616115062,
+          "openrank": 1.7614141977,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -8978,7 +8978,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.7541833907,
+          "openrank": 1.7539876674,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9006,7 +9006,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.7322270661,
+          "openrank": 1.7313575259,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9035,7 +9035,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.7253212871,
+          "openrank": 1.7248905599,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9063,7 +9063,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.7196730036,
+          "openrank": 1.7190844756,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9091,7 +9091,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.716406438,
+          "openrank": 1.71569995,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9120,7 +9120,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.6820648783,
+          "openrank": 1.6819536253,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9148,7 +9148,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.6816173862,
+          "openrank": 1.6816248858,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9177,7 +9177,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.6680218293,
+          "openrank": 1.6680308367,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9206,7 +9206,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.6671238836,
+          "openrank": 1.6664947926,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9236,7 +9236,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.6584804939,
+          "openrank": 1.6584966959,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9263,7 +9263,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.6584804939,
+          "openrank": 1.6584966959,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9291,7 +9291,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 1.6584804939,
+          "openrank": 1.6584966959,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9319,7 +9319,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 1.6584804939,
+          "openrank": 1.6584966959,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9347,7 +9347,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 1.6584804939,
+          "openrank": 1.6584966959,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9375,7 +9375,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 1.6584804939,
+          "openrank": 1.6584966959,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9403,7 +9403,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 1.6513032555,
+          "openrank": 1.6508372168,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9431,7 +9431,7 @@
             "open": 2
           },
           "contributions": 0,
-          "openrank": 1.6504082713,
+          "openrank": 1.6501797377,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9459,7 +9459,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.3321526944,
+          "openrank": 1.3317841874,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9487,7 +9487,7 @@
             "commit": 2
           },
           "contributions": 0,
-          "openrank": 1.3182413638,
+          "openrank": 1.317842348,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9515,7 +9515,7 @@
             "commit": 2
           },
           "contributions": 0,
-          "openrank": 1.2944950708,
+          "openrank": 1.2938972484,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9543,7 +9543,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.2600136161,
+          "openrank": 1.2599100766,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9572,7 +9572,7 @@
             "commit": 2
           },
           "contributions": 0,
-          "openrank": 1.2461228514,
+          "openrank": 1.2458083059,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9600,7 +9600,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.2389552149,
+          "openrank": 1.2389602152,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9628,7 +9628,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.2373175531,
+          "openrank": 1.2373220389,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9656,7 +9656,7 @@
             "commit": 4
           },
           "contributions": 0,
-          "openrank": 1.2237219962,
+          "openrank": 1.2237279899,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9686,7 +9686,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.2135712601,
+          "openrank": 1.2133769393,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9713,7 +9713,7 @@
             "commit": 7
           },
           "contributions": 0,
-          "openrank": 1.1377929896,
+          "openrank": 1.1376703842,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9741,7 +9741,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 1.101193922,
+          "openrank": 1.1009639291,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9770,7 +9770,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 1.0798816172,
+          "openrank": 1.0797270409,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9799,7 +9799,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 1.0699405747,
+          "openrank": 1.0699432898,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9827,7 +9827,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.0582743088,
+          "openrank": 1.0581399168,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9854,7 +9854,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.0502840911,
+          "openrank": 1.0499273297,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9881,7 +9881,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.0305787531,
+          "openrank": 1.0305780199,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9909,7 +9909,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.004519179,
+          "openrank": 1.0039254857,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9937,7 +9937,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.004519179,
+          "openrank": 1.0039254857,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9964,7 +9964,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.0015430441,
+          "openrank": 1.0015440443,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -9991,7 +9991,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9966296316,
+          "openrank": 0.9966311993,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10010,33 +10010,6 @@
           "rank": 121
         },
         {
-          "login": "Youngho-w",
-          "url": "https://github.com/Youngho-w",
-          "avatar": "https://avatars.githubusercontent.com/u/26267784?v=4",
-          "type": "User",
-          "stats": {
-            "open": 1
-          },
-          "contributions": 0,
-          "openrank": 0.9859201617,
-          "openrankStatus": "calculated",
-          "openrankSource": "/galaxy-data/skillhub-calculation.json",
-          "openrankCoverage": {
-            "firstMonth": "2026-04",
-            "lastMonth": "2026-04",
-            "months": 1,
-            "gapMonths": 0,
-            "monthsSinceLast": 0
-          },
-          "observedEvents": 1,
-          "firstObservedAt": "2026-04-15T02:27:45Z",
-          "lastObservedAt": "2026-04-15T02:27:45Z",
-          "evidenceLinks": [
-            "https://github.com/iflytek/skillhub/issues/307"
-          ],
-          "rank": 122
-        },
-        {
           "login": "zhenglisai",
           "url": "https://github.com/zhenglisai",
           "avatar": "https://avatars.githubusercontent.com/u/32353492?u=a959e188d0235ddb76beb514d42e17b0650b6760&v=4",
@@ -10046,7 +10019,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9854089367,
+          "openrank": 0.9854100128,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10062,6 +10035,33 @@
           "evidenceLinks": [
             "https://github.com/iflytek/skillhub/issues/248"
           ],
+          "rank": 122
+        },
+        {
+          "login": "Youngho-w",
+          "url": "https://github.com/Youngho-w",
+          "avatar": "https://avatars.githubusercontent.com/u/26267784?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1
+          },
+          "contributions": 0,
+          "openrank": 0.9847857071,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/skillhub-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-04",
+            "lastMonth": "2026-04",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-04-15T02:27:45Z",
+          "lastObservedAt": "2026-04-15T02:27:45Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/skillhub/issues/307"
+          ],
           "rank": 123
         },
         {
@@ -10074,7 +10074,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9805947775,
+          "openrank": 0.98058434,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10101,7 +10101,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9788051891,
+          "openrank": 0.9788058385,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10128,7 +10128,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9785354255,
+          "openrank": 0.9783366884,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10155,7 +10155,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9776057348,
+          "openrank": 0.9776056913,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10182,7 +10182,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9738916771,
+          "openrank": 0.9738924261,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10209,7 +10209,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9719675877,
+          "openrank": 0.9714941191,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10236,7 +10236,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9719675877,
+          "openrank": 0.9714941191,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10263,7 +10263,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9719675877,
+          "openrank": 0.9714941191,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10282,33 +10282,6 @@
           "rank": 129
         },
         {
-          "login": "lvxinrong",
-          "url": "https://github.com/lvxinrong",
-          "avatar": "https://avatars.githubusercontent.com/u/20681488?v=4",
-          "type": "User",
-          "stats": {
-            "open": 1
-          },
-          "contributions": 0,
-          "openrank": 0.9715200956,
-          "openrankStatus": "calculated",
-          "openrankSource": "/galaxy-data/skillhub-calculation.json",
-          "openrankCoverage": {
-            "firstMonth": "2026-09",
-            "lastMonth": "2026-09",
-            "months": 1,
-            "gapMonths": 0,
-            "monthsSinceLast": 0
-          },
-          "observedEvents": 1,
-          "firstObservedAt": "2026-09-02T08:14:57Z",
-          "lastObservedAt": "2026-09-02T08:14:57Z",
-          "evidenceLinks": [
-            "https://github.com/iflytek/skillhub/issues/802"
-          ],
-          "rank": 132
-        },
-        {
           "login": "flyer5200",
           "url": "https://github.com/flyer5200",
           "avatar": "https://avatars.githubusercontent.com/u/3270930?u=8f6910a5b464aa479f6026a268aa09ae55c2af5e&v=4",
@@ -10317,7 +10290,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9712199897,
+          "openrank": 0.9712222578,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10333,6 +10306,33 @@
           "evidenceLinks": [
             "https://github.com/iflytek/skillhub/issues/237"
           ],
+          "rank": 132
+        },
+        {
+          "login": "lvxinrong",
+          "url": "https://github.com/lvxinrong",
+          "avatar": "https://avatars.githubusercontent.com/u/20681488?v=4",
+          "type": "User",
+          "stats": {
+            "open": 1
+          },
+          "contributions": 0,
+          "openrank": 0.9711653796,
+          "openrankStatus": "calculated",
+          "openrankSource": "/galaxy-data/skillhub-calculation.json",
+          "openrankCoverage": {
+            "firstMonth": "2026-09",
+            "lastMonth": "2026-09",
+            "months": 1,
+            "gapMonths": 0,
+            "monthsSinceLast": 0
+          },
+          "observedEvents": 1,
+          "firstObservedAt": "2026-09-02T08:14:57Z",
+          "lastObservedAt": "2026-09-02T08:14:57Z",
+          "evidenceLinks": [
+            "https://github.com/iflytek/skillhub/issues/802"
+          ],
           "rank": 133
         },
         {
@@ -10345,7 +10345,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9699305555,
+          "openrank": 0.9698088271,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10372,7 +10372,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9692108196,
+          "openrank": 0.9689716276,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10399,7 +10399,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9674273901,
+          "openrank": 0.9674304675,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10426,7 +10426,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9631469387,
+          "openrank": 0.9625491163,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10453,7 +10453,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9502972668,
+          "openrank": 0.9502919596,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10480,7 +10480,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9495907798,
+          "openrank": 0.9495941205,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10507,7 +10507,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9492156934,
+          "openrank": 0.9492163294,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10534,7 +10534,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9492156934,
+          "openrank": 0.9492163294,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10561,7 +10561,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9473263105,
+          "openrank": 0.9468915404,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10588,7 +10588,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9473263105,
+          "openrank": 0.9468915404,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10615,7 +10615,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9459491278,
+          "openrank": 0.9458318037,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10642,7 +10642,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9394159965,
+          "openrank": 0.9390627525,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10669,7 +10669,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9394159965,
+          "openrank": 0.9390627525,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10696,7 +10696,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9394159965,
+          "openrank": 0.9390627525,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10723,7 +10723,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9394159965,
+          "openrank": 0.9390627525,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10750,7 +10750,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9394159965,
+          "openrank": 0.9390627525,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10777,7 +10777,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9394159965,
+          "openrank": 0.9390627525,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10804,7 +10804,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9380735202,
+          "openrank": 0.9380765339,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10831,7 +10831,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9380735202,
+          "openrank": 0.9380765339,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10858,7 +10858,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9380735202,
+          "openrank": 0.9380765339,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10885,7 +10885,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9380735202,
+          "openrank": 0.9380765339,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10912,7 +10912,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9380735202,
+          "openrank": 0.9380765339,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10940,7 +10940,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9380735202,
+          "openrank": 0.9380765339,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10967,7 +10967,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9380735202,
+          "openrank": 0.9380765339,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -10994,7 +10994,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9380735202,
+          "openrank": 0.9380765339,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11021,7 +11021,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9380735202,
+          "openrank": 0.9380765339,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11048,7 +11048,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9380735202,
+          "openrank": 0.9380765339,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11075,7 +11075,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9380735202,
+          "openrank": 0.9380765339,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11102,7 +11102,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9380735202,
+          "openrank": 0.9380765339,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11130,7 +11130,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9344414254,
+          "openrank": 0.9344451261,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11157,7 +11157,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9344414254,
+          "openrank": 0.9344451261,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11184,7 +11184,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9344414254,
+          "openrank": 0.9344451261,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11211,7 +11211,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11238,7 +11238,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11265,7 +11265,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11293,7 +11293,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11320,7 +11320,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11347,7 +11347,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11374,7 +11374,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11402,7 +11402,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11429,7 +11429,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11456,7 +11456,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11483,7 +11483,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11510,7 +11510,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11537,7 +11537,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11564,7 +11564,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11591,7 +11591,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11618,7 +11618,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.9068644052,
+          "openrank": 0.9066313859,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11646,7 +11646,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.905969421,
+          "openrank": 0.9059739068,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11673,7 +11673,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.905969421,
+          "openrank": 0.9059739068,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11700,7 +11700,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.905969421,
+          "openrank": 0.9059739068,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11727,7 +11727,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.905969421,
+          "openrank": 0.9059739068,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11754,7 +11754,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.905969421,
+          "openrank": 0.9059739068,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11781,7 +11781,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.905969421,
+          "openrank": 0.9059739068,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11808,7 +11808,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.905969421,
+          "openrank": 0.9059739068,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11835,7 +11835,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.905969421,
+          "openrank": 0.9059739068,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11863,7 +11863,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.905969421,
+          "openrank": 0.9059739068,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11890,7 +11890,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.905969421,
+          "openrank": 0.9059739068,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11917,7 +11917,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.905969421,
+          "openrank": 0.9059739068,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11944,7 +11944,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.882223128,
+          "openrank": 0.8820288072,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11971,7 +11971,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.882223128,
+          "openrank": 0.8820288072,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -11998,7 +11998,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 0.882223128,
+          "openrank": 0.8820288072,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12026,7 +12026,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 0.8738653219,
+          "openrank": 0.8738712797,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12053,7 +12053,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 0.8559812281,
+          "openrank": 0.8558300561,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12080,7 +12080,7 @@
             "commit": 3
           },
           "contributions": 0,
-          "openrank": 0.7410763472,
+          "openrank": 0.7408920937,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12108,7 +12108,7 @@
             "comment": 1
           },
           "contributions": 4,
-          "openrank": 0.6823793257,
+          "openrank": 0.6819786566,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12135,7 +12135,7 @@
             "comment": 6
           },
           "contributions": 0,
-          "openrank": 0.6036561738,
+          "openrank": 0.6035951783,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12162,7 +12162,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 0.5659545791,
+          "openrank": 0.565610844,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12190,7 +12190,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 0.5636438915,
+          "openrank": 0.5633531027,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12218,7 +12218,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.5320981655,
+          "openrank": 0.5318333652,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12245,7 +12245,7 @@
             "comment": 3
           },
           "contributions": 0,
-          "openrank": 0.508407407,
+          "openrank": 0.5084068472,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12272,7 +12272,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.4158902026,
+          "openrank": 0.4158848571,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12299,7 +12299,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.4053680526,
+          "openrank": 0.4052936744,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12326,7 +12326,7 @@
             "comment": 2
           },
           "contributions": 0,
-          "openrank": 0.3754857015,
+          "openrank": 0.3754809299,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12353,7 +12353,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.3580750233,
+          "openrank": 0.3579425352,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12380,7 +12380,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.3572012973,
+          "openrank": 0.3572014596,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12407,7 +12407,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.3553049974,
+          "openrank": 0.3553055645,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12434,7 +12434,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.3543568475,
+          "openrank": 0.3543576169,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12461,7 +12461,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.3193259263,
+          "openrank": 0.3193262399,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12488,7 +12488,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.3175327919,
+          "openrank": 0.3175061499,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12515,7 +12515,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.3130068329,
+          "openrank": 0.3129464805,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12542,7 +12542,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.3130068329,
+          "openrank": 0.3129464805,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12569,7 +12569,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.3130068329,
+          "openrank": 0.3129464805,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12596,7 +12596,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.3024424775,
+          "openrank": 0.3023234383,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12623,7 +12623,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.2967631255,
+          "openrank": 0.2967630033,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12650,7 +12650,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 0.2911132842,
+          "openrank": 0.2910957692,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12677,7 +12677,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.2902382293,
+          "openrank": 0.2902371168,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/skillhub-calculation.json",
           "openrankCoverage": {
@@ -12700,7 +12700,7 @@
     {
       "id": "astron-rpa",
       "url": "https://github.com/iflytek/astron-rpa",
-      "stars": 5257,
+      "stars": 5258,
       "forks": 487,
       "archived": false,
       "source": "https://api.github.com/repos/iflytek/astron-rpa",
@@ -12715,7 +12715,7 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2025-09-20",
-      "historyEnd": "2026-11-15",
+      "historyEnd": "2026-11-16",
       "calculation": {
         "coverage": {
           "issues": 114,
@@ -15540,12 +15540,12 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2026-03-19",
-      "historyEnd": "2026-11-15",
+      "historyEnd": "2026-11-16",
       "calculation": {
         "coverage": {
           "issues": 28,
           "pullRequests": 38,
-          "comments": 113,
+          "comments": 115,
           "reviewComments": 22,
           "defaultCommits": 42,
           "codeContributors": 7
@@ -15647,7 +15647,7 @@
           }
         ],
         "accountCount": 9,
-        "eventCount": 188,
+        "eventCount": 191,
         "removedAutomationOnlyWorkItems": [
           "82",
           "83",
@@ -16001,7 +16001,7 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2026-03-30",
-      "historyEnd": "2026-11-15",
+      "historyEnd": "2026-11-16",
       "calculation": {
         "coverage": {
           "issues": 30,
@@ -16432,7 +16432,7 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2026-06-16",
-      "historyEnd": "2026-11-15",
+      "historyEnd": "2026-11-16",
       "calculation": {
         "coverage": {
           "issues": 8,
@@ -16950,7 +16950,7 @@
       "source": "https://api.github.com/repos/iflytek/dolphin-mcp-pilot",
       "contributorsSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
       "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
-      "openrank": 23.0508433735,
+      "openrank": 23.2146987952,
       "openrankCoverage": {
         "firstMonth": "2026-08",
         "lastMonth": "2026-11",
@@ -16959,10 +16959,10 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2026-08-07",
-      "historyEnd": "2026-11-15",
+      "historyEnd": "2026-11-16",
       "calculation": {
         "coverage": {
-          "issues": 13,
+          "issues": 14,
           "pullRequests": 49,
           "comments": 120,
           "reviewComments": 5,
@@ -16970,14 +16970,14 @@
           "codeContributors": 9
         },
         "participants": 13,
-        "events": 340,
-        "workItems": 90,
+        "events": 341,
+        "workItems": 91,
         "gaps": {
           "unlinkedCommitAuthorOccurrences": 0
         },
         "iterations": 32,
-        "residual": 3.838351858576061e-11,
-        "graphSha256": "8e107c1920fff89efe718a63a8bbf28d5df1c95ed05eaa9767d816631a1e7777"
+        "residual": 3.9115377603593515e-11,
+        "graphSha256": "64ac7eda45a7c795549432372c6d3c0393419de47e6abbdf5074581d60f230ca"
       },
       "automationExclusions": {
         "accounts": [
@@ -17038,7 +17038,7 @@
             "review_comment": 4
           },
           "contributions": 9,
-          "openrank": 87.9155192146,
+          "openrank": 87.9274637369,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
@@ -17066,7 +17066,7 @@
           "avatar": "https://avatars.githubusercontent.com/u/92919259?v=4",
           "type": "User",
           "stats": {
-            "open": 15,
+            "open": 16,
             "commit": 42,
             "close": 15,
             "review": 19,
@@ -17074,19 +17074,19 @@
             "review_comment": 1
           },
           "contributions": 13,
-          "openrank": 59.0901622792,
+          "openrank": 60.5257160469,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
             "firstMonth": "2026-08",
-            "lastMonth": "2026-10",
-            "months": 3,
+            "lastMonth": "2026-11",
+            "months": 4,
             "gapMonths": 0,
             "monthsSinceLast": 0
           },
-          "observedEvents": 131,
+          "observedEvents": 132,
           "firstObservedAt": "2026-08-07T07:52:52Z",
-          "lastObservedAt": "2026-10-09T06:19:28Z",
+          "lastObservedAt": "2026-11-16T01:27:55Z",
           "evidenceLinks": [
             "https://github.com/iflytek/dolphin-mcp-pilot/pull/1",
             "https://github.com/iflytek/dolphin-mcp-pilot/issues/11",
@@ -17109,7 +17109,7 @@
             "comment": 23
           },
           "contributions": 8,
-          "openrank": 39.0862639445,
+          "openrank": 39.109045834,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
@@ -17141,7 +17141,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 3.8823764669,
+          "openrank": 3.8820101695,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
@@ -17170,7 +17170,7 @@
             "commit": 2
           },
           "contributions": 1,
-          "openrank": 2.7555406439,
+          "openrank": 2.757102862,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
@@ -17199,7 +17199,7 @@
             "commit": 2
           },
           "contributions": 1,
-          "openrank": 2.7219988259,
+          "openrank": 2.7221587178,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
@@ -17228,7 +17228,7 @@
             "commit": 4
           },
           "contributions": 1,
-          "openrank": 2.7029455813,
+          "openrank": 2.703104354,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
@@ -17257,7 +17257,7 @@
             "commit": 4
           },
           "contributions": 1,
-          "openrank": 2.6858544504,
+          "openrank": 2.6860122192,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
@@ -17285,7 +17285,7 @@
             "close": 1
           },
           "contributions": 0,
-          "openrank": 2.0117392003,
+          "openrank": 2.0116784928,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
@@ -17312,7 +17312,7 @@
             "open": 1
           },
           "contributions": 0,
-          "openrank": 1.6684609607,
+          "openrank": 1.668277812,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
@@ -17341,7 +17341,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 1.3910846105,
+          "openrank": 1.3931562132,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
@@ -17369,7 +17369,7 @@
             "commit": 1
           },
           "contributions": 0,
-          "openrank": 1.2388718836,
+          "openrank": 1.2395006277,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
@@ -17397,7 +17397,7 @@
             "comment": 1
           },
           "contributions": 0,
-          "openrank": 0.9067722995,
+          "openrank": 0.9070620706,
           "openrankStatus": "calculated",
           "openrankSource": "/galaxy-data/dolphin-mcp-pilot-calculation.json",
           "openrankCoverage": {
@@ -17435,7 +17435,7 @@
         "monthsSinceLast": 0
       },
       "historyStart": "2026-08-29",
-      "historyEnd": "2026-11-15",
+      "historyEnd": "2026-11-16",
       "calculation": {
         "coverage": {
           "issues": 4,
