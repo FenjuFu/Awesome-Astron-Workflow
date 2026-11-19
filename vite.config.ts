@@ -12,6 +12,20 @@ function devChatApi(env: Record<string, string>): Plugin {
   return {
     name: 'dev-chat-api',
     configureServer(server) {
+      server.middlewares.use('/api/new-year', (req, res) => {
+        let raw = ''; let oversized = false;
+        req.on('data', chunk => { if (oversized) return; raw += chunk; if (raw.length > 10000) { oversized = true; res.statusCode = 413; res.end(); } });
+        req.on('end', async () => {
+          if (oversized) return;
+          try {
+            if (env.MONGODB_URI) process.env.MONGODB_URI = env.MONGODB_URI;
+            const handler = (await import(pathToFileURL(path.resolve(process.cwd(), 'api/new-year.js')).href)).default;
+            const adaptedReq = Object.assign(req, { body: JSON.parse(raw || '{}') });
+            const adaptedRes = Object.assign(res, { status(code: number) { res.statusCode = code; return adaptedRes; }, json(data: unknown) { res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify(data)); } });
+            await handler(adaptedReq, adaptedRes);
+          } catch { res.statusCode = 400; res.end(JSON.stringify({ error: 'Invalid request' })); }
+        });
+      });
       server.middlewares.use('/api/playground', (req, res) => {
         if (req.method !== 'POST') { res.statusCode = 405; res.end(); return; }
         let raw = '';

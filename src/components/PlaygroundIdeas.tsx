@@ -1,5 +1,5 @@
-﻿import { useState } from 'react';
-import { Copy, Check, ArrowRight, Sparkles } from 'lucide-react';
+import { useState } from 'react';
+import { Copy, Check, Sparkles } from 'lucide-react';
 import { playgroundPrompts } from '../data/playgroundPrompts';
 
 interface Props {
@@ -30,11 +30,11 @@ export default function PlaygroundIdeas({ zh, disabled, onUse }: Props) {
   }
   return <section aria-labelledby="try-this-title" className="rounded-xl border border-indigo-100 bg-indigo-50/60 p-4">
     <div className="flex items-center justify-between gap-2">
-      <h3 id="try-this-title" className="flex items-center gap-1.5 text-sm font-bold text-indigo-950"><Sparkles size={16} aria-hidden="true" />Try this</h3>
-      <button type="button" onClick={() => select((index + 1) % playgroundPrompts.length)} className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-medium text-indigo-700 hover:bg-indigo-100">{zh ? '换一个' : 'Next idea'}<ArrowRight size={14} aria-hidden="true" /></button>
+      <h3 id="try-this-title" className="flex items-center gap-1.5 text-sm font-bold text-indigo-950"><Sparkles size={16} aria-hidden="true" />{zh ? '2027 羊年 · DIY 模板' : '2027 Goat Year · DIY templates'}</h3>
+      <button type="button" onClick={() => select((index + 1) % playgroundPrompts.length)} className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-medium text-indigo-700 hover:bg-indigo-100">{zh ? '换一个' : 'Next idea'}</button>
     </div>
-    <p className="mt-2 text-xs leading-relaxed text-gray-500">{zh ? '这些提示词已用 Spark 试跑；每次生成的结果可能不同。' : 'Tried with Spark. Each generation can turn out differently.'}</p>
-    <div className="mt-4 flex items-start gap-3">
+    <p className="mt-2 text-xs leading-relaxed text-gray-500">{zh ? '前7个是羊年新春模板。先使用提示词，再修改括号内的角色、年龄、剧情等参数。' : 'The first 7 are New Year templates. Use one, then edit the values in parentheses.'}</p>
+    <label className="mt-3 block text-sm">{zh ? '选择模板' : 'Choose a template'}<select aria-label={zh ? '选择模板' : 'Choose a template'} value={index} onChange={e => select(Number(e.target.value))} className="mt-1 w-full rounded-lg border border-indigo-200 bg-white p-2 text-sm">{playgroundPrompts.map((item,i)=><option key={item.id} value={i}>{item.icon} {item.title[locale]}</option>)}</select></label><div className="mt-4 flex items-start gap-3">
       <span aria-hidden="true" className="text-2xl">{idea.icon}</span>
       <div className="min-w-0"><h4 className="font-semibold text-gray-900">{idea.title[locale]}</h4><p className="mt-1 text-xs leading-relaxed text-gray-600">{idea.description[locale]}</p></div>
     </div>

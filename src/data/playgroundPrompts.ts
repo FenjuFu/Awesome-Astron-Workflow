@@ -1,4 +1,6 @@
+import { newYearPrompts } from './newYearPrompts';
 export const playgroundPrompts = [
+  ...newYearPrompts,
   {
     "id": "candy-match",
     "icon": "🍬",

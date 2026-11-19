@@ -1,3 +1,4 @@
+import NewYearFair from './NewYearFair';
 import PlaygroundIdeas from './PlaygroundIdeas';
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -37,10 +38,10 @@ export default function SparkPlayground() {
   }
   function download() {
     const url = URL.createObjectURL(new Blob([code], { type: 'text/html;charset=utf-8' }));
-    const a = document.createElement('a'); a.href = url; a.download = 'spark-playground.html'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    const a = document.createElement('a'); a.href = url; a.download = 'spark-2027-creation.html'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   const button = 'rounded-lg border border-gray-200 px-3 py-2 text-sm hover:bg-indigo-50 disabled:opacity-40';
-  return <section id="spark-playground" className="mb-10 overflow-hidden rounded-2xl border border-indigo-200 bg-white shadow-sm">
+  return <><NewYearFair zh={zh} onCreate={() => { document.getElementById('spark-playground')?.scrollIntoView({ behavior: 'smooth' }); document.getElementById('spark-prompt')?.focus(); }} /><section id="spark-playground" className="mb-10 overflow-hidden rounded-2xl border border-indigo-200 bg-white shadow-sm">
     <div className="bg-gradient-to-r from-indigo-950 to-purple-800 p-6 text-white">
       <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-indigo-200">Build with Spark</p>
       <h2 className="text-2xl font-bold">Spark X2.6 4B Playground</h2>
@@ -49,7 +50,7 @@ export default function SparkPlayground() {
     <div className="grid lg:grid-cols-[320px_minmax(0,1fr)]">
       <div className="space-y-4 border-b border-gray-100 p-5 lg:border-b-0 lg:border-r">
         <PlaygroundIdeas zh={zh} disabled={busy} onUse={(value) => { setPrompt(value); setEdit(false); setError(''); document.getElementById('spark-prompt')?.focus(); }} />
-        <label className="block text-sm font-medium" htmlFor="spark-prompt">{zh ? '你想做什么？' : 'What would you like to build?'}</label>
+        <label className="block text-sm font-medium" htmlFor="spark-prompt">{zh ? '你想做什么？（括号内可 DIY）' : 'What would you like to build? (Edit the parentheses)'}</label>
         <textarea id="spark-prompt" value={prompt} disabled={busy} maxLength={3000} onChange={e => setPrompt(e.target.value)} className="min-h-40 w-full resize-y rounded-xl border border-gray-300 p-3 text-sm focus:ring-2 focus:ring-indigo-400" placeholder={zh ? '描述外观、内容和交互方式…' : 'Describe the look, content and interactions…'} />
         {code && <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={edit} disabled={busy} onChange={e => setEdit(e.target.checked)} />{zh ? '在当前作品上修改' : 'Edit the current result'}</label>}
         <button type="button" onClick={generate} disabled={busy || !prompt.trim()} className="w-full rounded-xl bg-indigo-600 px-4 py-3 font-medium text-white hover:bg-indigo-700 disabled:opacity-50">{busy ? (zh ? '正在生成…' : 'Generating…') : edit && code ? (zh ? '修改作品' : 'Update result') : (zh ? '生成网页' : 'Generate webpage')}</button>
@@ -72,5 +73,5 @@ export default function SparkPlayground() {
         <p className="px-4 py-3 text-xs text-gray-500">{zh ? '预览限制联网与外部资源。下载的 HTML 在浏览器中运行时不再受本站预览限制。' : 'Preview blocks network access and external resources. Downloaded HTML runs outside this preview sandbox.'}</p>
       </div>
     </div>
-  </section>;
+  </section></>;
 }
