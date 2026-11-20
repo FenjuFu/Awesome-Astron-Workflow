@@ -21,8 +21,13 @@ export async function runPlayground(body, env = {}, fetcher = fetch) {
     const data = await response.json();
     const choice = data?.choices?.[0];
     if (choice?.finish_reason === 'length') return { status: 422, json: { error: 'The result was too long. Try a smaller app or fewer features.' } };
-    const html = choice?.message?.content?.trim().replace(/^```(?:html)?\s*/i, '').replace(/\s*```$/, '').trim().replace(/^(<!doctype html>)\s*>+\s*/i, '$1\n');
+    const html = choice?.message?.content?.trim().replace(/^```(?:html)?\s*/i, '').replace(/\s*```$/, '').trim().replace(/^(<!doctype html>)[\s\S]*?(?=<html\b)/i, '$1\n');
     if (!html || html.length > 100000 || !/^<!doctype html>/i.test(html) || !/<\/html>\s*$/i.test(html)) return { status: 422, json: { error: 'The model did not finish a complete HTML page. Please retry.' } };
+    for (const tag of ['style', 'script']) {
+      const opened=(html.match(new RegExp('<'+tag+'\\b','gi'))||[]).length;
+      const closed=(html.match(new RegExp('</'+tag+'\\s*>','gi'))||[]).length;
+      if(opened!==closed) return {status:422,json:{error:'Generated HTML tags are incomplete. Please retry generation.'}};
+    }
     const visibleMarkup = html.replace(/<(head|script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, '');
     if (!/<(?:main|div|section|h[1-6]|p|canvas|button|input)\b/i.test(visibleMarkup)) return { status: 422, json: { error: 'The generated page has no visible app. Please retry generation.' } };
     try {
