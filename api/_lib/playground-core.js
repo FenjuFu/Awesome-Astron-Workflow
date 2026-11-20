@@ -25,8 +25,10 @@ export async function runPlayground(body, env = {}, fetcher = fetch) {
     const data = await response.json();
     const choice = data?.choices?.[0];
     if (choice?.finish_reason === 'length') return { status: 422, json: { error: 'The result was too long. Try a smaller app or fewer features.' } };
-    let html = choice?.message?.content?.trim().replace(/^```(?:html)?\s*/i, '').replace(/\s*```$/, '').trim().replace(/^(<!doctype html>)([\s\S]*?)(?=<html\b)/i, (all, doctype, extra) => extra.trim() ? doctype+'\n' : all);
-    if (!html || html.length > 100000 || !/^<!doctype html>/i.test(html) || !/<\/html>\s*$/i.test(html)) return { status: 422, json: { error: 'The model did not finish a complete HTML page. Please retry.' } };
+    let html = choice?.message?.content?.trim().replace(/^```(?:html)?\s*/i, '').replace(/\s*```$/, '').trim()
+      .replace(/^(<!doctype html>)\s*<\d+\s+html\b/i, '$1\n<html')
+      .replace(/^(<!doctype html>)([\s\S]*?)(?=<html\b)/i, (all, doctype, extra) => extra.trim() ? doctype+'\n' : all);
+    if (!html || html.length > 100000 || !/^<!doctype html>\s*<html(?:\s|>)/i.test(html) || !/<\/html>\s*$/i.test(html)) return { status: 422, json: { error: 'The model did not finish a complete HTML page. Please retry.' } };
     if (cultureCore) {
       if (!/<main\b[^>]*\bid\s*=\s*["']app["'][^>]*>/i.test(html)) return {status:422,json:{error:'The generated culture page is missing its app container. Please retry.'}};
       html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, '');

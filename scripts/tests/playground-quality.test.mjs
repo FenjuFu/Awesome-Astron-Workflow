@@ -14,3 +14,4 @@ test('candy generation preserves explicitly supplied core including initial rese
  const r=await runPlayground({prompt},{ASTRON_MAAS_API_KEY:'test-only'},async()=>new Response(JSON.stringify({choices:[{message:{content:generated}}]})));
  assert.equal(r.status,200);assert.ok(r.json.html.includes(source));assert.equal((r.json.html.match(/<script>/g)||[]).length,1);
 });
+test('repair a stray numeric token in the opening html tag',async()=>{const r=await call('<!DOCTYPE html>\n<1\nhtml lang="zh-CN"><head></head><body><h1>Hello</h1></body></html>');assert.equal(r.status,200);assert.match(r.json.html,/^<!DOCTYPE html>\n<html lang=/);assert(!r.json.html.includes('<1'));});
