@@ -1,6 +1,7 @@
+import { newYearScripts } from './newYearScripts';
 /** Parentheses mark visitor-editable values; all templates remain below the API's 3000-character limit. */
 const shell = `生成完整的单文件 HTML，内联 CSS 和 JavaScript，直接从 <!DOCTYPE html> 开始到 </html> 结束，不要 Markdown。主题为2027丁未羊年春节，红金色配紫色点缀，大号中文、触屏友好，适配350px宽和500px高（超出可滚动）。无外部资源、联网、存储、iframe。不要模拟联网AI，不声称有实时模型对话：所有角色回复和剧情在生成时预先编写，界面注明“本地互动故事”。所有按钮必须有效。用 textContent 渲染用户输入，不使用 eval。提供重新开始。括号内是我可以DIY的参数，请使用其当前值，不要把编辑说明显示在成品里。`;
-export const newYearPrompts = [
+const descriptions = [
   {id:'goat-chat',icon:'🐑',title:{zh:'小羊拜年对话',en:'Chat with Little Goat'},description:{zh:'选择话题和心情，与小羊玩本地分支对话。',en:'Pick a mood and topic for a branching conversation.'},prompt:`${shell}\n制作“小羊来拜年”角色对话。DIY：角色名（暖暖羊，可改名字）；游客年龄（6—12岁，可改全龄）；地点（北京大都庙会）；语气（活泼温柔）；主题（拜年、分享、勇气）。用户先输入昵称，再选今天的心情；每轮提供3个可点选的回复，至少3轮，使用状态变量记录选择，不要随机无视用户。每轮用预写内容回应上轮选择，结尾生成包含昵称、选择和祝福的对话纪念卡。允许重选话题，输入空白有默认昵称。`},
   {id:'goat-story',icon:'📖',title:{zh:'听小羊讲新春故事',en:'Listen to a New Year story'},description:{zh:'分章节故事，可朗读、暂停、继续和停止。',en:'Chaptered story with read-aloud controls.'},prompt:`${shell}\n制作可读可听的原创故事书。DIY：主角（小羊暖暖）；同伴（小火苗）；地点（灯笼小镇）；主题（帮助朋友找回团圆灯）；章节数（3）；每章长度（约100个汉字）；读者（6—10岁）。完整生成3章且前后连贯，提供上章/下章和进度。朗读使用浏览器原生 speechSynthesis，lang='zh-CN'；支持朗读本章、暂停、继续、停止，切换章节先取消旧朗读，按钮状态随朗读结束更新。不支持时提示“此浏览器不支持朗读，可直接阅读”。无声音列表时也使用默认语音，不承诺离线语音一定可用。展示完整可阅读文本和结尾祝福。`},
   {id:'goat-quiz',icon:'🧠',title:{zh:'羊年趣味问答',en:'Year of the Goat quiz'},description:{zh:'五道选择题，逐题反馈与练习分数。',en:'Five questions with feedback and a practice score.'},prompt:`${shell}\n制作5道羊年趣味选择题。DIY：难度（亲子入门）；每题分值（10）；选项数（3）；主题（羊的常识与友善合作）。题库以对象数组固化，题干、选项、正确索引和解释一致且可核实，不编造民俗史料。每题仅可提交一次，答后禁用选项、显示正确答案和解释，再点下一题。结算显示正确数/总数、练习分和称号，允许重玩但不能累加旧分。醒目标注“DIY作品练习分；现场兑奖请返回主页面的闯关积分”。`},
@@ -9,3 +10,9 @@ export const newYearPrompts = [
   {id:'goat-newyear',icon:'🧧',title:{zh:'新春知识挑战',en:'Spring Festival challenge'},description:{zh:'认识年俗，逐题答题并查看解释。',en:'Discover customs through a five-question quiz.'},prompt:`${shell}\n制作5题新春知识挑战。DIY：受众（全家）；难度（入门）；题数（5）；单题分值（10）；范围（春节、元宵节、年俗）。至少包含：2027春节进入丁未羊年；元宵节农历正月十五；春节与农历有关；拜年表达祝福；年俗因地区家庭而异。避免将某地风俗说成全国强制做法。每题3个选项，固定正确答案和简短解释，每题只能答一次，答完才能继续，最后汇总正确数和练习分。重玩不叠加。标注“DIY作品练习分；现场兑奖请返回主页面的闯关积分”。`},
   {id:'goat-adventure',icon:'🎭',title:{zh:'我的羊年互动剧场',en:'Choose your New Year adventure'},description:{zh:'选角色与剧情，完成有不同结局的互动故事。',en:'Choose a role, plot and ending.'},prompt:`${shell}\n制作可完整游玩的分支互动故事。DIY：角色（小羊探险家/灯笼守护者/小火苗）；剧情（寻找团圆灯/帮伙伴赶上年夜饭）；场景（科技庙会）；选择轮数（3）；风格（温暖、轻冒险）；结局（至少3种）。开场让游客输入昵称并选择角色、剧情；接下来每轮2—3个选择，选择必须改变状态与后续文本，所有路径在3轮后结束，结尾根据累计选择给出不同结果，不做无效选项。全程使用预写故事数组和明确状态机。结尾纪念卡展示昵称、角色、剧情、选择轨迹和完整结局，并提示可通过主页面下载HTML带走。提供重新选角。`},
 ];
+
+export const newYearPrompts = descriptions.map(item => ({...item, prompt: item.prompt + `
+请围绕以下已验证的交互核心设计精美网页：正文只放 <main id="app"></main>，不要额外制作按钮或内容。原样保留下方脚本的状态机、按钮、输入校验、题库和事件绑定；可以按DIY参数修改角色名、文案与题库，但不能删功能。CSS覆盖 body、main、h1、h2、p、.card、.choices、button、input、textarea、select、label，按钮至少44px高，文本换行，卡片间留白，配红金与紫色，移动端不横向溢出。无需重复说明。脚本如下：
+<script>
+${newYearScripts[item.id]}
+</script>`}));
