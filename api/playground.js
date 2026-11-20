@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   if (entry.count >= 5 || active >= 3 || clients.size >= 10000) {
     res.setHeader('Retry-After', '60'); return res.status(429).json({ error: 'Too many requests. Please wait a minute.' });
   }
-  if (JSON.stringify(req.body || {}).length > 110000) return res.status(413).json({ error: 'Request too large' });
+  if (JSON.stringify(req.body || {}).length > 125000) return res.status(413).json({ error: 'Request too large' });
   entry.count++; clients.set(ip, entry); active++;
   try { const { status, json } = await runPlayground(req.body, process.env); return res.status(status).json(json); }
   finally { active--; }
