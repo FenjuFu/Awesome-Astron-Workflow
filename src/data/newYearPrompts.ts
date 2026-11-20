@@ -1,5 +1,5 @@
 import { newYearScripts } from './newYearScripts';
-/** Parentheses mark visitor-editable values; all templates remain below the API's 3000-character limit. */
+/** Parentheses mark visitor-editable values; prompts include tested interaction cores. */
 const shell = `生成完整的单文件 HTML，内联 CSS 和 JavaScript，直接从 <!DOCTYPE html> 开始到 </html> 结束，不要 Markdown。主题为2027丁未羊年春节，红金色配紫色点缀，大号中文、触屏友好，适配350px宽和500px高（超出可滚动）。无外部资源、联网、存储、iframe。不要模拟联网AI，不声称有实时模型对话：所有角色回复和剧情在生成时预先编写，界面注明“本地互动故事”。所有按钮必须有效。用 textContent 渲染用户输入，不使用 eval。提供重新开始。括号内是我可以DIY的参数，请使用其当前值，不要把编辑说明显示在成品里。`;
 const descriptions = [
   {id:'goat-chat',icon:'🐑',title:{zh:'小羊拜年对话',en:'Chat with Little Goat'},description:{zh:'选择话题和心情，与小羊玩本地分支对话。',en:'Pick a mood and topic for a branching conversation.'},prompt:`${shell}\n制作“小羊来拜年”角色对话。DIY：角色名（暖暖羊，可改名字）；游客年龄（6—12岁，可改全龄）；地点（北京大都庙会）；语气（活泼温柔）；主题（拜年、分享、勇气）。用户先输入昵称，再选今天的心情；每轮提供3个可点选的回复，至少3轮，使用状态变量记录选择，不要随机无视用户。每轮用预写内容回应上轮选择，结尾生成包含昵称、选择和祝福的对话纪念卡。允许重选话题，输入空白有默认昵称。`},

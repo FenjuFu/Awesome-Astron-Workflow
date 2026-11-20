@@ -4,9 +4,26 @@ import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const policy = "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; font-src 'none'; connect-src 'none'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'";
+const snapshotBridge = `<script>window.addEventListener('message',function(event){
+ if(event.source!==parent||event.data?.type!=='spark-snapshot-request')return;
+ const copy=document.documentElement.cloneNode(true);
+ const originals=document.querySelectorAll('input,textarea,select');
+ copy.querySelectorAll('input,textarea,select').forEach((node,i)=>{
+  const original=originals[i];
+  if(node.tagName==='TEXTAREA')node.textContent=original.value;
+  else if(node.tagName==='SELECT')Array.from(node.options).forEach((option,j)=>{if(original.options[j].selected)option.setAttribute('selected','');else option.removeAttribute('selected');});
+  else{node.setAttribute('value',original.value);if(original.checked)node.setAttribute('checked','');else node.removeAttribute('checked');}
+  node.setAttribute('disabled','');
+ });
+ copy.querySelectorAll('script,iframe,object,embed').forEach(node=>node.remove());
+ copy.querySelectorAll('*').forEach(node=>Array.from(node.attributes).forEach(attr=>{if(attr.name.toLowerCase().startsWith('on'))node.removeAttribute(attr.name);}));
+ copy.querySelectorAll('button').forEach(node=>node.setAttribute('disabled',''));
+ const note=document.createElement('p');note.textContent='这是保存的静态纪念页，保留了当时的内容与选择。';copy.querySelector('body').append(note);
+ parent.postMessage({type:'spark-snapshot-ready',id:event.data.id,html:'<!DOCTYPE html>'+copy.outerHTML},'*');
+});<\/script>`;
 function previewDocument(html: string) {
   // The policy is parsed before any model-generated markup; the iframe has an opaque origin.
-  return `<!doctype html><html><head><meta http-equiv="Content-Security-Policy" content="${policy}"><meta name="referrer" content="no-referrer"></head><body>${html}</body></html>`;
+  return `<!doctype html><html><head><meta http-equiv="Content-Security-Policy" content="${policy}"><meta name="referrer" content="no-referrer">${snapshotBridge}</head><body>${html}</body></html>`;
 }
 export default function SparkPlayground() {
   const { language } = useLanguage();
@@ -21,6 +38,10 @@ export default function SparkPlayground() {
   const [edit, setEdit] = useState(false);
   const [copied, setCopied] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState('');
+  const [snapshotHtml, setSnapshotHtml] = useState('');
+  const [snapshotUrl, setSnapshotUrl] = useState('');
+  const previewFrame = useRef<HTMLIFrameElement>(null);
+  const snapshotRequest = useRef('');
   const abort = useRef<AbortController | null>(null);
   useEffect(() => () => abort.current?.abort(), []);
   useEffect(() => {
@@ -29,6 +50,23 @@ export default function SparkPlayground() {
     setDownloadUrl(url);
     return () => URL.revokeObjectURL(url);
   }, [code]);
+  useEffect(() => {
+    setSnapshotHtml(''); snapshotRequest.current = '';
+  }, [preview]);
+  useEffect(() => {
+    const receive = (event: MessageEvent) => {
+      if (event.source !== previewFrame.current?.contentWindow || event.data?.type !== 'spark-snapshot-ready' || !snapshotRequest.current || event.data.id !== snapshotRequest.current) return;
+      if (typeof event.data.html === 'string' && event.data.html.length <= 250000) setSnapshotHtml(event.data.html);
+      snapshotRequest.current = '';
+    };
+    window.addEventListener('message', receive);
+    return () => window.removeEventListener('message', receive);
+  }, []);
+  useEffect(() => {
+    if (!snapshotHtml) { setSnapshotUrl(''); return; }
+    const url = URL.createObjectURL(new Blob([snapshotHtml], { type: 'text/html;charset=utf-8' }));
+    setSnapshotUrl(url); return () => URL.revokeObjectURL(url);
+  }, [snapshotHtml]);
   async function generate() {
     if (busy || !prompt.trim()) return;
     const controller = new AbortController(); abort.current = controller;
@@ -69,11 +107,13 @@ export default function SparkPlayground() {
           <button type="button" disabled={!code || busy} className={button} onClick={() => { setPreview(code); setTab('preview'); }}>{zh ? '运行代码' : 'Run code'}</button>
           <button type="button" disabled={!code} className={button} onClick={async () => { try { await navigator.clipboard.writeText(code); setCopied(true); setTimeout(() => setCopied(false), 2000); } catch { setError(zh ? '复制失败，请在代码页手动复制。' : 'Copy failed. Select and copy the code manually.'); } }}>{copied ? (zh ? '已复制' : 'Copied') : (zh ? '复制' : 'Copy')}</button>
           <a href={downloadUrl || undefined} download="spark-2027-creation.html" aria-disabled={!code} tabIndex={code ? 0 : -1} className={`${button} ${code ? '' : 'pointer-events-none opacity-40'}`}>{zh ? '下载 HTML' : 'Download HTML'}</a>
+          <button type="button" className={button} disabled={!preview || tab !== 'preview'} onClick={() => { snapshotRequest.current = crypto.randomUUID(); previewFrame.current?.contentWindow?.postMessage({ type: 'spark-snapshot-request', id: snapshotRequest.current }, '*'); }}>{zh ? '保存当前纪念页' : 'Capture keepsake'}</button>
+          {snapshotUrl && <a href={snapshotUrl} download="spark-2027-keepsake.html" className={button}>{zh ? '下载纪念页' : 'Download keepsake'}</a>}
         </div>
         {tab === 'code' ? <textarea aria-label="HTML code" spellCheck={false} value={code} disabled={busy} onChange={e => setCode(e.target.value)} maxLength={100000} className="h-[520px] w-full resize-y bg-slate-950 p-4 font-mono text-sm text-slate-100" /> : <div className="min-h-[520px] bg-slate-100 p-3">
-          {preview ? <iframe key={preview} title="Spark generated webpage" sandbox="allow-scripts" referrerPolicy="no-referrer" srcDoc={previewDocument(preview)} className={`mx-auto h-[500px] max-w-full rounded-lg border-0 bg-white ${mobile ? 'w-[375px]' : 'w-full'}`} /> : <div className="flex h-[490px] flex-col items-center justify-center gap-3 px-6 text-center text-gray-500"><span className="text-4xl" aria-hidden="true">✦</span><p>{zh ? '从一个想法开始' : 'Start with an idea'}</p><p className="text-sm">{zh ? '选择左侧示例或输入需求，生成后在这里直接体验。' : 'Choose an example or describe your idea, then try the result here.'}</p></div>}
+          {preview ? <iframe ref={previewFrame} key={preview} title="Spark generated webpage" sandbox="allow-scripts" referrerPolicy="no-referrer" srcDoc={previewDocument(preview)} className={`mx-auto h-[500px] max-w-full rounded-lg border-0 bg-white ${mobile ? 'w-[375px]' : 'w-full'}`} /> : <div className="flex h-[490px] flex-col items-center justify-center gap-3 px-6 text-center text-gray-500"><span className="text-4xl" aria-hidden="true">✦</span><p>{zh ? '从一个想法开始' : 'Start with an idea'}</p><p className="text-sm">{zh ? '选择左侧示例或输入需求，生成后在这里直接体验。' : 'Choose an example or describe your idea, then try the result here.'}</p></div>}
         </div>}
-        <p className="px-4 py-3 text-xs text-gray-500">{zh ? '预览限制联网与外部资源。下载的 HTML 在浏览器中运行时不再受本站预览限制。' : 'Preview blocks network access and external resources. Downloaded HTML runs outside this preview sandbox.'}</p>
+        <p className="px-4 py-3 text-xs text-gray-500">{zh ? '下载 HTML：保存可玩的网页，重新打开从头开始。保存当前纪念页：保留昵称、选择和接龙文字的静态页面。预览限制联网；下载的可玩 HTML 不再受本站预览限制。' : 'Download HTML saves the playable app, which restarts when opened. Capture keepsake preserves the current names, choices and story as a static page. Downloaded playable HTML runs outside the preview sandbox.'}</p>
       </div>
     </div>
   </section></>;
