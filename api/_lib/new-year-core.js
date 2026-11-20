@@ -1,4 +1,5 @@
 import { randomBytes, randomInt, timingSafeEqual } from 'node:crypto';
+import { cultureQuestions, cultureCategories } from '../../src/data/cultureQuestions.js';
 export const GAME_TITLES = { goat: '羊年趣味问答', riddles: '羊年灯谜会', customs: '新春知识挑战' };
 // Fixed, reviewed answers stay on the server. Generated HTML never awards event points.
 const BANK = {
@@ -38,7 +39,7 @@ export function fairView(room, auth) {
   const host=equal(auth,room.hostToken),p=room.players.find(p=>equal(auth,p.token));
   const result={code:room._id,title:room.title,expiresAt:room.expiresAt,prizes:room.prizes,playerCount:room.players.length,isHost:host};
   if(host)result.players=room.players.map(({token,...p})=>({...p,run:undefined}));
-  if(p){ const {token,...safe}=p;result.player={...safe,run:undefined}; if(p.run){ const q=BANK[p.run.game][p.run.index];result.question=q ? {game:p.run.game,index:p.run.index,total:BANK[p.run.game].length,text:q[0],options:p.run.order.map(i=>q[1][i])} : null; } }
+  if(p){ const {token,...safe}=p;result.player={...safe,run:undefined}; if(p.run){ const questions=runQuestions(p.run);const q=questions[p.run.index];result.question=q ? {game:p.run.game,index:p.run.index,total:questions.length,text:q[0],options:p.run.order.map(i=>q[1][i]),...(q[4]?{category:q[4].category,level:q[4].level}:{})} : null; } }
   return result;
 }
 export function fairTransition(original,body,now=Date.now()) {
@@ -61,16 +62,28 @@ export function fairTransition(original,body,now=Date.now()) {
   if(body.action==='start'){
     requireFair(Object.hasOwn(BANK,body.game),'未知游戏');requireFair(!p.completed.includes(body.game),'本场已完成该游戏，每种游戏只计分一次',409);
     requireFair(!p.run||p.run.game===body.game,'请先完成正在进行的游戏',409);
-    if(!p.run)p.run={game:body.game,index:0,order:shuffle()};
+    if(!p.run)p.run={game:body.game,index:0,order:shuffle(),...(body.game==='customs'?{questions:drawCultureRound()}: {})};
   }else if(body.action==='answer'){
     requireFair(p.run&&body.game===p.run.game&&body.index===p.run.index,'题目已更新，请刷新',409);
-    const q=BANK[p.run.game][p.run.index];requireFair(Number.isInteger(body.choice)&&body.choice>=0&&body.choice<q[1].length,'请选择有效答案');
+    const questions=runQuestions(p.run);const q=questions[p.run.index];requireFair(Number.isInteger(body.choice)&&body.choice>=0&&body.choice<q[1].length,'请选择有效答案');
     const correct=p.run.order[body.choice]===q[2],points=correct?10:0;
     p.answers.push({game:p.run.game,index:p.run.index,correct,points});p.points+=points;p.earned+=points;
-    const feedback={correct,points,answer:q[1][q[2]],explanation:q[3]};
-    p.run.index++;if(p.run.index===BANK[p.run.game].length){p.completed.push(p.run.game);p.run=null;}else p.run.order=shuffle();
+    const feedback={correct,points,answer:q[1][q[2]],explanation:q[3],...(q[4]?{source:q[4].source,sourceUrl:q[4].sourceUrl}:{})};
+    p.run.index++;if(p.run.index===questions.length){p.completed.push(p.run.game);p.run=null;}else p.run.order=shuffle();
     room.revision++;return {room,feedback};
   }else requireFair(false,'未知操作');
   room.revision++;return {room};
 }
 function shuffle(){const order=[0,1,2];for(let i=2;i>0;i--){const j=randomInt(i+1);[order[i],order[j]]=[order[j],order[i]];}return order;}
+// Snapshot a reviewed round so refreshes and future bank updates never change an in-progress game.
+function runQuestions(run){return run.questions || BANK[run.game];}
+function drawCultureRound(){
+  const chosen=cultureCategories.map(category=>{
+    const pool=cultureQuestions.filter(q=>q.category===category);
+    return pool[randomInt(pool.length)];
+  });
+  const extra=cultureQuestions.filter(q=>q.level==='挑战'&&!chosen.includes(q));
+  chosen.push(extra[randomInt(extra.length)]);
+  for(let i=chosen.length-1;i>0;i--){const j=randomInt(i+1);[chosen[i],chosen[j]]=[chosen[j],chosen[i]];}
+  return chosen.map(q=>[q.q,q.a,q.c,q.why,{category:q.category,level:q.level,source:q.source,sourceUrl:q.sourceUrl}]);
+}

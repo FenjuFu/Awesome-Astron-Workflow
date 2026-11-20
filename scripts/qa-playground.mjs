@@ -1,12 +1,9 @@
 // Opt-in real-model QA. Run only with a preview-scoped key; never logs credentials.
 import fs from 'node:fs/promises';
-import ts from 'typescript';
+import { build } from 'esbuild';
 import { runPlayground } from '../api/_lib/playground-core.js';
-const load = async p => (await fs.readFile(p,'utf8'));
-const core=ts.transpile((await load('src/data/newYearScripts.ts')),{module:ts.ModuleKind.ES2022});
-const ny=ts.transpile((await load('src/data/newYearPrompts.ts')).replace("import { newYearScripts } from './newYearScripts';",''),{module:ts.ModuleKind.ES2022});
-const ps=ts.transpile((await load('src/data/playgroundPrompts.ts')).replace("import { newYearPrompts } from './newYearPrompts';",''),{module:ts.ModuleKind.ES2022});
-const {playgroundPrompts:prompts}=await import('data:text/javascript;base64,'+Buffer.from(core+'\n'+ny+'\n'+ps).toString('base64'));
+const bundle=await build({entryPoints:['src/data/playgroundPrompts.ts'],bundle:true,write:false,format:'esm',platform:'node'});
+const {playgroundPrompts:prompts}=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
 const selected=process.argv.slice(2);
 const cases=prompts.map((p,index)=>({p,index})).filter(({p})=>!selected.length||selected.includes(p.id));
 let next=0;

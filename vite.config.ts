@@ -33,7 +33,7 @@ function devChatApi(env: Record<string, string>): Plugin {
         req.on('data', (chunk) => {
           if (oversized) return;
           raw += chunk;
-          if (raw.length > 110000) { oversized = true; res.statusCode = 413; res.end(JSON.stringify({ error: 'Request too large' })); }
+          if (raw.length > 125000) { oversized = true; res.statusCode = 413; res.end(JSON.stringify({ error: 'Request too large' })); }
         });
         req.on('end', async () => {
           if (oversized) return;

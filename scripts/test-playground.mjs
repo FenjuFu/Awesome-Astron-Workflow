@@ -5,7 +5,7 @@ const env = { ASTRON_MAAS_API_KEY: 'test-only' };
 const html = '<!DOCTYPE html><html><body>Demo</body></html>';
 const fake = (content = html, finish_reason = 'stop') => async () => ({ ok: true, json: async () => ({ choices: [{ message: { content }, finish_reason }] }) });
 test('reject invalid input before calling upstream', async () => {
-  for (const body of [null, {}, {prompt:''}, {prompt:'x'.repeat(6001)}, {prompt:'ok',html:123}]) assert.equal((await runPlayground(body, env, () => { throw Error('must not call'); })).status, 400);
+  for (const body of [null, {}, {prompt:''}, {prompt:'x'.repeat(12001)}, {prompt:'ok',html:123}]) assert.equal((await runPlayground(body, env, () => { throw Error('must not call'); })).status, 400);
 });
 test('fixed model and server-only settings; edit source precedes requested change', async () => {
   const result = await runPlayground({prompt:'Make blue',html,model:'other'},env,async (_url, options) => {

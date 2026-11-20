@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const policy = "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; font-src 'none'; connect-src 'none'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'";
-const snapshotBridge = `<script>window.addEventListener('message',function(event){
+const snapshotBridge = `<script>window.addEventListener('keydown',function(event){if(event.key==='Escape')parent.postMessage({type:'spark-exit-fullscreen'},'*');});window.addEventListener('message',function(event){
  if(event.source!==parent||event.data?.type!=='spark-snapshot-request')return;
  const copy=document.documentElement.cloneNode(true);
  const originals=document.querySelectorAll('input,textarea,select');
@@ -40,10 +40,42 @@ export default function SparkPlayground() {
   const [downloadUrl, setDownloadUrl] = useState('');
   const [snapshotHtml, setSnapshotHtml] = useState('');
   const [snapshotUrl, setSnapshotUrl] = useState('');
+  const [expanded, setExpanded] = useState(false);
+  const previewPanel = useRef<HTMLDivElement>(null);
+  const fullscreenButton = useRef<HTMLButtonElement>(null);
   const previewFrame = useRef<HTMLIFrameElement>(null);
   const snapshotRequest = useRef('');
   const abort = useRef<AbortController | null>(null);
   useEffect(() => () => abort.current?.abort(), []);
+  useEffect(() => {
+    const changed = () => setExpanded(document.fullscreenElement === previewPanel.current);
+    document.addEventListener('fullscreenchange', changed);
+    return () => document.removeEventListener('fullscreenchange', changed);
+  }, []);
+  useEffect(() => {
+    if (!expanded) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && !document.fullscreenElement) setExpanded(false);
+    };
+    window.addEventListener('keydown', escape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', escape);
+      fullscreenButton.current?.focus();
+    };
+  }, [expanded]);
+  async function toggleFullscreen() {
+    if (expanded) {
+      if (document.fullscreenElement === previewPanel.current) await document.exitFullscreen().catch(() => {});
+      setExpanded(false);
+    } else {
+      // Keep the same iframe mounted: game state and story progress survive both transitions.
+      try { await previewPanel.current?.requestFullscreen?.(); } catch { /* Use the viewport-filling fallback. */ }
+      setExpanded(true);
+    }
+  }
   useEffect(() => {
     if (!code) { setDownloadUrl(''); return; }
     const url = URL.createObjectURL(new Blob([code], { type: 'text/html;charset=utf-8' }));
@@ -55,7 +87,9 @@ export default function SparkPlayground() {
   }, [preview]);
   useEffect(() => {
     const receive = (event: MessageEvent) => {
-      if (event.source !== previewFrame.current?.contentWindow || event.data?.type !== 'spark-snapshot-ready' || !snapshotRequest.current || event.data.id !== snapshotRequest.current) return;
+      if (event.source !== previewFrame.current?.contentWindow) return;
+      if (event.data?.type === 'spark-exit-fullscreen') { if (!document.fullscreenElement) setExpanded(false); return; }
+      if (event.data?.type !== 'spark-snapshot-ready' || !snapshotRequest.current || event.data.id !== snapshotRequest.current) return;
       if (typeof event.data.html === 'string' && event.data.html.length <= 250000) setSnapshotHtml(event.data.html);
       snapshotRequest.current = '';
     };
@@ -92,26 +126,27 @@ export default function SparkPlayground() {
       <div className="space-y-4 border-b border-gray-100 p-5 lg:border-b-0 lg:border-r">
         <PlaygroundIdeas zh={zh} disabled={busy} onUse={(value) => { setPrompt(value); setEdit(false); setError(''); document.getElementById('spark-prompt')?.focus(); }} />
         <label className="block text-sm font-medium" htmlFor="spark-prompt">{zh ? '你想做什么？（括号内可 DIY）' : 'What would you like to build? (Edit the parentheses)'}</label>
-        <textarea id="spark-prompt" value={prompt} disabled={busy} maxLength={6000} onChange={e => setPrompt(e.target.value)} className="min-h-40 w-full resize-y rounded-xl border border-gray-300 p-3 text-sm focus:ring-2 focus:ring-indigo-400" placeholder={zh ? '描述外观、内容和交互方式…' : 'Describe the look, content and interactions…'} />
+        <textarea id="spark-prompt" value={prompt} disabled={busy} maxLength={12000} onChange={e => setPrompt(e.target.value)} className="min-h-40 w-full resize-y rounded-xl border border-gray-300 p-3 text-sm focus:ring-2 focus:ring-indigo-400" placeholder={zh ? '描述外观、内容和交互方式…' : 'Describe the look, content and interactions…'} />
         {code && <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={edit} disabled={busy} onChange={e => setEdit(e.target.checked)} />{zh ? '在当前作品上修改' : 'Edit the current result'}</label>}
         <button type="button" onClick={generate} disabled={busy || !prompt.trim()} className="w-full rounded-xl bg-indigo-600 px-4 py-3 font-medium text-white hover:bg-indigo-700 disabled:opacity-50">{busy ? (zh ? '正在生成…' : 'Generating…') : edit && code ? (zh ? '修改作品' : 'Update result') : (zh ? '生成网页' : 'Generate webpage')}</button>
         {busy && <button type="button" className={button} onClick={() => abort.current?.abort()}>{zh ? '停止等待' : 'Stop waiting'}</button>}
         <p className="text-xs leading-relaxed text-gray-500">{zh ? '由 Spark X2.6 4B 生成，通常需要几十秒。输入和当前修改的代码会发送给模型服务，请勿填写私密信息。' : 'Generated by Spark X2.6 4B, usually in tens of seconds. Your prompt and code being edited are sent to the model service. Avoid private information.'}</p>
         <p role="status" aria-live="polite" className="text-sm text-red-600">{error}</p>
       </div>
-      <div className="min-w-0">
+      <div ref={previewPanel} data-testid="work-preview-panel" className={expanded ? 'fixed inset-0 z-[100] flex h-[100dvh] w-full min-w-0 flex-col overflow-hidden bg-white' : 'min-w-0'}>
         <div className="flex flex-wrap items-center gap-2 border-b border-gray-100 p-3">
           <button type="button" className={button} aria-pressed={tab === 'preview'} onClick={() => setTab('preview')}>{zh ? '效果预览' : 'Preview'}</button>
           <button type="button" className={button} aria-pressed={tab === 'code'} onClick={() => setTab('code')}>{zh ? 'HTML 代码' : 'HTML code'}</button>
           <button type="button" className={button} aria-pressed={mobile} onClick={() => setMobile(!mobile)}>{mobile ? (zh ? '手机' : 'Mobile') : (zh ? '桌面' : 'Desktop')}</button>
+          <button ref={fullscreenButton} type="button" className={button} disabled={!preview || tab !== 'preview'} aria-pressed={expanded} onClick={toggleFullscreen}>{expanded ? (zh ? '退出全屏' : 'Exit fullscreen') : (zh ? '全屏体验' : 'Fullscreen')}</button>
           <button type="button" disabled={!code || busy} className={button} onClick={() => { setPreview(code); setTab('preview'); }}>{zh ? '运行代码' : 'Run code'}</button>
           <button type="button" disabled={!code} className={button} onClick={async () => { try { await navigator.clipboard.writeText(code); setCopied(true); setTimeout(() => setCopied(false), 2000); } catch { setError(zh ? '复制失败，请在代码页手动复制。' : 'Copy failed. Select and copy the code manually.'); } }}>{copied ? (zh ? '已复制' : 'Copied') : (zh ? '复制' : 'Copy')}</button>
           <a href={downloadUrl || undefined} download="spark-2027-creation.html" aria-disabled={!code} tabIndex={code ? 0 : -1} className={`${button} ${code ? '' : 'pointer-events-none opacity-40'}`}>{zh ? '下载 HTML' : 'Download HTML'}</a>
           <button type="button" className={button} disabled={!preview || tab !== 'preview'} onClick={() => { snapshotRequest.current = crypto.randomUUID(); previewFrame.current?.contentWindow?.postMessage({ type: 'spark-snapshot-request', id: snapshotRequest.current }, '*'); }}>{zh ? '保存当前纪念页' : 'Capture keepsake'}</button>
           {snapshotUrl && <a href={snapshotUrl} download="spark-2027-keepsake.html" className={button}>{zh ? '下载纪念页' : 'Download keepsake'}</a>}
         </div>
-        {tab === 'code' ? <textarea aria-label="HTML code" spellCheck={false} value={code} disabled={busy} onChange={e => setCode(e.target.value)} maxLength={100000} className="h-[520px] w-full resize-y bg-slate-950 p-4 font-mono text-sm text-slate-100" /> : <div className="min-h-[520px] bg-slate-100 p-3">
-          {preview ? <iframe ref={previewFrame} key={preview} title="Spark generated webpage" sandbox="allow-scripts" referrerPolicy="no-referrer" srcDoc={previewDocument(preview)} className={`mx-auto h-[500px] max-w-full rounded-lg border-0 bg-white ${mobile ? 'w-[375px]' : 'w-full'}`} /> : <div className="flex h-[490px] flex-col items-center justify-center gap-3 px-6 text-center text-gray-500"><span className="text-4xl" aria-hidden="true">✦</span><p>{zh ? '从一个想法开始' : 'Start with an idea'}</p><p className="text-sm">{zh ? '选择左侧示例或输入需求，生成后在这里直接体验。' : 'Choose an example or describe your idea, then try the result here.'}</p></div>}
+        {tab === 'code' ? <textarea aria-label="HTML code" spellCheck={false} value={code} disabled={busy} onChange={e => setCode(e.target.value)} maxLength={100000} className={`${expanded ? 'min-h-0 flex-1' : 'h-[520px]'} w-full resize-y bg-slate-950 p-4 font-mono text-sm text-slate-100`} /> : <div className={expanded ? 'min-h-0 flex-1 bg-slate-100 p-0' : 'min-h-[520px] bg-slate-100 p-3'}>
+          {preview ? <iframe ref={previewFrame} key={preview} title="Spark generated webpage" sandbox="allow-scripts" referrerPolicy="no-referrer" srcDoc={previewDocument(preview)} className={expanded ? 'h-full w-full border-0 bg-white' : `mx-auto h-[500px] max-w-full rounded-lg border-0 bg-white ${mobile ? 'w-[375px]' : 'w-full'}`} /> : <div className="flex h-[490px] flex-col items-center justify-center gap-3 px-6 text-center text-gray-500"><span className="text-4xl" aria-hidden="true">✦</span><p>{zh ? '从一个想法开始' : 'Start with an idea'}</p><p className="text-sm">{zh ? '选择左侧示例或输入需求，生成后在这里直接体验。' : 'Choose an example or describe your idea, then try the result here.'}</p></div>}
         </div>}
         <p className="px-4 py-3 text-xs text-gray-500">{zh ? '下载 HTML：保存可玩的网页，重新打开从头开始。保存当前纪念页：保留昵称、选择和接龙文字的静态页面。预览限制联网；下载的可玩 HTML 不再受本站预览限制。' : 'Download HTML saves the playable app, which restarts when opened. Capture keepsake preserves the current names, choices and story as a static page. Downloaded playable HTML runs outside the preview sandbox.'}</p>
       </div>
