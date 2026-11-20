@@ -23,6 +23,8 @@ export async function runPlayground(body, env = {}, fetcher = fetch) {
     if (choice?.finish_reason === 'length') return { status: 422, json: { error: 'The result was too long. Try a smaller app or fewer features.' } };
     const html = choice?.message?.content?.trim().replace(/^```(?:html)?\s*/i, '').replace(/\s*```$/, '').trim().replace(/^(<!doctype html>)\s*>+\s*/i, '$1\n');
     if (!html || html.length > 100000 || !/^<!doctype html>/i.test(html) || !/<\/html>\s*$/i.test(html)) return { status: 422, json: { error: 'The model did not finish a complete HTML page. Please retry.' } };
+    const visibleMarkup = html.replace(/<(head|script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, '');
+    if (!/<(?:main|div|section|h[1-6]|p|canvas|button|input)\b/i.test(visibleMarkup)) return { status: 422, json: { error: 'The generated page has no visible app. Please retry generation.' } };
     try {
       for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)) {
         if (!/type\s*=\s*["'](?:application\/json|application\/ld\+json)["']/i.test(match[1])) new Script(match[2]);

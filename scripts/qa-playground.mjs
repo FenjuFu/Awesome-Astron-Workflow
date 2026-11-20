@@ -7,10 +7,12 @@ const core=ts.transpile((await load('src/data/newYearScripts.ts')),{module:ts.Mo
 const ny=ts.transpile((await load('src/data/newYearPrompts.ts')).replace("import { newYearScripts } from './newYearScripts';",''),{module:ts.ModuleKind.ES2022});
 const ps=ts.transpile((await load('src/data/playgroundPrompts.ts')).replace("import { newYearPrompts } from './newYearPrompts';",''),{module:ts.ModuleKind.ES2022});
 const {playgroundPrompts:prompts}=await import('data:text/javascript;base64,'+Buffer.from(core+'\n'+ny+'\n'+ps).toString('base64'));
+const selected=process.argv.slice(2);
+const cases=prompts.map((p,index)=>({p,index})).filter(({p})=>!selected.length||selected.includes(p.id));
 let next=0;
 async function worker(){
- while(next<prompts.length){
- const index=next++, p=prompts[index];
+ while(next<cases.length){
+ const {index,p}=cases[next++];
  const start=Date.now();
  let result=await runPlayground({prompt:p.prompt},process.env);
  if(result.status!==200) result=await runPlayground({prompt:p.prompt},process.env);
