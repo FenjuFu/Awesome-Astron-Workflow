@@ -1,11 +1,11 @@
 {
   "project": "astron-agent",
-  "capturedAt": "2026-11-20T08:55:38.789095+00:00",
-  "graphSha256": "b1569ea4b3ceec3b42ee43939518f98a750647cab2d5b8474b3b2efd72c8c7c5",
+  "capturedAt": "2026-11-21T08:36:20.916853+00:00",
+  "graphSha256": "977b013dfd87d0357e5cf4a7fb1d337f68568f563c51de417be3a95a6d4eeb06",
   "model": "astron-community-all-history-no-automation-v2",
   "formula": "x_i(next) = r_i * b_i + (1-r_i) * sum_j(w_ji * x_j)",
   "iterations": 36,
-  "residual": 5.2295945351943374e-11,
+  "residual": 2.000888343900442e-11,
   "source": "/galaxy-data/astron-agent-calculation.json",
   "fullBreakdown": "/galaxy-data/astron-agent-examples.json",
   "examples": [
@@ -17,10 +17,10 @@
       "retention": 0.15,
       "networkFactor": 0.85,
       "baseTerm": 0.15,
-      "incomingTotal": 2791.247204952105,
-      "networkTerm": 2372.5601242092894,
-      "score": 2372.7101242093,
-      "recomputedScore": 2372.7101242092895,
+      "incomingTotal": 2791.260831014204,
+      "networkTerm": 2372.571706362073,
+      "score": 2372.721706362,
+      "recomputedScore": 2372.7217063620733,
       "termCount": 996,
       "topTerms": [
         {
@@ -28,28 +28,28 @@
           "label": "PR #1294",
           "url": "https://github.com/iflytek/astron-agent/pull/1294",
           "edgeWeight": 0.9,
-          "nodeScore": 9.652661736479434,
-          "weightedInput": 8.68739556283149
+          "nodeScore": 9.652680978396045,
+          "weightedInput": 8.68741288055644
         },
         {
           "node": "item:1397",
           "label": "PR #1397",
           "url": "https://github.com/iflytek/astron-agent/pull/1397",
           "edgeWeight": 0.9,
-          "nodeScore": 8.644699917024365,
-          "weightedInput": 7.780229925321929
+          "nodeScore": 8.644714238673792,
+          "weightedInput": 7.780242814806413
         },
         {
           "node": "item:89",
           "label": "PR #89",
           "url": "https://github.com/iflytek/astron-agent/pull/89",
           "edgeWeight": 0.9,
-          "nodeScore": 7.860729613003755,
-          "weightedInput": 7.07465665170338
+          "nodeScore": 7.860740107778705,
+          "weightedInput": 7.074666097000835
         }
       ],
       "otherTermCount": 993,
-      "otherInputTotal": 2767.7049228122487
+      "otherInputTotal": 2767.71850922184
     },
     {
       "rank": 2,
@@ -59,10 +59,10 @@
       "retention": 0.15,
       "networkFactor": 0.85,
       "baseTerm": 0.15,
-      "incomingTotal": 393.6429331781558,
-      "networkTerm": 334.5964932014324,
-      "score": 334.7464932014,
-      "recomputedScore": 334.7464932014324,
+      "incomingTotal": 393.6417232463597,
+      "networkTerm": 334.59546475940573,
+      "score": 334.7454647594,
+      "recomputedScore": 334.7454647594057,
       "termCount": 173,
       "topTerms": [
         {
@@ -70,28 +70,28 @@
           "label": "PR #171",
           "url": "https://github.com/iflytek/astron-agent/pull/171",
           "edgeWeight": 0.9,
-          "nodeScore": 4.993928249176184,
-          "weightedInput": 4.494535424258566
+          "nodeScore": 4.99391726507262,
+          "weightedInput": 4.494525538565358
         },
         {
           "node": "item:179",
           "label": "PR #179",
           "url": "https://github.com/iflytek/astron-agent/pull/179",
           "edgeWeight": 0.9,
-          "nodeScore": 4.993928249176184,
-          "weightedInput": 4.494535424258566
+          "nodeScore": 4.99391726507262,
+          "weightedInput": 4.494525538565358
         },
         {
           "node": "item:233",
           "label": "PR #233",
           "url": "https://github.com/iflytek/astron-agent/pull/233",
           "edgeWeight": 0.9,
-          "nodeScore": 4.993928249176184,
-          "weightedInput": 4.494535424258566
+          "nodeScore": 4.99391726507262,
+          "weightedInput": 4.494525538565358
         }
       ],
       "otherTermCount": 170,
-      "otherInputTotal": 380.15932690538006
+      "otherInputTotal": 380.15814663066357
     }
   ]
 }
