@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-21T08:34:29.762425+00:00",
+  "capturedAt": "2026-11-22T08:28:51.779664+00:00",
   "repository": "iflytek/iFly-Skills",
   "requests": {
     "27826b50b7516df4e3c627a66be4da1c6c972fe767b42ab0850ec53df14e77ca": {
@@ -9,7 +9,7 @@
       },
       "sha256": "b772cec8a20a1128b428b75320464630604fe2e7aceab6a4cef62ae53a941329",
       "cache": "27826b50b7516df4e3c627a66be4da1c6c972fe767b42ab0850ec53df14e77ca.json",
-      "checkedAt": "2026-11-21T08:34:18.358866+00:00",
+      "checkedAt": "2026-11-22T08:28:40.474802+00:00",
       "repository": "ifly-skills"
     },
     "755e1734bbd410e2a321ab8f67f1ba0858aa52167762caaa103a0a86736d7041": {
@@ -22,9 +22,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "3ee23c3deaf441f3452f4e5cbd761f26061ae4c3414b55f39ff13080ee8d8270",
+      "sha256": "bbe4f8c24f1eb735902dff2a66582784acb39016b292312687d24d34ae0a63e2",
       "cache": "755e1734bbd410e2a321ab8f67f1ba0858aa52167762caaa103a0a86736d7041.json",
-      "checkedAt": "2026-11-21T08:34:19.560979+00:00",
+      "checkedAt": "2026-11-22T08:28:41.578514+00:00",
       "repository": "ifly-skills"
     },
     "be957f3d43aa95aaa99e3326d83bcf9cb40e8be2fbdfd74f9aa916c4430f3c9b": {
@@ -37,9 +37,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "1fee37f9ece27d782ddcd25860ec4f0fe20597168755496d929ae582962928f2",
+      "sha256": "033b33d3746a5dd7b44deb5e7998c0f5b498bb54170038043d00b853867ca6c1",
       "cache": "be957f3d43aa95aaa99e3326d83bcf9cb40e8be2fbdfd74f9aa916c4430f3c9b.json",
-      "checkedAt": "2026-11-21T08:34:22.950218+00:00",
+      "checkedAt": "2026-11-22T08:28:44.668055+00:00",
       "repository": "ifly-skills"
     },
     "71188bd4ed1366dddcb9f2e4f86c39d4fe63000c519777ca888ebcf39d07cebe": {
@@ -52,9 +52,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "969c96eea337b6f6b17ad44ded117d9d18803e49bdcf7e22e78cd5ff8ccceb01",
+      "sha256": "93590f5828841e789369074e07a92435e40a3e1c6d3e72e80ca6cdbb2e39a64a",
       "cache": "71188bd4ed1366dddcb9f2e4f86c39d4fe63000c519777ca888ebcf39d07cebe.json",
-      "checkedAt": "2026-11-21T08:34:25.847105+00:00",
+      "checkedAt": "2026-11-22T08:28:47.857175+00:00",
       "repository": "ifly-skills"
     },
     "eb4763592aec5568e2a13f3b1855f3438bc15a9a077fa4ed68186f5890a7a280": {
@@ -67,9 +67,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "ec271e34b8bf922183c92efd8be0d040c693355ab43b0389575ddeddbc737e20",
+      "sha256": "15a4a5d409909feded83d7104d9de0c6b160e5346bdda41c982c27ef6edaea2a",
       "cache": "eb4763592aec5568e2a13f3b1855f3438bc15a9a077fa4ed68186f5890a7a280.json",
-      "checkedAt": "2026-11-21T08:34:27.549950+00:00",
+      "checkedAt": "2026-11-22T08:28:49.169921+00:00",
       "repository": "ifly-skills"
     },
     "b6fd772cb0ca6fd28b14fd182314ab1f39ee3bcb9d5666a945dfd0797bba9b60": {
@@ -79,7 +79,7 @@
       },
       "sha256": "1b62e2dd9c9e95c8dfb09d00f0c2f1871183ec0abe1d4c22ed04eafda60d5e6c",
       "cache": "b6fd772cb0ca6fd28b14fd182314ab1f39ee3bcb9d5666a945dfd0797bba9b60.json",
-      "checkedAt": "2026-11-21T08:34:28.032073+00:00",
+      "checkedAt": "2026-11-22T08:28:49.755591+00:00",
       "repository": "ifly-skills"
     },
     "86bff9d10bc75d76e49f863d7ad759d89297761480d54827da344cf0e8d3e31d": {
@@ -89,7 +89,7 @@
       },
       "sha256": "dd4f482f6406b4ba4932369b60af49424830e0d11e3fe7b0d997b8d1adee8799",
       "cache": "86bff9d10bc75d76e49f863d7ad759d89297761480d54827da344cf0e8d3e31d.json",
-      "checkedAt": "2026-11-21T08:34:28.453620+00:00",
+      "checkedAt": "2026-11-22T08:28:50.325258+00:00",
       "repository": "ifly-skills"
     },
     "b7431fb973010984f674a5c5489f75e2760f9fcfc6aeecdad8d27d223c6eb524": {
@@ -103,7 +103,7 @@
       },
       "sha256": "d5f5474c78006709767551319bf437e74b145f314a34e475f00cc709e9c9b417",
       "cache": "b7431fb973010984f674a5c5489f75e2760f9fcfc6aeecdad8d27d223c6eb524.json",
-      "checkedAt": "2026-11-21T08:34:28.809029+00:00",
+      "checkedAt": "2026-11-22T08:28:50.691982+00:00",
       "repository": "ifly-skills"
     },
     "7405caf25a670fa0ff2102e1f21b7a83118d314398ec0887892a17805461ea39": {
@@ -119,7 +119,7 @@
       },
       "sha256": "b8b114360690ec571a313aeecbaa3c5a17277ce29759cce586d5e2588c015c03",
       "cache": "7405caf25a670fa0ff2102e1f21b7a83118d314398ec0887892a17805461ea39.json",
-      "checkedAt": "2026-11-21T08:34:29.417549+00:00",
+      "checkedAt": "2026-11-22T08:28:51.363383+00:00",
       "repository": "ifly-skills"
     },
     "42fcecf8ddd8ca67b8ed22077d4ffd61dd7d6d7defc28191c00132d55a4c0e40": {
@@ -129,7 +129,7 @@
       },
       "sha256": "b876c74227c3ce00623c29ffeaa76b55b6b6a5a1e3ea8ba9b7624374d0adece9",
       "cache": "42fcecf8ddd8ca67b8ed22077d4ffd61dd7d6d7defc28191c00132d55a4c0e40.json",
-      "checkedAt": "2026-11-21T08:34:29.762425+00:00",
+      "checkedAt": "2026-11-22T08:28:51.779664+00:00",
       "repository": "ifly-skills"
     }
   }
