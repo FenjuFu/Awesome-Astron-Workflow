@@ -1,4 +1,4 @@
-﻿import React, { useRef, useState } from 'react';
+﻿import React, { useEffect, useRef, useState } from 'react';
 import { Menu, X, Globe, ChevronDown, Sparkles } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -17,6 +17,9 @@ export default function Navigation() {
   const nav = useRef<HTMLElement>(null);
   const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
+  useEffect(() => {
+    if (location.hash === '#spark-x26-deploy') document.getElementById('spark-x26-deploy')?.scrollIntoView();
+  }, [location.pathname, location.hash, location.key]);
   const zh = language === 'zh-CN';
   const navItems: NavItem[] = [
     { href: '/#home', label: t('nav.home'), children: [
@@ -30,6 +33,7 @@ export default function Navigation() {
     { href: '/galaxy', label: zh ? '星系' : 'Galaxy' },
     { href: '/demo', label: t('nav.demo'), children: [
       { href: '/demo', label: t('nav.demoOverview'), tip: t('nav.demoOverviewTip') },
+      { href: '/demo#spark-x26-deploy', label: 'Spark', tip: zh ? 'Spark-X2.6-4B · 安装 · 部署 · 在线调用' : 'Spark-X2.6-4B · Install · Deploy · API access' },
       { href: 'https://agent.xfyun.cn/agentbuilder/home', label: `${t('nav.astronAgent')} · ${t('demo.officialSaas')}` },
       { href: 'https://cowork.iflydigital.com/', label: `${t('demo.cowork')} · ${t('demo.officialSaas')}` },
       { href: 'https://skill.xfyun.cn/', label: `${t('nav.skillHub')} · ${t('demo.officialSaas')}` },
