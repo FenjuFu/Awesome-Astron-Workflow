@@ -1325,12 +1325,6 @@
     "bytes": 1829,
     "mime": "image/jpeg"
   },
-  "davidgibbons": {
-    "source": "https://avatars.githubusercontent.com/u/814809?v=4&s=64",
-    "sha256": "1ba03add506d2605476d760cdc6b77f3d201d616acd0620186203038c0f728a9",
-    "bytes": 2584,
-    "mime": "image/jpeg"
-  },
   "xmRobinYu": {
     "source": "https://avatars.githubusercontent.com/u/48226872?v=4&s=64",
     "sha256": "641bd57773bfcd1be2e3c6d46c4189ac77fb95d80566191b82662f8a417280a5",
@@ -1360,6 +1354,12 @@
     "sha256": "62681a3f74d082bd35d88e7a5af043152b141940c36156c710bf73f61bb6887c",
     "bytes": 3246,
     "mime": "image/png"
+  },
+  "davidgibbons": {
+    "source": "https://avatars.githubusercontent.com/u/814809?v=4&s=64",
+    "sha256": "1ba03add506d2605476d760cdc6b77f3d201d616acd0620186203038c0f728a9",
+    "bytes": 2584,
+    "mime": "image/jpeg"
   },
   "mapleyebaby": {
     "source": "https://avatars.githubusercontent.com/u/216039363?u=57a5c25b867f25da73630005b1d7b12f995bee47&v=4&s=64",
@@ -1433,6 +1433,12 @@
     "bytes": 1583,
     "mime": "image/jpeg"
   },
+  "LEE-Kyungjae": {
+    "source": "https://avatars.githubusercontent.com/u/108649270?v=4&s=64",
+    "sha256": "c9c3c8b4e4e16bdfe979e6314480ef49f54f3a768659e9be8f80f2360735574c",
+    "bytes": 2243,
+    "mime": "image/jpeg"
+  },
   "qwn3213": {
     "source": "https://avatars.githubusercontent.com/u/15106813?v=4&s=64",
     "sha256": "cec2906bb649c0c88822eb275f7b25ade3b3caff698b757c18ea75b35b8ada05",
@@ -1443,12 +1449,6 @@
     "source": "https://avatars.githubusercontent.com/u/45943833?v=4&s=64",
     "sha256": "47ce90252371f49a71b7eb2554842791fcc54b484cc42f107c4e3c3297096a5c",
     "bytes": 1488,
-    "mime": "image/jpeg"
-  },
-  "LEE-Kyungjae": {
-    "source": "https://avatars.githubusercontent.com/u/108649270?u=c88637f3c6b54d64c8302e617fb0bb672ffecd8f&v=4&s=64",
-    "sha256": "c9c3c8b4e4e16bdfe979e6314480ef49f54f3a768659e9be8f80f2360735574c",
-    "bytes": 2243,
     "mime": "image/jpeg"
   },
   "wanting12345": {
@@ -1691,6 +1691,12 @@
     "bytes": 1824,
     "mime": "image/jpeg"
   },
+  "kantorcodes": {
+    "source": "https://avatars.githubusercontent.com/u/6068672?u=1325b4493d236d6d7099a9439bebb170ab018c89&v=4&s=64",
+    "sha256": "85df81f26d08b475dbac29dc6c10759a27b4ba1180db17caf6530db69e1d2975",
+    "bytes": 8803,
+    "mime": "image/png"
+  },
   "HappyStupidChild": {
     "source": "https://avatars.githubusercontent.com/u/102966546?u=7b33e55ef87315e028bd7c8394b86fc2c200a763&v=4&s=64",
     "sha256": "2ca85d982475c65656a503931c6e248fb25601e7ce8a5bf25afab8d73934abb0",
@@ -1744,12 +1750,6 @@
     "sha256": "eb463a0e05b9037d74a9aeefe3dac5b9c16ce7fef6106aec6cf8333c6488afb3",
     "bytes": 1523,
     "mime": "image/jpeg"
-  },
-  "kantorcodes": {
-    "source": "https://avatars.githubusercontent.com/u/6068672?u=1325b4493d236d6d7099a9439bebb170ab018c89&v=4&s=64",
-    "sha256": "85df81f26d08b475dbac29dc6c10759a27b4ba1180db17caf6530db69e1d2975",
-    "bytes": 8803,
-    "mime": "image/png"
   },
   "PerfectWong": {
     "source": "https://avatars.githubusercontent.com/u/20842670?v=4&s=64",
@@ -1925,11 +1925,11 @@
     "bytes": 3319,
     "mime": "image/png"
   },
-  "samuelbushi": {
-    "source": "https://avatars.githubusercontent.com/u/43500751?u=72282970b0270aef0fd5b924de8c53ef1bee92c9&v=4&s=64",
-    "sha256": "5ca18e34dae037a17aa5b1e6ac78451545ae7ed5c48766a6610efacde4ae8992",
-    "bytes": 1627,
-    "mime": "image/jpeg"
+  "objective-bot": {
+    "source": "https://avatars.githubusercontent.com/u/43500751?u=2eb581052684ebad9885897b2910e0cda0c7d25b&v=4&s=64",
+    "sha256": "f094790567328fac38f30e4d032adf17970459cfdb67d26db7f388351411fc44",
+    "bytes": 143,
+    "mime": "image/png"
   },
   "lvxinrong": {
     "source": "https://avatars.githubusercontent.com/u/20681488?v=4&s=64",
