@@ -1307,12 +1307,6 @@
     "bytes": 1811,
     "mime": "image/jpeg"
   },
-  "PerryLink": {
-    "source": "https://avatars.githubusercontent.com/u/255665900?v=4&s=64",
-    "sha256": "5fe54cc9355a0c8ef417b8033859a1f4f7dcc6eebabd6be13d79c7d5250e5252",
-    "bytes": 3007,
-    "mime": "image/png"
-  },
   "jangrui": {
     "source": "https://avatars.githubusercontent.com/u/5895682?v=4&s=64",
     "sha256": "54747a41860064405417b703461c6307005587f1a98b893cc7f5a1fdda8c76c2",
@@ -1348,6 +1342,12 @@
     "sha256": "ed4b6fe8a19c8bbdcf7cc8f5527e065fc52d7b5ef6c12a056bab096b209b49dc",
     "bytes": 1851,
     "mime": "image/jpeg"
+  },
+  "PerryLink": {
+    "source": "https://avatars.githubusercontent.com/u/255665900?v=4&s=64",
+    "sha256": "5fe54cc9355a0c8ef417b8033859a1f4f7dcc6eebabd6be13d79c7d5250e5252",
+    "bytes": 3007,
+    "mime": "image/png"
   },
   "yhd4711499": {
     "source": "https://avatars.githubusercontent.com/u/4669006?v=4&s=64",
@@ -2140,6 +2140,12 @@
     "sha256": "05c6e3220f0eac9f3bc8e4bcd3b2f52899a1c6c136c26e950817754993e313c0",
     "bytes": 870,
     "mime": "image/jpeg"
+  },
+  "cloudtelecomCN": {
+    "source": "https://avatars.githubusercontent.com/u/296513592?v=4&s=64",
+    "sha256": "df60d3f37f3ac2ae1aa4105feb6898b3674b239a9b54e2b0873fabb0b6b2ad4e",
+    "bytes": 3811,
+    "mime": "image/png"
   },
   "2niuhe": {
     "source": "https://avatars.githubusercontent.com/u/13382324?u=ac918d72e0329c87ba29b3bf85e03e98a4ee9427&v=4&s=64",
