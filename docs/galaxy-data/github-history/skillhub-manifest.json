@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-27T01:43:36.434552+00:00",
+  "capturedAt": "2026-11-28T02:24:14.994755+00:00",
   "repository": "iflytek/skillhub",
   "requests": {
     "c9a37732547e006f53532370759c3655e75dc99be84d05adced0c92bdd4d410a": {
@@ -7,9 +7,9 @@
         "kind": "rest",
         "path": "repos/iflytek/skillhub"
       },
-      "sha256": "d3b0920e9f69c386770bc04c34f6d26a7234960a566fab0898650b5e134840d8",
+      "sha256": "48cb7e52cc99a978f16040121cfb9bd633b15b68b479ef0454093a232c57a599",
       "cache": "c9a37732547e006f53532370759c3655e75dc99be84d05adced0c92bdd4d410a.json",
-      "checkedAt": "2026-11-27T01:40:45.606671+00:00",
+      "checkedAt": "2026-11-28T02:21:44.561609+00:00",
       "repository": "skillhub"
     },
     "714034bc74204bf44a20efd375c1320db2911c93770c79d88998c81f1ff48d0e": {
@@ -22,9 +22,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "852d9eec6c04d7661ac326282c4718ab2713c5d15af68cff886d3c4715e0e1dd",
+      "sha256": "4c31264da529d0d05cd2439b21886b7049faa903de861bbe58710729cfcba368",
       "cache": "714034bc74204bf44a20efd375c1320db2911c93770c79d88998c81f1ff48d0e.json",
-      "checkedAt": "2026-11-27T01:40:46.483987+00:00",
+      "checkedAt": "2026-11-28T02:21:45.673097+00:00",
       "repository": "skillhub"
     },
     "1b34719c0e7b0628c84f0bad53500bf852cf4501164ea47a9e772ec9e00daf2e": {
@@ -37,9 +37,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "56b5ad00dbfc8a3b76306985851d6eb0e556a106bc592818f2d23b6f25694ee7",
+      "sha256": "8088d308fa035edbbc77a2e97a8601d236b1dc73c47c3aca665b3f211b803f60",
       "cache": "1b34719c0e7b0628c84f0bad53500bf852cf4501164ea47a9e772ec9e00daf2e.json",
-      "checkedAt": "2026-11-27T01:40:47.631605+00:00",
+      "checkedAt": "2026-11-28T02:21:46.357594+00:00",
       "repository": "skillhub"
     },
     "47452792fe16669a9327e0f80d251d8862d4dfc3ae8fd304d0292e028c517c59": {
@@ -52,9 +52,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "f4b5afcf675e55767c354d85683c042d66802d5d84c8c9e6d9e6f76414a51e92",
+      "sha256": "2160f5323f57ebb3b6e5a39c6fca75c188239ea0d887ef5f3a827f1aa399717c",
       "cache": "47452792fe16669a9327e0f80d251d8862d4dfc3ae8fd304d0292e028c517c59.json",
-      "checkedAt": "2026-11-27T01:40:48.371662+00:00",
+      "checkedAt": "2026-11-28T02:21:47.001949+00:00",
       "repository": "skillhub"
     },
     "e1a25ac75f35998d145bb104f9de4cdad7e075f812029b51535e06f77dbdbf3d": {
@@ -67,9 +67,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "eec6f83f89eb1eda0bdfa292791ec19236d70cfc6265c1519f7fdc88c6b99933",
+      "sha256": "28c15817f370151e608e4b8a8d39d2e4d3544a3c5485e31657b1b25b883f4b9f",
       "cache": "e1a25ac75f35998d145bb104f9de4cdad7e075f812029b51535e06f77dbdbf3d.json",
-      "checkedAt": "2026-11-27T01:40:49.196560+00:00",
+      "checkedAt": "2026-11-28T02:21:47.663243+00:00",
       "repository": "skillhub"
     },
     "d2816cd10dcb3c217a9adedc959d959f109a2f568cf699c88fbfdc29d7f88655": {
@@ -82,9 +82,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "7e39d48fcf6217b23dd636efb06cfa5c9e66aca786b4d6c7ec0857e385d6dce3",
+      "sha256": "48f3021156921a85d32cb1fd0bd4e4b4e83f3b22807ac87ad1138e498a34dda5",
       "cache": "d2816cd10dcb3c217a9adedc959d959f109a2f568cf699c88fbfdc29d7f88655.json",
-      "checkedAt": "2026-11-27T01:40:49.981463+00:00",
+      "checkedAt": "2026-11-28T02:21:48.390044+00:00",
       "repository": "skillhub"
     },
     "09ea74c139e11da0b9f3fe3b0378e6aef0b4bdfb194baf6f42e75c3c49145170": {
@@ -97,9 +97,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "8c40ae1df2e7fcdf1e26c63aebec25861c4644bb44ea89126cf59e2ed5071a81",
+      "sha256": "70a1106e693054160aed6ca08e6722717cad71575b2f3e62b5410edb45f42ff0",
       "cache": "09ea74c139e11da0b9f3fe3b0378e6aef0b4bdfb194baf6f42e75c3c49145170.json",
-      "checkedAt": "2026-11-27T01:40:50.880151+00:00",
+      "checkedAt": "2026-11-28T02:21:49.170596+00:00",
       "repository": "skillhub"
     },
     "c8c887ec200f960c02fbf08093b3571b70d876b7ae81471d87484e9fb28e7bf8": {
@@ -112,9 +112,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "dcc0f952c7764459c4267e0e0a090d921a7c28e1d9d230d481fbb0323d658bd7",
+      "sha256": "f120594597ff58a19a6ffed466fd0bbe61a349bfd5812ef9949d17eef8c8ad87",
       "cache": "c8c887ec200f960c02fbf08093b3571b70d876b7ae81471d87484e9fb28e7bf8.json",
-      "checkedAt": "2026-11-27T01:40:51.631407+00:00",
+      "checkedAt": "2026-11-28T02:21:49.774704+00:00",
       "repository": "skillhub"
     },
     "d496eb0376196c26948f9b981fd9dc712a5ba776b8f0d9b964f19b4d2cb1f133": {
@@ -127,9 +127,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "0a651fad06bb67350e27f2a1d6c99d65d439742d52204f32f525ec97e1a07f2a",
+      "sha256": "d06fd83f0007d31c7db2cd9b4e94908bb021101276c1b4adb11f03a6402e181d",
       "cache": "d496eb0376196c26948f9b981fd9dc712a5ba776b8f0d9b964f19b4d2cb1f133.json",
-      "checkedAt": "2026-11-27T01:40:52.424284+00:00",
+      "checkedAt": "2026-11-28T02:21:50.409511+00:00",
       "repository": "skillhub"
     },
     "b4abc9782656f23f57de88eb7d16b9748d41164b9f5932ff0bdbd941f748ebd6": {
@@ -142,9 +142,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "d7bcd4c2083210cdc415977af02d02ee69a933f0a67868b9fa71925c38b83d18",
+      "sha256": "1f8293c12c26211837fa70ad5310664a09f8c2d2742feac6faa37cea24b4b84b",
       "cache": "b4abc9782656f23f57de88eb7d16b9748d41164b9f5932ff0bdbd941f748ebd6.json",
-      "checkedAt": "2026-11-27T01:40:53.232138+00:00",
+      "checkedAt": "2026-11-28T02:21:51.042820+00:00",
       "repository": "skillhub"
     },
     "515005ac968eda751f30f2a824871b9d680920cc298d50bf4f3ec2bf75820746": {
@@ -157,9 +157,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "5fe281ea025be12eb2657a9ccc867a20ec8649584aaaf7fd9e4d0fb0949cb96a",
+      "sha256": "e6521451c26658c8384b6f0bab92572d63e0ec2d0090176888e1faed429d1186",
       "cache": "515005ac968eda751f30f2a824871b9d680920cc298d50bf4f3ec2bf75820746.json",
-      "checkedAt": "2026-11-27T01:40:54.401437+00:00",
+      "checkedAt": "2026-11-28T02:21:51.644305+00:00",
       "repository": "skillhub"
     },
     "06d15c116e9a72ae8edf756a67d6b865dbc9cc211119f15d34b791b744467323": {
@@ -172,9 +172,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "8722162ed216d42258ef30391d54b12e07f9f17e4549c7650652db9aa6b001e1",
+      "sha256": "932fd1ff2dbcab641eda0412bfb4cd61f13e58f514c8ba6a27d2c7c4f664c6ea",
       "cache": "06d15c116e9a72ae8edf756a67d6b865dbc9cc211119f15d34b791b744467323.json",
-      "checkedAt": "2026-11-27T01:40:55.212952+00:00",
+      "checkedAt": "2026-11-28T02:21:52.387234+00:00",
       "repository": "skillhub"
     },
     "57487a4131b925a638d97e01edfe8bdbaaf8eb64cb8d1139e586bbf32cfef9ea": {
@@ -187,9 +187,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "a42a13217a40f9be2487ce607ff43e84f3abfe96f0848490b644c2c82638dc16",
+      "sha256": "a79c365d241d594777fcee2c097982e73bfb60b7f8a750bf06d0605b9e26d33a",
       "cache": "57487a4131b925a638d97e01edfe8bdbaaf8eb64cb8d1139e586bbf32cfef9ea.json",
-      "checkedAt": "2026-11-27T01:40:55.757643+00:00",
+      "checkedAt": "2026-11-28T02:21:52.750507+00:00",
       "repository": "skillhub"
     },
     "1d0a4ccefc3da2ceb7e85654db9cf942193636753c4156e760ff4990293c7000": {
@@ -202,9 +202,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "9776676868b38707e2f9cc49489cd3268e59dd3d080ac3561e6c31cb34536176",
+      "sha256": "dcfc76360c6e0bb7679bbc3bada8f3b71d784614156c253ecc1d1b72136e255c",
       "cache": "1d0a4ccefc3da2ceb7e85654db9cf942193636753c4156e760ff4990293c7000.json",
-      "checkedAt": "2026-11-27T01:40:59.828875+00:00",
+      "checkedAt": "2026-11-28T02:21:56.249432+00:00",
       "repository": "skillhub"
     },
     "edff501ac201088fb1468b1f0187a4ebb06067777dcaf54bef2894bbe6568abc": {
@@ -218,7 +218,7 @@
       },
       "sha256": "f535d4e057beb826d90597f4babdaf8fded35332541aac250815e8e491a92091",
       "cache": "edff501ac201088fb1468b1f0187a4ebb06067777dcaf54bef2894bbe6568abc.json",
-      "checkedAt": "2026-11-27T01:41:00.660941+00:00",
+      "checkedAt": "2026-11-28T02:21:56.844215+00:00",
       "repository": "skillhub"
     },
     "8f441aa261d49d696070dd2f4a862b662f53489b4af22a905d7969ea6d574ee9": {
@@ -232,7 +232,7 @@
       },
       "sha256": "eb9c5f580ff1b9381cc2770b248763f275b194d87e68b4099a9f7b0901f1fda8",
       "cache": "8f441aa261d49d696070dd2f4a862b662f53489b4af22a905d7969ea6d574ee9.json",
-      "checkedAt": "2026-11-27T01:41:01.445598+00:00",
+      "checkedAt": "2026-11-28T02:21:57.625084+00:00",
       "repository": "skillhub"
     },
     "81e4359323b8380326ea4cfd529b724597ce26f4cb58e1e765dd2a970ea535a9": {
@@ -246,7 +246,7 @@
       },
       "sha256": "2634ba1a4c2720b7221a77f3da91d44c4dbcf89c018ea095f1ccb2125f32928f",
       "cache": "81e4359323b8380326ea4cfd529b724597ce26f4cb58e1e765dd2a970ea535a9.json",
-      "checkedAt": "2026-11-27T01:41:02.368672+00:00",
+      "checkedAt": "2026-11-28T02:21:58.275518+00:00",
       "repository": "skillhub"
     },
     "d4ef9d7ffbde7434d935f21d868d0f9b5f5bad9cdbf97463f6ab2782bd93245e": {
@@ -260,7 +260,7 @@
       },
       "sha256": "c6fbdf36ab613b5a4c298137f9612e99194657cb127fe458abd279fbc666016e",
       "cache": "d4ef9d7ffbde7434d935f21d868d0f9b5f5bad9cdbf97463f6ab2782bd93245e.json",
-      "checkedAt": "2026-11-27T01:41:03.061329+00:00",
+      "checkedAt": "2026-11-28T02:21:58.864467+00:00",
       "repository": "skillhub"
     },
     "1051194e89d6aec642ec4045b0b00438275a6b9d1853e0ba25c9a727b32788f2": {
@@ -273,7 +273,7 @@
       },
       "sha256": "1fe1d228293434f8b4294e23f50840e5cbc43b7b31164a511d25647067d8705e",
       "cache": "1051194e89d6aec642ec4045b0b00438275a6b9d1853e0ba25c9a727b32788f2.json",
-      "checkedAt": "2026-11-27T01:41:03.395804+00:00",
+      "checkedAt": "2026-11-28T02:21:59.160994+00:00",
       "repository": "skillhub"
     },
     "f5d2c997bd35d61030d416ea2867771e9831586fc635dae3efdd45e66953798e": {
@@ -289,7 +289,7 @@
       },
       "sha256": "bc9637fddf67cd62e89850befe94de772e832c82112c0f1290c5d97050c16d8b",
       "cache": "f5d2c997bd35d61030d416ea2867771e9831586fc635dae3efdd45e66953798e.json",
-      "checkedAt": "2026-11-27T01:41:04.802019+00:00",
+      "checkedAt": "2026-11-28T02:22:01.127090+00:00",
       "repository": "skillhub"
     },
     "c95f9803310c552455be79ceb867b3d2f946f99a074fca6649ecd01f1717a107": {
@@ -305,7 +305,7 @@
       },
       "sha256": "07457a1de7bb92e2482c61e02e75177a543a25f3dfa0d6ba1e36da2bb6040784",
       "cache": "c95f9803310c552455be79ceb867b3d2f946f99a074fca6649ecd01f1717a107.json",
-      "checkedAt": "2026-11-27T01:41:05.413558+00:00",
+      "checkedAt": "2026-11-28T02:22:01.553503+00:00",
       "repository": "skillhub"
     },
     "bf5b905e18549164e5fc70f5cf08197a9f957eb58f762a72a75329ac14014843": {
@@ -321,7 +321,7 @@
       },
       "sha256": "eae667ae29949d8a401ae744e067ae9285001f03c684d15b341b6e5130dcd2c1",
       "cache": "bf5b905e18549164e5fc70f5cf08197a9f957eb58f762a72a75329ac14014843.json",
-      "checkedAt": "2026-11-27T01:41:05.990750+00:00",
+      "checkedAt": "2026-11-28T02:22:01.999470+00:00",
       "repository": "skillhub"
     },
     "a23a44dd0bfbdbefe8c08ebe8f7eec150ff22fe6409bc47e59280d8ee337bf2a": {
@@ -334,9 +334,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "0d9955c11abed873849c62b50b80293e1018cb47dddea7c328fd0f490e487aea",
+      "sha256": "392617c40885946c0df2b17c160691a7ad3de3b78154807c0bcdabda85453b58",
       "cache": "a23a44dd0bfbdbefe8c08ebe8f7eec150ff22fe6409bc47e59280d8ee337bf2a.json",
-      "checkedAt": "2026-11-27T01:41:10.416375+00:00",
+      "checkedAt": "2026-11-28T02:22:05.086865+00:00",
       "repository": "skillhub"
     },
     "3d7fe6ad059581c9e3f9ebcdc4e7e18a2981af63acea7672be277358e4275aac": {
@@ -349,9 +349,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "0d5a05bafd4a477fff22aba8eef81b444249bcdfa5afdf1e794634295ef76fe7",
+      "sha256": "a92a2c198be7e170cf988b2343268bfa85433da39f9031f3f372e2d266b4f5ec",
       "cache": "3d7fe6ad059581c9e3f9ebcdc4e7e18a2981af63acea7672be277358e4275aac.json",
-      "checkedAt": "2026-11-27T01:41:14.058565+00:00",
+      "checkedAt": "2026-11-28T02:22:08.195923+00:00",
       "repository": "skillhub"
     },
     "df0d5fde22189926edf2b5babde70fb168219f55dac73f4445d946a685788dce": {
@@ -365,7 +365,7 @@
       },
       "sha256": "7c89c57f1805c1566919368a1322fa8e8b2b5c494416e1d3b7cc6014237f7cbf",
       "cache": "df0d5fde22189926edf2b5babde70fb168219f55dac73f4445d946a685788dce.json",
-      "checkedAt": "2026-11-27T01:41:14.871653+00:00",
+      "checkedAt": "2026-11-28T02:22:08.711295+00:00",
       "repository": "skillhub"
     },
     "9a7d5a464c48b2b863de614b8638c1f4c1b7150dcab594355f9c09ca30a4606c": {
@@ -379,7 +379,7 @@
       },
       "sha256": "ce57eb978d4514f2a2c5212f6c197c9b5579e5187d1a678a81d8323d385ba0a8",
       "cache": "9a7d5a464c48b2b863de614b8638c1f4c1b7150dcab594355f9c09ca30a4606c.json",
-      "checkedAt": "2026-11-27T01:41:15.663477+00:00",
+      "checkedAt": "2026-11-28T02:22:09.842253+00:00",
       "repository": "skillhub"
     },
     "d6f9d04103efe02e59ad5f222924980d14541abace2a4b32e0ece96b7f863cb1": {
@@ -392,7 +392,7 @@
       },
       "sha256": "1e3a9a7db8c7f09d3f7286c38d3dd73fcf8740afe31334e4b8f268b59a141214",
       "cache": "d6f9d04103efe02e59ad5f222924980d14541abace2a4b32e0ece96b7f863cb1.json",
-      "checkedAt": "2026-11-27T01:41:15.992338+00:00",
+      "checkedAt": "2026-11-28T02:22:10.049159+00:00",
       "repository": "skillhub"
     },
     "9dde80102c68d966053be84c3495eccafc2031680827689aef3f5b9158e39e44": {
@@ -402,7 +402,7 @@
       },
       "sha256": "2fdbc84b4a34bcdf28a89746e0824022c33e9ef2c607ab9d52028880f49241f5",
       "cache": "9dde80102c68d966053be84c3495eccafc2031680827689aef3f5b9158e39e44.json",
-      "checkedAt": "2026-11-27T01:41:17.212922+00:00",
+      "checkedAt": "2026-11-28T02:22:11.128717+00:00",
       "repository": "skillhub"
     },
     "48b26326c65ba2b3d8f74c15db31cdf156e62a9aab6e44ebd73471cbdc1ef017": {
@@ -412,7 +412,7 @@
       },
       "sha256": "af0652cdca52af73a9e5fc5010546353d1613b9d42f2fb82f1447728b6436121",
       "cache": "48b26326c65ba2b3d8f74c15db31cdf156e62a9aab6e44ebd73471cbdc1ef017.json",
-      "checkedAt": "2026-11-27T01:41:17.764839+00:00",
+      "checkedAt": "2026-11-28T02:22:11.603518+00:00",
       "repository": "skillhub"
     },
     "a4b37057de17fa832d486c42b0970cd051bd741301b8848fd75cb29fa00a9453": {
@@ -422,7 +422,7 @@
       },
       "sha256": "9c03a7cd8d18cc014e24bc63d91ff8c4b5b52cc41b3299bb27ae0562db4285ad",
       "cache": "a4b37057de17fa832d486c42b0970cd051bd741301b8848fd75cb29fa00a9453.json",
-      "checkedAt": "2026-11-27T01:41:18.297662+00:00",
+      "checkedAt": "2026-11-28T02:22:12.108075+00:00",
       "repository": "skillhub"
     },
     "95450cad230ba18c0891fe723c0f8bdd2c2e5c91eb2051b858fda353d0352a4f": {
@@ -432,7 +432,7 @@
       },
       "sha256": "cf4414c8acfd7b3c0f86b17310541ba58d042ae2aa7ea925f616881bc6b682f7",
       "cache": "95450cad230ba18c0891fe723c0f8bdd2c2e5c91eb2051b858fda353d0352a4f.json",
-      "checkedAt": "2026-11-27T01:41:18.791903+00:00",
+      "checkedAt": "2026-11-28T02:22:12.662337+00:00",
       "repository": "skillhub"
     },
     "a5a4f91672366b5bd81d56541abc44f3c8d5342b7538813611ec1f5fd46d9cde": {
@@ -496,7 +496,7 @@
       },
       "sha256": "f5a68dc234b3c3de095fbb63c10add8712375a3d590b78201a46e3db7c99ee63",
       "cache": "a5a4f91672366b5bd81d56541abc44f3c8d5342b7538813611ec1f5fd46d9cde.json",
-      "checkedAt": "2026-11-27T01:41:19.571978+00:00",
+      "checkedAt": "2026-11-28T02:22:13.047268+00:00",
       "repository": "skillhub"
     },
     "174a306be46af45c07fb96377fbf3b0941af973594d5c245f7f43655002dbe1a": {
@@ -560,7 +560,7 @@
       },
       "sha256": "0dbb420fd2a17fbd2e2f944f2a03898b4bc67518fdcf868233b3d75b341f8148",
       "cache": "174a306be46af45c07fb96377fbf3b0941af973594d5c245f7f43655002dbe1a.json",
-      "checkedAt": "2026-11-27T01:41:20.098144+00:00",
+      "checkedAt": "2026-11-28T02:22:13.452869+00:00",
       "repository": "skillhub"
     },
     "f9d344b3379dded4062cbb34fda48730d40bee6e2051743b25be5892e69d89e9": {
@@ -624,7 +624,7 @@
       },
       "sha256": "82317d35704967297eef06906db0b5a87b4d10f7d0854c9b83d24d8d7be22ce7",
       "cache": "f9d344b3379dded4062cbb34fda48730d40bee6e2051743b25be5892e69d89e9.json",
-      "checkedAt": "2026-11-27T01:41:20.605549+00:00",
+      "checkedAt": "2026-11-28T02:22:13.825461+00:00",
       "repository": "skillhub"
     },
     "761361059ae407e070d553947aeb978cbe8da1fc5a12384bab83e4a02d4068e8": {
@@ -688,7 +688,7 @@
       },
       "sha256": "b2ffa799aee62fbe6fca0a38a8e6fe5ed93e0ef071985712cae84ebf29dc46a2",
       "cache": "761361059ae407e070d553947aeb978cbe8da1fc5a12384bab83e4a02d4068e8.json",
-      "checkedAt": "2026-11-27T01:41:21.323650+00:00",
+      "checkedAt": "2026-11-28T02:22:14.256738+00:00",
       "repository": "skillhub"
     },
     "e870a61d8b4293efd903b8c13cfdd52f482fd0215028e50f9abcb7a2550da72f": {
@@ -752,7 +752,7 @@
       },
       "sha256": "c8876a003143c9d3b6fa60fa29a68a08ba36544c2caa74d7da3129db1a169810",
       "cache": "e870a61d8b4293efd903b8c13cfdd52f482fd0215028e50f9abcb7a2550da72f.json",
-      "checkedAt": "2026-11-27T01:41:21.861020+00:00",
+      "checkedAt": "2026-11-28T02:22:16.004953+00:00",
       "repository": "skillhub"
     },
     "4d9006f950d9e422bc378f46b01fb35f1baea2cfd99b57b9be1fb552bf3fc317": {
@@ -816,7 +816,7 @@
       },
       "sha256": "030d973203b76bb7572615e3f2228135b4d3d6a18faa71dba32c07825e1ce20b",
       "cache": "4d9006f950d9e422bc378f46b01fb35f1baea2cfd99b57b9be1fb552bf3fc317.json",
-      "checkedAt": "2026-11-27T01:41:22.415962+00:00",
+      "checkedAt": "2026-11-28T02:22:16.436482+00:00",
       "repository": "skillhub"
     },
     "834bc65fecfca25e412ea7e97d8792373c93d485bb1a148ff3a652e49d55a783": {
@@ -880,7 +880,7 @@
       },
       "sha256": "293b9c319f2358f2829e6073c6a98f8f9b0cd081219028b542a96bdce47e8a9c",
       "cache": "834bc65fecfca25e412ea7e97d8792373c93d485bb1a148ff3a652e49d55a783.json",
-      "checkedAt": "2026-11-27T01:41:22.916581+00:00",
+      "checkedAt": "2026-11-28T02:22:16.923756+00:00",
       "repository": "skillhub"
     },
     "59132c305b46bdb4ca708b6ed9486551d1c8568a6c64ce8d2e3ee77e5b048ef4": {
@@ -922,7 +922,7 @@
       },
       "sha256": "7a2d4b36ae72b0f357816c566fb872cb42176df62c4fb3be8a084191862ba6dd",
       "cache": "59132c305b46bdb4ca708b6ed9486551d1c8568a6c64ce8d2e3ee77e5b048ef4.json",
-      "checkedAt": "2026-11-27T01:41:23.489845+00:00",
+      "checkedAt": "2026-11-28T02:22:17.298150+00:00",
       "repository": "skillhub"
     },
     "6537b1ca8ba9f32037aef462af09943148c431d54350e41846a4e7a90ae9bf5d": {
@@ -935,9 +935,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "ae65b2b9e6c405aff12ea513c6771c110e3829f3fbc50d9f582653914f35df4a",
+      "sha256": "65bffe54f598c5dcf2b5473b7ffe0ce212e19f45db8d27491e168fbda73960eb",
       "cache": "6537b1ca8ba9f32037aef462af09943148c431d54350e41846a4e7a90ae9bf5d.json",
-      "checkedAt": "2026-11-27T01:41:29.534833+00:00",
+      "checkedAt": "2026-11-28T02:22:20.641839+00:00",
       "repository": "skillhub"
     },
     "0bacf7a4383ce720a7f5e58e27288ca56a243becbe40e5fe05fc4dc8c3857d56": {
@@ -950,9 +950,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "9919d7b761aacfdecc73dac345c563f853c2308fd3e2691081ded51b0b2899b4",
+      "sha256": "fb91bce9d8ce2191a89d3b953b288ccf681137027d9461cf785362ad42b1dc5d",
       "cache": "0bacf7a4383ce720a7f5e58e27288ca56a243becbe40e5fe05fc4dc8c3857d56.json",
-      "checkedAt": "2026-11-27T01:41:34.087760+00:00",
+      "checkedAt": "2026-11-28T02:22:24.370906+00:00",
       "repository": "skillhub"
     },
     "e6571717dd387dadb3c9533cc9aa5f5b24a426ccf50b6f0f5b73bbfe0d7066ce": {
@@ -965,9 +965,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "53d1f0b2658f35d1271f2bca0b51abf315285d1cda982e38c728d3b36467f769",
+      "sha256": "873a7df3d75def57663ae7d52d8570747806adf97bb94d099d9b90cbb161ccd0",
       "cache": "e6571717dd387dadb3c9533cc9aa5f5b24a426ccf50b6f0f5b73bbfe0d7066ce.json",
-      "checkedAt": "2026-11-27T01:41:38.241563+00:00",
+      "checkedAt": "2026-11-28T02:22:28.567442+00:00",
       "repository": "skillhub"
     },
     "d112426e4dd8521479bb722a2cc2226a70e449a360b9b422d89dae104bff60df": {
@@ -981,7 +981,7 @@
       },
       "sha256": "acb349d792c85a53c934c628cea4e7cdaf115f640318a91cbe359dc2189c4939",
       "cache": "d112426e4dd8521479bb722a2cc2226a70e449a360b9b422d89dae104bff60df.json",
-      "checkedAt": "2026-11-27T01:41:39.109464+00:00",
+      "checkedAt": "2026-11-28T02:22:29.115073+00:00",
       "repository": "skillhub"
     },
     "0ad283ce05f6572805ede34333832dad64966651af1cdd21a768bbd240506278": {
@@ -995,7 +995,7 @@
       },
       "sha256": "aa850f9ef57b283de6b014a7b136f9b3282333f2bc56a160f8582693dbbe266e",
       "cache": "0ad283ce05f6572805ede34333832dad64966651af1cdd21a768bbd240506278.json",
-      "checkedAt": "2026-11-27T01:41:39.655777+00:00",
+      "checkedAt": "2026-11-28T02:22:29.738673+00:00",
       "repository": "skillhub"
     },
     "ce5a3787c471e4e73ae0c308895d8c8a0a35cfeaf5a2428ac6c276b8420ef49a": {
@@ -1008,7 +1008,7 @@
       },
       "sha256": "fb129a7cb891211263e36763bceb3c65f89e7ed43db0fcbda863bbfc711c9085",
       "cache": "ce5a3787c471e4e73ae0c308895d8c8a0a35cfeaf5a2428ac6c276b8420ef49a.json",
-      "checkedAt": "2026-11-27T01:41:40.027764+00:00",
+      "checkedAt": "2026-11-28T02:22:29.965828+00:00",
       "repository": "skillhub"
     },
     "6396917faab18134382a5157f26829f546acdf5460c0937c83dad5c888f842fa": {
@@ -1018,7 +1018,7 @@
       },
       "sha256": "be8ffd3475a552c857d9a42ab31466386a9cf6011326d200c29b197a6bd2c8c5",
       "cache": "6396917faab18134382a5157f26829f546acdf5460c0937c83dad5c888f842fa.json",
-      "checkedAt": "2026-11-27T01:41:41.123666+00:00",
+      "checkedAt": "2026-11-28T02:22:30.971825+00:00",
       "repository": "skillhub"
     },
     "9fbe6bfb2a9a9130c72e8ca2e99ba31274dc57fc3b79248fa2159e9041e33f82": {
@@ -1028,7 +1028,7 @@
       },
       "sha256": "2b8bbde6a727c93cf116529d28c830f2f841f521d3d00e02c1e8252fc447cfc1",
       "cache": "9fbe6bfb2a9a9130c72e8ca2e99ba31274dc57fc3b79248fa2159e9041e33f82.json",
-      "checkedAt": "2026-11-27T01:41:41.655943+00:00",
+      "checkedAt": "2026-11-28T02:22:31.470564+00:00",
       "repository": "skillhub"
     },
     "2eb87de24e197238053986630766955662d32c715c008d8d5b1b07309e191cb3": {
@@ -1038,7 +1038,7 @@
       },
       "sha256": "a61e983d806d26896a6749aec8cd5e5da8745cb81e84d86db89bb1072131ae77",
       "cache": "2eb87de24e197238053986630766955662d32c715c008d8d5b1b07309e191cb3.json",
-      "checkedAt": "2026-11-27T01:41:42.189778+00:00",
+      "checkedAt": "2026-11-28T02:22:31.907314+00:00",
       "repository": "skillhub"
     },
     "adb078ff3f4254f5f948b0ee0675a3b21d64b7dcde2f629021a2f003e8630bcd": {
@@ -1048,7 +1048,7 @@
       },
       "sha256": "3e0820ff7405a84e15540f8dbec05524eb793e3021d17d21a4291f1b3c213574",
       "cache": "adb078ff3f4254f5f948b0ee0675a3b21d64b7dcde2f629021a2f003e8630bcd.json",
-      "checkedAt": "2026-11-27T01:41:42.804759+00:00",
+      "checkedAt": "2026-11-28T02:22:32.384089+00:00",
       "repository": "skillhub"
     },
     "acd626400accf3c4f26da9dea272521e0bf9bac5e9cfca08f8f284a66997dded": {
@@ -1058,7 +1058,7 @@
       },
       "sha256": "047d580e5200f68f097e34aa82cff99b918cbf4376f14cdb57f3194c9eb79140",
       "cache": "acd626400accf3c4f26da9dea272521e0bf9bac5e9cfca08f8f284a66997dded.json",
-      "checkedAt": "2026-11-27T01:41:43.370395+00:00",
+      "checkedAt": "2026-11-28T02:22:32.910667+00:00",
       "repository": "skillhub"
     },
     "34ffd96adb316ed4214b565fd556a3b0b9e638a1ca600449efca45f1485538f8": {
@@ -1068,7 +1068,7 @@
       },
       "sha256": "4b8e74b9b06e01384cede678989c97ca1a26ffa1eb5cfc6bbf0e04394078af8b",
       "cache": "34ffd96adb316ed4214b565fd556a3b0b9e638a1ca600449efca45f1485538f8.json",
-      "checkedAt": "2026-11-27T01:41:43.844680+00:00",
+      "checkedAt": "2026-11-28T02:22:33.378668+00:00",
       "repository": "skillhub"
     },
     "31f49df834f9445bd62916904879093545cfb9c1e0b3765e3f7438b6c8e7d798": {
@@ -1132,7 +1132,7 @@
       },
       "sha256": "037188a9a2ed7fc9f8e34e1bebd9070c36675857db0db4ebde1a177aa89d527b",
       "cache": "31f49df834f9445bd62916904879093545cfb9c1e0b3765e3f7438b6c8e7d798.json",
-      "checkedAt": "2026-11-27T01:41:44.373910+00:00",
+      "checkedAt": "2026-11-28T02:22:33.802034+00:00",
       "repository": "skillhub"
     },
     "03bdba2a0f1cab486ed091e19f3af331f124694c48915744622f91148fb6cd7f": {
@@ -1196,7 +1196,7 @@
       },
       "sha256": "9f34f401285cd674c9c32d9c5c71fd5cf52de06be6656f5a7c4711c55968c5b1",
       "cache": "03bdba2a0f1cab486ed091e19f3af331f124694c48915744622f91148fb6cd7f.json",
-      "checkedAt": "2026-11-27T01:41:44.904913+00:00",
+      "checkedAt": "2026-11-28T02:22:34.172093+00:00",
       "repository": "skillhub"
     },
     "7d8f938a5aed13c8d58ac2800f40eac548decbec70b61a6a0ec9495240f60e58": {
@@ -1260,7 +1260,7 @@
       },
       "sha256": "7c888dcfa9860dc989fdeff2d5adf9226fe5f928a6df968ee3b662c2b8e04da2",
       "cache": "7d8f938a5aed13c8d58ac2800f40eac548decbec70b61a6a0ec9495240f60e58.json",
-      "checkedAt": "2026-11-27T01:41:45.448087+00:00",
+      "checkedAt": "2026-11-28T02:22:34.650213+00:00",
       "repository": "skillhub"
     },
     "d980c8244bd5c2e64b86a9549561c039189428dc11be0faa897f7fe13e8d0b2d": {
@@ -1293,7 +1293,7 @@
       },
       "sha256": "86855ffc98d37c35edbc7a89577bd4bd1f3a77b317f06a834adddf0eaa3359ad",
       "cache": "d980c8244bd5c2e64b86a9549561c039189428dc11be0faa897f7fe13e8d0b2d.json",
-      "checkedAt": "2026-11-27T01:41:45.897523+00:00",
+      "checkedAt": "2026-11-28T02:22:34.965892+00:00",
       "repository": "skillhub"
     },
     "b45a2340b9fbdaa541d18d2f6aed6e13d74b51cb542307cf216af2b0fc8ea429": {
@@ -1307,7 +1307,7 @@
       },
       "sha256": "acb349d792c85a53c934c628cea4e7cdaf115f640318a91cbe359dc2189c4939",
       "cache": "b45a2340b9fbdaa541d18d2f6aed6e13d74b51cb542307cf216af2b0fc8ea429.json",
-      "checkedAt": "2026-11-27T01:41:46.691587+00:00",
+      "checkedAt": "2026-11-28T02:22:35.821437+00:00",
       "repository": "skillhub"
     },
     "022c7c996a983bfd579009fc0d288ba62334bf2657e634a6b4b9d0623a4061a3": {
@@ -1321,7 +1321,7 @@
       },
       "sha256": "a66e26068d526bb2deaebe87cd69c08dba5066613aba66455c993cf1b9385db1",
       "cache": "022c7c996a983bfd579009fc0d288ba62334bf2657e634a6b4b9d0623a4061a3.json",
-      "checkedAt": "2026-11-27T01:41:47.415925+00:00",
+      "checkedAt": "2026-11-28T02:22:36.300710+00:00",
       "repository": "skillhub"
     },
     "76e2513b571444d44d31d2477f37417d0fa4714d7fb3e0d4911dc262390310d1": {
@@ -1334,7 +1334,7 @@
       },
       "sha256": "0a8f9376ebfbda2fb22c84b71d101e6f71c9cab05c8ae17a5889edbbef9fb70e",
       "cache": "76e2513b571444d44d31d2477f37417d0fa4714d7fb3e0d4911dc262390310d1.json",
-      "checkedAt": "2026-11-27T01:41:47.720944+00:00",
+      "checkedAt": "2026-11-28T02:22:36.565678+00:00",
       "repository": "skillhub"
     },
     "fbf84e4fc75acc1764035461282bb06ac45bf259ce07689a8f23fb9488a79ba9": {
@@ -1344,7 +1344,7 @@
       },
       "sha256": "8530a82507f0c645495087832897f09b46ed2b97412c47500ac6b660cf1ce52b",
       "cache": "fbf84e4fc75acc1764035461282bb06ac45bf259ce07689a8f23fb9488a79ba9.json",
-      "checkedAt": "2026-11-27T01:41:48.835243+00:00",
+      "checkedAt": "2026-11-28T02:22:37.668025+00:00",
       "repository": "skillhub"
     },
     "350c4a3520e1ea216e34f6d0274ef6ce5fde19ea2548f2996ee7501ef1efb891": {
@@ -1354,7 +1354,7 @@
       },
       "sha256": "4404d6e6bca5bdf29e6e6865df5f19bfc85aae00f1002fe10f778efa57f98c8c",
       "cache": "350c4a3520e1ea216e34f6d0274ef6ce5fde19ea2548f2996ee7501ef1efb891.json",
-      "checkedAt": "2026-11-27T01:41:49.362373+00:00",
+      "checkedAt": "2026-11-28T02:22:38.150143+00:00",
       "repository": "skillhub"
     },
     "0e996711d1c61ea2faaf9882a687fb4fd2c83a5f2d00345c2aca685f47755f89": {
@@ -1364,7 +1364,7 @@
       },
       "sha256": "4b7f84cab141d489b3fe9ca00c414df459f539c9ed8ec4319484480db956229c",
       "cache": "0e996711d1c61ea2faaf9882a687fb4fd2c83a5f2d00345c2aca685f47755f89.json",
-      "checkedAt": "2026-11-27T01:41:49.862205+00:00",
+      "checkedAt": "2026-11-28T02:22:38.565453+00:00",
       "repository": "skillhub"
     },
     "68a75d0a5a01ddc90a8ae7a784b88f7e5e32af0625f18e8b97e6dce876eeb8be": {
@@ -1374,7 +1374,7 @@
       },
       "sha256": "5f7294cde98594955b18af47ff8f0af2238986271b0fc66d9baad1c6a62fc13e",
       "cache": "68a75d0a5a01ddc90a8ae7a784b88f7e5e32af0625f18e8b97e6dce876eeb8be.json",
-      "checkedAt": "2026-11-27T01:41:50.397818+00:00",
+      "checkedAt": "2026-11-28T02:22:38.967227+00:00",
       "repository": "skillhub"
     },
     "8385a5b6a680cbe6156e1e45fe1ec261b4fa9e2cfed407733e7794f3cf86baf1": {
@@ -1384,7 +1384,7 @@
       },
       "sha256": "ec524881c1a1c3e94cbb3b142142cda6a09c1410b93c9b5a7b63a1f9e4e185b3",
       "cache": "8385a5b6a680cbe6156e1e45fe1ec261b4fa9e2cfed407733e7794f3cf86baf1.json",
-      "checkedAt": "2026-11-27T01:41:50.921819+00:00",
+      "checkedAt": "2026-11-28T02:22:39.435057+00:00",
       "repository": "skillhub"
     },
     "d427f03d4cbe51a8fc5d1e49bbefe2bc89cd05f25f57ae9e1fde8ad705042b7d": {
@@ -1394,7 +1394,7 @@
       },
       "sha256": "d497876639f683ba4c1cf01637c95b3f1435e14437d32b62951d2b6d1feda3b0",
       "cache": "d427f03d4cbe51a8fc5d1e49bbefe2bc89cd05f25f57ae9e1fde8ad705042b7d.json",
-      "checkedAt": "2026-11-27T01:41:51.309424+00:00",
+      "checkedAt": "2026-11-28T02:22:39.822928+00:00",
       "repository": "skillhub"
     },
     "845ca7874028ca9d035f2c993bd0acb09bc8cb4e38fe149bf1387976ea54b355": {
@@ -1427,7 +1427,7 @@
       },
       "sha256": "c13faeaa994effac36d652f0d5fe3c20bbd9d414adb810a56b674a1e354f2b0c",
       "cache": "845ca7874028ca9d035f2c993bd0acb09bc8cb4e38fe149bf1387976ea54b355.json",
-      "checkedAt": "2026-11-27T01:41:51.777917+00:00",
+      "checkedAt": "2026-11-28T02:22:40.134850+00:00",
       "repository": "skillhub"
     },
     "ab761e6c5eb0257713aa13aecfaf1715d6121300619fe6ed3e308ab8754d589c": {
@@ -1441,7 +1441,7 @@
       },
       "sha256": "ef49b588950293e21e92251173c4a6653b236feba533c337b81d7efff7af45a1",
       "cache": "ab761e6c5eb0257713aa13aecfaf1715d6121300619fe6ed3e308ab8754d589c.json",
-      "checkedAt": "2026-11-27T01:41:52.526088+00:00",
+      "checkedAt": "2026-11-28T02:22:40.886583+00:00",
       "repository": "skillhub"
     },
     "6199631b45cd98aee09bedecead85f9090a47addf2f5a084c332cc1f6b5b4b27": {
@@ -1455,7 +1455,7 @@
       },
       "sha256": "2b22922ba137cd3d64e189a5a4056c105f1ab2bec588e58786e244589b639ae3",
       "cache": "6199631b45cd98aee09bedecead85f9090a47addf2f5a084c332cc1f6b5b4b27.json",
-      "checkedAt": "2026-11-27T01:41:53.252844+00:00",
+      "checkedAt": "2026-11-28T02:22:41.558754+00:00",
       "repository": "skillhub"
     },
     "beeb68e7fee680dcf99b7c908678974482df650d4d7daf1ede57abd03ff49e5b": {
@@ -1468,7 +1468,7 @@
       },
       "sha256": "3c50a6dc581c9da0750bbe07f2617d7e4ecb191483bfeda75732cdedc3da427a",
       "cache": "beeb68e7fee680dcf99b7c908678974482df650d4d7daf1ede57abd03ff49e5b.json",
-      "checkedAt": "2026-11-27T01:41:53.606677+00:00",
+      "checkedAt": "2026-11-28T02:22:41.838561+00:00",
       "repository": "skillhub"
     },
     "ddc5f3d96976e28bd8bb5ea6a267b8b832f8b6bdec920ece93cb73d5588dd0ed": {
@@ -1478,7 +1478,7 @@
       },
       "sha256": "d1c0fb2bb2fd23dda89ad0223690a563fe379bd36595bd06920d9c3fa28c68a1",
       "cache": "ddc5f3d96976e28bd8bb5ea6a267b8b832f8b6bdec920ece93cb73d5588dd0ed.json",
-      "checkedAt": "2026-11-27T01:41:54.691391+00:00",
+      "checkedAt": "2026-11-28T02:22:42.783032+00:00",
       "repository": "skillhub"
     },
     "ac6b9adc30213a96f1cc7b3b8477a1f9a2ae5d1fdb105882e1517134a94a0b8f": {
@@ -1488,7 +1488,7 @@
       },
       "sha256": "5e7c35599692532cd6c32611295a7de55d4fd6be0a5e9b536fb00993deb7f16b",
       "cache": "ac6b9adc30213a96f1cc7b3b8477a1f9a2ae5d1fdb105882e1517134a94a0b8f.json",
-      "checkedAt": "2026-11-27T01:41:55.215548+00:00",
+      "checkedAt": "2026-11-28T02:22:43.210728+00:00",
       "repository": "skillhub"
     },
     "100edc9ce930dea2ad1aea63439dc603bae77d0d88dc022ab80472d140ed5339": {
@@ -1498,7 +1498,7 @@
       },
       "sha256": "a80c896eca4d0cb77e41d0c5116c35fd60b6a2b5658ecedfe3614c5d70c87e55",
       "cache": "100edc9ce930dea2ad1aea63439dc603bae77d0d88dc022ab80472d140ed5339.json",
-      "checkedAt": "2026-11-27T01:41:55.838967+00:00",
+      "checkedAt": "2026-11-28T02:22:43.641579+00:00",
       "repository": "skillhub"
     },
     "43527d256e83e762b1399debdb67199a4c2687d18cadbbe0d3b6d98fab435ae5": {
@@ -1508,7 +1508,7 @@
       },
       "sha256": "546ca43a35297454c554424452ffc354f68a1e67499de7ffd5620cb41106b17b",
       "cache": "43527d256e83e762b1399debdb67199a4c2687d18cadbbe0d3b6d98fab435ae5.json",
-      "checkedAt": "2026-11-27T01:41:56.353466+00:00",
+      "checkedAt": "2026-11-28T02:22:44.089397+00:00",
       "repository": "skillhub"
     },
     "6c9e644ca3b3b7dc18de58f4aaf68a65572bc2b0f2deb2c847f501541fcfa24c": {
@@ -1518,7 +1518,7 @@
       },
       "sha256": "c3be0c750ea5eae31ebc5742e02dffc006d2b0b20f8048373554d62059f4835c",
       "cache": "6c9e644ca3b3b7dc18de58f4aaf68a65572bc2b0f2deb2c847f501541fcfa24c.json",
-      "checkedAt": "2026-11-27T01:41:56.816875+00:00",
+      "checkedAt": "2026-11-28T02:22:44.574895+00:00",
       "repository": "skillhub"
     },
     "5b5b8f1b31b249e54b47c22963557b6d41dd350f57b94c67d064fd6995e73a8e": {
@@ -1528,7 +1528,7 @@
       },
       "sha256": "9a035f0eb002d687b48dda2060adb7e5b63491785d1d7241ff4eb0df6a3ef97a",
       "cache": "5b5b8f1b31b249e54b47c22963557b6d41dd350f57b94c67d064fd6995e73a8e.json",
-      "checkedAt": "2026-11-27T01:41:57.326763+00:00",
+      "checkedAt": "2026-11-28T02:22:45.025060+00:00",
       "repository": "skillhub"
     },
     "a43eb9a6948a1c458bc34ceb72c23258f142128930beb066818255b445065fb1": {
@@ -1570,7 +1570,7 @@
       },
       "sha256": "2ba7247ebca98432f4166c88a0bbefccc5268f9167c62639aeb025368ec991a1",
       "cache": "a43eb9a6948a1c458bc34ceb72c23258f142128930beb066818255b445065fb1.json",
-      "checkedAt": "2026-11-27T01:41:57.807224+00:00",
+      "checkedAt": "2026-11-28T02:22:45.508669+00:00",
       "repository": "skillhub"
     },
     "bfa44b0a533aa09ffb7d4374be7f8447f0750240c04d67ff91f548648476b2ad": {
@@ -1583,9 +1583,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "07977ed2ea530668e8ba0510a6b71d80f732a1eaebb709c4f59e46e53232c11e",
+      "sha256": "6925e41e9e963a853e342dfeda3b7434b16c6460a84e8c569d48f44ebe7bb084",
       "cache": "bfa44b0a533aa09ffb7d4374be7f8447f0750240c04d67ff91f548648476b2ad.json",
-      "checkedAt": "2026-11-27T01:42:01.066968+00:00",
+      "checkedAt": "2026-11-28T02:22:49.011479+00:00",
       "repository": "skillhub"
     },
     "4ebbf6a5a35bdf1e3df0d8e98fcfb8ac977f1af8e8cd21c685165b01fc4b59f1": {
@@ -1598,9 +1598,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "33498e1fe16b821bfaa1aff85b022efdf552f770da60e6f7c885710ed070328e",
+      "sha256": "dd479beb3a894c791b880e2d57d3e033a16432943368c044dc426f12b880e036",
       "cache": "4ebbf6a5a35bdf1e3df0d8e98fcfb8ac977f1af8e8cd21c685165b01fc4b59f1.json",
-      "checkedAt": "2026-11-27T01:42:05.356874+00:00",
+      "checkedAt": "2026-11-28T02:22:52.616500+00:00",
       "repository": "skillhub"
     },
     "e0b399cdb5ebf88133b3ccfc89b5744ef2c3de91a1b9253071037a4e74e04ad3": {
@@ -1613,9 +1613,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "0d8a3bea783b381ce29748d65dcf669abe602f5b6ba0e02edff19c8197693ccb",
+      "sha256": "c63f14fb67f6ca08203a0e3cc8d570064c4012325bbace09fc41506c9d6e6269",
       "cache": "e0b399cdb5ebf88133b3ccfc89b5744ef2c3de91a1b9253071037a4e74e04ad3.json",
-      "checkedAt": "2026-11-27T01:42:09.584427+00:00",
+      "checkedAt": "2026-11-28T02:22:56.584453+00:00",
       "repository": "skillhub"
     },
     "da11de376ae6825e94b60bfa7ce0ab2243e6d995ff74103999e7af61ccbe75f0": {
@@ -1629,7 +1629,7 @@
       },
       "sha256": "4e7dc0a29bdfb6c451f35ee78acf63bf9cceb58abf770306e25837863ec48870",
       "cache": "da11de376ae6825e94b60bfa7ce0ab2243e6d995ff74103999e7af61ccbe75f0.json",
-      "checkedAt": "2026-11-27T01:42:10.191732+00:00",
+      "checkedAt": "2026-11-28T02:22:57.252046+00:00",
       "repository": "skillhub"
     },
     "8f5286a5ebe78cbd026fd7a804969b87d571e3c93e19d0759186ce0aacf9a5e2": {
@@ -1643,7 +1643,7 @@
       },
       "sha256": "87a3ca10f20c68bc67db101c5f4836901a2e0eef69a1e8af075012947cc3e07d",
       "cache": "8f5286a5ebe78cbd026fd7a804969b87d571e3c93e19d0759186ce0aacf9a5e2.json",
-      "checkedAt": "2026-11-27T01:42:10.761760+00:00",
+      "checkedAt": "2026-11-28T02:22:57.843096+00:00",
       "repository": "skillhub"
     },
     "4a0d3401c869378374a484efda54ec2a8c62673e8a6e546a1f79a47f476e3823": {
@@ -1656,9 +1656,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "973f6fce67fe491dbbabe5fadc5e8b7278d9071ab429b91526fdaa5f6a5981f6",
+      "sha256": "9bc8d9fd03317d06cca44cf4c8d7bc101f172b4e5b0fa0446937fecea33f8218",
       "cache": "4a0d3401c869378374a484efda54ec2a8c62673e8a6e546a1f79a47f476e3823.json",
-      "checkedAt": "2026-11-27T01:42:14.610525+00:00",
+      "checkedAt": "2026-11-28T02:23:01.589099+00:00",
       "repository": "skillhub"
     },
     "bc70b4c6126d7b6d4f7fcfc9570dbcc56a37c52737ec67bbda29ab7e2a745876": {
@@ -1672,7 +1672,7 @@
       },
       "sha256": "60d9778549c5c67cbf26d136897fbd61e4b48cf9e3e05af6f58db12aebab075b",
       "cache": "bc70b4c6126d7b6d4f7fcfc9570dbcc56a37c52737ec67bbda29ab7e2a745876.json",
-      "checkedAt": "2026-11-27T01:42:15.338434+00:00",
+      "checkedAt": "2026-11-28T02:23:02.050861+00:00",
       "repository": "skillhub"
     },
     "0ae5c4ca350ea1c85243ced74728bda57c6dbbb918475d1a617185d550396b66": {
@@ -1685,9 +1685,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "7e20cba5a80ecf9e808b0ad0f685626f82c880edf7fb9ee029f5770470f876cb",
+      "sha256": "4b3163363b8674068aba7d11d91c08fab5d0365c5158465e05a61fac3295dd09",
       "cache": "0ae5c4ca350ea1c85243ced74728bda57c6dbbb918475d1a617185d550396b66.json",
-      "checkedAt": "2026-11-27T01:42:19.500859+00:00",
+      "checkedAt": "2026-11-28T02:23:05.173295+00:00",
       "repository": "skillhub"
     },
     "a4d6cf64f2116d36f6aa88b604bfa079a97e3e83f8b79032d6ec07a32e7ba116": {
@@ -1700,9 +1700,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "66b6d548f59f07a573076bf4f6804cbac46faf698625b5ba7a07e602b894d4ae",
+      "sha256": "5f4215025d568bb8eb2f50b685d6fb5e51c2af938aa1ee0907aa966468dd425b",
       "cache": "a4d6cf64f2116d36f6aa88b604bfa079a97e3e83f8b79032d6ec07a32e7ba116.json",
-      "checkedAt": "2026-11-27T01:42:22.305432+00:00",
+      "checkedAt": "2026-11-28T02:23:08.352942+00:00",
       "repository": "skillhub"
     },
     "4c25b4753cb603472afd35ba6287d18917401e72a366aa018858c2808d81ef1e": {
@@ -1715,9 +1715,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "39da37153153bb5384fbaf253bea8c1b2ad840026b446cf2e4b209c69483c792",
+      "sha256": "ce6a9b95c3bb81ceea0bf8ca6f432b2e74a612e0d055c7074fd57aa6280b7d75",
       "cache": "4c25b4753cb603472afd35ba6287d18917401e72a366aa018858c2808d81ef1e.json",
-      "checkedAt": "2026-11-27T01:42:26.064206+00:00",
+      "checkedAt": "2026-11-28T02:23:11.983457+00:00",
       "repository": "skillhub"
     },
     "2e6ea28b1a7541533053982d2780409e421c1a1898587355b8e587f3a57b304a": {
@@ -1731,7 +1731,7 @@
       },
       "sha256": "3ec9a154a3ea772d67b348bd221c74746de09b9e4da909df7ee6694126c4e94c",
       "cache": "2e6ea28b1a7541533053982d2780409e421c1a1898587355b8e587f3a57b304a.json",
-      "checkedAt": "2026-11-27T01:42:26.566043+00:00",
+      "checkedAt": "2026-11-28T02:23:12.385814+00:00",
       "repository": "skillhub"
     },
     "5dc250c77e0ab4534713439eed86f3ee43c6bae72d912b134798dc7e7446478b": {
@@ -1744,9 +1744,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "27b2dc2f36e1c6f5a6f5fd30ef6a7ee58a717ec0be350f3e4487ef9b7131c157",
+      "sha256": "b9817e8c93ee7ee892953b0571e18ae8a2fd1b0a91b9c9adee44acaf2b2c97e8",
       "cache": "5dc250c77e0ab4534713439eed86f3ee43c6bae72d912b134798dc7e7446478b.json",
-      "checkedAt": "2026-11-27T01:42:30.527357+00:00",
+      "checkedAt": "2026-11-28T02:23:15.471686+00:00",
       "repository": "skillhub"
     },
     "62cbbf84eabf7abc07d37c74a87efbe52436ef8b92c1edc0887e798d8cf5963e": {
@@ -1759,9 +1759,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "7e2ab3ca32c7d5d80010c16977df56d3b1505e58ad6ad012b0ed0eeb37e494f3",
+      "sha256": "8ceb5e020683a0d6c178a1b9f22687454742399a8f9f8a4c6c286c41a43779d3",
       "cache": "62cbbf84eabf7abc07d37c74a87efbe52436ef8b92c1edc0887e798d8cf5963e.json",
-      "checkedAt": "2026-11-27T01:42:33.814662+00:00",
+      "checkedAt": "2026-11-28T02:23:18.362493+00:00",
       "repository": "skillhub"
     },
     "7d0495a1661bc34e3969aca5cb76bea0c995a5481ebde5a92da7ed2b622feaab": {
@@ -1774,9 +1774,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "5903657f0e965b84a1506e8d9ec2d0136378f320c9f1004643d7fed4c77b978e",
+      "sha256": "2477c3c0329e6b92627bdc9b91f356c66e706be2ecbb6e0bc9b0be863e272071",
       "cache": "7d0495a1661bc34e3969aca5cb76bea0c995a5481ebde5a92da7ed2b622feaab.json",
-      "checkedAt": "2026-11-27T01:42:37.924753+00:00",
+      "checkedAt": "2026-11-28T02:23:22.596732+00:00",
       "repository": "skillhub"
     },
     "c3c1626a667326f8bd54aee23f10fe19ccc7047c0d8cb71eb627b3e4a2962fe1": {
@@ -1789,9 +1789,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "c86a11fdaf9981dda6e88a68fe2c39591cdefde9b4ac12742c7858913415b22b",
+      "sha256": "b6c17a85ab81afc33c6e8adbb257591448da0148882695eaf2792e55b2f1c53f",
       "cache": "c3c1626a667326f8bd54aee23f10fe19ccc7047c0d8cb71eb627b3e4a2962fe1.json",
-      "checkedAt": "2026-11-27T01:42:41.008749+00:00",
+      "checkedAt": "2026-11-28T02:23:25.340990+00:00",
       "repository": "skillhub"
     },
     "0231e64dc789520df9fb43da077d80f308dec0ed2375dae2d62144c96a83fe32": {
@@ -1804,9 +1804,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "13c3b925e4e841f0e4bee6a1f43aa0309a0613237bb498efb0b6e8f2630b0618",
+      "sha256": "db5a7d7c29c5966fb2a1b484bd14db93a4c3b09f0782b05fee6686d432d2c647",
       "cache": "0231e64dc789520df9fb43da077d80f308dec0ed2375dae2d62144c96a83fe32.json",
-      "checkedAt": "2026-11-27T01:42:44.166144+00:00",
+      "checkedAt": "2026-11-28T02:23:28.289489+00:00",
       "repository": "skillhub"
     },
     "7ded6c1aab313fc22b2a26ee9e60c10389b8a8747c666dde1abca627fe0ed779": {
@@ -1819,9 +1819,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "c8d8c8ee429dce415664d40bff84fe59e56c071657b560b4d1c5e966f76c71cf",
+      "sha256": "a9e40c5fbac2de00f482490f5fc4c3d183ebe411175eaff51ff294bff64554ea",
       "cache": "7ded6c1aab313fc22b2a26ee9e60c10389b8a8747c666dde1abca627fe0ed779.json",
-      "checkedAt": "2026-11-27T01:42:47.821132+00:00",
+      "checkedAt": "2026-11-28T02:23:31.235701+00:00",
       "repository": "skillhub"
     },
     "68eb4375e0bb2b340ee06161bc23d146b405364db4f317f27877321394d2436a": {
@@ -1834,9 +1834,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "6e4a8df57046dd05fc8f4a98d3a691bdb67c84278f164958c6c638f83f8b9ca1",
+      "sha256": "85f1c8d37c6ad6c0c632f752d435ca50d3ad6a4c2bf230a6aba1b0be57629207",
       "cache": "68eb4375e0bb2b340ee06161bc23d146b405364db4f317f27877321394d2436a.json",
-      "checkedAt": "2026-11-27T01:42:51.494884+00:00",
+      "checkedAt": "2026-11-28T02:23:34.818700+00:00",
       "repository": "skillhub"
     },
     "38958d132e7fa19c83d9c77e842aca5ec8845ed778e40f556a707b117e6dd5b6": {
@@ -1849,9 +1849,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "98b81ecc1b1a894a0e0ad3770ced3c36c207d98ff8c1f2c826dfe4de47a6088d",
+      "sha256": "6efc8eac55b3b64a13d3f9e5d4c50cfd52b143ee4f4c9c8cb7097e9c9b962658",
       "cache": "38958d132e7fa19c83d9c77e842aca5ec8845ed778e40f556a707b117e6dd5b6.json",
-      "checkedAt": "2026-11-27T01:42:56.338370+00:00",
+      "checkedAt": "2026-11-28T02:23:38.511013+00:00",
       "repository": "skillhub"
     },
     "a07879cb5a6f6ceb68d4c830f6096d1e23083dbaf189c4481dc26aedd64b06ce": {
@@ -1864,9 +1864,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "a17fef530fdd84d0f89f30ac9237fb52b4a0966e6799770a80762a5eb7652345",
+      "sha256": "5d459922e501a073113ee9aa51c981ffe0d6806df6d67907316f35834fed7919",
       "cache": "a07879cb5a6f6ceb68d4c830f6096d1e23083dbaf189c4481dc26aedd64b06ce.json",
-      "checkedAt": "2026-11-27T01:42:59.108764+00:00",
+      "checkedAt": "2026-11-28T02:23:43.118388+00:00",
       "repository": "skillhub"
     },
     "7a3e060215b9e34ff1cb01e30bdc48f92583c7026586e71a865a256db38130b7": {
@@ -1879,9 +1879,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "c399bdfc6bfd7336dc7e034ae0f8626c1fae8e7a7eff3d43aab6c399e827f283",
+      "sha256": "3a303d78373ac6f932fc894b4801c85fa115cdd3816f751dee91e570e8372ef6",
       "cache": "7a3e060215b9e34ff1cb01e30bdc48f92583c7026586e71a865a256db38130b7.json",
-      "checkedAt": "2026-11-27T01:43:02.071558+00:00",
+      "checkedAt": "2026-11-28T02:23:46.778888+00:00",
       "repository": "skillhub"
     },
     "d339c4cf22437b338bc540194a2f26f906c9086fe45155d894ee58131b568e84": {
@@ -1894,9 +1894,9 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "5563e51e553ceb2b857d34e310d9b61ec70b2a615638076e3a300af06c921028",
+      "sha256": "42ef5253dee6df0d8b0f047a41693657dee5e850bbe68cd239ace698fb8a39ba",
       "cache": "d339c4cf22437b338bc540194a2f26f906c9086fe45155d894ee58131b568e84.json",
-      "checkedAt": "2026-11-27T01:43:04.953648+00:00",
+      "checkedAt": "2026-11-28T02:23:49.347878+00:00",
       "repository": "skillhub"
     },
     "251afb6b19d6122ea4769d3ca75c2dd453f903d489b7bfcf51c79d4c89d72b74": {
@@ -1909,9 +1909,24 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "3c9f4d33babecbe8dee1b9960b2df40ce0a117453d7c2c020bceda2d841eb217",
+      "sha256": "c22d3f83562378418910c56cdb7db17e5bb385de11fe8d83e3ed316944f336f2",
       "cache": "251afb6b19d6122ea4769d3ca75c2dd453f903d489b7bfcf51c79d4c89d72b74.json",
-      "checkedAt": "2026-11-27T01:43:09.476099+00:00",
+      "checkedAt": "2026-11-28T02:23:51.610360+00:00",
+      "repository": "skillhub"
+    },
+    "5902206e32e192e7e118c475ebfd0869cbf4d6309ba9305c613276fc3f4a9601": {
+      "request": {
+        "kind": "graphql",
+        "query": "query($name:String!,$owner:String!,$after:String) { repository(owner:$owner,name:$name) { pullRequests(first:30,after:$after,orderBy:{field:CREATED_AT,direction:ASC}) { totalCount pageInfo { hasNextPage endCursor } nodes { id number url createdAt updatedAt closedAt author { login avatarUrl url __typename }\n timelineItems(first:100,itemTypes:[CLOSED_EVENT]) { totalCount pageInfo { hasNextPage endCursor } nodes { __typename ... on ClosedEvent { id createdAt actor { login avatarUrl url __typename } } } } mergedAt mergedBy { login avatarUrl url __typename }\n reviews(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { id submittedAt state author { login avatarUrl url __typename } } }\n commits(first:100) { totalCount pageInfo { hasNextPage endCursor } nodes { commit { oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } } } } } } } rateLimit { remaining resetAt cost } }",
+        "variables": {
+          "name": "skillhub",
+          "after": "Y3Vyc29yOnYyOpK0MjAyNi0xMS0yNlQxMzo1MzoxMlrPAAAAAUh_eDw=",
+          "owner": "iflytek"
+        }
+      },
+      "sha256": "7c05ea5ea8fe8fa3de9e6900efeab0b4fb6b79f983d2a9155963c41be2445640",
+      "cache": "5902206e32e192e7e118c475ebfd0869cbf4d6309ba9305c613276fc3f4a9601.json",
+      "checkedAt": "2026-11-28T02:23:52.550956+00:00",
       "repository": "skillhub"
     },
     "88acd373190b9e4a39f630cdd6e6ce3b4b45b770353b670c6c943e7a8924a00f": {
@@ -1921,7 +1936,7 @@
       },
       "sha256": "7e3f525165bedb694e02ab35b9d1170e030700ea7bd91755d76455569fce0b9f",
       "cache": "88acd373190b9e4a39f630cdd6e6ce3b4b45b770353b670c6c943e7a8924a00f.json",
-      "checkedAt": "2026-11-27T01:43:10.143289+00:00",
+      "checkedAt": "2026-11-28T02:23:53.032359+00:00",
       "repository": "skillhub"
     },
     "a61a6951ab86a24d240399fd59fff7707940a4b7525531285a84a7d8d8dd4cd4": {
@@ -1931,7 +1946,7 @@
       },
       "sha256": "0a45cc7847ec447632ca2c3419e55ca0ff67b81258adfe4f086ae44764d0dae8",
       "cache": "a61a6951ab86a24d240399fd59fff7707940a4b7525531285a84a7d8d8dd4cd4.json",
-      "checkedAt": "2026-11-27T01:43:10.855558+00:00",
+      "checkedAt": "2026-11-28T02:23:53.592260+00:00",
       "repository": "skillhub"
     },
     "c60241bf889a337b8abffcee2bdd783648100bc34ca660c3e4da3725af20af52": {
@@ -1941,7 +1956,7 @@
       },
       "sha256": "d08b6cc69f54c3bfac540f7088356788657771ff11dde2e4ab9d3816eeff3056",
       "cache": "c60241bf889a337b8abffcee2bdd783648100bc34ca660c3e4da3725af20af52.json",
-      "checkedAt": "2026-11-27T01:43:11.556047+00:00",
+      "checkedAt": "2026-11-28T02:23:54.202391+00:00",
       "repository": "skillhub"
     },
     "d3ea3ece7eb3d9a404dbab4145cb3588e23bf2336adffc50a699fd815195bf3f": {
@@ -1951,7 +1966,7 @@
       },
       "sha256": "9ec16faf71cb6da3d5cc419f00db881ab77edfa3cffd755d9c2ab081a01007f1",
       "cache": "d3ea3ece7eb3d9a404dbab4145cb3588e23bf2336adffc50a699fd815195bf3f.json",
-      "checkedAt": "2026-11-27T01:43:12.288854+00:00",
+      "checkedAt": "2026-11-28T02:23:54.845152+00:00",
       "repository": "skillhub"
     },
     "964aeb77811c23a4eae23eb26ade71c3e05bc4e9b7a1597edb3fb01445c0280e": {
@@ -1961,7 +1976,7 @@
       },
       "sha256": "ba7e18cd0bc89a4b2035173f983de17f330aa5a16a4fc7f5910b515ac2cf85f1",
       "cache": "964aeb77811c23a4eae23eb26ade71c3e05bc4e9b7a1597edb3fb01445c0280e.json",
-      "checkedAt": "2026-11-27T01:43:12.945920+00:00",
+      "checkedAt": "2026-11-28T02:23:55.298859+00:00",
       "repository": "skillhub"
     },
     "48f58a1a1bdd9fa5d501f5d4578174dfd31dfebaad947db7d37d77e7d7789075": {
@@ -1971,7 +1986,7 @@
       },
       "sha256": "e0201d482bb34898774ee86caad242b4615f9a32560ec553f8e34895b519e3e9",
       "cache": "48f58a1a1bdd9fa5d501f5d4578174dfd31dfebaad947db7d37d77e7d7789075.json",
-      "checkedAt": "2026-11-27T01:43:13.772879+00:00",
+      "checkedAt": "2026-11-28T02:23:55.871498+00:00",
       "repository": "skillhub"
     },
     "19fc4c9f8db60eac69c82282370e55981aeac0d246a6f3dc6ed33af853075445": {
@@ -1981,7 +1996,7 @@
       },
       "sha256": "90f8eb00904b142b811296f30e8aeb06b5ef9b97b64c4e76964c98c9077c214b",
       "cache": "19fc4c9f8db60eac69c82282370e55981aeac0d246a6f3dc6ed33af853075445.json",
-      "checkedAt": "2026-11-27T01:43:14.354521+00:00",
+      "checkedAt": "2026-11-28T02:23:56.399494+00:00",
       "repository": "skillhub"
     },
     "e4a0c6a5c1c662d5d1dddceba434d98327addd11ce589d1161e166e59612be5d": {
@@ -1991,7 +2006,7 @@
       },
       "sha256": "22271b949042d44c5728d7e61017bb9217fa04c0f0c8f1c6af22aee7ad9471e0",
       "cache": "e4a0c6a5c1c662d5d1dddceba434d98327addd11ce589d1161e166e59612be5d.json",
-      "checkedAt": "2026-11-27T01:43:14.885381+00:00",
+      "checkedAt": "2026-11-28T02:23:56.964937+00:00",
       "repository": "skillhub"
     },
     "7c8b95a08aeadc8bf048c9ea3ede70609c3c1b2bbb0cd36a8ac415b6443a7431": {
@@ -2001,7 +2016,7 @@
       },
       "sha256": "f20c45dc9e2d5075b4dfc39dacdb817f0416d49b79c8cfb41c2656609fcb4f6c",
       "cache": "7c8b95a08aeadc8bf048c9ea3ede70609c3c1b2bbb0cd36a8ac415b6443a7431.json",
-      "checkedAt": "2026-11-27T01:43:15.410003+00:00",
+      "checkedAt": "2026-11-28T02:23:57.465105+00:00",
       "repository": "skillhub"
     },
     "a7d050a08a822985af28d00f5b751a997454fe5fa039376830f0835d57ff4b8a": {
@@ -2011,7 +2026,7 @@
       },
       "sha256": "1a376b841557ce0d6c96a2c7de73cf0a7dbafd5bf92900ce632c4dcb15cb80e9",
       "cache": "a7d050a08a822985af28d00f5b751a997454fe5fa039376830f0835d57ff4b8a.json",
-      "checkedAt": "2026-11-27T01:43:16.136351+00:00",
+      "checkedAt": "2026-11-28T02:23:57.906669+00:00",
       "repository": "skillhub"
     },
     "a3cc418a0ec7c633e0f52e5e6d44c7a5617f46be752c2ad8e390d069eb214359": {
@@ -2021,7 +2036,7 @@
       },
       "sha256": "8678a889e79ac54e5a7bdf9062798cd43590bccbd5a93ad5a3f1cbc2c2b35843",
       "cache": "a3cc418a0ec7c633e0f52e5e6d44c7a5617f46be752c2ad8e390d069eb214359.json",
-      "checkedAt": "2026-11-27T01:43:16.731830+00:00",
+      "checkedAt": "2026-11-28T02:23:58.335696+00:00",
       "repository": "skillhub"
     },
     "816cf742f1ae6032156b61a66e2dcd7ace9ee67f33e0ffc01237a0e668ccfa21": {
@@ -2031,7 +2046,7 @@
       },
       "sha256": "49069d37b8904ae4907cf4e2be2fe124222cb8041cfda8c806f0fdeb7de72edf",
       "cache": "816cf742f1ae6032156b61a66e2dcd7ace9ee67f33e0ffc01237a0e668ccfa21.json",
-      "checkedAt": "2026-11-27T01:43:17.297198+00:00",
+      "checkedAt": "2026-11-28T02:23:58.807390+00:00",
       "repository": "skillhub"
     },
     "7defbc5e4e793193fe4f82ff16d07b899d89d291b6a918977819cbfb1db59056": {
@@ -2039,9 +2054,9 @@
         "kind": "rest",
         "path": "repos/iflytek/skillhub/issues/comments?per_page=100&page=13"
       },
-      "sha256": "a08b81b8ea524ee50296a70c0c34f87bced40f02916dc5582f655d3eecd0e060",
+      "sha256": "413e1202e9e81a90cc02cfa33f6e0631805e48dc8e678678391da687fbe4feb7",
       "cache": "7defbc5e4e793193fe4f82ff16d07b899d89d291b6a918977819cbfb1db59056.json",
-      "checkedAt": "2026-11-27T01:43:17.772263+00:00",
+      "checkedAt": "2026-11-28T02:23:59.198399+00:00",
       "repository": "skillhub"
     },
     "c39844e12197be914026c7d7391ebbd33fcbec9520b73f00cbfc52e7ecace2a0": {
@@ -2051,7 +2066,7 @@
       },
       "sha256": "70f1a297c7422e925c3afed20748a048338bb7d3f040e1bf972344e37e21507c",
       "cache": "c39844e12197be914026c7d7391ebbd33fcbec9520b73f00cbfc52e7ecace2a0.json",
-      "checkedAt": "2026-11-27T01:43:18.739465+00:00",
+      "checkedAt": "2026-11-28T02:23:59.983084+00:00",
       "repository": "skillhub"
     },
     "8fe8690be086de5c0376b4d452fad87c9530219d459a22f253cf2061f939c2d5": {
@@ -2061,7 +2076,7 @@
       },
       "sha256": "7924a0a5272fb662c81dc691a9a6c4b4d434617c54879c167feea5db238614f8",
       "cache": "8fe8690be086de5c0376b4d452fad87c9530219d459a22f253cf2061f939c2d5.json",
-      "checkedAt": "2026-11-27T01:43:19.477371+00:00",
+      "checkedAt": "2026-11-28T02:24:00.632162+00:00",
       "repository": "skillhub"
     },
     "0fcf08b599437901e8801793c608f7d4e4231b52ea7769401bf534e1a9c2ef70": {
@@ -2073,345 +2088,345 @@
           "owner": "iflytek"
         }
       },
-      "sha256": "bf35fde07fbe57d88e17cf99b69861076f4f2256faef99c27562e253f9ed45bc",
+      "sha256": "ade8be81339b166db94ae1da8d9e1d4c6f139664717b0c91b230c8641e5c9ef3",
       "cache": "0fcf08b599437901e8801793c608f7d4e4231b52ea7769401bf534e1a9c2ef70.json",
-      "checkedAt": "2026-11-27T01:43:20.108088+00:00",
+      "checkedAt": "2026-11-28T02:24:01.160062+00:00",
       "repository": "skillhub"
     },
-    "a8cc8246726abb659448ca0812ca0e3b5d9f6ba17dee857293cbdbb2d91075e8": {
+    "11bc3b9eadb82e88e1fed9170b27db76ce9886a65291c7a25a7d47e2a9443cf7": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
           "after": null,
           "owner": "iflytek"
         }
       },
-      "sha256": "cbcf3a47b5021dfcea64d0d3f4117c7a7da296854a3cc49f7444d5139c5aa529",
-      "cache": "a8cc8246726abb659448ca0812ca0e3b5d9f6ba17dee857293cbdbb2d91075e8.json",
-      "checkedAt": "2026-11-27T01:43:20.969474+00:00",
+      "sha256": "568a727faa51d4f3fe9463e4602083946e95d6edc6d1709fc021a5d9dd9f68a9",
+      "cache": "11bc3b9eadb82e88e1fed9170b27db76ce9886a65291c7a25a7d47e2a9443cf7.json",
+      "checkedAt": "2026-11-28T02:24:02.001364+00:00",
       "repository": "skillhub"
     },
-    "1177e2440d276a18326189ac766ed7cc8fe8803d6460335e67750913107def35": {
+    "62e2a8d2cef6b9e02f8775ec7f6830be72ddacff86a4938f6f162e22a17b498e": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 99",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 99",
           "owner": "iflytek"
         }
       },
-      "sha256": "0686829529d8297d53a7ad28e36085660dbd8d6b8f444be9bc8d6ce2269f6c9a",
-      "cache": "1177e2440d276a18326189ac766ed7cc8fe8803d6460335e67750913107def35.json",
-      "checkedAt": "2026-11-27T01:43:21.740138+00:00",
+      "sha256": "8f69a9d67f3cdb9fa791b070fe861ee5c156b57f01b48e09d4dff264571469a6",
+      "cache": "62e2a8d2cef6b9e02f8775ec7f6830be72ddacff86a4938f6f162e22a17b498e.json",
+      "checkedAt": "2026-11-28T02:24:02.599131+00:00",
       "repository": "skillhub"
     },
-    "5f94531733cad537ffc50cec8807702787ac0e245c7bd3ce834797d5022ce828": {
+    "0a338d1ed6404d87f1213d43267a48491c0f36405e9f951383b4aad4f90153fc": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 199",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 199",
           "owner": "iflytek"
         }
       },
-      "sha256": "2dac2f2bcdab8ab25d4a5d9869071d889f8aa76a354b1bfd58a27a0510fe6229",
-      "cache": "5f94531733cad537ffc50cec8807702787ac0e245c7bd3ce834797d5022ce828.json",
-      "checkedAt": "2026-11-27T01:43:22.546668+00:00",
+      "sha256": "2ebdf4c007b3d97770b5091567c2d866aadea82d5d85b60a81d1dd90ca6b03c9",
+      "cache": "0a338d1ed6404d87f1213d43267a48491c0f36405e9f951383b4aad4f90153fc.json",
+      "checkedAt": "2026-11-28T02:24:03.209000+00:00",
       "repository": "skillhub"
     },
-    "89d24a2770612a447801a4efc18b8c66945e1938d3d7b0dd318db6fabe8bd6c8": {
+    "d124a0b188234ef14e0bfe79a2410e3785acb84bbae2072f28c6953c5a6338a8": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 299",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 299",
           "owner": "iflytek"
         }
       },
-      "sha256": "42b10064e0de58bd4c6257b62484df146d117b95d258191c6ab0d90113d2b738",
-      "cache": "89d24a2770612a447801a4efc18b8c66945e1938d3d7b0dd318db6fabe8bd6c8.json",
-      "checkedAt": "2026-11-27T01:43:23.300964+00:00",
+      "sha256": "a1fdcc9a87b7606ee4530ad6ed7aba3e739426133093f5b73f10ee65f7c95a62",
+      "cache": "d124a0b188234ef14e0bfe79a2410e3785acb84bbae2072f28c6953c5a6338a8.json",
+      "checkedAt": "2026-11-28T02:24:03.753958+00:00",
       "repository": "skillhub"
     },
-    "bfbfe12ed775d5679a028fd7a99d0f2746973a368a1fa1c28543a5f56e326de3": {
+    "cb675f38ea926cc4b84598e936a8c5af91f790430f884241c90e8a91512d496d": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 399",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 399",
           "owner": "iflytek"
         }
       },
-      "sha256": "b64f72268018ea81aa626552b7705e40cae74096f9440450b158a367975083f7",
-      "cache": "bfbfe12ed775d5679a028fd7a99d0f2746973a368a1fa1c28543a5f56e326de3.json",
-      "checkedAt": "2026-11-27T01:43:23.974983+00:00",
+      "sha256": "7a483f55081b6d0ba7a4685cc19cc25ae0a6898eeb71827ebff58bed7757aea0",
+      "cache": "cb675f38ea926cc4b84598e936a8c5af91f790430f884241c90e8a91512d496d.json",
+      "checkedAt": "2026-11-28T02:24:04.375000+00:00",
       "repository": "skillhub"
     },
-    "78cc3ccf4b9234ea8ab7cd09df6c0c13ae631a8387a9c54d18811f26e99945f5": {
+    "397d1799899808b8e05ce715bbdf0523e0068bead03d225b1eaea7cbffcaa030": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 499",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 499",
           "owner": "iflytek"
         }
       },
-      "sha256": "64c35e164ef6bc782b45c931a591fe20a6c08a544cccc2aff5a07ee8cfd63e4a",
-      "cache": "78cc3ccf4b9234ea8ab7cd09df6c0c13ae631a8387a9c54d18811f26e99945f5.json",
-      "checkedAt": "2026-11-27T01:43:24.787329+00:00",
+      "sha256": "5192b72b7c37efea45389ad5c444b9f74376c62b926b7f35673f2bf46b138e67",
+      "cache": "397d1799899808b8e05ce715bbdf0523e0068bead03d225b1eaea7cbffcaa030.json",
+      "checkedAt": "2026-11-28T02:24:04.993429+00:00",
       "repository": "skillhub"
     },
-    "b45fdcfb7ec1f22a917165e1a5a902159db02935225c21b502c097cb9706d10d": {
+    "679cb181d1c61dc6c5547a8ca0dd8b99aecef63114601d079f2e5408e750bc93": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 599",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 599",
           "owner": "iflytek"
         }
       },
-      "sha256": "1a6cd35e555b313ea7d5985fdae3dcc9f50d0f6854bfc985a37924d9bf830e77",
-      "cache": "b45fdcfb7ec1f22a917165e1a5a902159db02935225c21b502c097cb9706d10d.json",
-      "checkedAt": "2026-11-27T01:43:25.564279+00:00",
+      "sha256": "8c15272e3fed78fb9387f14c32f350c1e0a2d77fde6a940a8ffb187c3206b59c",
+      "cache": "679cb181d1c61dc6c5547a8ca0dd8b99aecef63114601d079f2e5408e750bc93.json",
+      "checkedAt": "2026-11-28T02:24:05.728513+00:00",
       "repository": "skillhub"
     },
-    "39e03b4da0ea023f44ea77c097f70455801fe10baedc9101476bd94564f097e2": {
+    "d1ee610f648d4d0633132708479d987ca902307215627125fe2fe012ad4dda99": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 699",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 699",
           "owner": "iflytek"
         }
       },
-      "sha256": "1f57d88e94ed8fd64ac75589ef19d49d1c3ab3acb356aa2537bfe1728abec41a",
-      "cache": "39e03b4da0ea023f44ea77c097f70455801fe10baedc9101476bd94564f097e2.json",
-      "checkedAt": "2026-11-27T01:43:26.225601+00:00",
+      "sha256": "017c4797bc556aa46756824b8e39994d8b8ee07deda3d1c580a32ae44973e4d7",
+      "cache": "d1ee610f648d4d0633132708479d987ca902307215627125fe2fe012ad4dda99.json",
+      "checkedAt": "2026-11-28T02:24:06.273431+00:00",
       "repository": "skillhub"
     },
-    "a9362bef989d2199d68b4014c91d4e70e5e0f5e90870b95d7a2bd50db712d372": {
+    "c9aeeb541f6e7b1feecb7d9fe011a3912c1dd6a85a6ddd297632ee9e3848cee0": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 799",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 799",
           "owner": "iflytek"
         }
       },
-      "sha256": "0e25e2cffc0b74a82464bbfee816254152a42da0fceafded3e867f3c2e29e75e",
-      "cache": "a9362bef989d2199d68b4014c91d4e70e5e0f5e90870b95d7a2bd50db712d372.json",
-      "checkedAt": "2026-11-27T01:43:27.034147+00:00",
+      "sha256": "3f06dab98b8812ac951e16247af41358ec3bd95142993db0a2844d39c72cbc35",
+      "cache": "c9aeeb541f6e7b1feecb7d9fe011a3912c1dd6a85a6ddd297632ee9e3848cee0.json",
+      "checkedAt": "2026-11-28T02:24:06.915442+00:00",
       "repository": "skillhub"
     },
-    "6242345998e3325fb03a63bc4791ee3a50610216624bc9d4f3a194ecb18eea50": {
+    "4ef3a8a44ebd15c027f0b72cbdb36564788ee6b8afede2c8f9a7beb8f86841c9": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 899",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 899",
           "owner": "iflytek"
         }
       },
-      "sha256": "da84122e4664ba20872bdab7e6715fef1d3c4105da59c0296213d138cc28d990",
-      "cache": "6242345998e3325fb03a63bc4791ee3a50610216624bc9d4f3a194ecb18eea50.json",
-      "checkedAt": "2026-11-27T01:43:27.976926+00:00",
+      "sha256": "f564821d4c3ace4a1fce98e65c3da6bdd5fefc0c39cebc0350b7f5d46b37155e",
+      "cache": "4ef3a8a44ebd15c027f0b72cbdb36564788ee6b8afede2c8f9a7beb8f86841c9.json",
+      "checkedAt": "2026-11-28T02:24:07.660198+00:00",
       "repository": "skillhub"
     },
-    "5fdc7f6b3f57f3f3af8ebedb693bb89abca5d9c0b0d74a920327006f29af1321": {
+    "dd99eae10196f58bce6a24e4e9998ebbf24c8a6b8a9528040473ab48353ac709": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 999",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 999",
           "owner": "iflytek"
         }
       },
-      "sha256": "0878d1ecaf7efba661df94a3ed9804366a758352326698f8953634b7b8704811",
-      "cache": "5fdc7f6b3f57f3f3af8ebedb693bb89abca5d9c0b0d74a920327006f29af1321.json",
-      "checkedAt": "2026-11-27T01:43:28.797967+00:00",
+      "sha256": "652a03adcb9efbcbeea7300113a947b1e24c4d383c6bd1feb679d39fd89c04a5",
+      "cache": "dd99eae10196f58bce6a24e4e9998ebbf24c8a6b8a9528040473ab48353ac709.json",
+      "checkedAt": "2026-11-28T02:24:08.395223+00:00",
       "repository": "skillhub"
     },
-    "f2e6f2a6ba86be7dc5adc295376db126a256d4f5ce0f887407c7af4de778c980": {
+    "a45848eeb9a11ec6eafcd38906efbee3eb4490d75518c57abe3c4fee0d6dd064": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 1099",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 1099",
           "owner": "iflytek"
         }
       },
-      "sha256": "53ec863fb29358272ef2e62f704d5642c09783192d769b76245a42e48a2467d9",
-      "cache": "f2e6f2a6ba86be7dc5adc295376db126a256d4f5ce0f887407c7af4de778c980.json",
-      "checkedAt": "2026-11-27T01:43:29.595466+00:00",
+      "sha256": "ff5a6b2e7cac245031aaccd88bf97c070f59ee38a16b34da0bb4c618952243cb",
+      "cache": "a45848eeb9a11ec6eafcd38906efbee3eb4490d75518c57abe3c4fee0d6dd064.json",
+      "checkedAt": "2026-11-28T02:24:09.175382+00:00",
       "repository": "skillhub"
     },
-    "1876bcd1075038882fd7892a95df622d9afcbfcc3598a9c703691c1d81d02948": {
+    "7e7c6480ce41027f1a8bee734910f854c6429ea0377c754e796b806277a07bf0": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 1199",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 1199",
           "owner": "iflytek"
         }
       },
-      "sha256": "d2df39d84a2a51f15e9a02cbb597b4394add8ae28f41b84a55839b5c5ab8e973",
-      "cache": "1876bcd1075038882fd7892a95df622d9afcbfcc3598a9c703691c1d81d02948.json",
-      "checkedAt": "2026-11-27T01:43:30.408451+00:00",
+      "sha256": "0cf2273482f51de27f9c4e1d9d07959790d1d7261e04c758813356ba1b937787",
+      "cache": "7e7c6480ce41027f1a8bee734910f854c6429ea0377c754e796b806277a07bf0.json",
+      "checkedAt": "2026-11-28T02:24:09.749330+00:00",
       "repository": "skillhub"
     },
-    "a4dd5dfd504766500d67d140b6bef365136a6fe0badbd54361eba2d9206a2ce5": {
+    "cd397fe5c3967a3afec2f3e4d618117cc083dd53979f6f16b43c8e365a1b7017": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 1299",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 1299",
           "owner": "iflytek"
         }
       },
-      "sha256": "f46af7e2ae045c6a44cc2ecbdf380ddcc5e2e3b51acbee027aa3d2c6a8d7f56b",
-      "cache": "a4dd5dfd504766500d67d140b6bef365136a6fe0badbd54361eba2d9206a2ce5.json",
-      "checkedAt": "2026-11-27T01:43:31.274896+00:00",
+      "sha256": "35849860cb1f399ebdbb2a46626b045531c615d266d90b333d40c563a25df90f",
+      "cache": "cd397fe5c3967a3afec2f3e4d618117cc083dd53979f6f16b43c8e365a1b7017.json",
+      "checkedAt": "2026-11-28T02:24:10.359503+00:00",
       "repository": "skillhub"
     },
-    "e61ec5eca7bf84437fb7564874a0771ab343484636a127994e2e4f3674c62acf": {
+    "a6b14c7ee94be73378019ff80d2ff8f981c7e79c14d7ac1b4ca1476d049abf6c": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 1399",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 1399",
           "owner": "iflytek"
         }
       },
-      "sha256": "ad6803bf3fc973dddb65c31419f3b511b273ecf11bd96ed537d4cccb88777333",
-      "cache": "e61ec5eca7bf84437fb7564874a0771ab343484636a127994e2e4f3674c62acf.json",
-      "checkedAt": "2026-11-27T01:43:32.163472+00:00",
+      "sha256": "c4383744445d44315a423f2d41c37d043446f2d1258ee9eb73f22a8e342a1788",
+      "cache": "a6b14c7ee94be73378019ff80d2ff8f981c7e79c14d7ac1b4ca1476d049abf6c.json",
+      "checkedAt": "2026-11-28T02:24:11.025232+00:00",
       "repository": "skillhub"
     },
-    "5ea51e05bddcd8fd27ca965338b4f66f3d588a3439be48b81674d80b17e43864": {
+    "f2623a22c9677cb50d97d48188e38fa0a9d1b72758fd799f2cd61a5af9ffb8a5": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 1499",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 1499",
           "owner": "iflytek"
         }
       },
-      "sha256": "c893ba3b1852f8e8841f29619837468ed94a028b60cd0c2aa56c479dc482b60a",
-      "cache": "5ea51e05bddcd8fd27ca965338b4f66f3d588a3439be48b81674d80b17e43864.json",
-      "checkedAt": "2026-11-27T01:43:32.946858+00:00",
+      "sha256": "ba160b4b07ba087757a8258c025d582f3afce7515777ccd0f9c1fc86a3dd9478",
+      "cache": "f2623a22c9677cb50d97d48188e38fa0a9d1b72758fd799f2cd61a5af9ffb8a5.json",
+      "checkedAt": "2026-11-28T02:24:11.620739+00:00",
       "repository": "skillhub"
     },
-    "0500229d920a76669577c640c9ef5ca4094eca5aa50595992866733d0ca3a877": {
+    "4b996879ce0723b8a86081b878fab54ab4f4adcdffee1c8e28e06eb7053797a9": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 1599",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 1599",
           "owner": "iflytek"
         }
       },
-      "sha256": "3ed87c3029529c0445355bec55e666d764e416b43af9de1d1670a7456265f833",
-      "cache": "0500229d920a76669577c640c9ef5ca4094eca5aa50595992866733d0ca3a877.json",
-      "checkedAt": "2026-11-27T01:43:33.682034+00:00",
+      "sha256": "5b1d446b3deb89723336614fa634aeaa880482660e6908eadecc90ae90f17df6",
+      "cache": "4b996879ce0723b8a86081b878fab54ab4f4adcdffee1c8e28e06eb7053797a9.json",
+      "checkedAt": "2026-11-28T02:24:12.175998+00:00",
       "repository": "skillhub"
     },
-    "bbcbe8f20968d0979a73b53b23a9888859f8d92afb553f052a4c758165d7bc56": {
+    "3a17b4ad01ac04b7001a0cfc90463b4cc3ace9f48a8a4c45ced767041024ae29": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 1699",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 1699",
           "owner": "iflytek"
         }
       },
-      "sha256": "3a8a8f17636888d29d23cacac31aea4460328e2dc7b006817693ab4f7f4c8ca4",
-      "cache": "bbcbe8f20968d0979a73b53b23a9888859f8d92afb553f052a4c758165d7bc56.json",
-      "checkedAt": "2026-11-27T01:43:34.354948+00:00",
+      "sha256": "c4da6548a630b221563b8cc53921ebe9eb8e2e3936a50e9e72abd7df582c6983",
+      "cache": "3a17b4ad01ac04b7001a0cfc90463b4cc3ace9f48a8a4c45ced767041024ae29.json",
+      "checkedAt": "2026-11-28T02:24:12.906802+00:00",
       "repository": "skillhub"
     },
-    "9a8fcfcf035791a4845e8727611154f01111975242c9ef3c328c42ad521ac7e8": {
+    "94dd237494c16849ea032dc33491b1b706da4e0fc0037b881a3d752a98c3fe42": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 1799",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 1799",
           "owner": "iflytek"
         }
       },
-      "sha256": "e2911325fa1e062c6d63e43eb615c28a0366dbbf2b056d2c2cc5d6c0aa30dc42",
-      "cache": "9a8fcfcf035791a4845e8727611154f01111975242c9ef3c328c42ad521ac7e8.json",
-      "checkedAt": "2026-11-27T01:43:35.066975+00:00",
+      "sha256": "0f7821b4b8ae5321df930fb33770ff2c0fc9597a65d1128257653df45e321a0b",
+      "cache": "94dd237494c16849ea032dc33491b1b706da4e0fc0037b881a3d752a98c3fe42.json",
+      "checkedAt": "2026-11-28T02:24:13.461896+00:00",
       "repository": "skillhub"
     },
-    "ddbb913d215c530ade531d3128b23894647d4c752c6ece7b0e425b4e30195087": {
+    "84a55d3aa79542603ebdb9365f2fd70216c3ecb3d55aff40979db873b1b4eeb5": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 1899",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 1899",
           "owner": "iflytek"
         }
       },
-      "sha256": "e512fcce9745067120c2dc9cfce733fdd5803547ece173e43e8bb7ff13f1daf4",
-      "cache": "ddbb913d215c530ade531d3128b23894647d4c752c6ece7b0e425b4e30195087.json",
-      "checkedAt": "2026-11-27T01:43:35.689753+00:00",
+      "sha256": "c6007b7f25281f8b751d56db896a59f804bab945ea03ae88c9cd794802ce8f65",
+      "cache": "84a55d3aa79542603ebdb9365f2fd70216c3ecb3d55aff40979db873b1b4eeb5.json",
+      "checkedAt": "2026-11-28T02:24:14.306188+00:00",
       "repository": "skillhub"
     },
-    "5efdf50be1df471663a467caa97a80d719de91afc1ebb3ddb8b5bc21a21a7bd6": {
+    "eff40e50d209c90663f2fa447df3af40c4556be8dde931bff985cd8b3d3f396e": {
       "request": {
         "kind": "graphql",
         "query": "query($name:String!,$owner:String!,$oid:GitObjectID!,$after:String){repository(owner:$owner,name:$name){object(oid:$oid){... on Commit{history(first:100,after:$after){totalCount pageInfo { hasNextPage endCursor } nodes{oid committedDate authors(first:10) { totalCount pageInfo { hasNextPage endCursor } nodes { user { login avatarUrl url __typename } } } parents(first:100){totalCount pageInfo { hasNextPage endCursor } nodes{oid}}}}}}}}",
         "variables": {
           "name": "skillhub",
-          "oid": "90097051a0d038383dca85bf64cac5899a3e8cd8",
-          "after": "90097051a0d038383dca85bf64cac5899a3e8cd8 1999",
+          "oid": "a6d162bd080e4ff1e3b5a40c990adedae9a658df",
+          "after": "a6d162bd080e4ff1e3b5a40c990adedae9a658df 1999",
           "owner": "iflytek"
         }
       },
-      "sha256": "9033b908076c4f5f39ec255ca8d07e7df8692056709296fc46850ee2924d978b",
-      "cache": "5efdf50be1df471663a467caa97a80d719de91afc1ebb3ddb8b5bc21a21a7bd6.json",
-      "checkedAt": "2026-11-27T01:43:36.099994+00:00",
+      "sha256": "4b6923ff15e127e68f1e2d530f1fe9d9d4f8bd3e8d2a806e5913a6e3168b8333",
+      "cache": "eff40e50d209c90663f2fa447df3af40c4556be8dde931bff985cd8b3d3f396e.json",
+      "checkedAt": "2026-11-28T02:24:14.722314+00:00",
       "repository": "skillhub"
     },
     "c851038888f523a3ce243593e91572e035f8b440a1ac8bf235f3d79e3ab51a28": {
@@ -2419,9 +2434,9 @@
         "kind": "rest",
         "path": "repos/iflytek/skillhub/contributors?per_page=100&anon=false&page=1"
       },
-      "sha256": "60f31b5d81ffc3176a00977e2b42c4995347946c9009a2e294d41d3bdba34546",
+      "sha256": "07dbebf9a2d2ce5c90de3b4e86022a2ca88ecb6d815991e7c1a1d1b8ef9d948b",
       "cache": "c851038888f523a3ce243593e91572e035f8b440a1ac8bf235f3d79e3ab51a28.json",
-      "checkedAt": "2026-11-27T01:43:36.434552+00:00",
+      "checkedAt": "2026-11-28T02:24:14.994755+00:00",
       "repository": "skillhub"
     }
   }

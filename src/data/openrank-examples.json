@@ -1,11 +1,11 @@
 {
   "project": "astron-agent",
-  "capturedAt": "2026-11-27T01:45:28.608462+00:00",
-  "graphSha256": "25b4267e9c5833ff819f2eb50af85376fb2cf390ae5b89df75fedac63dc4b2dc",
+  "capturedAt": "2026-11-28T02:26:26.370952+00:00",
+  "graphSha256": "f0a48852a0d41ea9c27fd278c1304570a42ed643325fe1e04f9b45956a87a225",
   "model": "astron-community-all-history-no-automation-v2",
   "formula": "x_i(next) = r_i * b_i + (1-r_i) * sum_j(w_ji * x_j)",
-  "iterations": 37,
-  "residual": 5.638867150992155e-11,
+  "iterations": 36,
+  "residual": 1.546140993013978e-11,
   "source": "/galaxy-data/astron-agent-calculation.json",
   "fullBreakdown": "/galaxy-data/astron-agent-examples.json",
   "examples": [
@@ -17,39 +17,39 @@
       "retention": 0.15,
       "networkFactor": 0.85,
       "baseTerm": 0.15,
-      "incomingTotal": 2907.254754349193,
-      "networkTerm": 2471.166541196814,
-      "score": 2471.3165411968,
-      "recomputedScore": 2471.316541196814,
-      "termCount": 1026,
+      "incomingTotal": 2925.355971570202,
+      "networkTerm": 2486.5525758346716,
+      "score": 2486.7025758346,
+      "recomputedScore": 2486.7025758346717,
+      "termCount": 1031,
       "topTerms": [
         {
           "node": "item:1837",
           "label": "PR #1837",
           "url": "https://github.com/iflytek/astron-agent/pull/1837",
           "edgeWeight": 0.9,
-          "nodeScore": 10.30374120930614,
-          "weightedInput": 9.273367088375526
+          "nodeScore": 10.311594469142364,
+          "weightedInput": 9.280435022228128
         },
         {
           "node": "item:1294",
           "label": "PR #1294",
           "url": "https://github.com/iflytek/astron-agent/pull/1294",
           "edgeWeight": 0.9,
-          "nodeScore": 9.634029335703767,
-          "weightedInput": 8.67062640213339
+          "nodeScore": 9.641044514501708,
+          "weightedInput": 8.676940063051537
         },
         {
           "node": "item:1397",
           "label": "PR #1397",
           "url": "https://github.com/iflytek/astron-agent/pull/1397",
           "edgeWeight": 0.9,
-          "nodeScore": 8.629461525300208,
-          "weightedInput": 7.766515372770187
+          "nodeScore": 8.63521958254072,
+          "weightedInput": 7.771697624286649
         }
       ],
-      "otherTermCount": 1023,
-      "otherInputTotal": 2881.5442454859135
+      "otherTermCount": 1028,
+      "otherInputTotal": 2899.6268988606357
     },
     {
       "rank": 2,
@@ -59,10 +59,10 @@
       "retention": 0.15,
       "networkFactor": 0.85,
       "baseTerm": 0.15,
-      "incomingTotal": 393.6789798360429,
-      "networkTerm": 334.6271328606365,
-      "score": 334.7771328606,
-      "recomputedScore": 334.77713286063647,
+      "incomingTotal": 393.68439843296926,
+      "networkTerm": 334.63173866802384,
+      "score": 334.781738668,
+      "recomputedScore": 334.7817386680238,
       "termCount": 173,
       "topTerms": [
         {
@@ -70,28 +70,28 @@
           "label": "PR #171",
           "url": "https://github.com/iflytek/astron-agent/pull/171",
           "edgeWeight": 0.9,
-          "nodeScore": 4.994237589830352,
-          "weightedInput": 4.494813830847317
+          "nodeScore": 4.99428170802883,
+          "weightedInput": 4.494853537225947
         },
         {
           "node": "item:179",
           "label": "PR #179",
           "url": "https://github.com/iflytek/astron-agent/pull/179",
           "edgeWeight": 0.9,
-          "nodeScore": 4.994237589830352,
-          "weightedInput": 4.494813830847317
+          "nodeScore": 4.99428170802883,
+          "weightedInput": 4.494853537225947
         },
         {
           "node": "item:233",
           "label": "PR #233",
           "url": "https://github.com/iflytek/astron-agent/pull/233",
           "edgeWeight": 0.9,
-          "nodeScore": 4.994237589830352,
-          "weightedInput": 4.494813830847317
+          "nodeScore": 4.99428170802883,
+          "weightedInput": 4.494853537225947
         }
       ],
       "otherTermCount": 170,
-      "otherInputTotal": 380.194538343501
+      "otherInputTotal": 380.19983782129145
     }
   ]
 }
